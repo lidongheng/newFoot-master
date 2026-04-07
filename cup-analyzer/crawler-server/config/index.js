@@ -48,6 +48,8 @@ const config = {
     ...active.paths,
     /** @deprecated 请优先使用 cupScheduleData；保留为世界杯 c75 固定路径 */
     c75Data: cups.theWorldCup.paths.cupScheduleData,
+    /** 国内联赛赛程 JS（s{联赛序号}.js），供 playerList + clubMatchAnalyzer；见 match_center/README.md */
+    matchCenterDir: path.resolve(__dirname, '../match_center'),
   },
 
   crawlDelayMs: 3000,

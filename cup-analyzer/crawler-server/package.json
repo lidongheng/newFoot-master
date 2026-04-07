@@ -10,7 +10,9 @@
     "crawl:match": "node crawlers/matchDataCrawler.js",
     "process:squad": "node processors/squadProcessor.js",
     "process:profile": "node processors/teamProfileGenerator.js",
-    "crawl:schedule:ucl": "CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js"
+    "crawl:schedule:ucl": "CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js",
+    "crawl:player-list": "node crawlers/playerListCrawler.js",
+    "analyze:club-domestic": "node analyzers/clubMatchAnalyzer.js"
   },
   "keywords": ["world-cup", "champions-league", "crawler", "football"],
   "author": "donghengli",
