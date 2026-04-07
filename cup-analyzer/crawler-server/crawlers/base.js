@@ -57,9 +57,11 @@ class BaseCrawler {
    */
   parseScheduleData() {
     const { readFile } = require('../utils/fileWriter');
-    const content = readFile(config.paths.c75Data);
+    const schedulePath =
+      config.paths.cupScheduleData || config.paths.c75Data;
+    const content = readFile(schedulePath);
     if (!content) {
-      console.error(`[${this.name}] c75.js 文件不存在: ${config.paths.c75Data}`);
+      console.error(`[${this.name}] 赛程数据文件不存在: ${schedulePath}`);
       return null;
     }
     const sandbox = evalJsData(content);

@@ -34,6 +34,17 @@ cup-analyzer/
 │   │   └── fatigue-schedule.md        # 赛程疲劳度
 │   ├── description/                   # 球队简介（AI只读，东恒编辑）
 │   └── news/                          # 比赛素材
+├── championsLeague/                   # 欧洲冠军联赛（欧冠）
+│   ├── PLAN.md                        # 项目计划
+│   ├── workflow.md                    # 工作流程
+│   ├── rule/                          # 联赛阶段 / 淘汰赛规则
+│   ├── data/                          # c103.js、l103.js、bs103.js、冠军赔率等
+│   ├── teamProfile/                   # 球队画像
+│   ├── report/{赛季}/                 # 如 25-26/league-phase/round-N/
+│   ├── postMatchSummary/{赛季}/       # 赛后复盘
+│   ├── strategy/                      # 积分形势、抽签、两回合、跨赛事疲劳
+│   ├── description/                   # 球队简介（AI只读）
+│   └── news/{赛季}/                   # 比赛素材
 └── crawler-server/                    # Koa2爬虫服务
     ├── app.js                         # 服务入口
     ├── config/                        # 配置
@@ -67,16 +78,32 @@ node processors/teamProfileGenerator.js    # 生成球队画像
 node processors/strategyAnalyzer.js        # 生成策略分析报告
 node crawlers/matchDataCrawler.js --match 2906701  # 爬取单场赛后数据
 node crawlers/oddsCrawler.js 2906701       # 爬取单场赔率
-node crawlers/scheduleCrawler.js           # 更新赛程数据
+node crawlers/scheduleCrawler.js           # 更新赛程数据（默认世界杯 c75）
+
+# 切换杯赛：设置环境变量 CUP_ANALYZER_CUP
+# 欧冠 → 写入 championsLeague/data/c103.js（赛季见 crawler-server/config）
+CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js
+# 或：npm run crawl:schedule:ucl
 ```
 
 5、三个分析阶段：
 
+**世界杯（theWorldCup）**
+
 - **阶段一（赛前）**：收集48队大名单 → 生成球队画像 → 评估小组实力 → 分析出线路径
-- **阶段二（赛中）**：逐场赛前分析 → 赛后复盘总结（复用league-analyzer的分析模式）
+- **阶段二（赛中）**：逐场赛前分析 → 赛后复盘总结（复用 league-analyzer 的分析模式）
 - **阶段三（策略）**：挑对手分析 → 默契球识别 → 赛程疲劳度 → 保留实力识别
 
-6、AI分析技能文件位于 `.cursor/rules/dh-worldcup-analysis/SKILL.md`
+**欧冠（championsLeague）**
+
+- **阶段一（赛前）**：维护 data（c103/l103/bs103）、冠军赔率与球队序号；可选球队画像
+- **阶段二（赛中）**：逐场赛前/赛后（模板同 `league-analyzer/prompts/match_analysis_template.md`），结合盘路 `l103`/`bs103` 与两回合总比分
+- **阶段三（策略）**：联赛阶段积分区间（1–8 / 9–24 / 25–36）→ 淘汰赛抽签 → 两回合策略 → 跨赛事疲劳（联赛+欧冠+杯赛）
+
+6、AI 分析技能文件：
+
+- 世界杯：`.cursor/rules/dh-worldcup-analysis/SKILL.md`
+- 欧冠：`.cursor/rules/dh-championsleague-analysis/SKILL.md`
 
 10、介绍一些足球场上的位置缩写：
 GK 守门员

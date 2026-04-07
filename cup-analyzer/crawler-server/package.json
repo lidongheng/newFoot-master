@@ -1,7 +1,7 @@
 {
   "name": "cup-analyzer-crawler-server",
   "version": "1.0.0",
-  "description": "2026世界杯数据爬虫服务 - Koa2",
+  "description": "杯赛数据爬虫服务（世界杯 / 欧冠等）- Koa2",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -9,9 +9,10 @@
     "crawl:squad": "node crawlers/squadCrawler.js",
     "crawl:match": "node crawlers/matchDataCrawler.js",
     "process:squad": "node processors/squadProcessor.js",
-    "process:profile": "node processors/teamProfileGenerator.js"
+    "process:profile": "node processors/teamProfileGenerator.js",
+    "crawl:schedule:ucl": "CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js"
   },
-  "keywords": ["world-cup", "crawler", "football"],
+  "keywords": ["world-cup", "champions-league", "crawler", "football"],
   "author": "donghengli",
   "license": "ISC",
   "dependencies": {

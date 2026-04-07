@@ -1,3 +1,10 @@
+/**
+ * @param {string} cupSerial 如 '75' | '103'
+ */
+function cupMatchReferer(cupSerial) {
+  return `http://zq.titan007.com/cn/CupMatch/${cupSerial}.html`;
+}
+
 const targets = {
   titan007: {
     baseUrl: 'http://zq.titan007.com',
@@ -19,19 +26,16 @@ const targets = {
     cupScheduleUrl: (cupSerial, season) =>
       `http://zq.titan007.com/jsData/matchResult/${season}/c${cupSerial}.js?version=${Date.now()}`,
 
+    cupMatchReferer,
+
     headers: {
-      desktop: {
-        Referer: 'http://zq.titan007.com/cn/CupMatch/75.html',
-        Host: 'zq.titan007.com',
-      },
+      /** desktop / detail 的 Referer 需与当前杯赛序号一致，由 getCupHeaders 生成 */
+      desktop: { Referer: cupMatchReferer('75'), Host: 'zq.titan007.com' },
       mobile: (matchSerial) => ({
         Referer: `https://m.titan007.com/Analy/ShiJian/${matchSerial}.htm`,
         Host: 'm.titan007.com',
       }),
-      detail: {
-        Referer: 'http://zq.titan007.com/cn/CupMatch/75.html',
-        Host: 'bf.titan007.com',
-      },
+      detail: { Referer: cupMatchReferer('75'), Host: 'bf.titan007.com' },
     },
   },
 };
