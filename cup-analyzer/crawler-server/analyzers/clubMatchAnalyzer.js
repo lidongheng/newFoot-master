@@ -520,77 +520,14 @@ class ClubAnalyzer {
   }
   
   /**
-   * 根据阵型计算球员位置
+   * 根据阵型计算球员位置（与 getPositionsForFormation 映射表一致，供爬取技术统计页时给首发球员贴位置）
    * @param {string} formation 阵型 (例如: '4231')
    * @param {boolean} isReversed 是否需要反转位置顺序（客队需要）
    * @returns {Array<string>} 位置数组
    */
   calculatePositions(formation, isReversed = false) {
-    // 定义位置映射
-    const positions = [];
-    
-    // 添加门将位置
-    positions.push('GK');
-    
-    // 拆分阵型数字
-    const formationArray = formation.split('').map(Number);
-    
-    // 定义位置代码
-    const positionCodes = ['CB', 'LB', 'RB', 'DMF', 'CMF', 'LMF', 'RMF', 'AMF', 'LWF', 'RWF', 'CF'];
-    
-    // 分配位置
-    let positionIndex = 0;
-    
-    // 后卫
-    const defenders = formationArray[0] || 4;
-    for (let i = 0; i < defenders; i++) {
-      if (defenders === 3) {
-        positions.push('CB');
-      } else if (defenders === 4) {
-        if (i === 0) positions.push('LB');
-        else if (i === defenders - 1) positions.push('RB');
-        else positions.push('CB');
-      } else if (defenders === 5) {
-        if (i === 0) positions.push('LWB');
-        else if (i === defenders - 1) positions.push('RWB');
-        else positions.push('CB');
-      }
-    }
-    
-    // 中场
-    let midfielders = 0;
-    for (let i = 1; i < formationArray.length - 1; i++) {
-      const count = formationArray[i] || 0;
-      midfielders += count;
-      
-      for (let j = 0; j < count; j++) {
-        const isWide = count >= 3 && (j === 0 || j === count - 1);
-        
-        if (i === 1) { // 防守型中场
-          positions.push(isWide ? (j === 0 ? 'LDM' : 'RDM') : 'CDM');
-        } else if (i === formationArray.length - 2) { // 进攻型中场
-          positions.push(isWide ? (j === 0 ? 'LAM' : 'RAM') : 'CAM');
-        } else { // 中央中场
-          positions.push(isWide ? (j === 0 ? 'LCM' : 'RCM') : 'CM');
-        }
-      }
-    }
-    
-    // 前锋
-    const forwards = formationArray[formationArray.length - 1] || 0;
-    for (let i = 0; i < forwards; i++) {
-      if (forwards === 1) {
-        positions.push('ST');
-      } else if (forwards === 2) {
-        positions.push('ST');
-      } else if (forwards === 3) {
-        if (i === 0) positions.push('LW');
-        else if (i === forwards - 1) positions.push('RW');
-        else positions.push('ST');
-      }
-    }
-    
-    return isReversed ? positions.reverse() : positions;
+    const positions = this.getPositionsForFormation(formation);
+    return isReversed ? [...positions].reverse() : positions;
   }
 
   /**
@@ -1114,7 +1051,7 @@ class ClubAnalyzer {
       '4213': ['GK', 'LB', 'CB', 'CB', 'RB', 'CDM', 'CDM', 'CAM', 'LW', 'ST', 'RW'],
       '4231': ['GK', 'LB', 'CB', 'CB', 'RB', 'CDM', 'CDM', 'LM', 'CAM', 'RM', 'ST'],
       '3421': ['GK', 'LCB', 'CB', 'RCB', 'LB', 'CDM', 'CDM', 'RB', 'LM', 'RM', 'ST'],
-      '433': ['GK', 'LB', 'CB', 'CB', 'RB', 'LM', 'CDM', 'RM', 'LW', 'ST', 'RW'],
+      '433': ['GK', 'LB', 'CB', 'CB', 'RB', 'LDM', 'CDM', 'RDM', 'LW', 'ST', 'RW'],
       '352': ['GK', 'LCB', 'CB', 'RCB', 'LB', 'CM', 'CDM', 'CM', 'RB', 'ST', 'ST'],
       '343': ['GK', 'LCB', 'CB', 'RCB', 'LB', 'CDM', 'CDM', 'RB', 'LW', 'ST', 'RW'],
       '442': ['GK', 'LB', 'CB', 'CB', 'RB', 'LM', 'CDM', 'CDM', 'RM', 'ST', 'ST'],

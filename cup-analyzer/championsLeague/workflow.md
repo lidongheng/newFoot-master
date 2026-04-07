@@ -25,7 +25,7 @@
 4. 阅读 strategy/ 下框架文档，按轮次更新积分形势与疲劳分析
 ```
 
-**说明（大名单）**：欧冠是跨整个赛季的俱乐部赛事，**没有像世界杯那样赛前一次性公布的「最终大名单」可长期缓存**。每场比赛前都必须重新抓取双方最新阵容（伤病、转会、状态变化），具体见 **阶段二步骤 0**。世界杯模式见 `theWorldCup/squad/` + `squadCrawler.js`；欧冠与 `league-analyzer` 相同，走 `backend-server/crawlerPlayer.js`。
+**说明（大名单）**：欧冠是跨整个赛季的俱乐部赛事，**没有像世界杯那样赛前一次性公布的「最终大名单」可长期缓存**。每场比赛前都必须重新抓取双方最新阵容（伤病、转会、状态变化），具体见 **阶段二步骤 0**。世界杯模式见 `theWorldCup/squad/` + `squadCrawler.js`；俱乐部走 **`cup-analyzer/crawler-server`**（`playerListCrawler.js` + `analyzers/clubMatchAnalyzer.js`，配置 `config/squadTarget.js`；`match_center` 见该目录下 README）。旧流程仍可用 `backend-server/crawlerPlayer.js` / `crawlerClub3_new.js`，将逐步废弃。
 
 ### 阶段二：赛中分析（每场）
 
@@ -33,19 +33,20 @@
 
 ```
 赛前 2–3 天:
-  0. 抓取双方大名单（必做，与 league-analyzer 同流程）
-     a. 编辑 backend-server/config/wudaconfig.js：
+  0. 抓取双方大名单（必做；逻辑已迁入 cup-analyzer/crawler-server）
+     a. 准备 `crawler-server/match_center/s{联赛序号}.js`（如英超 s36.js，见 `match_center/README.md`）
+     b. 编辑 `crawler-server/config/squadTarget.js`：
         - teamSerial：该队球探俱乐部序号（见 `data/球队与序号对照表.md` 或 titan007 球队页）
-        - leagueSerial：该队**所属国内联赛**序号（如英超 36、西甲 4），供 crawlerClub3_new 读 match_center
+        - leagueSerial：该队**所属国内联赛**序号（如英超 36、西甲 4）
         - roundSerial：当前国内联赛轮次（与 workflow 说明一致即可）
         - isNation：false（俱乐部）
         - teamChineseName：球队中文名
-     b. cd backend-server && node crawlerPlayer.js
-        → 输出 backend-server/player_center/{teamSerial}.json（基础大名单）
-     c. node crawlerClub3_new.js
-        → 输出 backend-server/player_center/{teamSerial}-new.json（出场、首发、进球助攻、阵型等）
-     d. 将配置改为客队，对客队重复 a–c
-     e. 将双方大名单、伤停等整理进 news/{赛季}/{阶段}/{对阵}/（可与统计信息、新闻稿同目录）
+     c. cd cup-analyzer/crawler-server && npm run crawl:player-list
+        → 输出 `crawler-server/output/player_center/{teamSerial}.json`（基础大名单）
+     d. npm run analyze:club-domestic
+        → 输出 `crawler-server/output/player_center/{teamSerial}-new.json`（出场、首发、进球助攻、阵型等）
+     e. 将 squadTarget 改为客队，对客队重复 c–d
+     f. 将双方大名单、伤停等整理进 news/{赛季}/{阶段}/{对阵}/（可与统计信息、新闻稿同目录）
   1. 预测首发（格式见 league-analyzer/prompts/match_analysis_template.md）
   2. 交锋、近况、未来赛程（含国内联赛/杯赛）
   3. 盘口：初盘/临场；可引用 l103.js、bs103.js、td103.js（联赛阶段样本量少于国内联赛，需结合判断）

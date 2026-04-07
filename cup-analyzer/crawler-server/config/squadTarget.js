@@ -13,10 +13,10 @@ const squadTarget = {
   leagueSerial: '36',
   leagueSlug: 'epl',
   season: '25-26',
-  teamSerial: '33',
-  roundSerial: '29',
+  teamSerial: '19',
+  roundSerial: '32',
   isNation: false,
-  teamChineseName: '托特纳姆热刺',
+  teamChineseName: '阿森纳',
   /** 单场分析等场景可选 */
   matchSerial: '2789417',
 };
