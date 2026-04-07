@@ -1,0 +1,203 @@
+{
+  "matchId": 2860714,
+  "homeName": "安迪江",
+  "awayName": "阿卡达格",
+  "events": [
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 113683,
+        "name": "阿吉纳德"
+      },
+      "assist": {
+        "id": 214855,
+        "name": "A·古洛莫夫"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 113683,
+        "name": "阿吉纳德"
+      }
+    },
+    {
+      "time": "65'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 234288,
+        "name": "朱拉库齐耶夫"
+      },
+      "playerOff": {
+        "id": 196499,
+        "name": "多尼奥尔"
+      }
+    },
+    {
+      "time": "68'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 181887,
+        "name": "杜尔德耶夫"
+      },
+      "assist": {
+        "id": 297014,
+        "name": "海迪罗"
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "75'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 225384,
+        "name": "霍萨耶夫"
+      },
+      "playerOff": {
+        "id": 171878,
+        "name": "阿塔耶夫"
+      }
+    },
+    {
+      "time": "75'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 251858,
+        "name": "埃塞诺"
+      },
+      "playerOff": {
+        "id": 181887,
+        "name": "杜尔德耶夫"
+      }
+    },
+    {
+      "time": "84'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 344853,
+        "name": "阿塔耶夫"
+      },
+      "playerOff": {
+        "id": 194307,
+        "name": "巴拉科夫"
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 233825,
+        "name": "马马特卡津"
+      },
+      "playerOff": {
+        "id": 214856,
+        "name": "M·托伊罗夫"
+      }
+    },
+    {
+      "time": "90+4'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 186887,
+        "name": "雷杰波夫"
+      },
+      "playerOff": {
+        "id": 240960,
+        "name": "古尔巴诺"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 9916,
+    "guestId": 65873,
+    "home": 6,
+    "homeHalf": 4,
+    "guest": 2,
+    "guestHalf": 2,
+    "detail": [
+      {
+        "min": "3",
+        "ifHome": true
+      },
+      {
+        "min": "4",
+        "ifHome": false
+      },
+      {
+        "min": "18",
+        "ifHome": true
+      },
+      {
+        "min": "33",
+        "ifHome": true
+      },
+      {
+        "min": "33",
+        "ifHome": true
+      },
+      {
+        "min": "35",
+        "ifHome": false
+      },
+      {
+        "min": "71",
+        "ifHome": true
+      },
+      {
+        "min": "73",
+        "ifHome": true
+      },
+      {
+        "min": "74",
+        "ifHome": true
+      }
+    ]
+  }
+}

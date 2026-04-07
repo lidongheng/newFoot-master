@@ -1,0 +1,193 @@
+{
+  "matchId": 2789324,
+  "homeName": "利兹联",
+  "awayName": "曼彻斯特联",
+  "events": [
+    {
+      "time": "34'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 239464,
+        "name": "P·多古"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "62'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 166918,
+        "name": "阿隆森"
+      },
+      "assist": {
+        "id": 164576,
+        "name": "斯图伊杰克"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 166588,
+        "name": "齐尔克泽"
+      },
+      "playerOff": {
+        "id": 225599,
+        "name": "约罗"
+      }
+    },
+    {
+      "time": "65'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 155454,
+        "name": "库尼亚"
+      },
+      "assist": {
+        "id": 166588,
+        "name": "齐尔克泽"
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "75'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 154777,
+        "name": "恩梅查"
+      },
+      "playerOff": {
+        "id": 165972,
+        "name": "N·奥卡福尔"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 201265,
+        "name": "尼翁托"
+      },
+      "playerOff": {
+        "id": 167501,
+        "name": "波亚纳乌"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 154266,
+        "name": "田中碧"
+      },
+      "playerOff": {
+        "id": 178234,
+        "name": "伊莉亚·格鲁夫"
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 152040,
+        "name": "皮罗"
+      },
+      "playerOff": {
+        "id": 166918,
+        "name": "阿隆森"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 56,
+    "guestId": 27,
+    "home": 6,
+    "homeHalf": 2,
+    "guest": 4,
+    "guestHalf": 4,
+    "detail": [
+      {
+        "min": "22",
+        "ifHome": false
+      },
+      {
+        "min": "25",
+        "ifHome": true
+      },
+      {
+        "min": "31",
+        "ifHome": false
+      },
+      {
+        "min": "40",
+        "ifHome": false
+      },
+      {
+        "min": "41",
+        "ifHome": false
+      },
+      {
+        "min": "44",
+        "ifHome": true
+      },
+      {
+        "min": "52",
+        "ifHome": true
+      },
+      {
+        "min": "56",
+        "ifHome": true
+      },
+      {
+        "min": "57",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      }
+    ]
+  }
+}

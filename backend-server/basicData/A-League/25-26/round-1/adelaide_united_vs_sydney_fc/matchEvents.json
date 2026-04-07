@@ -1,0 +1,265 @@
+{
+  "matchId": 2871649,
+  "homeName": "阿德莱德联",
+  "awayName": "悉尼FC",
+  "events": [
+    {
+      "time": "16'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 178975,
+        "name": "图雷"
+      }
+    },
+    {
+      "time": "41'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 98816,
+        "name": "格兰特"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "55'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 117467,
+        "name": "基托"
+      },
+      "assist": {
+        "id": 96433,
+        "name": "古德温"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "60'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 272666,
+        "name": "瓦拉蒂"
+      },
+      "playerOff": {
+        "id": 178975,
+        "name": "图雷"
+      }
+    },
+    {
+      "time": "65'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 230059,
+        "name": "阿拉吉奇"
+      },
+      "assist": {
+        "id": 173937,
+        "name": "杜库莱"
+      },
+      "score": {
+        "home": 2,
+        "away": 0
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 230057,
+        "name": "马达尼亚"
+      },
+      "playerOff": {
+        "id": 173937,
+        "name": "杜库莱"
+      }
+    },
+    {
+      "time": "76'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 279932,
+        "name": "克劳福德"
+      },
+      "playerOff": {
+        "id": 204419,
+        "name": "尤尔"
+      }
+    },
+    {
+      "time": "76'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 77583,
+        "name": "穆尼斯"
+      },
+      "playerOff": {
+        "id": 230056,
+        "name": "约万诺维奇"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 202367,
+        "name": "伍德"
+      },
+      "playerOff": {
+        "id": 210011,
+        "name": "P·奎斯佩"
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 264464,
+        "name": "昆塔尔"
+      },
+      "playerOff": {
+        "id": 230685,
+        "name": "里斯·尤利"
+      }
+    },
+    {
+      "time": "88'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 220166,
+        "name": "波波维奇"
+      },
+      "playerOff": {
+        "id": 114849,
+        "name": "迪瑟兰德"
+      }
+    },
+    {
+      "time": "88'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 181430,
+        "name": "考特尼·帕金斯"
+      },
+      "playerOff": {
+        "id": 169904,
+        "name": "金"
+      }
+    },
+    {
+      "time": "89'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 294854,
+        "name": "塔拉迪拉"
+      },
+      "playerOff": {
+        "id": 96433,
+        "name": "古德温"
+      }
+    },
+    {
+      "time": "90+1'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 115647,
+        "name": "罗里"
+      },
+      "assist": {
+        "id": 264464,
+        "name": "昆塔尔"
+      },
+      "score": {
+        "home": 2,
+        "away": 1
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 2900,
+    "guestId": 2909,
+    "home": 5,
+    "homeHalf": 1,
+    "guest": 2,
+    "guestHalf": 0,
+    "detail": [
+      {
+        "min": "10",
+        "ifHome": true
+      },
+      {
+        "min": "56",
+        "ifHome": true
+      },
+      {
+        "min": "75",
+        "ifHome": true
+      },
+      {
+        "min": "83",
+        "ifHome": false
+      },
+      {
+        "min": "87",
+        "ifHome": true
+      },
+      {
+        "min": "88",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}

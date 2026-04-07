@@ -1,0 +1,155 @@
+{
+  "matchId": 2852167,
+  "homeName": "哈森姆",
+  "awayName": "新未来城体育",
+  "events": [
+    {
+      "time": "31'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 153606,
+        "name": "A.阿斯马里"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "59'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 60220,
+        "name": "拉卡泽特"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "64'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 122286,
+        "name": "赛伊尤德"
+      },
+      "playerOff": {
+        "id": 246757,
+        "name": "M·卡瓦略"
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 128778,
+        "name": "S·阿尔法拉杰"
+      },
+      "playerOff": {
+        "id": 219459,
+        "name": "阿拉哈吉"
+      }
+    },
+    {
+      "time": "72'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 206487,
+        "name": "沙马利"
+      },
+      "playerOff": {
+        "id": 233489,
+        "name": "沙姆拉尼"
+      }
+    },
+    {
+      "time": "88'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 234514,
+        "name": "L·罗萨莱斯"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 0,
+        "away": 2
+      }
+    },
+    {
+      "time": "90+5'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 3406,
+    "guestId": 9200,
+    "home": 2,
+    "homeHalf": 1,
+    "guest": 3,
+    "guestHalf": 3,
+    "detail": [
+      {
+        "min": "21",
+        "ifHome": false
+      },
+      {
+        "min": "33",
+        "ifHome": true
+      },
+      {
+        "min": "38",
+        "ifHome": false
+      },
+      {
+        "min": "45",
+        "ifHome": false
+      },
+      {
+        "min": "48",
+        "ifHome": true
+      }
+    ]
+  }
+}

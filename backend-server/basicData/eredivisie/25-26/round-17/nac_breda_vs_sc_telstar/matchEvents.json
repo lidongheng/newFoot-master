@@ -1,0 +1,279 @@
+{
+  "matchId": 2790853,
+  "homeName": "布雷达",
+  "awayName": "特尔斯达",
+  "events": [
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 149897,
+        "name": "基因马穆托"
+      },
+      "playerOff": {
+        "id": 65947,
+        "name": "奥多伊"
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 225064,
+        "name": "加利迪"
+      },
+      "playerOff": {
+        "id": 240307,
+        "name": "劳尔.保拉"
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 218379,
+        "name": "纳索赫"
+      },
+      "playerOff": {
+        "id": 117517,
+        "name": "莱曼斯"
+      }
+    },
+    {
+      "time": "49'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 237008,
+        "name": "T诺斯林"
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 285979,
+        "name": "A·莱奇卡"
+      },
+      "playerOff": {
+        "id": 237008,
+        "name": "T诺斯林"
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 268954,
+        "name": "奥乌苏"
+      }
+    },
+    {
+      "time": "74'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 232094,
+        "name": "穆萨·苏马诺"
+      },
+      "playerOff": {
+        "id": 30170,
+        "name": "霍尔特比"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 225655,
+        "name": "帕特里克·布鲁沃"
+      },
+      "assist": {
+        "id": 285979,
+        "name": "A·莱奇卡"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "78'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 123990,
+        "name": "哈姆达奥伊"
+      },
+      "playerOff": {
+        "id": 225655,
+        "name": "帕特里克·布鲁沃"
+      }
+    },
+    {
+      "time": "78'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 218261,
+        "name": "K·特扬"
+      },
+      "playerOff": {
+        "id": 251248,
+        "name": "米兰宗讷费尔德"
+      }
+    },
+    {
+      "time": "79'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 126520,
+        "name": "D.默滕斯"
+      },
+      "playerOff": {
+        "id": 229258,
+        "name": "J·范德坎普"
+      }
+    },
+    {
+      "time": "79'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 166081,
+        "name": "胡伊东克"
+      },
+      "playerOff": {
+        "id": 217586,
+        "name": "朱霍"
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 149897,
+        "name": "基因马穆托"
+      }
+    },
+    {
+      "time": "90+1'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 218261,
+        "name": "K·特扬"
+      }
+    },
+    {
+      "time": "90+3'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 166081,
+        "name": "胡伊东克"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 232,
+    "guestId": 279,
+    "home": 8,
+    "homeHalf": 5,
+    "guest": 3,
+    "guestHalf": 2,
+    "detail": [
+      {
+        "min": "1",
+        "ifHome": true
+      },
+      {
+        "min": "2",
+        "ifHome": true
+      },
+      {
+        "min": "13",
+        "ifHome": false
+      },
+      {
+        "min": "13",
+        "ifHome": false
+      },
+      {
+        "min": "19",
+        "ifHome": true
+      },
+      {
+        "min": "23",
+        "ifHome": true
+      },
+      {
+        "min": "36",
+        "ifHome": false
+      },
+      {
+        "min": "38",
+        "ifHome": true
+      },
+      {
+        "min": "52",
+        "ifHome": true
+      },
+      {
+        "min": "57",
+        "ifHome": true
+      },
+      {
+        "min": "71",
+        "ifHome": false
+      },
+      {
+        "min": "87",
+        "ifHome": true
+      }
+    ]
+  }
+}

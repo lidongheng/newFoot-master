@@ -1,0 +1,250 @@
+{
+  "matchId": 2788762,
+  "homeName": "里加足球学院",
+  "awayName": "塔林利瓦迪亚",
+  "events": [
+    {
+      "time": "3'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "22'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 89272,
+        "name": "斯图格里斯"
+      },
+      "playerOff": {
+        "id": 135714,
+        "name": "赫迪"
+      }
+    },
+    {
+      "time": "27'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 187001,
+        "name": "拉尔森"
+      }
+    },
+    {
+      "time": "33'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 173208,
+        "name": "图尔"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "65'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 221968,
+        "name": "迪德希奥"
+      },
+      "playerOff": {
+        "id": 89206,
+        "name": "艾卡尼科斯"
+      }
+    },
+    {
+      "time": "68'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 138337,
+        "name": "斯特凡"
+      },
+      "assist": {
+        "id": 89211,
+        "name": "沙贝尼克斯"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "72'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 214480,
+        "name": "若奥·佩德罗"
+      }
+    },
+    {
+      "time": "72'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 329234,
+        "name": "托雷斯"
+      },
+      "playerOff": {
+        "id": 147554,
+        "name": "阿吉里"
+      }
+    },
+    {
+      "time": "72'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 124893,
+        "name": "里瓦克"
+      },
+      "playerOff": {
+        "id": 173208,
+        "name": "图尔"
+      }
+    },
+    {
+      "time": "75'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 230841,
+        "name": "奥迪沙里亚"
+      }
+    },
+    {
+      "time": "79'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 124420,
+        "name": "科尔斯"
+      },
+      "playerOff": {
+        "id": 131293,
+        "name": "艾因萨鲁"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 151844,
+        "name": "鲁斯努普"
+      },
+      "playerOff": {
+        "id": 214480,
+        "name": "若奥·佩德罗"
+      }
+    },
+    {
+      "time": "81'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 234620,
+        "name": "莫尔·塔拉·盖伊"
+      },
+      "playerOff": {
+        "id": 230841,
+        "name": "奥迪沙里亚"
+      }
+    },
+    {
+      "time": "88'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 241755,
+        "name": "M·斯克沃尔佐夫"
+      },
+      "playerOff": {
+        "id": 170800,
+        "name": "穆萨巴"
+      }
+    },
+    {
+      "time": "90+2'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 177928,
+        "name": "马维雷蒂克"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 14870,
+    "guestId": 674,
+    "home": 4,
+    "homeHalf": 1,
+    "guest": 3,
+    "guestHalf": 1,
+    "detail": [
+      {
+        "min": "24",
+        "ifHome": true
+      },
+      {
+        "min": "37",
+        "ifHome": false
+      },
+      {
+        "min": "53",
+        "ifHome": false
+      },
+      {
+        "min": "55",
+        "ifHome": true
+      },
+      {
+        "min": "56",
+        "ifHome": true
+      },
+      {
+        "min": "68",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "matchId": 2871677,
+  "homeName": "奥克兰FC",
+  "awayName": "布里斯班狮吼",
+  "events": [
+    {
+      "time": "17'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 138782,
+        "name": "麦克格里"
+      }
+    },
+    {
+      "time": "18'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 153170,
+        "name": "布鲁克"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "21'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 128659,
+        "name": "S.科斯格罗夫"
+      }
+    },
+    {
+      "time": "45+2'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 251365,
+        "name": "韦迪克"
+      },
+      "assist": {
+        "id": 203754,
+        "name": "迈克尔·鲁思"
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "53'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 232545,
+        "name": "吉利恩"
+      },
+      "playerOff": {
+        "id": 183603,
+        "name": "J·兰德尔"
+      }
+    },
+    {
+      "time": "53'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 97990,
+        "name": "C.霍维森"
+      },
+      "playerOff": {
+        "id": 89896,
+        "name": "L.加利高斯"
+      }
+    },
+    {
+      "time": "72'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 287937,
+        "name": "J·比多伊斯"
+      },
+      "playerOff": {
+        "id": 184727,
+        "name": "梅耶"
+      }
+    },
+    {
+      "time": "79'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 258541,
+        "name": "劳顿"
+      },
+      "playerOff": {
+        "id": 203754,
+        "name": "迈克尔·鲁思"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 242639,
+        "name": "O·麦克尼科尔"
+      },
+      "playerOff": {
+        "id": 182646,
+        "name": "G·瓦拉卡斯"
+      }
+    },
+    {
+      "time": "83'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 242088,
+        "name": "O·米德尔顿"
+      },
+      "playerOff": {
+        "id": 128659,
+        "name": "S.科斯格罗夫"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 70866,
+    "guestId": 2914,
+    "home": 5,
+    "homeHalf": 0,
+    "guest": 6,
+    "guestHalf": 6,
+    "detail": [
+      {
+        "min": "7",
+        "ifHome": false
+      },
+      {
+        "min": "16",
+        "ifHome": false
+      },
+      {
+        "min": "34",
+        "ifHome": false
+      },
+      {
+        "min": "34",
+        "ifHome": false
+      },
+      {
+        "min": "38",
+        "ifHome": false
+      },
+      {
+        "min": "39",
+        "ifHome": false
+      },
+      {
+        "min": "43",
+        "ifHome": false
+      },
+      {
+        "min": "54",
+        "ifHome": true
+      },
+      {
+        "min": "67",
+        "ifHome": true
+      },
+      {
+        "min": "79",
+        "ifHome": true
+      },
+      {
+        "min": "86",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      }
+    ]
+  }
+}

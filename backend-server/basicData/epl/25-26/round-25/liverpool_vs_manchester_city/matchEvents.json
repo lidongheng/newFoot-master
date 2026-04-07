@@ -1,0 +1,259 @@
+{
+  "matchId": 2789375,
+  "homeName": "利物浦",
+  "awayName": "曼彻斯特城",
+  "events": [
+    {
+      "time": "42'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 186855,
+        "name": "马尔穆什"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "47'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 82022,
+        "name": "范迪克"
+      }
+    },
+    {
+      "time": "61'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 180496,
+        "name": "切尔基"
+      },
+      "playerOff": {
+        "id": 186855,
+        "name": "马尔穆什"
+      }
+    },
+    {
+      "time": "61'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 146446,
+        "name": "迪亚斯"
+      },
+      "playerOff": {
+        "id": 225901,
+        "name": "胡桑诺夫"
+      }
+    },
+    {
+      "time": "69'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 175796,
+        "name": "格伊"
+      }
+    },
+    {
+      "time": "74'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 153941,
+        "name": "索博斯洛伊"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "84'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 119121,
+        "name": "B.席尔瓦"
+      },
+      "assist": {
+        "id": 150860,
+        "name": "哈兰德"
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "85'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 117056,
+        "name": "C·琼斯"
+      },
+      "playerOff": {
+        "id": 156252,
+        "name": "加克波"
+      }
+    },
+    {
+      "time": "90+1'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 113213,
+        "name": "阿利松"
+      }
+    },
+    {
+      "time": "90+2'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "90+3'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 150860,
+        "name": "哈兰德"
+      }
+    },
+    {
+      "time": "90+3'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 145997,
+        "name": "基耶萨"
+      },
+      "playerOff": {
+        "id": 222311,
+        "name": "M.科克斯"
+      }
+    },
+    {
+      "time": "90+5'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 109503,
+        "name": "阿克"
+      },
+      "playerOff": {
+        "id": 165143,
+        "name": "塞梅尼奥"
+      }
+    },
+    {
+      "time": "90+6'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 119121,
+        "name": "B.席尔瓦"
+      }
+    },
+    {
+      "time": "90+12'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "90+12'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "redCard",
+      "player": {
+        "id": 153941,
+        "name": "索博斯洛伊"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 2
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 25,
+    "guestId": 26,
+    "home": 5,
+    "homeHalf": 2,
+    "guest": 4,
+    "guestHalf": 4,
+    "detail": [
+      {
+        "min": "18",
+        "ifHome": false
+      },
+      {
+        "min": "22",
+        "ifHome": false
+      },
+      {
+        "min": "25",
+        "ifHome": false
+      },
+      {
+        "min": "26",
+        "ifHome": true
+      },
+      {
+        "min": "28",
+        "ifHome": true
+      },
+      {
+        "min": "40",
+        "ifHome": false
+      },
+      {
+        "min": "65",
+        "ifHome": true
+      },
+      {
+        "min": "66",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      }
+    ]
+  }
+}

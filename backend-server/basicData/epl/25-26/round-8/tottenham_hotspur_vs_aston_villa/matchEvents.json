@@ -1,0 +1,285 @@
+{
+  "matchId": 2789207,
+  "homeName": "托特纳姆热刺",
+  "awayName": "阿斯顿维拉",
+  "events": [
+    {
+      "time": "5'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 129213,
+        "name": "本坦库尔"
+      },
+      "assist": {
+        "id": 135348,
+        "name": "帕利尼亚"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "22'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 191413,
+        "name": "范德文"
+      }
+    },
+    {
+      "time": "37'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 172381,
+        "name": "M.罗杰斯"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "60'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 138918,
+        "name": "理查利森"
+      },
+      "playerOff": {
+        "id": 218387,
+        "name": "M.特尔"
+      }
+    },
+    {
+      "time": "61'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 126024,
+        "name": "沃特金斯"
+      },
+      "playerOff": {
+        "id": 158269,
+        "name": "马伦"
+      }
+    },
+    {
+      "time": "61'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 128873,
+        "name": "布恩迪亚"
+      },
+      "playerOff": {
+        "id": 179604,
+        "name": "格斯桑德"
+      }
+    },
+    {
+      "time": "67'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 150096,
+        "name": "K·丹索"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 128873,
+        "name": "布恩迪亚"
+      },
+      "assist": {
+        "id": 88044,
+        "name": "迪涅"
+      },
+      "score": {
+        "home": 1,
+        "away": 2
+      }
+    },
+    {
+      "time": "79'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 228771,
+        "name": "卢卡斯·伯格瓦尔"
+      },
+      "playerOff": {
+        "id": 180529,
+        "name": "西蒙斯"
+      }
+    },
+    {
+      "time": "79'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 151102,
+        "name": "穆阿尼"
+      },
+      "playerOff": {
+        "id": 220735,
+        "name": "奥多波特"
+      }
+    },
+    {
+      "time": "82'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 78733,
+        "name": "巴克利"
+      },
+      "playerOff": {
+        "id": 183295,
+        "name": "A·奥纳纳"
+      }
+    },
+    {
+      "time": "82'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 182378,
+        "name": "马特森"
+      },
+      "playerOff": {
+        "id": 88044,
+        "name": "迪涅"
+      }
+    },
+    {
+      "time": "86'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 182375,
+        "name": "P.萨尔"
+      },
+      "playerOff": {
+        "id": 129213,
+        "name": "本坦库尔"
+      }
+    },
+    {
+      "time": "86'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 177922,
+        "name": "约翰逊"
+      },
+      "playerOff": {
+        "id": 171940,
+        "name": "斯宾斯"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 2
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 33,
+    "guestId": 20,
+    "home": 6,
+    "homeHalf": 4,
+    "guest": 6,
+    "guestHalf": 2,
+    "detail": [
+      {
+        "min": "5",
+        "ifHome": true
+      },
+      {
+        "min": "11",
+        "ifHome": false
+      },
+      {
+        "min": "12",
+        "ifHome": false
+      },
+      {
+        "min": "21",
+        "ifHome": true
+      },
+      {
+        "min": "25",
+        "ifHome": true
+      },
+      {
+        "min": "45",
+        "ifHome": true
+      },
+      {
+        "min": "55",
+        "ifHome": true
+      },
+      {
+        "min": "71",
+        "ifHome": false
+      },
+      {
+        "min": "77",
+        "ifHome": false
+      },
+      {
+        "min": "87",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      }
+    ]
+  }
+}

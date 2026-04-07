@@ -1,0 +1,255 @@
+{
+  "matchId": 2784643,
+  "homeName": "博洛尼亚",
+  "awayName": "萨索洛",
+  "events": [
+    {
+      "time": "21'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 157173,
+        "name": "法利德"
+      }
+    },
+    {
+      "time": "45'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 147609,
+        "name": "F·拉瓦利亚"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "47'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 219548,
+        "name": "G·法比安"
+      },
+      "assist": {
+        "id": 181398,
+        "name": "佐尔塔"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "52'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 164800,
+        "name": "劳伦特"
+      }
+    },
+    {
+      "time": "60'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 184092,
+        "name": "乔希·多伊格"
+      },
+      "playerOff": {
+        "id": 157173,
+        "name": "法利德"
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 211203,
+        "name": "穆哈雷莫维奇"
+      },
+      "assist": {
+        "id": 164800,
+        "name": "劳伦特"
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "70'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 217139,
+        "name": "S·卡斯特罗"
+      },
+      "playerOff": {
+        "id": 164527,
+        "name": "T·达林加"
+      }
+    },
+    {
+      "time": "70'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 69801,
+        "name": "因莫比莱"
+      },
+      "playerOff": {
+        "id": 219548,
+        "name": "G·法比安"
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 220508,
+        "name": "B·多明戈斯"
+      },
+      "playerOff": {
+        "id": 146728,
+        "name": "R·奥索利尼"
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 193064,
+        "name": "费德拉"
+      },
+      "playerOff": {
+        "id": 219788,
+        "name": "沃尔帕托"
+      }
+    },
+    {
+      "time": "82'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 220508,
+        "name": "B·多明戈斯"
+      }
+    },
+    {
+      "time": "84'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 144824,
+        "name": "奥加特"
+      },
+      "playerOff": {
+        "id": 220930,
+        "name": "乔纳森"
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 193064,
+        "name": "费德拉"
+      }
+    },
+    {
+      "time": "88'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 173454,
+        "name": "E·霍尔姆"
+      },
+      "playerOff": {
+        "id": 181398,
+        "name": "佐尔塔"
+      }
+    },
+    {
+      "time": "89'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 228704,
+        "name": "切迪拉"
+      },
+      "playerOff": {
+        "id": 164800,
+        "name": "劳伦特"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 185,
+    "guestId": 2960,
+    "home": 2,
+    "homeHalf": 1,
+    "guest": 3,
+    "guestHalf": 2,
+    "detail": [
+      {
+        "min": "9",
+        "ifHome": true
+      },
+      {
+        "min": "20",
+        "ifHome": false
+      },
+      {
+        "min": "31",
+        "ifHome": false
+      },
+      {
+        "min": "63",
+        "ifHome": false
+      },
+      {
+        "min": "73",
+        "ifHome": true
+      }
+    ]
+  }
+}

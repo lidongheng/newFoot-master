@@ -1,0 +1,215 @@
+{
+  "matchId": 2789398,
+  "homeName": "西汉姆联",
+  "awayName": "伯恩茅斯",
+  "events": [
+    {
+      "time": "33'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 134904,
+        "name": "绍切克"
+      }
+    },
+    {
+      "time": "44'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 148207,
+        "name": "塞内西"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "66'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 111611,
+        "name": "克里斯蒂"
+      },
+      "playerOff": {
+        "id": 134062,
+        "name": "亚当斯"
+      }
+    },
+    {
+      "time": "66'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 95755,
+        "name": "布鲁克斯"
+      },
+      "playerOff": {
+        "id": 178472,
+        "name": "阿德利"
+      }
+    },
+    {
+      "time": "72'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 64744,
+        "name": "威尔逊"
+      },
+      "playerOff": {
+        "id": 134904,
+        "name": "绍切克"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 159869,
+        "name": "塔维尼尔"
+      },
+      "playerOff": {
+        "id": 181185,
+        "name": "伊瓦尼尔森"
+      }
+    },
+    {
+      "time": "84'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 239797,
+        "name": "K.穆罕默德"
+      },
+      "playerOff": {
+        "id": 228064,
+        "name": "S.马加萨"
+      }
+    },
+    {
+      "time": "89'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 124943,
+        "name": "于纳尔"
+      },
+      "playerOff": {
+        "id": 235644,
+        "name": "克鲁皮"
+      }
+    },
+    {
+      "time": "89'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 78272,
+        "name": "史密斯"
+      },
+      "playerOff": {
+        "id": 242485,
+        "name": "A·希门尼斯"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 62,
+    "guestId": 348,
+    "home": 9,
+    "homeHalf": 4,
+    "guest": 5,
+    "guestHalf": 1,
+    "detail": [
+      {
+        "min": "1",
+        "ifHome": true
+      },
+      {
+        "min": "16",
+        "ifHome": true
+      },
+      {
+        "min": "27",
+        "ifHome": false
+      },
+      {
+        "min": "32",
+        "ifHome": true
+      },
+      {
+        "min": "32",
+        "ifHome": true
+      },
+      {
+        "min": "48",
+        "ifHome": true
+      },
+      {
+        "min": "52",
+        "ifHome": false
+      },
+      {
+        "min": "61",
+        "ifHome": true
+      },
+      {
+        "min": "68",
+        "ifHome": false
+      },
+      {
+        "min": "69",
+        "ifHome": false
+      },
+      {
+        "min": "75",
+        "ifHome": false
+      },
+      {
+        "min": "78",
+        "ifHome": true
+      },
+      {
+        "min": "78",
+        "ifHome": true
+      },
+      {
+        "min": "89",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      }
+    ]
+  }
+}

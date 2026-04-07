@@ -1,0 +1,208 @@
+{
+  "matchId": 2852151,
+  "homeName": "利雅得体育",
+  "awayName": "达曼协作",
+  "events": [
+    {
+      "time": "41'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 132382,
+        "name": "亨德利"
+      }
+    },
+    {
+      "time": "44'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 181902,
+        "name": "巴耶什"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "49'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "51'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "redCard",
+      "player": {
+        "id": 225239,
+        "name": "哈伊巴里"
+      }
+    },
+    {
+      "time": "65'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 176156,
+        "name": "加纳姆"
+      },
+      "playerOff": {
+        "id": 260171,
+        "name": "M·道兰"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 150962,
+        "name": "A.玛卡塔"
+      },
+      "playerOff": {
+        "id": 114799,
+        "name": "杜达"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 325444,
+        "name": "阿尔甘迪"
+      },
+      "playerOff": {
+        "id": 107863,
+        "name": "阿米特·哈桑"
+      }
+    },
+    {
+      "time": "79'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 310338,
+        "name": "廷巴克图"
+      },
+      "playerOff": {
+        "id": 152933,
+        "name": "特迪·奥科"
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 111410,
+        "name": "阿尔谢赫里"
+      },
+      "playerOff": {
+        "id": 121338,
+        "name": "托泽"
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 264209,
+        "name": "O·博迪"
+      },
+      "playerOff": {
+        "id": 216639,
+        "name": "阿卜杜拉·哈松"
+      }
+    },
+    {
+      "time": "90'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 84484,
+        "name": "卡尔沃"
+      },
+      "assist": {
+        "id": 122038,
+        "name": "梅德兰"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "90+5'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 27295,
+        "name": "维纳尔杜姆"
+      },
+      "assist": {
+        "id": 176156,
+        "name": "加纳姆"
+      },
+      "score": {
+        "home": 0,
+        "away": 2
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 2
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 3719,
+    "guestId": 3404,
+    "home": 2,
+    "homeHalf": 1,
+    "guest": 2,
+    "guestHalf": 0,
+    "detail": [
+      {
+        "min": "30",
+        "ifHome": true
+      },
+      {
+        "min": "58",
+        "ifHome": true
+      },
+      {
+        "min": "60",
+        "ifHome": false
+      },
+      {
+        "min": "80",
+        "ifHome": false
+      }
+    ]
+  }
+}

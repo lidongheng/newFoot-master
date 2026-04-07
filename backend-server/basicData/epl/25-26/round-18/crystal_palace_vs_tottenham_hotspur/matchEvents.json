@@ -1,0 +1,241 @@
+{
+  "matchId": 2789303,
+  "homeName": "水晶宫",
+  "awayName": "托特纳姆热刺",
+  "events": [
+    {
+      "time": "5'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 150096,
+        "name": "K·丹索"
+      }
+    },
+    {
+      "time": "18'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "22'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 220978,
+        "name": "阿尔奇·格雷"
+      }
+    },
+    {
+      "time": "42'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 220978,
+        "name": "阿尔奇·格雷"
+      },
+      "assist": {
+        "id": 138918,
+        "name": "理查利森"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "45+2'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 95044,
+        "name": "W·休斯"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 166779,
+        "name": "M·拉克鲁瓦"
+      }
+    },
+    {
+      "time": "58'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 155057,
+        "name": "恩凯蒂亚"
+      },
+      "playerOff": {
+        "id": 29855,
+        "name": "克莱因"
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 220735,
+        "name": "奥多波特"
+      },
+      "playerOff": {
+        "id": 151102,
+        "name": "穆阿尼"
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 135348,
+        "name": "帕利尼亚"
+      },
+      "playerOff": {
+        "id": 228771,
+        "name": "卢卡斯·伯格瓦尔"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "77'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 243647,
+        "name": "C·乌切"
+      },
+      "playerOff": {
+        "id": 201044,
+        "name": "Y.皮诺"
+      }
+    },
+    {
+      "time": "85'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 119357,
+        "name": "J·莱尔马"
+      }
+    },
+    {
+      "time": "85'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 231504,
+        "name": "R.埃塞"
+      },
+      "playerOff": {
+        "id": 201865,
+        "name": "J·德文尼"
+      }
+    },
+    {
+      "time": "85'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 201880,
+        "name": "R·德拉古辛"
+      },
+      "playerOff": {
+        "id": 220978,
+        "name": "阿尔奇·格雷"
+      }
+    },
+    {
+      "time": "85'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 177922,
+        "name": "约翰逊"
+      },
+      "playerOff": {
+        "id": 171424,
+        "name": "库杜斯"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 35,
+    "guestId": 33,
+    "home": 3,
+    "homeHalf": 1,
+    "guest": 2,
+    "guestHalf": 1,
+    "detail": [
+      {
+        "min": "5",
+        "ifHome": true
+      },
+      {
+        "min": "42",
+        "ifHome": false
+      },
+      {
+        "min": "49",
+        "ifHome": true
+      },
+      {
+        "min": "52",
+        "ifHome": false
+      },
+      {
+        "min": "57",
+        "ifHome": true
+      },
+      {
+        "min": "70",
+        "ifHome": true
+      },
+      {
+        "min": "79",
+        "ifHome": true
+      }
+    ]
+  }
+}

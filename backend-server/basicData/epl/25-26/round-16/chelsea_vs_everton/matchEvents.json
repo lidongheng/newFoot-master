@@ -1,0 +1,229 @@
+{
+  "matchId": 2789282,
+  "homeName": "切尔西",
+  "awayName": "埃弗顿",
+  "events": [
+    {
+      "time": "16'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 183787,
+        "name": "阿尔卡拉斯"
+      },
+      "playerOff": {
+        "id": 180960,
+        "name": "K·霍尔"
+      }
+    },
+    {
+      "time": "21'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 191693,
+        "name": "C.帕尔默"
+      },
+      "assist": {
+        "id": 201037,
+        "name": "古斯托"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "45'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 201037,
+        "name": "古斯托"
+      },
+      "assist": {
+        "id": 153294,
+        "name": "内托"
+      },
+      "score": {
+        "home": 2,
+        "away": 0
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 2,
+        "away": 0
+      }
+    },
+    {
+      "time": "58'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 225997,
+        "name": "桑托斯"
+      },
+      "playerOff": {
+        "id": 191693,
+        "name": "C.帕尔默"
+      }
+    },
+    {
+      "time": "65'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 201611,
+        "name": "吉滕斯"
+      },
+      "playerOff": {
+        "id": 220768,
+        "name": "A·加纳乔"
+      }
+    },
+    {
+      "time": "68'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 178187,
+        "name": "贝托"
+      },
+      "playerOff": {
+        "id": 229129,
+        "name": "T·巴里"
+      }
+    },
+    {
+      "time": "76'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 175647,
+        "name": "W·福法纳"
+      }
+    },
+    {
+      "time": "81'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 246467,
+        "name": "埃斯特旺"
+      },
+      "playerOff": {
+        "id": 173371,
+        "name": "佩德罗"
+      }
+    },
+    {
+      "time": "84'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 225963,
+        "name": "迪布林"
+      },
+      "playerOff": {
+        "id": 97798,
+        "name": "格拉利什"
+      }
+    },
+    {
+      "time": "84'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 213272,
+        "name": "蒂姆·伊罗格布纳"
+      },
+      "playerOff": {
+        "id": 166736,
+        "name": "詹姆斯·加尔纳"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 2,
+        "away": 0
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 24,
+    "guestId": 31,
+    "home": 4,
+    "homeHalf": 2,
+    "guest": 7,
+    "guestHalf": 3,
+    "detail": [
+      {
+        "min": "4",
+        "ifHome": true
+      },
+      {
+        "min": "4",
+        "ifHome": true
+      },
+      {
+        "min": "5",
+        "ifHome": false
+      },
+      {
+        "min": "18",
+        "ifHome": false
+      },
+      {
+        "min": "33",
+        "ifHome": false
+      },
+      {
+        "min": "58",
+        "ifHome": false
+      },
+      {
+        "min": "67",
+        "ifHome": false
+      },
+      {
+        "min": "71",
+        "ifHome": false
+      },
+      {
+        "min": "72",
+        "ifHome": true
+      },
+      {
+        "min": "75",
+        "ifHome": true
+      },
+      {
+        "min": "76",
+        "ifHome": true
+      },
+      {
+        "min": "89",
+        "ifHome": false
+      }
+    ]
+  }
+}

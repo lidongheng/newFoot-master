@@ -1,0 +1,222 @@
+{
+  "matchId": 2789258,
+  "homeName": "西汉姆联",
+  "awayName": "利物浦",
+  "events": [
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "60'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 164496,
+        "name": "伊萨克"
+      },
+      "assist": {
+        "id": 156252,
+        "name": "加克波"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "66'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 228064,
+        "name": "S.马加萨"
+      }
+    },
+    {
+      "time": "68'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 201001,
+        "name": "H·埃基蒂克"
+      },
+      "playerOff": {
+        "id": 164496,
+        "name": "伊萨克"
+      }
+    },
+    {
+      "time": "68'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 235444,
+        "name": "L·吉列尔梅"
+      },
+      "playerOff": {
+        "id": 228064,
+        "name": "S.马加萨"
+      }
+    },
+    {
+      "time": "75'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 117056,
+        "name": "C·琼斯"
+      },
+      "playerOff": {
+        "id": 186860,
+        "name": "维尔茨"
+      }
+    },
+    {
+      "time": "78'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 93910,
+        "name": "菲尔克鲁格"
+      },
+      "playerOff": {
+        "id": 64744,
+        "name": "威尔逊"
+      }
+    },
+    {
+      "time": "83'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 144762,
+        "name": "帕奎塔"
+      }
+    },
+    {
+      "time": "84'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "85'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 106066,
+        "name": "罗伯逊"
+      },
+      "playerOff": {
+        "id": 222311,
+        "name": "M.科克斯"
+      }
+    },
+    {
+      "time": "88'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 134904,
+        "name": "绍切克"
+      },
+      "playerOff": {
+        "id": 220800,
+        "name": "F.波茨"
+      }
+    },
+    {
+      "time": "90+1'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 156252,
+        "name": "加克波"
+      },
+      "assist": {
+        "id": 124365,
+        "name": "戈麦斯"
+      },
+      "score": {
+        "home": 0,
+        "away": 2
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 2
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 62,
+    "guestId": 25,
+    "home": 7,
+    "homeHalf": 3,
+    "guest": 2,
+    "guestHalf": 2,
+    "detail": [
+      {
+        "min": "7",
+        "ifHome": true
+      },
+      {
+        "min": "16",
+        "ifHome": false
+      },
+      {
+        "min": "19",
+        "ifHome": true
+      },
+      {
+        "min": "43",
+        "ifHome": false
+      },
+      {
+        "min": "45",
+        "ifHome": true
+      },
+      {
+        "min": "55",
+        "ifHome": true
+      },
+      {
+        "min": "56",
+        "ifHome": true
+      },
+      {
+        "min": "56",
+        "ifHome": true
+      },
+      {
+        "min": "63",
+        "ifHome": false
+      },
+      {
+        "min": "70",
+        "ifHome": true
+      }
+    ]
+  }
+}

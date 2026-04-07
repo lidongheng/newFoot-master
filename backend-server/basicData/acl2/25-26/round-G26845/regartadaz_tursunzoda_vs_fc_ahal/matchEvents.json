@@ -1,0 +1,173 @@
+{
+  "matchId": 2806538,
+  "homeName": "塔吉克冶铝厂",
+  "awayName": "阿哈尔",
+  "events": [
+    {
+      "time": "43'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 194293,
+        "name": "古尔格诺夫"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "51'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 186545,
+        "name": "伊莫纳扎罗夫"
+      }
+    },
+    {
+      "time": "52'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 336239,
+        "name": "卡兰达罗夫"
+      }
+    },
+    {
+      "time": "62'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 194293,
+        "name": "古尔格诺夫"
+      },
+      "assist": {
+        "id": 186877,
+        "name": "塔加耶夫"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 335962,
+        "name": "阿萨姆"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "67'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 240964,
+        "name": "贝克米拉多"
+      }
+    },
+    {
+      "time": "82'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 335964,
+        "name": "米尔佐耶夫"
+      },
+      "assist": {
+        "id": 267169,
+        "name": "巴西莫夫"
+      },
+      "score": {
+        "home": 1,
+        "away": 2
+      }
+    },
+    {
+      "time": "90+6'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 186877,
+        "name": "塔加耶夫"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 2
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 7451,
+    "guestId": 24308,
+    "home": 4,
+    "homeHalf": 3,
+    "guest": 4,
+    "guestHalf": 2,
+    "detail": [
+      {
+        "min": "25",
+        "ifHome": true
+      },
+      {
+        "min": "25",
+        "ifHome": true
+      },
+      {
+        "min": "29",
+        "ifHome": true
+      },
+      {
+        "min": "33",
+        "ifHome": false
+      },
+      {
+        "min": "45",
+        "ifHome": false
+      },
+      {
+        "min": "62",
+        "ifHome": false
+      },
+      {
+        "min": "89",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}

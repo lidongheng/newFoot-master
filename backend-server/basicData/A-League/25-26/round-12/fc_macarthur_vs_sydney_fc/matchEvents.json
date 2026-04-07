@@ -1,0 +1,273 @@
+{
+  "matchId": 2871717,
+  "homeName": "麦克阿瑟FC",
+  "awayName": "悉尼FC",
+  "events": [
+    {
+      "time": "3'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 267844,
+        "name": "恩斯特勒"
+      }
+    },
+    {
+      "time": "31'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 210011,
+        "name": "P·奎斯佩"
+      },
+      "assist": {
+        "id": 34084,
+        "name": "格兰特"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 162056,
+        "name": "斯科特"
+      },
+      "playerOff": {
+        "id": 335747,
+        "name": "W·麦凯"
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 220166,
+        "name": "波波维奇"
+      },
+      "playerOff": {
+        "id": 114849,
+        "name": "迪瑟兰德"
+      }
+    },
+    {
+      "time": "48'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 178658,
+        "name": "坎普萨诺"
+      },
+      "assist": {
+        "id": 109151,
+        "name": "加鲁乔"
+      },
+      "score": {
+        "home": 0,
+        "away": 2
+      }
+    },
+    {
+      "time": "56'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 260243,
+        "name": "L·维克里"
+      },
+      "playerOff": {
+        "id": 101690,
+        "name": "格扎恩"
+      }
+    },
+    {
+      "time": "56'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 150753,
+        "name": "H·索耶"
+      },
+      "playerOff": {
+        "id": 171986,
+        "name": "杜朗"
+      }
+    },
+    {
+      "time": "60'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 230685,
+        "name": "里斯·尤利"
+      }
+    },
+    {
+      "time": "62'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 202367,
+        "name": "伍德"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 0,
+        "away": 3
+      }
+    },
+    {
+      "time": "67'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 221055,
+        "name": "霍尔曼"
+      },
+      "playerOff": {
+        "id": 230685,
+        "name": "里斯·尤利"
+      }
+    },
+    {
+      "time": "68'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 282206,
+        "name": "兰达佐"
+      },
+      "playerOff": {
+        "id": 173703,
+        "name": "K.波波维奇"
+      }
+    },
+    {
+      "time": "74'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 272666,
+        "name": "瓦拉蒂"
+      },
+      "playerOff": {
+        "id": 264464,
+        "name": "昆塔尔"
+      }
+    },
+    {
+      "time": "74'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 335219,
+        "name": "阿康"
+      },
+      "playerOff": {
+        "id": 202367,
+        "name": "伍德"
+      }
+    },
+    {
+      "time": "75'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 281973,
+        "name": "博斯尼亚克"
+      },
+      "playerOff": {
+        "id": 69933,
+        "name": "布拉坦"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 3
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 51511,
+    "guestId": 2909,
+    "home": 6,
+    "homeHalf": 1,
+    "guest": 3,
+    "guestHalf": 2,
+    "detail": [
+      {
+        "min": "5",
+        "ifHome": true
+      },
+      {
+        "min": "28",
+        "ifHome": false
+      },
+      {
+        "min": "29",
+        "ifHome": false
+      },
+      {
+        "min": "47",
+        "ifHome": false
+      },
+      {
+        "min": "60",
+        "ifHome": true
+      },
+      {
+        "min": "68",
+        "ifHome": true
+      },
+      {
+        "min": "70",
+        "ifHome": true
+      },
+      {
+        "min": "82",
+        "ifHome": true
+      },
+      {
+        "min": "87",
+        "ifHome": true
+      }
+    ]
+  }
+}

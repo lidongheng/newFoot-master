@@ -1,0 +1,261 @@
+{
+  "matchId": 2784589,
+  "homeName": "帕尔马",
+  "awayName": "AC米兰",
+  "events": [
+    {
+      "time": "12'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 164379,
+        "name": "萨勒马克斯"
+      },
+      "assist": {
+        "id": 134153,
+        "name": "恩昆库"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "23'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "25'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "45+1'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 177646,
+        "name": "贝尔纳贝"
+      },
+      "assist": {
+        "id": 295920,
+        "name": "布里奇吉"
+      },
+      "score": {
+        "home": 1,
+        "away": 2
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 2
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 238676,
+        "name": "马里亚诺·特洛伊洛"
+      },
+      "playerOff": {
+        "id": 213865,
+        "name": "A·恩迪亚耶"
+      }
+    },
+    {
+      "time": "60'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 128363,
+        "name": "奇克"
+      },
+      "playerOff": {
+        "id": 134153,
+        "name": "恩昆库"
+      }
+    },
+    {
+      "time": "62'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 164750,
+        "name": "德尔普拉托"
+      },
+      "assist": {
+        "id": 295920,
+        "name": "布里奇吉"
+      },
+      "score": {
+        "home": 2,
+        "away": 2
+      }
+    },
+    {
+      "time": "68'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 167307,
+        "name": "瓦莱利"
+      },
+      "playerOff": {
+        "id": 217841,
+        "name": "马蒂亚斯·洛维克"
+      }
+    },
+    {
+      "time": "70'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 25358,
+        "name": "莫德里奇"
+      }
+    },
+    {
+      "time": "70'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 239897,
+        "name": "D·巴特萨吉"
+      },
+      "playerOff": {
+        "id": 138408,
+        "name": "P·埃斯图皮尼安"
+      }
+    },
+    {
+      "time": "70'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 138803,
+        "name": "普利西奇"
+      },
+      "playerOff": {
+        "id": 174865,
+        "name": "里奇"
+      }
+    },
+    {
+      "time": "81'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 125087,
+        "name": "H·阿塞韦多"
+      },
+      "playerOff": {
+        "id": 177646,
+        "name": "贝尔纳贝"
+      }
+    },
+    {
+      "time": "86'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 191915,
+        "name": "奥利维尔·索伦森"
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 235328,
+        "name": "Z·艾迪卡梅"
+      },
+      "playerOff": {
+        "id": 201377,
+        "name": "K.德温特"
+      }
+    },
+    {
+      "time": "90+1'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 232840,
+        "name": "B.克雷马斯基"
+      },
+      "playerOff": {
+        "id": 149738,
+        "name": "库特罗内"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 2,
+        "away": 2
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 189,
+    "guestId": 150,
+    "home": 4,
+    "homeHalf": 2,
+    "guest": 3,
+    "guestHalf": 2,
+    "detail": [
+      {
+        "min": "3",
+        "ifHome": false
+      },
+      {
+        "min": "17",
+        "ifHome": true
+      },
+      {
+        "min": "29",
+        "ifHome": true
+      },
+      {
+        "min": "45",
+        "ifHome": false
+      },
+      {
+        "min": "54",
+        "ifHome": true
+      },
+      {
+        "min": "66",
+        "ifHome": false
+      },
+      {
+        "min": "78",
+        "ifHome": true
+      }
+    ]
+  }
+}

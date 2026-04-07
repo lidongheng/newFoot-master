@@ -1,0 +1,229 @@
+{
+  "matchId": 2932363,
+  "homeName": "本菲卡",
+  "awayName": "皇家马德里",
+  "events": [
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "50'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 153244,
+        "name": "维尼修斯"
+      },
+      "assist": {
+        "id": 144812,
+        "name": "姆巴佩"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "51'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 153244,
+        "name": "维尼修斯"
+      }
+    },
+    {
+      "time": "74'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 200579,
+        "name": "R·里奥斯"
+      },
+      "playerOff": {
+        "id": 115258,
+        "name": "席尔瓦"
+      }
+    },
+    {
+      "time": "74'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 201120,
+        "name": "G·苏达科夫"
+      },
+      "playerOff": {
+        "id": 205020,
+        "name": "A.施耶尔德鲁普"
+      }
+    },
+    {
+      "time": "78'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 225943,
+        "name": "吉安卢卡·普雷斯蒂亚尼"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 212668,
+        "name": "西德尼·洛佩斯·卡布拉尔"
+      },
+      "playerOff": {
+        "id": 99354,
+        "name": "F.奥尔斯内斯"
+      }
+    },
+    {
+      "time": "81'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 139084,
+        "name": "卢科巴基奥"
+      },
+      "playerOff": {
+        "id": 225943,
+        "name": "吉安卢卡·普雷斯蒂亚尼"
+      }
+    },
+    {
+      "time": "86'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 153998,
+        "name": "迪亚兹"
+      },
+      "playerOff": {
+        "id": 210982,
+        "name": "居勒尔"
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 144812,
+        "name": "姆巴佩"
+      }
+    },
+    {
+      "time": "90+1'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 201120,
+        "name": "G·苏达科夫"
+      }
+    },
+    {
+      "time": "90+3'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 312251,
+        "name": "皮纳尔"
+      },
+      "playerOff": {
+        "id": 172117,
+        "name": "卡马文加"
+      }
+    },
+    {
+      "time": "90+8'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 101261,
+        "name": "卡瓦哈尔"
+      },
+      "playerOff": {
+        "id": 158745,
+        "name": "卡雷拉斯"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 463,
+    "guestId": 82,
+    "home": 3,
+    "homeHalf": 1,
+    "guest": 6,
+    "guestHalf": 3,
+    "detail": [
+      {
+        "min": "15",
+        "ifHome": true
+      },
+      {
+        "min": "45",
+        "ifHome": false
+      },
+      {
+        "min": "45",
+        "ifHome": false
+      },
+      {
+        "min": "45",
+        "ifHome": false
+      },
+      {
+        "min": "73",
+        "ifHome": false
+      },
+      {
+        "min": "88",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}

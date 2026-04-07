@@ -1,0 +1,244 @@
+{
+  "matchId": 2929021,
+  "homeName": "比亚韦斯托克雅盖隆",
+  "awayName": "佛罗伦萨",
+  "events": [
+    {
+      "time": "21'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 221592,
+        "name": "法兹尼"
+      }
+    },
+    {
+      "time": "41'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 124688,
+        "name": "曼德拉格拉"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "53'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 164759,
+        "name": "拉涅利"
+      },
+      "assist": {
+        "id": 221592,
+        "name": "法兹尼"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "60'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 236563,
+        "name": "德拉查"
+      },
+      "playerOff": {
+        "id": 200386,
+        "name": "莱昂·马克西米利安·弗莱奇"
+      }
+    },
+    {
+      "time": "65'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 124688,
+        "name": "曼德拉格拉"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 0,
+        "away": 2
+      }
+    },
+    {
+      "time": "68'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 286162,
+        "name": "拉利斯"
+      },
+      "playerOff": {
+        "id": 147963,
+        "name": "约兹维亚克"
+      }
+    },
+    {
+      "time": "68'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 152784,
+        "name": "庞格拉契奇"
+      },
+      "playerOff": {
+        "id": 164759,
+        "name": "拉涅利"
+      }
+    },
+    {
+      "time": "68'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 203717,
+        "name": "帕里西"
+      },
+      "playerOff": {
+        "id": 140992,
+        "name": "哈里森"
+      }
+    },
+    {
+      "time": "76'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 102121,
+        "name": "莱泽里尼"
+      }
+    },
+    {
+      "time": "78'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 179593,
+        "name": "威多维克"
+      }
+    },
+    {
+      "time": "81'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "84'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 246798,
+        "name": "L.巴尔博·维埃拉"
+      },
+      "playerOff": {
+        "id": 217390,
+        "name": "恩杜尔"
+      }
+    },
+    {
+      "time": "89'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 204182,
+        "name": "素福·希拉"
+      },
+      "playerOff": {
+        "id": 212808,
+        "name": "萨米德·巴兹达尔"
+      }
+    },
+    {
+      "time": "89'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 291634,
+        "name": "科兹洛夫斯基"
+      },
+      "playerOff": {
+        "id": 305930,
+        "name": "B.马祖雷克"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 3
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 3159,
+    "guestId": 176,
+    "home": 3,
+    "homeHalf": 1,
+    "guest": 4,
+    "guestHalf": 2,
+    "detail": [
+      {
+        "min": "19",
+        "ifHome": true
+      },
+      {
+        "min": "45",
+        "ifHome": false
+      },
+      {
+        "min": "45",
+        "ifHome": false
+      },
+      {
+        "min": "53",
+        "ifHome": false
+      },
+      {
+        "min": "56",
+        "ifHome": true
+      },
+      {
+        "min": "58",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      }
+    ]
+  }
+}

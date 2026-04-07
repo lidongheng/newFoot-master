@@ -1,0 +1,123 @@
+{
+  "matchId": 2860729,
+  "homeName": "果阿",
+  "awayName": "扎瓦拉",
+  "events": [
+    {
+      "time": "10'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 226591,
+        "name": "阿尔拉沙丹"
+      }
+    },
+    {
+      "time": "44'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 240856,
+        "name": "雷兹克·巴尼哈尼"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "45+3'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 181226,
+        "name": "克拉伦斯·比坦"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "90+1'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 240856,
+        "name": "雷兹克·巴尼哈尼"
+      }
+    },
+    {
+      "time": "90+5'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 226591,
+        "name": "阿尔拉沙丹"
+      },
+      "assist": {
+        "id": 240856,
+        "name": "雷兹克·巴尼哈尼"
+      },
+      "score": {
+        "home": 0,
+        "away": 2
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 2
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 23929,
+    "guestId": 2042,
+    "home": 3,
+    "homeHalf": 1,
+    "guest": 2,
+    "guestHalf": 0,
+    "detail": [
+      {
+        "min": "8",
+        "ifHome": true
+      },
+      {
+        "min": "47",
+        "ifHome": false
+      },
+      {
+        "min": "55",
+        "ifHome": true
+      },
+      {
+        "min": "86",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}

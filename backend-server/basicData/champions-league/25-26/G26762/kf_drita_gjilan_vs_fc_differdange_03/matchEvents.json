@@ -1,0 +1,195 @@
+{
+  "matchId": 2788743,
+  "homeName": "德利塔",
+  "awayName": "迪弗当日",
+  "events": [
+    {
+      "time": "31'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 172636,
+        "name": "B.雷斯"
+      }
+    },
+    {
+      "time": "38'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 200832,
+        "name": "K.德安兹科"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "60'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 303277,
+        "name": "姆福穆"
+      },
+      "playerOff": {
+        "id": 172636,
+        "name": "B.雷斯"
+      }
+    },
+    {
+      "time": "61'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 204221,
+        "name": "维顿图沙"
+      },
+      "playerOff": {
+        "id": 179336,
+        "name": "巴拉杰"
+      }
+    },
+    {
+      "time": "61'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 206981,
+        "name": "穆斯塔法"
+      },
+      "playerOff": {
+        "id": 177105,
+        "name": "利马吉"
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 246599,
+        "name": "S·易卜拉欣"
+      },
+      "playerOff": {
+        "id": 180801,
+        "name": "克拉斯尼奇"
+      }
+    },
+    {
+      "time": "73'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 204982,
+        "name": "阿尔布.马纳吉"
+      },
+      "assist": {
+        "id": 246599,
+        "name": "S·易卜拉欣"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "76'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 146372,
+        "name": "A.艾迪尼斯"
+      },
+      "playerOff": {
+        "id": 161889,
+        "name": "A.阿布魯"
+      }
+    },
+    {
+      "time": "88'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 247986,
+        "name": "A·布赫"
+      },
+      "playerOff": {
+        "id": 127975,
+        "name": "哈吉"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 34423,
+    "guestId": 6176,
+    "home": 6,
+    "homeHalf": 6,
+    "guest": 3,
+    "guestHalf": 0,
+    "detail": [
+      {
+        "min": "5",
+        "ifHome": true
+      },
+      {
+        "min": "12",
+        "ifHome": true
+      },
+      {
+        "min": "24",
+        "ifHome": true
+      },
+      {
+        "min": "36",
+        "ifHome": true
+      },
+      {
+        "min": "39",
+        "ifHome": true
+      },
+      {
+        "min": "45",
+        "ifHome": true
+      },
+      {
+        "min": "82",
+        "ifHome": false
+      },
+      {
+        "min": "82",
+        "ifHome": false
+      },
+      {
+        "min": "85",
+        "ifHome": false
+      }
+    ]
+  }
+}

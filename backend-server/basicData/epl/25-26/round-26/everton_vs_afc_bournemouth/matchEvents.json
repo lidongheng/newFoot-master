@@ -1,0 +1,276 @@
+{
+  "matchId": 2789383,
+  "homeName": "埃弗顿",
+  "awayName": "伯恩茅斯",
+  "events": [
+    {
+      "time": "42'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "57'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 236786,
+        "name": "拉扬.维托"
+      }
+    },
+    {
+      "time": "58'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 235644,
+        "name": "克鲁皮"
+      },
+      "playerOff": {
+        "id": 181185,
+        "name": "伊瓦尼尔森"
+      }
+    },
+    {
+      "time": "58'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 124943,
+        "name": "于纳尔"
+      },
+      "playerOff": {
+        "id": 234226,
+        "name": "T.阿莱克斯"
+      }
+    },
+    {
+      "time": "61'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 236786,
+        "name": "拉扬.维托"
+      },
+      "assist": {
+        "id": 199300,
+        "name": "A·特鲁弗特"
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "62'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 261206,
+        "name": "阿姆斯特朗"
+      },
+      "playerOff": {
+        "id": 252985,
+        "name": "乔治"
+      }
+    },
+    {
+      "time": "62'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 178187,
+        "name": "贝托"
+      },
+      "playerOff": {
+        "id": 229129,
+        "name": "T·巴里"
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 178472,
+        "name": "阿德利"
+      },
+      "assist": {
+        "id": 175338,
+        "name": "希尔"
+      },
+      "score": {
+        "home": 1,
+        "away": 2
+      }
+    },
+    {
+      "time": "66'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 178187,
+        "name": "贝托"
+      }
+    },
+    {
+      "time": "69'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "redCard",
+      "player": {
+        "id": 185691,
+        "name": "奥布里恩"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 95755,
+        "name": "布鲁克斯"
+      },
+      "playerOff": {
+        "id": 178472,
+        "name": "阿德利"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 123977,
+        "name": "L.库克"
+      },
+      "playerOff": {
+        "id": 111611,
+        "name": "克里斯蒂"
+      }
+    },
+    {
+      "time": "81'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 95755,
+        "name": "布鲁克斯"
+      }
+    },
+    {
+      "time": "90+2'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 78272,
+        "name": "史密斯"
+      },
+      "playerOff": {
+        "id": 236786,
+        "name": "拉扬.维托"
+      }
+    },
+    {
+      "time": "90+2'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 12424,
+        "name": "基恩"
+      },
+      "playerOff": {
+        "id": 170358,
+        "name": "米科连科"
+      }
+    },
+    {
+      "time": "90+5'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 242485,
+        "name": "A·希门尼斯"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 2
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 31,
+    "guestId": 348,
+    "home": 7,
+    "homeHalf": 1,
+    "guest": 2,
+    "guestHalf": 2,
+    "detail": [
+      {
+        "min": "4",
+        "ifHome": false
+      },
+      {
+        "min": "10",
+        "ifHome": true
+      },
+      {
+        "min": "45",
+        "ifHome": false
+      },
+      {
+        "min": "49",
+        "ifHome": true
+      },
+      {
+        "min": "50",
+        "ifHome": true
+      },
+      {
+        "min": "75",
+        "ifHome": true
+      },
+      {
+        "min": "87",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      }
+    ]
+  }
+}

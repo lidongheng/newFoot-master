@@ -1,0 +1,161 @@
+{
+  "matchId": 2852100,
+  "homeName": "利雅得体育",
+  "awayName": "拉斯永恒",
+  "events": [
+    {
+      "time": "26'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 131333,
+        "name": "西拉"
+      },
+      "assist": {
+        "id": 121338,
+        "name": "托泽"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "34'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 154946,
+        "name": "K.诺多拉姆"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "60'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 179109,
+        "name": "伊斯梅拉·索罗"
+      },
+      "playerOff": {
+        "id": 310338,
+        "name": "廷巴克图"
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 231787,
+        "name": "阿卜杜勒阿齐兹·阿里瓦"
+      },
+      "playerOff": {
+        "id": 142617,
+        "name": "巴赫贝里"
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 288365,
+        "name": "道萨里"
+      },
+      "playerOff": {
+        "id": 252007,
+        "name": "萨万"
+      }
+    },
+    {
+      "time": "76'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 225239,
+        "name": "哈伊巴里"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 3719,
+    "guestId": 35739,
+    "home": 5,
+    "homeHalf": 1,
+    "guest": 6,
+    "guestHalf": 2,
+    "detail": [
+      {
+        "min": "2",
+        "ifHome": false
+      },
+      {
+        "min": "36",
+        "ifHome": true
+      },
+      {
+        "min": "39",
+        "ifHome": false
+      },
+      {
+        "min": "50",
+        "ifHome": true
+      },
+      {
+        "min": "65",
+        "ifHome": true
+      },
+      {
+        "min": "67",
+        "ifHome": false
+      },
+      {
+        "min": "75",
+        "ifHome": false
+      },
+      {
+        "min": "77",
+        "ifHome": true
+      },
+      {
+        "min": "87",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}

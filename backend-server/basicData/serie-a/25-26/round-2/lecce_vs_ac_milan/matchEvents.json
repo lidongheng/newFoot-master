@@ -1,0 +1,241 @@
+{
+  "matchId": 2784497,
+  "homeName": "莱切",
+  "awayName": "AC米兰",
+  "events": [
+    {
+      "time": "5'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 190877,
+        "name": "斯图利奇"
+      },
+      "playerOff": {
+        "id": 244237,
+        "name": "F·卡马尔达"
+      }
+    },
+    {
+      "time": "62'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "63'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 164477,
+        "name": "索蒂尔"
+      },
+      "playerOff": {
+        "id": 175979,
+        "name": "皮亚罗迪"
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 228462,
+        "name": "M·贝里沙"
+      },
+      "playerOff": {
+        "id": 218167,
+        "name": "穆罕默德·卡巴"
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 228645,
+        "name": "加斯帕"
+      }
+    },
+    {
+      "time": "66'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 128363,
+        "name": "奇克"
+      },
+      "assist": {
+        "id": 25358,
+        "name": "莫德里奇"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "76'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 174865,
+        "name": "里奇"
+      },
+      "playerOff": {
+        "id": 128363,
+        "name": "奇克"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 138803,
+        "name": "普利西奇"
+      },
+      "playerOff": {
+        "id": 164379,
+        "name": "萨勒马克斯"
+      }
+    },
+    {
+      "time": "81'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 174748,
+        "name": "乔瑟林"
+      },
+      "playerOff": {
+        "id": 156891,
+        "name": "莫伦特"
+      }
+    },
+    {
+      "time": "81'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 168604,
+        "name": "赫尔加森"
+      },
+      "playerOff": {
+        "id": 154096,
+        "name": "拉曼达尼"
+      }
+    },
+    {
+      "time": "86'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 138803,
+        "name": "普利西奇"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 0,
+        "away": 2
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 333731,
+        "name": "C·巴伦蒂安"
+      },
+      "playerOff": {
+        "id": 167098,
+        "name": "S.吉门尼斯"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 2
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 158,
+    "guestId": 150,
+    "home": 4,
+    "homeHalf": 1,
+    "guest": 5,
+    "guestHalf": 3,
+    "detail": [
+      {
+        "min": "4",
+        "ifHome": false
+      },
+      {
+        "min": "13",
+        "ifHome": true
+      },
+      {
+        "min": "39",
+        "ifHome": false
+      },
+      {
+        "min": "45",
+        "ifHome": false
+      },
+      {
+        "min": "59",
+        "ifHome": false
+      },
+      {
+        "min": "78",
+        "ifHome": true
+      },
+      {
+        "min": "78",
+        "ifHome": true
+      },
+      {
+        "min": "80",
+        "ifHome": false
+      },
+      {
+        "min": "88",
+        "ifHome": true
+      }
+    ]
+  }
+}

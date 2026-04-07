@@ -1,0 +1,179 @@
+{
+  "matchId": 2852234,
+  "homeName": "达马克",
+  "awayName": "拉斯永恒",
+  "events": [
+    {
+      "time": "30'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 239701,
+        "name": "H·阿斯马里"
+      },
+      "playerOff": {
+        "id": 239565,
+        "name": "索兰"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "60'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 239701,
+        "name": "H·阿斯马里"
+      }
+    },
+    {
+      "time": "70'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 350213,
+        "name": "凯基"
+      },
+      "playerOff": {
+        "id": 152952,
+        "name": "R.沙拉希利"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 259599,
+        "name": "阿尔萨尔卡迪"
+      },
+      "playerOff": {
+        "id": 117383,
+        "name": "梅特"
+      }
+    },
+    {
+      "time": "81'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 232001,
+        "name": "阿尔萨迪"
+      },
+      "playerOff": {
+        "id": 233490,
+        "name": "卡赫塔尼"
+      }
+    },
+    {
+      "time": "82'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 291142,
+        "name": "哈利法"
+      },
+      "playerOff": {
+        "id": 205237,
+        "name": "R.恩里克"
+      }
+    },
+    {
+      "time": "85'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 292360,
+        "name": "贝瑞"
+      },
+      "playerOff": {
+        "id": 252007,
+        "name": "萨万"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 7095,
+    "guestId": 35739,
+    "home": 5,
+    "homeHalf": 2,
+    "guest": 5,
+    "guestHalf": 3,
+    "detail": [
+      {
+        "min": "13",
+        "ifHome": false
+      },
+      {
+        "min": "31",
+        "ifHome": true
+      },
+      {
+        "min": "32",
+        "ifHome": true
+      },
+      {
+        "min": "34",
+        "ifHome": false
+      },
+      {
+        "min": "38",
+        "ifHome": false
+      },
+      {
+        "min": "51",
+        "ifHome": false
+      },
+      {
+        "min": "59",
+        "ifHome": false
+      },
+      {
+        "min": "64",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      }
+    ]
+  }
+}

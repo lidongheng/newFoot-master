@@ -1,0 +1,231 @@
+{
+  "matchId": 2852230,
+  "homeName": "塞哈特海湾",
+  "awayName": "卡达西亚",
+  "events": [
+    {
+      "time": "32'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 161684,
+        "name": "雷特吉"
+      }
+    },
+    {
+      "time": "35'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 137266,
+        "name": "南德斯"
+      }
+    },
+    {
+      "time": "41'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 161684,
+        "name": "雷特吉"
+      },
+      "assist": {
+        "id": 149143,
+        "name": "J.凯诺内斯"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "48'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 105854,
+        "name": "阿西里"
+      }
+    },
+    {
+      "time": "58'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 221501,
+        "name": "哈姆齐"
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 203721,
+        "name": "哈扎齐"
+      },
+      "playerOff": {
+        "id": 206527,
+        "name": "艾馬利"
+      }
+    },
+    {
+      "time": "69'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 224032,
+        "name": "蒙希"
+      },
+      "playerOff": {
+        "id": 223755,
+        "name": "阿尔哈姆斯"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 272051,
+        "name": "G·卡瓦略"
+      },
+      "playerOff": {
+        "id": 219601,
+        "name": "M·阿尔朱瓦尔"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 91110,
+        "name": "库尔别利斯"
+      },
+      "playerOff": {
+        "id": 230322,
+        "name": "卡纳巴"
+      }
+    },
+    {
+      "time": "81'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 203721,
+        "name": "哈扎齐"
+      }
+    },
+    {
+      "time": "81'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 222950,
+        "name": "阿尔伊萨"
+      },
+      "playerOff": {
+        "id": 221501,
+        "name": "哈姆齐"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 4513,
+    "guestId": 2205,
+    "home": 5,
+    "homeHalf": 3,
+    "guest": 9,
+    "guestHalf": 6,
+    "detail": [
+      {
+        "min": "4",
+        "ifHome": true
+      },
+      {
+        "min": "15",
+        "ifHome": false
+      },
+      {
+        "min": "16",
+        "ifHome": false
+      },
+      {
+        "min": "16",
+        "ifHome": false
+      },
+      {
+        "min": "17",
+        "ifHome": true
+      },
+      {
+        "min": "24",
+        "ifHome": false
+      },
+      {
+        "min": "28",
+        "ifHome": false
+      },
+      {
+        "min": "28",
+        "ifHome": false
+      },
+      {
+        "min": "39",
+        "ifHome": true
+      },
+      {
+        "min": "58",
+        "ifHome": true
+      },
+      {
+        "min": "61",
+        "ifHome": false
+      },
+      {
+        "min": "62",
+        "ifHome": false
+      },
+      {
+        "min": "70",
+        "ifHome": false
+      },
+      {
+        "min": "84",
+        "ifHome": true
+      }
+    ]
+  }
+}

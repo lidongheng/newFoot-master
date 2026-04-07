@@ -1,0 +1,221 @@
+{
+  "matchId": 2789306,
+  "homeName": "诺丁汉森林",
+  "awayName": "曼彻斯特城",
+  "events": [
+    {
+      "time": "36'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 146446,
+        "name": "迪亚斯"
+      }
+    },
+    {
+      "time": "43'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 202746,
+        "name": "安德森"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "48'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 156637,
+        "name": "赖因德斯"
+      },
+      "assist": {
+        "id": 180496,
+        "name": "切尔基"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "54'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 221337,
+        "name": "哈钦森"
+      },
+      "assist": {
+        "id": 254287,
+        "name": "I·热苏斯"
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "59'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 236963,
+        "name": "尼科奥赖利"
+      }
+    },
+    {
+      "time": "73'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 199047,
+        "name": "萨维尼奥"
+      },
+      "playerOff": {
+        "id": 156637,
+        "name": "赖因德斯"
+      }
+    },
+    {
+      "time": "83'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 180496,
+        "name": "切尔基"
+      },
+      "assist": {
+        "id": 182461,
+        "name": "格瓦迪奥尔"
+      },
+      "score": {
+        "home": 1,
+        "away": 2
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 117613,
+        "name": "T.阿瓦利伊"
+      },
+      "playerOff": {
+        "id": 151610,
+        "name": "多明格斯"
+      }
+    },
+    {
+      "time": "89'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 109503,
+        "name": "阿克"
+      },
+      "playerOff": {
+        "id": 180496,
+        "name": "切尔基"
+      }
+    },
+    {
+      "time": "90+1'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 200549,
+        "name": "巴卡瓦"
+      },
+      "playerOff": {
+        "id": 161723,
+        "name": "奥多伊"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 2
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 49,
+    "guestId": 26,
+    "home": 5,
+    "homeHalf": 3,
+    "guest": 5,
+    "guestHalf": 1,
+    "detail": [
+      {
+        "min": "10",
+        "ifHome": false
+      },
+      {
+        "min": "12",
+        "ifHome": true
+      },
+      {
+        "min": "29",
+        "ifHome": true
+      },
+      {
+        "min": "30",
+        "ifHome": true
+      },
+      {
+        "min": "51",
+        "ifHome": false
+      },
+      {
+        "min": "52",
+        "ifHome": false
+      },
+      {
+        "min": "63",
+        "ifHome": true
+      },
+      {
+        "min": "76",
+        "ifHome": true
+      },
+      {
+        "min": "80",
+        "ifHome": false
+      },
+      {
+        "min": "83",
+        "ifHome": false
+      },
+      {
+        "min": "83",
+        "ifHome": false
+      }
+    ]
+  }
+}

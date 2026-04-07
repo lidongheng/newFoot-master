@@ -1,0 +1,177 @@
+{
+  "matchId": 2789317,
+  "homeName": "桑德兰",
+  "awayName": "曼彻斯特城",
+  "events": [
+    {
+      "time": "45+4'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 202472,
+        "name": "阿丁格拉"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 145960,
+        "name": "罗德里"
+      },
+      "playerOff": {
+        "id": 218402,
+        "name": "尼科.冈萨雷斯"
+      }
+    },
+    {
+      "time": "51'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 172257,
+        "name": "多库"
+      },
+      "playerOff": {
+        "id": 199047,
+        "name": "萨维尼奥"
+      }
+    },
+    {
+      "time": "57'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 182461,
+        "name": "格瓦迪奥尔"
+      },
+      "playerOff": {
+        "id": 236963,
+        "name": "尼科奥赖利"
+      }
+    },
+    {
+      "time": "58'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 166364,
+        "name": "威尔逊伊西多"
+      },
+      "playerOff": {
+        "id": 171522,
+        "name": "布罗贝"
+      }
+    },
+    {
+      "time": "72'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 223414,
+        "name": "罗曼·蒙德尔"
+      },
+      "playerOff": {
+        "id": 202472,
+        "name": "阿丁格拉"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 109503,
+        "name": "阿克"
+      }
+    },
+    {
+      "time": "85'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 156637,
+        "name": "赖因德斯"
+      },
+      "playerOff": {
+        "id": 119121,
+        "name": "B.席尔瓦"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 65,
+    "guestId": 26,
+    "home": 3,
+    "homeHalf": 2,
+    "guest": 5,
+    "guestHalf": 4,
+    "detail": [
+      {
+        "min": "6",
+        "ifHome": false
+      },
+      {
+        "min": "17",
+        "ifHome": false
+      },
+      {
+        "min": "20",
+        "ifHome": true
+      },
+      {
+        "min": "35",
+        "ifHome": true
+      },
+      {
+        "min": "40",
+        "ifHome": false
+      },
+      {
+        "min": "45",
+        "ifHome": false
+      },
+      {
+        "min": "53",
+        "ifHome": true
+      },
+      {
+        "min": "66",
+        "ifHome": false
+      },
+      {
+        "min": "71",
+        "ifHome": false
+      }
+    ]
+  }
+}

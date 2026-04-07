@@ -1,0 +1,247 @@
+{
+  "matchId": 2789352,
+  "homeName": "伯恩利",
+  "awayName": "托特纳姆热刺",
+  "events": [
+    {
+      "time": "38'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 191413,
+        "name": "范德文"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "45'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 138976,
+        "name": "图安泽贝"
+      },
+      "assist": {
+        "id": 78573,
+        "name": "沃克"
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 177460,
+        "name": "乌多吉"
+      },
+      "playerOff": {
+        "id": 166824,
+        "name": "波罗"
+      }
+    },
+    {
+      "time": "69'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 139783,
+        "name": "劳伦特"
+      },
+      "playerOff": {
+        "id": 170587,
+        "name": "弗洛伦蒂诺"
+      }
+    },
+    {
+      "time": "69'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 173708,
+        "name": "福斯特"
+      },
+      "playerOff": {
+        "id": 182754,
+        "name": "A·布罗亚"
+      }
+    },
+    {
+      "time": "76'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 173708,
+        "name": "福斯特"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 2,
+        "away": 1
+      }
+    },
+    {
+      "time": "78'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 218387,
+        "name": "M.特尔"
+      },
+      "playerOff": {
+        "id": 150096,
+        "name": "K·丹索"
+      }
+    },
+    {
+      "time": "78'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 220978,
+        "name": "阿尔奇·格雷"
+      },
+      "playerOff": {
+        "id": 146790,
+        "name": "比索马"
+      }
+    },
+    {
+      "time": "79'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 139783,
+        "name": "劳伦特"
+      }
+    },
+    {
+      "time": "85'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 213271,
+        "name": "梅布里"
+      },
+      "playerOff": {
+        "id": 145064,
+        "name": "马库斯·爱德华兹"
+      }
+    },
+    {
+      "time": "85'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 201842,
+        "name": "达恩·斯卡利特"
+      },
+      "playerOff": {
+        "id": 170628,
+        "name": "加拉格尔"
+      }
+    },
+    {
+      "time": "90'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 140566,
+        "name": "C.罗梅罗"
+      },
+      "assist": {
+        "id": 220735,
+        "name": "奥多波特"
+      },
+      "score": {
+        "home": 2,
+        "away": 2
+      }
+    },
+    {
+      "time": "90+4'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 201880,
+        "name": "R·德拉古辛"
+      },
+      "playerOff": {
+        "id": 140566,
+        "name": "C.罗梅罗"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 2,
+        "away": 2
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 46,
+    "guestId": 33,
+    "home": 1,
+    "homeHalf": 0,
+    "guest": 3,
+    "guestHalf": 2,
+    "detail": [
+      {
+        "min": "37",
+        "ifHome": false
+      },
+      {
+        "min": "38",
+        "ifHome": false
+      },
+      {
+        "min": "48",
+        "ifHome": true
+      },
+      {
+        "min": "84",
+        "ifHome": false
+      }
+    ]
+  }
+}

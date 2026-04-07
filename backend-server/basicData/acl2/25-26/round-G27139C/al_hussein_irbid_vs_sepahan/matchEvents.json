@@ -1,0 +1,103 @@
+{
+  "matchId": 2860718,
+  "homeName": "侯塞因",
+  "awayName": "塞帕汉",
+  "events": [
+    {
+      "time": "11'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 117847,
+        "name": "G.格韦列西阿尼"
+      }
+    },
+    {
+      "time": "28'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 310380,
+        "name": "赫鲁巴"
+      },
+      "assist": {
+        "id": 240855,
+        "name": "A·哈吉"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "48'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 310380,
+        "name": "赫鲁巴"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 3534,
+    "guestId": 2023,
+    "home": 3,
+    "homeHalf": 1,
+    "guest": 4,
+    "guestHalf": 1,
+    "detail": [
+      {
+        "min": "24",
+        "ifHome": false
+      },
+      {
+        "min": "32",
+        "ifHome": true
+      },
+      {
+        "min": "64",
+        "ifHome": false
+      },
+      {
+        "min": "65",
+        "ifHome": true
+      },
+      {
+        "min": "69",
+        "ifHome": false
+      },
+      {
+        "min": "72",
+        "ifHome": true
+      },
+      {
+        "min": "78",
+        "ifHome": false
+      }
+    ]
+  }
+}

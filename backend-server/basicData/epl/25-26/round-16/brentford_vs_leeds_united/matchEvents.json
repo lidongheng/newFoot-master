@@ -1,0 +1,202 @@
+{
+  "matchId": 2789280,
+  "homeName": "布伦特福德",
+  "awayName": "利兹联",
+  "events": [
+    {
+      "time": "38'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "61'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 134859,
+        "name": "亨利"
+      },
+      "playerOff": {
+        "id": 171548,
+        "name": "A.希基"
+      }
+    },
+    {
+      "time": "61'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 163242,
+        "name": "达姆斯加德"
+      },
+      "playerOff": {
+        "id": 177069,
+        "name": "波特"
+      }
+    },
+    {
+      "time": "70'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 29527,
+        "name": "亨德森"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "73'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 166918,
+        "name": "阿隆森"
+      },
+      "playerOff": {
+        "id": 154266,
+        "name": "田中碧"
+      }
+    },
+    {
+      "time": "73'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 201265,
+        "name": "尼翁托"
+      },
+      "playerOff": {
+        "id": 154920,
+        "name": "比约尔"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 215569,
+        "name": "叶戈尔·亚尔莫柳克"
+      },
+      "playerOff": {
+        "id": 138816,
+        "name": "雅内尔特"
+      }
+    },
+    {
+      "time": "81'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 125876,
+        "name": "K.阿耶"
+      },
+      "playerOff": {
+        "id": 134434,
+        "name": "延森"
+      }
+    },
+    {
+      "time": "82'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 119033,
+        "name": "勒温"
+      },
+      "assist": {
+        "id": 201265,
+        "name": "尼翁托"
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "89'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 150478,
+        "name": "贾斯汀"
+      },
+      "playerOff": {
+        "id": 152271,
+        "name": "古德莫德森"
+      }
+    },
+    {
+      "time": "90+1'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 140992,
+        "name": "哈里森"
+      },
+      "playerOff": {
+        "id": 165972,
+        "name": "N·奥卡福尔"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 365,
+    "guestId": 56,
+    "home": 0,
+    "homeHalf": 0,
+    "guest": 3,
+    "guestHalf": 1,
+    "detail": [
+      {
+        "min": "14",
+        "ifHome": false
+      },
+      {
+        "min": "48",
+        "ifHome": false
+      },
+      {
+        "min": "75",
+        "ifHome": false
+      }
+    ]
+  }
+}

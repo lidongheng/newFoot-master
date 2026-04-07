@@ -1,0 +1,230 @@
+{
+  "matchId": 2789315,
+  "homeName": "曼彻斯特联",
+  "awayName": "狼队",
+  "events": [
+    {
+      "time": "27'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 166588,
+        "name": "齐尔克泽"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "45'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 149483,
+        "name": "L·克雷伊奇"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 286279,
+        "name": "J·弗莱彻"
+      },
+      "playerOff": {
+        "id": 166588,
+        "name": "齐尔克泽"
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 203712,
+        "name": "J·查切阿"
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 152030,
+        "name": "佐格斯特勒"
+      },
+      "playerOff": {
+        "id": 200501,
+        "name": "拓鲁"
+      }
+    },
+    {
+      "time": "75'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 225599,
+        "name": "约罗"
+      },
+      "playerOff": {
+        "id": 244629,
+        "name": "A·海文"
+      }
+    },
+    {
+      "time": "75'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 313135,
+        "name": "曼塔托"
+      },
+      "playerOff": {
+        "id": 159763,
+        "name": "乌加特"
+      }
+    },
+    {
+      "time": "88'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 298545,
+        "name": "费尔南多·洛佩斯"
+      },
+      "playerOff": {
+        "id": 131877,
+        "name": "黄喜灿"
+      }
+    },
+    {
+      "time": "90+1'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "90+4'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 199509,
+        "name": "D.沃尔夫"
+      },
+      "playerOff": {
+        "id": 161283,
+        "name": "J·阿里亚斯"
+      }
+    },
+    {
+      "time": "90+4'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 152030,
+        "name": "佐格斯特勒"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 27,
+    "guestId": 52,
+    "home": 8,
+    "homeHalf": 3,
+    "guest": 4,
+    "guestHalf": 1,
+    "detail": [
+      {
+        "min": "4",
+        "ifHome": true
+      },
+      {
+        "min": "38",
+        "ifHome": true
+      },
+      {
+        "min": "39",
+        "ifHome": true
+      },
+      {
+        "min": "45",
+        "ifHome": false
+      },
+      {
+        "min": "54",
+        "ifHome": true
+      },
+      {
+        "min": "60",
+        "ifHome": false
+      },
+      {
+        "min": "70",
+        "ifHome": true
+      },
+      {
+        "min": "71",
+        "ifHome": true
+      },
+      {
+        "min": "80",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}

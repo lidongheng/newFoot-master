@@ -1,0 +1,216 @@
+{
+  "matchId": 2789513,
+  "homeName": "佛罗里亚纳",
+  "awayName": "西哈弗福德",
+  "events": [
+    {
+      "time": "20'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 136869,
+        "name": "沃尔特斯"
+      }
+    },
+    {
+      "time": "27'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 202145,
+        "name": "艾哈蒙"
+      },
+      "assist": {
+        "id": 200561,
+        "name": "B.福塞特"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "34'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 218851,
+        "name": "维塞尔吉"
+      }
+    },
+    {
+      "time": "36'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 147626,
+        "name": "麦卡锡"
+      }
+    },
+    {
+      "time": "42'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 178134,
+        "name": "加马拉"
+      },
+      "assist": {
+        "id": 136430,
+        "name": "巴雷拉"
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "45'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 192329,
+        "name": "琼斯"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "59'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "69'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 197612,
+        "name": "格利索维奇"
+      },
+      "playerOff": {
+        "id": 218851,
+        "name": "维塞尔吉"
+      }
+    },
+    {
+      "time": "70'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 159338,
+        "name": "斯科特"
+      },
+      "playerOff": {
+        "id": 192329,
+        "name": "琼斯"
+      }
+    },
+    {
+      "time": "72'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 170057,
+        "name": "姆巴瓦"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 205767,
+        "name": "欧文.琼斯"
+      },
+      "playerOff": {
+        "id": 202145,
+        "name": "艾哈蒙"
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 159338,
+        "name": "斯科特"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 6611,
+    "guestId": 1171,
+    "home": 5,
+    "homeHalf": 1,
+    "guest": 4,
+    "guestHalf": 1,
+    "detail": [
+      {
+        "min": "33",
+        "ifHome": false
+      },
+      {
+        "min": "37",
+        "ifHome": true
+      },
+      {
+        "min": "52",
+        "ifHome": true
+      },
+      {
+        "min": "56",
+        "ifHome": true
+      },
+      {
+        "min": "56",
+        "ifHome": true
+      },
+      {
+        "min": "61",
+        "ifHome": false
+      },
+      {
+        "min": "61",
+        "ifHome": false
+      },
+      {
+        "min": "68",
+        "ifHome": false
+      },
+      {
+        "min": "84",
+        "ifHome": true
+      }
+    ]
+  }
+}

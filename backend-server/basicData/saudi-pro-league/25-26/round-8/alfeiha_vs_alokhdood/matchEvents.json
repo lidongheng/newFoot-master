@@ -1,0 +1,191 @@
+{
+  "matchId": 2852119,
+  "homeName": "费哈",
+  "awayName": "阿科多",
+  "events": [
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "60'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 304481,
+        "name": "哈伊巴里"
+      },
+      "playerOff": {
+        "id": 239574,
+        "name": "哈尔迪"
+      }
+    },
+    {
+      "time": "61'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 133875,
+        "name": "姆布西"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "70'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 153507,
+        "name": "萨卡拉"
+      },
+      "assist": {
+        "id": 138665,
+        "name": "萨戈利奥"
+      },
+      "score": {
+        "home": 2,
+        "away": 0
+      }
+    },
+    {
+      "time": "79'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 239488,
+        "name": "胡哈伊"
+      },
+      "playerOff": {
+        "id": 172251,
+        "name": "佩德罗萨"
+      }
+    },
+    {
+      "time": "79'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 239487,
+        "name": "哈尔希"
+      },
+      "playerOff": {
+        "id": 143720,
+        "name": "巴索戈"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 181279,
+        "name": "因斯"
+      },
+      "playerOff": {
+        "id": 239504,
+        "name": "A·赫塔尔赫"
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 231937,
+        "name": "阿尔比什"
+      },
+      "playerOff": {
+        "id": 138665,
+        "name": "萨戈利奥"
+      }
+    },
+    {
+      "time": "90+1'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 213372,
+        "name": "鲁巴伊"
+      }
+    },
+    {
+      "time": "90+3'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 240905,
+        "name": "拉坎·卡比"
+      },
+      "playerOff": {
+        "id": 84379,
+        "name": "本齐亚"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 2,
+        "away": 0
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 7089,
+    "guestId": 7096,
+    "home": 3,
+    "homeHalf": 3,
+    "guest": 3,
+    "guestHalf": 1,
+    "detail": [
+      {
+        "min": "8",
+        "ifHome": false
+      },
+      {
+        "min": "26",
+        "ifHome": true
+      },
+      {
+        "min": "38",
+        "ifHome": true
+      },
+      {
+        "min": "45",
+        "ifHome": true
+      },
+      {
+        "min": "83",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}

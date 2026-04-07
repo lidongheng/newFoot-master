@@ -1,0 +1,199 @@
+{
+  "matchId": 2789292,
+  "homeName": "埃弗顿",
+  "awayName": "阿森纳",
+  "events": [
+    {
+      "time": "24'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "26'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 170358,
+        "name": "米科连科"
+      }
+    },
+    {
+      "time": "27'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "39'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 97354,
+        "name": "塔科夫斯基"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "56'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 151881,
+        "name": "约克雷斯"
+      }
+    },
+    {
+      "time": "65'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 131976,
+        "name": "热苏斯"
+      },
+      "playerOff": {
+        "id": 151881,
+        "name": "约克雷斯"
+      }
+    },
+    {
+      "time": "66'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 178187,
+        "name": "贝托"
+      },
+      "playerOff": {
+        "id": 229129,
+        "name": "T·巴里"
+      }
+    },
+    {
+      "time": "75'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 213484,
+        "name": "M.罗尔"
+      },
+      "playerOff": {
+        "id": 183787,
+        "name": "阿尔卡拉斯"
+      }
+    },
+    {
+      "time": "75'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 225963,
+        "name": "迪布林"
+      },
+      "playerOff": {
+        "id": 165331,
+        "name": "麦克尼尔"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 168935,
+        "name": "马丁内利"
+      },
+      "playerOff": {
+        "id": 102096,
+        "name": "特罗萨德"
+      }
+    },
+    {
+      "time": "88'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 128577,
+        "name": "梅里诺"
+      },
+      "playerOff": {
+        "id": 123667,
+        "name": "厄德高"
+      }
+    },
+    {
+      "time": "89'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 168935,
+        "name": "马丁内利"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 31,
+    "guestId": 19,
+    "home": 2,
+    "homeHalf": 2,
+    "guest": 3,
+    "guestHalf": 2,
+    "detail": [
+      {
+        "min": "13",
+        "ifHome": true
+      },
+      {
+        "min": "13",
+        "ifHome": true
+      },
+      {
+        "min": "14",
+        "ifHome": true
+      },
+      {
+        "min": "24",
+        "ifHome": false
+      },
+      {
+        "min": "44",
+        "ifHome": false
+      },
+      {
+        "min": "88",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}

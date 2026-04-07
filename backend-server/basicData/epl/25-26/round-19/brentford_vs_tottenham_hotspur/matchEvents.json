@@ -1,0 +1,143 @@
+{
+  "matchId": 2789310,
+  "homeName": "布伦特福德",
+  "awayName": "托特纳姆热刺",
+  "events": [
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "58'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 29527,
+        "name": "亨德森"
+      }
+    },
+    {
+      "time": "60'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 135348,
+        "name": "帕利尼亚"
+      }
+    },
+    {
+      "time": "67'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 151102,
+        "name": "穆阿尼"
+      },
+      "playerOff": {
+        "id": 220735,
+        "name": "奥多波特"
+      }
+    },
+    {
+      "time": "69'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 121286,
+        "name": "维卡里奥"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 134434,
+        "name": "延森"
+      },
+      "playerOff": {
+        "id": 215569,
+        "name": "叶戈尔·亚尔莫柳克"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 155054,
+        "name": "尼尔森"
+      },
+      "playerOff": {
+        "id": 201662,
+        "name": "凯文·沙德"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 218387,
+        "name": "M.特尔"
+      },
+      "playerOff": {
+        "id": 135348,
+        "name": "帕利尼亚"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 365,
+    "guestId": 33,
+    "home": 4,
+    "homeHalf": 1,
+    "guest": 1,
+    "guestHalf": 0,
+    "detail": [
+      {
+        "min": "5",
+        "ifHome": true
+      },
+      {
+        "min": "63",
+        "ifHome": true
+      },
+      {
+        "min": "74",
+        "ifHome": false
+      },
+      {
+        "min": "77",
+        "ifHome": true
+      },
+      {
+        "min": "81",
+        "ifHome": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "matchId": 2806536,
+  "homeName": "果阿",
+  "awayName": "锡卜",
+  "events": [
+    {
+      "time": "21'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 213793,
+        "name": "A.法瓦兹"
+      }
+    },
+    {
+      "time": "24'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 127169,
+        "name": "德拉季奇"
+      },
+      "assist": {
+        "id": 157711,
+        "name": "博尔哈赫雷拉"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "52'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 183641,
+        "name": "J.西维里奥"
+      },
+      "assist": {
+        "id": 157711,
+        "name": "博尔哈赫雷拉"
+      },
+      "score": {
+        "home": 2,
+        "away": 0
+      }
+    },
+    {
+      "time": "60'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 245116,
+        "name": "N·阿尔拉瓦希"
+      },
+      "assist": {
+        "id": 126207,
+        "name": "巴沙迪"
+      },
+      "score": {
+        "home": 2,
+        "away": 1
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 218813,
+        "name": "A·哈米斯"
+      }
+    },
+    {
+      "time": "84'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 101546,
+        "name": "蒂莫尔"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 23929,
+    "guestId": 3731,
+    "home": 2,
+    "homeHalf": 1,
+    "guest": 5,
+    "guestHalf": 3,
+    "detail": [
+      {
+        "min": "10",
+        "ifHome": false
+      },
+      {
+        "min": "12",
+        "ifHome": false
+      },
+      {
+        "min": "14",
+        "ifHome": true
+      },
+      {
+        "min": "16",
+        "ifHome": false
+      },
+      {
+        "min": "52",
+        "ifHome": true
+      },
+      {
+        "min": "75",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}

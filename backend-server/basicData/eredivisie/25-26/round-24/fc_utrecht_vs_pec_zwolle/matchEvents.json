@@ -1,0 +1,217 @@
+{
+  "matchId": 2790919,
+  "homeName": "乌德勒支",
+  "awayName": "兹沃勒",
+  "events": [
+    {
+      "time": "12'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 232243,
+        "name": "A·阿拉贡"
+      },
+      "assist": {
+        "id": 156196,
+        "name": "德维特"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 239048,
+        "name": "阿戈吉尔"
+      },
+      "playerOff": {
+        "id": 175830,
+        "name": "韦斯特兰德"
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 150787,
+        "name": "明"
+      },
+      "playerOff": {
+        "id": 264706,
+        "name": "斯捷潘诺夫"
+      }
+    },
+    {
+      "time": "65'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 239048,
+        "name": "阿戈吉尔"
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 285968,
+        "name": "J·法伯斯基"
+      },
+      "playerOff": {
+        "id": 202682,
+        "name": "布尔米斯特"
+      }
+    },
+    {
+      "time": "73'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 141697,
+        "name": "卡尔森"
+      },
+      "playerOff": {
+        "id": 199216,
+        "name": "尤安·凯斯林"
+      }
+    },
+    {
+      "time": "79'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 174820,
+        "name": "奥斯汀"
+      },
+      "assist": {
+        "id": 285968,
+        "name": "J·法伯斯基"
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "90'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 200382,
+        "name": "维尔休伊斯"
+      },
+      "playerOff": {
+        "id": 239350,
+        "name": "N.菲治汀格"
+      }
+    },
+    {
+      "time": "90+1'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 96462,
+        "name": "阿莱"
+      },
+      "playerOff": {
+        "id": 238831,
+        "name": "吉瓦伊·泽基尔"
+      }
+    },
+    {
+      "time": "90+2'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "redCard",
+      "player": {
+        "id": 285968,
+        "name": "J·法伯斯基"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 237,
+    "guestId": 414,
+    "home": 6,
+    "homeHalf": 3,
+    "guest": 4,
+    "guestHalf": 2,
+    "detail": [
+      {
+        "min": "3",
+        "ifHome": true
+      },
+      {
+        "min": "11",
+        "ifHome": true
+      },
+      {
+        "min": "18",
+        "ifHome": false
+      },
+      {
+        "min": "30",
+        "ifHome": false
+      },
+      {
+        "min": "35",
+        "ifHome": true
+      },
+      {
+        "min": "47",
+        "ifHome": false
+      },
+      {
+        "min": "48",
+        "ifHome": true
+      },
+      {
+        "min": "50",
+        "ifHome": true
+      },
+      {
+        "min": "67",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      }
+    ]
+  }
+}

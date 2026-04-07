@@ -1,0 +1,142 @@
+{
+  "matchId": 2806537,
+  "homeName": "万隆",
+  "awayName": "马尼拉挖掘者",
+  "events": [
+    {
+      "time": "35'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 299887,
+        "name": "曼内"
+      }
+    },
+    {
+      "time": "38'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "42'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 336254,
+        "name": "桑布"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "66'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 335963,
+        "name": "乔夫"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "73'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 164857,
+        "name": "威廉.巴罗斯.佩雷拉"
+      },
+      "assist": {
+        "id": 182617,
+        "name": "贝克汉姆·努格拉哈"
+      },
+      "score": {
+        "home": 2,
+        "away": 1
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 129374,
+        "name": "马特里卡迪"
+      }
+    },
+    {
+      "time": "88'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 214607,
+        "name": "米奎尔·卡里诺"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 10925,
+    "guestId": 67302,
+    "home": 4,
+    "homeHalf": 4,
+    "guest": 2,
+    "guestHalf": 2,
+    "detail": [
+      {
+        "min": "10",
+        "ifHome": true
+      },
+      {
+        "min": "23",
+        "ifHome": true
+      },
+      {
+        "min": "40",
+        "ifHome": true
+      },
+      {
+        "min": "40",
+        "ifHome": true
+      },
+      {
+        "min": "40",
+        "ifHome": false
+      },
+      {
+        "min": "41",
+        "ifHome": false
+      }
+    ]
+  }
+}

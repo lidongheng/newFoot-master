@@ -1,0 +1,237 @@
+{
+  "matchId": 2789192,
+  "homeName": "布伦特福德",
+  "awayName": "曼彻斯特城",
+  "events": [
+    {
+      "time": "9'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 150860,
+        "name": "哈兰德"
+      },
+      "assist": {
+        "id": 182461,
+        "name": "格瓦迪奥尔"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "22'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 218402,
+        "name": "尼科.冈萨雷斯"
+      },
+      "playerOff": {
+        "id": 145960,
+        "name": "罗德里"
+      }
+    },
+    {
+      "time": "45+1'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 201662,
+        "name": "凯文·沙德"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "68'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 213867,
+        "name": "瓦塔拉"
+      },
+      "playerOff": {
+        "id": 185149,
+        "name": "蒂亚戈"
+      }
+    },
+    {
+      "time": "68'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 134434,
+        "name": "延森"
+      },
+      "playerOff": {
+        "id": 163242,
+        "name": "达姆斯加德"
+      }
+    },
+    {
+      "time": "70'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 29527,
+        "name": "亨德森"
+      }
+    },
+    {
+      "time": "73'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 162559,
+        "name": "恩耶卡"
+      },
+      "playerOff": {
+        "id": 215569,
+        "name": "叶戈尔·亚尔莫柳克"
+      }
+    },
+    {
+      "time": "74'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 138816,
+        "name": "雅内尔特"
+      },
+      "playerOff": {
+        "id": 29527,
+        "name": "亨德森"
+      }
+    },
+    {
+      "time": "76'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 172257,
+        "name": "多库"
+      },
+      "playerOff": {
+        "id": 220958,
+        "name": "鲍伯"
+      }
+    },
+    {
+      "time": "76'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 119121,
+        "name": "B.席尔瓦"
+      },
+      "playerOff": {
+        "id": 156637,
+        "name": "赖因德斯"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 187411,
+        "name": "努内斯"
+      }
+    },
+    {
+      "time": "83'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 236963,
+        "name": "尼科奥赖利"
+      }
+    },
+    {
+      "time": "84'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 213867,
+        "name": "瓦塔拉"
+      }
+    },
+    {
+      "time": "90+1'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 201831,
+        "name": "F.卡瓦略"
+      },
+      "playerOff": {
+        "id": 125876,
+        "name": "K.阿耶"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 365,
+    "guestId": 26,
+    "home": 3,
+    "homeHalf": 1,
+    "guest": 2,
+    "guestHalf": 2,
+    "detail": [
+      {
+        "min": "8",
+        "ifHome": false
+      },
+      {
+        "min": "18",
+        "ifHome": true
+      },
+      {
+        "min": "38",
+        "ifHome": false
+      },
+      {
+        "min": "62",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      }
+    ]
+  }
+}

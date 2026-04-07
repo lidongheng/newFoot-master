@@ -1,0 +1,242 @@
+{
+  "matchId": 2852248,
+  "homeName": "阿尔纳泽马",
+  "awayName": "拉斯永恒",
+  "events": [
+    {
+      "time": "21'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 169356,
+        "name": "卡多索"
+      },
+      "assist": {
+        "id": 185042,
+        "name": "马克斯"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "35'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 239701,
+        "name": "H·阿斯马里"
+      },
+      "playerOff": {
+        "id": 265896,
+        "name": "苏丹沙赫里"
+      }
+    },
+    {
+      "time": "56'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 128457,
+        "name": "布托巴"
+      },
+      "assist": {
+        "id": 169356,
+        "name": "卡多索"
+      },
+      "score": {
+        "home": 2,
+        "away": 0
+      }
+    },
+    {
+      "time": "65'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 239347,
+        "name": "哈拉比"
+      },
+      "playerOff": {
+        "id": 208440,
+        "name": "阿马德"
+      }
+    },
+    {
+      "time": "66'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 223223,
+        "name": "阿尔多萨里"
+      },
+      "playerOff": {
+        "id": 252007,
+        "name": "萨万"
+      }
+    },
+    {
+      "time": "68'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 154946,
+        "name": "K.诺多拉姆"
+      }
+    },
+    {
+      "time": "73'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 291142,
+        "name": "哈利法"
+      },
+      "playerOff": {
+        "id": 154946,
+        "name": "K.诺多拉姆"
+      }
+    },
+    {
+      "time": "81'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 225363,
+        "name": "R·图拉伊"
+      },
+      "playerOff": {
+        "id": 128457,
+        "name": "布托巴"
+      }
+    },
+    {
+      "time": "81'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 251871,
+        "name": "沙马里"
+      },
+      "playerOff": {
+        "id": 158601,
+        "name": "蒂亚尼奇"
+      }
+    },
+    {
+      "time": "82'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 163158,
+        "name": "科扎尼"
+      }
+    },
+    {
+      "time": "90'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "90+2'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "90+7'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 185042,
+        "name": "马克斯"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 8298,
+    "guestId": 35739,
+    "home": 3,
+    "homeHalf": 1,
+    "guest": 6,
+    "guestHalf": 3,
+    "detail": [
+      {
+        "min": "6",
+        "ifHome": false
+      },
+      {
+        "min": "10",
+        "ifHome": false
+      },
+      {
+        "min": "27",
+        "ifHome": false
+      },
+      {
+        "min": "45",
+        "ifHome": true
+      },
+      {
+        "min": "46",
+        "ifHome": false
+      },
+      {
+        "min": "66",
+        "ifHome": false
+      },
+      {
+        "min": "77",
+        "ifHome": false
+      },
+      {
+        "min": "89",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      }
+    ]
+  }
+}

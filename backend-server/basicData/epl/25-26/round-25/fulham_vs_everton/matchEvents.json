@@ -1,0 +1,285 @@
+{
+  "matchId": 2789373,
+  "homeName": "富勒姆",
+  "awayName": "埃弗顿",
+  "events": [
+    {
+      "time": "18'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "18'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 70342,
+        "name": "盖耶"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "56'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 166736,
+        "name": "詹姆斯·加尔纳"
+      }
+    },
+    {
+      "time": "65'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 170358,
+        "name": "米科连科"
+      }
+    },
+    {
+      "time": "66'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 150798,
+        "name": "昆卡"
+      }
+    },
+    {
+      "time": "69'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 252985,
+        "name": "乔治"
+      },
+      "playerOff": {
+        "id": 261206,
+        "name": "阿姆斯特朗"
+      }
+    },
+    {
+      "time": "69'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 178187,
+        "name": "贝托"
+      },
+      "playerOff": {
+        "id": 229129,
+        "name": "T·巴里"
+      }
+    },
+    {
+      "time": "75'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 220625,
+        "name": "K·马塞多"
+      },
+      "playerOff": {
+        "id": 138944,
+        "name": "查克胡斯"
+      }
+    },
+    {
+      "time": "75'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 200429,
+        "name": "穆尼兹"
+      },
+      "playerOff": {
+        "id": 94940,
+        "name": "希门尼斯"
+      }
+    },
+    {
+      "time": "75'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 180960,
+        "name": "K·霍尔"
+      },
+      "assist": {
+        "id": 170358,
+        "name": "米科连科"
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "83'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "83'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 120810,
+        "name": "泰迪"
+      },
+      "playerOff": {
+        "id": 129424,
+        "name": "卡斯塔内"
+      }
+    },
+    {
+      "time": "83'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 220958,
+        "name": "鲍伯"
+      },
+      "playerOff": {
+        "id": 166752,
+        "name": "S·罗"
+      }
+    },
+    {
+      "time": "85'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 182201,
+        "name": "布兰斯维特"
+      },
+      "playerOff": {
+        "id": 170358,
+        "name": "米科连科"
+      }
+    },
+    {
+      "time": "88'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 185691,
+        "name": "奥布里恩"
+      }
+    },
+    {
+      "time": "90+4'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 213272,
+        "name": "蒂姆·伊罗格布纳"
+      },
+      "playerOff": {
+        "id": 180960,
+        "name": "K·霍尔"
+      }
+    },
+    {
+      "time": "90+6'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 111772,
+        "name": "皮克福德"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 2
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 29,
+    "guestId": 31,
+    "home": 6,
+    "homeHalf": 5,
+    "guest": 6,
+    "guestHalf": 3,
+    "detail": [
+      {
+        "min": "8",
+        "ifHome": false
+      },
+      {
+        "min": "11",
+        "ifHome": true
+      },
+      {
+        "min": "12",
+        "ifHome": true
+      },
+      {
+        "min": "20",
+        "ifHome": true
+      },
+      {
+        "min": "25",
+        "ifHome": true
+      },
+      {
+        "min": "30",
+        "ifHome": false
+      },
+      {
+        "min": "37",
+        "ifHome": false
+      },
+      {
+        "min": "45",
+        "ifHome": true
+      },
+      {
+        "min": "51",
+        "ifHome": false
+      },
+      {
+        "min": "63",
+        "ifHome": false
+      },
+      {
+        "min": "80",
+        "ifHome": true
+      },
+      {
+        "min": "83",
+        "ifHome": false
+      }
+    ]
+  }
+}

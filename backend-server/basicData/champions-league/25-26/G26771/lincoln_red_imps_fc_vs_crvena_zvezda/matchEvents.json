@@ -1,0 +1,295 @@
+{
+  "matchId": 2825934,
+  "homeName": "林肯红魔",
+  "awayName": "贝尔格莱德红星",
+  "events": [
+    {
+      "time": "13'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 188673,
+        "name": "米尔森"
+      }
+    },
+    {
+      "time": "16'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 117817,
+        "name": "克鲁尼奇"
+      }
+    },
+    {
+      "time": "30'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 168317,
+        "name": "布鲁诺席尔瓦"
+      },
+      "assist": {
+        "id": 105139,
+        "name": "伊万尼克"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "41'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "redCard",
+      "player": {
+        "id": 184018,
+        "name": "薛英佑"
+      }
+    },
+    {
+      "time": "43'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 154375,
+        "name": "基克高美斯"
+      }
+    },
+    {
+      "time": "45'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 268321,
+        "name": "米洛萨夫列维奇"
+      },
+      "playerOff": {
+        "id": 188673,
+        "name": "米尔森"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 146290,
+        "name": "朱安杰"
+      },
+      "playerOff": {
+        "id": 287188,
+        "name": "维拉卡纳斯"
+      }
+    },
+    {
+      "time": "59'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 152438,
+        "name": "拉顿季奇"
+      },
+      "playerOff": {
+        "id": 164459,
+        "name": "卡塔伊"
+      }
+    },
+    {
+      "time": "61'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 168980,
+        "name": "E·布里托"
+      }
+    },
+    {
+      "time": "69'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 226498,
+        "name": "N·波佐"
+      },
+      "playerOff": {
+        "id": 168980,
+        "name": "E·布里托"
+      }
+    },
+    {
+      "time": "78'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 298835,
+        "name": "贝尼特斯"
+      },
+      "playerOff": {
+        "id": 153109,
+        "name": "拉斐尔穆尼奥斯"
+      }
+    },
+    {
+      "time": "81'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 229485,
+        "name": "S·莱科维奇"
+      },
+      "playerOff": {
+        "id": 153245,
+        "name": "R.索扎"
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 88537,
+        "name": "曼迪"
+      },
+      "playerOff": {
+        "id": 154375,
+        "name": "基克高美斯"
+      }
+    },
+    {
+      "time": "88'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 226330,
+        "name": "卢西奇"
+      },
+      "playerOff": {
+        "id": 105139,
+        "name": "伊万尼克"
+      }
+    },
+    {
+      "time": "88'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 240361,
+        "name": "J·什利维奇"
+      },
+      "playerOff": {
+        "id": 168317,
+        "name": "布鲁诺席尔瓦"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 23131,
+    "guestId": 612,
+    "home": 7,
+    "homeHalf": 0,
+    "guest": 7,
+    "guestHalf": 3,
+    "detail": [
+      {
+        "min": "2",
+        "ifHome": false
+      },
+      {
+        "min": "13",
+        "ifHome": false
+      },
+      {
+        "min": "28",
+        "ifHome": false
+      },
+      {
+        "min": "48",
+        "ifHome": true
+      },
+      {
+        "min": "57",
+        "ifHome": true
+      },
+      {
+        "min": "64",
+        "ifHome": false
+      },
+      {
+        "min": "64",
+        "ifHome": false
+      },
+      {
+        "min": "65",
+        "ifHome": false
+      },
+      {
+        "min": "65",
+        "ifHome": false
+      },
+      {
+        "min": "68",
+        "ifHome": true
+      },
+      {
+        "min": "72",
+        "ifHome": true
+      },
+      {
+        "min": "83",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,267 @@
+{
+  "matchId": 2789327,
+  "homeName": "托特纳姆热刺",
+  "awayName": "桑德兰",
+  "events": [
+    {
+      "time": "19'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 151102,
+        "name": "穆阿尼"
+      },
+      "playerOff": {
+        "id": 171424,
+        "name": "库杜斯"
+      }
+    },
+    {
+      "time": "30'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 56063,
+        "name": "戴维斯"
+      },
+      "assist": {
+        "id": 191413,
+        "name": "范德文"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "47'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 183569,
+        "name": "西金"
+      }
+    },
+    {
+      "time": "50'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 148284,
+        "name": "阿尔德雷特"
+      }
+    },
+    {
+      "time": "59'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 223414,
+        "name": "罗曼·蒙德尔"
+      },
+      "playerOff": {
+        "id": 183569,
+        "name": "西金"
+      }
+    },
+    {
+      "time": "61'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 175732,
+        "name": "勒费埃"
+      }
+    },
+    {
+      "time": "66'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 178038,
+        "name": "巴拉德"
+      },
+      "playerOff": {
+        "id": 202472,
+        "name": "阿丁格拉"
+      }
+    },
+    {
+      "time": "72'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 135348,
+        "name": "帕利尼亚"
+      },
+      "playerOff": {
+        "id": 220978,
+        "name": "阿尔奇·格雷"
+      }
+    },
+    {
+      "time": "72'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 228771,
+        "name": "卢卡斯·伯格瓦尔"
+      },
+      "playerOff": {
+        "id": 220735,
+        "name": "奥多波特"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 171522,
+        "name": "布罗贝"
+      },
+      "assist": {
+        "id": 175732,
+        "name": "勒费埃"
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "82'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 231718,
+        "name": "里格"
+      },
+      "playerOff": {
+        "id": 228085,
+        "name": "伊莱泽·梅恩达"
+      }
+    },
+    {
+      "time": "83'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 129213,
+        "name": "本坦库尔"
+      }
+    },
+    {
+      "time": "88'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 201842,
+        "name": "达恩·斯卡利特"
+      },
+      "playerOff": {
+        "id": 218387,
+        "name": "M.特尔"
+      }
+    },
+    {
+      "time": "88'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 171940,
+        "name": "斯宾斯"
+      },
+      "playerOff": {
+        "id": 56063,
+        "name": "戴维斯"
+      }
+    },
+    {
+      "time": "90+5'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 135348,
+        "name": "帕利尼亚"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 33,
+    "guestId": 65,
+    "home": 3,
+    "homeHalf": 2,
+    "guest": 5,
+    "guestHalf": 1,
+    "detail": [
+      {
+        "min": "14",
+        "ifHome": true
+      },
+      {
+        "min": "20",
+        "ifHome": false
+      },
+      {
+        "min": "30",
+        "ifHome": true
+      },
+      {
+        "min": "52",
+        "ifHome": true
+      },
+      {
+        "min": "55",
+        "ifHome": false
+      },
+      {
+        "min": "64",
+        "ifHome": false
+      },
+      {
+        "min": "70",
+        "ifHome": false
+      },
+      {
+        "min": "85",
+        "ifHome": false
+      }
+    ]
+  }
+}

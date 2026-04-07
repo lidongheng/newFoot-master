@@ -1,0 +1,285 @@
+{
+  "matchId": 2790810,
+  "homeName": "奈梅亨",
+  "awayName": "格罗宁根",
+  "events": [
+    {
+      "time": "42'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 212076,
+        "name": "T.德瓊"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 260849,
+        "name": "盐贝健人"
+      },
+      "playerOff": {
+        "id": 142054,
+        "name": "小川航基"
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 230436,
+        "name": "奥纳尔"
+      },
+      "playerOff": {
+        "id": 139594,
+        "name": "奥维延"
+      }
+    },
+    {
+      "time": "51'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 223306,
+        "name": "佐野航大"
+      },
+      "assist": {
+        "id": 230436,
+        "name": "奥纳尔"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "58'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 168283,
+        "name": "威利姆森"
+      },
+      "playerOff": {
+        "id": 301362,
+        "name": "范德韦尔夫"
+      }
+    },
+    {
+      "time": "61'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 260849,
+        "name": "盐贝健人"
+      },
+      "assist": {
+        "id": 78001,
+        "name": "林森"
+      },
+      "score": {
+        "home": 2,
+        "away": 0
+      }
+    },
+    {
+      "time": "69'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 236608,
+        "name": "兰德"
+      },
+      "playerOff": {
+        "id": 212076,
+        "name": "T.德瓊"
+      }
+    },
+    {
+      "time": "69'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 91621,
+        "name": "塞恩蒂恩斯"
+      },
+      "playerOff": {
+        "id": 228936,
+        "name": "尤尼斯·塔哈"
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 221046,
+        "name": "布莱恩·佩雷拉"
+      },
+      "playerOff": {
+        "id": 229826,
+        "name": "萨米瓦伊萨"
+      }
+    },
+    {
+      "time": "82'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 200046,
+        "name": "A·卡普兰"
+      }
+    },
+    {
+      "time": "84'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 240012,
+        "name": "E.诺姆"
+      },
+      "playerOff": {
+        "id": 230207,
+        "name": "托姆·范·伯根"
+      }
+    },
+    {
+      "time": "84'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 218529,
+        "name": "门德斯"
+      },
+      "playerOff": {
+        "id": 230839,
+        "name": "施罗德"
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 226108,
+        "name": "诺伊·勒布雷顿"
+      },
+      "playerOff": {
+        "id": 78001,
+        "name": "林森"
+      }
+    },
+    {
+      "time": "90'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 254055,
+        "name": "丰维尔"
+      },
+      "playerOff": {
+        "id": 145426,
+        "name": "桑德勒"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 2,
+        "away": 0
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 239,
+    "guestId": 236,
+    "home": 9,
+    "homeHalf": 3,
+    "guest": 3,
+    "guestHalf": 3,
+    "detail": [
+      {
+        "min": "1",
+        "ifHome": true
+      },
+      {
+        "min": "3",
+        "ifHome": false
+      },
+      {
+        "min": "8",
+        "ifHome": true
+      },
+      {
+        "min": "13",
+        "ifHome": false
+      },
+      {
+        "min": "34",
+        "ifHome": false
+      },
+      {
+        "min": "45",
+        "ifHome": true
+      },
+      {
+        "min": "70",
+        "ifHome": true
+      },
+      {
+        "min": "75",
+        "ifHome": true
+      },
+      {
+        "min": "76",
+        "ifHome": true
+      },
+      {
+        "min": "76",
+        "ifHome": true
+      },
+      {
+        "min": "77",
+        "ifHome": true
+      },
+      {
+        "min": "82",
+        "ifHome": true
+      },
+      {
+        "min": "83",
+        "ifHome": true
+      }
+    ]
+  }
+}

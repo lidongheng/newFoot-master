@@ -1,0 +1,248 @@
+{
+  "matchId": 2790719,
+  "homeName": "特温特",
+  "awayName": "埃因霍温",
+  "events": [
+    {
+      "time": "7'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "22'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 145514,
+        "name": "提尔"
+      },
+      "playerOff": {
+        "id": 94900,
+        "name": "A.比利亞"
+      }
+    },
+    {
+      "time": "27'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 145596,
+        "name": "斯豪滕"
+      }
+    },
+    {
+      "time": "28'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 103050,
+        "name": "R.布洛佩尔"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "54'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 145596,
+        "name": "斯豪滕"
+      },
+      "assist": {
+        "id": 156250,
+        "name": "毛罗"
+      },
+      "score": {
+        "home": 0,
+        "away": 2
+      }
+    },
+    {
+      "time": "60'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 204797,
+        "name": "莱恩·弗拉明戈"
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 183316,
+        "name": "尤努瓦尔"
+      },
+      "playerOff": {
+        "id": 190048,
+        "name": "泰莱保夫"
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 167358,
+        "name": "T.范登贝尔特"
+      },
+      "playerOff": {
+        "id": 177827,
+        "name": "拉米兹"
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 286212,
+        "name": "文内古尔"
+      },
+      "playerOff": {
+        "id": 204488,
+        "name": "赫林森"
+      }
+    },
+    {
+      "time": "72'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 136127,
+        "name": "维尔许伦"
+      },
+      "playerOff": {
+        "id": 201767,
+        "name": "达安·罗茨"
+      }
+    },
+    {
+      "time": "74'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 200779,
+        "name": "K·西迪利亚"
+      },
+      "playerOff": {
+        "id": 156250,
+        "name": "毛罗"
+      }
+    },
+    {
+      "time": "74'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 199949,
+        "name": "库哈伊布·德里欧"
+      },
+      "playerOff": {
+        "id": 228573,
+        "name": "范博梅尔"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 2
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 250,
+    "guestId": 254,
+    "home": 8,
+    "homeHalf": 5,
+    "guest": 6,
+    "guestHalf": 3,
+    "detail": [
+      {
+        "min": "9",
+        "ifHome": false
+      },
+      {
+        "min": "15",
+        "ifHome": false
+      },
+      {
+        "min": "19",
+        "ifHome": false
+      },
+      {
+        "min": "26",
+        "ifHome": true
+      },
+      {
+        "min": "40",
+        "ifHome": true
+      },
+      {
+        "min": "45",
+        "ifHome": true
+      },
+      {
+        "min": "45",
+        "ifHome": true
+      },
+      {
+        "min": "45",
+        "ifHome": true
+      },
+      {
+        "min": "54",
+        "ifHome": false
+      },
+      {
+        "min": "63",
+        "ifHome": true
+      },
+      {
+        "min": "66",
+        "ifHome": false
+      },
+      {
+        "min": "77",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      }
+    ]
+  }
+}

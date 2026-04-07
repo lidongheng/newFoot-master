@@ -1,0 +1,246 @@
+{
+  "matchId": 2784690,
+  "homeName": "都灵",
+  "awayName": "罗马",
+  "events": [
+    {
+      "time": "9'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 146732,
+        "name": "伊斯马吉"
+      }
+    },
+    {
+      "time": "23'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 236908,
+        "name": "D·吉拉尔迪"
+      },
+      "playerOff": {
+        "id": 136177,
+        "name": "埃尔莫索"
+      }
+    },
+    {
+      "time": "25'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "26'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 158269,
+        "name": "马伦"
+      },
+      "assist": {
+        "id": 103864,
+        "name": "迪巴拉"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "33'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 175205,
+        "name": "霍姆格伦·佩德森"
+      },
+      "playerOff": {
+        "id": 167233,
+        "name": "阿布克拉尔"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 213707,
+        "name": "卡萨代伊"
+      },
+      "playerOff": {
+        "id": 231771,
+        "name": "基维达斯"
+      }
+    },
+    {
+      "time": "52'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 218971,
+        "name": "M·马尔瓦诺"
+      },
+      "playerOff": {
+        "id": 121329,
+        "name": "佩莱格里尼"
+      }
+    },
+    {
+      "time": "55'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 125949,
+        "name": "曼奇尼"
+      }
+    },
+    {
+      "time": "72'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 103864,
+        "name": "迪巴拉"
+      },
+      "assist": {
+        "id": 200019,
+        "name": "伦希"
+      },
+      "score": {
+        "home": 0,
+        "away": 2
+      }
+    },
+    {
+      "time": "76'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 246769,
+        "name": "艾比·尼积"
+      },
+      "playerOff": {
+        "id": 171502,
+        "name": "C·恩贡格"
+      }
+    },
+    {
+      "time": "76'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 305073,
+        "name": "瓦兹"
+      },
+      "playerOff": {
+        "id": 158269,
+        "name": "马伦"
+      }
+    },
+    {
+      "time": "76'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 234485,
+        "name": "皮西里"
+      },
+      "playerOff": {
+        "id": 103864,
+        "name": "迪巴拉"
+      }
+    },
+    {
+      "time": "76'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 142547,
+        "name": "蒂米卡斯"
+      },
+      "playerOff": {
+        "id": 200019,
+        "name": "伦希"
+      }
+    },
+    {
+      "time": "76'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 178039,
+        "name": "F.安祖连"
+      },
+      "playerOff": {
+        "id": 220729,
+        "name": "埃米尔汗·伊尔汗"
+      }
+    },
+    {
+      "time": "90+1'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 123560,
+        "name": "弗拉西奇"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 2
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 558,
+    "guestId": 174,
+    "home": 2,
+    "homeHalf": 2,
+    "guest": 1,
+    "guestHalf": 1,
+    "detail": [
+      {
+        "min": "21",
+        "ifHome": false
+      },
+      {
+        "min": "30",
+        "ifHome": true
+      },
+      {
+        "min": "37",
+        "ifHome": true
+      }
+    ]
+  }
+}

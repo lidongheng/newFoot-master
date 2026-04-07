@@ -1,0 +1,222 @@
+{
+  "matchId": 2790797,
+  "homeName": "阿贾克斯",
+  "awayName": "海伦芬",
+  "events": [
+    {
+      "time": "17'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "38'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 229373,
+        "name": "戈茨"
+      },
+      "assist": {
+        "id": 228909,
+        "name": "奥斯卡·格卢克"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "68'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 218597,
+        "name": "塞伊克"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "68'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 305786,
+        "name": "古尔布兹"
+      },
+      "playerOff": {
+        "id": 202426,
+        "name": "特伦斯科雅"
+      }
+    },
+    {
+      "time": "73'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 263548,
+        "name": "J·莫基奥"
+      },
+      "playerOff": {
+        "id": 183159,
+        "name": "里基尔"
+      }
+    },
+    {
+      "time": "73'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 213807,
+        "name": "加埃"
+      },
+      "playerOff": {
+        "id": 148344,
+        "name": "维纳杜"
+      }
+    },
+    {
+      "time": "79'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 95319,
+        "name": "D.克拉森"
+      },
+      "playerOff": {
+        "id": 198187,
+        "name": "劳尔·莫罗普"
+      }
+    },
+    {
+      "time": "82'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 269187,
+        "name": "M.林迪"
+      },
+      "playerOff": {
+        "id": 151263,
+        "name": "文特"
+      }
+    },
+    {
+      "time": "83'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 102742,
+        "name": "M.范胡克"
+      }
+    },
+    {
+      "time": "88'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 219269,
+        "name": "何佩兰"
+      },
+      "playerOff": {
+        "id": 102742,
+        "name": "M.范胡克"
+      }
+    },
+    {
+      "time": "90+2'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 142687,
+        "name": "M.里维拉"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 253,
+    "guestId": 235,
+    "home": 5,
+    "homeHalf": 2,
+    "guest": 4,
+    "guestHalf": 1,
+    "detail": [
+      {
+        "min": "24",
+        "ifHome": true
+      },
+      {
+        "min": "25",
+        "ifHome": true
+      },
+      {
+        "min": "26",
+        "ifHome": true
+      },
+      {
+        "min": "45",
+        "ifHome": false
+      },
+      {
+        "min": "53",
+        "ifHome": true
+      },
+      {
+        "min": "54",
+        "ifHome": true
+      },
+      {
+        "min": "55",
+        "ifHome": true
+      },
+      {
+        "min": "66",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}

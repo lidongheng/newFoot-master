@@ -1,0 +1,230 @@
+{
+  "matchId": 2784734,
+  "homeName": "卡利亚里",
+  "awayName": "拉齐奥",
+  "events": [
+    {
+      "time": "25'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 121356,
+        "name": "米纳"
+      }
+    },
+    {
+      "time": "42'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 253270,
+        "name": "R.伊德里西"
+      },
+      "playerOff": {
+        "id": 118848,
+        "name": "马齐特利"
+      }
+    },
+    {
+      "time": "45+1'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 150459,
+        "name": "佩莱格里尼"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "56'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 146474,
+        "name": "佩德罗.菲格雷多"
+      }
+    },
+    {
+      "time": "60'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 201312,
+        "name": "马特奥"
+      },
+      "playerOff": {
+        "id": 177048,
+        "name": "伊萨克森"
+      }
+    },
+    {
+      "time": "60'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 111054,
+        "name": "卡塔尔迪"
+      },
+      "playerOff": {
+        "id": 172446,
+        "name": "尼科洛罗维拉"
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 223863,
+        "name": "奥利弗·尼尔森"
+      }
+    },
+    {
+      "time": "72'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 206607,
+        "name": "P·拉特科夫"
+      },
+      "playerOff": {
+        "id": 177547,
+        "name": "马尔蒂尼"
+      }
+    },
+    {
+      "time": "72'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 177443,
+        "name": "塔瓦雷斯"
+      },
+      "playerOff": {
+        "id": 150459,
+        "name": "佩莱格里尼"
+      }
+    },
+    {
+      "time": "73'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 304177,
+        "name": "特雷皮"
+      },
+      "playerOff": {
+        "id": 173680,
+        "name": "埃斯波西托"
+      }
+    },
+    {
+      "time": "84'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 219688,
+        "name": "蒂贾尼·诺斯林"
+      },
+      "playerOff": {
+        "id": 121399,
+        "name": "扎卡格尼"
+      }
+    },
+    {
+      "time": "85'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "88'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 166878,
+        "name": "扎帕"
+      },
+      "playerOff": {
+        "id": 232317,
+        "name": "S·基利索伊"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 183,
+    "guestId": 182,
+    "home": 3,
+    "homeHalf": 2,
+    "guest": 6,
+    "guestHalf": 3,
+    "detail": [
+      {
+        "min": "3",
+        "ifHome": false
+      },
+      {
+        "min": "14",
+        "ifHome": true
+      },
+      {
+        "min": "19",
+        "ifHome": false
+      },
+      {
+        "min": "32",
+        "ifHome": true
+      },
+      {
+        "min": "38",
+        "ifHome": false
+      },
+      {
+        "min": "63",
+        "ifHome": false
+      },
+      {
+        "min": "78",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}

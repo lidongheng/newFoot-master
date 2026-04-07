@@ -1,0 +1,288 @@
+{
+  "matchId": 2789299,
+  "homeName": "阿森纳",
+  "awayName": "布莱顿",
+  "events": [
+    {
+      "time": "14'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 123667,
+        "name": "厄德高"
+      },
+      "assist": {
+        "id": 171322,
+        "name": "萨卡"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "45+1'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 202128,
+        "name": "B·韦布鲁根"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 177152,
+        "name": "维弗尔"
+      },
+      "playerOff": {
+        "id": 184218,
+        "name": "M.德库耶佩"
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 229192,
+        "name": "Y.明特"
+      },
+      "playerOff": {
+        "id": 232189,
+        "name": "格鲁达"
+      }
+    },
+    {
+      "time": "50'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 79361,
+        "name": "邓克"
+      }
+    },
+    {
+      "time": "52'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "56'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 220883,
+        "name": "D.科波拉"
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 230022,
+        "name": "D·戈麦斯"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 2,
+        "away": 1
+      }
+    },
+    {
+      "time": "69'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 249070,
+        "name": "斯凯利"
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 131976,
+        "name": "热苏斯"
+      },
+      "playerOff": {
+        "id": 151881,
+        "name": "约克雷斯"
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 151417,
+        "name": "加布里埃尔"
+      },
+      "playerOff": {
+        "id": 249070,
+        "name": "斯凯利"
+      }
+    },
+    {
+      "time": "75'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 28095,
+        "name": "维尔贝克"
+      },
+      "playerOff": {
+        "id": 231704,
+        "name": "J.辛舍伍德"
+      }
+    },
+    {
+      "time": "82'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 168935,
+        "name": "马丁内利"
+      },
+      "playerOff": {
+        "id": 102096,
+        "name": "特罗萨德"
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 244528,
+        "name": "C·科斯图拉斯"
+      },
+      "playerOff": {
+        "id": 230022,
+        "name": "D·戈麦斯"
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 231831,
+        "name": "托马斯·沃森"
+      },
+      "playerOff": {
+        "id": 220883,
+        "name": "D.科波拉"
+      }
+    },
+    {
+      "time": "90'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 184565,
+        "name": "因卡皮耶"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 19,
+    "guestId": 60,
+    "home": 7,
+    "homeHalf": 2,
+    "guest": 3,
+    "guestHalf": 1,
+    "detail": [
+      {
+        "min": "5",
+        "ifHome": true
+      },
+      {
+        "min": "7",
+        "ifHome": false
+      },
+      {
+        "min": "12",
+        "ifHome": true
+      },
+      {
+        "min": "30",
+        "ifHome": true
+      },
+      {
+        "min": "43",
+        "ifHome": true
+      },
+      {
+        "min": "52",
+        "ifHome": true
+      },
+      {
+        "min": "61",
+        "ifHome": true
+      },
+      {
+        "min": "77",
+        "ifHome": false
+      },
+      {
+        "min": "77",
+        "ifHome": false
+      },
+      {
+        "min": "83",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      }
+    ]
+  }
+}

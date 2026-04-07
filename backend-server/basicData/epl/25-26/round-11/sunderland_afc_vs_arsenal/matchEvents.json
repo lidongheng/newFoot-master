@@ -1,0 +1,225 @@
+{
+  "matchId": 2789236,
+  "homeName": "桑德兰",
+  "awayName": "阿森纳",
+  "events": [
+    {
+      "time": "36'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 174795,
+        "name": "祖比门迪"
+      }
+    },
+    {
+      "time": "36'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 178038,
+        "name": "巴拉德"
+      },
+      "assist": {
+        "id": 139582,
+        "name": "穆杰莱"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "45+1'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 79200,
+        "name": "扎卡"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "54'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 171322,
+        "name": "萨卡"
+      },
+      "assist": {
+        "id": 128577,
+        "name": "梅里诺"
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 171522,
+        "name": "布罗贝"
+      },
+      "playerOff": {
+        "id": 166364,
+        "name": "威尔逊伊西多"
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 202472,
+        "name": "阿丁格拉"
+      },
+      "playerOff": {
+        "id": 175732,
+        "name": "勒费埃"
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 229804,
+        "name": "塔尔比"
+      },
+      "playerOff": {
+        "id": 114766,
+        "name": "特劳雷"
+      }
+    },
+    {
+      "time": "72'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 146552,
+        "name": "曼达瓦"
+      }
+    },
+    {
+      "time": "74'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 102096,
+        "name": "特罗萨德"
+      },
+      "assist": {
+        "id": 174795,
+        "name": "祖比门迪"
+      },
+      "score": {
+        "home": 1,
+        "away": 2
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 228085,
+        "name": "伊莱泽·梅恩达"
+      },
+      "playerOff": {
+        "id": 159215,
+        "name": "海特勒伊达"
+      }
+    },
+    {
+      "time": "88'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 219262,
+        "name": "C·莫斯克拉"
+      },
+      "playerOff": {
+        "id": 150512,
+        "name": "E·埃泽"
+      }
+    },
+    {
+      "time": "90+3'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 171522,
+        "name": "布罗贝"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 2,
+        "away": 2
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 2,
+        "away": 2
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 65,
+    "guestId": 19,
+    "home": 2,
+    "homeHalf": 1,
+    "guest": 2,
+    "guestHalf": 1,
+    "detail": [
+      {
+        "min": "18",
+        "ifHome": false
+      },
+      {
+        "min": "45",
+        "ifHome": true
+      },
+      {
+        "min": "49",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}

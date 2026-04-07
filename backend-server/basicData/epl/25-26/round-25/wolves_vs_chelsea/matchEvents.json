@@ -1,0 +1,247 @@
+{
+  "matchId": 2789378,
+  "homeName": "狼队",
+  "awayName": "切尔西",
+  "events": [
+    {
+      "time": "13'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "35'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "38'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 191693,
+        "name": "帕尔默"
+      },
+      "assist": {
+        "id": 156847,
+        "name": "库库雷利亚"
+      },
+      "score": {
+        "home": 0,
+        "away": 3
+      }
+    },
+    {
+      "time": "43'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 149483,
+        "name": "L·克雷伊奇"
+      },
+      "playerOff": {
+        "id": 131877,
+        "name": "黄喜灿"
+      }
+    },
+    {
+      "time": "45+3'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 124534,
+        "name": "A.阿姆斯特朗"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 3
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 200680,
+        "name": "R·戈梅斯"
+      },
+      "playerOff": {
+        "id": 109496,
+        "name": "多赫蒂"
+      }
+    },
+    {
+      "time": "54'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 200501,
+        "name": "阿罗科达雷"
+      },
+      "assist": {
+        "id": 124534,
+        "name": "A.阿姆斯特朗"
+      },
+      "score": {
+        "home": 1,
+        "away": 3
+      }
+    },
+    {
+      "time": "61'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 220768,
+        "name": "A·加纳乔"
+      },
+      "playerOff": {
+        "id": 191693,
+        "name": "帕尔默"
+      }
+    },
+    {
+      "time": "73'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 156847,
+        "name": "库库雷利亚"
+      }
+    },
+    {
+      "time": "75'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 200385,
+        "name": "德拉普"
+      },
+      "playerOff": {
+        "id": 173371,
+        "name": "佩德罗"
+      }
+    },
+    {
+      "time": "75'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 265528,
+        "name": "阿昌蓬"
+      },
+      "playerOff": {
+        "id": 201037,
+        "name": "古斯托"
+      }
+    },
+    {
+      "time": "79'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 145124,
+        "name": "贝雷格莱德"
+      },
+      "playerOff": {
+        "id": 153488,
+        "name": "A·戈麦斯"
+      }
+    },
+    {
+      "time": "84'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 231872,
+        "name": "哈托"
+      },
+      "playerOff": {
+        "id": 225997,
+        "name": "桑托斯"
+      }
+    },
+    {
+      "time": "90+1'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 246465,
+        "name": "P.利马"
+      },
+      "playerOff": {
+        "id": 200955,
+        "name": "J.戈麦斯"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 3
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 52,
+    "guestId": 24,
+    "home": 3,
+    "homeHalf": 1,
+    "guest": 4,
+    "guestHalf": 4,
+    "detail": [
+      {
+        "min": "1",
+        "ifHome": false
+      },
+      {
+        "min": "2",
+        "ifHome": true
+      },
+      {
+        "min": "28",
+        "ifHome": false
+      },
+      {
+        "min": "32",
+        "ifHome": false
+      },
+      {
+        "min": "33",
+        "ifHome": false
+      },
+      {
+        "min": "45",
+        "ifHome": false
+      },
+      {
+        "min": "54",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      }
+    ]
+  }
+}

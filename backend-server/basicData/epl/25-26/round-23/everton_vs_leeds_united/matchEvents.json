@@ -1,0 +1,247 @@
+{
+  "matchId": 2789354,
+  "homeName": "埃弗顿",
+  "awayName": "利兹联",
+  "events": [
+    {
+      "time": "28'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 150478,
+        "name": "贾斯汀"
+      },
+      "assist": {
+        "id": 199451,
+        "name": "安东.斯塔赫"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 182201,
+        "name": "布兰斯维特"
+      },
+      "playerOff": {
+        "id": 261206,
+        "name": "阿姆斯特朗"
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 180960,
+        "name": "K·霍尔"
+      },
+      "playerOff": {
+        "id": 165331,
+        "name": "麦克尼尔"
+      }
+    },
+    {
+      "time": "54'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 199451,
+        "name": "安东.斯塔赫"
+      }
+    },
+    {
+      "time": "56'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 178234,
+        "name": "伊莉亚·格鲁夫"
+      }
+    },
+    {
+      "time": "66'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 154266,
+        "name": "田中碧"
+      },
+      "playerOff": {
+        "id": 178234,
+        "name": "伊莉亚·格鲁夫"
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 225963,
+        "name": "迪布林"
+      },
+      "playerOff": {
+        "id": 198920,
+        "name": "内森·帕特森"
+      }
+    },
+    {
+      "time": "76'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 229129,
+        "name": "T·巴里"
+      },
+      "assist": {
+        "id": 70342,
+        "name": "盖耶"
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "85'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 150848,
+        "name": "朗斯塔夫"
+      },
+      "playerOff": {
+        "id": 199451,
+        "name": "安东.斯塔赫"
+      }
+    },
+    {
+      "time": "85'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 165972,
+        "name": "N·奥卡福尔"
+      },
+      "playerOff": {
+        "id": 166918,
+        "name": "阿隆森"
+      }
+    },
+    {
+      "time": "85'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 222609,
+        "name": "博纳诺特"
+      },
+      "playerOff": {
+        "id": 167501,
+        "name": "波亚纳乌"
+      }
+    },
+    {
+      "time": "89'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 178187,
+        "name": "贝托"
+      },
+      "playerOff": {
+        "id": 229129,
+        "name": "T·巴里"
+      }
+    },
+    {
+      "time": "90'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 222609,
+        "name": "博纳诺特"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 31,
+    "guestId": 56,
+    "home": 4,
+    "homeHalf": 3,
+    "guest": 4,
+    "guestHalf": 2,
+    "detail": [
+      {
+        "min": "1",
+        "ifHome": true
+      },
+      {
+        "min": "4",
+        "ifHome": true
+      },
+      {
+        "min": "15",
+        "ifHome": false
+      },
+      {
+        "min": "33",
+        "ifHome": false
+      },
+      {
+        "min": "39",
+        "ifHome": true
+      },
+      {
+        "min": "75",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}

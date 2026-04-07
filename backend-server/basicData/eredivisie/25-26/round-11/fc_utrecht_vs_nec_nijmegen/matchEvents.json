@@ -1,0 +1,204 @@
+{
+  "matchId": 2790802,
+  "homeName": "乌德勒支",
+  "awayName": "奈梅亨",
+  "events": [
+    {
+      "time": "41'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 200713,
+        "name": "米格尔·罗德里格兹"
+      },
+      "assist": {
+        "id": 226048,
+        "name": "布莱克"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "42'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 78001,
+        "name": "林森"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "53'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 226048,
+        "name": "布莱克"
+      }
+    },
+    {
+      "time": "60'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 260849,
+        "name": "盐贝健人"
+      },
+      "playerOff": {
+        "id": 142054,
+        "name": "小川航基"
+      }
+    },
+    {
+      "time": "65'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 199216,
+        "name": "尤安·凯斯林"
+      },
+      "playerOff": {
+        "id": 226048,
+        "name": "布莱克"
+      }
+    },
+    {
+      "time": "72'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 226108,
+        "name": "诺伊·勒布雷顿"
+      },
+      "playerOff": {
+        "id": 78001,
+        "name": "林森"
+      }
+    },
+    {
+      "time": "73'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 96634,
+        "name": "米西德扬"
+      },
+      "playerOff": {
+        "id": 139594,
+        "name": "奥维延"
+      }
+    },
+    {
+      "time": "74'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 145426,
+        "name": "桑德勒"
+      }
+    },
+    {
+      "time": "75'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 150787,
+        "name": "明"
+      },
+      "playerOff": {
+        "id": 96462,
+        "name": "阿莱"
+      }
+    },
+    {
+      "time": "83'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 254055,
+        "name": "丰维尔"
+      },
+      "playerOff": {
+        "id": 145426,
+        "name": "桑德勒"
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "90'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 179777,
+        "name": "范登贝格"
+      },
+      "playerOff": {
+        "id": 238831,
+        "name": "吉瓦伊·泽基尔"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 237,
+    "guestId": 239,
+    "home": 2,
+    "homeHalf": 0,
+    "guest": 2,
+    "guestHalf": 1,
+    "detail": [
+      {
+        "min": "33",
+        "ifHome": false
+      },
+      {
+        "min": "58",
+        "ifHome": true
+      },
+      {
+        "min": "85",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      }
+    ]
+  }
+}

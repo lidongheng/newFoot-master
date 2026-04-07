@@ -1,0 +1,217 @@
+{
+  "matchId": 2932463,
+  "homeName": "塞尔塔",
+  "awayName": "塞萨洛尼基",
+  "events": [
+    {
+      "time": "40'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 203981,
+        "name": "I·莫里巴"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 246241,
+        "name": "M·罗曼"
+      },
+      "playerOff": {
+        "id": 203981,
+        "name": "I·莫里巴"
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 215704,
+        "name": "维勒特·斯维贝里"
+      },
+      "assist": {
+        "id": 133940,
+        "name": "伊格莱西亚斯"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 154701,
+        "name": "卡马拉"
+      },
+      "playerOff": {
+        "id": 217169,
+        "name": "亚历山德罗·比安科"
+      }
+    },
+    {
+      "time": "67'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 196127,
+        "name": "费伦·尤特拉·布兰奇"
+      },
+      "playerOff": {
+        "id": 75433,
+        "name": "阿斯帕斯"
+      }
+    },
+    {
+      "time": "74'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 31197,
+        "name": "泰勒"
+      },
+      "playerOff": {
+        "id": 299923,
+        "name": "查西迪斯"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 224733,
+        "name": "阿卜杜拉乌伊"
+      },
+      "playerOff": {
+        "id": 215704,
+        "name": "维勒特·斯维贝里"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 298545,
+        "name": "费尔·洛佩斯"
+      },
+      "playerOff": {
+        "id": 133940,
+        "name": "伊格莱西亚斯"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 164522,
+        "name": "A.杰雷梅杰夫"
+      },
+      "playerOff": {
+        "id": 103500,
+        "name": "吉亚库马基斯"
+      }
+    },
+    {
+      "time": "89'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 206354,
+        "name": "卡洛斯多明格斯"
+      },
+      "playerOff": {
+        "id": 75513,
+        "name": "阿隆索"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 114,
+    "guestId": 724,
+    "home": 6,
+    "homeHalf": 3,
+    "guest": 2,
+    "guestHalf": 2,
+    "detail": [
+      {
+        "min": "17",
+        "ifHome": false
+      },
+      {
+        "min": "17",
+        "ifHome": false
+      },
+      {
+        "min": "17",
+        "ifHome": false
+      },
+      {
+        "min": "23",
+        "ifHome": true
+      },
+      {
+        "min": "32",
+        "ifHome": true
+      },
+      {
+        "min": "32",
+        "ifHome": true
+      },
+      {
+        "min": "51",
+        "ifHome": true
+      },
+      {
+        "min": "52",
+        "ifHome": true
+      },
+      {
+        "min": "70",
+        "ifHome": true
+      },
+      {
+        "min": "83",
+        "ifHome": false
+      }
+    ]
+  }
+}

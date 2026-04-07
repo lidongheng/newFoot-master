@@ -1,0 +1,233 @@
+{
+  "matchId": 2784595,
+  "homeName": "国际米兰",
+  "awayName": "AC米兰",
+  "events": [
+    {
+      "time": "45+1'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 154646,
+        "name": "莱奥"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "54'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 138803,
+        "name": "普利西奇"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "61'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 96450,
+        "name": "恰尔汉奥卢"
+      }
+    },
+    {
+      "time": "66'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 201268,
+        "name": "邦尼"
+      },
+      "playerOff": {
+        "id": 140322,
+        "name": "劳塔罗"
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "72'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 173174,
+        "name": "S·帕夫洛维奇"
+      }
+    },
+    {
+      "time": "74'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "78'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 103092,
+        "name": "泽林斯基"
+      },
+      "playerOff": {
+        "id": 96450,
+        "name": "恰尔汉奥卢"
+      }
+    },
+    {
+      "time": "78'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 174865,
+        "name": "里奇"
+      },
+      "playerOff": {
+        "id": 167802,
+        "name": "Y·福法纳"
+      }
+    },
+    {
+      "time": "78'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 134153,
+        "name": "恩昆库"
+      },
+      "playerOff": {
+        "id": 138803,
+        "name": "普利西奇"
+      }
+    },
+    {
+      "time": "85'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 237197,
+        "name": "埃斯波西托"
+      },
+      "playerOff": {
+        "id": 121429,
+        "name": "巴雷拉"
+      }
+    },
+    {
+      "time": "85'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 211207,
+        "name": "安迪·迪乌夫"
+      },
+      "playerOff": {
+        "id": 84533,
+        "name": "阿切尔比"
+      }
+    },
+    {
+      "time": "86'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 128363,
+        "name": "奇克"
+      },
+      "playerOff": {
+        "id": 154646,
+        "name": "莱奥"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 152,
+    "guestId": 150,
+    "home": 9,
+    "homeHalf": 4,
+    "guest": 1,
+    "guestHalf": 0,
+    "detail": [
+      {
+        "min": "3",
+        "ifHome": true
+      },
+      {
+        "min": "13",
+        "ifHome": true
+      },
+      {
+        "min": "15",
+        "ifHome": true
+      },
+      {
+        "min": "27",
+        "ifHome": true
+      },
+      {
+        "min": "50",
+        "ifHome": true
+      },
+      {
+        "min": "68",
+        "ifHome": false
+      },
+      {
+        "min": "74",
+        "ifHome": true
+      },
+      {
+        "min": "76",
+        "ifHome": true
+      },
+      {
+        "min": "81",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      }
+    ]
+  }
+}
