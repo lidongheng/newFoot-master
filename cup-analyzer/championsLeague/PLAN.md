@@ -39,5 +39,5 @@
 ## 六、参考
 
 - 工作流程：[workflow.md](./workflow.md)
-- 赛前模板：`league-analyzer/prompts/match_analysis_template.md`
+- 赛前模板：`prompts/match_analysis_template.md`（本目录下）
 - 赛前/赛后 SKILL：`dh-match-predict-analysis` / `dh-post-match-analysis`

@@ -11,6 +11,7 @@
     "process:squad": "node processors/squadProcessor.js",
     "process:profile": "node processors/teamProfileGenerator.js",
     "crawl:schedule:ucl": "CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js",
+    "crawl:schedule:epl": "CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js",
     "crawl:player-list": "node crawlers/playerListCrawler.js",
     "analyze:club-domestic": "node analyzers/clubMatchAnalyzer.js"
   },

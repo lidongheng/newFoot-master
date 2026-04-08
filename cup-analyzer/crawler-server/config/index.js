@@ -4,6 +4,7 @@ const path = require('path');
  * 多杯赛配置：通过环境变量 CUP_ANALYZER_CUP 切换
  * - theWorldCup（默认）
  * - championsLeague
+ * - epl（英超，联赛序号 36；赛程 season 目录与球探一致，如 2025-2026）
  *
  * 示例：CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js
  */
@@ -28,6 +29,18 @@ const cups = {
       playerCenter: path.resolve(__dirname, '../output/player_center'),
       basicData: path.resolve(__dirname, '../output/basicData'),
       cupScheduleData: path.resolve(__dirname, '../../championsLeague/data/c103.js'),
+    },
+  },
+  epl: {
+    cupSerial: '36',
+    cupName: 'epl',
+    /** titan007 联赛赛程 JS 所在赛季目录，与 s36/c36 一致 */
+    season: '2025-2026',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../epl'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../output/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../epl/data/c36.js'),
     },
   },
 };

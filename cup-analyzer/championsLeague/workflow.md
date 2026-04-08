@@ -47,7 +47,7 @@
         → 输出 `crawler-server/output/player_center/{teamSerial}-new.json`（出场、首发、进球助攻、阵型等）
      e. 将 squadTarget 改为客队，对客队重复 c–d
      f. 将双方大名单、伤停等整理进 news/{赛季}/{阶段}/{对阵}/（可与统计信息、新闻稿同目录）
-  1. 预测首发（格式见 league-analyzer/prompts/match_analysis_template.md）
+  1. 预测首发（格式见 [prompts/match_analysis_template.md](./prompts/match_analysis_template.md)）
   2. 交锋、近况、未来赛程（含国内联赛/杯赛）
   3. 盘口：初盘/临场；可引用 l103.js、bs103.js、td103.js（联赛阶段样本量少于国内联赛，需结合判断）
   4. UCL 专项：当前积分排名、是否轮换、两回合总比分（淘汰赛）
