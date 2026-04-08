@@ -8,7 +8,13 @@ const { readJSON, saveMarkdown, fileExists } = require('../utils/fileWriter');
  * 大名单处理器 - 将 JSON 球员数据清洗并生成按小组分类的 Markdown 文件
  *
  * 输入: output/player_center/{teamSerial}.json
- * 输出: cup-analyzer/theWorldCup/squad/group-X/{队名}.md
+ * 输出: cup-analyzer/theWorldCup/squad/group-X/{队名}.md（单队若无法匹配小组则写入 squad/misc/）
+ *
+ * CLI:
+ *   node processors/squadProcessor.js              # 处理世界杯 c75 中全部已有 json 的球队
+ *   node processors/squadProcessor.js --team 772  # 只处理一队
+ *   node processors/squadProcessor.js -t 772
+ *   node processors/squadProcessor.js --help
  */
 class SquadProcessor extends BaseCrawler {
   constructor() {
@@ -153,12 +159,143 @@ class SquadProcessor extends BaseCrawler {
     this.log(`\n处理完成: 成功${results.success.length} 无数据${results.noData.length} 失败${results.failed.length}`);
     return results;
   }
+
+  /**
+   * 根据积分榜小组数据查找球队所在小组字母；找不到则返回 null（输出到 misc）
+   */
+  findGroupLetterForTeam(teamId, scheduleData) {
+    const groupMap = this.buildGroupMap(scheduleData);
+    const id = Number(teamId);
+    for (const [letter, group] of Object.entries(groupMap)) {
+      if (group.teams.some((t) => Number(t.teamId) === id)) return letter;
+    }
+    return null;
+  }
+
+  /**
+   * 只处理一支球队：生成单个 Markdown（需已有 player_center/{序号}.json）
+   */
+  async processOne(teamSerial) {
+    const scheduleData = this.parseScheduleData();
+    if (!scheduleData) {
+      this.error('无法读取赛程数据');
+      return null;
+    }
+
+    const id = Number(teamSerial);
+    if (Number.isNaN(id)) {
+      this.error(`无效的球队序号: ${teamSerial}`);
+      return null;
+    }
+
+    const teamMap = this.buildTeamMap(scheduleData.arrTeam);
+    const teamInfo = teamMap[id];
+    if (!teamInfo) {
+      this.error(
+        `球队序号 ${id} 不在当前赛程 arrTeam 中。请确认已设置正确的 CUP_ANALYZER_CUP，且 cupScheduleData 与球队一致。`
+      );
+      return null;
+    }
+
+    const jsonPath = path.join(config.paths.playerCenter, `${id}.json`);
+    if (!fileExists(jsonPath)) {
+      this.error(`无球员数据: ${jsonPath}，请先执行: node crawlers/squadCrawler.js --team ${id}`);
+      return null;
+    }
+
+    const letter = this.findGroupLetterForTeam(id, scheduleData);
+    const groupFolder = letter ? `group-${letter}` : 'misc';
+
+    try {
+      const players = readJSON(jsonPath);
+      const md = this.generateSquadMarkdown(teamInfo, players);
+      const mdPath = path.join(config.paths.cupAnalyzer, 'squad', groupFolder, `${teamInfo.chineseName}.md`);
+      saveMarkdown(mdPath, md);
+      this.log(`单队处理完成: ${teamInfo.chineseName} → ${mdPath}`);
+      return { teamInfo, mdPath, groupFolder };
+    } catch (err) {
+      this.error(`处理失败: ${err.message}`);
+      return null;
+    }
+  }
+}
+
+function printSquadProcessorUsage() {
+  console.log(`
+大名单处理器（JSON → Markdown）
+
+用法:
+  node processors/squadProcessor.js [选项]
+
+选项:
+  （无参数）           按赛程遍历全部球队，有 json 则生成 squad/group-X/*.md
+  --team <序号>        只处理一队（需已有 output/player_center/<序号>.json）
+  -t <序号>            同 --team
+  --help, -h           显示本说明
+
+说明:
+  依赖当前 config 的 cupScheduleData（默认世界杯 c75）。单队序号须出现在该赛程的 arrTeam 中。
+
+示例:
+  node crawlers/squadCrawler.js --team 772
+  node processors/squadProcessor.js --team 772
+  npm run process:squad:one -- 772
+`);
+}
+
+function parseProcessorCliArgs(argv) {
+  const out = { mode: 'all', teamSerial: null };
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === '--help' || a === '-h') {
+      out.mode = 'help';
+      return out;
+    }
+    if (a === '--team' || a === '-t') {
+      const next = argv[i + 1];
+      if (next && !next.startsWith('-')) {
+        out.mode = 'one';
+        out.teamSerial = String(next).trim();
+        i++;
+      } else {
+        out.mode = 'missing_team';
+      }
+      continue;
+    }
+    if (a.startsWith('--team=')) {
+      const v = a.slice('--team='.length).trim();
+      if (v) {
+        out.mode = 'one';
+        out.teamSerial = v;
+      } else {
+        out.mode = 'missing_team';
+      }
+      continue;
+    }
+  }
+  return out;
 }
 
 // CLI 模式
 if (require.main === module) {
+  const argv = process.argv.slice(2);
+  const opts = parseProcessorCliArgs(argv);
   const processor = new SquadProcessor();
-  processor.processAll().catch(console.error);
+
+  if (opts.mode === 'help') {
+    printSquadProcessorUsage();
+    process.exit(0);
+  }
+  if (opts.mode === 'missing_team') {
+    console.error('错误: 请提供球队序号，例如: node processors/squadProcessor.js --team 772\n');
+    printSquadProcessorUsage();
+    process.exit(1);
+  }
+  if (opts.mode === 'one' && opts.teamSerial) {
+    processor.processOne(opts.teamSerial).catch(console.error);
+  } else {
+    processor.processAll().catch(console.error);
+  }
 }
 
 module.exports = SquadProcessor;

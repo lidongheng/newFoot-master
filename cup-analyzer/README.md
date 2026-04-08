@@ -89,8 +89,9 @@ npm run dev
 
 # CLI模式（无需启动服务）
 node crawlers/squadCrawler.js              # 批量爬取48队大名单
-node crawlers/squadCrawler.js --team 772   # 爬取西班牙大名单
-node processors/squadProcessor.js          # 生成大名单Markdown
+node crawlers/squadCrawler.js --team 772   # 爬取单队大名单（或 npm run crawl:squad:one -- 772）
+node processors/squadProcessor.js          # 将全部已有 json 转为 squad/group-*/ 下 Markdown
+node processors/squadProcessor.js --team 772  # 只生成一队 Markdown（或 npm run process:squad:one -- 772）
 node processors/teamProfileGenerator.js    # 生成球队画像
 node processors/strategyAnalyzer.js        # 生成策略分析报告
 node crawlers/matchDataCrawler.js --match 2906701  # 爬取单场赛后数据

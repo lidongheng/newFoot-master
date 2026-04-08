@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const BaseCrawler = require('./base');
 const targets = require('../config/targets');
 const config = require('../config');
@@ -10,6 +11,12 @@ const { saveJSON, fileExists } = require('../utils/fileWriter');
  *
  * 数据来源: titan007 teamDetail API
  * 输出: output/player_center/{teamSerial}.json
+ *
+ * CLI:
+ *   node crawlers/squadCrawler.js                    # 批量（世界杯赛程 c75 中的队）
+ *   node crawlers/squadCrawler.js --team <球队序号>   # 只爬一队，如 --team 772
+ *   node crawlers/squadCrawler.js -t 772               # 同上
+ *   node crawlers/squadCrawler.js --help               # 帮助
  */
 class SquadCrawler extends BaseCrawler {
   constructor() {
@@ -136,13 +143,95 @@ class SquadCrawler extends BaseCrawler {
   }
 }
 
+function printSquadCrawlerUsage() {
+  console.log(`
+大名单爬虫（国家队 / teamDetail）
+
+用法:
+  node crawlers/squadCrawler.js [选项]
+
+选项:
+  （无参数）           按当前世界杯赛程数据批量爬取全部确定参赛队（跳过已存在的 json）
+  --team <序号>        只爬取指定球探球队序号一队，输出 output/player_center/<序号>.json
+  -t <序号>            同 --team
+  --force              与 --team 合用：单队模式下忽略是否已存在文件，重新抓取
+  --help, -h           显示本说明
+
+示例:
+  node crawlers/squadCrawler.js --team 772
+  node crawlers/squadCrawler.js -t 19
+  npm run crawl:squad:one -- 772
+
+球队序号见各杯赛 data/球队与序号对照表.md（世界杯 c75 对应队）。
+`);
+}
+
+function parseSquadCliArgs(argv) {
+  const out = { mode: 'all', teamSerial: null, force: false };
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === '--help' || a === '-h') {
+      out.mode = 'help';
+      return out;
+    }
+    if (a === '--force') {
+      out.force = true;
+      continue;
+    }
+    if (a === '--team' || a === '-t') {
+      const next = argv[i + 1];
+      if (next && !next.startsWith('-')) {
+        out.mode = 'one';
+        out.teamSerial = String(next).trim();
+        i++;
+      } else {
+        out.mode = 'missing_team';
+      }
+      continue;
+    }
+    if (a.startsWith('--team=')) {
+      const v = a.slice('--team='.length).trim();
+      if (v) {
+        out.mode = 'one';
+        out.teamSerial = v;
+      } else {
+        out.mode = 'missing_team';
+      }
+      continue;
+    }
+  }
+  return out;
+}
+
 // CLI 模式
 if (require.main === module) {
-  const args = process.argv.slice(2);
+  const argv = process.argv.slice(2);
+  const opts = parseSquadCliArgs(argv);
   const crawler = new SquadCrawler();
 
-  if (args[0] === '--team' && args[1]) {
-    crawler.crawlTeam(args[1]).catch(console.error);
+  if (opts.mode === 'help') {
+    printSquadCrawlerUsage();
+    process.exit(0);
+  }
+
+  if (opts.mode === 'missing_team') {
+    console.error('错误: 请提供球队序号，例如: node crawlers/squadCrawler.js --team 772\n');
+    printSquadCrawlerUsage();
+    process.exit(1);
+  }
+
+  if (opts.mode === 'one' && opts.teamSerial) {
+    const serial = opts.teamSerial;
+    const outputPath = path.join(config.paths.playerCenter, `${serial}.json`);
+    if (opts.force && fileExists(outputPath)) {
+      try {
+        fs.unlinkSync(outputPath);
+        crawler.log(`已删除旧文件（--force）: ${outputPath}`);
+      } catch (e) {
+        crawler.error(`无法删除旧文件: ${e.message}`);
+      }
+    }
+    crawler.crawlTeam(serial).catch(console.error);
   } else {
     crawler.crawlAllTeams().catch(console.error);
   }
