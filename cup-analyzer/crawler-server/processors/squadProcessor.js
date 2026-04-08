@@ -3,6 +3,7 @@ const fs = require('fs');
 const BaseCrawler = require('../crawlers/base');
 const config = require('../config');
 const { readJSON, saveMarkdown, fileExists } = require('../utils/fileWriter');
+const { formatTransferColumn } = require('../utils/playerDetailEnricher');
 
 /**
  * 大名单处理器 - 将 JSON 球员数据清洗并生成按小组分类的 Markdown 文件
@@ -89,12 +90,14 @@ class SquadProcessor extends BaseCrawler {
     for (const [, group] of Object.entries(groups)) {
       if (group.players.length === 0) continue;
       lines.push(`\n## ${group.label}（${group.players.length}人）\n`);
-      lines.push('| 球衣号 | 姓名 | 年龄 | 身高 | 位置 | 身价(万) | 国籍 |');
-      lines.push('|--------|------|------|------|------|----------|------|');
+      lines.push('| 球衣号 | 姓名 | 俱乐部 | 年龄 | 身高 | 位置 | 身价(万) | 国籍 | 转会记录 |');
+      lines.push('|--------|------|--------|------|------|------|----------|------|----------|');
       group.players.forEach((p) => {
         const pos = this.normalizePosition(p.position);
+        const clubCol = p.currentClub != null && String(p.currentClub).trim() ? p.currentClub : '-';
+        const transferCol = formatTransferColumn(p);
         lines.push(
-          `| ${p.number || '-'} | ${p.name} | ${p.age || '-'} | ${p.height ? p.height + 'cm' : '-'} | ${pos} | ${p.marketValue || '-'} | ${p.nationality || '-'} |`
+          `| ${p.number || '-'} | ${p.name} | ${clubCol} | ${p.age || '-'} | ${p.height ? p.height + 'cm' : '-'} | ${pos} | ${p.marketValue || '-'} | ${p.nationality || '-'} | ${transferCol} |`
         );
       });
     }

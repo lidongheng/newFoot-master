@@ -12,6 +12,7 @@ const { dateFormat } = require('../utils/dateFormat');
 const { ensureDir } = require('../utils/fileWriter');
 const config = require('../config');
 const squadTarget = require('../config/squadTarget');
+const { enrichPlayers } = require('../utils/playerDetailEnricher');
 
 function parsePlayer(rearguard, vanguard, goalkeeper, midfielder, lineupDetail) {
   const players = [];
@@ -110,10 +111,23 @@ async function fetchPlayerList() {
   eval(text);
 
   const players = parsePlayer(rearguard, vanguard, goalkeeper, midfielder, lineupDetail);
+
+  const argv = process.argv.slice(2);
+  const withClub = argv.includes('--with-club');
+  if (withClub) {
+    console.log('[playerListCrawler] 补充俱乐部与转会信息…');
+    await enrichPlayers(String(serial), players, {
+      nameKey: 'name',
+      delayMs: config.crawlDelayMs,
+      logger: (msg) => console.log(msg),
+      lineupDetail,
+    });
+  }
+
   const outDir = config.paths.playerCenter;
   ensureDir(outDir);
   const outPath = path.join(outDir, `${serial}.json`);
-  fs.writeFileSync(outPath, JSON.stringify(players), 'utf8');
+  fs.writeFileSync(outPath, JSON.stringify(players, null, 2), 'utf8');
   console.log(`[playerListCrawler] 已写入 ${outPath}（共 ${players.length} 人）`);
   return { outPath, count: players.length };
 }

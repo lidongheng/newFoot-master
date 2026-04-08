@@ -14,6 +14,14 @@ const targets = {
     teamDetailUrl: (serial) =>
       `http://zq.titan007.com/jsData/teamInfo/teamDetail/tdl${serial}.js?version=${Date.now()}`,
 
+    /** 球队阵容页 HTML，用于解析球员详情链接 playerSerial */
+    teamLineupUrl: (teamSerial) =>
+      `http://zq.titan007.com/cn/team/lineup/${teamSerial}.html`,
+
+    /** 球员资料 JS：sandbox 含 nowTeamInfo、transferInfo 等 */
+    playerDataUrl: (playerSerial) =>
+      `http://zq.titan007.com/jsData/playerInfo/player${playerSerial}.js?version=${Date.now()}`,
+
     matchAnalysisUrl: (matchSerial) =>
       `https://m.titan007.com/Analy/ShiJian/${matchSerial}.htm`,
 

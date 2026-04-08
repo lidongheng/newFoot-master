@@ -4,6 +4,7 @@ const BaseCrawler = require('./base');
 const targets = require('../config/targets');
 const config = require('../config');
 const { saveJSON, fileExists } = require('../utils/fileWriter');
+const { enrichPlayers } = require('../utils/playerDetailEnricher');
 
 /**
  * 大名单爬虫 - 批量爬取世界杯48队26人名单
@@ -21,6 +22,8 @@ const { saveJSON, fileExists } = require('../utils/fileWriter');
 class SquadCrawler extends BaseCrawler {
   constructor() {
     super('SquadCrawler');
+    /** 是否抓取球员俱乐部与转会（单队默认 true，批量默认 false，可由 CLI 覆盖） */
+    this.withClub = false;
   }
 
   /**
@@ -75,7 +78,8 @@ class SquadCrawler extends BaseCrawler {
   /**
    * 爬取单个球队大名单
    */
-  async crawlTeam(teamSerial) {
+  async crawlTeam(teamSerial, opts = {}) {
+    const useClub = opts.withClub !== undefined ? opts.withClub : this.withClub;
     const url = targets.titan007.teamDetailUrl(teamSerial);
     this.log(`爬取球队 ${teamSerial}: ${url}`);
 
@@ -86,6 +90,15 @@ class SquadCrawler extends BaseCrawler {
     }
 
     const players = this.parsePlayerData(sandbox);
+    if (useClub) {
+      this.log(`补充俱乐部与转会信息（${players.length} 人）…`);
+      await enrichPlayers(teamSerial, players, {
+        nameKey: 'name',
+        delayMs: this.delayMs,
+        logger: (msg) => this.log(msg),
+        lineupDetail: sandbox.lineupDetail,
+      });
+    }
     const outputPath = path.join(config.paths.playerCenter, `${teamSerial}.json`);
     saveJSON(outputPath, players);
 
@@ -124,7 +137,7 @@ class SquadCrawler extends BaseCrawler {
       this.log(`[${i + 1}/${realTeams.length}] ${team.chineseName}(${team.id})`);
 
       try {
-        const result = await this.crawlTeam(team.id);
+        const result = await this.crawlTeam(team.id, { withClub: this.withClub });
         if (result) {
           results.success.push({ ...team, playerCount: result.playerCount });
         } else {
@@ -155,11 +168,15 @@ function printSquadCrawlerUsage() {
   --team <序号>        只爬取指定球探球队序号一队，输出 output/player_center/<序号>.json
   -t <序号>            同 --team
   --force              与 --team 合用：单队模式下忽略是否已存在文件，重新抓取
+  --with-club          批量模式下也抓取每名球员的俱乐部与转会（请求量大，慎用）
+  --no-club            单队模式下不抓取俱乐部/转会（默认单队会抓）
   --help, -h           显示本说明
 
 示例:
   node crawlers/squadCrawler.js --team 772
   node crawlers/squadCrawler.js -t 19
+  node crawlers/squadCrawler.js --team 744 --no-club
+  node crawlers/squadCrawler.js --with-club
   npm run crawl:squad:one -- 772
 
 球队序号见各杯赛 data/球队与序号对照表.md（世界杯 c75 对应队）。
@@ -167,12 +184,20 @@ function printSquadCrawlerUsage() {
 }
 
 function parseSquadCliArgs(argv) {
-  const out = { mode: 'all', teamSerial: null, force: false };
+  const out = { mode: 'all', teamSerial: null, force: false, withClubFlag: null };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--help' || a === '-h') {
       out.mode = 'help';
       return out;
+    }
+    if (a === '--with-club') {
+      out.withClubFlag = true;
+      continue;
+    }
+    if (a === '--no-club') {
+      out.withClubFlag = false;
+      continue;
     }
     if (a === '--force') {
       out.force = true;
@@ -203,11 +228,18 @@ function parseSquadCliArgs(argv) {
   return out;
 }
 
+function resolveSquadWithClub(opts) {
+  if (opts.withClubFlag === true) return true;
+  if (opts.withClubFlag === false) return false;
+  return opts.mode === 'one';
+}
+
 // CLI 模式
 if (require.main === module) {
   const argv = process.argv.slice(2);
   const opts = parseSquadCliArgs(argv);
   const crawler = new SquadCrawler();
+  crawler.withClub = resolveSquadWithClub(opts);
 
   if (opts.mode === 'help') {
     printSquadCrawlerUsage();
