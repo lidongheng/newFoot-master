@@ -21,7 +21,7 @@ cup-analyzer/
 │   ├── rule/
 │   │   └── league-rule.md                  # 英超联赛规则
 │   ├── data/
-│   │   ├── c36.js                          # 赛程数据（scheduleCrawler 抓取）
+│   │   ├── s36.js                          # 赛程数据（联赛格式；scheduleCrawler 抓取）
 │   │   ├── l36.js                          # 亚盘盘路榜（从 league-analyzer 复制）
 │   │   ├── bs36.js                         # 大小球盘路榜（从 league-analyzer 复制）
 │   │   ├── td36.js                         # 入球时间（从 league-analyzer 复制）
@@ -101,7 +101,7 @@ cup-analyzer/
 
 ### 需爬取生成
 
-- `c36.js`：`CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js`
+- `s36.js`：`CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js`
 - `球队与序号对照表.md`：从 `match_center/s36.js` 的 `arrTeam` 提取
 
 ## 六、crawler-server 配置扩展
@@ -117,7 +117,7 @@ epl: {
     cupAnalyzer: path.resolve(__dirname, '../../epl'),
     playerCenter: path.resolve(__dirname, '../output/player_center'),
     basicData: path.resolve(__dirname, '../output/basicData'),
-    cupScheduleData: path.resolve(__dirname, '../../epl/data/c36.js'),
+    cupScheduleData: path.resolve(__dirname, '../../epl/data/s36.js'),
   },
 },
 ```
@@ -132,7 +132,7 @@ epl: {
 
 - 触发关键词："英超"、"EPL"、"Premier League"、"联赛积分"、"降级"、"争四"
 - 工作流：赛前大名单 -> 报告 -> 盘路 -> 积分形势 -> 赛后复盘
-- 引用数据文件路径 l36/bs36/c36/td36
+- 引用数据文件路径 l36/bs36/s36/td36
 - Big 6 重点跟踪提示
 
 ## 八、Big 6 画像设计
@@ -155,7 +155,7 @@ epl: {
 3. 编写 `rule/league-rule.md`
 4. 编写 `strategy/` 下 6 个框架文档 + README
 5. 从 `league-analyzer/data/` 复制 `l36.js`、`bs36.js`、`td36.js`
-6. 运行 `CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js` 生成 `c36.js`
+6. 运行 `CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js` 生成 `s36.js`
 7. 生成 `data/球队与序号对照表.md`
 8. 从 `league-analyzer` 迁移 report(91) + news(265) + postMatchSummary(19) + description(9)
 9. 复制 `championsLeague/prompts/match_analysis_template.md`

@@ -13,9 +13,10 @@ npm install
 
 | 环境变量值 | 说明 | 赛程数据文件（示例） |
 |------------|------|----------------------|
-| `theWorldCup`（默认） | 世界杯 | `theWorldCup/data/c75.js` |
-| `championsLeague` | 欧冠 | `championsLeague/data/c103.js` |
-| `epl` | 英超 | `epl/data/s36.js` |
+| `theWorldCup`（默认） | 世界杯（杯赛 `c`） | `theWorldCup/data/c75.js` |
+| `championsLeague` | 欧冠（杯赛 `c`） | `championsLeague/data/c103.js` |
+| `epl` | 英超（联赛 `s`） | `epl/data/s36.js` |
+| `koreanKLeague` | 韩K联（联赛 `s`，子联赛 313） | `koreanKLeague/data/s15_313.js` |
 
 示例：
 
@@ -58,7 +59,7 @@ npm：`npm run crawl:player-list` / `npm run crawl:player-list:club`
 
 ### 3. `scheduleCrawler.js` — 更新赛程 JS
 
-- **作用**：下载当前杯赛对应 `c{cupSerial}.js`，覆盖 `config.paths.cupScheduleData` 指向的文件（会先备份）。
+- **作用**：按 `config.fileId` 从球探拉取赛程（杯赛 `c{序号}.js` 或联赛 `s{序号}.js` / `s{序号}_{子联赛}.js`），覆盖 `config.paths.cupScheduleData`（会先备份）。`version` 参数使用 `YYYYMMDDHH`。
 - **可选**：`--standings` 仅打印小组积分榜 JSON。
 
 ```bash
@@ -66,7 +67,7 @@ node crawlers/scheduleCrawler.js
 node crawlers/scheduleCrawler.js --standings
 ```
 
-npm：`npm run crawl:schedule:ucl` / `npm run crawl:schedule:epl`
+npm：`npm run crawl:schedule:ucl` / `npm run crawl:schedule:epl` / `npm run crawl:schedule:kleague`
 
 ### 4. `matchDataCrawler.js` — 单场 / 批量赛后数据
 

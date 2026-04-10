@@ -40,7 +40,7 @@ description: |
 
 ```
 cup-analyzer/epl/data/
-├── c36.js                  # 赛程、积分榜（CUP_ANALYZER_CUP=epl scheduleCrawler）
+├── s36.js                  # 赛程、积分榜（联赛格式；CUP_ANALYZER_CUP=epl scheduleCrawler）
 ├── l36.js                  # 亚盘盘路榜
 ├── bs36.js                 # 大小球盘路榜
 ├── td36.js                 # 入球时间
@@ -88,7 +88,7 @@ cup-analyzer/epl/teamProfile/切尔西.md
 ```bash
 cd cup-analyzer/crawler-server
 
-# 更新英超赛程 → epl/data/c36.js
+# 更新英超赛程 → epl/data/s36.js
 CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js
 # 或：npm run crawl:schedule:epl
 ```

@@ -11,7 +11,7 @@
 | 任务 | 状态 | 说明 |
 |------|------|------|
 | 创建目录与 PLAN/workflow | 已完成 | 本目录与规则、策略骨架 |
-| 同步 data（c36/l36/bs36/td36） | 已完成 | l36/bs36/td36 自 league-analyzer；c36 由爬虫或对齐 s36 |
+| 同步 data（s36/l36/bs36/td36） | 已完成 | l36/bs36/td36 自 league-analyzer；s36 由爬虫 |
 | 迁移 25-26 报告/新闻/复盘/简介 | 已完成 | 自 league-analyzer，保留原仓库副本 |
 | 扩展 crawler-server 多杯赛配置 | 已完成 | `CUP_ANALYZER_CUP=epl` |
 | 创建 EPL SKILL | 已完成 | `.cursor/rules/dh-epl-analysis/SKILL.md` |
@@ -23,7 +23,7 @@
 
 ## 四、数据与序号
 
-- **联赛序号**：球探体育 **36** → `c36.js` / `l36.js` / `bs36.js` / `td36.js`
+- **联赛序号**：球探体育 **36** → `s36.js` / `l36.js` / `bs36.js` / `td36.js`
 - **迁移原则**：从 `league-analyzer` **复制** 而非移动，便于对照历史路径。
 
 ## 五、与欧冠 / 世界杯的差异（摘要）

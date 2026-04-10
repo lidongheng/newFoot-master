@@ -1,17 +1,22 @@
 const path = require('path');
 
 /**
- * 多杯赛配置：通过环境变量 CUP_ANALYZER_CUP 切换
+ * 多杯赛/联赛配置：通过环境变量 CUP_ANALYZER_CUP 切换
  * - theWorldCup（默认）
  * - championsLeague
- * - epl（英超，联赛序号 36；赛程 season 目录与球探一致，如 2025-2026）
+ * - epl（英超，球探序号 36，联赛格式 s36.js）
+ * - koreanKLeague（韩K联，s15_313，313 为 arrSubLeague 子联赛 ID）
  *
  * 示例：CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js
  */
 const cups = {
   theWorldCup: {
+    fileId: 'c75',
+    type: 'cup',
     cupSerial: '75',
     cupName: 'theWorldCup',
+    chineseName: '世界杯',
+    crossYear: false,
     season: '2026',
     paths: {
       cupAnalyzer: path.resolve(__dirname, '../../theWorldCup'),
@@ -22,8 +27,12 @@ const cups = {
     },
   },
   championsLeague: {
+    fileId: 'c103',
+    type: 'cup',
     cupSerial: '103',
     cupName: 'championsLeague',
+    chineseName: '欧冠',
+    crossYear: true,
     season: '25-26',
     paths: {
       cupAnalyzer: path.resolve(__dirname, '../../championsLeague'),
@@ -34,16 +43,38 @@ const cups = {
     },
   },
   epl: {
+    fileId: 's36',
+    type: 'league',
     cupSerial: '36',
     cupName: 'epl',
-    /** titan007 联赛赛程 JS 所在赛季目录，与 s36/c36 一致 */
+    chineseName: '英超',
+    crossYear: true,
+    /** titan007 联赛赛程 JS 所在赛季目录，与 s36 一致 */
     season: '2025-2026',
     paths: {
       cupAnalyzer: path.resolve(__dirname, '../../epl'),
       squadFinal: path.resolve(__dirname, '../../epl/squad-final'),
       playerCenter: path.resolve(__dirname, '../output/player_center'),
       basicData: path.resolve(__dirname, '../output/basicData'),
-      cupScheduleData: path.resolve(__dirname, '../../epl/data/c36.js'),
+      cupScheduleData: path.resolve(__dirname, '../../epl/data/s36.js'),
+    },
+  },
+  koreanKLeague: {
+    fileId: 's15_313',
+    type: 'league',
+    cupSerial: '15',
+    cupName: 'koreanKLeague',
+    chineseName: '韩K联',
+    crossYear: false,
+    /** 子联赛 ID，与 titan007 arrSubLeague 中「联赛」阶段一致 */
+    subLeagueId: '313',
+    season: '2026',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../koreanKLeague'),
+      squadFinal: path.resolve(__dirname, '../../koreanKLeague/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../output/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../koreanKLeague/data/s15_313.js'),
     },
   },
 };
@@ -55,6 +86,11 @@ const config = {
   port: 5001,
   activeCupKey: activeKey,
   cups,
+
+  fileId: active.fileId,
+  type: active.type,
+  crossYear: active.crossYear,
+  chineseName: active.chineseName,
 
   cupSerial: active.cupSerial,
   cupName: active.cupName,

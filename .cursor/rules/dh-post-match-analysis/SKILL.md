@@ -4,6 +4,7 @@ description: |
   针对足球比赛赛后的数据分析与提效全能助手。覆盖数据处理、分析洞察、报告撰写、数据可视化的端到端工作流。
   始终从专家视角出发，帮用户多想一步。遇到不确定的问题主动与用户确认。
   支持：JSON数据分析、控制台输出纯文本数据分析、Excel数据分析、数据可视化、报告生成、公式生成。
+  足球赛后任务会先同步最新球探赛程 JS（scheduleCrawler，含备份），再进行分析。
   当用户提到"分析数据"、"做报告"、"Excel"、"复盘"、“赛后总结”、“赛后分析”、
   "周报"、"月报"、"数据处理"、"图表"、"可视化"、"汇报"、"表格"、"公式"时使用此技能。
 ---
@@ -35,7 +36,7 @@ description: |
 
 ## 核心方法论：多专家深度分析
 
-**这是本skill最核心的分析工作流。** 面对任何有深度分析价值的数据集，采用「数据理解→专家选角→并行分析→统一呈现」四阶段流程。
+**这是本skill最核心的分析工作流。** 面对任何有深度分析价值的数据集，采用「赛程同步（足球）→数据理解→专家选角→并行分析→统一呈现」流程。
 
 ### 触发条件
 
@@ -47,9 +48,37 @@ description: |
 
 简单任务（查数、做表、写公式）不需要启用此流程。
 
-### 四阶段流程
+### Phase 0: 赛程数据同步（足球赛后 / 需最新对阵与比分时）
+
+在读取本地赛程或做杯赛/联赛赛后总结前，**先拉取最新球探赛程 JS**（会先备份旧文件）。配置与 URL 规则见 [`cup-analyzer/crawler-server/config/index.js`](../../../cup-analyzer/crawler-server/config/index.js)。
+
+**识别赛事 → 环境变量 `CUP_ANALYZER_CUP`：**
+
+| 用户可能提到的赛事 | `CUP_ANALYZER_CUP` | 数据文件（`fileId`） | 跨年 |
+|---------------------|---------------------|----------------------|------|
+| 欧冠 / UCL / Champions League / 欧洲冠军联赛 | `championsLeague` | `c103.js` | 是（`25-26` 等） |
+| 世界杯 / World Cup | `theWorldCup` | `c75.js` | 否 |
+| 英超 / EPL / Premier League | `epl` | `s36.js`（联赛） | 是（`2025-2026`） |
+| 韩K联 / K League 1 | `koreanKLeague` | `s15_313.js`（子联赛 313） | 否 |
+
+**执行：**
+
+```bash
+cd cup-analyzer/crawler-server
+CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js
+# 或 npm run crawl:schedule:ucl / crawl:schedule:epl / crawl:schedule:kleague
+```
+
+**验证**：打开对应 `*.js`，检查 `lastUpdateTime` 是否为近期；同目录应出现 `*.backup_<时间戳>.js`。
+
+**失败兜底**：网络失败或命令报错时，向用户说明情况，**使用仓库内已有赛程文件继续分析**，不编造比分。
+
+非足球、或用户明确只要分析已有 CSV/Excel、不涉及赛程时，**跳过 Phase 0**。
+
+### 四阶段流程（多专家深度分析）
 
 ```
+Phase 0: 赛程数据同步（可选，足球且需最新赛程时）
 Phase 1: 数据理解        → 读取数据，输出概览，理解字段含义和数据特征
 Phase 2: 专家选角        → 基于数据特征，选取3-5个不同领域的最适合专家角色
 Phase 3: 并行深度分析    → 每个专家角色独立执行分析（使用subagent并行）
@@ -154,6 +183,7 @@ Phase 4: 统一综合呈现    → 管理型分析师视角整合所有观点，
 
 | 脚本 | 用途 |
 |------|------|
+| `/cup-analyzer/crawler-server/crawlers/scheduleCrawler.js` | 同步球探赛程 JS（`CUP_ANALYZER_CUP` 切换赛事；先备份再覆盖） |
 | `/backend-server/crawlerPostMatchData.js` | 爬取赛后数据脚本 |
 | `/backend-server/crawlerHistoryHandicap.js` | 爬取历史同赔脚本 |
 | `/backend-server/crawlerCustomRank.js` | 自定义N轮积分榜 |

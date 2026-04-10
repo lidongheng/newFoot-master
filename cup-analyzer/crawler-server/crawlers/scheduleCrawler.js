@@ -9,7 +9,7 @@ const { saveJSON } = require('../utils/fileWriter');
  * 赛程更新爬虫 - 更新世界杯赛程和比分数据
  *
  * 数据来源: titan007 赛程数据 JS 文件
- * 输出: 更新当前激活杯赛对应的 cupScheduleData（如 theWorldCup/data/c75.js 或 championsLeague/data/c103.js）
+ * 输出: 更新当前激活赛事的 cupScheduleData（杯赛如 c75/c103，联赛如 s36/s15_313，见 config.fileId）
  */
 class ScheduleCrawler extends BaseCrawler {
   constructor() {
@@ -20,13 +20,17 @@ class ScheduleCrawler extends BaseCrawler {
    * 从 titan007 获取最新赛程数据并更新 cupScheduleData
    */
   async updateSchedule() {
-    const url = targets.titan007.cupScheduleUrl(config.cupSerial, config.season);
+    const url = targets.titan007.scheduleUrl(config.fileId, config.season);
+    const referer =
+      config.type === 'league'
+        ? targets.titan007.leagueMatchReferer(config.cupSerial, config.season)
+        : targets.titan007.cupMatchReferer(config.cupSerial);
     this.log(`更新赛程: ${url}`);
 
     try {
       const headers = {
         ...targets.titan007.headers.desktop,
-        Referer: targets.titan007.cupMatchReferer(config.cupSerial),
+        Referer: referer,
       };
       const text = await this.fetchText(url, headers);
       const outputPath =
