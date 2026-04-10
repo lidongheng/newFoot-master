@@ -60,6 +60,9 @@ cup-analyzer/
 │   ├── strategy/                      # 争冠、争四、欧战、保级、拥堵、德比
 │   ├── description/                   # 球队简介（AI只读）
 │   └── news/{赛季}/                   # 按轮次与对阵的素材
+├── aLeague/                           # 澳大利亚足球超级联赛（澳超）
+│   ├── data/                          # s273_462.js 赛程等
+│   └── squad-final/
 └── crawler-server/                    # Koa2爬虫服务
     ├── app.js                         # 服务入口
     ├── config/                        # index、targets、squadTarget 等
@@ -109,6 +112,10 @@ CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js
 CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js
 # 或：npm run crawl:schedule:epl
 
+# 澳超 → 写入 aLeague/data/s273_462.js（子联赛 462；赛季目录 2025-2026，见 config）
+CUP_ANALYZER_CUP=aLeague node crawlers/scheduleCrawler.js
+# 或：npm run crawl:schedule:aleague
+
 # 俱乐部赛前大名单 + 国内联赛出场分析（原 backend-server crawlerPlayer + crawlerClub3_new）
 # 先配置 config/squadTarget.js，并放入 match_center/s{联赛序号}.js
 npm run crawl:player-list
@@ -134,6 +141,12 @@ npm run analyze:club-domestic
 - **阶段一（赛前）**：维护 data（s36/l36/bs36/td36）、冠军赔率、球队序号；**Big 6** `teamProfile/`（含转会窗、圣诞新年赛程）
 - **阶段二（赛中）**：逐场赛前/赛后（模板见 `epl/prompts/match_analysis_template.md`），结合盘路 `l36`/`bs36` 与积分榜战意
 - **阶段三（策略）**：争冠 → 争欧冠（前四）→ 争欧战 → 保级 → 赛程拥堵（欧冠与联赛间隔小于 70 小时、双欧冠夹联赛）→ 德比
+
+**澳超（aLeague）**
+
+- **阶段一（赛前）**：维护 data（`s273_462.js`）、球队序号与积分榜；可按需扩展 `teamProfile/`、`description/`、`news/`
+- **阶段二（赛中）**：逐场赛前/赛后分析，结合常规赛排名与季后赛资格区（前六）
+- **阶段三（策略）**：常规赛争二（直通季后赛准决赛）→ 第三至第六名淘汰赛路径 → 跨洲/杯赛与夏令时赛程节奏
 
 6、AI 分析技能文件：
 

@@ -17,6 +17,7 @@ npm install
 | `championsLeague` | 欧冠（杯赛 `c`） | `championsLeague/data/c103.js` |
 | `epl` | 英超（联赛 `s`） | `epl/data/s36.js` |
 | `koreanKLeague` | 韩K联（联赛 `s`，子联赛 313） | `koreanKLeague/data/s15_313.js` |
+| `aLeague` | 澳超（联赛 `s`，子联赛 462） | `aLeague/data/s273_462.js` |
 
 示例：
 
@@ -67,7 +68,7 @@ node crawlers/scheduleCrawler.js
 node crawlers/scheduleCrawler.js --standings
 ```
 
-npm：`npm run crawl:schedule:ucl` / `npm run crawl:schedule:epl` / `npm run crawl:schedule:kleague`
+npm：`npm run crawl:schedule:ucl` / `npm run crawl:schedule:epl` / `npm run crawl:schedule:kleague` / `npm run crawl:schedule:aleague`
 
 ### 4. `matchDataCrawler.js` — 单场 / 批量赛后数据
 

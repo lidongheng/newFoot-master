@@ -6,6 +6,7 @@ const path = require('path');
  * - championsLeague
  * - epl（英超，球探序号 36，联赛格式 s36.js）
  * - koreanKLeague（韩K联，s15_313，313 为 arrSubLeague 子联赛 ID）
+ * - aLeague（澳超，s273_462，462 为 arrSubLeague 子联赛 ID）
  *
  * 示例：CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js
  */
@@ -75,6 +76,24 @@ const cups = {
       playerCenter: path.resolve(__dirname, '../output/player_center'),
       basicData: path.resolve(__dirname, '../output/basicData'),
       cupScheduleData: path.resolve(__dirname, '../../koreanKLeague/data/s15_313.js'),
+    },
+  },
+  aLeague: {
+    fileId: 's273_462',
+    type: 'league',
+    cupSerial: '273',
+    cupName: 'aLeague',
+    chineseName: '澳超',
+    crossYear: true,
+    /** 子联赛 ID，与 titan007 arrSubLeague 中「联赛」阶段一致 */
+    subLeagueId: '462',
+    season: '2025-2026',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../aLeague'),
+      squadFinal: path.resolve(__dirname, '../../aLeague/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../output/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../aLeague/data/s273_462.js'),
     },
   },
 };

@@ -18,6 +18,7 @@
     "crawl:schedule:ucl": "CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js",
     "crawl:schedule:epl": "CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js",
     "crawl:schedule:kleague": "CUP_ANALYZER_CUP=koreanKLeague node crawlers/scheduleCrawler.js",
+    "crawl:schedule:aleague": "CUP_ANALYZER_CUP=aLeague node crawlers/scheduleCrawler.js",
     "crawl:player-list": "node crawlers/playerListCrawler.js",
     "crawl:player-list:club": "node crawlers/playerListCrawler.js --with-club",
     "analyze:club-domestic": "node analyzers/clubMatchAnalyzer.js"
