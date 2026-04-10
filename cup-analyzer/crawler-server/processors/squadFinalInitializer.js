@@ -4,6 +4,7 @@ const config = require('../config');
 const { readFile, saveMarkdown, fileExists } = require('../utils/fileWriter');
 
 const TODO_COMMENT = '<!-- TODO: 请从初选名单中裁剪至26人 -->';
+const LEAGUE_TODO_COMMENT = '<!-- TODO: 请审核并确认名单 -->';
 
 /**
  * 最终大名单初始化器：从 squad/ 初选复制到 squad-final/，并改写标题与待办注释
@@ -18,6 +19,15 @@ const TODO_COMMENT = '<!-- TODO: 请从初选名单中裁剪至26人 -->';
 class SquadFinalInitializer extends BaseCrawler {
   constructor() {
     super('SquadFinalInitializer');
+  }
+
+  /**
+   * 联赛 / 无小组杯赛：平铺 squad/{队名}.md，无 group-X 子目录
+   */
+  isFlatSquadMode(scheduleData) {
+    if (!scheduleData) return false;
+    if (config.type === 'league') return true;
+    return Object.keys(this.buildGroupMap(scheduleData)).length === 0;
   }
 
   /**
@@ -41,6 +51,28 @@ class SquadFinalInitializer extends BaseCrawler {
   }
 
   /**
+   * 联赛初选 → squad-final：插入待审核 TODO
+   */
+  transformToFinalDraftLeague(content) {
+    if (!content || !content.trim()) return `${LEAGUE_TODO_COMMENT}\n`;
+    let text = content;
+    if (!text.includes(LEAGUE_TODO_COMMENT)) {
+      text = `${LEAGUE_TODO_COMMENT}\n${text}`;
+    }
+    const lines = text.split('\n');
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trimStart();
+      if (line.startsWith('#')) {
+        if (!lines[i].includes('待审核')) {
+          lines[i] = `${lines[i].replace(/\s*$/, '')}（待审核）`;
+        }
+        break;
+      }
+    }
+    return lines.join('\n');
+  }
+
+  /**
    * 遍历赛程全部球队：有初选 squad 文件则写入 squad-final
    */
   async processAll() {
@@ -55,6 +87,32 @@ class SquadFinalInitializer extends BaseCrawler {
     const results = { success: [], skipped: [], failed: [] };
     const squadRoot = path.join(config.paths.cupAnalyzer, 'squad');
     const finalRoot = config.paths.squadFinal;
+
+    if (this.isFlatSquadMode(scheduleData)) {
+      const teams = this.getAllTeams(scheduleData);
+      this.log(`平铺模式（联赛或无小组积分榜），共 ${teams.length} 支球队`);
+      for (const teamInfo of teams) {
+        const baseName = `${teamInfo.chineseName}.md`;
+        const srcPath = path.join(squadRoot, baseName);
+        if (!fileExists(srcPath)) {
+          this.log(`  ${teamInfo.chineseName}(${teamInfo.id}) 无初选文件，跳过`);
+          results.skipped.push({ team: teamInfo.chineseName, reason: 'no_squad_md' });
+          continue;
+        }
+        try {
+          const raw = readFile(srcPath);
+          const out = this.transformToFinalDraftLeague(raw);
+          const destPath = path.join(finalRoot, baseName);
+          saveMarkdown(destPath, out);
+          results.success.push({ team: teamInfo.chineseName, group: 'flat' });
+        } catch (err) {
+          this.error(`  ${teamInfo.chineseName} 失败: ${err.message}`);
+          results.failed.push(teamInfo);
+        }
+      }
+      this.log(`\n初始化完成: 成功${results.success.length} 跳过${results.skipped.length} 失败${results.failed.length}`);
+      return results;
+    }
 
     for (const [letter, group] of Object.entries(groupMap)) {
       this.log(`处理小组 ${letter}...`);
@@ -125,22 +183,39 @@ class SquadFinalInitializer extends BaseCrawler {
       return null;
     }
 
-    const letter = this.findGroupLetterForTeam(id, scheduleData);
-    const groupFolder = letter ? `group-${letter}` : 'misc';
     const squadRoot = path.join(config.paths.cupAnalyzer, 'squad');
     const finalRoot = config.paths.squadFinal;
     const baseName = `${teamInfo.chineseName}.md`;
-    const srcPath = path.join(squadRoot, groupFolder, baseName);
 
-    if (!fileExists(srcPath)) {
-      this.error(`无初选文件: ${srcPath}，请先执行: node processors/squadProcessor.js --team ${id}`);
-      return null;
+    let srcPath;
+    let destPath;
+    let groupFolder;
+    let out;
+
+    if (this.isFlatSquadMode(scheduleData)) {
+      srcPath = path.join(squadRoot, baseName);
+      destPath = path.join(finalRoot, baseName);
+      groupFolder = 'flat';
+      if (!fileExists(srcPath)) {
+        this.error(`无初选文件: ${srcPath}，请先执行 leagueSquadProcessor`);
+        return null;
+      }
+      const raw = readFile(srcPath);
+      out = this.transformToFinalDraftLeague(raw);
+    } else {
+      const letter = this.findGroupLetterForTeam(id, scheduleData);
+      groupFolder = letter ? `group-${letter}` : 'misc';
+      srcPath = path.join(squadRoot, groupFolder, baseName);
+      if (!fileExists(srcPath)) {
+        this.error(`无初选文件: ${srcPath}，请先执行: node processors/squadProcessor.js --team ${id}`);
+        return null;
+      }
+      const raw = readFile(srcPath);
+      out = this.transformToFinalDraft(raw);
+      destPath = path.join(finalRoot, groupFolder, baseName);
     }
 
     try {
-      const raw = readFile(srcPath);
-      const out = this.transformToFinalDraft(raw);
-      const destPath = path.join(finalRoot, groupFolder, baseName);
       saveMarkdown(destPath, out);
       this.log(`单队初始化完成: ${teamInfo.chineseName} → ${destPath}`);
       return { teamInfo, destPath, groupFolder };

@@ -3,13 +3,15 @@ const fs = require('fs');
 const BaseCrawler = require('./base');
 const targets = require('../config/targets');
 const config = require('../config');
-const { saveJSON } = require('../utils/fileWriter');
+const { sleep } = require('../utils/fileWriter');
 
 /**
  * 赛程更新爬虫 - 更新世界杯赛程和比分数据
  *
  * 数据来源: titan007 赛程数据 JS 文件
  * 输出: 更新当前激活赛事的 cupScheduleData（杯赛如 c75/c103，联赛如 s36/s15_313，见 config.fileId）
+ * 同步更新：亚盘盘路 l{序号}.js、大小球 bs{序号}.js；联赛另更新入球时间 td{序号}.js（杯赛不更新 td）
+ * 赛程主文件另拷贝至 match_center/{s|c}{序号}.js，与 clubMatchAnalyzer 兜底路径一致
  */
 class ScheduleCrawler extends BaseCrawler {
   constructor() {
@@ -17,40 +19,94 @@ class ScheduleCrawler extends BaseCrawler {
   }
 
   /**
-   * 从 titan007 获取最新赛程数据并更新 cupScheduleData
+   * 备份并写入单个 JS 文件
+   * @param {string} outputPath
+   * @param {string} text
+   */
+  writeJsWithBackup(outputPath, text) {
+    if (fs.existsSync(outputPath)) {
+      const backupPath = outputPath.replace('.js', `.backup_${Date.now()}.js`);
+      fs.copyFileSync(outputPath, backupPath);
+      this.log(`已备份旧文件: ${backupPath}`);
+    }
+    fs.writeFileSync(outputPath, text, 'utf-8');
+  }
+
+  /**
+   * 从 titan007 获取最新赛程数据并更新 cupScheduleData；联赛/杯赛同时拉取 l、bs；仅联赛拉取 td
    */
   async updateSchedule() {
-    const url = targets.titan007.scheduleUrl(config.fileId, config.season);
     const referer =
       config.type === 'league'
         ? targets.titan007.leagueMatchReferer(config.cupSerial, config.season)
         : targets.titan007.cupMatchReferer(config.cupSerial);
-    this.log(`更新赛程: ${url}`);
+    const headers = {
+      ...targets.titan007.headers.desktop,
+      Referer: referer,
+    };
 
-    try {
-      const headers = {
-        ...targets.titan007.headers.desktop,
-        Referer: referer,
-      };
-      const text = await this.fetchText(url, headers);
-      const outputPath =
-        config.paths.cupScheduleData || config.paths.c75Data;
+    const schedulePath = config.paths.cupScheduleData || config.paths.c75Data;
+    const dataDir = path.dirname(schedulePath);
+    const serial = config.cupSerial;
 
-      // 备份旧文件
-      if (fs.existsSync(outputPath)) {
-        const backupPath = outputPath.replace('.js', `.backup_${Date.now()}.js`);
-        fs.copyFileSync(outputPath, backupPath);
-        this.log(`已备份旧文件: ${backupPath}`);
-      }
+    /** @type {{ label: string, url: string, outputPath: string }[]} */
+    const steps = [
+      {
+        label: '赛程',
+        url: targets.titan007.scheduleUrl(config.fileId, config.season),
+        outputPath: schedulePath,
+      },
+      {
+        label: '亚盘盘路',
+        url: targets.titan007.matchResultDataUrl(`l${serial}`, config.season),
+        outputPath: path.join(dataDir, `l${serial}.js`),
+      },
+      {
+        label: '大小球盘路',
+        url: targets.titan007.matchResultDataUrl(`bs${serial}`, config.season),
+        outputPath: path.join(dataDir, `bs${serial}.js`),
+      },
+    ];
 
-      fs.writeFileSync(outputPath, text, 'utf-8');
-      this.log(`赛程数据已更新: ${outputPath}`);
-
-      return { success: true, outputPath };
-    } catch (err) {
-      this.error(`更新赛程失败: ${err.message}`);
-      return { success: false, error: err.message };
+    if (config.type === 'league') {
+      steps.push({
+        label: '入球时间',
+        url: targets.titan007.matchResultDataUrl(`td${serial}`, config.season),
+        outputPath: path.join(dataDir, `td${serial}.js`),
+      });
     }
+
+    const results = [];
+    for (let i = 0; i < steps.length; i++) {
+      const step = steps[i];
+      if (i > 0) {
+        await sleep(this.delayMs);
+      }
+      try {
+        this.log(`更新${step.label}: ${step.url}`);
+        const text = await this.fetchText(step.url, headers);
+        this.writeJsWithBackup(step.outputPath, text);
+        this.log(`${step.label}已更新: ${step.outputPath}`);
+        // 赛程文件同步到 match_center（与 clubMatchAnalyzer 兜底路径一致；l/bs/td 不同步）
+        if (step.label === '赛程') {
+          const mcPrefix = config.fileId.startsWith('c') ? 'c' : 's';
+          const matchCenterDest = path.join(config.paths.matchCenterDir, `${mcPrefix}${serial}.js`);
+          fs.copyFileSync(step.outputPath, matchCenterDest);
+          this.log(`已同步到 match_center: ${matchCenterDest}`);
+        }
+        results.push({ ok: true, label: step.label, outputPath: step.outputPath });
+      } catch (err) {
+        this.error(`${step.label}更新失败: ${err.message}`);
+        results.push({ ok: false, label: step.label, error: err.message });
+        // 赛程失败则不再请求后续文件
+        if (step.label === '赛程') {
+          return { success: false, error: err.message, results };
+        }
+      }
+    }
+
+    const success = results.every((r) => r.ok);
+    return { success, results };
   }
 
   /**

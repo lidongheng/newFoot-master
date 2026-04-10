@@ -65,6 +65,13 @@ const targets = {
     scheduleUrl: (fileId, season) =>
       `http://zq.titan007.com/jsData/matchResult/${season}/${fileId}.js?version=${versionTag()}`,
 
+    /**
+     * 与赛程同赛季目录下的盘路 / 大小球 / 入球时间 JS（不含 .js 后缀的 basename）
+     * 如 l36、bs36、td36、l103、bs103；杯赛一般无 td，由调用方决定是否请求。
+     */
+    matchResultDataUrl: (basename, season) =>
+      `http://zq.titan007.com/jsData/matchResult/${season}/${basename}.js?version=${versionTag()}`,
+
     cupMatchReferer,
     leagueMatchReferer,
 

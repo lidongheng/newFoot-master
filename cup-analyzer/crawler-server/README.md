@@ -61,6 +61,11 @@ npm：`npm run crawl:player-list` / `npm run crawl:player-list:club`
 ### 3. `scheduleCrawler.js` — 更新赛程 JS
 
 - **作用**：按 `config.fileId` 从球探拉取赛程（杯赛 `c{序号}.js` 或联赛 `s{序号}.js` / `s{序号}_{子联赛}.js`），覆盖 `config.paths.cupScheduleData`（会先备份）。`version` 参数使用 `YYYYMMDDHH`。
+- **赛程路径统一**：`clubMatchAnalyzer` 通过 `config.resolveScheduleData(leagueSerial, isNation)` 解析文件——已在 `cups` 中配置的序号指向对应模块 `data/` 下的赛程 JS；未配置的序号仍读 `match_center/s{n}.js` 或 `c{n}.js`。每次赛程拉取成功后，会将主赛程文件**拷贝**到 `match_center/`，与兜底路径保持一致。
+- **同步文件**（与赛程同赛季目录、`cupScheduleData` 所在 `data/` 下；序号均为 `config.cupSerial`）：
+  - **联赛**（`config.type === 'league'`）：依次更新 `l{序号}.js`（亚盘盘路）、`bs{序号}.js`（大小球盘路）、`td{序号}.js`（入球时间）。
+  - **杯赛**（`config.type === 'cup'`）：只额外更新 `l{序号}.js`、`bs{序号}.js`，**不**拉取 `td`（杯赛无入球时间分布 JS）。
+  - 各请求间隔 `config.crawlDelayMs`；若赛程拉取失败则不再请求后续文件；若 l/bs/td 中某项失败会记录错误并继续尝试其余项。
 - **可选**：`--standings` 仅打印小组积分榜 JSON。
 
 ```bash
@@ -106,9 +111,21 @@ node processors/squadProcessor.js --team 744
 
 npm：`npm run process:squad` / `npm run process:squad:one -- 744`
 
+### 6b. `leagueSquadProcessor.js` — 俱乐部 `*-new.json` → 联赛 `squad/{队名}.md`
+
+- **前置**：`npm run crawl:player-list`、`npm run analyze:club-domestic`（生成 `output/player_center/{序号}-new.json`）。
+- **输出**：`{联赛模块}/squad/{中文队名}.md`（平铺，无 `group-X/`；表含出场/首发/进球/助攻列）。
+- **环境**：`CUP_ANALYZER_CUP=epl|aLeague|championsLeague|koreanKLeague` 等。
+
+```bash
+CUP_ANALYZER_CUP=epl node processors/leagueSquadProcessor.js
+```
+
+npm：`npm run process:league-squad`
+
 ### 7. `squadFinalInitializer.js` — 初选 `squad/` → 最终名单草稿 `squad-final/`
 
-- **作用**：从 `{杯赛}/squad/` 复制到 `{杯赛}/squad-final/`，插入待办注释并将标题改为「最终26人大名单（待确认）」；你在 `squad-final/` 中裁剪至恰好 26 人。
+- **作用**：从 `{杯赛}/squad/` 复制到 `{杯赛}/squad-final/`。**世界杯**：插入待办注释并将标题改为「最终26人大名单（待确认）」；你在 `squad-final/` 中裁剪至恰好 26 人。**联赛 / 无小组积分榜的杯赛（如欧冠）**：平铺路径 `squad/{队名}.md` → `squad-final/{队名}.md`，插入「请审核并确认名单」TODO。
 - **输出**：`config.paths.squadFinal`（世界杯为 `theWorldCup/squad-final/`）
 
 ```bash
@@ -177,3 +194,14 @@ npm：`npm run analyze:club-domestic`
 1. 编辑 `config/squadTarget.js`
 2. `node crawlers/playerListCrawler.js --with-club`
 3. `node analyzers/clubMatchAnalyzer.js`
+
+**联赛：大名单 → 球队画像（英超 / 澳超 / 欧冠 / 韩K联等）**
+
+1. 编辑 `config/squadTarget.js`（`leagueSerial` 填**国内联赛**序号；欧冠画像时不是 103）
+2. `npm run crawl:player-list` → `npm run analyze:club-domestic`
+3. `npm run process:league-squad`（需先 `CUP_ANALYZER_CUP=...`）
+4. `npm run process:squad-final:init:one -- <序号>`
+5. 人工审核 `squad-final/{队名}.md`
+6. `CUP_ANALYZER_CUP=... npm run process:profile:one -- <序号>`
+
+各模块步骤与路径见对应目录下 `workflow.md`。

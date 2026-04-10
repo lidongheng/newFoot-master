@@ -3,6 +3,149 @@ const BaseCrawler = require('../crawlers/base');
 const config = require('../config');
 const { readJSON, readFile, saveMarkdown, fileExists } = require('../utils/fileWriter');
 
+/** 英超/澳超/韩K联及欧冠模块：联赛式档位与俱乐部备注 */
+function useLeagueStyleAnalysis() {
+  const k = config.activeCupKey || '';
+  return config.type === 'league' || k === 'championsLeague';
+}
+
+/** 当前为世界杯国家队画像流程（需在按位置大名单中保留「所属俱乐部」列） */
+function isWorldCupNationalContext() {
+  return (config.activeCupKey || '') === 'theWorldCup';
+}
+
+/** 身价列（万）或 JSON socialStatus → 展示用，如 6500万 */
+function getMarketValueRaw(p) {
+  const mv = p.marketValue;
+  const s = String(mv ?? '').trim();
+  if (s && s !== '-') return mv;
+  const ss = p.socialStatus;
+  const t = String(ss ?? '').trim();
+  return t && t !== '-' ? ss : null;
+}
+
+function formatMarketValueForDisplay(p) {
+  const raw = getMarketValueRaw(p);
+  const s = String(raw ?? '').trim();
+  if (!s || s === '-') return null;
+  if (/[万亿]/.test(s)) return s;
+  const n = s.replace(/,/g, '');
+  if (/^\d+(\.\d+)?$/.test(n)) return `${n}万`;
+  return s;
+}
+
+/** 例：33岁；无效则省略 */
+function formatAgeForDisplay(p) {
+  const a = p.age;
+  if (a == null || a === '') return null;
+  const n = parseInt(String(a), 10);
+  if (Number.isNaN(n) || n < 14 || n > 55) return null;
+  return `${n}岁`;
+}
+
+/**
+ * 大名单行展示：俱乐部括号规则
+ * - 俱乐部/联赛画像：无俱乐部或占位「-」时不输出（-）；若全员有效俱乐部相同则只写姓名，不重复括号
+ * - 世界杯国家队：姓名（俱乐部，位置，年龄，身价）；全员同俱乐部时省略俱乐部，为（位置，年龄，身价）；无俱乐部时首段为「-」
+ */
+function formatPlayerNameWithClub(p, allSameNonEmptyClub, normalizePositionCode) {
+  const national = isWorldCupNationalContext();
+  const club = String(p.currentClub || '').trim();
+  const missing = !club || club === '-';
+  const posCode =
+    typeof normalizePositionCode === 'function' ? normalizePositionCode(p.position) : null;
+  const ageSeg = formatAgeForDisplay(p);
+  const mv = formatMarketValueForDisplay(p);
+
+  if (!national) {
+    if (missing) return p.name;
+    if (allSameNonEmptyClub) return p.name;
+    return `${p.name}（${club}）`;
+  }
+
+  if (allSameNonEmptyClub && !missing) {
+    const parts = [];
+    if (posCode) parts.push(posCode);
+    if (ageSeg) parts.push(ageSeg);
+    if (mv) parts.push(mv);
+    if (parts.length === 0) return p.name;
+    return `${p.name}（${parts.join('，')}）`;
+  }
+
+  const parts = [];
+  parts.push(missing ? '-' : club);
+  if (posCode) parts.push(posCode);
+  if (ageSeg) parts.push(ageSeg);
+  if (mv) parts.push(mv);
+  return `${p.name}（${parts.join('，')}）`;
+}
+
+function computeAllSameNonEmptyClub(players) {
+  const clubs = players
+    .map((p) => String(p.currentClub || '').trim())
+    .filter((c) => c && c !== '-');
+  if (clubs.length === 0) return false;
+  return new Set(clubs).size === 1;
+}
+
+/** 表格/JSON 单元格转非负整数，无效则 null */
+function parseStatIntCell(v) {
+  const s = String(v ?? '').trim();
+  if (s === '' || s === '-') return null;
+  const n = parseInt(s, 10);
+  return Number.isNaN(n) ? null : n;
+}
+
+/**
+ * 赛季统计：联赛 squad-final 为 appearances/starts/goals/assists；player_center 回退 caps/lineups
+ * @returns {{ apps: number, starts: number, goals: number, assists: number } | null}
+ */
+function getPlayerSeasonStatsQuad(p) {
+  let apps = p.appearances ?? p.caps;
+  let starts = p.starts ?? p.lineups;
+  let goals = p.goals;
+  let assists = p.assists;
+  apps = parseStatIntCell(apps);
+  starts = parseStatIntCell(starts);
+  goals = parseStatIntCell(goals);
+  assists = parseStatIntCell(assists);
+  if (apps === null || starts === null || goals === null || assists === null) return null;
+  return { apps, starts, goals, assists };
+}
+
+/**
+ * 联赛统计半角括号：出场始终保留；首发、进球、助攻为 0 时不输出该段（国家队名单无此块，不变）
+ * 例：拉亚(31场31首发，GK，31岁，3500万)、约克雷斯(29场23首发11球，ST，28岁，6500万)
+ */
+function formatStatsParen(p, positionCode) {
+  const q = getPlayerSeasonStatsQuad(p);
+  if (!q) return null;
+  let core = `${q.apps}场`;
+  if (q.starts > 0) core += `${q.starts}首发`;
+  if (q.goals > 0) core += `${q.goals}球`;
+  if (q.assists > 0) core += `${q.assists}助`;
+  const posSuffix = positionCode ? `，${positionCode}` : '';
+  const ageSeg = formatAgeForDisplay(p);
+  const ageSuffix = ageSeg ? `，${ageSeg}` : '';
+  const mv = formatMarketValueForDisplay(p);
+  const mvSuffix = mv ? `，${mv}` : '';
+  return `(${core}${posSuffix}${ageSuffix}${mvSuffix})`;
+}
+
+/**
+ * 按位置大名单单行展示：非世界杯或全员同俱乐部时优先联赛统计行（0 首发/球/助可省略）；否则用国家队全角括号规则
+ * @param {(raw: string) => string|null} normalizePositionCode 与阵型一致的英文位置缩写
+ */
+function formatPlayerSquadLine(p, allSameNonEmptyClub, normalizePositionCode) {
+  const national = isWorldCupNationalContext();
+  const useStats = !national || allSameNonEmptyClub;
+  const posCode =
+    typeof normalizePositionCode === 'function' ? normalizePositionCode(p.position) : null;
+  const statParen = formatStatsParen(p, posCode);
+  if (useStats && statParen) return `${p.name}${statParen}`;
+  return formatPlayerNameWithClub(p, allSameNonEmptyClub, normalizePositionCode);
+}
+
 /**
  * 球队画像生成器 - 从大名单数据自动分析球队特征
  *
@@ -169,6 +312,8 @@ class TeamProfileGenerator extends BaseCrawler {
    */
   buildPositionSquadList(players) {
     if (!players || players.length === 0) return '';
+    const allSameNonEmptyClub = computeAllSameNonEmptyClub(players);
+    const normPos = (raw) => this.normalizePositionCode(raw);
     const codeToPlayers = new Map();
     for (const p of players) {
       const code = this.normalizePositionCode(p.position);
@@ -193,13 +338,13 @@ class TeamProfileGenerator extends BaseCrawler {
       uniq.forEach((p) => usedNames.add(p.name));
       if (uniq.length === 0) continue;
       const codesStr = g.codes.join('、');
-      const playersStr = uniq.map((p) => `${p.name}（${p.currentClub || '-'}）`).join('、');
+      const playersStr = uniq.map((p) => formatPlayerSquadLine(p, allSameNonEmptyClub, normPos)).join('、');
       lines.push(`${g.label}(${codesStr})：${playersStr}`);
     }
     const rest = players.filter((p) => !usedNames.has(p.name));
     if (rest.length > 0) {
       lines.push(
-        `其他：${rest.map((p) => `${p.name}（${p.currentClub || '-'}）`).join('、')}`
+        `其他：${rest.map((p) => formatPlayerSquadLine(p, allSameNonEmptyClub, normPos)).join('、')}`
       );
     }
     return lines.join('\n');
@@ -278,6 +423,18 @@ class TeamProfileGenerator extends BaseCrawler {
   }
 
   /**
+   * 联赛表：球衣号|姓名|年龄|身高|位置|身价|国籍|出场|首发|进球|助攻（无俱乐部列）
+   */
+  isLeagueSquadTableRow(parts) {
+    if (parts.length < 13) return false;
+    const ageCol = parts[3];
+    const heightCol = parts[4] || '';
+    const n = parseInt(String(ageCol).trim(), 10);
+    if (Number.isNaN(n) || n < 15 || n > 50) return false;
+    return /cm/i.test(heightCol) || /^\d+$/.test(String(heightCol).replace(/cm/gi, '').trim());
+  }
+
+  /**
    * 解析 squad-final 下 Markdown：元数据（主教练、阵型）+ 大名单表格
    * @returns {{ players: any[], coach: string|null, formation: string|null }}
    */
@@ -321,19 +478,45 @@ class TeamProfileGenerator extends BaseCrawler {
       if (!name || name.includes('---') || name === '姓名') continue;
       if (jersey && /^[\-:|]+$/.test(jersey.replace(/\s/g, '')) && name.includes('---')) continue;
 
-      const age = parseInt(parts[4], 10);
-      const heightNum = parseInt(String(parts[5] || '').replace(/cm/gi, '').trim(), 10);
-      let numberVal = null;
+      if (this.isLeagueSquadTableRow(parts)) {
+        const ageL = parseInt(parts[3], 10);
+        const heightL = parseInt(String(parts[4] || '').replace(/cm/gi, '').trim(), 10);
+        let numL = null;
+        if (jersey && jersey !== '-') {
+          numL = /^[0-9]+$/.test(jersey) ? parseInt(jersey, 10) : jersey;
+        }
+        players.push({
+          number: numL,
+          name,
+          currentClub: '-',
+          age: Number.isNaN(ageL) ? null : ageL,
+          height: Number.isNaN(heightL) ? null : heightL,
+          position: parts[5] || '-',
+          nationality: parts[7] || '-',
+          marketValue: parts[6] || '-',
+          positionGroup: currentGroup,
+          appearances: parseStatIntCell(parts[8]),
+          starts: parseStatIntCell(parts[9]),
+          goals: parseStatIntCell(parts[10]),
+          assists: parseStatIntCell(parts[11]),
+        });
+        continue;
+      }
+
+      if (parts.length < 10) continue;
+      const ageW = parseInt(parts[4], 10);
+      const heightW = parseInt(String(parts[5] || '').replace(/cm/gi, '').trim(), 10);
+      let numW = null;
       if (jersey && jersey !== '-') {
-        numberVal = /^[0-9]+$/.test(jersey) ? parseInt(jersey, 10) : jersey;
+        numW = /^[0-9]+$/.test(jersey) ? parseInt(jersey, 10) : jersey;
       }
 
       players.push({
-        number: numberVal,
+        number: numW,
         name,
         currentClub: parts[3] || '-',
-        age: Number.isNaN(age) ? null : age,
-        height: Number.isNaN(heightNum) ? null : heightNum,
+        age: Number.isNaN(ageW) ? null : ageW,
+        height: Number.isNaN(heightW) ? null : heightW,
         position: parts[6] || '-',
         nationality: parts[8] || '-',
         marketValue: parts[7] || '-',
@@ -400,13 +583,29 @@ class TeamProfileGenerator extends BaseCrawler {
    * @returns {{ players: any[]|null, dataSource: 'final'|'raw'|null, finalPath: string|null, coach: string|null, formation: string|null }}
    */
   resolvePlayers(teamInfo, scheduleData, source = 'final') {
-    const letter = this.findGroupLetterForTeam(teamInfo.id, scheduleData);
-    const groupFolder = letter ? `group-${letter}` : 'misc';
     const squadFinalRoot =
       config.paths.squadFinal || path.join(config.paths.cupAnalyzer, 'squad-final');
-    const finalPath = path.join(squadFinalRoot, groupFolder, `${teamInfo.chineseName}.md`);
+    const flatPath = path.join(squadFinalRoot, `${teamInfo.chineseName}.md`);
 
     if (source !== 'raw') {
+      if (fileExists(flatPath)) {
+        const mdContent = readFile(flatPath);
+        const parsed = this.parseFinalSquadMarkdown(mdContent);
+        if (parsed && parsed.players && parsed.players.length > 0) {
+          return {
+            players: parsed.players,
+            dataSource: 'final',
+            finalPath: flatPath,
+            coach: parsed.coach,
+            formation: parsed.formation,
+          };
+        }
+      }
+
+      const letter = this.findGroupLetterForTeam(teamInfo.id, scheduleData);
+      const groupFolder = letter ? `group-${letter}` : 'misc';
+      const finalPath = path.join(squadFinalRoot, groupFolder, `${teamInfo.chineseName}.md`);
+
       if (fileExists(finalPath)) {
         const mdContent = readFile(finalPath);
         const parsed = this.parseFinalSquadMarkdown(mdContent);
@@ -592,6 +791,27 @@ class TeamProfileGenerator extends BaseCrawler {
    */
   inferTeamGoal(teamName, valueAnalysis) {
     const odds = this.championOdds[teamName];
+
+    if (useLeagueStyleAnalysis()) {
+      let oddsGoal = '中游';
+      if (odds) {
+        if (odds <= 10) oddsGoal = '争冠热门';
+        else if (odds <= 20) oddsGoal = '争四/争冠';
+        else if (odds <= 40) oddsGoal = '欧战区';
+        else if (odds <= 80) oddsGoal = '中游';
+        else oddsGoal = '保级区';
+      }
+
+      let valueGoal = '中游';
+      if (valueAnalysis.total >= 80000) valueGoal = '争冠热门';
+      else if (valueAnalysis.total >= 50000) valueGoal = '争四/争冠';
+      else if (valueAnalysis.total >= 25000) valueGoal = '欧战区';
+      else if (valueAnalysis.total >= 10000) valueGoal = '中游';
+      else valueGoal = '保级/陪跑';
+
+      return { oddsGoal, valueGoal, odds: odds || '未知' };
+    }
+
     let oddsGoal = '小组出线';
 
     if (odds) {
@@ -622,6 +842,7 @@ class TeamProfileGenerator extends BaseCrawler {
     const positionDepth = this.analyzePositionDepth(players);
     const tacticalStyle = this.inferTacticalStyle(players, ageAnalysis, heightAnalysis, valueAnalysis);
     const teamGoal = this.inferTeamGoal(teamInfo.chineseName, valueAnalysis);
+    const leagueStyle = useLeagueStyleAnalysis();
 
     const dataTag =
       meta.dataSource === 'final' ? 'squad-final 确认名单' : 'player_center 数据（全量或回退）';
@@ -720,10 +941,17 @@ class TeamProfileGenerator extends BaseCrawler {
     // AI分析备注
     lines.push(`## 八、AI分析备注\n`);
     lines.push(`> 以上为基于大名单数据的自动分析，实际打法需结合：`);
-    lines.push(`> 1. 主教练战术偏好`);
-    lines.push(`> 2. 预选赛/友谊赛的阵型和比赛方式`);
-    lines.push(`> 3. 核心球员的俱乐部赛季表现`);
-    lines.push(`> 4. 球队历史大赛表现`);
+    if (leagueStyle) {
+      lines.push(`> 1. 主教练战术偏好`);
+      lines.push(`> 2. 转会窗引援效果`);
+      lines.push(`> 3. 多线作战（欧冠/欧联 + 联赛 + 国内杯赛）能力`);
+      lines.push(`> 4. 联赛赛程与战意（争冠/保级/欧战资格）`);
+    } else {
+      lines.push(`> 1. 主教练战术偏好`);
+      lines.push(`> 2. 预选赛/友谊赛的阵型和比赛方式`);
+      lines.push(`> 3. 核心球员的俱乐部赛季表现`);
+      lines.push(`> 4. 球队历史大赛表现`);
+    }
 
     return lines.join('\n');
   }

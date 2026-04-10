@@ -15,6 +15,7 @@
     "process:squad-final:init:one": "node processors/squadFinalInitializer.js --team",
     "process:profile": "node processors/teamProfileGenerator.js",
     "process:profile:one": "node processors/teamProfileGenerator.js --team",
+    "process:league-squad": "node processors/leagueSquadProcessor.js",
     "crawl:schedule:ucl": "CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js",
     "crawl:schedule:epl": "CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js",
     "crawl:schedule:kleague": "CUP_ANALYZER_CUP=koreanKLeague node crawlers/scheduleCrawler.js",

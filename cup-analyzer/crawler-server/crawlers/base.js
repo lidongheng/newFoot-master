@@ -120,6 +120,17 @@ class BaseCrawler {
     return groups;
   }
 
+  /**
+   * 赛程中全部真实球队（过滤球探占位符 id ≥ 36185）
+   * @param {{ arrTeam: any[] }} scheduleData parseScheduleData 返回值
+   * @returns {{ id: number, chineseName: string, englishName: string, traditionalName: string, image: string }[]}
+   */
+  getAllTeams(scheduleData) {
+    if (!scheduleData || !scheduleData.arrTeam) return [];
+    const teamMap = this.buildTeamMap(scheduleData.arrTeam);
+    return Object.values(teamMap).filter((t) => t.id < 36185);
+  }
+
   async delay() {
     await sleep(this.delayMs);
   }

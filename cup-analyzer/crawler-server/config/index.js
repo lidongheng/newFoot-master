@@ -98,6 +98,28 @@ const cups = {
   },
 };
 
+/** 球探联赛/杯赛序号 → 对应 cup-analyzer 赛程 JS 绝对路径（含子联赛文件名，如 s273_462.js） */
+const schedulePathBySerial = {};
+for (const cup of Object.values(cups)) {
+  schedulePathBySerial[cup.cupSerial] = cup.paths.cupScheduleData;
+}
+
+const matchCenterDir = path.resolve(__dirname, '../match_center');
+
+/**
+ * 解析 clubMatchAnalyzer / squadTarget 使用的赛程文件路径
+ * @param {string} leagueSerial 纯数字序号（无 s/c 前缀），与 squadTarget.leagueSerial 一致
+ * @param {boolean} [isNation] 国家队赛事用 c 前缀
+ * @returns {string} 优先使用 cups 中已配置的 cupScheduleData，否则回退 match_center/s{n}.js 或 c{n}.js
+ */
+function resolveScheduleData(leagueSerial, isNation) {
+  if (schedulePathBySerial[leagueSerial]) {
+    return schedulePathBySerial[leagueSerial];
+  }
+  const prefix = isNation ? 'c' : 's';
+  return path.join(matchCenterDir, `${prefix}${leagueSerial}.js`);
+}
+
 const activeKey = process.env.CUP_ANALYZER_CUP || 'theWorldCup';
 const active = cups[activeKey] || cups.theWorldCup;
 
@@ -115,12 +137,16 @@ const config = {
   cupName: active.cupName,
   season: active.season,
 
+  /** 序号 → 各模块 data/ 下赛程 JS，供 resolveScheduleData */
+  schedulePathBySerial,
+  resolveScheduleData,
+
   paths: {
     ...active.paths,
     /** @deprecated 请优先使用 cupScheduleData；保留为世界杯 c75 固定路径 */
     c75Data: cups.theWorldCup.paths.cupScheduleData,
-    /** 国内联赛赛程 JS（s{联赛序号}.js），供 playerList + clubMatchAnalyzer；见 match_center/README.md */
-    matchCenterDir: path.resolve(__dirname, '../match_center'),
+    /** 国内联赛赛程 JS 兜底目录（未在 cups 中配置的序号）；scheduleCrawler 会同步写入；见 match_center/README.md */
+    matchCenterDir,
   },
 
   crawlDelayMs: 3000,

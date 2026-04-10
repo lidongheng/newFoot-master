@@ -1,6 +1,6 @@
 /**
  * 俱乐部国内联赛出场分析（原 backend-server/crawlerClub3_new.js）
- * 读取 match_center、player_center，拉取 bf.titan007 技术统计页，输出 *-new.json
+ * 读取赛程 JS（优先各联赛 data/，见 config.resolveScheduleData）、player_center，拉取 bf.titan007 技术统计页，输出 *-new.json
  */
 
 const fs = require('fs');
@@ -56,12 +56,10 @@ class ClubAnalyzer {
    */
   async readLeagueData() {
     try {
-      // 根据是否为国家队决定使用哪个文件
-      const filePrefix = this.isNation ? 'c' : 's';
-      // 确保leagueId前缀正确
+      // 确保 leagueId 无前缀（s36 → 36），路径由 config 解析：已配置杯赛/联赛 → cupScheduleData，否则 match_center
       const leagueIdWithoutPrefix = this.leagueId.replace(/^[sc]/, '');
-      const filePath = path.join(appConfig.paths.matchCenterDir, `${filePrefix}${leagueIdWithoutPrefix}.js`);
-      
+      const filePath = appConfig.resolveScheduleData(leagueIdWithoutPrefix, this.isNation);
+
       console.log(`读取联赛数据文件: ${filePath}`);
       
       // 检查文件是否存在
