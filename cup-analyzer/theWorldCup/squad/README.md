@@ -1,4 +1,6 @@
-# 48队26人大名单
+# 48队初选大名单（自动生成）
+
+> 由 `squadProcessor.js` 从 `player_center` JSON **全量**生成，人数常多于正式26人。正式名单请编辑 **`squad-final/`**（见 `../squad-final/README.md`）。
 
 ## 数据来源
 

@@ -15,6 +15,7 @@ const cups = {
     season: '2026',
     paths: {
       cupAnalyzer: path.resolve(__dirname, '../../theWorldCup'),
+      squadFinal: path.resolve(__dirname, '../../theWorldCup/squad-final'),
       playerCenter: path.resolve(__dirname, '../output/player_center'),
       basicData: path.resolve(__dirname, '../output/basicData'),
       cupScheduleData: path.resolve(__dirname, '../../theWorldCup/data/c75.js'),
@@ -26,6 +27,7 @@ const cups = {
     season: '25-26',
     paths: {
       cupAnalyzer: path.resolve(__dirname, '../../championsLeague'),
+      squadFinal: path.resolve(__dirname, '../../championsLeague/squad-final'),
       playerCenter: path.resolve(__dirname, '../output/player_center'),
       basicData: path.resolve(__dirname, '../output/basicData'),
       cupScheduleData: path.resolve(__dirname, '../../championsLeague/data/c103.js'),
@@ -38,6 +40,7 @@ const cups = {
     season: '2025-2026',
     paths: {
       cupAnalyzer: path.resolve(__dirname, '../../epl'),
+      squadFinal: path.resolve(__dirname, '../../epl/squad-final'),
       playerCenter: path.resolve(__dirname, '../output/player_center'),
       basicData: path.resolve(__dirname, '../output/basicData'),
       cupScheduleData: path.resolve(__dirname, '../../epl/data/c36.js'),

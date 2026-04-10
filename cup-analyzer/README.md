@@ -16,8 +16,10 @@ cup-analyzer/
 │   │   ├── c75.js                     # 赛程数据（球探体育格式）
 │   │   ├── 冠军赔率.md                # 冠军赔率
 │   │   └── 球队与序号对照表.md        # 球队ID对照
-│   ├── squad/                         # 48队26人大名单
+│   ├── squad/                         # 48队初选大名单（爬虫全量，自动生成）
 │   │   └── group-{A~L}/              # 按小组分类
+│   ├── squad-final/                   # 最终26人大名单（人工确认；画像优先读取）
+│   │   └── group-{A~L}/
 │   ├── teamProfile/                   # 球队画像（自动生成）
 │   ├── report/                        # 赛前分析报告
 │   │   ├── group-stage/round-{1~3}/   # 小组赛
@@ -92,7 +94,7 @@ node crawlers/squadCrawler.js              # 批量爬取48队大名单
 node crawlers/squadCrawler.js --team 772   # 爬取单队大名单（或 npm run crawl:squad:one -- 772）
 node processors/squadProcessor.js          # 将全部已有 json 转为 squad/group-*/ 下 Markdown
 node processors/squadProcessor.js --team 772  # 只生成一队 Markdown（或 npm run process:squad:one -- 772）
-node processors/teamProfileGenerator.js    # 生成球队画像
+node processors/teamProfileGenerator.js    # 生成球队画像（优先读 squad-final，需 **主教练** / **阵型** 元数据；见 theWorldCup/squad-final/README.md）
 node processors/strategyAnalyzer.js        # 生成策略分析报告
 node crawlers/matchDataCrawler.js --match 2906701  # 爬取单场赛后数据
 node crawlers/oddsCrawler.js 2906701       # 爬取单场赔率

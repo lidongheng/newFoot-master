@@ -6,10 +6,51 @@ const { readJSON, readFile, saveMarkdown, fileExists } = require('../utils/fileW
 /**
  * 球队画像生成器 - 从大名单数据自动分析球队特征
  *
- * 分析维度：年龄结构、身高分析、身价分析、位置深度、打法推断、球队目标
- * 输入: output/player_center/{teamSerial}.json + c75.js + 冠军赔率.md
+ * 分析维度：主教练与阵型（元数据）、按位置 26 人名单、预测首发、年龄结构、身高、身价、位置深度、打法推断、球队目标
+ * 输入（优先）: cup-analyzer/.../squad-final/group-X/{队名}.md（最终26人，含 **主教练** / **阵型** 元数据）
+ * 回退: output/player_center/{teamSerial}.json + c75.js + 冠军赔率.md（无主教练/阵型时相应章节为提示）
  * 输出: cup-analyzer/theWorldCup/teamProfile/{队名}.md
+ *
+ * 当数据来源为 squad-final 时，生成画像后会根据当前解析的球员列表**回写**该 md 末尾的「## 统计摘要」（总人数、平均年龄、平均身高、位置分布）。
+ *
+ * CLI: node processors/teamProfileGenerator.js [--source final|raw] [--team 序号]
  */
+
+/** 画像「按位置大名单」固定逻辑分组（合并相近位置），顺序从后到前 */
+const POSITION_GROUPS_FOR_PROFILE = [
+  { label: '门将', codes: ['GK'] },
+  { label: '右后卫', codes: ['RB', 'RWB'] },
+  { label: '中后卫', codes: ['CB', 'LCB', 'RCB'] },
+  { label: '左后卫', codes: ['LB', 'LWB'] },
+  { label: '后腰', codes: ['CDM', 'RDM', 'LDM'] },
+  { label: '前腰', codes: ['CAM', 'CM'] },
+  { label: '右边锋', codes: ['RM', 'RW'] },
+  { label: '左边锋', codes: ['LM', 'LW'] },
+  { label: '中锋', codes: ['ST', 'CF'] },
+];
+
+const KNOWN_POSITION_CODES = new Set([
+  'GK',
+  'LB',
+  'CB',
+  'RB',
+  'LCB',
+  'RCB',
+  'LWB',
+  'RWB',
+  'CDM',
+  'LDM',
+  'RDM',
+  'CM',
+  'CAM',
+  'LM',
+  'RM',
+  'LW',
+  'RW',
+  'ST',
+  'CF',
+]);
+
 class TeamProfileGenerator extends BaseCrawler {
   constructor() {
     super('TeamProfileGenerator');
@@ -33,6 +74,378 @@ class TeamProfileGenerator extends BaseCrawler {
       }
     });
     return odds;
+  }
+
+  /**
+   * 查找球队所在小组字母（与 SquadProcessor 一致）
+   */
+  findGroupLetterForTeam(teamId, scheduleData) {
+    const groupMap = this.buildGroupMap(scheduleData);
+    const id = Number(teamId);
+    for (const [letter, group] of Object.entries(groupMap)) {
+      if (group.teams.some((t) => Number(t.teamId) === id)) return letter;
+    }
+    return null;
+  }
+
+  /**
+   * 将「位置」列标准化为与阵型、POSITION_GROUPS 一致的英文缩写（与 squadProcessor 对齐并扩展）
+   * @returns {string|null}
+   */
+  normalizePositionCode(raw) {
+    const s = String(raw || '').trim();
+    if (!s || s === '-') return null;
+    const upper = s.toUpperCase();
+    if (KNOWN_POSITION_CODES.has(upper)) return upper;
+    const zhMap = {
+      门将: 'GK',
+      守门员: 'GK',
+      右后卫: 'RB',
+      左后卫: 'LB',
+      中后卫: 'CB',
+      中卫: 'CB',
+      右中后卫: 'RCB',
+      左中后卫: 'LCB',
+      右翼卫: 'RWB',
+      左翼卫: 'LWB',
+      后腰: 'CDM',
+      左边后腰: 'LDM',
+      右边后腰: 'RDM',
+      前腰: 'CAM',
+      右前腰: 'RAM',
+      左前腰: 'LAM',
+      右中场: 'RM',
+      左中场: 'LM',
+      中前卫: 'CM',
+      中锋: 'ST',
+      左边锋: 'LW',
+      右边锋: 'RW',
+      影锋: 'CF',
+      前锋: 'ST',
+      中场: 'CM',
+    };
+    if (zhMap[s]) return zhMap[s];
+    return null;
+  }
+
+  /**
+   * 阵型对应 11 人位置列表（与 clubMatchAnalyzer.getPositionsForFormation 一致）
+   * @param {string} formation 如 4-2-3-1 或 4231
+   * @returns {string[]}
+   */
+  getPositionsForFormation(formation) {
+    const formationMappings = {
+      4213: ['GK', 'LB', 'CB', 'CB', 'RB', 'CDM', 'CDM', 'CAM', 'LW', 'ST', 'RW'],
+      4231: ['GK', 'LB', 'CB', 'CB', 'RB', 'CDM', 'CDM', 'LM', 'CAM', 'RM', 'ST'],
+      3421: ['GK', 'LCB', 'CB', 'RCB', 'LB', 'CDM', 'CDM', 'RB', 'LM', 'RM', 'ST'],
+      433: ['GK', 'LB', 'CB', 'CB', 'RB', 'LDM', 'CDM', 'RDM', 'LW', 'ST', 'RW'],
+      352: ['GK', 'LCB', 'CB', 'RCB', 'LB', 'CM', 'CDM', 'CM', 'RB', 'ST', 'ST'],
+      343: ['GK', 'LCB', 'CB', 'RCB', 'LB', 'CDM', 'CDM', 'RB', 'LW', 'ST', 'RW'],
+      442: ['GK', 'LB', 'CB', 'CB', 'RB', 'LM', 'CDM', 'CDM', 'RM', 'ST', 'ST'],
+      3322: ['GK', 'LCB', 'CB', 'RCB', 'CDM', 'CDM', 'CDM', 'LM', 'RM', 'ST', 'ST'],
+      541: ['GK', 'LB', 'LCB', 'CB', 'RCB', 'RB', 'LM', 'CDM', 'CDM', 'RM', 'ST'],
+      4132: ['GK', 'LB', 'LCB', 'CB', 'RCB', 'CDM', 'LM', 'CAM', 'RM', 'ST', 'ST'],
+      4123: ['GK', 'LB', 'LCB', 'CB', 'RCB', 'CDM', 'LM', 'RM', 'LW', 'ST', 'RW'],
+      451: ['GK', 'LB', 'LCB', 'CB', 'RCB', 'LM', 'CM', 'CDM', 'CM', 'RM', 'ST'],
+      3412: ['GK', 'LCB', 'CB', 'RCB', 'LB', 'CDM', 'CDM', 'RB', 'CAM', 'ST', 'ST'],
+      532: ['GK', 'LB', 'LCB', 'CB', 'RCB', 'RB', 'LM', 'CDM', 'RM', 'ST', 'ST'],
+      4411: ['GK', 'LB', 'CB', 'CB', 'RB', 'LM', 'CDM', 'CDM', 'RM', 'CF', 'ST'],
+      4141: ['GK', 'LB', 'CB', 'CB', 'RB', 'CDM', 'LM', 'CAM', 'CAM', 'RM', 'ST'],
+      3142: ['GK', 'LCB', 'CB', 'RCB', 'CDM', 'LM', 'CAM', 'CAM', 'RM', 'ST', 'ST'],
+      4312: ['GK', 'LB', 'CB', 'CB', 'RB', 'LM', 'CDM', 'RM', 'CAM', 'ST', 'ST'],
+      3511: ['GK', 'LCB', 'CB', 'RCB', 'LB', 'CM', 'CDM', 'CM', 'RB', 'CF', 'ST'],
+      4321: ['GK', 'LB', 'CB', 'CB', 'RB', 'LM', 'CDM', 'RM', 'LW', 'RW', 'ST'],
+      3241: ['GK', 'LCB', 'CB', 'RCB', 'CDM', 'CDM', 'LM', 'CM', 'CM', 'RM', 'ST'],
+      3313: ['GK', 'LCB', 'CB', 'RCB', 'LM', 'CDM', 'RM', 'CAM', 'LW', 'ST', 'RW'],
+    };
+    const normalizedFormation = String(formation || '').replace(/[^0-9]/g, '');
+    return formationMappings[normalizedFormation] || formationMappings['442'];
+  }
+
+  /**
+   * 按固定逻辑位置分组生成大名单行（球员名（俱乐部）以顿号连接）
+   * @param {any[]} players
+   * @returns {string}
+   */
+  buildPositionSquadList(players) {
+    if (!players || players.length === 0) return '';
+    const codeToPlayers = new Map();
+    for (const p of players) {
+      const code = this.normalizePositionCode(p.position);
+      if (!code) continue;
+      if (!codeToPlayers.has(code)) codeToPlayers.set(code, []);
+      codeToPlayers.get(code).push(p);
+    }
+    const lines = [];
+    const usedNames = new Set();
+    for (const g of POSITION_GROUPS_FOR_PROFILE) {
+      const bucket = [];
+      for (const c of g.codes) {
+        const list = codeToPlayers.get(c);
+        if (list) bucket.push(...list);
+      }
+      const seen = new Set();
+      const uniq = bucket.filter((p) => {
+        if (seen.has(p.name)) return false;
+        seen.add(p.name);
+        return true;
+      });
+      uniq.forEach((p) => usedNames.add(p.name));
+      if (uniq.length === 0) continue;
+      const codesStr = g.codes.join('、');
+      const playersStr = uniq.map((p) => `${p.name}（${p.currentClub || '-'}）`).join('、');
+      lines.push(`${g.label}(${codesStr})：${playersStr}`);
+    }
+    const rest = players.filter((p) => !usedNames.has(p.name));
+    if (rest.length > 0) {
+      lines.push(
+        `其他：${rest.map((p) => `${p.name}（${p.currentClub || '-'}）`).join('、')}`
+      );
+    }
+    return lines.join('\n');
+  }
+
+  /**
+   * 预测首发：按阵型分层，组内逗号、组间斜杠；每组内位置从右到左（与 getPositionsForFormation 切片反转一致）
+   * @param {any[]} players
+   * @param {string} formation 如 4-2-3-1
+   * @returns {string}
+   */
+  buildPredictedStartingLineup(players, formation) {
+    if (!formation || !players || players.length === 0) return '';
+    const digitStr = String(formation).replace(/[^0-9]/g, '');
+    if (digitStr.length < 2) return '';
+    const digits = digitStr.split('').map(Number);
+    const positions = this.getPositionsForFormation(formation);
+    if (!positions || positions.length !== 11) return '';
+    const sumLines = digits.reduce((a, b) => a + b, 0);
+    if (sumLines !== 10) return '';
+
+    const displayOrder = [];
+    let idx = 0;
+    displayOrder.push(positions[idx++]);
+    for (const d of digits) {
+      const slice = positions.slice(idx, idx + d);
+      idx += d;
+      displayOrder.push(...slice.reverse());
+    }
+    if (displayOrder.length !== 11) return '';
+
+    const queues = {};
+    for (const p of players) {
+      const code = this.normalizePositionCode(p.position);
+      if (!code) continue;
+      if (!queues[code]) queues[code] = [];
+      queues[code].push(p.name);
+    }
+
+    /** 首发槽位与可顶替的相近位置（先主码、后替补码） */
+    const slotTryOrder = (pos) => {
+      const alias = {
+        CDM: ['CM'],
+        CAM: ['CM'],
+        LM: ['LW'],
+        RM: ['RW'],
+        LB: ['LWB'],
+        RB: ['RWB'],
+        LCB: ['CB'],
+        RCB: ['CB'],
+      };
+      return [pos, ...(alias[pos] || [])];
+    };
+
+    const starters = [];
+    for (const pos of displayOrder) {
+      let name = null;
+      for (const code of slotTryOrder(pos)) {
+        const q = queues[code];
+        if (q && q.length > 0) {
+          name = q.shift();
+          break;
+        }
+      }
+      starters.push(name || '（待定）');
+    }
+
+    const groups = [];
+    groups.push(starters[0]);
+    let sidx = 1;
+    for (const d of digits) {
+      groups.push(starters.slice(sidx, sidx + d).join('，'));
+      sidx += d;
+    }
+    return `${groups.join('/')}`;
+  }
+
+  /**
+   * 解析 squad-final 下 Markdown：元数据（主教练、阵型）+ 大名单表格
+   * @returns {{ players: any[], coach: string|null, formation: string|null }}
+   */
+  parseFinalSquadMarkdown(content) {
+    const empty = { players: [], coach: null, formation: null };
+    if (!content || !content.trim()) return empty;
+
+    let coach = null;
+    let formation = null;
+    const sectionRe = /^##\s+(门将|后卫|中场|前锋)/;
+    const labelToGroup = { 门将: 'GK', 后卫: 'DF', 中场: 'MF', 前锋: 'FW' };
+    let currentGroup = null;
+    const players = [];
+
+    for (const line of content.split('\n')) {
+      const trimmed = line.trim();
+      if (!trimmed) continue;
+
+      const coachMatch = trimmed.match(/\*\*主教练\*\*[:：]\s*(.+)/);
+      if (coachMatch) {
+        coach = coachMatch[1].trim();
+        continue;
+      }
+      const formationMatch = trimmed.match(/\*\*阵型\*\*[:：]\s*(.+)/);
+      if (formationMatch) {
+        formation = formationMatch[1].trim();
+        continue;
+      }
+
+      const sec = trimmed.match(sectionRe);
+      if (sec) {
+        currentGroup = labelToGroup[sec[1]] || 'MF';
+        continue;
+      }
+      if (!currentGroup || !trimmed.startsWith('|')) continue;
+      if (trimmed.includes('球衣号') && trimmed.includes('姓名')) continue;
+      const parts = trimmed.split('|').map((s) => s.trim());
+      if (parts.length < 10) continue;
+      const jersey = parts[1];
+      const name = parts[2];
+      if (!name || name.includes('---') || name === '姓名') continue;
+      if (jersey && /^[\-:|]+$/.test(jersey.replace(/\s/g, '')) && name.includes('---')) continue;
+
+      const age = parseInt(parts[4], 10);
+      const heightNum = parseInt(String(parts[5] || '').replace(/cm/gi, '').trim(), 10);
+      let numberVal = null;
+      if (jersey && jersey !== '-') {
+        numberVal = /^[0-9]+$/.test(jersey) ? parseInt(jersey, 10) : jersey;
+      }
+
+      players.push({
+        number: numberVal,
+        name,
+        currentClub: parts[3] || '-',
+        age: Number.isNaN(age) ? null : age,
+        height: Number.isNaN(heightNum) ? null : heightNum,
+        position: parts[6] || '-',
+        nationality: parts[8] || '-',
+        marketValue: parts[7] || '-',
+        positionGroup: currentGroup,
+      });
+    }
+    return { players, coach, formation };
+  }
+
+  /**
+   * 与 squadProcessor 一致：根据球员数组生成「## 统计摘要」Markdown 块（不含前文）
+   */
+  buildSquadFinalStatsMarkdown(players) {
+    const gk = players.filter((p) => p.positionGroup === 'GK').length;
+    const df = players.filter((p) => p.positionGroup === 'DF').length;
+    const mf = players.filter((p) => p.positionGroup === 'MF').length;
+    const fw = players.filter((p) => p.positionGroup === 'FW').length;
+    const validAges = players.filter((p) => p.age).map((p) => p.age);
+    const validHeights = players.filter((p) => p.height).map((p) => p.height);
+    const avgAge = validAges.length
+      ? (validAges.reduce((a, b) => a + b, 0) / validAges.length).toFixed(1)
+      : '-';
+    const avgHeight = validHeights.length
+      ? (validHeights.reduce((a, b) => a + b, 0) / validHeights.length).toFixed(1)
+      : '-';
+
+    const lines = [];
+    lines.push('## 统计摘要\n');
+    lines.push(`- **总人数**: ${players.length}`);
+    lines.push(`- **平均年龄**: ${avgAge}岁`);
+    lines.push(`- **平均身高**: ${avgHeight}cm`);
+    lines.push(`- **位置分布**: 门将${gk} / 后卫${df} / 中场${mf} / 前锋${fw}`);
+    return lines.join('\n');
+  }
+
+  /**
+   * 将 squad-final 文件中「## 统计摘要」及之后替换为根据 players 重算的内容；若无该标题则追加到文末
+   */
+  updateSquadFinalStatsFile(finalPath, players) {
+    const content = readFile(finalPath);
+    if (!content) return false;
+    const statsBlock = this.buildSquadFinalStatsMarkdown(players);
+    const marker = '## 统计摘要';
+    const idx = content.indexOf(marker);
+    const newContent =
+      idx !== -1
+        ? `${content.slice(0, idx).trimEnd()}\n\n${statsBlock}\n`
+        : `${content.trimEnd()}\n\n${statsBlock}\n`;
+    saveMarkdown(finalPath, newContent);
+    return true;
+  }
+
+  /**
+   * 若画像数据来自 squad-final，则回写该文件的统计摘要
+   */
+  syncSquadFinalStatsAfterProfile(finalPath, players, dataSource) {
+    if (dataSource !== 'final' || !finalPath || !players || players.length === 0) return;
+    this.updateSquadFinalStatsFile(finalPath, players);
+    this.log(`已同步 squad-final 统计摘要: ${finalPath}`);
+  }
+
+  /**
+   * 按 --source 解析球员列表：final 优先读 squad-final，否则读 player_center JSON；raw 仅 JSON
+   * @returns {{ players: any[]|null, dataSource: 'final'|'raw'|null, finalPath: string|null, coach: string|null, formation: string|null }}
+   */
+  resolvePlayers(teamInfo, scheduleData, source = 'final') {
+    const letter = this.findGroupLetterForTeam(teamInfo.id, scheduleData);
+    const groupFolder = letter ? `group-${letter}` : 'misc';
+    const squadFinalRoot =
+      config.paths.squadFinal || path.join(config.paths.cupAnalyzer, 'squad-final');
+    const finalPath = path.join(squadFinalRoot, groupFolder, `${teamInfo.chineseName}.md`);
+
+    if (source !== 'raw') {
+      if (fileExists(finalPath)) {
+        const mdContent = readFile(finalPath);
+        const parsed = this.parseFinalSquadMarkdown(mdContent);
+        if (parsed && parsed.players && parsed.players.length > 0) {
+          return {
+            players: parsed.players,
+            dataSource: 'final',
+            finalPath,
+            coach: parsed.coach,
+            formation: parsed.formation,
+          };
+        }
+      }
+    }
+
+    const jsonPath = path.join(config.paths.playerCenter, `${teamInfo.id}.json`);
+    if (source === 'raw') {
+      if (fileExists(jsonPath)) {
+        return {
+          players: readJSON(jsonPath),
+          dataSource: 'raw',
+          finalPath: null,
+          coach: null,
+          formation: null,
+        };
+      }
+      return { players: null, dataSource: null, finalPath: null, coach: null, formation: null };
+    }
+
+    if (fileExists(jsonPath)) {
+      return {
+        players: readJSON(jsonPath),
+        dataSource: 'raw',
+        finalPath: null,
+        coach: null,
+        formation: null,
+      };
+    }
+    return { players: null, dataSource: null, finalPath: null, coach: null, formation: null };
   }
 
   /**
@@ -202,7 +615,7 @@ class TeamProfileGenerator extends BaseCrawler {
   /**
    * 生成单个球队画像 Markdown
    */
-  generateProfileMarkdown(teamInfo, players) {
+  generateProfileMarkdown(teamInfo, players, meta = {}) {
     const ageAnalysis = this.analyzeAge(players);
     const heightAnalysis = this.analyzeHeight(players);
     const valueAnalysis = this.analyzeMarketValue(players);
@@ -210,9 +623,16 @@ class TeamProfileGenerator extends BaseCrawler {
     const tacticalStyle = this.inferTacticalStyle(players, ageAnalysis, heightAnalysis, valueAnalysis);
     const teamGoal = this.inferTeamGoal(teamInfo.chineseName, valueAnalysis);
 
+    const dataTag =
+      meta.dataSource === 'final' ? 'squad-final 确认名单' : 'player_center 数据（全量或回退）';
+    const coach = meta.coach || null;
+    const formation = meta.formation || null;
+
     const lines = [];
     lines.push(`# ${teamInfo.chineseName}（${teamInfo.englishName}）球队画像\n`);
-    lines.push(`> 自动生成 | 基于26人大名单数据分析\n`);
+    lines.push(`> 自动生成 | 基于${dataTag}分析`);
+    if (coach) lines.push(`> **主教练**：${coach}`);
+    lines.push('');
 
     // 球队目标
     lines.push(`## 一、球队定位\n`);
@@ -221,8 +641,33 @@ class TeamProfileGenerator extends BaseCrawler {
     lines.push(`- **身价定位**: ${teamGoal.valueGoal}`);
     lines.push(`- **综合目标**: ${teamGoal.oddsGoal}\n`);
 
+    // 球队阵容（按位置大名单 + 预测首发）
+    lines.push(`## 二、球队阵容\n`);
+    if (formation) {
+      lines.push(`### 阵型：${formation}\n`);
+    } else {
+      lines.push(`### 阵型：未设置\n`);
+      lines.push(
+        `> 请在 \`squad-final\` 对应文件中于表头增加 \`- **阵型**: 如 4-2-3-1\`，并将球员「位置」列规范为英文缩写（与阵型一致）。\n`
+      );
+    }
+    const squadList = this.buildPositionSquadList(players);
+    if (squadList) {
+      lines.push(squadList);
+      lines.push('');
+    }
+    if (formation) {
+      const predLine = this.buildPredictedStartingLineup(players, formation);
+      lines.push(`### 预测首发(${formation})：`);
+      lines.push(predLine);
+      lines.push('');
+    } else {
+      lines.push(`### 预测首发`);
+      lines.push(`> 需先填写 **阵型** 元数据后方可自动生成。\n`);
+    }
+
     // 年龄结构
-    lines.push(`## 二、年龄结构\n`);
+    lines.push(`## 三、年龄结构\n`);
     lines.push(`- **平均年龄**: ${ageAnalysis.avg}岁`);
     lines.push(`- **年龄范围**: ${ageAnalysis.min} - ${ageAnalysis.max}岁`);
     lines.push(`- **年轻球员(≤23岁)**: ${ageAnalysis.young}人`);
@@ -233,7 +678,7 @@ class TeamProfileGenerator extends BaseCrawler {
     lines.push('');
 
     // 身高分析
-    lines.push(`## 三、身高分析\n`);
+    lines.push(`## 四、身高分析\n`);
     lines.push(`- **平均身高**: ${heightAnalysis.avg}cm`);
     lines.push(`- **身高范围**: ${heightAnalysis.min} - ${heightAnalysis.max}cm`);
     lines.push(`- **高点(≥185cm)**: ${heightAnalysis.tallCount}人`);
@@ -243,7 +688,7 @@ class TeamProfileGenerator extends BaseCrawler {
     lines.push('');
 
     // 身价分析
-    lines.push(`## 四、身价分析\n`);
+    lines.push(`## 五、身价分析\n`);
     lines.push(`- **总身价**: ${valueAnalysis.total}万`);
     lines.push(`- **平均身价**: ${valueAnalysis.avg}万`);
     lines.push(`- **最高身价**: ${valueAnalysis.max}万`);
@@ -256,7 +701,7 @@ class TeamProfileGenerator extends BaseCrawler {
     lines.push('');
 
     // 位置深度
-    lines.push(`## 五、位置深度\n`);
+    lines.push(`## 六、位置深度\n`);
     lines.push(`- **门将**: ${positionDepth.GK}人`);
     lines.push(`- **后卫**: ${positionDepth.DF}人`);
     lines.push(`- **中场**: ${positionDepth.MF}人`);
@@ -268,12 +713,12 @@ class TeamProfileGenerator extends BaseCrawler {
     lines.push('');
 
     // 打法推断
-    lines.push(`## 六、打法推断\n`);
+    lines.push(`## 七、打法推断\n`);
     tacticalStyle.forEach((s) => lines.push(`- ${s}`));
     lines.push('');
 
     // AI分析备注
-    lines.push(`## 七、AI分析备注\n`);
+    lines.push(`## 八、AI分析备注\n`);
     lines.push(`> 以上为基于大名单数据的自动分析，实际打法需结合：`);
     lines.push(`> 1. 主教练战术偏好`);
     lines.push(`> 2. 预选赛/友谊赛的阵型和比赛方式`);
@@ -296,8 +741,10 @@ class TeamProfileGenerator extends BaseCrawler {
 
   /**
    * 批量生成所有球队画像
+   * @param {{ source?: 'final'|'raw' }} options source 默认 final（优先 squad-final，否则 JSON）
    */
-  async generateAll() {
+  async generateAll(options = {}) {
+    const source = options.source || 'final';
     const scheduleData = this.parseScheduleData();
     if (!scheduleData) {
       this.error('无法读取赛程数据');
@@ -309,17 +756,21 @@ class TeamProfileGenerator extends BaseCrawler {
     const results = { success: [], noData: [], failed: [] };
 
     for (const team of realTeams) {
-      const jsonPath = path.join(config.paths.playerCenter, `${team.id}.json`);
-      if (!fileExists(jsonPath)) {
+      const { players, dataSource, finalPath, coach, formation } = this.resolvePlayers(
+        team,
+        scheduleData,
+        source
+      );
+      if (!players || players.length === 0) {
         results.noData.push(team.chineseName);
         continue;
       }
 
       try {
-        const players = readJSON(jsonPath);
-        const md = this.generateProfileMarkdown(team, players);
+        const md = this.generateProfileMarkdown(team, players, { dataSource, coach, formation });
         const mdPath = path.join(config.paths.cupAnalyzer, 'teamProfile', `${team.chineseName}.md`);
         saveMarkdown(mdPath, md);
+        this.syncSquadFinalStatsAfterProfile(finalPath, players, dataSource);
         results.success.push(team.chineseName);
       } catch (err) {
         this.error(`${team.chineseName} 画像生成失败: ${err.message}`);
@@ -330,12 +781,150 @@ class TeamProfileGenerator extends BaseCrawler {
     this.log(`\n画像生成完成: 成功${results.success.length} 无数据${results.noData.length} 失败${results.failed.length}`);
     return results;
   }
+
+  /**
+   * 生成单支球队画像
+   * @param {string|number} teamSerial 球队序号
+   * @param {{ source?: 'final'|'raw' }} options
+   */
+  async generateOne(teamSerial, options = {}) {
+    const source = options.source || 'final';
+    const scheduleData = this.parseScheduleData();
+    if (!scheduleData) {
+      this.error('无法读取赛程数据');
+      return null;
+    }
+
+    const id = Number(teamSerial);
+    if (Number.isNaN(id)) {
+      this.error(`无效的球队序号: ${teamSerial}`);
+      return null;
+    }
+
+    const teamMap = this.buildTeamMap(scheduleData.arrTeam);
+    const team = teamMap[id];
+    if (!team) {
+      this.error(
+        `球队序号 ${id} 不在当前赛程 arrTeam 中。请确认已设置正确的 CUP_ANALYZER_CUP，且 cupScheduleData 与球队一致。`
+      );
+      return null;
+    }
+
+    const { players, dataSource, finalPath, coach, formation } = this.resolvePlayers(
+      team,
+      scheduleData,
+      source
+    );
+    if (!players || players.length === 0) {
+      this.error(
+        `无可用球员数据（序号 ${id}）。请确认存在 squad-final 名单或 output/player_center/${id}.json`
+      );
+      return null;
+    }
+
+    try {
+      const md = this.generateProfileMarkdown(team, players, { dataSource, coach, formation });
+      const mdPath = path.join(config.paths.cupAnalyzer, 'teamProfile', `${team.chineseName}.md`);
+      saveMarkdown(mdPath, md);
+      this.syncSquadFinalStatsAfterProfile(finalPath, players, dataSource);
+      this.log(`单队画像完成: ${team.chineseName} → ${mdPath}（来源: ${dataSource}）`);
+      return { team, mdPath, dataSource };
+    } catch (err) {
+      this.error(`画像生成失败: ${err.message}`);
+      return null;
+    }
+  }
+}
+
+function printTeamProfileUsage() {
+  console.log(`
+球队画像生成器
+
+用法:
+  node processors/teamProfileGenerator.js [选项]
+
+选项:
+  （无参数）              批量生成全部球队（--source 默认 final）
+  --source final|raw     final：优先 squad-final，否则 player_center JSON；raw：仅 JSON（final 成功时同步 squad-final 统计摘要）
+  --team <序号>           只生成一队
+  -t <序号>               同 --team
+  --help, -h              显示本说明
+
+示例:
+  node processors/teamProfileGenerator.js
+  node processors/teamProfileGenerator.js --source raw
+  node processors/teamProfileGenerator.js --team 744
+`);
+}
+
+function parseTeamProfileCliArgs(argv) {
+  const out = { mode: 'all', teamSerial: null, source: 'final' };
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === '--help' || a === '-h') {
+      out.mode = 'help';
+      return out;
+    }
+    if (a === '--source') {
+      const next = argv[i + 1];
+      if (next && (next === 'final' || next === 'raw')) {
+        out.source = next;
+        i++;
+      }
+      continue;
+    }
+    if (a.startsWith('--source=')) {
+      const v = a.slice('--source='.length).trim();
+      if (v === 'final' || v === 'raw') out.source = v;
+      continue;
+    }
+    if (a === '--team' || a === '-t') {
+      const next = argv[i + 1];
+      if (next && !next.startsWith('-')) {
+        out.mode = 'one';
+        out.teamSerial = String(next).trim();
+        i++;
+      } else {
+        out.mode = 'missing_team';
+      }
+      continue;
+    }
+    if (a.startsWith('--team=')) {
+      const v = a.slice('--team='.length).trim();
+      if (v) {
+        out.mode = 'one';
+        out.teamSerial = v;
+      } else {
+        out.mode = 'missing_team';
+      }
+      continue;
+    }
+  }
+  return out;
 }
 
 // CLI 模式
 if (require.main === module) {
+  const argv = process.argv.slice(2);
+  const opts = parseTeamProfileCliArgs(argv);
   const generator = new TeamProfileGenerator();
-  generator.generateAll().catch(console.error);
+
+  if (opts.mode === 'help') {
+    printTeamProfileUsage();
+    process.exit(0);
+  }
+  if (opts.mode === 'missing_team') {
+    console.error('错误: 请提供球队序号，例如: node processors/teamProfileGenerator.js --team 744\n');
+    printTeamProfileUsage();
+    process.exit(1);
+  }
+
+  const runOpts = { source: opts.source };
+  if (opts.mode === 'one' && opts.teamSerial) {
+    generator.generateOne(opts.teamSerial, runOpts).catch(console.error);
+  } else {
+    generator.generateAll(runOpts).catch(console.error);
+  }
 }
 
 module.exports = TeamProfileGenerator;

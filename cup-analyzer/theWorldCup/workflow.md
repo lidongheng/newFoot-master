@@ -15,20 +15,26 @@
 1. 爬取48队大名单
    └─ node crawlers/squadCrawler.js
 
-2. 生成大名单 Markdown（按小组分类）
+2. 生成初选大名单 Markdown（按小组分类，人数通常多于正式26人）
    └─ node processors/squadProcessor.js
    └─ 输出到: squad/group-{A~L}/{球队名}.md
 
-3. 生成球队画像
-   └─ node processors/teamProfileGenerator.js
+3. 手工确认最终26人并写入 squad-final（可先初始化再裁剪）
+   └─ node processors/squadFinalInitializer.js
+   └─ 输出到: squad-final/group-{A~L}/{球队名}.md（每队裁剪为恰好26人）
+   └─ 详见: squad-final/README.md
+
+4. 生成球队画像
+   └─ node processors/teamProfileGenerator.js（默认优先读 squad-final，无则回退 player_center JSON）
+   └─ 可选: --source raw 仅用 JSON；--team <序号> 只生成一队
    └─ 输出到: teamProfile/{球队名}.md
    └─ 分析: 年龄结构、身高、身价、位置深度、打法、目标
 
-4. 生成策略分析报告
+5. 生成策略分析报告
    └─ node processors/strategyAnalyzer.js
    └─ 输出到: strategy/ 目录下4个分析文件
 
-5. 东恒手动补充
+6. 东恒手动补充
    └─ 编辑 description/{球队名}.md（球队背景、教练、战术、核心球员等）
 ```
 

@@ -75,7 +75,7 @@ cup-analyzer/
     │   ├── c75.js                      # 已有，赛程数据
     │   ├── 冠军赔率.md                  # 已有
     │   └── 球队与序号对照表.md           # 已有
-    ├── squad/                          # 48队大名单
+    ├── squad/                          # 48队初选大名单（爬虫全量，自动生成）
     │   ├── README.md                   # 大名单数据说明
     │   ├── group-A/
     │   │   ├── 墨西哥.md
@@ -85,6 +85,9 @@ cup-analyzer/
     │   ├── group-B/
     │   │   └── ...
     │   └── ...                         # A-L共12个小组
+    ├── squad-final/                    # 最终26人大名单（人工确认，供画像生成优先读取）
+    │   ├── README.md
+    │   └── group-{A~L}/{球队名}.md
     ├── teamProfile/                    # 球队画像
     │   ├── README.md                   # 画像分析模板说明
     │   └── {球队名}.md                  # 每队一个画像文件
@@ -138,8 +141,9 @@ cup-analyzer/
     │   ├── oddsCrawler.js             # 赔率/盘口爬虫
     │   └── scheduleCrawler.js         # 赛程更新爬虫
     ├── processors/                    # 数据清洗/整合
-    │   ├── squadProcessor.js          # 大名单清洗
-    │   ├── teamProfileGenerator.js    # 球队画像生成
+    │   ├── squadProcessor.js          # 大名单清洗 → squad/
+    │   ├── squadFinalInitializer.js   # squad/ → squad-final/ 草稿初始化
+    │   ├── teamProfileGenerator.js    # 球队画像生成（优先 squad-final）
     │   └── strategyAnalyzer.js        # 策略数据计算
     ├── utils/
     │   ├── http.js                    # axios封装(复用backend-server模式)

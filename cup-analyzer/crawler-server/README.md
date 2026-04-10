@@ -104,17 +104,33 @@ node processors/squadProcessor.js --team 744
 
 npm：`npm run process:squad` / `npm run process:squad:one -- 744`
 
-### 7. `teamProfileGenerator.js` — 球队画像
+### 7. `squadFinalInitializer.js` — 初选 `squad/` → 最终名单草稿 `squad-final/`
 
+- **作用**：从 `{杯赛}/squad/` 复制到 `{杯赛}/squad-final/`，插入待办注释并将标题改为「最终26人大名单（待确认）」；你在 `squad-final/` 中裁剪至恰好 26 人。
+- **输出**：`config.paths.squadFinal`（世界杯为 `theWorldCup/squad-final/`）
+
+```bash
+node processors/squadFinalInitializer.js
+node processors/squadFinalInitializer.js --team 744
+```
+
+npm：`npm run process:squad-final:init` / `npm run process:squad-final:init:one -- 744`
+
+### 8. `teamProfileGenerator.js` — 球队画像
+
+- **输入**：默认优先 `{杯赛}/squad-final/` 下 Markdown；若无或解析为空则回退 `output/player_center/{序号}.json`。`--source raw` 可强制仅用 JSON。
+- **squad-final**：当成功从该文件解析名单时，会在写出画像后**回写**同文件中的「## 统计摘要」（与当前表格一致）。
 - **输出**：`{杯赛}/teamProfile/{队名}.md`
 
 ```bash
 node processors/teamProfileGenerator.js
+node processors/teamProfileGenerator.js --source raw
+node processors/teamProfileGenerator.js --team 744
 ```
 
-npm：`npm run process:profile`
+npm：`npm run process:profile` / `npm run process:profile:one -- 744`
 
-### 8. `strategyAnalyzer.js` — 世界杯策略分析（出线 / 挑对手 / 默契球 / 疲劳）
+### 9. `strategyAnalyzer.js` — 世界杯策略分析（出线 / 挑对手 / 默契球 / 疲劳）
 
 ```bash
 node processors/strategyAnalyzer.js
@@ -124,7 +140,7 @@ node processors/strategyAnalyzer.js
 
 ## 分析器（`analyzers/`）
 
-### 9. `clubMatchAnalyzer.js` — 俱乐部国内联赛出场分析
+### 10. `clubMatchAnalyzer.js` — 俱乐部国内联赛出场分析
 
 - **前置**：`match_center/s{联赛序号}.js`（见 [`match_center/README.md`](match_center/README.md)）、先跑 `playerListCrawler`、编辑 `config/squadTarget.js`。
 - **输出**：`output/player_center/{teamSerial}-new.json`
@@ -150,7 +166,9 @@ npm：`npm run analyze:club-domestic`
 **世界杯大名单 + Markdown**
 
 1. `node crawlers/squadCrawler.js --with-club`（或单队 `node crawlers/squadCrawler.js --team 744`）
-2. `node processors/squadProcessor.js`
+2. `node processors/squadProcessor.js` → `squad/`（初选）
+3. `node processors/squadFinalInitializer.js` → 编辑 `squad-final/` 为最终 26 人
+4. `node processors/teamProfileGenerator.js`（优先 `squad-final`）
 
 **欧冠 / 英超单场赛前**
 
