@@ -3,11 +3,34 @@
 ## 赛事概览
 
 - **赛事**：欧洲冠军联赛（UEFA Champions League）
-- **联赛序号（球探）**：**103** → `c103.js` / `l103.js` / `bs103.js` / `td103.js`
+- **联赛序号（球探）**：**103** → `c103.js` / `l103.js` / `bs103.js`（`scheduleCrawler` 对杯赛不拉取 `td`；若需入球时间分布请自行维护或从球探导出）
 - **当前架构赛季**：`25-26`（目录 `report/25-26/`、`news/25-26/` 等）；新赛季增加平行目录如 `26-27/`
 - **联赛阶段**：36 队、瑞士赛制、每队 8 轮（4 主 4 客），单一总积分榜
 - **出线**：前 8 直通 16 强；第 9–24 名附加赛；第 25–36 名淘汰
 - **淘汰赛**：附加赛 / 16 强 / 8 强 / 半决赛为 **两回合**；**决赛单场**；**已取消客场进球规则**，平局进加时与点球
+
+### 赛程数据与 `clubMatchAnalyzer`（与 crawler-server 统一）
+
+- **本模块主文件**：`championsLeague/data/c103.js`（及同目录 `l103.js`、`bs103.js`）。
+- **更新**：`CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js` 会写入 `data/` 并**同步拷贝**赛程至 `crawler-server/match_center/c103.js`。
+- **分析欧冠场次时的「国内联赛」赛程**：`squadTarget.leagueSerial` 填该队**所属联赛**序号（如英超 36）；`resolveScheduleData` 会指向 **`epl/data/s36.js`** 等已登记模块路径，未登记的联赛仍用 `match_center/s{n}.js` 兜底。详见 `crawler-server/match_center/README.md`。
+
+### 从大名单到球队画像（联赛流水线）
+
+欧冠 `CUP_ANALYZER_CUP=championsLeague` 下**无 A–L 小组**，`squad/`、`squad-final/` 为**平铺** `{队名}.md`。生成大名单时仍用国内联赛数据：`playerListCrawler` / `clubMatchAnalyzer` 依赖 **`squadTarget.leagueSerial` = 该俱乐部所属联赛**（如英超 **36**），不是 103。
+
+与世界杯不同：前半段为 **`playerListCrawler` + `clubMatchAnalyzer` + `leagueSquadProcessor`**；后半段 **`squadFinalInitializer`** → **`teamProfileGenerator`**。输出：`championsLeague/squad/` → `squad-final/` → `teamProfile/`。序号见 `championsLeague/data/球队与序号对照表.md`。
+
+```bash
+cd cup-analyzer/crawler-server
+# squadTarget：teamSerial=俱乐部序号，leagueSerial=所属联赛（如 36）
+npm run crawl:player-list
+npm run analyze:club-domestic
+CUP_ANALYZER_CUP=championsLeague node processors/leagueSquadProcessor.js
+CUP_ANALYZER_CUP=championsLeague node processors/squadFinalInitializer.js --team <序号>
+# 人工审核 championsLeague/squad-final/{队名}.md
+CUP_ANALYZER_CUP=championsLeague node processors/teamProfileGenerator.js --team <序号>
+```
 
 ## 三大阶段工作流
 
@@ -15,7 +38,8 @@
 
 ```
 1. 确认 data/ 下赛程与盘路数据为最新
-   └─ 可选：cd cup-analyzer/crawler-server && CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js
+   └─ cd cup-analyzer/crawler-server && CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js
+      （更新 `championsLeague/data/c103` 与 `l103`/`bs103`，并同步 `match_center/c103.js`）
 
 2. 维护 data/冠军赔率.md、data/球队与序号对照表.md
 
@@ -25,7 +49,7 @@
 4. 阅读 strategy/ 下框架文档，按轮次更新积分形势与疲劳分析
 ```
 
-**说明（大名单）**：欧冠是跨整个赛季的俱乐部赛事，**没有像世界杯那样赛前一次性公布的「最终大名单」可长期缓存**。每场比赛前都必须重新抓取双方最新阵容（伤病、转会、状态变化），具体见 **阶段二步骤 0**。世界杯模式见 `theWorldCup/squad/` + `squadCrawler.js`；俱乐部走 **`cup-analyzer/crawler-server`**（`playerListCrawler.js` + `analyzers/clubMatchAnalyzer.js`，配置 `config/squadTarget.js`；`match_center` 见该目录下 README）。旧流程仍可用 `backend-server/crawlerPlayer.js` / `crawlerClub3_new.js`，将逐步废弃。
+**说明（大名单）**：欧冠是跨整个赛季的俱乐部赛事，**没有像世界杯那样赛前一次性公布的「最终大名单」可长期缓存**。每场比赛前都必须重新抓取双方最新阵容（伤病、转会、状态变化），具体见 **阶段二步骤 0**。世界杯模式见 `theWorldCup/squad/` + `squadCrawler.js`；俱乐部走 **`cup-analyzer/crawler-server`**（`playerListCrawler.js` + `analyzers/clubMatchAnalyzer.js`，配置 `config/squadTarget.js`；国内联赛赛程路径由 **`config.resolveScheduleData`** 解析，优先各联赛 `data/`，见上文与 `crawler-server/match_center/README.md`）。旧流程仍可用 `backend-server/crawlerPlayer.js` / `crawlerClub3_new.js`，将逐步废弃。
 
 ### 阶段二：赛中分析（每场）
 
@@ -34,7 +58,7 @@
 ```
 赛前 2–3 天:
   0. 抓取双方大名单（必做；逻辑已迁入 cup-analyzer/crawler-server）
-     a. 准备 `crawler-server/match_center/s{联赛序号}.js`（如英超 s36.js，见 `match_center/README.md`）
+     a. 确保该队**国内联赛**赛程 JS 为最新（如英超：跑 `CUP_ANALYZER_CUP=epl` 的 `scheduleCrawler`，或确认 `epl/data/s36.js` 已更新；分析器通过 `leagueSerial` 读 `resolveScheduleData` 指向的路径，不必单独维护 `match_center` 为唯一来源）
      b. 编辑 `crawler-server/config/squadTarget.js`：
         - teamSerial：该队球探俱乐部序号（见 `data/球队与序号对照表.md` 或 titan007 球队页）
         - leagueSerial：该队**所属国内联赛**序号（如英超 36、西甲 4）
@@ -49,7 +73,7 @@
      f. 将双方大名单、伤停等整理进 news/{赛季}/{阶段}/{对阵}/（可与统计信息、新闻稿同目录）
   1. 预测首发（格式见 [prompts/match_analysis_template.md](./prompts/match_analysis_template.md)）
   2. 交锋、近况、未来赛程（含国内联赛/杯赛）
-  3. 盘口：初盘/临场；可引用 l103.js、bs103.js、td103.js（联赛阶段样本量少于国内联赛，需结合判断）
+  3. 盘口：初盘/临场；可引用 `data/` 下 l103.js、bs103.js（欧冠阶段样本量少于国内联赛，需结合判断；杯赛爬虫不更新 td）
   4. UCL 专项：当前积分排名、是否轮换、两回合总比分（淘汰赛）
   5. 赛前报告 → report/{赛季}/league-phase|playoff|.../{轮次或阶段}/{主队}_vs_{客队}.md
 

@@ -1,4 +1,60 @@
-var arrLeague = [273, '澳大利亚足球超级联赛', '澳大利亞足球超級聯賽', 'Australia A-League', '2025-2026', '#FF7000', 'league_match/images/167305577951.png', '澳超', '澳超', 'AUS D1'];
-var arrTeam = [[2900, '阿德莱德联', '阿德萊德聯', 'Adelaide United', '', 'images/2900/1hd5avvjts1y.png', 0], [2901, '墨尔本胜利', '墨爾本勝利', 'Melbourne Victory', '', 'images/2901/1jaekt97145.png', 0], [2909, '悉尼FC', '悉尼FC', 'Sydney FC', '', 'images/2909/1gq92j83knp.png', 0], [2910, '中央海岸水手', '中岸水手', 'Central Coast Mariners', '', 'images/2910/1hd5avvjt32h.png', 0], [2913, '珀斯光荣', '珀斯光輝', 'Perth Glory', '', 'images/2913/1h5bja71yq6.png', 0], [2914, '布里斯班狮吼', '布里斯本獅吼', 'Brisbane Roar', '', 'images/2914/1j63q4e1gy18.png', 0], [2915, '纽卡斯尔喷气机', '紐卡素噴射機', 'Newcastle Jets', '', 'images/2915/1hdajpw3vks.png', 0], [5953, '惠灵顿凤凰', '威靈頓鳳凰', 'Wellington Phoenix', '', 'images/5953/1h6z210pqs2n.png', 0], [14549, '墨尔本城', '墨爾本城', 'Melbourne City', '', 'images/14549/1gq92j83kv7.png', 0], [20394, '西悉尼流浪者', '西悉尼流浪者', 'Western Sydney', '', 'images/20394/1k2dzr1cfd1j.png', 0], [51511, '麦克阿瑟FC', '麥克阿瑟FC', 'FC Macarthur', '', 'images/51511/1gq6jzjepr13.png', 0], [70866, '奥克兰FC', '奧克蘭FC', 'Auckland FC', '', 'images/70866/1jaekvhmhj27.png', 0]];
-var arrData = [[2900, 0, 1, 5, 1, 0, 1, 1, 1, 3, 1, 2, 1, 3, 3, 1, 1, 1, 6], [2901, 0, 2, 2, 1, 2, 0, 0, 0, 3, 2, 5, 0, 2, 1, 1, 2, 1, 3], [2909, 1, 1, 2, 0, 0, 1, 1, 0, 0, 2, 3, 3, 1, 3, 1, 2, 1, 3], [2910, 0, 3, 0, 1, 1, 3, 2, 1, 3, 0, 3, 1, 0, 0, 0, 3, 0, 3], [2913, 0, 1, 1, 2, 2, 2, 0, 2, 1, 0, 1, 0, 0, 1, 1, 3, 0, 4], [2914, 1, 0, 0, 0, 1, 1, 1, 1, 4, 2, 0, 1, 1, 0, 0, 2, 0, 3], [2915, 2, 2, 5, 3, 0, 0, 0, 1, 4, 3, 4, 2, 1, 3, 2, 2, 3, 4], [5953, 1, 2, 1, 0, 1, 2, 0, 2, 1, 1, 4, 2, 2, 3, 1, 1, 1, 3], [14549, 2, 0, 2, 0, 2, 1, 1, 2, 0, 0, 1, 0, 1, 1, 1, 1, 3, 2], [20394, 2, 1, 2, 1, 1, 1, 0, 0, 1, 0, 2, 0, 0, 1, 1, 1, 2, 1], [51511, 1, 2, 2, 0, 0, 0, 1, 1, 2, 1, 0, 2, 2, 5, 2, 0, 1, 2], [70866, 1, 2, 3, 3, 3, 1, 1, 0, 5, 0, 0, 3, 0, 0, 4, 2, 0, 1]];
-var lastUpdateTime = '2026-02-27 09:59:53';
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="//www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    
+    <link href="/Style/css1.css" type="text/css" rel="stylesheet" />
+    <link href="/Style/info_css1.css" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        .sss_tti {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        .fdfeef {
+            padding-top: 7px;
+            padding-right: 10px;
+            padding-bottom: 7px;
+            padding-left: 10px;
+            background-color: #ECFDFF;
+            border: 1px solid #BFD8FF;
+        }
+
+        .onurl a {
+            font-size: 14px;
+            font-weight: bold;
+            color: #0098D9;
+        }
+
+        .onurl a:hover {
+            color: #FF6600;
+        }
+    </style>
+</head>
+<body>
+    <script src="/Script/Top.js" type="text/javascript"></script>
+    <div id="info">
+        <br />
+        <br />
+        <table width="70%" height="145" border="0" align="center" cellpadding="2" cellspacing="0" ID="Table1">
+            <tr>
+                <td width="26%" rowspan="2" valign="top"><div align="center"><img src="../images/fuot.gif" /></div></td>
+                <td width="74%" height="43"><span class="sss_tti">对不起！你查看的页面不存在</span></td>
+            </tr>
+            <tr>
+                <td height="51" valign="top" style="padding-top:10px"><span style="font-size:14px"><font color=red>5</font>秒后自动跳转到导航页面！</span></td>
+            </tr>
+            <tr>
+                <td height="51" colspan="2" valign="top"><div align="center" class="fdfeef"><span class="onurl"><a href="/info/index_cn.htm">如果你的浏览器不支持自动跳转，请点击这里</a></span></div></td>
+            </tr>
+        </table>
+        <br />
+        <br />
+        <script src='/Script/Bottom.js?ver=1' type="text/javascript"></script>
+    </div>
+</body>
+</html>

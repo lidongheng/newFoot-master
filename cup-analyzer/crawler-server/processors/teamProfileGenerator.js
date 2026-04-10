@@ -14,6 +14,16 @@ function isWorldCupNationalContext() {
   return (config.activeCupKey || '') === 'theWorldCup';
 }
 
+/** 俱乐部/联赛画像：名单与预测首发用「球衣号-姓名」；国家队仍只显示姓名 */
+function formatClubJerseyLabel(p) {
+  if (isWorldCupNationalContext()) return p.name;
+  const raw = p.number;
+  if (raw == null || raw === '') return p.name;
+  const s = String(raw).trim();
+  if (s === '' || s === '-') return p.name;
+  return `${s}-${p.name}`;
+}
+
 /** 身价列（万）或 JSON socialStatus → 展示用，如 6500万 */
 function getMarketValueRaw(p) {
   const mv = p.marketValue;
@@ -50,6 +60,7 @@ function formatAgeForDisplay(p) {
  */
 function formatPlayerNameWithClub(p, allSameNonEmptyClub, normalizePositionCode) {
   const national = isWorldCupNationalContext();
+  const displayName = national ? p.name : formatClubJerseyLabel(p);
   const club = String(p.currentClub || '').trim();
   const missing = !club || club === '-';
   const posCode =
@@ -58,9 +69,9 @@ function formatPlayerNameWithClub(p, allSameNonEmptyClub, normalizePositionCode)
   const mv = formatMarketValueForDisplay(p);
 
   if (!national) {
-    if (missing) return p.name;
-    if (allSameNonEmptyClub) return p.name;
-    return `${p.name}（${club}）`;
+    if (missing) return displayName;
+    if (allSameNonEmptyClub) return displayName;
+    return `${displayName}（${club}）`;
   }
 
   if (allSameNonEmptyClub && !missing) {
@@ -142,7 +153,8 @@ function formatPlayerSquadLine(p, allSameNonEmptyClub, normalizePositionCode) {
   const posCode =
     typeof normalizePositionCode === 'function' ? normalizePositionCode(p.position) : null;
   const statParen = formatStatsParen(p, posCode);
-  if (useStats && statParen) return `${p.name}${statParen}`;
+  const base = national ? p.name : formatClubJerseyLabel(p);
+  if (useStats && statParen) return `${base}${statParen}`;
   return formatPlayerNameWithClub(p, allSameNonEmptyClub, normalizePositionCode);
 }
 
@@ -381,7 +393,7 @@ class TeamProfileGenerator extends BaseCrawler {
       const code = this.normalizePositionCode(p.position);
       if (!code) continue;
       if (!queues[code]) queues[code] = [];
-      queues[code].push(p.name);
+      queues[code].push(p);
     }
 
     /** 首发槽位与可顶替的相近位置（先主码、后替补码） */
@@ -401,15 +413,15 @@ class TeamProfileGenerator extends BaseCrawler {
 
     const starters = [];
     for (const pos of displayOrder) {
-      let name = null;
+      let picked = null;
       for (const code of slotTryOrder(pos)) {
         const q = queues[code];
         if (q && q.length > 0) {
-          name = q.shift();
+          picked = q.shift();
           break;
         }
       }
-      starters.push(name || '（待定）');
+      starters.push(picked ? formatClubJerseyLabel(picked) : '（待定）');
     }
 
     const groups = [];

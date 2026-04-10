@@ -10,13 +10,13 @@
  * - roundSerial：当前国内联赛轮次（仅分析该轮之前已完赛场次）
  */
 const squadTarget = {
-  leagueSerial: '36',
-  leagueSlug: 'epl',
+  leagueSerial: '273',
+  leagueSlug: 'aLeague',
   season: '25-26',
-  teamSerial: '19',
-  roundSerial: '32',
+  teamSerial: '2910',
+  roundSerial: '24',
   isNation: false,
-  teamChineseName: '阿森纳',
+  teamChineseName: '中央海岸水手',
   /** 单场分析等场景可选 */
   matchSerial: '2789417',
 };
