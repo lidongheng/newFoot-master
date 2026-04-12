@@ -7,7 +7,7 @@
 const path = require('path');
 const fs = require('fs');
 
-const { service } = require('../utils/http');
+const { fetchZqBuffer } = require('../utils/http');
 const { dateFormat } = require('../utils/dateFormat');
 const { ensureDir } = require('../utils/fileWriter');
 const config = require('../config');
@@ -96,13 +96,11 @@ async function fetchPlayerList() {
   const version = dateFormat(new Date().getTime(), 'YYYYMMDDHH');
   const url = `http://zq.titan007.com/jsData/teamInfo/teamDetail/tdl${serial}.js?version=${version}`;
   const headers = {
-    Referer: `http://zq.titan007.com/cn/League/${leagueSerial}.html`,
+    Referer: `https://zq.titan007.com/cn/League/${leagueSerial}.html`,
     Host: 'zq.titan007.com',
   };
 
-  const res = await service({
-    method: 'GET',
-    url,
+  const res = await fetchZqBuffer(url, {
     headers,
     responseType: 'arraybuffer',
   });
@@ -114,13 +112,19 @@ async function fetchPlayerList() {
 
   const argv = process.argv.slice(2);
   const withClub = argv.includes('--with-club');
+  const forceClubFetch = argv.includes('--force-club-fetch');
   if (withClub) {
-    console.log('[playerListCrawler] 补充俱乐部与转会信息…');
+    console.log(
+      forceClubFetch
+        ? '[playerListCrawler] 补充俱乐部与转会信息（--force-club-fetch，忽略本地缓存）…'
+        : '[playerListCrawler] 补充俱乐部与转会信息（本地优先，缺省再抓网）…'
+    );
     await enrichPlayers(String(serial), players, {
       nameKey: 'name',
       delayMs: config.crawlDelayMs,
       logger: (msg) => console.log(msg),
       lineupDetail,
+      forceClubFetch,
     });
   }
 

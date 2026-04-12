@@ -3,6 +3,8 @@ const BaseCrawler = require('../crawlers/base');
 const config = require('../config');
 const squadTarget = require('../config/squadTarget');
 const { readJSON, saveMarkdown, fileExists } = require('../utils/fileWriter');
+const { formatTransferColumn } = require('../utils/playerDetailEnricher');
+const predLineupUtil = require('../utils/predictedStartingLineup');
 
 /**
  * 联赛大名单 Markdown：从 clubMatchAnalyzer 输出的 *-new.json 生成 squad/{队名}.md（平铺）
@@ -70,7 +72,7 @@ class LeagueSquadProcessor extends BaseCrawler {
 
   /**
    * @param {object} data -new.json 根对象
-   * @returns {string[][]} 表格行 [jersey, name, age, height, pos, value, nation, caps, lineups, goals, assists]
+   * @returns {string[][]} 表格行 [jersey, name, age, height, pos, value, nation, caps, lineups, goals, assists, transfer]
    */
   buildTableRows(data) {
     const players = data.players;
@@ -99,6 +101,10 @@ class LeagueSquadProcessor extends BaseCrawler {
           p.lineups != null ? String(p.lineups) : '-',
           p.goals != null ? String(p.goals) : '0',
           p.assists != null ? String(p.assists) : '0',
+          formatTransferColumn({
+            currentClub: p.currentClub,
+            recentTransfers: p.recentTransfers,
+          }),
         ],
       });
     }
@@ -139,9 +145,9 @@ class LeagueSquadProcessor extends BaseCrawler {
     lines.push('');
 
     const header =
-      '| 球衣号 | 姓名 | 年龄 | 身高 | 位置 | 身价(万) | 国籍 | 出场 | 首发 | 进球 | 助攻 |';
+      '| 球衣号 | 姓名 | 年龄 | 身高 | 位置 | 身价(万) | 国籍 | 出场 | 首发 | 进球 | 助攻 | 转会记录 |';
     const sep =
-      '|--------|------|------|------|------|----------|------|------|------|------|------|';
+      '|--------|------|------|------|------|----------|------|------|------|------|------|----------|';
 
     for (const key of ['GK', 'DF', 'MF', 'FW']) {
       const groupRows = byLine[key];
@@ -156,9 +162,13 @@ class LeagueSquadProcessor extends BaseCrawler {
     }
 
     const rec = Array.isArray(data.recommendedLineup) ? data.recommendedLineup : [];
-    const recNames = rec.map((p) => p.name).filter(Boolean);
+    const lineupStr = predLineupUtil.formatAnalyzerRecommendedLineup(
+      rec,
+      data.mostUsedFormation || '',
+      predLineupUtil.formatSlotJerseyName
+    );
     lines.push(`## 推荐首发（${formation}）\n`);
-    lines.push(recNames.length > 0 ? recNames.join('、') : '（无推荐数据）');
+    lines.push(lineupStr || '（无推荐数据）');
     lines.push('');
 
     const ages = rows
@@ -232,7 +242,7 @@ function printUsage() {
 
 用法:
   1. 编辑 config/squadTarget.js（teamSerial、leagueSerial、roundSerial 等）
-  2. npm run crawl:player-list
+  2. npm run crawl:player-list:club（需要「转会记录」列；否则可用 crawl:player-list）
   3. npm run analyze:club-domestic
   4. CUP_ANALYZER_CUP=epl node processors/leagueSquadProcessor.js
 

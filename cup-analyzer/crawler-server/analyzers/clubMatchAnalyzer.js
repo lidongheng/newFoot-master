@@ -1259,6 +1259,14 @@ class ClubAnalyzer {
           if (playerInfo.height) {
             existingPlayer.height = parseInt(playerInfo.height, 10) || 0;
           }
+
+          // 球探 player 页：现俱乐部与转会列表（供联赛大名单「转会记录」列）
+          if (playerInfo.currentClub != null && String(playerInfo.currentClub).trim()) {
+            existingPlayer.currentClub = playerInfo.currentClub;
+          }
+          if (Array.isArray(playerInfo.recentTransfers)) {
+            existingPlayer.recentTransfers = playerInfo.recentTransfers;
+          }
         } else {
           // 如果当前球员列表中没有该球员，尝试通过名称匹配
           const matchByName = Object.values(this.playersData).find(p => 
@@ -1284,6 +1292,13 @@ class ClubAnalyzer {
             // 更新身高信息
             if (playerInfo.height) {
               matchByName.height = parseInt(playerInfo.height, 10) || 0;
+            }
+
+            if (playerInfo.currentClub != null && String(playerInfo.currentClub).trim()) {
+              matchByName.currentClub = playerInfo.currentClub;
+            }
+            if (Array.isArray(playerInfo.recentTransfers)) {
+              matchByName.recentTransfers = playerInfo.recentTransfers;
             }
           }
           // 如果找不到匹配的球员，就跳过

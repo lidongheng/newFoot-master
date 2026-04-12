@@ -1,6 +1,9 @@
+const fs = require('fs');
+const path = require('path');
 const iconv = require('iconv-lite');
 const targets = require('../config/targets');
-const { service } = require('./http');
+const config = require('../config');
+const { fetchZqBuffer } = require('./http');
 const { evalJsData, loadHtml } = require('./parser');
 const { sleep } = require('./fileWriter');
 
@@ -85,9 +88,7 @@ function parsePlayerClubFromSandbox(sandbox) {
 }
 
 async function fetchText(url, headers = {}) {
-  const res = await service({
-    method: 'GET',
-    url,
+  const res = await fetchZqBuffer(url, {
     headers: { ...targets.titan007.headers.desktop, ...headers },
     responseType: 'arraybuffer',
   });
@@ -110,8 +111,9 @@ async function fetchPlayerLinks(teamSerial) {
 async function fetchPlayerClubInfo(playerSerial, teamSerialForReferer) {
   const url = targets.titan007.playerDataUrl(playerSerial);
   const refererTeam = teamSerialForReferer || '';
+  // 与浏览器加载 player*.js 一致：Referer 为球员资料页（非阵容页）
   const referer = refererTeam
-    ? `http://zq.titan007.com/cn/team/lineup/${refererTeam}.html`
+    ? `https://zq.titan007.com/cn/team/player/${refererTeam}/${playerSerial}.html`
     : targets.titan007.cupMatchReferer('75');
   const text = await fetchText(url, { Referer: referer });
   const sandbox = evalJsData(text);
@@ -160,15 +162,93 @@ function buildNameToSerialFromLineupDetail(lineupDetail) {
 }
 
 /**
+ * 上一版 player_center JSON 中按姓名查找同一人（与 findSerialForName 同源规则）
+ * @param {object[]|null|undefined} previousPlayers
+ * @param {string} name
+ * @returns {object|null}
+ */
+function findPreviousPlayerRecord(previousPlayers, name) {
+  if (!Array.isArray(previousPlayers)) return null;
+  const raw = String(name || '').trim();
+  for (const p of previousPlayers) {
+    if (p && String(p.name || '').trim() === raw) return p;
+  }
+  const norm = normalizePlayerKey(raw);
+  for (const p of previousPlayers) {
+    if (!p || p.name == null) continue;
+    if (normalizePlayerKey(p.name) === norm) return p;
+  }
+  return null;
+}
+
+/** 本地优先：非空转会列表视为可用，可跳过网络 */
+function isUsableClubCache(record) {
+  return (
+    record &&
+    Array.isArray(record.recentTransfers) &&
+    record.recentTransfers.length > 0
+  );
+}
+
+function isNetClubResultUsable(info) {
+  return (
+    info &&
+    Array.isArray(info.recentTransfers) &&
+    info.recentTransfers.length > 0
+  );
+}
+
+/** 网络失败或为空时回退：有转会记录，或至少有现俱乐部名 */
+function hasClubFallbackRecord(prev) {
+  if (!prev) return false;
+  if (Array.isArray(prev.recentTransfers) && prev.recentTransfers.length > 0) return true;
+  const c = prev.currentClub;
+  return typeof c === 'string' && c.trim() !== '';
+}
+
+function applyClubFields(target, source) {
+  target.currentClub = source.currentClub != null ? source.currentClub : null;
+  target.recentTransfers = Array.isArray(source.recentTransfers)
+    ? source.recentTransfers.map((t) => ({ ...t }))
+    : [];
+}
+
+/**
+ * 读取上一版 output/player_center/{teamSerial}.json（供 enrich 匹配，不参与名单构成）
+ * @param {string} teamSerial
+ * @returns {object[]}
+ */
+function loadPreviousPlayerCenter(teamSerial) {
+  const cachePath = path.join(config.paths.playerCenter, `${teamSerial}.json`);
+  if (!fs.existsSync(cachePath)) return [];
+  try {
+    const raw = JSON.parse(fs.readFileSync(cachePath, 'utf8'));
+    return Array.isArray(raw) ? raw : [];
+  } catch {
+    return [];
+  }
+}
+
+/**
  * @param {string} teamSerial
  * @param {object[]} players
- * @param {{ nameKey?: string, delayMs?: number, logger?: (s:string)=>void, lineupDetail?: unknown[] }} options
+ * @param {{ nameKey?: string, delayMs?: number, logger?: (s:string)=>void, lineupDetail?: unknown[], forceClubFetch?: boolean }} options
  *        若传入 lineupDetail（与 tdl 同源），优先用它建姓名→序号映射，不再请求阵容 HTML。
+ *        forceClubFetch：为 true 时不读本地缓存、不跳过网络、不回退本地。
  */
 async function enrichPlayers(teamSerial, players, options = {}) {
   const nameKey = options.nameKey || 'name';
   const delayMs = options.delayMs ?? 3000;
   const log = options.logger || (() => {});
+  const forceClubFetch = options.forceClubFetch === true;
+
+  let previousPlayers = [];
+  if (!forceClubFetch) {
+    previousPlayers = loadPreviousPlayerCenter(teamSerial);
+    if (previousPlayers.length) {
+      log(`[enricher] 已加载本地缓存 ${previousPlayers.length} 人（${teamSerial}.json）`);
+    }
+  }
 
   let nameMap;
   if (options.lineupDetail && Array.isArray(options.lineupDetail)) {
@@ -208,17 +288,43 @@ async function enrichPlayers(teamSerial, players, options = {}) {
       log(`[enricher] 未匹配链接: ${nm}`);
       continue;
     }
+
+    const prev = !forceClubFetch ? findPreviousPlayerRecord(previousPlayers, nm) : null;
+
+    if (!forceClubFetch && prev && isUsableClubCache(prev)) {
+      applyClubFields(p, prev);
+      log(`[enricher] [${i + 1}/${total}] ${nm} 使用本地缓存，跳过网络`);
+      continue;
+    }
+
     log(`[enricher] [${i + 1}/${total}] ${nm} → player${serial}.js`);
+    let requested = false;
     try {
       const info = await fetchPlayerClubInfo(serial, teamSerial);
-      p.currentClub = info.currentClub;
-      p.recentTransfers = info.recentTransfers;
+      requested = true;
+      if (isNetClubResultUsable(info)) {
+        p.currentClub = info.currentClub;
+        p.recentTransfers = Array.isArray(info.recentTransfers) ? [...info.recentTransfers] : [];
+      } else if (!forceClubFetch && hasClubFallbackRecord(prev)) {
+        applyClubFields(p, prev);
+        log(`[enricher] 网络返回为空，回退本地: ${nm}`);
+      } else {
+        p.currentClub = info.currentClub;
+        p.recentTransfers = Array.isArray(info.recentTransfers) ? [...info.recentTransfers] : [];
+      }
     } catch (e) {
+      requested = true;
       log(`[enricher] 球员 ${nm} (${serial}) 详情失败: ${e.message}`);
-      p.currentClub = null;
-      p.recentTransfers = [];
+      if (!forceClubFetch && hasClubFallbackRecord(prev)) {
+        applyClubFields(p, prev);
+        log(`[enricher] 网络失败，回退本地: ${nm}`);
+      } else {
+        p.currentClub = null;
+        p.recentTransfers = [];
+      }
     }
-    if (i < players.length - 1 && delayMs > 0) await sleep(delayMs);
+
+    if (requested && i < players.length - 1 && delayMs > 0) await sleep(delayMs);
   }
   return players;
 }
@@ -315,4 +421,7 @@ module.exports = {
   normalizePlayerKey,
   getCurrentFootballSeasonKey,
   normalizeSeasonKey,
+  findPreviousPlayerRecord,
+  loadPreviousPlayerCenter,
+  isUsableClubCache,
 };

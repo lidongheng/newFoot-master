@@ -4,7 +4,7 @@
 
 ## 优先路径（推荐）
 
-已在 [`config/index.js`](../config/index.js) 的 `cups` 中配置的赛事，**优先**使用各模块下的 `data/` 赛程文件（如 `epl/data/s36.js`、`aLeague/data/s273_462.js`），由 `config.resolveScheduleData(leagueSerial, isNation)` 解析。子联赛文件名（如 `s273_462.js`）无需放在本目录。
+已在 [`config/index.js`](../config/index.js) 的 `cups` 中配置的赛事，**优先**使用各模块下的 `data/` 赛程文件（如 `epl/data/s36.js`、`aLeague/data/s273_462.js`、`mls/data/s21_165.js`、`serieA/data/s34_2948.js`），由 `config.resolveScheduleData(leagueSerial, isNation)` 解析。子联赛文件名（如 `s273_462.js`）无需放在本目录。
 
 ## 本目录（兜底）
 

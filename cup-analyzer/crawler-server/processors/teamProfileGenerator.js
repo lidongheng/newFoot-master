@@ -2,6 +2,7 @@ const path = require('path');
 const BaseCrawler = require('../crawlers/base');
 const config = require('../config');
 const { readJSON, readFile, saveMarkdown, fileExists } = require('../utils/fileWriter');
+const predLineupUtil = require('../utils/predictedStartingLineup');
 
 /** 英超/澳超/韩K联及欧冠模块：联赛式档位与俱乐部备注 */
 function useLeagueStyleAnalysis() {
@@ -107,6 +108,48 @@ function parseStatIntCell(v) {
   return Number.isNaN(n) ? null : n;
 }
 
+/** 画像 TOP5 表格「球衣号」列：无效则为 - */
+function formatJerseyForTableCell(p) {
+  const raw = p.number;
+  if (raw == null || raw === '') return '-';
+  const s = String(raw).trim();
+  if (s === '' || s === '-') return '-';
+  return s;
+}
+
+/** 进球/助攻：缺失视为 0（专供 TOP5 表，与 getPlayerSeasonStatsQuad 分离） */
+function getStatIntOrZero(p, key) {
+  const v = parseStatIntCell(p[key]);
+  return v === null ? 0 : v;
+}
+
+/**
+ * 赛季进球或助攻 TOP5：主键降序，并列用另一项降序，再按姓名稳定排序
+ * @param {'goals'|'assists'} primaryKey
+ * @returns {{ number: any, name: string, position: string, value: number }[]}
+ */
+function analyzeStatTop5(players, primaryKey) {
+  if (!players || players.length === 0) return [];
+  const secondaryKey = primaryKey === 'goals' ? 'assists' : 'goals';
+  const rows = players.map((p) => {
+    const primary = getStatIntOrZero(p, primaryKey);
+    const secondary = getStatIntOrZero(p, secondaryKey);
+    const name = String(p.name || '');
+    return { p, primary, secondary, name };
+  });
+  rows.sort((a, b) => {
+    if (b.primary !== a.primary) return b.primary - a.primary;
+    if (b.secondary !== a.secondary) return b.secondary - a.secondary;
+    return a.name.localeCompare(b.name, 'zh-Hans-CN');
+  });
+  return rows.slice(0, 5).map((r) => ({
+    number: r.p.number,
+    name: r.p.name,
+    position: r.p.position || '-',
+    value: r.primary,
+  }));
+}
+
 /**
  * 赛季统计：联赛 squad-final 为 appearances/starts/goals/assists；player_center 回退 caps/lineups
  * @returns {{ apps: number, starts: number, goals: number, assists: number } | null}
@@ -167,6 +210,7 @@ function formatPlayerSquadLine(p, allSameNonEmptyClub, normalizePositionCode) {
  * 输出: cup-analyzer/theWorldCup/teamProfile/{队名}.md
  *
  * 当数据来源为 squad-final 时，生成画像后会根据当前解析的球员列表**回写**该 md 末尾的「## 统计摘要」（总人数、平均年龄、平均身高、位置分布）。
+ * 「五、身价分析」含身价/进球/助攻 TOP5 表（球衣号列；进球助攻缺失按 0，世界杯未开赛时多为 0）。
  *
  * CLI: node processors/teamProfileGenerator.js [--source final|raw] [--team 序号]
  */
@@ -183,28 +227,6 @@ const POSITION_GROUPS_FOR_PROFILE = [
   { label: '左边锋', codes: ['LM', 'LW'] },
   { label: '中锋', codes: ['ST', 'CF'] },
 ];
-
-const KNOWN_POSITION_CODES = new Set([
-  'GK',
-  'LB',
-  'CB',
-  'RB',
-  'LCB',
-  'RCB',
-  'LWB',
-  'RWB',
-  'CDM',
-  'LDM',
-  'RDM',
-  'CM',
-  'CAM',
-  'LM',
-  'RM',
-  'LW',
-  'RW',
-  'ST',
-  'CF',
-]);
 
 class TeamProfileGenerator extends BaseCrawler {
   constructor() {
@@ -248,39 +270,7 @@ class TeamProfileGenerator extends BaseCrawler {
    * @returns {string|null}
    */
   normalizePositionCode(raw) {
-    const s = String(raw || '').trim();
-    if (!s || s === '-') return null;
-    const upper = s.toUpperCase();
-    if (KNOWN_POSITION_CODES.has(upper)) return upper;
-    const zhMap = {
-      门将: 'GK',
-      守门员: 'GK',
-      右后卫: 'RB',
-      左后卫: 'LB',
-      中后卫: 'CB',
-      中卫: 'CB',
-      右中后卫: 'RCB',
-      左中后卫: 'LCB',
-      右翼卫: 'RWB',
-      左翼卫: 'LWB',
-      后腰: 'CDM',
-      左边后腰: 'LDM',
-      右边后腰: 'RDM',
-      前腰: 'CAM',
-      右前腰: 'RAM',
-      左前腰: 'LAM',
-      右中场: 'RM',
-      左中场: 'LM',
-      中前卫: 'CM',
-      中锋: 'ST',
-      左边锋: 'LW',
-      右边锋: 'RW',
-      影锋: 'CF',
-      前锋: 'ST',
-      中场: 'CM',
-    };
-    if (zhMap[s]) return zhMap[s];
-    return null;
+    return predLineupUtil.normalizePositionCode(raw);
   }
 
   /**
@@ -289,32 +279,7 @@ class TeamProfileGenerator extends BaseCrawler {
    * @returns {string[]}
    */
   getPositionsForFormation(formation) {
-    const formationMappings = {
-      4213: ['GK', 'LB', 'CB', 'CB', 'RB', 'CDM', 'CDM', 'CAM', 'LW', 'ST', 'RW'],
-      4231: ['GK', 'LB', 'CB', 'CB', 'RB', 'CDM', 'CDM', 'LM', 'CAM', 'RM', 'ST'],
-      3421: ['GK', 'LCB', 'CB', 'RCB', 'LB', 'CDM', 'CDM', 'RB', 'LM', 'RM', 'ST'],
-      433: ['GK', 'LB', 'CB', 'CB', 'RB', 'LDM', 'CDM', 'RDM', 'LW', 'ST', 'RW'],
-      352: ['GK', 'LCB', 'CB', 'RCB', 'LB', 'CM', 'CDM', 'CM', 'RB', 'ST', 'ST'],
-      343: ['GK', 'LCB', 'CB', 'RCB', 'LB', 'CDM', 'CDM', 'RB', 'LW', 'ST', 'RW'],
-      442: ['GK', 'LB', 'CB', 'CB', 'RB', 'LM', 'CDM', 'CDM', 'RM', 'ST', 'ST'],
-      3322: ['GK', 'LCB', 'CB', 'RCB', 'CDM', 'CDM', 'CDM', 'LM', 'RM', 'ST', 'ST'],
-      541: ['GK', 'LB', 'LCB', 'CB', 'RCB', 'RB', 'LM', 'CDM', 'CDM', 'RM', 'ST'],
-      4132: ['GK', 'LB', 'LCB', 'CB', 'RCB', 'CDM', 'LM', 'CAM', 'RM', 'ST', 'ST'],
-      4123: ['GK', 'LB', 'LCB', 'CB', 'RCB', 'CDM', 'LM', 'RM', 'LW', 'ST', 'RW'],
-      451: ['GK', 'LB', 'LCB', 'CB', 'RCB', 'LM', 'CM', 'CDM', 'CM', 'RM', 'ST'],
-      3412: ['GK', 'LCB', 'CB', 'RCB', 'LB', 'CDM', 'CDM', 'RB', 'CAM', 'ST', 'ST'],
-      532: ['GK', 'LB', 'LCB', 'CB', 'RCB', 'RB', 'LM', 'CDM', 'RM', 'ST', 'ST'],
-      4411: ['GK', 'LB', 'CB', 'CB', 'RB', 'LM', 'CDM', 'CDM', 'RM', 'CF', 'ST'],
-      4141: ['GK', 'LB', 'CB', 'CB', 'RB', 'CDM', 'LM', 'CAM', 'CAM', 'RM', 'ST'],
-      3142: ['GK', 'LCB', 'CB', 'RCB', 'CDM', 'LM', 'CAM', 'CAM', 'RM', 'ST', 'ST'],
-      4312: ['GK', 'LB', 'CB', 'CB', 'RB', 'LM', 'CDM', 'RM', 'CAM', 'ST', 'ST'],
-      3511: ['GK', 'LCB', 'CB', 'RCB', 'LB', 'CM', 'CDM', 'CM', 'RB', 'CF', 'ST'],
-      4321: ['GK', 'LB', 'CB', 'CB', 'RB', 'LM', 'CDM', 'RM', 'LW', 'RW', 'ST'],
-      3241: ['GK', 'LCB', 'CB', 'RCB', 'CDM', 'CDM', 'LM', 'CM', 'CM', 'RM', 'ST'],
-      3313: ['GK', 'LCB', 'CB', 'RCB', 'LM', 'CDM', 'RM', 'CAM', 'LW', 'ST', 'RW'],
-    };
-    const normalizedFormation = String(formation || '').replace(/[^0-9]/g, '');
-    return formationMappings[normalizedFormation] || formationMappings['442'];
+    return predLineupUtil.getPositionsForFormation(formation);
   }
 
   /**
@@ -369,73 +334,14 @@ class TeamProfileGenerator extends BaseCrawler {
    * @returns {string}
    */
   buildPredictedStartingLineup(players, formation) {
-    if (!formation || !players || players.length === 0) return '';
-    const digitStr = String(formation).replace(/[^0-9]/g, '');
-    if (digitStr.length < 2) return '';
-    const digits = digitStr.split('').map(Number);
-    const positions = this.getPositionsForFormation(formation);
-    if (!positions || positions.length !== 11) return '';
-    const sumLines = digits.reduce((a, b) => a + b, 0);
-    if (sumLines !== 10) return '';
-
-    const displayOrder = [];
-    let idx = 0;
-    displayOrder.push(positions[idx++]);
-    for (const d of digits) {
-      const slice = positions.slice(idx, idx + d);
-      idx += d;
-      displayOrder.push(...slice.reverse());
-    }
-    if (displayOrder.length !== 11) return '';
-
-    const queues = {};
-    for (const p of players) {
-      const code = this.normalizePositionCode(p.position);
-      if (!code) continue;
-      if (!queues[code]) queues[code] = [];
-      queues[code].push(p);
-    }
-
-    /** 首发槽位与可顶替的相近位置（先主码、后替补码） */
-    const slotTryOrder = (pos) => {
-      const alias = {
-        CDM: ['CM'],
-        CAM: ['CM'],
-        LM: ['LW'],
-        RM: ['RW'],
-        LB: ['LWB'],
-        RB: ['RWB'],
-        LCB: ['CB'],
-        RCB: ['CB'],
-      };
-      return [pos, ...(alias[pos] || [])];
-    };
-
-    const starters = [];
-    for (const pos of displayOrder) {
-      let picked = null;
-      for (const code of slotTryOrder(pos)) {
-        const q = queues[code];
-        if (q && q.length > 0) {
-          picked = q.shift();
-          break;
-        }
-      }
-      starters.push(picked ? formatClubJerseyLabel(picked) : '（待定）');
-    }
-
-    const groups = [];
-    groups.push(starters[0]);
-    let sidx = 1;
-    for (const d of digits) {
-      groups.push(starters.slice(sidx, sidx + d).join('，'));
-      sidx += d;
-    }
-    return `${groups.join('/')}`;
+    return predLineupUtil.buildPredictedStartingLineupString(players, formation, (p) =>
+      formatClubJerseyLabel(p)
+    );
   }
 
   /**
-   * 联赛表：球衣号|姓名|年龄|身高|位置|身价|国籍|出场|首发|进球|助攻（无俱乐部列）
+   * 联赛表：球衣号|姓名|年龄|身高|位置|身价|国籍|出场|首发|进球|助攻[|转会记录]（无俱乐部列）
+   * 旧版 11 列数据 → split 后 length 13；含转会列时 12 列数据 → length 14。
    */
   isLeagueSquadTableRow(parts) {
     if (parts.length < 13) return false;
@@ -447,11 +353,63 @@ class TeamProfileGenerator extends BaseCrawler {
   }
 
   /**
-   * 解析 squad-final 下 Markdown：元数据（主教练、阵型）+ 大名单表格
-   * @returns {{ players: any[], coach: string|null, formation: string|null }}
+   * 伤停/伤疑行与球员匹配：`球衣号-姓名` 或纯姓名
+   * @param {any[]} players
+   * @param {string} line
+   * @returns {any|null}
+   */
+  findPlayerByInjuryLine(players, line) {
+    const s = String(line || '').trim();
+    if (!s || !players || players.length === 0) return null;
+    const m = s.match(/^(\d+)\s*[-－]\s*(.+)$/);
+    if (m) {
+      const num = parseInt(m[1], 10);
+      const namePart = m[2].trim();
+      const byNum = players.filter((p) => Number(p.number) === num);
+      if (byNum.length === 1) return byNum[0];
+      const byBoth = players.find(
+        (p) => Number(p.number) === num && (p.name || '').trim() === namePart
+      );
+      if (byBoth) return byBoth;
+      return byNum[0] || null;
+    }
+    const exact = players.find((p) => (p.name || '').trim() === s);
+    if (exact) return exact;
+    return players.find((p) => (p.name || '').includes(s) || s.includes((p.name || '').trim())) || null;
+  }
+
+  /**
+   * 画像中伤停/伤疑单行展示：世界杯为 号-名(俱乐部，位置)；联赛为 号-名(位置，N场N首发…)
+   */
+  formatInjuryDoubtfulDisplayLine(p, national) {
+    const label = formatClubJerseyLabel(p);
+    const posCode = predLineupUtil.normalizePositionCode(p.position) || String(p.position || '').trim() || '-';
+    if (national) {
+      const club = String(p.currentClub || '').trim();
+      const clubSeg = club && club !== '-' ? club : '-';
+      return `${label}(${clubSeg}，${posCode})`;
+    }
+    const q = getPlayerSeasonStatsQuad(p);
+    if (!q) return `${label}(${posCode})`;
+    let core = `${q.apps}场`;
+    if (q.starts > 0) core += `${q.starts}首发`;
+    if (q.goals > 0) core += `${q.goals}球`;
+    if (q.assists > 0) core += `${q.assists}助`;
+    return `${label}(${posCode}，${core})`;
+  }
+
+  /**
+   * 解析 squad-final 下 Markdown：元数据（主教练、阵型）+ 大名单表格 + 伤停/伤疑
+   * @returns {{ players: any[], coach: string|null, formation: string|null, injured: string[], doubtful: string[] }}
    */
   parseFinalSquadMarkdown(content) {
-    const empty = { players: [], coach: null, formation: null };
+    const empty = {
+      players: [],
+      coach: null,
+      formation: null,
+      injured: [],
+      doubtful: [],
+    };
     if (!content || !content.trim()) return empty;
 
     let coach = null;
@@ -460,9 +418,41 @@ class TeamProfileGenerator extends BaseCrawler {
     const labelToGroup = { 门将: 'GK', 后卫: 'DF', 中场: 'MF', 前锋: 'FW' };
     let currentGroup = null;
     const players = [];
+    const injured = [];
+    const doubtful = [];
+    let lineMode = 'normal';
 
     for (const line of content.split('\n')) {
       const trimmed = line.trim();
+
+      if (trimmed.match(/^##\s+/)) {
+        const m = trimmed.match(/^##\s+([^\n]+)/);
+        const rawTitle = m ? m[1].trim() : '';
+        const first = rawTitle.split(/[（(]/)[0].trim();
+        if (first === '伤停' || first.startsWith('伤停')) {
+          lineMode = 'injury';
+          continue;
+        }
+        if (first === '伤疑' || first.startsWith('伤疑')) {
+          lineMode = 'doubtful';
+          continue;
+        }
+        lineMode = 'normal';
+      }
+
+      if (lineMode === 'injury') {
+        if (!trimmed) continue;
+        if (trimmed.startsWith('<!--')) continue;
+        injured.push(trimmed);
+        continue;
+      }
+      if (lineMode === 'doubtful') {
+        if (!trimmed) continue;
+        if (trimmed.startsWith('<!--')) continue;
+        doubtful.push(trimmed);
+        continue;
+      }
+
       if (!trimmed) continue;
 
       const coachMatch = trimmed.match(/\*\*主教练\*\*[:：]\s*(.+)/);
@@ -497,7 +487,7 @@ class TeamProfileGenerator extends BaseCrawler {
         if (jersey && jersey !== '-') {
           numL = /^[0-9]+$/.test(jersey) ? parseInt(jersey, 10) : jersey;
         }
-        players.push({
+        const leagueRow = {
           number: numL,
           name,
           currentClub: '-',
@@ -511,7 +501,14 @@ class TeamProfileGenerator extends BaseCrawler {
           starts: parseStatIntCell(parts[9]),
           goals: parseStatIntCell(parts[10]),
           assists: parseStatIntCell(parts[11]),
-        });
+        };
+        if (parts.length >= 14) {
+          const transferCol = parts[12];
+          if (transferCol != null && String(transferCol).trim() !== '') {
+            leagueRow.transferSummary = String(transferCol).trim();
+          }
+        }
+        players.push(leagueRow);
         continue;
       }
 
@@ -535,7 +532,7 @@ class TeamProfileGenerator extends BaseCrawler {
         positionGroup: currentGroup,
       });
     }
-    return { players, coach, formation };
+    return { players, coach, formation, injured, doubtful };
   }
 
   /**
@@ -610,6 +607,8 @@ class TeamProfileGenerator extends BaseCrawler {
             finalPath: flatPath,
             coach: parsed.coach,
             formation: parsed.formation,
+            injured: parsed.injured || [],
+            doubtful: parsed.doubtful || [],
           };
         }
       }
@@ -628,6 +627,8 @@ class TeamProfileGenerator extends BaseCrawler {
             finalPath,
             coach: parsed.coach,
             formation: parsed.formation,
+            injured: parsed.injured || [],
+            doubtful: parsed.doubtful || [],
           };
         }
       }
@@ -642,9 +643,19 @@ class TeamProfileGenerator extends BaseCrawler {
           finalPath: null,
           coach: null,
           formation: null,
+          injured: [],
+          doubtful: [],
         };
       }
-      return { players: null, dataSource: null, finalPath: null, coach: null, formation: null };
+      return {
+        players: null,
+        dataSource: null,
+        finalPath: null,
+        coach: null,
+        formation: null,
+        injured: [],
+        doubtful: [],
+      };
     }
 
     if (fileExists(jsonPath)) {
@@ -654,9 +665,41 @@ class TeamProfileGenerator extends BaseCrawler {
         finalPath: null,
         coach: null,
         formation: null,
+        injured: [],
+        doubtful: [],
       };
     }
-    return { players: null, dataSource: null, finalPath: null, coach: null, formation: null };
+    return {
+      players: null,
+      dataSource: null,
+      finalPath: null,
+      coach: null,
+      formation: null,
+      injured: [],
+      doubtful: [],
+    };
+  }
+
+  /**
+   * 读取 clubMatchAnalyzer 报告（与 `npm run analyze:club-domestic` 输出一致），用于预测首发与联赛大名单对齐
+   * @param {number} teamId
+   * @returns {{ recommendedLineup: object[], mostUsedFormation: string } | null}
+   */
+  loadAnalyzerReport(teamId) {
+    const p = path.join(config.paths.playerCenter, `${teamId}-new.json`);
+    if (!fileExists(p)) return null;
+    try {
+      const data = readJSON(p);
+      if (!data || !Array.isArray(data.recommendedLineup) || data.recommendedLineup.length === 0) {
+        return null;
+      }
+      return {
+        recommendedLineup: data.recommendedLineup,
+        mostUsedFormation: data.mostUsedFormation || '',
+      };
+    } catch {
+      return null;
+    }
   }
 
   /**
@@ -730,7 +773,7 @@ class TeamProfileGenerator extends BaseCrawler {
             if (str.includes('亿')) val *= 10000;
           }
         }
-        return { name: p.name, value: val, position: p.position };
+        return { name: p.name, value: val, position: p.position, number: p.number };
       })
       .sort((a, b) => b.value - a.value)
       .slice(0, 5);
@@ -851,6 +894,8 @@ class TeamProfileGenerator extends BaseCrawler {
     const ageAnalysis = this.analyzeAge(players);
     const heightAnalysis = this.analyzeHeight(players);
     const valueAnalysis = this.analyzeMarketValue(players);
+    const goalsTop5 = analyzeStatTop5(players, 'goals');
+    const assistsTop5 = analyzeStatTop5(players, 'assists');
     const positionDepth = this.analyzePositionDepth(players);
     const tacticalStyle = this.inferTacticalStyle(players, ageAnalysis, heightAnalysis, valueAnalysis);
     const teamGoal = this.inferTeamGoal(teamInfo.chineseName, valueAnalysis);
@@ -889,14 +934,55 @@ class TeamProfileGenerator extends BaseCrawler {
       lines.push(squadList);
       lines.push('');
     }
-    if (formation) {
-      const predLine = this.buildPredictedStartingLineup(players, formation);
-      lines.push(`### 预测首发(${formation})：`);
+
+    let predLine = '';
+    let predFormationLabel = formation;
+    const ar = meta.analyzerReport;
+    if (leagueStyle && ar && Array.isArray(ar.recommendedLineup) && ar.recommendedLineup.length > 0) {
+      predLine = predLineupUtil.formatAnalyzerRecommendedLineup(
+        ar.recommendedLineup,
+        ar.mostUsedFormation,
+        (p) => formatClubJerseyLabel(p)
+      );
+      const fd = predLineupUtil.formationDigitsToDisplay(ar.mostUsedFormation);
+      if (fd) predFormationLabel = fd;
+    }
+    if (!predLine && formation) {
+      predLine = this.buildPredictedStartingLineup(players, formation);
+      predFormationLabel = formation;
+    }
+
+    if (predLine) {
+      lines.push(`### 预测首发(${predFormationLabel || formation || '-'})：`);
       lines.push(predLine);
       lines.push('');
     } else {
       lines.push(`### 预测首发`);
-      lines.push(`> 需先填写 **阵型** 元数据后方可自动生成。\n`);
+      lines.push(
+        `> 需先填写 **阵型** 元数据后方可自动生成；联赛球队也可先运行 \`npm run analyze:club-domestic\` 生成带 \`recommendedLineup\` 的 \`${teamInfo.id}-new.json\`。\n`
+      );
+    }
+
+    const injuredList = meta.injured || [];
+    const doubtfulList = meta.doubtful || [];
+    if (meta.dataSource === 'final' && (injuredList.length > 0 || doubtfulList.length > 0)) {
+      const nationalWC = isWorldCupNationalContext();
+      if (injuredList.length > 0) {
+        lines.push('### 伤停');
+        for (const raw of injuredList) {
+          const p = this.findPlayerByInjuryLine(players, raw);
+          lines.push(p ? this.formatInjuryDoubtfulDisplayLine(p, nationalWC) : raw);
+        }
+        lines.push('');
+      }
+      if (doubtfulList.length > 0) {
+        lines.push('### 伤疑');
+        for (const raw of doubtfulList) {
+          const p = this.findPlayerByInjuryLine(players, raw);
+          lines.push(p ? this.formatInjuryDoubtfulDisplayLine(p, nationalWC) : raw);
+        }
+        lines.push('');
+      }
     }
 
     // 年龄结构
@@ -926,10 +1012,27 @@ class TeamProfileGenerator extends BaseCrawler {
     lines.push(`- **平均身价**: ${valueAnalysis.avg}万`);
     lines.push(`- **最高身价**: ${valueAnalysis.max}万`);
     lines.push(`\n**身价TOP 5**:\n`);
-    lines.push('| 排名 | 球员 | 位置 | 身价(万) |');
-    lines.push('|------|------|------|----------|');
+    lines.push('| 排名 | 球衣号 | 球员 | 位置 | 身价(万) |');
+    lines.push('|------|--------|------|------|----------|');
     valueAnalysis.top5.forEach((p, i) => {
-      lines.push(`| ${i + 1} | ${p.name} | ${p.position || '-'} | ${p.value} |`);
+      const jersey = formatJerseyForTableCell(p);
+      lines.push(`| ${i + 1} | ${jersey} | ${p.name} | ${p.position || '-'} | ${p.value} |`);
+    });
+    lines.push('');
+    lines.push('**进球TOP 5**:\n');
+    lines.push('| 排名 | 球衣号 | 球员 | 位置 | 进球 |');
+    lines.push('|------|--------|------|------|------|');
+    goalsTop5.forEach((p, i) => {
+      const jersey = formatJerseyForTableCell(p);
+      lines.push(`| ${i + 1} | ${jersey} | ${p.name} | ${p.position || '-'} | ${p.value} |`);
+    });
+    lines.push('');
+    lines.push('**助攻TOP 5**:\n');
+    lines.push('| 排名 | 球衣号 | 球员 | 位置 | 助攻 |');
+    lines.push('|------|--------|------|------|------|');
+    assistsTop5.forEach((p, i) => {
+      const jersey = formatJerseyForTableCell(p);
+      lines.push(`| ${i + 1} | ${jersey} | ${p.name} | ${p.position || '-'} | ${p.value} |`);
     });
     lines.push('');
 
@@ -996,18 +1099,23 @@ class TeamProfileGenerator extends BaseCrawler {
     const results = { success: [], noData: [], failed: [] };
 
     for (const team of realTeams) {
-      const { players, dataSource, finalPath, coach, formation } = this.resolvePlayers(
-        team,
-        scheduleData,
-        source
-      );
+      const { players, dataSource, finalPath, coach, formation, injured, doubtful } =
+        this.resolvePlayers(team, scheduleData, source);
       if (!players || players.length === 0) {
         results.noData.push(team.chineseName);
         continue;
       }
 
       try {
-        const md = this.generateProfileMarkdown(team, players, { dataSource, coach, formation });
+        const analyzerReport = useLeagueStyleAnalysis() ? this.loadAnalyzerReport(team.id) : null;
+        const md = this.generateProfileMarkdown(team, players, {
+          dataSource,
+          coach,
+          formation,
+          analyzerReport,
+          injured,
+          doubtful,
+        });
         const mdPath = path.join(config.paths.cupAnalyzer, 'teamProfile', `${team.chineseName}.md`);
         saveMarkdown(mdPath, md);
         this.syncSquadFinalStatsAfterProfile(finalPath, players, dataSource);
@@ -1050,7 +1158,7 @@ class TeamProfileGenerator extends BaseCrawler {
       return null;
     }
 
-    const { players, dataSource, finalPath, coach, formation } = this.resolvePlayers(
+    const { players, dataSource, finalPath, coach, formation, injured, doubtful } = this.resolvePlayers(
       team,
       scheduleData,
       source
@@ -1063,7 +1171,15 @@ class TeamProfileGenerator extends BaseCrawler {
     }
 
     try {
-      const md = this.generateProfileMarkdown(team, players, { dataSource, coach, formation });
+      const analyzerReport = useLeagueStyleAnalysis() ? this.loadAnalyzerReport(id) : null;
+      const md = this.generateProfileMarkdown(team, players, {
+        dataSource,
+        coach,
+        formation,
+        analyzerReport,
+        injured,
+        doubtful,
+      });
       const mdPath = path.join(config.paths.cupAnalyzer, 'teamProfile', `${team.chineseName}.md`);
       saveMarkdown(mdPath, md);
       this.syncSquadFinalStatsAfterProfile(finalPath, players, dataSource);

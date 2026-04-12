@@ -6,6 +6,27 @@ const { readFile, saveMarkdown, fileExists } = require('../utils/fileWriter');
 const TODO_COMMENT = '<!-- TODO: 请从初选名单中裁剪至26人 -->';
 const LEAGUE_TODO_COMMENT = '<!-- TODO: 请审核并确认名单 -->';
 
+/** 在 `## 统计摘要` 前插入伤停/伤疑占位（若已存在则跳过） */
+function injectInjurySections(content) {
+  if (!content || typeof content !== 'string') return content;
+  if (/^##\s*伤停\s*$/m.test(content)) return content;
+  const block = `## 伤停
+
+<!-- 填入当前伤停球员，每行一个，格式：球衣号-姓名 -->
+
+## 伤疑
+
+<!-- 填入当前伤疑球员，每行一个，格式：球衣号-姓名 -->
+
+`;
+  const marker = '## 统计摘要';
+  const idx = content.indexOf(marker);
+  if (idx !== -1) {
+    return `${content.slice(0, idx).trimEnd()}\n\n${block}${content.slice(idx)}`;
+  }
+  return `${content.trimEnd()}\n\n${block}`;
+}
+
 /**
  * 最终大名单初始化器：从 squad/ 初选复制到 squad-final/，并改写标题与待办注释
  *
@@ -47,7 +68,7 @@ class SquadFinalInitializer extends BaseCrawler {
         break;
       }
     }
-    return lines.join('\n');
+    return injectInjurySections(lines.join('\n'));
   }
 
   /**
@@ -69,7 +90,7 @@ class SquadFinalInitializer extends BaseCrawler {
         break;
       }
     }
-    return lines.join('\n');
+    return injectInjurySections(lines.join('\n'));
   }
 
   /**

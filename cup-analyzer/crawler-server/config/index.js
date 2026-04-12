@@ -7,6 +7,8 @@ const path = require('path');
  * - epl（英超，球探序号 36，联赛格式 s36.js）
  * - koreanKLeague（韩K联，s15_313，313 为 arrSubLeague 子联赛 ID）
  * - aLeague（澳超，s273_462，462 为 arrSubLeague 子联赛 ID）
+ * - mls（美职联，s21_165，165 为 arrSubLeague 常规赛子联赛 ID）
+ * - serieA（意甲，s34_2948，2948 为 arrSubLeague 子联赛 ID）
  *
  * 示例：CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js
  */
@@ -94,6 +96,44 @@ const cups = {
       playerCenter: path.resolve(__dirname, '../output/player_center'),
       basicData: path.resolve(__dirname, '../output/basicData'),
       cupScheduleData: path.resolve(__dirname, '../../aLeague/data/s273_462.js'),
+    },
+  },
+  mls: {
+    fileId: 's21_165',
+    type: 'league',
+    cupSerial: '21',
+    cupName: 'mls',
+    chineseName: '美职联',
+    crossYear: false,
+    /** 子联赛 ID，与 titan007 arrSubLeague 中「常规赛」阶段一致 */
+    subLeagueId: '165',
+    /** titan007 matchResult 赛季目录，与 s21_165 一致 */
+    season: '2026',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../mls'),
+      squadFinal: path.resolve(__dirname, '../../mls/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../output/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../mls/data/s21_165.js'),
+    },
+  },
+  serieA: {
+    fileId: 's34_2948',
+    type: 'league',
+    cupSerial: '34',
+    cupName: 'serieA',
+    chineseName: '意甲',
+    crossYear: true,
+    /** 子联赛 ID，与 titan007 arrSubLeague 中联赛阶段一致 */
+    subLeagueId: '2948',
+    /** titan007 matchResult 赛季目录，与 s34_2948 一致 */
+    season: '2025-2026',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../serieA'),
+      squadFinal: path.resolve(__dirname, '../../serieA/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../output/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../serieA/data/s34_2948.js'),
     },
   },
 };
