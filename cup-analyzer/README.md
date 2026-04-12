@@ -63,6 +63,24 @@ cup-analyzer/
 ├── aLeague/                           # 澳大利亚足球超级联赛（澳超）
 │   ├── data/                          # s273_462.js 赛程等
 │   └── squad-final/
+├── mls/                               # 美国职业大联盟（美职联 / MLS）
+│   ├── PLAN.md
+│   ├── workflow.md
+│   ├── prompts/                       # 赛前分析模板（与英超/澳超同源）
+│   ├── data/                          # s21_165.js、l21.js、bs21.js、td21.js 等
+│   ├── teamProfile/
+│   ├── report/{赛季}/                 # 如 2026/round-N/
+│   ├── postMatchSummary/{赛季}/
+│   └── news/{赛季}/
+├── serieA/                            # 意大利足球甲级联赛（意甲）
+│   ├── PLAN.md
+│   ├── workflow.md
+│   ├── prompts/
+│   ├── data/                          # s34_2948.js、l34.js、bs34.js、td34.js 等
+│   ├── teamProfile/
+│   ├── report/{赛季}/                 # 如 25-26/round-N/
+│   ├── postMatchSummary/{赛季}/
+│   └── news/{赛季}/
 └── crawler-server/                    # Koa2爬虫服务
     ├── app.js                         # 服务入口
     ├── config/                        # index、targets、squadTarget 等
@@ -118,6 +136,14 @@ npm run crawl:schedule:epl
 npm run crawl:schedule:aleague
 # Bash 手动：CUP_ANALYZER_CUP=aLeague node crawlers/scheduleCrawler.js
 
+# 美职联 → 写入 mls/data/s21_165.js（子联赛 165；赛季目录 2026，见 config）
+CUP_ANALYZER_CUP=mls node crawlers/scheduleCrawler.js
+# 或：npm run crawl:schedule:mls
+
+# 意甲 → 写入 serieA/data/s34_2948.js（子联赛 2948；赛季目录 2025-2026，见 config）
+CUP_ANALYZER_CUP=serieA node crawlers/scheduleCrawler.js
+# 或：npm run crawl:schedule:seriea
+
 # 俱乐部赛前大名单 + 国内联赛出场分析（原 backend-server crawlerPlayer + crawlerClub3_new）
 # 先配置 config/squadTarget.js，并放入 match_center/s{联赛序号}.js
 npm run crawl:player-list
@@ -149,6 +175,18 @@ npm run analyze:club-domestic
 - **阶段一（赛前）**：维护 data（`s273_462.js`）、球队序号与积分榜；可按需扩展 `teamProfile/`、`description/`、`news/`
 - **阶段二（赛中）**：逐场赛前/赛后分析，结合常规赛排名与季后赛资格区（前六）
 - **阶段三（策略）**：常规赛争二（直通季后赛准决赛）→ 第三至第六名淘汰赛路径 → 跨洲/杯赛与夏令时赛程节奏
+
+**美职联（mls）**
+
+- **阶段一（赛前）**：维护 data（`s21_165.js` 等）、球队序号与东西区积分榜；可按需扩展 `teamProfile/`、`news/`
+- **阶段二（赛中）**：逐场赛前/赛后分析，结合常规赛排名与季后赛资格（详见 `s21_165.js` 内联赛说明）
+- **阶段三（策略）**：东西区排名与外卡赛 → 季后赛阶段节奏 → 跨洲客场与杯赛穿插
+
+**意甲（serieA）**
+
+- **阶段一（赛前）**：维护 data（`s34_2948.js`、`l34`/`bs34`/`td34`）、球队序号与积分榜；可按需扩展 `teamProfile/`、`news/`
+- **阶段二（赛中）**：逐场赛前/赛后（模板见 `serieA/prompts/match_analysis_template.md`），结合盘路 `l34`/`bs34` 与争冠/欧战/保级战意
+- **阶段三（策略）**：争冠 → 欧冠资格区 → 欧联/欧协路径 → 保级 → 德比与一周双赛（欧冠夹联赛等）
 
 6、AI 分析技能文件：
 

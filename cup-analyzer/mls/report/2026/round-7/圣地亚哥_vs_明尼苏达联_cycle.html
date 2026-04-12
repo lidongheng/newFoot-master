@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>亚盘周期盈亏 — 圣地亚哥 vs 明尼苏达联</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0; padding: 16px 20px 40px; background: #f5f5f5; color: #222; }
+    h1 { font-size: 1.25rem; margin: 0 0 8px; }
+    .meta { color: #666; font-size: 0.9rem; margin-bottom: 20px; }
+    .section { background: #fff; border-radius: 8px; padding: 16px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+    .section h2 { margin: 0 0 12px; font-size: 1.05rem; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+    .chart-wrap { margin-bottom: 24px; }
+    .chart { width: 100%; height: 360px; }
+    .hint { font-size: 12px; color: #888; margin: 6px 0 0; }
+    .note { font-size: 13px; color: #555; line-height: 1.5; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1>霍华德·马克斯周期视角 · 亚盘模拟盈亏</h1>
+  <div class="meta">
+    场次序号 matchSerial：2908513 ｜ 赛季 2026 ｜ 第 7 轮<br/>
+    主队：圣地亚哥 ｜ 客队：明尼苏达联<br/>
+    模拟规则：每场投注 1000 元、买己方盘、固定水位 0.9（港盘）、初盘盘口来自球探分析页。
+  </div>
+
+  <div class="section">
+    <h2>圣地亚哥（本场主场）</h2>
+    <p class="note">「主或客场」图仅包含该队历史<strong>主场</strong>比赛，便于对照本场主场节奏。</p>
+    
+    <div class="chart-wrap">
+      <div id="chart_home_0" class="chart"></div>
+      <p class="hint">全部近期 · 共 29 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_home_1" class="chart"></div>
+      <p class="hint">仅主场 · 共 14 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_home_2" class="chart"></div>
+      <p class="hint">同赛事（美职业） · 共 21 场。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>明尼苏达联（本场客场）</h2>
+    <p class="note">「主或客场」图仅包含该队历史<strong>客场</strong>比赛，便于对照本场客场节奏。</p>
+    
+    <div class="chart-wrap">
+      <div id="chart_away_0" class="chart"></div>
+      <p class="hint">全部近期 · 共 28 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_away_1" class="chart"></div>
+      <p class="hint">仅客场 · 共 13 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_away_2" class="chart"></div>
+      <p class="hint">同赛事（美职业） · 共 23 场。</p>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var configs = [{"id":"chart_home_0","option":{"title":{"text":"圣地亚哥 — 全部近期（29 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-07-26 纳什威尔SC","25-07-30 帕丘卡(中)","25-08-02 老虎大学(中)","25-08-06 马萨特兰FC(中)","25-08-10 堪萨斯城竞技","25-08-18 圣何塞地震","25-08-24 波特兰伐木者","25-09-01 洛杉矶FC","25-09-14 明尼苏达联","25-09-17 蒂华纳","25-09-21 亚特兰大联","25-09-28 圣何塞地震","25-10-05 休斯敦迪纳摩","25-10-19 波特兰伐木者","25-10-27 波特兰伐木者","25-11-02 波特兰伐木者","25-11-10 波特兰伐木者","25-11-25 明尼苏达联","25-11-30 温哥华白浪","26-02-04 美洲狮","26-02-11 美洲狮","26-02-22 CF蒙特利尔","26-03-02 圣路易斯城","26-03-08 堪萨斯城竞技","26-03-12 托卢卡","26-03-15 达拉斯FC","26-03-19 托卢卡","26-03-23 皇家盐湖城","26-04-05 圣何塞地震"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[900,-100,-1100,-200,700,1600,600,1500,500,1400,1400,400,1300,2200,2200,2200,3100,3100,2100,3000,2000,2900,3800,4700,5600,5100,4100,3100,2100],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[28,2100],"value":2100}]}}]}},{"id":"chart_home_1","option":{"title":{"text":"圣地亚哥 — 仅主场（14 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-07-26 纳什威尔SC","25-08-24 波特兰伐木者","25-09-14 明尼苏达联","25-09-17 蒂华纳","25-09-28 圣何塞地震","25-10-27 波特兰伐木者","25-11-10 波特兰伐木者","25-11-25 明尼苏达联","25-11-30 温哥华白浪","26-02-04 美洲狮","26-02-22 CF蒙特利尔","26-03-02 圣路易斯城","26-03-12 托卢卡","26-03-23 皇家盐湖城"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[900,-100,-1100,-200,-1200,-1200,-300,-300,-1300,-400,500,1400,2300,1300],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[13,1300],"value":1300}]}}]}},{"id":"chart_home_2","option":{"title":{"text":"圣地亚哥 — 同赛事（美职业）（21 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-07-26 纳什威尔SC","25-08-10 堪萨斯城竞技","25-08-18 圣何塞地震","25-08-24 波特兰伐木者","25-09-01 洛杉矶FC","25-09-14 明尼苏达联","25-09-21 亚特兰大联","25-09-28 圣何塞地震","25-10-05 休斯敦迪纳摩","25-10-19 波特兰伐木者","25-10-27 波特兰伐木者","25-11-02 波特兰伐木者","25-11-10 波特兰伐木者","25-11-25 明尼苏达联","25-11-30 温哥华白浪","26-02-22 CF蒙特利尔","26-03-02 圣路易斯城","26-03-08 堪萨斯城竞技","26-03-15 达拉斯FC","26-03-23 皇家盐湖城","26-04-05 圣何塞地震"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[900,1800,2700,1700,2600,1600,1600,600,1500,2400,2400,2400,3300,3300,2300,3200,4100,5000,4500,3500,2500],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[20,2500],"value":2500}]}}]}},{"id":"chart_away_0","option":{"title":{"text":"明尼苏达联 — 全部近期（28 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-07-09 芝加哥火焰","25-07-13 圣何塞地震","25-07-17 洛杉矶FC","25-07-20 波特兰伐木者","25-07-27 圣路易斯城","25-07-31 克雷塔罗","25-08-03 墨西哥美洲(中)","25-08-07 圣路易斯竞技","25-08-11 科罗拉多急流","25-08-17 西雅图海湾人","25-08-24 皇家盐湖城","25-08-31 波特兰伐木者","25-09-14 圣地亚哥","25-09-18 奥斯汀FC","25-09-21 芝加哥火焰","25-09-28 科罗拉多急流","25-10-05 堪萨斯城竞技","25-10-19 洛杉矶银河","25-10-28 西雅图海湾人","25-11-04 西雅图海湾人","25-11-09 西雅图海湾人","25-11-25 圣地亚哥","26-02-22 奥斯汀FC","26-03-01 辛辛那提","26-03-08 纳什威尔SC","26-03-16 温哥华白浪","26-03-23 西雅图海湾人","26-04-05 洛杉矶银河"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[-1000,-100,-1100,-1100,-200,700,1600,600,-400,500,1400,400,1300,300,-700,-700,200,-800,-1300,-2300,-1850,-1850,-1400,-500,-1500,-2500,-2500,-1600],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[27,-1600],"value":-1600}]}}]}},{"id":"chart_away_1","option":{"title":{"text":"明尼苏达联 — 仅客场（13 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-07-20 波特兰伐木者","25-07-27 圣路易斯城","25-08-03 墨西哥美洲(中)","25-08-24 皇家盐湖城","25-09-14 圣地亚哥","25-09-28 科罗拉多急流","25-10-19 洛杉矶银河","25-11-04 西雅图海湾人","25-11-25 圣地亚哥","26-02-22 奥斯汀FC","26-03-08 纳什威尔SC","26-03-16 温哥华白浪","26-04-05 洛杉矶银河"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[0,900,1800,2700,3600,3600,2600,1600,1600,2050,1050,50,950],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[12,950],"value":950}]}}]}},{"id":"chart_away_2","option":{"title":{"text":"明尼苏达联 — 同赛事（美职业）（23 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-07-13 圣何塞地震","25-07-17 洛杉矶FC","25-07-20 波特兰伐木者","25-07-27 圣路易斯城","25-08-11 科罗拉多急流","25-08-17 西雅图海湾人","25-08-24 皇家盐湖城","25-08-31 波特兰伐木者","25-09-14 圣地亚哥","25-09-21 芝加哥火焰","25-09-28 科罗拉多急流","25-10-05 堪萨斯城竞技","25-10-19 洛杉矶银河","25-10-28 西雅图海湾人","25-11-04 西雅图海湾人","25-11-09 西雅图海湾人","25-11-25 圣地亚哥","26-02-22 奥斯汀FC","26-03-01 辛辛那提","26-03-08 纳什威尔SC","26-03-16 温哥华白浪","26-03-23 西雅图海湾人","26-04-05 洛杉矶银河"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[900,-100,-100,800,-200,700,1600,600,1500,500,500,1400,400,-100,-1100,-650,-650,-200,700,-300,-1300,-1300,-400],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[22,-400],"value":-400}]}}]}}];
+      configs.forEach(function(item) {
+        var el = document.getElementById(item.id);
+        if (!el) return;
+        var chart = echarts.init(el);
+        chart.setOption(item.option);
+        window.addEventListener('resize', function() { chart.resize(); });
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -35,11 +35,13 @@ npm run analyze:club-domestic
 ```bash
 npx cross-env CUP_ANALYZER_CUP=championsLeague node processors/leagueSquadProcessor.js
 npx cross-env CUP_ANALYZER_CUP=championsLeague node processors/squadFinalInitializer.js --team <序号>
-# 人工审核 championsLeague/squad-final/{队名}.md
+# 人工审核 championsLeague/squad-final/{队名}.md（维护 ## 伤停 / ## 伤疑）
 npx cross-env CUP_ANALYZER_CUP=championsLeague node processors/teamProfileGenerator.js --team <序号>
 ```
 
 若在 macOS / Linux 终端习惯 Bash，也可将上述三条写成 `CUP_ANALYZER_CUP=championsLeague node processors/...`。手写 PowerShell/cmd 见 [crawler-server/README.md](../crawler-server/README.md)「Windows 与手动设置环境变量」。
+
+**赛中大名单脚本**（与英超相同逻辑：替补按国内联赛出场数取 Top9，含落选）：`cd cup-analyzer/crawler-server && npx cross-env CUP_ANALYZER_CUP=championsLeague node processors/matchSquadGenerator.js --home <序号> --away <序号>`
 
 ## 三大阶段工作流
 
@@ -62,11 +64,15 @@ npx cross-env CUP_ANALYZER_CUP=championsLeague node processors/teamProfileGenera
 
 ### 阶段二：赛中分析（每场）
 
-**大名单是分析基础**：每场赛前必须先完成步骤 0，再写报告、预测首发。
+**大名单是分析基础**：每场赛前必须先完成步骤 0（或改用已维护的 `squad-final` + `teamProfile`），再写报告、预测首发。
 
 ```
 赛前 2–3 天:
-  0. 抓取双方大名单（必做；逻辑已迁入 cup-analyzer/crawler-server）
+  0. 双方大名单与推荐首发（二选一或组合）
+     A. **维护画像流水线**：`championsLeague/squad-final/{队名}.md` 与 `teamProfile` 已更新时，赛前在 `squad-final` 填写 **伤停/伤疑** 后，可用  
+        `cd cup-analyzer/crawler-server && npx cross-env CUP_ANALYZER_CUP=championsLeague node processors/matchSquadGenerator.js --home <主队序号> --away <客队序号>`  
+        生成预测首发、替补、伤疑、伤停、落选（替补按国内联赛出场统计）。
+     B. **临场抓取**（逻辑已迁入 cup-analyzer/crawler-server）：
      a. 确保该队**国内联赛**赛程 JS 为最新（如英超：在 crawler-server 下跑 **`npm run crawl:schedule:epl`**，或确认 `epl/data/s36.js` 已更新；分析器通过 `leagueSerial` 读 `resolveScheduleData` 指向的路径，不必单独维护 `match_center` 为唯一来源）
      b. 编辑 `crawler-server/config/squadTarget.js`：
         - teamSerial：该队球探俱乐部序号（见 `data/球队与序号对照表.md` 或 titan007 球队页）
@@ -83,8 +89,10 @@ npx cross-env CUP_ANALYZER_CUP=championsLeague node processors/teamProfileGenera
   1. 预测首发（格式见 [prompts/match_analysis_template.md](./prompts/match_analysis_template.md)）
   2. 交锋、近况、未来赛程（含国内联赛/杯赛）
   3. 盘口：初盘/临场；可引用 `data/` 下 l103.js、bs103.js（欧冠阶段样本量少于国内联赛，需结合判断；杯赛爬虫不更新 td）
+  3b. 格雷厄姆式亚盘安全边际：记录 Market（初盘/临场）→ 写 Fair（合理让球）与一行推导链 → 算 Δ → 标注三档结论（值得投 / 观望 / 反向投），定义见下 **「亚盘安全边际（格雷厄姆式）」**
   4. UCL 专项：当前积分排名、是否轮换、两回合总比分（淘汰赛）
-  5. 赛前报告 → report/{赛季}/league-phase|playoff|.../{轮次或阶段}/{主队}_vs_{客队}.md
+  5. 赛前报告 → `championsLeague/report/{赛季}/league-phase|playoff|.../{轮次或阶段}/{主队}_vs_{客队}.md`  
+     其中 **大名单与预测正文**（预测首发、预测替补、伤疑、伤停、落选）以步骤 0-A 中 `matchSquadGenerator.js` 的输出为准，写入该 `.md` 文件（与 [prompts/match_analysis_template.md](./prompts/match_analysis_template.md) 其余部分并列）。
 
 赛前 1–2 小时:
   6. 确认首发与临场盘
@@ -115,10 +123,42 @@ npx cross-env CUP_ANALYZER_CUP=championsLeague node processors/teamProfileGenera
 ### 欧冠 vs 国内联赛
 
 1. **盘路**：联赛阶段可用 `l103`/`bs103`，但轮次少于联赛，需结合球队广实与战意。
-2. **广实**：可参考国内联赛 `references/*-team-strength.md` + **UCL 冠军赔率档次**（见 `data/冠军赔率.md`）。
+2. **广实**：国内联赛广实档位见项目根目录 `.cursor/rules/dh-match-predict-analysis/references/`（如 `epl-team-strength.md` 等，按俱乐部所属联赛选文件）+ **UCL 冠军赔率档次**（见 `data/冠军赔率.md`）。
 3. **两回合淘汰赛**：首回合比分、主客场顺序、是否需净胜球/追分，影响次回合战意与节奏。
 4. **三线作战**：欧冠、国内联赛、国内杯赛 — 轮换与留力需单独评估。
 5. **无「小组赛挑对手」式操作**：积分与抽签规则决定路径，分析重点在 **排名区间** 与 **抽签半区**，而非默契球。
+
+### 亚盘安全边际（格雷厄姆式）
+
+与下文 **「亚盘周期盈亏 HTML（霍华德·马克斯周期视角）」** 的关系：**马克斯章节**是历史盘口序列上的周期与模拟回测视角；**本章**是单场把广实换算为合理让球、与市场盘口对比的定价与安全边际视角。二者互补，不要混为一谈。
+
+**符号约定（主队视角）**
+
+- **Market（市场让球）**：初盘与临场亚盘，与 `l103.js` / `bs103.js`、赛前报告「盘口」一致。
+- **Fair（合理让球）**：在当前信息下，主队相对客队「应开」的让球，可写单值或闭区间（如 -0.75～-1.0）。
+- **记法**：主队**让球**为**负**（如让半球 **-0.5**），主队**受让**为**正**（如 **+0.5**）。
+- **偏差**：**Δ = Fair − Market**（两者均为同一场、同一主队视角）。例：Fair **-1.0**、临场 Market **-0.5**，则 **Δ = -0.5**（你认为市场让得偏浅）。具体选边仍要结合水位与叙事；本节规定的是**记录方式与决策分档**。
+
+**定位 → Fair（可审计的最小推导链）**
+
+1. **实际定位**：国内联赛广实档位见 `.cursor/rules/dh-match-predict-analysis/references/`（按各队所属联赛查阅对应 `*-team-strength.md`）+ **UCL 积分排名 / 冠军赔率档**（`data/冠军赔率.md`）+ `teamProfile/`；淘汰赛叠加两回合总比分、主客场顺序、是否需追净胜球。
+2. **广实差**：主客相对强度（档位或文字结论）。
+3. **主场加成** / **杯赛主场**：联赛与欧冠主场经验区间分别自校。
+4. **伤停与首发可信度**：相对 `squad-final` 与当场预测首发修正。
+5. **战意与疲劳**：三线作战、轮换、一周双赛（见 `cross-competition-fatigue.md` 等）。
+6. 输出 **Fair**（单值或区间）。
+
+**阶段二中的操作（每场）**
+
+在「盘口：初盘/临场」之后：**列出 Market（初盘+临场）→ 写 Fair 与一行推导链 → 计算 Δ → 标注三档之一**；赛前报告与 `prompts/match_analysis_template.md`「四、盘口解析」下的亚盘子项对齐。
+
+**三档结论（rubric）**
+
+- **值得投**：|Δ| 达到**自设阈值**（常见起点 **0.25～0.5 球**，可按联赛波动率校准），且无重大未决信息（核心伤停疑云、高方差默契球等）；仍须满足模板中「完整项目、少买」等纪律。
+- **观望**：|Δ| 低于阈值，或信息不全，或高方差情境（淘汰赛极端战意、轮换未知、欧冠小样本盘路）。
+- **反向投**：Fair 与 Market **方向性或幅度严重背离**，且能说明「市场假设错在哪」；默认**小仓或仅记录**。「反向」指价值在让球方向的另一侧，不是鼓励盲目加注。
+
+以上为**纪律框架**，不保证结果。
 
 ### 报告与素材路径约定
 
@@ -128,5 +168,13 @@ npx cross-env CUP_ANALYZER_CUP=championsLeague node processors/teamProfileGenera
 | 淘汰赛 | `.../playoff/`、`round-of-16/`、`quarter-finals/`、`semi-finals/`、`final/` |
 | 素材 | `cup-analyzer/championsLeague/news/{赛季}/...` |
 | 赛后 | `cup-analyzer/championsLeague/postMatchSummary/{赛季}/...` |
+
+### 亚盘周期盈亏 HTML（霍华德·马克斯周期视角）
+
+1. 编辑 `cup-analyzer/crawler-server/config/squadTarget.js`：设置 `matchSerial`、`roundSerial`、`season`；`matchLeagueName` 建议填与球探「联赛」列一致（如 `欧冠杯`），供「同赛事」筛选。
+2. 在 `cup-analyzer/crawler-server` 执行：`CUP_ANALYZER_CUP=championsLeague npm run generate:cycle-report`
+3. 输出：`cup-analyzer/championsLeague/report/{赛季}/round-{N}/{主队}_vs_{客队}_cycle.html`（规则同英超 workflow：每场 1000 元、水位 0.9、ECharts CDN）
+
+**赛前报告中的大名单块**：单场 `matchSquadGenerator.js` 打印的双方「预测首发、预测替补、伤疑、伤停、落选」即对应路径下 **`{主队}_vs_{客队}.md`** 内应落盘的大名单与预测部分。
 
 详细目录规划见 [PLAN.md](./PLAN.md)。
