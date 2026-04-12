@@ -4,7 +4,7 @@ description: |
   针对足球比赛赛后的数据分析与提效全能助手。覆盖数据处理、分析洞察、报告撰写、数据可视化的端到端工作流。
   始终从专家视角出发，帮用户多想一步。遇到不确定的问题主动与用户确认。
   支持：JSON数据分析、控制台输出纯文本数据分析、Excel数据分析、数据可视化、报告生成、公式生成。
-  足球赛后任务会先同步最新球探赛程 JS（scheduleCrawler，含备份），再进行分析。
+  足球赛后任务会先同步最新球探赛程 JS（scheduleCrawler，含备份），再爬取球探赛后数据 JSON（postMatchDataCrawler，必做），最后进行分析与报告。
   当用户提到"分析数据"、"做报告"、"Excel"、"复盘"、“赛后总结”、“赛后分析”、
   "周报"、"月报"、"数据处理"、"图表"、"可视化"、"汇报"、"表格"、"公式"时使用此技能。
 ---
@@ -36,7 +36,7 @@ description: |
 
 ## 核心方法论：多专家深度分析
 
-**这是本skill最核心的分析工作流。** 面对任何有深度分析价值的数据集，采用「赛程同步（足球）→数据理解→专家选角→并行分析→统一呈现」流程。
+**这是本skill最核心的分析工作流。** 面对任何有深度分析价值的数据集，采用「赛程同步（足球）→赛后数据爬取（足球赛后必做）→数据理解→专家选角→并行分析→统一呈现」流程。
 
 ### 触发条件
 
@@ -60,14 +60,36 @@ description: |
 | 世界杯 / World Cup | `theWorldCup` | `c75.js` | 否 |
 | 英超 / EPL / Premier League | `epl` | `s36.js`（联赛） | 是（`2025-2026`） |
 | 韩K联 / K League 1 | `koreanKLeague` | `s15_313.js`（子联赛 313） | 否 |
+| 澳超 / A-League / 澳大利亚足球超级联赛 | `aLeague` | `s273_462.js`（子联赛 462） | 是（`2025-2026`） |
+| 美职联 / MLS / 美国职业足球大联盟 | `mls` | `s21_165.js`（子联赛 165） | 否（`2026`） |
+| 意甲 / Serie A / 意大利足球甲级联赛 | `serieA` | `s34_2948.js`（子联赛 2948） | 是（`2025-2026`） |
 
-**执行：**
+**执行（跨平台，推荐）：**
+
+工作目录：`cup-analyzer/crawler-server`（先 `cd` 到该目录）。
+
+| npm 脚本 | 赛事 |
+|----------|------|
+| `npm run crawl:schedule:ucl` | 欧冠 |
+| `npm run crawl:schedule:epl` | 英超 |
+| `npm run crawl:schedule:kleague` | 韩K联 |
+| `npm run crawl:schedule:aleague` | 澳超 |
+| `npm run crawl:schedule:mls` | 美职联 |
+| `npm run crawl:schedule:seriea` | 意甲 |
+
+或直接使用 `npx cross-env`（与 [crawler-server/README.md](../../../cup-analyzer/crawler-server/README.md) 一致）：
 
 ```bash
 cd cup-analyzer/crawler-server
-CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js
-# 或 npm run crawl:schedule:ucl / crawl:schedule:epl / crawl:schedule:kleague
+npx cross-env CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js
 ```
+
+**Windows 手动设置环境变量**（不推荐，仅当无法使用 npm / cross-env 时）：
+
+- **PowerShell**：`$env:CUP_ANALYZER_CUP="championsLeague"; node crawlers/scheduleCrawler.js`
+- **CMD**：`set CUP_ANALYZER_CUP=championsLeague && node crawlers/scheduleCrawler.js`
+
+**世界杯**无单独 npm 别名时：`npx cross-env CUP_ANALYZER_CUP=theWorldCup node crawlers/scheduleCrawler.js`。
 
 **验证**：打开对应 `*.js`，检查 `lastUpdateTime` 是否为近期；同目录应出现 `*.backup_<时间戳>.js`。
 
@@ -75,14 +97,34 @@ CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js
 
 非足球、或用户明确只要分析已有 CSV/Excel、不涉及赛程时，**跳过 Phase 0**。
 
+### Phase 0.5: 赛后数据爬取（足球赛后总结 — **必做**）
+
+要做**赛后总结 / 深度复盘**，必须先有球探网导出的本场赛后 JSON（技术统计、事件、阵容、`postMatchSummary` 等）。**没有跑过爬虫、本地不存在对应 JSON 时，不得编造数据写报告**；应向用户说明并先执行爬取或请用户补全数据。
+
+- **脚本**：[`cup-analyzer/crawler-server/crawlers/postMatchDataCrawler.js`](../../../cup-analyzer/crawler-server/crawlers/postMatchDataCrawler.js)（由 `backend-server/crawlerPostMatchData.js` 迁移，逻辑等价）。
+- **工作目录**：`cup-analyzer/crawler-server`（需已 `npm install`）。
+- **切换赛事**：与 Phase 0 相同，设置 `CUP_ANALYZER_CUP`（见上表）。
+- **执行（跨平台）**：
+  ```bash
+  cd cup-analyzer/crawler-server
+  npx cross-env CUP_ANALYZER_CUP=epl npm run crawl:post-match
+  npx cross-env CUP_ANALYZER_CUP=epl npm run crawl:post-match -- --round 26
+  ```
+  从本地已保存的单场 HTML 解析：`npx cross-env CUP_ANALYZER_CUP=epl node crawlers/postMatchDataCrawler.js --local path/to/page.htm --match {比赛序号}`。
+- **输出目录**：`cup-analyzer/{联赛模块名}/basicData/{赛季目录}/round-{轮次}/{主队slug}_vs_{客队slug}/`（赛季目录由配置自动换算，如 `2025-2026` → `25-26`；杯赛可能为 `{阶段ID}/` 而非 `round-*`）。
+- **产出文件**（每场一目录）：`matchInfo.json`（含 **postMatchSummary**）、`matchEvents.json`、`techStats.json`、`lineup.json`、`playerStats.json`、`goalProbability.json`（可有可无）。
+
+详细字段与读数步骤见 [`references/workflows.md`](references/workflows.md)。
+
 ### 四阶段流程（多专家深度分析）
 
 ```
-Phase 0: 赛程数据同步（可选，足球且需最新赛程时）
-Phase 1: 数据理解        → 读取数据，输出概览，理解字段含义和数据特征
-Phase 2: 专家选角        → 基于数据特征，选取3-5个不同领域的最适合专家角色
-Phase 3: 并行深度分析    → 每个专家角色独立执行分析（使用subagent并行）
-Phase 4: 统一综合呈现    → 管理型分析师视角整合所有观点，生成最终报告
+Phase 0:   赛程数据同步（可选，足球且需最新赛程时）
+Phase 0.5: 赛后数据爬取（足球赛后总结必做，见上）
+Phase 1:   数据理解        → 读取数据，输出概览，理解字段含义和数据特征
+Phase 2:   专家选角        → 基于数据特征，选取3-5个不同领域的最适合专家角色
+Phase 3:   并行深度分析    → 每个专家角色独立执行分析（使用subagent并行）
+Phase 4:   统一综合呈现    → 管理型分析师视角整合所有观点，生成最终报告
 ```
 
 ### Phase 1: 数据理解
@@ -131,7 +173,7 @@ Phase 4: 统一综合呈现    → 管理型分析师视角整合所有观点，
 - 数据和图表的选取综合所有专家的分析结果，取最有说服力的
 
 最终产出：MARKDOWN文字报告（默认）。
-产出的总结报告要放在`league-analyzer/postMatchSummary/${联赛}/${赛季}/${轮次}/${对阵双方}.md`里。
+产出的总结报告要放在`cup-analyzer/${联赛}/postMatchSummary/${赛季}/${轮次}/${对阵双方}.md`里（`${联赛}` 为模块目录名，如 `epl`、`aLeague`、`mls`、`serieA`、`championsLeague` 等）。
 
 ### 适配不同规模
 
@@ -184,7 +226,8 @@ Phase 4: 统一综合呈现    → 管理型分析师视角整合所有观点，
 | 脚本 | 用途 |
 |------|------|
 | `/cup-analyzer/crawler-server/crawlers/scheduleCrawler.js` | 同步球探赛程 JS（`CUP_ANALYZER_CUP` 切换赛事；先备份再覆盖） |
-| `/backend-server/crawlerPostMatchData.js` | 爬取赛后数据脚本 |
+| `/cup-analyzer/crawler-server/crawlers/postMatchDataCrawler.js` | **爬取赛后数据（必做）**；`npm run crawl:post-match`；输出至各模块 `basicData/` |
+| `/backend-server/crawlerPostMatchData.js` | 旧版赛后数据脚本（仍可用，配置 `wudaconfig.js`，输出 `backend-server/basicData/`） |
 | `/backend-server/crawlerHistoryHandicap.js` | 爬取历史同赔脚本 |
 | `/backend-server/crawlerCustomRank.js` | 自定义N轮积分榜 |
 

@@ -98,9 +98,9 @@ node crawlers/scheduleCrawler.js --standings
 
 npm：`npm run crawl:schedule:ucl` / `npm run crawl:schedule:epl` / `npm run crawl:schedule:kleague` / `npm run crawl:schedule:aleague` / `npm run crawl:schedule:mls` / `npm run crawl:schedule:seriea`
 
-### 4. `matchDataCrawler.js` — 单场 / 批量赛后数据
+### 4. `matchDataCrawler.js` — 单场 / 批量赛后数据（杯赛场景）
 
-- **作用**：移动端赛后页，输出到 `output/basicData/{阶段}/{主队}_vs_{客队}/`（`matchInfo.json`、`lineup.json` 等）。
+- **作用**：移动端赛后页，输出到 **`cup-analyzer/{当前 CUP 模块}/basicData/...`**（`matchInfo.json`、`lineup.json` 等），见 `config/index.js` 的 `paths.basicData`。
 
 ```bash
 node crawlers/matchDataCrawler.js --match 12345678   # 单场（比赛序号）
@@ -110,13 +110,26 @@ node crawlers/matchDataCrawler.js group 1            # 小组赛第 1 轮
 
 npm：`npm run crawl:match`
 
+### 4b. `postMatchDataCrawler.js` — 联赛 / 欧冠等通用赛后数据（推荐）
+
+- **作用**：由 `backend-server/crawlerPostMatchData.js` 迁移，按赛程增量爬取已完赛场次，支持 `--round`、`--local`。
+- **输出**：`cup-analyzer/{模块名}/basicData/{赛季目录}/round-{N}|{杯赛阶段ID}/{主队}_vs_{客队}/`。
+
+```bash
+npx cross-env CUP_ANALYZER_CUP=epl npm run crawl:post-match
+npx cross-env CUP_ANALYZER_CUP=epl npm run crawl:post-match -- --round 26
+npx cross-env CUP_ANALYZER_CUP=epl node crawlers/postMatchDataCrawler.js --local ./x.htm --match 2789380
+```
+
+npm：`npm run crawl:post-match`
+
 ### 5. `oddsCrawler.js` — 亚盘 / 欧赔
 
 ```bash
 node crawlers/oddsCrawler.js 12345678
 ```
 
-输出：`output/basicData/odds/{比赛序号}.json`
+输出：`{当前模块}/basicData/odds/{比赛序号}.json`（`paths.basicData` 见 `config/index.js`）
 
 ---
 

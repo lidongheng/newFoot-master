@@ -1,0 +1,192 @@
+{
+  "matchId": 2789440,
+  "homeName": "布伦特福德",
+  "awayName": "埃弗顿",
+  "events": [
+    {
+      "time": "2'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 111772,
+        "name": "皮克福德"
+      }
+    },
+    {
+      "time": "3'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "26'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 178187,
+        "name": "贝托"
+      },
+      "assist": {
+        "id": 70342,
+        "name": "盖耶"
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 155054,
+        "name": "尼尔森"
+      },
+      "playerOff": {
+        "id": 163242,
+        "name": "达姆斯加德"
+      }
+    },
+    {
+      "time": "47'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 166736,
+        "name": "詹姆斯·加尔纳"
+      }
+    },
+    {
+      "time": "74'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 229129,
+        "name": "T·巴里"
+      },
+      "playerOff": {
+        "id": 178187,
+        "name": "贝托"
+      }
+    },
+    {
+      "time": "74'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 252985,
+        "name": "乔治"
+      },
+      "playerOff": {
+        "id": 165331,
+        "name": "麦克尼尔"
+      }
+    },
+    {
+      "time": "74'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 213272,
+        "name": "蒂姆·伊罗格布纳"
+      },
+      "playerOff": {
+        "id": 70342,
+        "name": "盖耶"
+      }
+    },
+    {
+      "time": "76'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 185149,
+        "name": "蒂亚戈"
+      },
+      "assist": {
+        "id": 231775,
+        "name": "卡约德"
+      },
+      "score": {
+        "home": 2,
+        "away": 1
+      }
+    },
+    {
+      "time": "90+1'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 180960,
+        "name": "K·霍尔"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 2,
+        "away": 2
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 2,
+        "away": 2
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 365,
+    "guestId": 31,
+    "home": 2,
+    "homeHalf": 2,
+    "guest": 3,
+    "guestHalf": 1,
+    "detail": [
+      {
+        "min": "10",
+        "ifHome": false
+      },
+      {
+        "min": "35",
+        "ifHome": true
+      },
+      {
+        "min": "38",
+        "ifHome": true
+      },
+      {
+        "min": "86",
+        "ifHome": false
+      },
+      {
+        "min": "88",
+        "ifHome": false
+      }
+    ]
+  }
+}

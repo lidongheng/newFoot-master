@@ -9,6 +9,7 @@
     "crawl:squad": "node crawlers/squadCrawler.js",
     "crawl:squad:one": "node crawlers/squadCrawler.js --team",
     "crawl:match": "node crawlers/matchDataCrawler.js",
+    "crawl:post-match": "node crawlers/postMatchDataCrawler.js",
     "process:squad": "node processors/squadProcessor.js",
     "process:squad:one": "node processors/squadProcessor.js --team",
     "process:squad-final:init": "node processors/squadFinalInitializer.js",
