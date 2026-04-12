@@ -10,7 +10,7 @@ const path = require('path');
  * - mls（美职联，s21_165，165 为 arrSubLeague 常规赛子联赛 ID）
  * - serieA（意甲，s34_2948，2948 为 arrSubLeague 子联赛 ID）
  *
- * 示例：CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js
+ * 示例：npm run crawl:schedule:ucl（跨平台）；或 CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js（Bash）
  */
 const cups = {
   theWorldCup: {

@@ -12,7 +12,7 @@
 ### 赛程数据与 `clubMatchAnalyzer`（与 crawler-server 统一）
 
 - **本模块主文件**：`championsLeague/data/c103.js`（及同目录 `l103.js`、`bs103.js`）。
-- **更新**：`CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js` 会写入 `data/` 并**同步拷贝**赛程至 `crawler-server/match_center/c103.js`。
+- **更新**：优先在 **`cup-analyzer/crawler-server`** 下执行 **`npm run crawl:schedule:ucl`**（各系统相同）。也可 `npx cross-env CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js`；Bash 简写见 [crawler-server/README.md](../crawler-server/README.md)。会写入 `data/` 并**同步拷贝**赛程至 `crawler-server/match_center/c103.js`。
 - **分析欧冠场次时的「国内联赛」赛程**：`squadTarget.leagueSerial` 填该队**所属联赛**序号（如英超 36）；`resolveScheduleData` 会指向 **`epl/data/s36.js`** 等已登记模块路径，未登记的联赛仍用 `match_center/s{n}.js` 兜底。详见 `crawler-server/match_center/README.md`。
 
 ### 从大名单到球队画像（联赛流水线）
@@ -21,16 +21,25 @@
 
 与世界杯不同：前半段为 **`playerListCrawler` + `clubMatchAnalyzer` + `leagueSquadProcessor`**；后半段 **`squadFinalInitializer`** → **`teamProfileGenerator`**。输出：`championsLeague/squad/` → `squad-final/` → `teamProfile/`。序号见 `championsLeague/data/球队与序号对照表.md`。
 
+工作目录：`cup-analyzer/crawler-server`。**squadTarget**：`teamSerial`=俱乐部序号，`leagueSerial`=所属联赛（如 36）。
+
+以下两条任意系统相同：
+
 ```bash
-cd cup-analyzer/crawler-server
-# squadTarget：teamSerial=俱乐部序号，leagueSerial=所属联赛（如 36）
 npm run crawl:player-list
 npm run analyze:club-domestic
-CUP_ANALYZER_CUP=championsLeague node processors/leagueSquadProcessor.js
-CUP_ANALYZER_CUP=championsLeague node processors/squadFinalInitializer.js --team <序号>
-# 人工审核 championsLeague/squad-final/{队名}.md
-CUP_ANALYZER_CUP=championsLeague node processors/teamProfileGenerator.js --team <序号>
 ```
+
+下面三条需设置 `CUP_ANALYZER_CUP=championsLeague`。**任意系统推荐**：
+
+```bash
+npx cross-env CUP_ANALYZER_CUP=championsLeague node processors/leagueSquadProcessor.js
+npx cross-env CUP_ANALYZER_CUP=championsLeague node processors/squadFinalInitializer.js --team <序号>
+# 人工审核 championsLeague/squad-final/{队名}.md
+npx cross-env CUP_ANALYZER_CUP=championsLeague node processors/teamProfileGenerator.js --team <序号>
+```
+
+若在 macOS / Linux 终端习惯 Bash，也可将上述三条写成 `CUP_ANALYZER_CUP=championsLeague node processors/...`。手写 PowerShell/cmd 见 [crawler-server/README.md](../crawler-server/README.md)「Windows 与手动设置环境变量」。
 
 ## 三大阶段工作流
 
@@ -38,8 +47,8 @@ CUP_ANALYZER_CUP=championsLeague node processors/teamProfileGenerator.js --team 
 
 ```
 1. 确认 data/ 下赛程与盘路数据为最新
-   └─ cd cup-analyzer/crawler-server && CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js
-      （更新 `championsLeague/data/c103` 与 `l103`/`bs103`，并同步 `match_center/c103.js`）
+   └─ `cd cup-analyzer/crawler-server`，再执行 **`npm run crawl:schedule:ucl`**（推荐）
+      （更新 `championsLeague/data/c103` 与 `l103`/`bs103`，并同步 `match_center/c103.js`；亦可 `npx cross-env CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js`；手写 Shell 见 [crawler-server/README.md](../crawler-server/README.md)）
 
 2. 维护 data/冠军赔率.md、data/球队与序号对照表.md
 
@@ -58,7 +67,7 @@ CUP_ANALYZER_CUP=championsLeague node processors/teamProfileGenerator.js --team 
 ```
 赛前 2–3 天:
   0. 抓取双方大名单（必做；逻辑已迁入 cup-analyzer/crawler-server）
-     a. 确保该队**国内联赛**赛程 JS 为最新（如英超：跑 `CUP_ANALYZER_CUP=epl` 的 `scheduleCrawler`，或确认 `epl/data/s36.js` 已更新；分析器通过 `leagueSerial` 读 `resolveScheduleData` 指向的路径，不必单独维护 `match_center` 为唯一来源）
+     a. 确保该队**国内联赛**赛程 JS 为最新（如英超：在 crawler-server 下跑 **`npm run crawl:schedule:epl`**，或确认 `epl/data/s36.js` 已更新；分析器通过 `leagueSerial` 读 `resolveScheduleData` 指向的路径，不必单独维护 `match_center` 为唯一来源）
      b. 编辑 `crawler-server/config/squadTarget.js`：
         - teamSerial：该队球探俱乐部序号（见 `data/球队与序号对照表.md` 或 titan007 球队页）
         - leagueSerial：该队**所属国内联赛**序号（如英超 36、西甲 4）

@@ -4,10 +4,29 @@
 
 ## 环境
 
+建议使用 **Node.js LTS**（与团队开发机版本对齐）。安装依赖：
+
 ```bash
 cd cup-analyzer/crawler-server
 npm install
 ```
+
+## Windows 与手动设置环境变量
+
+`npm run crawl:schedule:*` 已通过 **cross-env** 设置 `CUP_ANALYZER_CUP`，在 **Windows 11 / macOS / Linux** 下可直接使用。
+
+若需**手动**执行 `node ...` 并带上 `CUP_ANALYZER_CUP`，请勿在 Windows 的 **cmd** 或 **PowerShell** 中照搬 Bash 的 `VAR=value node ...` 写法，可选用下表：
+
+| Shell | 示例 |
+|--------|------|
+| **PowerShell** | `$env:CUP_ANALYZER_CUP = "epl"; node crawlers/scheduleCrawler.js` |
+| **cmd** | `set CUP_ANALYZER_CUP=epl&& node crawlers/scheduleCrawler.js` |
+| **Git Bash** / **macOS** | `CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js` |
+| **任意系统（与 npm 脚本一致）** | `npx cross-env CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js` |
+
+其它依赖该环境变量的脚本（如 `processors/leagueSquadProcessor.js`、`processors/matchSquadGenerator.js`）将上述命令中的入口文件路径替换即可。
+
+**中文路径与 UTF-8**：项目内存在中文文件名；Node 以 `utf-8` 读写。若终端中文显示异常，可在 PowerShell 中调整输出编码，或在 Windows「区域设置」中按需启用「使用 Unicode UTF-8 提供全球语言支持」。若克隆路径极深遇罕见路径长度限制，可将仓库放在较短路径（如 `C:\dev\`）或启用系统长路径策略。
 
 ## 切换赛事（`CUP_ANALYZER_CUP`）
 
@@ -21,13 +40,15 @@ npm install
 | `mls` | 美职联（联赛 `s`，子联赛 165） | `mls/data/s21_165.js` |
 | `serieA` | 意甲（联赛 `s`，子联赛 2948） | `serieA/data/s34_2948.js` |
 
-示例：
+推荐（跨平台）：`npm run crawl:schedule:ucl`（英超 `crawl:schedule:epl`、澳超 `crawl:schedule:aleague` 等见下文「npm」行）。
+
+手动执行（Bash / macOS / Git Bash）示例：
 
 ```bash
 CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js
 ```
 
-配置见 [`config/index.js`](config/index.js)。
+Windows 下手动执行见上文「Windows 与手动设置环境变量」。配置见 [`config/index.js`](config/index.js)。
 
 ---
 
@@ -117,13 +138,13 @@ npm：`npm run process:squad` / `npm run process:squad:one -- 744`
 
 - **前置**：`npm run crawl:player-list`（若需 **转会记录** 列则 `npm run crawl:player-list:club`）、`npm run analyze:club-domestic`（生成 `output/player_center/{序号}-new.json`，分析器会从 `{序号}.json` 合并 `currentClub` / `recentTransfers`）。
 - **输出**：`{联赛模块}/squad/{中文队名}.md`（平铺，无 `group-X/`；表含出场/首发/进球/助攻及 **转会记录** 列）。
-- **环境**：`CUP_ANALYZER_CUP=epl|aLeague|mls|serieA|championsLeague|koreanKLeague` 等。
+- **环境**：`CUP_ANALYZER_CUP=epl|aLeague|mls|serieA|championsLeague|koreanKLeague` 等。Windows 下请先设置环境变量（见上文「Windows 与手动设置环境变量」），或使用：`npx cross-env CUP_ANALYZER_CUP=epl node processors/leagueSquadProcessor.js`。
 
 ```bash
 CUP_ANALYZER_CUP=epl node processors/leagueSquadProcessor.js
 ```
 
-npm：`npm run process:league-squad`
+npm：`npm run process:league-squad`（运行前需已在本 shell 中导出 `CUP_ANALYZER_CUP`；Windows 请用上一节方式或 `npx cross-env ...`）
 
 ### 7. `squadFinalInitializer.js` — 初选 `squad/` → 最终名单草稿 `squad-final/`
 
@@ -161,7 +182,9 @@ CUP_ANALYZER_CUP=epl node processors/matchSquadGenerator.js --home 19 --away 25
 CUP_ANALYZER_CUP=theWorldCup node processors/matchSquadGenerator.js --home 744 --away 640
 ```
 
-npm：`npm run generate:match-squad -- --home <主队序号> --away <客队序号>`
+（Windows 下请用「Windows 与手动设置环境变量」中的写法，或对整行使用 `npx cross-env ...`。）
+
+npm：`npm run generate:match-squad -- --home <主队序号> --away <客队序号>`（同样需要已设置 `CUP_ANALYZER_CUP`；Windows 建议先 `$env:CUP_ANALYZER_CUP=...` 再执行，或使用 `npx cross-env CUP_ANALYZER_CUP=epl npm run generate:match-squad -- --home 19 --away 25`）
 
 ### 9. `strategyAnalyzer.js` — 世界杯策略分析（出线 / 挑对手 / 默契球 / 疲劳）
 
@@ -213,11 +236,11 @@ npm：`npm run analyze:club-domestic`
 
 1. 编辑 `config/squadTarget.js`（`leagueSerial` 填**国内联赛**序号；欧冠画像时不是 103）
 2. `npm run crawl:player-list` → `npm run analyze:club-domestic`
-3. `npm run process:league-squad`（需先 `CUP_ANALYZER_CUP=...`）
+3. `npm run process:league-squad`（需先在本终端设置 `CUP_ANALYZER_CUP`；Windows 见上文「Windows 与手动设置环境变量」）
 4. `npm run process:squad-final:init:one -- <序号>`
 5. 人工审核 `squad-final/{队名}.md`（维护 `## 伤停` / `## 伤疑`）
-6. `CUP_ANALYZER_CUP=... npm run process:profile:one -- <序号>`
+6. 设置 `CUP_ANALYZER_CUP` 后：`npm run process:profile:one -- <序号>`（Windows：`npx cross-env CUP_ANALYZER_CUP=epl npm run process:profile:one -- <序号>`）
 
-**单场赛前大名单块（可选）**：`CUP_ANALYZER_CUP=... npm run generate:match-squad -- --home <序号> --away <序号>`
+**单场赛前大名单块（可选）**：设置 `CUP_ANALYZER_CUP` 后执行 `npm run generate:match-squad -- --home <序号> --away <序号>`（Windows 可用 `npx cross-env CUP_ANALYZER_CUP=epl npm run generate:match-squad -- --home <序号> --away <序号>`）
 
 各模块步骤与路径见对应目录下 `workflow.md`。

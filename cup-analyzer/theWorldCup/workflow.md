@@ -10,9 +10,7 @@
 ### 赛程数据（与 crawler-server 统一）
 
 - **主文件**：`theWorldCup/data/c75.js`（及同目录 `l75.js`、`bs75.js`；杯赛 `scheduleCrawler` **不**拉取 `td`）。
-- **更新**：在 **`cup-analyzer/crawler-server`** 下执行  
-  `CUP_ANALYZER_CUP=theWorldCup node crawlers/scheduleCrawler.js`  
-  会写入 `theWorldCup/data/`，并把赛程主文件**同步拷贝**到 `crawler-server/match_center/c75.js`。
+- **更新**：在 **`cup-analyzer/crawler-server`** 下执行 **`npx cross-env CUP_ANALYZER_CUP=theWorldCup node crawlers/scheduleCrawler.js`**（各系统相同；`package.json` 未单独封装世界杯赛程 npm 脚本）。若在 Bash / macOS 终端，也可写 `CUP_ANALYZER_CUP=theWorldCup node crawlers/scheduleCrawler.js`。手写 PowerShell/cmd 见 [crawler-server/README.md](../crawler-server/README.md)「Windows 与手动设置环境变量」。会写入 `theWorldCup/data/`，并把赛程主文件**同步拷贝**到 `crawler-server/match_center/c75.js`。
 - **序号映射**：`config.resolveScheduleData('75', …)` 指向 **`theWorldCup/data/c75.js`**（国家队/杯赛场景与 `clubMatchAnalyzer` 的衔接见 `crawler-server/config` 与 `match_center/README.md`）。
 
 ## 三大阶段工作流
@@ -67,7 +65,7 @@
 赛后:
   10. 爬取赛后数据: 在 `cup-analyzer/crawler-server` 使用 `matchDataCrawler` 等（比赛 ID 来自 `data/c75` 或赛后页）
   11. 赛后复盘 → postMatchSummary/{阶段}/{轮次}/{主队}_vs_{客队}.md
-  12. 更新赛程数据: `cd cup-analyzer/crawler-server && CUP_ANALYZER_CUP=theWorldCup node crawlers/scheduleCrawler.js`（更新 `theWorldCup/data/c75.js` 并同步 `match_center/c75.js`）
+  12. 更新赛程数据: 先 `cd cup-analyzer/crawler-server`，再 `npx cross-env CUP_ANALYZER_CUP=theWorldCup node crawlers/scheduleCrawler.js`（更新 `theWorldCup/data/c75.js` 并同步 `match_center/c75.js`；Bash 简写与 Windows 见 [crawler-server/README.md](../crawler-server/README.md)）
 ```
 
 ### 阶段三：策略分析（贯穿全程）

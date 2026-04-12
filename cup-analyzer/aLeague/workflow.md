@@ -10,25 +10,36 @@
 ### 赛程数据与 `clubMatchAnalyzer`（与 crawler-server 统一）
 
 - **主文件**：`aLeague/data/s273_462.js`（子联赛 462；同目录 `l273.js`、`bs273.js`、`td273.js`）。
-- **更新**：`CUP_ANALYZER_CUP=aLeague node crawlers/scheduleCrawler.js`（或 `npm run crawl:schedule:aleague`）会写入 `data/`，并把赛程主文件**同步拷贝**到 `crawler-server/match_center/s273.js`（内容与 `s273_462.js` 一致，供仍按「纯序号」命名的工具使用）。
+- **更新**：优先在 **`cup-analyzer/crawler-server`** 下执行 **`npm run crawl:schedule:aleague`**（各系统相同）。也可 `npx cross-env CUP_ANALYZER_CUP=aLeague node crawlers/scheduleCrawler.js`；Bash 简写 `CUP_ANALYZER_CUP=aLeague node …`。手写 PowerShell/cmd 见 [crawler-server/README.md](../crawler-server/README.md)。会写入 `data/`，并把赛程主文件**同步拷贝**到 `crawler-server/match_center/s273.js`（内容与 `s273_462.js` 一致，供仍按「纯序号」命名的工具使用）。
 - **分析器路径**：`config.resolveScheduleData('273', false)` 指向 **`aLeague/data/s273_462.js`**。`squadTarget.leagueSerial` 填 **273** 即可，无需再手工对齐 `match_center` 与子联赛文件名。
 
 ### 从大名单到球队画像（联赛流水线）
 
 与世界杯不同：联赛用 **`playerListCrawler` + `clubMatchAnalyzer` + `leagueSquadProcessor`** 生成 `squad/{队名}.md`；后半段 **`squadFinalInitializer`** → 人工审核 **`squad-final/`** → **`teamProfileGenerator`** → **`teamProfile/{队名}.md`**（单队、逐队改 `squadTarget.js`）。
 
-**前置**：`cd cup-analyzer/crawler-server`；`CUP_ANALYZER_CUP=aLeague`；`squadTarget.leagueSerial=273`；赛程 `aLeague/data/s273_462.js`。
+**前置**：在 `cup-analyzer/crawler-server` 中编辑 `config/squadTarget.js`（`leagueSerial=273` 等）；赛程数据见 `aLeague/data/s273_462.js`。以下 processors 需 `CUP_ANALYZER_CUP=aLeague`（推荐上文 `npx cross-env`）。
 
 **输出**：`aLeague/squad/` → `aLeague/squad-final/` → `aLeague/teamProfile/`。序号见 `aLeague/data/球队与序号对照表.md`。
+
+工作目录：`cup-analyzer/crawler-server`。
+
+以下两条任意系统相同：
 
 ```bash
 npm run crawl:player-list
 npm run analyze:club-domestic
-CUP_ANALYZER_CUP=aLeague node processors/leagueSquadProcessor.js
-CUP_ANALYZER_CUP=aLeague node processors/squadFinalInitializer.js --team <序号>
-# 人工审核 aLeague/squad-final/{队名}.md
-CUP_ANALYZER_CUP=aLeague node processors/teamProfileGenerator.js --team <序号>
 ```
+
+下面三条需设置 `CUP_ANALYZER_CUP=aLeague`。**任意系统推荐**（需已在本目录执行过 `npm install`）：
+
+```bash
+npx cross-env CUP_ANALYZER_CUP=aLeague node processors/leagueSquadProcessor.js
+npx cross-env CUP_ANALYZER_CUP=aLeague node processors/squadFinalInitializer.js --team <序号>
+# 人工审核 aLeague/squad-final/{队名}.md
+npx cross-env CUP_ANALYZER_CUP=aLeague node processors/teamProfileGenerator.js --team <序号>
+```
+
+若在 macOS / Linux 终端习惯 Bash，也可将上述三条写成 `CUP_ANALYZER_CUP=aLeague node processors/...`。手写 PowerShell/cmd 见 [crawler-server/README.md](../crawler-server/README.md)「Windows 与手动设置环境变量」。
 
 ## 三大阶段工作流
 
@@ -36,8 +47,8 @@ CUP_ANALYZER_CUP=aLeague node processors/teamProfileGenerator.js --team <序号>
 
 ```
 1. 确认 data/ 下赛程为最新
-   └─ cd cup-analyzer/crawler-server && CUP_ANALYZER_CUP=aLeague node crawlers/scheduleCrawler.js
-      （或 npm run crawl:schedule:aleague；同步更新 s273_462、l273、bs273、td273，并拷赛程至 `match_center/s273.js`）
+   └─ `cd cup-analyzer/crawler-server`，再执行 **`npm run crawl:schedule:aleague`**（推荐）
+      （同步更新 s273_462、l273、bs273、td273，并拷赛程至 `match_center/s273.js`；亦可 `npx cross-env CUP_ANALYZER_CUP=aLeague node crawlers/scheduleCrawler.js`；手写 Shell 见 [crawler-server/README.md](../crawler-server/README.md)）
 
 2. 维护盘路与时间分布：`scheduleCrawler` 已拉取 l/bs/td；若需与 `league-analyzer/data` 对齐可再对照
 

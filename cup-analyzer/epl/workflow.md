@@ -10,7 +10,7 @@
 ### 赛程数据与 `clubMatchAnalyzer`（与 crawler-server 统一）
 
 - **主文件**：`epl/data/s36.js`（及同目录 `l36.js`、`bs36.js`、`td36.js`）。
-- **更新**：`cd cup-analyzer/crawler-server && CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js`（或 `npm run crawl:schedule:epl`）会写入 `data/`，并把赛程主文件**同步拷贝**到 `crawler-server/match_center/s36.js`，避免两处脱节。
+- **更新**：优先在 **`cup-analyzer/crawler-server`** 下执行 **`npm run crawl:schedule:epl`**（各系统相同）。也可 `npx cross-env CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js`；Bash 简写见 [crawler-server/README.md](../crawler-server/README.md)。会写入 `data/`，并把赛程主文件**同步拷贝**到 `crawler-server/match_center/s36.js`，避免两处脱节。
 - **分析器路径**：`config.resolveScheduleData('36', false)` 指向 **`epl/data/s36.js`**（不再要求手工维护 `match_center` 为唯一来源）。未在 `config/index.js` 的 `cups` 中登记的其它联赛序号仍读 `match_center/s{n}.js` 兜底。
 
 ### 从大名单到球队画像（联赛流水线）
@@ -19,20 +19,31 @@
 
 **Big 6**（阿森纳、曼彻斯特城、利物浦、曼彻斯特联、托特纳姆热刺、切尔西）可优先用本流水线更新 `teamProfile/`；自动化画像落地后，仍建议在对应 `teamProfile/{队名}.md` 中补充**转会窗**、**圣诞/新年密集赛程**、**双线作战负荷**、**伤病与状态**等与赛前分析相关的段落（与模块内原有画像结构一致）。
 
-**前置**：`cd cup-analyzer/crawler-server`；`CUP_ANALYZER_CUP=epl`；`config/squadTarget.js` 中 `teamSerial`、`leagueSerial=36`、`roundSerial`、`teamChineseName`；赛程见 `epl/data/s36.js`。
+**前置**：在 `cup-analyzer/crawler-server` 中编辑 `config/squadTarget.js`（`teamSerial`、`leagueSerial=36`、`roundSerial`、`teamChineseName`）；赛程见 `epl/data/s36.js`。以下 processors 需 `CUP_ANALYZER_CUP=epl`（推荐上文 `npx cross-env`）。
 
 **输出路径**：`epl/squad/` → `epl/squad-final/` → `epl/teamProfile/`。球队序号见 `epl/data/球队与序号对照表.md`。
 
+工作目录：`cup-analyzer/crawler-server`。先编辑 `config/squadTarget.js`。
+
+以下两条任意系统相同：
+
 ```bash
-# 1. 编辑 config/squadTarget.js 后
 npm run crawl:player-list
 npm run analyze:club-domestic
-CUP_ANALYZER_CUP=epl node processors/leagueSquadProcessor.js
-CUP_ANALYZER_CUP=epl node processors/squadFinalInitializer.js --team <序号>
-# 人工审核 epl/squad-final/{队名}.md
-CUP_ANALYZER_CUP=epl node processors/teamProfileGenerator.js --team <序号>
-# 可选：在 teamProfile/{队名}.md 中补充转会窗、赛程密度、多线作战、伤病等（Big 6 优先深度维护）
 ```
+
+下面三条需设置 `CUP_ANALYZER_CUP=epl`。**任意系统推荐**：
+
+```bash
+npx cross-env CUP_ANALYZER_CUP=epl node processors/leagueSquadProcessor.js
+npx cross-env CUP_ANALYZER_CUP=epl node processors/squadFinalInitializer.js --team <序号>
+# 人工审核 epl/squad-final/{队名}.md
+npx cross-env CUP_ANALYZER_CUP=epl node processors/teamProfileGenerator.js --team <序号>
+```
+
+若在 macOS / Linux 终端习惯 Bash，也可将上述三条写成 `CUP_ANALYZER_CUP=epl node processors/...`。手写 PowerShell/cmd 见 [crawler-server/README.md](../crawler-server/README.md)「Windows 与手动设置环境变量」。
+
+可选：在 `teamProfile/{队名}.md` 中补充转会窗、赛程密度、多线作战、伤病等（Big 6 优先深度维护）。
 
 ## 三大阶段工作流
 
@@ -40,8 +51,8 @@ CUP_ANALYZER_CUP=epl node processors/teamProfileGenerator.js --team <序号>
 
 ```
 1. 确认 data/ 下赛程与盘路数据为最新
-   └─ cd cup-analyzer/crawler-server && CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js
-      （同步更新 `epl/data/` 下 s36、l36、bs36、td36，并把赛程主文件拷至 `match_center/s36.js`，见上文）
+   └─ `cd cup-analyzer/crawler-server`，再执行 **`npm run crawl:schedule:epl`**（推荐）
+      （同步更新 `epl/data/` 下 s36、l36、bs36、td36，并把赛程主文件拷至 `match_center/s36.js`，见上文；亦可 `npx cross-env CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js`；手写 Shell 见 [crawler-server/README.md](../crawler-server/README.md)）
 
 2. 维护 data/冠军赔率.md、data/球队与序号对照表.md
 

@@ -86,6 +86,8 @@ cup-analyzer/
 
 4、爬虫服务使用方式：
 
+**Windows 11**：赛程更新请优先使用 `npm run crawl:schedule:*`（已跨平台）；若在 cmd/PowerShell 中手动设置 `CUP_ANALYZER_CUP`，勿直接复制 Bash 的 `VAR=value node ...`，详见 [`crawler-server/README.md`](cup-analyzer/crawler-server/README.md) 中的「Windows 与手动设置环境变量」。各赛事 `workflow.md` 中的同类命令同理。
+
 ```bash
 cd cup-analyzer/crawler-server
 
@@ -103,18 +105,18 @@ node crawlers/matchDataCrawler.js --match 2906701  # 爬取单场赛后数据
 node crawlers/oddsCrawler.js 2906701       # 爬取单场赔率
 node crawlers/scheduleCrawler.js           # 更新赛程数据（默认世界杯 c75）
 
-# 切换杯赛：设置环境变量 CUP_ANALYZER_CUP
+# 切换杯赛：设置环境变量 CUP_ANALYZER_CUP（推荐 npm，跨 Windows / macOS / Linux）
 # 欧冠 → 写入 championsLeague/data/c103.js（赛季见 crawler-server/config）
-CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js
-# 或：npm run crawl:schedule:ucl
+npm run crawl:schedule:ucl
+# Bash 手动：CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js
 
 # 英超 → 写入 epl/data/s36.js（联赛格式；赛季目录 2025-2026，见 config）
-CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js
-# 或：npm run crawl:schedule:epl
+npm run crawl:schedule:epl
+# Bash 手动：CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js
 
 # 澳超 → 写入 aLeague/data/s273_462.js（子联赛 462；赛季目录 2025-2026，见 config）
-CUP_ANALYZER_CUP=aLeague node crawlers/scheduleCrawler.js
-# 或：npm run crawl:schedule:aleague
+npm run crawl:schedule:aleague
+# Bash 手动：CUP_ANALYZER_CUP=aLeague node crawlers/scheduleCrawler.js
 
 # 俱乐部赛前大名单 + 国内联赛出场分析（原 backend-server crawlerPlayer + crawlerClub3_new）
 # 先配置 config/squadTarget.js，并放入 match_center/s{联赛序号}.js

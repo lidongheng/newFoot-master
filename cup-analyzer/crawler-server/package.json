@@ -16,12 +16,12 @@
     "process:profile": "node processors/teamProfileGenerator.js",
     "process:profile:one": "node processors/teamProfileGenerator.js --team",
     "process:league-squad": "node processors/leagueSquadProcessor.js",
-    "crawl:schedule:ucl": "CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js",
-    "crawl:schedule:epl": "CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js",
-    "crawl:schedule:kleague": "CUP_ANALYZER_CUP=koreanKLeague node crawlers/scheduleCrawler.js",
-    "crawl:schedule:aleague": "CUP_ANALYZER_CUP=aLeague node crawlers/scheduleCrawler.js",
-    "crawl:schedule:mls": "CUP_ANALYZER_CUP=mls node crawlers/scheduleCrawler.js",
-    "crawl:schedule:seriea": "CUP_ANALYZER_CUP=serieA node crawlers/scheduleCrawler.js",
+    "crawl:schedule:ucl": "cross-env CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js",
+    "crawl:schedule:epl": "cross-env CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js",
+    "crawl:schedule:kleague": "cross-env CUP_ANALYZER_CUP=koreanKLeague node crawlers/scheduleCrawler.js",
+    "crawl:schedule:aleague": "cross-env CUP_ANALYZER_CUP=aLeague node crawlers/scheduleCrawler.js",
+    "crawl:schedule:mls": "cross-env CUP_ANALYZER_CUP=mls node crawlers/scheduleCrawler.js",
+    "crawl:schedule:seriea": "cross-env CUP_ANALYZER_CUP=serieA node crawlers/scheduleCrawler.js",
     "crawl:player-list": "node crawlers/playerListCrawler.js",
     "crawl:player-list:club": "node crawlers/playerListCrawler.js --with-club",
     "analyze:club-domestic": "node analyzers/clubMatchAnalyzer.js",
@@ -41,6 +41,7 @@
     "node-schedule": "^2.1.1"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "nodemon": "^3.1.10"
   }
 }
