@@ -56,7 +56,7 @@
   2. 收集素材、笔记 → news/{阶段}/{对阵}/
   3. 预测首发阵容（可与 `matchSquadGenerator` 输出对照）
   4. 交锋、近况、未来赛程、球探伤病摘要：`cd cup-analyzer/crawler-server`，在 `config/squadTarget.js` 填写本场 **`matchSerial`**，执行 **`npm run crawl:match-statistics`**（亦可 `-- --match <序号>`），将输出并入笔记或 `news/...`。（与 **`npm run generate:cycle-report`** 同源；国家队 `squad-final` 伤停与球探页不一致时以 `squad-final` 为准。）详见 [crawler-server/README.md](../crawler-server/README.md)「matchStatisticsCrawler」。
-  5. 分析盘口（注意：无盘路榜，用冠军赔率做国家队档次定位）
+  5. 盘口：本赛事**无**球探 `l/bs/td` 盘路榜，**不得**套用联赛报告里「盘路数据 / 大小球盘路 / 75分钟」三块的标准填空。亚盘章节以 **初盘与临场**、步骤 **5b** 的 Fair / Market / Δ、以及 **`data/冠军赔率.md` 与球队画像中的国家队档次定位** 为主；**禁止**无依据的盘口臆测。若个别场次从其它来源有可量化统计并写入报告，小节标题与句式可对齐 `epl/report/25-26/round-14/arsenal_vs_brentford.md` 对应段落并**标注来源**。
   5b. 格雷厄姆式亚盘安全边际：记录 Market（初盘/临场）→ 写 Fair（合理让球）与一行推导链 → 算 Δ → 标注三档结论（值得投 / 观望 / 反向投），定义见下 **「亚盘安全边际（格雷厄姆式）」**
   6. 查看策略文件（出线形势、挑对手分析）
   7. 生成赛前报告 → `theWorldCup/report/{阶段}/{轮次}/{主队}_vs_{客队}.md`（大名单块见 **「赛前报告与大名单正文约定」**）
@@ -132,7 +132,7 @@
 
 **阶段二中的操作（每场）**
 
-在「分析盘口」之后：**列出 Market（初盘+临场）→ 写 Fair 与一行推导链 → 计算 Δ → 标注三档之一**。
+在完成步骤 **5**（初临场与档次定位记录；无 `l/bs/td` 填空）之后：**列出 Market（初盘+临场）→ 写 Fair 与一行推导链 → 计算 Δ → 标注三档之一**。
 
 **三档结论（rubric）**
 

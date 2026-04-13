@@ -54,7 +54,11 @@ CUP_ANALYZER_CUP=serieA node processors/teamProfileGenerator.js --team <序号>
      `CUP_ANALYZER_CUP=serieA node processors/matchSquadGenerator.js --home <主队序号> --away <客队序号>`  
   1. 预测首发（格式见 prompts/match_analysis_template.md）
   2. 交锋、近况、未来赛程（含欧冠/欧联/国内杯赛）、球探伤病摘要：`cd cup-analyzer/crawler-server`，在 `config/squadTarget.js` 填写本场 **`matchSerial`**，执行 **`npm run crawl:match-statistics`**（亦可 `-- --match <序号>`），将输出并入赛前报告或 `news/...`。（与 **`npm run generate:cycle-report`** 同源。）详见 [crawler-server/README.md](../crawler-server/README.md)「matchStatisticsCrawler」。
-  3. 盘口：初盘/临场；引用 l34.js、bs34.js、td34.js
+  3. 盘口（初盘与临场 + 盘路三块固定句式；勿用空泛盘口闲聊替代数据块）：
+     - 初盘全场/半场让球、大小球盘口等仍以 `serieA/data/s34_2948.js` 为准，报告章节层级见 `prompts/match_analysis_template.md`「四、盘口解析」。
+     - **亚盘「盘口分析」内须有「盘路数据」**（数据来自 `serieA/data/l34.js`）：连续三行 **总盘**、**主场**、**客场**；每行双方 **净胜盘** 与 **联赛排名**，句式与 `epl/report/25-26/round-14/arsenal_vs_brentford.md` 中「盘路数据」同构。
+     - **「### 3、大小」下须有「大小球盘路数据」**（来自 `bs34.js`）：同样三行；每行双方 **大球率%** 与 **排名**。
+     - **「75分钟后进球数分析」**（来自 `td34.js`）：含小标题 **本场比赛球队数据**；每队一行，格式为 `队名：共N球（75分钟后总进球），排第k（该项联赛排名）(76-80分钟: …, 81-85分钟: …, 86-90分钟含补时: …)`，其中 **76–90 为比赛分钟区间**，非文档行号。
   3b. 格雷厄姆式亚盘安全边际：Market → Fair → Δ → 三档结论（定义见下 **「亚盘安全边际（格雷厄姆式）」**）
   4. 意甲专项：积分榜、战意（争冠/欧战/保级）、德比
   5. 赛前报告 → `serieA/report/25-26/round-{N}/{主队}_vs_{客队}.md`
@@ -108,7 +112,7 @@ CUP_ANALYZER_CUP=serieA node processors/teamProfileGenerator.js --team <序号>
 
 **阶段二中的操作（每场）**
 
-在「盘口：初盘/临场」之后：**列出 Market（初盘+临场）→ 写 Fair 与一行推导链 → 计算 Δ → 标注三档之一**；赛前报告与 `prompts/match_analysis_template.md`「四、盘口解析」对齐。
+在完成阶段二步骤 **3**（`l34`/`bs34`/`td34` 固定句式与初临场记录）之后：**列出 Market（初盘+临场）→ 写 Fair 与一行推导链 → 计算 Δ → 标注三档之一**；赛前报告与 `prompts/match_analysis_template.md`「四、盘口解析」对齐。
 
 **三档结论（rubric）**
 

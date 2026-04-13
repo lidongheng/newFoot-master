@@ -88,7 +88,11 @@ npx cross-env CUP_ANALYZER_CUP=championsLeague node processors/teamProfileGenera
      f. 将双方大名单、伤停等整理进 news/{赛季}/{阶段}/{对阵}/（可与统计信息、新闻稿同目录）
   1. 预测首发（格式见 [prompts/match_analysis_template.md](./prompts/match_analysis_template.md)）
   2. 交锋、近况、未来赛程（含国内联赛/杯赛）、球探伤病摘要：`cd cup-analyzer/crawler-server`，在 `config/squadTarget.js` 填写本场 **`matchSerial`**，执行 **`npm run crawl:match-statistics`**（亦可 `-- --match <序号>`），将输出并入赛前报告或 `news/...`。（与 **`npm run generate:cycle-report`** 同源；大名单伤停等仍见步骤 0。）详见 [crawler-server/README.md](../crawler-server/README.md)「matchStatisticsCrawler」。
-  3. 盘口：初盘/临场；可引用 `data/` 下 l103.js、bs103.js（欧冠阶段样本量少于国内联赛，需结合判断；杯赛爬虫不更新 td）
+  3. 盘口（初盘与临场；欧冠阶段样本少于国内联赛，勿用空泛盘口闲聊替代数据块）：
+     - 赛程与初盘字段仍以 `championsLeague/data/c103.js` 为准，报告章节层级见 `prompts/match_analysis_template.md`「四、盘口解析」。
+     - **亚盘「盘口分析」内须有「盘路数据」**（`championsLeague/data/l103.js`）：连续三行 **总盘**、**主场**、**客场**；每行双方 **净胜盘** 与 **排名**，句式与 `epl/report/25-26/round-14/arsenal_vs_brentford.md` 中「盘路数据」同构；结合淘汰赛/瑞士制样本量**审慎**解读。
+     - **「### 3、大小」下须有「大小球盘路数据」**（`bs103.js`）：同样三行；每行双方 **大球率%** 与 **排名**。
+     - **「75分钟后进球数分析」**：杯赛爬虫**不**维护 `td`。**勿编造**末段数据；若从球探页等补录，仍用英超范例 **本场比赛球队数据** 句式（**共N球、排第k** 与括号内 **76–80 / 81–85 / 86–90 分钟** 为比赛时段，非文档行号）并注明来源；无可靠数据时可省略该小节。
   3b. 格雷厄姆式亚盘安全边际：记录 Market（初盘/临场）→ 写 Fair（合理让球）与一行推导链 → 算 Δ → 标注三档结论（值得投 / 观望 / 反向投），定义见下 **「亚盘安全边际（格雷厄姆式）」**
   4. UCL 专项：当前积分排名、是否轮换、两回合总比分（淘汰赛）
   5. 赛前报告 → `championsLeague/report/{赛季}/league-phase|playoff|.../{轮次或阶段}/{主队}_vs_{客队}.md`  
@@ -150,7 +154,7 @@ npx cross-env CUP_ANALYZER_CUP=championsLeague node processors/teamProfileGenera
 
 **阶段二中的操作（每场）**
 
-在「盘口：初盘/临场」之后：**列出 Market（初盘+临场）→ 写 Fair 与一行推导链 → 计算 Δ → 标注三档之一**；赛前报告与 `prompts/match_analysis_template.md`「四、盘口解析」下的亚盘子项对齐。
+在完成阶段二步骤 **3**（`l103`/`bs103` 固定句式与初临场记录；`td` 按上条例外处理）之后：**列出 Market（初盘+临场）→ 写 Fair 与一行推导链 → 计算 Δ → 标注三档之一**；赛前报告与 `prompts/match_analysis_template.md`「四、盘口解析」下的亚盘子项对齐。
 
 **三档结论（rubric）**
 

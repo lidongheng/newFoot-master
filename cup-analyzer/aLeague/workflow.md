@@ -76,7 +76,11 @@ npx cross-env CUP_ANALYZER_CUP=aLeague node processors/teamProfileGenerator.js -
      生成预测首发、替补 Top9、伤疑、伤停、落选；赛前请在 `squad-final` 更新伤停/伤疑并重跑 `teamProfileGenerator` 若需同步画像。
   1. 预测首发（格式见 prompts/match_analysis_template.md）
   2. 交锋、近况、未来赛程、球探伤病摘要：`cd cup-analyzer/crawler-server`，在 `config/squadTarget.js` 填写本场 **`matchSerial`**，执行 **`npm run crawl:match-statistics`**（亦可 `-- --match <序号>`），将输出并入赛前报告或 `news/...`。（与 **`npm run generate:cycle-report`** 同源。）详见 [crawler-server/README.md](../crawler-server/README.md)「matchStatisticsCrawler」。
-  3. 盘口：初盘/临场；引用 l273.js、bs273.js、td273.js
+  3. 盘口（初盘与临场 + 盘路三块固定句式；勿用空泛盘口闲聊替代数据块）：
+     - 初盘全场/半场让球、大小球盘口等仍以 `aLeague/data/s273_462.js` 为准，报告章节层级见 `prompts/match_analysis_template.md`「四、盘口解析」。
+     - **亚盘「盘口分析」内须有「盘路数据」**（数据来自 `aLeague/data/l273.js`）：连续三行 **总盘**、**主场**、**客场**；每行双方 **净胜盘** 与 **联赛排名**，句式与 `epl/report/25-26/round-14/arsenal_vs_brentford.md` 中「盘路数据」同构。
+     - **「### 3、大小」下须有「大小球盘路数据」**（来自 `bs273.js`）：同样三行；每行双方 **大球率%** 与 **排名**。
+     - **「75分钟后进球数分析」**（来自 `td273.js`）：含小标题 **本场比赛球队数据**；每队一行，格式为 `队名：共N球（75分钟后总进球），排第k（该项联赛排名）(76-80分钟: …, 81-85分钟: …, 86-90分钟含补时: …)`，其中 **76–90 为比赛分钟区间**，非文档行号。
   3b. 格雷厄姆式亚盘安全边际：记录 Market（初盘/临场）→ 写 Fair（合理让球）与一行推导链 → 算 Δ → 标注三档结论（值得投 / 观望 / 反向投），定义见下 **「亚盘安全边际（格雷厄姆式）」**
   4. 澳超专项：常规赛排名、战意（季后赛资格/前二）、主客场与时差（新西兰球队等）
   5. 赛前报告 → `aLeague/report/{赛季}/round-N/{主队}_vs_{客队}.md`（大名单块见 **「报告与素材路径约定」** 中说明）
@@ -131,7 +135,7 @@ npx cross-env CUP_ANALYZER_CUP=aLeague node processors/teamProfileGenerator.js -
 
 **阶段二中的操作（每场）**
 
-在「盘口：初盘/临场」之后：**列出 Market（初盘+临场）→ 写 Fair 与一行推导链 → 计算 Δ → 标注三档之一**；赛前报告与 `prompts/match_analysis_template.md`「四、盘口解析」下的亚盘子项对齐。
+在完成阶段二步骤 **3**（`l273`/`bs273`/`td273` 固定句式与初临场记录）之后：**列出 Market（初盘+临场）→ 写 Fair 与一行推导链 → 计算 Δ → 标注三档之一**；赛前报告与 `prompts/match_analysis_template.md`「四、盘口解析」下的亚盘子项对齐。
 
 **三档结论（rubric）**
 
