@@ -123,6 +123,21 @@ npx cross-env CUP_ANALYZER_CUP=epl node crawlers/postMatchDataCrawler.js --local
 
 npm：`npm run crawl:post-match`
 
+### 4c. `matchStatisticsCrawler.js` — 球探分析页（交锋 / 近况 / 未来赛程 / 伤病）
+
+- **作用**：拉取球探单场分析页 `analysis/{matchSerial}cn.htm`，解析并输出 **Markdown**（或 `--json`）。与 **`npm run generate:cycle-report`** 共用同一抓取与解析层（[`analyzers/matchStatisticsAnalyzer.js`](analyzers/matchStatisticsAnalyzer.js)），仅下游展示不同。
+- **输入**：在 [`config/squadTarget.js`](config/squadTarget.js) 设置 `matchSerial`，或命令行 `--match <序号>`。
+- **参数**：`--limit <n>` 限制各战绩表行数（默认与解析器 `MAX_MATCHES` 一致）；`--out <路径>` 写入文件（否则打印到 stdout）；`--json` 输出结构化 JSON。
+
+```bash
+npm run crawl:match-statistics
+node crawlers/matchStatisticsCrawler.js --match 2789443 --limit 10
+node crawlers/matchStatisticsCrawler.js --match 2789443 --json
+node crawlers/matchStatisticsCrawler.js --out ./match-stat.md
+```
+
+npm：`npm run crawl:match-statistics`
+
 ### 5. `oddsCrawler.js` — 亚盘 / 欧赔
 
 ```bash

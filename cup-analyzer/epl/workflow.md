@@ -81,7 +81,7 @@ npx cross-env CUP_ANALYZER_CUP=epl node processors/teamProfileGenerator.js --tea
        `cd cup-analyzer/crawler-server && CUP_ANALYZER_CUP=epl node processors/matchSquadGenerator.js --home <主队序号> --away <客队序号>`
        （或 `npm run generate:match-squad -- --home … --away …`）
   1. 预测首发与报告结构（格式见 prompts/match_analysis_template.md）
-  2. 交锋、近况、未来赛程（含欧冠/欧联/国内杯赛）
+  2. 交锋、近况、未来赛程（含欧冠/欧联/国内杯赛）、球探伤病摘要：`cd cup-analyzer/crawler-server`，在 `config/squadTarget.js` 填写本场 **`matchSerial`**，执行 **`npm run crawl:match-statistics`**（亦可 `npm run crawl:match-statistics -- --match <序号>` 临时指定场次），将输出并入赛前报告或 `epl/news/...`。（与 **`npm run generate:cycle-report`** 同源页面与解析；**伤停/伤疑**仍以 `squad-final` 与 `matchSquadGenerator` 为准。）详见 [crawler-server/README.md](../crawler-server/README.md)「matchStatisticsCrawler」。
   3. 盘口：初盘/临场；引用 l36.js、bs36.js、td36.js
   3b. 格雷厄姆式亚盘安全边际：记录 Market（初盘/临场）→ 写 Fair（合理让球）与一行推导链 → 算 Δ → 标注三档结论（值得投 / 观望 / 反向投），定义见下 **「亚盘安全边际（格雷厄姆式）」**
   4. 英超专项：积分榜位置、战意（争冠/争四/保级）、德比属性

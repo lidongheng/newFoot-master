@@ -87,7 +87,7 @@ npx cross-env CUP_ANALYZER_CUP=championsLeague node processors/teamProfileGenera
      e. 将 squadTarget 改为客队，对客队重复 c–d
      f. 将双方大名单、伤停等整理进 news/{赛季}/{阶段}/{对阵}/（可与统计信息、新闻稿同目录）
   1. 预测首发（格式见 [prompts/match_analysis_template.md](./prompts/match_analysis_template.md)）
-  2. 交锋、近况、未来赛程（含国内联赛/杯赛）
+  2. 交锋、近况、未来赛程（含国内联赛/杯赛）、球探伤病摘要：`cd cup-analyzer/crawler-server`，在 `config/squadTarget.js` 填写本场 **`matchSerial`**，执行 **`npm run crawl:match-statistics`**（亦可 `-- --match <序号>`），将输出并入赛前报告或 `news/...`。（与 **`npm run generate:cycle-report`** 同源；大名单伤停等仍见步骤 0。）详见 [crawler-server/README.md](../crawler-server/README.md)「matchStatisticsCrawler」。
   3. 盘口：初盘/临场；可引用 `data/` 下 l103.js、bs103.js（欧冠阶段样本量少于国内联赛，需结合判断；杯赛爬虫不更新 td）
   3b. 格雷厄姆式亚盘安全边际：记录 Market（初盘/临场）→ 写 Fair（合理让球）与一行推导链 → 算 Δ → 标注三档结论（值得投 / 观望 / 反向投），定义见下 **「亚盘安全边际（格雷厄姆式）」**
   4. UCL 专项：当前积分排名、是否轮换、两回合总比分（淘汰赛）

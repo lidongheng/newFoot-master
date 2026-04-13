@@ -49,7 +49,7 @@ CUP_ANALYZER_CUP=mls node processors/teamProfileGenerator.js --team <序号>
   0. 大名单与预测块：以 **`mls/squad-final/{队名}.md`** 为准时可运行  
      `cd cup-analyzer/crawler-server && CUP_ANALYZER_CUP=mls node processors/matchSquadGenerator.js --home <主队序号> --away <客队序号>`  
   1. 预测首发（结构与 `prompts/match_analysis_template.md` 对齐）
-  2. 交锋、近况、未来赛程
+  2. 交锋、近况、未来赛程、球探伤病摘要：`cd cup-analyzer/crawler-server`，在 `config/squadTarget.js` 填写本场 **`matchSerial`**，执行 **`npm run crawl:match-statistics`**（亦可 `-- --match <序号>`），将输出并入赛前报告或 `news/...`。（与 **`npm run generate:cycle-report`** 同源。）详见 [crawler-server/README.md](../crawler-server/README.md)「matchStatisticsCrawler」。
   3. 盘口：初盘/临场；引用 l21.js、bs21.js、td21.js
   3b. 格雷厄姆式亚盘安全边际：Market → Fair → Δ → 三档结论（与英超 workflow 定义一致时可交叉引用）
   4. 美职联专项：东西区排名、季后赛资格与外卡、跨区客场等

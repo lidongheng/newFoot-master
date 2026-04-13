@@ -27,7 +27,8 @@
     "crawl:player-list:club": "node crawlers/playerListCrawler.js --with-club",
     "analyze:club-domestic": "node analyzers/clubMatchAnalyzer.js",
     "generate:match-squad": "node processors/matchSquadGenerator.js",
-    "generate:cycle-report": "node processors/cycleReportGenerator.js"
+    "generate:cycle-report": "node processors/cycleReportGenerator.js",
+    "crawl:match-statistics": "node crawlers/matchStatisticsCrawler.js"
   },
   "keywords": ["world-cup", "champions-league", "crawler", "football"],
   "author": "donghengli",

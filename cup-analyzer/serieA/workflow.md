@@ -53,7 +53,7 @@ CUP_ANALYZER_CUP=serieA node processors/teamProfileGenerator.js --team <序号>
   0. 大名单与预测块：以 **`serieA/squad-final/{队名}.md`** 为准时可运行  
      `CUP_ANALYZER_CUP=serieA node processors/matchSquadGenerator.js --home <主队序号> --away <客队序号>`  
   1. 预测首发（格式见 prompts/match_analysis_template.md）
-  2. 交锋、近况、未来赛程（含欧冠/欧联/国内杯赛）
+  2. 交锋、近况、未来赛程（含欧冠/欧联/国内杯赛）、球探伤病摘要：`cd cup-analyzer/crawler-server`，在 `config/squadTarget.js` 填写本场 **`matchSerial`**，执行 **`npm run crawl:match-statistics`**（亦可 `-- --match <序号>`），将输出并入赛前报告或 `news/...`。（与 **`npm run generate:cycle-report`** 同源。）详见 [crawler-server/README.md](../crawler-server/README.md)「matchStatisticsCrawler」。
   3. 盘口：初盘/临场；引用 l34.js、bs34.js、td34.js
   3b. 格雷厄姆式亚盘安全边际：Market → Fair → Δ → 三档结论（定义见下 **「亚盘安全边际（格雷厄姆式）」**）
   4. 意甲专项：积分榜、战意（争冠/欧战/保级）、德比

@@ -55,7 +55,7 @@
      `cd cup-analyzer/crawler-server && CUP_ANALYZER_CUP=theWorldCup node processors/matchSquadGenerator.js --home <主队序号> --away <客队序号>`
   2. 收集素材、笔记 → news/{阶段}/{对阵}/
   3. 预测首发阵容（可与 `matchSquadGenerator` 输出对照）
-  4. 查看交锋历史、近况
+  4. 交锋、近况、未来赛程、球探伤病摘要：`cd cup-analyzer/crawler-server`，在 `config/squadTarget.js` 填写本场 **`matchSerial`**，执行 **`npm run crawl:match-statistics`**（亦可 `-- --match <序号>`），将输出并入笔记或 `news/...`。（与 **`npm run generate:cycle-report`** 同源；国家队 `squad-final` 伤停与球探页不一致时以 `squad-final` 为准。）详见 [crawler-server/README.md](../crawler-server/README.md)「matchStatisticsCrawler」。
   5. 分析盘口（注意：无盘路榜，用冠军赔率做国家队档次定位）
   5b. 格雷厄姆式亚盘安全边际：记录 Market（初盘/临场）→ 写 Fair（合理让球）与一行推导链 → 算 Δ → 标注三档结论（值得投 / 观望 / 反向投），定义见下 **「亚盘安全边际（格雷厄姆式）」**
   6. 查看策略文件（出线形势、挑对手分析）

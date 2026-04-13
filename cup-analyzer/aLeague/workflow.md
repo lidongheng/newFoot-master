@@ -75,7 +75,7 @@ npx cross-env CUP_ANALYZER_CUP=aLeague node processors/teamProfileGenerator.js -
      `CUP_ANALYZER_CUP=aLeague node processors/matchSquadGenerator.js --home <主队序号> --away <客队序号>`  
      生成预测首发、替补 Top9、伤疑、伤停、落选；赛前请在 `squad-final` 更新伤停/伤疑并重跑 `teamProfileGenerator` 若需同步画像。
   1. 预测首发（格式见 prompts/match_analysis_template.md）
-  2. 交锋、近况、未来赛程
+  2. 交锋、近况、未来赛程、球探伤病摘要：`cd cup-analyzer/crawler-server`，在 `config/squadTarget.js` 填写本场 **`matchSerial`**，执行 **`npm run crawl:match-statistics`**（亦可 `-- --match <序号>`），将输出并入赛前报告或 `news/...`。（与 **`npm run generate:cycle-report`** 同源。）详见 [crawler-server/README.md](../crawler-server/README.md)「matchStatisticsCrawler」。
   3. 盘口：初盘/临场；引用 l273.js、bs273.js、td273.js
   3b. 格雷厄姆式亚盘安全边际：记录 Market（初盘/临场）→ 写 Fair（合理让球）与一行推导链 → 算 Δ → 标注三档结论（值得投 / 观望 / 反向投），定义见下 **「亚盘安全边际（格雷厄姆式）」**
   4. 澳超专项：常规赛排名、战意（季后赛资格/前二）、主客场与时差（新西兰球队等）
