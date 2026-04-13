@@ -10,20 +10,20 @@
  * - roundSerial：当前国内联赛轮次（仅分析该轮之前已完赛场次）
  */
 const squadTarget = {
-  leagueSerial: '15',
-  leagueSlug: 'koreanKLeague',
-  season: '2026',
-  teamSerial: '21249',
-  roundSerial: '7',
+  leagueSerial: '36',
+  leagueSlug: 'epl',
+  season: '25-26',
+  teamSerial: '28',
+  roundSerial: '32',
   isNation: false,
-  teamChineseName: 'FC安养',
+  teamChineseName: '纽卡斯尔联',
   /** 单场分析 / 周期报告等场景可选 */
-  matchSerial: '2929596',
+  matchSerial: '2789443',
   /**
    * 周期报告「同赛事」筛选：与球探战绩表「联赛」列文案一致（如 英超、欧冠杯）。
    * 不填则回退为当前 CUP_ANALYZER_CUP 对应 chineseName。
    */
-  matchLeagueName: '韩K联',
+  matchLeagueName: '英超',
 };
 
 module.exports = squadTarget;
