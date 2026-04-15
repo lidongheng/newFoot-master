@@ -7,7 +7,13 @@ const predLineupUtil = require('../utils/predictedStartingLineup');
 /** 英超/澳超/韩K联及欧冠模块：联赛式档位与俱乐部备注 */
 function useLeagueStyleAnalysis() {
   const k = config.activeCupKey || '';
-  return config.type === 'league' || k === 'championsLeague';
+  return (
+    config.type === 'league' ||
+    k === 'championsLeague' ||
+    k === 'afcChampionsLeagueTwo' ||
+    k === 'europaLeague' ||
+    k === 'uefaConferenceLeague'
+  );
 }
 
 /** 当前为世界杯国家队画像流程（需在按位置大名单中保留「所属俱乐部」列） */

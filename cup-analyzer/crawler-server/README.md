@@ -34,13 +34,16 @@ npm install
 |------------|------|----------------------|
 | `theWorldCup`（默认） | 世界杯（杯赛 `c`） | `theWorldCup/data/c75.js` |
 | `championsLeague` | 欧冠（杯赛 `c`） | `championsLeague/data/c103.js` |
+| `afcChampionsLeagueTwo` | 亚冠联2（杯赛 `c`） | `afcChampionsLeagueTwo/data/c350.js` |
+| `europaLeague` | 欧罗巴（杯赛 `c`） | `europaLeague/data/c113.js` |
+| `uefaConferenceLeague` | 欧会杯（杯赛 `c`） | `uefaConferenceLeague/data/c2187.js` |
 | `epl` | 英超（联赛 `s`） | `epl/data/s36.js` |
 | `koreanKLeague` | 韩K联（联赛 `s`，子联赛 313） | `koreanKLeague/data/s15_313.js` |
 | `aLeague` | 澳超（联赛 `s`，子联赛 462） | `aLeague/data/s273_462.js` |
 | `mls` | 美职联（联赛 `s`，子联赛 165） | `mls/data/s21_165.js` |
 | `serieA` | 意甲（联赛 `s`，子联赛 2948） | `serieA/data/s34_2948.js` |
 
-推荐（跨平台）：`npm run crawl:schedule:ucl`（英超 `crawl:schedule:epl`、澳超 `crawl:schedule:aleague` 等见下文「npm」行）。
+推荐（跨平台）：`npm run crawl:schedule:ucl`；亚冠联2 `crawl:schedule:acl2`、欧罗巴 `crawl:schedule:europa`、欧会杯 `crawl:schedule:conference`；英超 `crawl:schedule:epl`、澳超 `crawl:schedule:aleague` 等见下文「npm」行。
 
 手动执行（Bash / macOS / Git Bash）示例：
 
@@ -96,7 +99,7 @@ node crawlers/scheduleCrawler.js
 node crawlers/scheduleCrawler.js --standings
 ```
 
-npm：`npm run crawl:schedule:ucl` / `npm run crawl:schedule:epl` / `npm run crawl:schedule:kleague` / `npm run crawl:schedule:aleague` / `npm run crawl:schedule:mls` / `npm run crawl:schedule:seriea`
+npm：`npm run crawl:schedule:ucl` / `npm run crawl:schedule:acl2` / `npm run crawl:schedule:europa` / `npm run crawl:schedule:conference` / `npm run crawl:schedule:epl` / `npm run crawl:schedule:kleague` / `npm run crawl:schedule:aleague` / `npm run crawl:schedule:mls` / `npm run crawl:schedule:seriea`
 
 ### 4. `matchDataCrawler.js` — 单场 / 批量赛后数据（杯赛场景）
 
@@ -166,7 +169,7 @@ npm：`npm run process:squad` / `npm run process:squad:one -- 744`
 
 - **前置**：`npm run crawl:player-list`（若需 **转会记录** 列则 `npm run crawl:player-list:club`）、`npm run analyze:club-domestic`（生成 `output/player_center/{序号}-new.json`，分析器会从 `{序号}.json` 合并 `currentClub` / `recentTransfers`）。
 - **输出**：`{联赛模块}/squad/{中文队名}.md`（平铺，无 `group-X/`；表含出场/首发/进球/助攻及 **转会记录** 列）。
-- **环境**：`CUP_ANALYZER_CUP=epl|aLeague|mls|serieA|championsLeague|koreanKLeague` 等。Windows 下请先设置环境变量（见上文「Windows 与手动设置环境变量」），或使用：`npx cross-env CUP_ANALYZER_CUP=epl node processors/leagueSquadProcessor.js`。
+- **环境**：`CUP_ANALYZER_CUP=epl|aLeague|mls|serieA|championsLeague|afcChampionsLeagueTwo|europaLeague|uefaConferenceLeague|koreanKLeague` 等。Windows 下请先设置环境变量（见上文「Windows 与手动设置环境变量」），或使用：`npx cross-env CUP_ANALYZER_CUP=epl node processors/leagueSquadProcessor.js`。
 
 ```bash
 CUP_ANALYZER_CUP=epl node processors/leagueSquadProcessor.js
@@ -241,7 +244,7 @@ npm：`npm run analyze:club-domestic`
 
 - **球员俱乐部扩展**：[`utils/playerDetailEnricher.js`](utils/playerDetailEnricher.js)（阵容页解析链接 → `player{serial}.js` → `nowTeamInfo` / `transferInfo`）。
 - **URL 模板**：[`config/targets.js`](config/targets.js)（`teamLineupUrl`、`playerDataUrl`、`teamDetailUrl` 等）。
-- **俱乐部分析目标**：[`config/squadTarget.js`](config/squadTarget.js)（`teamSerial`、`leagueSerial`、`roundSerial` 等）。
+- **俱乐部分析目标**：[`config/squadTarget.js`](config/squadTarget.js)（`teamSerial`、`leagueSerial`、`roundSerial`、`isNation`、`matchByName` 等）。`isNation` 控制联赛(s/R\_\*)与杯赛(c/G\*)赛程格式；`matchByName` 控制球员按全名还是球衣号匹配（俱乐部杯赛本赛事渠道须 `isNation: true` 且 `matchByName: false`，详见 `squadTarget.js` 注释与各杯赛 `workflow.md`）。
 
 ---
 
@@ -262,7 +265,7 @@ npm：`npm run analyze:club-domestic`
 
 **联赛：大名单 → 球队画像（英超 / 澳超 / 欧冠 / 韩K联等）**
 
-1. 编辑 `config/squadTarget.js`（`leagueSerial` 填**国内联赛**序号；欧冠画像时不是 103）
+1. 编辑 `config/squadTarget.js`（默认 `leagueSerial` 填**国内联赛**序号；若要用**本赛事**出场统计则设杯赛序号如 103，并 `isNation: true`、`matchByName: false`，见欧冠等 `workflow.md`）
 2. `npm run crawl:player-list` → `npm run analyze:club-domestic`
 3. `npm run process:league-squad`（需先在本终端设置 `CUP_ANALYZER_CUP`；Windows 见上文「Windows 与手动设置环境变量」）
 4. `npm run process:squad-final:init:one -- <序号>`

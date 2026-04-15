@@ -1,6 +1,7 @@
 /**
- * 俱乐部国内联赛出场分析（原 backend-server/crawlerClub3_new.js）
+ * 俱乐部/杯赛出场分析（原 backend-server/crawlerClub3_new.js）
  * 读取赛程 JS（优先各联赛 data/，见 config.resolveScheduleData）、player_center，拉取 bf.titan007 技术统计页，输出 *-new.json
+ * isNation：杯赛格式(c/G*) vs 联赛格式(s/R_*)；matchByName：全名 vs 球衣号匹配（见 squadTarget 注释）
  */
 
 const fs = require('fs');
@@ -16,15 +17,18 @@ class ClubAnalyzer {
   /**
    * 初始化分析器
    * @param {Object} options 配置选项
-   * @param {string} options.leagueId 联赛ID（如s36表示英超）
+   * @param {string} options.leagueId 联赛/杯赛序号（如 36 英超、103 欧冠）
    * @param {number} options.serial 球队序号（如24表示切尔西）
-   * @param {boolean} options.isNation 是否国家队分析
+   * @param {boolean} options.isNation true=杯赛格式(c 文件、G* 迭代)，false=联赛格式(s 文件、R_* 迭代)
+   * @param {boolean} [options.matchByName] 球员匹配：true 全名，false 球衣号；不设则跟随 isNation
    * @param {number} options.roundSerial 准备开打的轮次
    */
   constructor(options = {}) {
     this.leagueId = options.leagueId || '36'; // 默认英超
     this.serial = options.serial || null;
     this.isNation = options.isNation || false;
+    this.matchByName =
+      options.matchByName != null ? options.matchByName : this.isNation;
     this.roundSerial = options.roundSerial || null;
     this.matchArr = []; // 比赛编号数据
     this.teamData = null; // 球队数据
@@ -545,7 +549,7 @@ class ClubAnalyzer {
     let nationName = '';
     
     // 尝试从球队数据中获取国家名称（如果是国家队）
-    if (this.isNation && Array.isArray(this.teamData) && this.teamData.length > 0) {
+    if (this.matchByName && Array.isArray(this.teamData) && this.teamData.length > 0) {
       for (const player of this.teamData) {
         if (player.nation && typeof player.nation === 'string' && player.nation.trim() !== '') {
           nationName = player.nation;
@@ -595,8 +599,8 @@ class ClubAnalyzer {
       // 依据是否为国家队使用不同的球员匹配方式
       let teamPlayer;
       
-      if (this.isNation) {
-        // 国家队比赛：通过球员名字匹配
+      if (this.matchByName) {
+        // 全名匹配（国家队杯赛等）
         teamPlayer = Array.isArray(this.teamData) ? 
           this.teamData.find(p => p.name === player.name) : null;
         
@@ -636,7 +640,7 @@ class ClubAnalyzer {
           }
         }
       } else {
-        // 俱乐部比赛：通过球员号码匹配
+        // 球衣号码匹配（俱乐部 / 俱乐部杯赛）
         teamPlayer = this.teamData.find(p => p.number === player.number);
         
         if (!teamPlayer) {
@@ -656,8 +660,8 @@ class ClubAnalyzer {
 
       const { name, number, position, isStarter, goals, assists, substitutedIn, substitutedOut, yellowCards, redCards, caps, lineups } = player;
       
-      // 创建球员唯一标识符 - 如果不是国家队，仅使用球衣号码作为唯一标识符
-      const playerKey = this.isNation ? teamPlayer.name : `${teamPlayer.number}`;
+      // 创建球员唯一标识符 - 全名匹配用姓名，否则用球衣号码
+      const playerKey = this.matchByName ? teamPlayer.name : `${teamPlayer.number}`;
 
       // 在联赛分析中，如果球员还未被记录，则初始化其数据
       if (!this.playersData[playerKey]) {
@@ -685,7 +689,7 @@ class ClubAnalyzer {
       const playerData = this.playersData[playerKey];
       
       // 如果当前名称与记录的不同，且还未记录在alternativeNames中，则添加到备选名称列表
-      if (!this.isNation && playerData.name !== name && !playerData.alternativeNames.includes(name)) {
+      if (!this.matchByName && playerData.name !== name && !playerData.alternativeNames.includes(name)) {
         playerData.alternativeNames.push(name);
       }
       
@@ -1088,8 +1092,8 @@ class ClubAnalyzer {
     // 将球员数据转换为数组以便于排序和处理
     const playersArray = Object.values(this.playersData).map(player => ({
       ...player,
-      // 添加球员标识符，以便在 isNation=false 时仅使用球衣号码作为唯一标识
-      id: this.isNation ? player.name : `${player.number}`
+      // 添加球员标识符：全名匹配用姓名，否则用球衣号码
+      id: this.matchByName ? player.name : `${player.number}`
     }));
     
     // 计算亚盘胜率
@@ -1107,6 +1111,7 @@ class ClubAnalyzer {
       teamId: this.serial,
       teamChineseName: this.teamChineseName, // 添加球队中文名称
       isNation: this.isNation,
+      matchByName: this.matchByName,
       analysisDate: new Date(),
       mostUsedFormation,
       recommendedLineup,
@@ -1139,12 +1144,16 @@ class ClubAnalyzer {
    */
   async analyze() {
     try {
-      console.log(`开始分析${this.isNation ? '国家队' : '俱乐部'}比赛数据...`);
+      console.log(
+        `开始分析${this.isNation ? '杯赛格式(c/G*)' : '联赛格式(s/R_*)'}比赛数据（球员匹配：${
+          this.matchByName ? '全名' : '球衣号'
+        }）...`
+      );
       console.log(`球队序号: ${this.serial}`);
       
       // 1. 读取联赛数据
       const leagueData = await this.readLeagueData();
-      console.log(`成功读取${this.isNation ? '国际赛事' : '联赛'}数据`);
+      console.log(`成功读取${this.isNation ? '杯赛' : '联赛'}赛程数据`);
       
       // 2. 读取球队数据
       this.teamData = await this.readTeamData();
@@ -1236,7 +1245,7 @@ class ClubAnalyzer {
       // 为每个已记录的球员更新年龄和身价信息
       for (const playerInfo of playersList) {
         // 尝试通过球衣号码找到对应的球员
-        const playerKey = this.isNation ? playerInfo.name : `${playerInfo.number}`;
+        const playerKey = this.matchByName ? playerInfo.name : `${playerInfo.number}`;
         const existingPlayer = this.playersData[playerKey];
         
         if (existingPlayer) {
@@ -1374,13 +1383,20 @@ class ClubAnalyzer {
    * @param {Object} options 分析选项
    * @param {string} options.leagueId 联赛ID
    * @param {number} options.serial 球队序号
-   * @param {boolean} options.isNation 是否国家队
+   * @param {boolean} options.isNation 杯赛格式 vs 联赛格式
+   * @param {boolean} [options.matchByName] 球员匹配方式，不设则跟随 isNation
    * @param {number} options.roundSerial 轮次
    * @returns {Promise<Object>} 分析结果
    */
   static main(options = {}) {
+    const matchByName =
+      options.matchByName != null ? options.matchByName : options.isNation || false;
     console.log('开始分析球队数据...');
-    console.log(`分析模式: ${options.isNation ? '国家队' : '俱乐部'}`);
+    console.log(
+      `分析模式: ${options.isNation ? '杯赛赛程(c/G*)' : '联赛赛程(s/R_*)'} | 球员匹配: ${
+        matchByName ? '全名' : '球衣号'
+      }`
+    );
     console.log(`球队序号: ${options.serial}`);
     console.log(`联赛/赛事ID: ${options.leagueId}`);
     
@@ -1462,16 +1478,24 @@ module.exports = ClubAnalyzer;
 if (require.main === module) {
   try {
     const squadTarget = require('../config/squadTarget');
+    const isNation = squadTarget.isNation || false;
+    const resolvedMatchByName =
+      squadTarget.matchByName != null ? squadTarget.matchByName : isNation;
     const options = {
       leagueId: squadTarget.leagueSerial || '36',
       serial: parseInt(squadTarget.teamSerial, 10) || 24,
-      isNation: squadTarget.isNation || false,
+      isNation,
+      matchByName: squadTarget.matchByName,
       roundSerial: squadTarget.roundSerial != null && squadTarget.roundSerial !== ''
         ? parseInt(squadTarget.roundSerial, 10)
         : null,
       teamChineseName: squadTarget.teamChineseName || '',
     };
-    console.log(`开始分析${squadTarget.isNation ? '国家队' : '俱乐部'}比赛数据...`);
+    console.log(
+      `开始分析${isNation ? '杯赛格式(c/G*)' : '联赛格式(s/R_*)'}比赛数据（球员匹配：${
+        resolvedMatchByName ? '全名' : '球衣号'
+      }）...`
+    );
     ClubAnalyzer.main(options);
   } catch (error) {
     console.error('配置文件读取失败:', error.message);

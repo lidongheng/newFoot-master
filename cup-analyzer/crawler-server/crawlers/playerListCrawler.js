@@ -2,7 +2,7 @@
  * 俱乐部球探大名单抓取（原 backend-server/crawlerPlayer.js）
  * 输出：config.paths.player_center/{teamSerial}.json
  *
- * 使用前编辑 config/squadTarget.js（teamSerial、leagueSerial 等）
+ * 使用前编辑 config/squadTarget.js（teamSerial、leagueSerial、isNation 等；isNation=true 时 Referer 用杯赛页）
  */
 const path = require('path');
 const fs = require('fs');
@@ -95,8 +95,11 @@ async function fetchPlayerList() {
   const leagueSerial = squadTarget.leagueSerial || '36';
   const version = dateFormat(new Date().getTime(), 'YYYYMMDDHH');
   const url = `http://zq.titan007.com/jsData/teamInfo/teamDetail/tdl${serial}.js?version=${version}`;
+  const referer = squadTarget.isNation
+    ? `http://zq.titan007.com/cn/CupMatch/${leagueSerial}.html`
+    : `https://zq.titan007.com/cn/League/${leagueSerial}.html`;
   const headers = {
-    Referer: `https://zq.titan007.com/cn/League/${leagueSerial}.html`,
+    Referer: referer,
     Host: 'zq.titan007.com',
   };
 
