@@ -4,6 +4,9 @@ const path = require('path');
  * 多杯赛/联赛配置：通过环境变量 CUP_ANALYZER_CUP 切换
  * - theWorldCup（默认）
  * - championsLeague
+ * - afcChampionsLeagueTwo（亚冠联2，球探序号 350，c350.js）
+ * - europaLeague（欧罗巴，球探序号 113，c113.js）
+ * - uefaConferenceLeague（欧会杯，球探序号 2187，c2187.js）
  * - epl（英超，球探序号 36，联赛格式 s36.js）
  * - koreanKLeague（韩K联，s15_313，313 为 arrSubLeague 子联赛 ID）
  * - aLeague（澳超，s273_462，462 为 arrSubLeague 子联赛 ID）
@@ -43,6 +46,54 @@ const cups = {
       playerCenter: path.resolve(__dirname, '../output/player_center'),
       basicData: path.resolve(__dirname, '../../championsLeague/basicData'),
       cupScheduleData: path.resolve(__dirname, '../../championsLeague/data/c103.js'),
+    },
+  },
+  afcChampionsLeagueTwo: {
+    fileId: 'c350',
+    type: 'cup',
+    cupSerial: '350',
+    cupName: 'afcChampionsLeagueTwo',
+    chineseName: '亚冠联2',
+    crossYear: true,
+    season: '25-26',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../afcChampionsLeagueTwo'),
+      squadFinal: path.resolve(__dirname, '../../afcChampionsLeagueTwo/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../../afcChampionsLeagueTwo/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../afcChampionsLeagueTwo/data/c350.js'),
+    },
+  },
+  europaLeague: {
+    fileId: 'c113',
+    type: 'cup',
+    cupSerial: '113',
+    cupName: 'europaLeague',
+    chineseName: '欧罗巴',
+    crossYear: true,
+    season: '25-26',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../europaLeague'),
+      squadFinal: path.resolve(__dirname, '../../europaLeague/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../../europaLeague/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../europaLeague/data/c113.js'),
+    },
+  },
+  uefaConferenceLeague: {
+    fileId: 'c2187',
+    type: 'cup',
+    cupSerial: '2187',
+    cupName: 'uefaConferenceLeague',
+    chineseName: '欧会杯',
+    crossYear: true,
+    season: '25-26',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../uefaConferenceLeague'),
+      squadFinal: path.resolve(__dirname, '../../uefaConferenceLeague/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../../uefaConferenceLeague/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../uefaConferenceLeague/data/c2187.js'),
     },
   },
   epl: {
