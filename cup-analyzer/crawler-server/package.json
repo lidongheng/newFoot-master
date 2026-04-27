@@ -26,6 +26,7 @@
     "crawl:schedule:aleague": "cross-env CUP_ANALYZER_CUP=aLeague node crawlers/scheduleCrawler.js",
     "crawl:schedule:mls": "cross-env CUP_ANALYZER_CUP=mls node crawlers/scheduleCrawler.js",
     "crawl:schedule:seriea": "cross-env CUP_ANALYZER_CUP=serieA node crawlers/scheduleCrawler.js",
+    "crawl:schedule:ligamx": "cross-env CUP_ANALYZER_CUP=ligaMx node crawlers/scheduleCrawler.js",
     "crawl:player-list": "node crawlers/playerListCrawler.js",
     "crawl:player-list:club": "node crawlers/playerListCrawler.js --with-club",
     "analyze:club-domestic": "node analyzers/clubMatchAnalyzer.js",

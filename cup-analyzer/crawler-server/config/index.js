@@ -12,6 +12,7 @@ const path = require('path');
  * - aLeague（澳超，s273_462，462 为 arrSubLeague 子联赛 ID）
  * - mls（美职联，s21_165，165 为 arrSubLeague 常规赛子联赛 ID）
  * - serieA（意甲，s34_2948，2948 为 arrSubLeague 子联赛 ID）
+ * - ligaMx（墨西联，s140_44，44 为 arrSubLeague 子联赛 ID，赛程 Referer 用 SubLeague 页）
  *
  * 示例：npm run crawl:schedule:ucl（跨平台）；或 CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js（Bash）
  */
@@ -55,7 +56,11 @@ const cups = {
     cupName: 'afcChampionsLeagueTwo',
     chineseName: '亚冠联2',
     crossYear: true,
-    season: '25-26',
+    /**
+     * 球探 URL 赛季段（matchResult / letGoal / bigSmall 同目录）。
+     * 亚冠联2 线上仅为 2025-2026，不能用 25-26；本地报告/目录仍用 25-26。
+     */
+    season: '2025-2026',
     paths: {
       cupAnalyzer: path.resolve(__dirname, '../../afcChampionsLeagueTwo'),
       squadFinal: path.resolve(__dirname, '../../afcChampionsLeagueTwo/squad-final'),
@@ -103,7 +108,9 @@ const cups = {
     cupName: 'epl',
     chineseName: '英超',
     crossYear: true,
-    /** titan007 联赛赛程 JS 所在赛季目录，与 s36 一致 */
+    /**
+     * 球探 URL 赛季段（与 s36 等路径一致；站点目录多为全写，勿与本地 25-26 目录混用）
+     */
     season: '2025-2026',
     paths: {
       cupAnalyzer: path.resolve(__dirname, '../../epl'),
@@ -140,6 +147,7 @@ const cups = {
     crossYear: true,
     /** 子联赛 ID，与 titan007 arrSubLeague 中「联赛」阶段一致 */
     subLeagueId: '462',
+    /** 球探 URL 赛季段（勿与本地 25-26 目录混用） */
     season: '2025-2026',
     paths: {
       cupAnalyzer: path.resolve(__dirname, '../../aLeague'),
@@ -177,7 +185,7 @@ const cups = {
     crossYear: true,
     /** 子联赛 ID，与 titan007 arrSubLeague 中联赛阶段一致 */
     subLeagueId: '2948',
-    /** titan007 matchResult 赛季目录，与 s34_2948 一致 */
+    /** 球探 URL 赛季段（与 s34_2948 一致；勿与本地 25-26 目录混用） */
     season: '2025-2026',
     paths: {
       cupAnalyzer: path.resolve(__dirname, '../../serieA'),
@@ -185,6 +193,25 @@ const cups = {
       playerCenter: path.resolve(__dirname, '../output/player_center'),
       basicData: path.resolve(__dirname, '../../serieA/basicData'),
       cupScheduleData: path.resolve(__dirname, '../../serieA/data/s34_2948.js'),
+    },
+  },
+  ligaMx: {
+    fileId: 's140_44',
+    type: 'league',
+    cupSerial: '140',
+    cupName: 'ligaMx',
+    chineseName: '墨西联',
+    crossYear: true,
+    subLeagueId: '44',
+    /** 赛程爬虫 Referer 使用 /cn/SubLeague/...（与球探该联赛展示页一致） */
+    useSubLeagueReferer: true,
+    season: '2025-2026',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../ligaMx'),
+      squadFinal: path.resolve(__dirname, '../../ligaMx/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../../ligaMx/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../ligaMx/data/s140_44.js'),
     },
   },
 };
@@ -227,6 +254,8 @@ const config = {
   cupSerial: active.cupSerial,
   cupName: active.cupName,
   season: active.season,
+  /** 联赛赛程爬虫用 SubLeague 页作 Referer（如墨西联） */
+  useSubLeagueReferer: Boolean(active.useSubLeagueReferer),
 
   /** 序号 → 各模块 data/ 下赛程 JS，供 resolveScheduleData */
   schedulePathBySerial,

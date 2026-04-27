@@ -76,10 +76,17 @@ npx cross-env CUP_ANALYZER_CUP=championsLeague node processors/teamProfileGenera
      a. 确保该队**国内联赛**赛程 JS 为最新（如英超：在 crawler-server 下跑 **`npm run crawl:schedule:epl`**，或确认 `epl/data/s36.js` 已更新；分析器通过 `leagueSerial` 读 `resolveScheduleData` 指向的路径，不必单独维护 `match_center` 为唯一来源）
      b. 编辑 `crawler-server/config/squadTarget.js`：
         - teamSerial：该队球探俱乐部序号（见 `data/球队与序号对照表.md` 或 titan007 球队页）
-        - leagueSerial：该队**所属国内联赛**序号（如英超 36、西甲 4）
-        - roundSerial：当前国内联赛轮次（与 workflow 说明一致即可）
-        - isNation：false（俱乐部）
         - teamChineseName：球队中文名
+        - **数据渠道二选一**：
+          ① **国内联赛渠道**（默认）：
+             - leagueSerial：该队所属国内联赛序号（如英超 36、西甲 4）
+             - roundSerial：当前国内联赛轮次（与 workflow 说明一致即可）
+             - isNation：false
+          ② **本赛事（欧冠）渠道**：
+             - leagueSerial：`'103'`（欧冠序号）
+             - roundSerial：不填或删除
+             - isNation：true
+             - matchByName：false（俱乐部杯赛必须加此项）
      c. cd cup-analyzer/crawler-server && npm run crawl:player-list
         → 输出 `crawler-server/output/player_center/{teamSerial}.json`（基础大名单）
      d. npm run analyze:club-domestic

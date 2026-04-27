@@ -10,7 +10,7 @@ const { sleep } = require('../utils/fileWriter');
  *
  * 数据来源: titan007 赛程数据 JS 文件
  * 输出: 更新当前激活赛事的 cupScheduleData（杯赛如 c75/c103，联赛如 s36/s15_313，见 config.fileId）
- * 同步更新：亚盘盘路 l{序号}.js、大小球 bs{序号}.js；联赛另更新入球时间 td{序号}.js（杯赛不更新 td）
+ * 同步更新：亚盘 l{序号}.js（letGoal）、大小球 bs{序号}.js（bigSmall）；联赛另更新入球时间 td{序号}.js（matchResult；杯赛不更新 td）
  * 赛程主文件另拷贝至 match_center/{s|c}{序号}.js，与 clubMatchAnalyzer 兜底路径一致
  */
 class ScheduleCrawler extends BaseCrawler {
@@ -38,7 +38,9 @@ class ScheduleCrawler extends BaseCrawler {
   async updateSchedule() {
     const referer =
       config.type === 'league'
-        ? targets.titan007.leagueMatchReferer(config.cupSerial, config.season)
+        ? config.useSubLeagueReferer
+          ? targets.titan007.subLeagueMatchReferer(config.cupSerial, config.season)
+          : targets.titan007.leagueMatchReferer(config.cupSerial, config.season)
         : targets.titan007.cupMatchReferer(config.cupSerial);
     const headers = {
       ...targets.titan007.headers.desktop,
@@ -58,12 +60,12 @@ class ScheduleCrawler extends BaseCrawler {
       },
       {
         label: '亚盘盘路',
-        url: targets.titan007.matchResultDataUrl(`l${serial}`, config.season),
+        url: targets.titan007.letGoalLineUrl(serial, config.season),
         outputPath: path.join(dataDir, `l${serial}.js`),
       },
       {
         label: '大小球盘路',
-        url: targets.titan007.matchResultDataUrl(`bs${serial}`, config.season),
+        url: targets.titan007.bigSmallLineUrl(serial, config.season),
         outputPath: path.join(dataDir, `bs${serial}.js`),
       },
     ];

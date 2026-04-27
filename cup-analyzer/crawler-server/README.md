@@ -42,8 +42,9 @@ npm install
 | `aLeague` | 澳超（联赛 `s`，子联赛 462） | `aLeague/data/s273_462.js` |
 | `mls` | 美职联（联赛 `s`，子联赛 165） | `mls/data/s21_165.js` |
 | `serieA` | 意甲（联赛 `s`，子联赛 2948） | `serieA/data/s34_2948.js` |
+| `ligaMx` | 墨西联（联赛 `s`，子联赛 44） | `ligaMx/data/s140_44.js` |
 
-推荐（跨平台）：`npm run crawl:schedule:ucl`；亚冠联2 `crawl:schedule:acl2`、欧罗巴 `crawl:schedule:europa`、欧会杯 `crawl:schedule:conference`；英超 `crawl:schedule:epl`、澳超 `crawl:schedule:aleague` 等见下文「npm」行。
+推荐（跨平台）：`npm run crawl:schedule:ucl`；亚冠联2 `crawl:schedule:acl2`、欧罗巴 `crawl:schedule:europa`、欧会杯 `crawl:schedule:conference`；英超 `crawl:schedule:epl`、澳超 `crawl:schedule:aleague`、墨西联 `crawl:schedule:ligamx` 等见下文「npm」行。
 
 手动执行（Bash / macOS / Git Bash）示例：
 
@@ -88,9 +89,12 @@ npm：`npm run crawl:player-list` / `npm run crawl:player-list:club`（需要转
 
 - **作用**：按 `config.fileId` 从球探拉取赛程（杯赛 `c{序号}.js` 或联赛 `s{序号}.js` / `s{序号}_{子联赛}.js`），覆盖 `config.paths.cupScheduleData`（会先备份）。`version` 参数使用 `YYYYMMDDHH`。
 - **赛程路径统一**：`clubMatchAnalyzer` 通过 `config.resolveScheduleData(leagueSerial, isNation)` 解析文件——已在 `cups` 中配置的序号指向对应模块 `data/` 下的赛程 JS；未配置的序号仍读 `match_center/s{n}.js` 或 `c{n}.js`。每次赛程拉取成功后，会将主赛程文件**拷贝**到 `match_center/`，与兜底路径保持一致。
-- **同步文件**（与赛程同赛季目录、`cupScheduleData` 所在 `data/` 下；序号均为 `config.cupSerial`）：
-  - **联赛**（`config.type === 'league'`）：依次更新 `l{序号}.js`（亚盘盘路）、`bs{序号}.js`（大小球盘路）、`td{序号}.js`（入球时间）。
-  - **杯赛**（`config.type === 'cup'`）：只额外更新 `l{序号}.js`、`bs{序号}.js`，**不**拉取 `td`（杯赛无入球时间分布 JS）。
+- **同步文件**（写入 `cupScheduleData` 所在 `data/`；序号均为 `config.cupSerial`）：
+  - 赛程：仍从 `jsData/matchResult/{season}/{fileId}.js` 拉取。
+  - **亚盘 `l{序号}.js`**：从 `jsData/letGoal/{season}/l{序号}.js` 拉取（非 `matchResult` 路径）。
+  - **大小球 `bs{序号}.js`**：从 `jsData/bigSmall/{season}/bs{序号}.js` 拉取。
+  - **联赛**（`config.type === 'league'`）：另更新 `td{序号}.js`（入球时间，仍为 `jsData/matchResult/{season}/td{序号}.js`）。
+  - **杯赛**（`config.type === 'cup'`）：**不**拉取 `td`。
   - 各请求间隔 `config.crawlDelayMs`；若赛程拉取失败则不再请求后续文件；若 l/bs/td 中某项失败会记录错误并继续尝试其余项。
 - **可选**：`--standings` 仅打印小组积分榜 JSON。
 

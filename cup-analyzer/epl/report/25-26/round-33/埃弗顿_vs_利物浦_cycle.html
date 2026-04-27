@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>亚盘周期盈亏 — 埃弗顿 vs 利物浦</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0; padding: 16px 20px 40px; background: #f5f5f5; color: #222; }
+    h1 { font-size: 1.25rem; margin: 0 0 8px; }
+    .meta { color: #666; font-size: 0.9rem; margin-bottom: 20px; }
+    .section { background: #fff; border-radius: 8px; padding: 16px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+    .section h2 { margin: 0 0 12px; font-size: 1.05rem; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+    .chart-wrap { margin-bottom: 24px; }
+    .chart { width: 100%; height: 360px; }
+    .hint { font-size: 12px; color: #888; margin: 6px 0 0; }
+    .note { font-size: 13px; color: #555; line-height: 1.5; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1>霍华德·马克斯周期视角 · 亚盘模拟盈亏</h1>
+  <div class="meta">
+    场次序号 matchSerial：2789453 ｜ 赛季 25-26 ｜ 第 33 轮<br/>
+    主队：埃弗顿 ｜ 客队：利物浦<br/>
+    模拟规则：每场投注 1000 元、买己方盘、固定水位 0.9（港盘）、初盘盘口来自球探分析页。
+  </div>
+
+  <div class="section">
+    <h2>埃弗顿（本场主场）</h2>
+    <p class="note">「主或客场」图仅包含该队历史<strong>主场</strong>比赛，便于对照本场主场节奏。</p>
+    
+    <div class="chart-wrap">
+      <div id="chart_home_0" class="chart"></div>
+      <p class="hint">全部近期 · 共 30 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_home_1" class="chart"></div>
+      <p class="hint">仅主场 · 共 15 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_home_2" class="chart"></div>
+      <p class="hint">同赛事（英超） · 共 28 场。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>利物浦（本场客场）</h2>
+    <p class="note">「主或客场」图仅包含该队历史<strong>客场</strong>比赛，便于对照本场客场节奏。</p>
+    
+    <div class="chart-wrap">
+      <div id="chart_away_0" class="chart"></div>
+      <p class="hint">全部近期 · 共 30 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_away_1" class="chart"></div>
+      <p class="hint">仅客场 · 共 15 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_away_2" class="chart"></div>
+      <p class="hint">同赛事（英超） · 共 19 场。</p>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var configs = [{"id":"chart_home_0","option":{"title":{"text":"埃弗顿 — 全部近期（30 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-09-20 利物浦","25-09-24 狼队","25-09-30 西汉姆联","25-10-05 水晶宫","25-10-18 曼彻斯特城","25-10-27 托特纳姆热刺","25-11-04 桑德兰","25-11-08 富勒姆","25-11-25 曼彻斯特联","25-11-30 纽卡斯尔联","25-12-03 伯恩茅斯","25-12-06 诺丁汉森林","25-12-13 切尔西","25-12-21 阿森纳","25-12-27 伯恩利","25-12-31 诺丁汉森林","26-01-04 布伦特福德","26-01-08 狼队","26-01-10 桑德兰","26-01-19 阿斯顿维拉","26-01-27 利兹联","26-01-31 布莱顿","26-02-07 富勒姆","26-02-11 伯恩茅斯","26-02-24 曼彻斯特联","26-02-28 纽卡斯尔联","26-03-04 伯恩利","26-03-15 阿森纳","26-03-22 切尔西","26-04-11 布伦特福德"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[450,-550,-1550,-650,-1650,-2650,-2650,-1750,-850,-1850,-950,-50,-1050,-1550,-2550,-1650,-2650,-3650,-4650,-3750,-3750,-2850,-1950,-2950,-3950,-3050,-2150,-3150,-2250,-1800],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[29,-1800],"value":-1800}]}}]}},{"id":"chart_home_1","option":{"title":{"text":"埃弗顿 — 仅主场（15 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-09-30 西汉姆联","25-10-05 水晶宫","25-10-27 托特纳姆热刺","25-11-08 富勒姆","25-11-30 纽卡斯尔联","25-12-06 诺丁汉森林","25-12-21 阿森纳","26-01-04 布伦特福德","26-01-08 狼队","26-01-10 桑德兰","26-01-27 利兹联","26-02-11 伯恩茅斯","26-02-24 曼彻斯特联","26-03-04 伯恩利","26-03-22 切尔西"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[-1000,-100,-1100,-200,-1200,-300,-800,-1800,-2800,-3800,-3800,-4800,-5800,-4900,-4000],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[14,-4000],"value":-4000}]}}]}},{"id":"chart_home_2","option":{"title":{"text":"埃弗顿 — 同赛事（英超）（28 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-09-20 利物浦","25-09-30 西汉姆联","25-10-05 水晶宫","25-10-18 曼彻斯特城","25-10-27 托特纳姆热刺","25-11-04 桑德兰","25-11-08 富勒姆","25-11-25 曼彻斯特联","25-11-30 纽卡斯尔联","25-12-03 伯恩茅斯","25-12-06 诺丁汉森林","25-12-13 切尔西","25-12-21 阿森纳","25-12-27 伯恩利","25-12-31 诺丁汉森林","26-01-04 布伦特福德","26-01-08 狼队","26-01-19 阿斯顿维拉","26-01-27 利兹联","26-01-31 布莱顿","26-02-07 富勒姆","26-02-11 伯恩茅斯","26-02-24 曼彻斯特联","26-02-28 纽卡斯尔联","26-03-04 伯恩利","26-03-15 阿森纳","26-03-22 切尔西","26-04-11 布伦特福德"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[450,-550,350,-650,-1650,-1650,-750,150,-850,50,950,-50,-550,-1550,-650,-1650,-2650,-1750,-1750,-850,50,-950,-1950,-1050,-150,-1150,-250,200],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[27,200],"value":200}]}}]}},{"id":"chart_away_0","option":{"title":{"text":"利物浦 — 全部近期（30 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-12-04 桑德兰","25-12-07 利兹联","25-12-10 国际米兰","25-12-13 布莱顿","25-12-21 托特纳姆热刺","25-12-27 狼队","26-01-02 利兹联","26-01-04 富勒姆","26-01-09 阿森纳","26-01-13 巴恩斯利","26-01-17 伯恩利","26-01-22 马赛","26-01-25 伯恩茅斯","26-01-29 卡拉巴克","26-02-01 纽卡斯尔联","26-02-09 曼彻斯特城","26-02-12 桑德兰","26-02-15 布莱顿","26-02-22 诺丁汉森林","26-02-28 西汉姆联","26-03-04 狼队","26-03-07 狼队","26-03-11 加拉塔萨雷","26-03-16 托特纳姆热刺","26-03-19 加拉塔萨雷","26-03-21 布莱顿","26-04-04 曼彻斯特城","26-04-09 巴黎圣日耳曼","26-04-12 富勒姆","26-04-15 巴黎圣日耳曼"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[-1000,-2000,-1100,-200,700,-300,-1300,-2300,-1400,-500,-1500,-600,-1600,-700,200,-800,-350,550,1450,2350,1350,2250,1250,250,1150,150,-850,-1850,-950,-1950],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[29,-1950],"value":-1950}]}}]}},{"id":"chart_away_1","option":{"title":{"text":"利物浦 — 仅客场（15 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-12-07 利兹联","25-12-10 国际米兰","25-12-21 托特纳姆热刺","26-01-04 富勒姆","26-01-09 阿森纳","26-01-22 马赛","26-01-25 伯恩茅斯","26-02-12 桑德兰","26-02-22 诺丁汉森林","26-03-04 狼队","26-03-07 狼队","26-03-11 加拉塔萨雷","26-03-21 布莱顿","26-04-04 曼彻斯特城","26-04-09 巴黎圣日耳曼"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[-1000,-100,800,-200,700,1600,600,1050,1950,950,1850,850,-150,-1150,-2150],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[14,-2150],"value":-2150}]}}]}},{"id":"chart_away_2","option":{"title":{"text":"利物浦 — 同赛事（英超）（19 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-12-04 桑德兰","25-12-07 利兹联","25-12-13 布莱顿","25-12-21 托特纳姆热刺","25-12-27 狼队","26-01-02 利兹联","26-01-04 富勒姆","26-01-09 阿森纳","26-01-17 伯恩利","26-01-25 伯恩茅斯","26-02-01 纽卡斯尔联","26-02-09 曼彻斯特城","26-02-12 桑德兰","26-02-22 诺丁汉森林","26-02-28 西汉姆联","26-03-04 狼队","26-03-16 托特纳姆热刺","26-03-21 布莱顿","26-04-12 富勒姆"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[-1000,-2000,-1100,-200,-1200,-2200,-3200,-2300,-3300,-4300,-3400,-4400,-3950,-3050,-2150,-3150,-4150,-5150,-4250],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[18,-4250],"value":-4250}]}}]}}];
+      configs.forEach(function(item) {
+        var el = document.getElementById(item.id);
+        if (!el) return;
+        var chart = echarts.init(el);
+        chart.setOption(item.option);
+        window.addEventListener('resize', function() { chart.resize(); });
+      });
+    })();
+  </script>
+</body>
+</html>

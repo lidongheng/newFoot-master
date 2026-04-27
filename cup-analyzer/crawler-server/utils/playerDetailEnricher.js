@@ -363,7 +363,7 @@ function normalizeSeasonKey(seasonStr) {
   return m ? `${m[1]}-${m[2]}` : '';
 }
 
-/** 当前日所在的欧洲足球赛季，如 2026 年 4 月 → `2025-2026` */
+/** 当前日所在的欧洲足球赛季键（与球探部分字段一致，如 2026 年 4 月 → `2025-2026`；本地目录名多为 25-26） */
 function getCurrentFootballSeasonKey(d = new Date()) {
   const y = d.getFullYear();
   const month = d.getMonth() + 1;

@@ -2,14 +2,15 @@
   "teamId": 65,
   "teamChineseName": "桑德兰",
   "isNation": false,
-  "analysisDate": "2026-04-12T11:57:36.643Z",
+  "matchByName": false,
+  "analysisDate": "2026-04-19T11:23:07.215Z",
   "mostUsedFormation": "4231",
   "recommendedLineup": [
     {
       "name": "罗宾罗夫斯",
       "number": 22,
-      "caps": 28,
-      "lineups": 28,
+      "caps": 29,
+      "lineups": 29,
       "matches": [
         {
           "id": 2789133,
@@ -402,14 +403,28 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "GK",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "GK": 28
+        "GK": 29
       },
       "goals": 0,
       "assists": 0,
-      "minutesPlayed": 2520,
+      "minutesPlayed": 2610,
       "substitutedIn": 0,
       "substitutedOut": 0,
       "alternativeNames": [],
@@ -417,46 +432,11 @@
       "socialStatus": 2500,
       "nation": "荷兰",
       "height": 193,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2018-2019",
-          "date": "2018-07-01",
-          "from": "尼美根后备队",
-          "to": "尼美根U17",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-07-01",
-          "from": "尼美根U17",
-          "to": "特瑞尼克U21",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-07-01",
-          "from": "特瑞尼克U21",
-          "to": "奈梅亨",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-08-01",
-          "from": "奈梅亨",
-          "to": "桑德兰",
-          "fee": "1050万欧元",
-          "type": "完全所有"
-        }
-      ],
       "positionPreferences": [
         "GK"
       ],
       "positionsWithCounts": {
-        "GK": 28
+        "GK": 29
       },
       "mainPositionGroup": "GK",
       "recommendedPosition": "GK"
@@ -464,7 +444,7 @@
     {
       "name": "特雷休姆",
       "number": 32,
-      "caps": 31,
+      "caps": 32,
       "lineups": 29,
       "matches": [
         {
@@ -900,6 +880,20 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
@@ -909,57 +903,14 @@
       },
       "goals": 0,
       "assists": 1,
-      "minutesPlayed": 2530,
-      "substitutedIn": 2,
+      "minutesPlayed": 2550,
+      "substitutedIn": 3,
       "substitutedOut": 6,
       "alternativeNames": [],
       "age": 24,
       "socialStatus": 2200,
       "nation": "北爱尔兰",
       "height": 180,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2019-2020",
-          "date": "2019-07-01",
-          "from": "林菲尔德U19",
-          "to": "林菲尔德后备队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-09-11",
-          "from": "林菲尔德后备队",
-          "to": "巴利米纳联队",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2021-05-31",
-          "from": "巴利米纳联队",
-          "to": "林菲尔德后备队",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2021-07-01",
-          "from": "林菲尔德后备队",
-          "to": "林菲尔德",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2022-01-04",
-          "from": "林菲尔德",
-          "to": "桑德兰",
-          "fee": "24万欧元",
-          "type": "完全所有"
-        }
-      ],
       "positionPreferences": [
         "RB",
         "LB",
@@ -976,8 +927,8 @@
     {
       "name": "阿尔德雷特",
       "number": 15,
-      "caps": 27,
-      "lineups": 26,
+      "caps": 28,
+      "lineups": 27,
       "matches": [
         {
           "id": 2789133,
@@ -1370,15 +1321,29 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "CB": 24,
+        "CB": 25,
         "LCB": 2
       },
       "goals": 1,
       "assists": 1,
-      "minutesPlayed": 2300,
+      "minutesPlayed": 2390,
       "substitutedIn": 1,
       "substitutedOut": 3,
       "alternativeNames": [],
@@ -1386,111 +1351,12 @@
       "socialStatus": 1500,
       "nation": "巴拉圭",
       "height": 188,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2016-2017",
-          "date": "2016-07-01",
-          "from": "波坦奴U20",
-          "to": "波特诺山丘",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2017-07-31",
-          "from": "波特诺山丘",
-          "to": "拉普拉塔体操",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2018-06-30",
-          "from": "拉普拉塔体操",
-          "to": "波特诺山丘",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-07-20",
-          "from": "波特诺山丘",
-          "to": "飓风队",
-          "fee": "138万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2019-07-01",
-          "from": "飓风队",
-          "to": "巴塞尔",
-          "fee": "170万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-10-05",
-          "from": "巴塞尔",
-          "to": "柏林赫塔",
-          "fee": "400万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-07-12",
-          "from": "柏林赫塔",
-          "to": "巴伦西亚",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2022-06-30",
-          "from": "巴伦西亚",
-          "to": "柏林赫塔",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-08-19",
-          "from": "柏林赫塔",
-          "to": "赫塔菲",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2023-06-30",
-          "from": "赫塔菲",
-          "to": "柏林赫塔",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-07-01",
-          "from": "柏林赫塔",
-          "to": "赫塔菲",
-          "fee": "400万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-08-12",
-          "from": "赫塔菲",
-          "to": "桑德兰",
-          "fee": "1160万欧元",
-          "type": "完全所有"
-        }
-      ],
       "positionPreferences": [
         "CB",
         "LCB"
       ],
       "positionsWithCounts": {
-        "CB": 24,
+        "CB": 25,
         "LCB": 2
       },
       "mainPositionGroup": "DF",
@@ -1880,81 +1746,6 @@
       "socialStatus": 2000,
       "nation": "北爱尔兰",
       "height": 187,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2016-2017",
-          "date": "2016-07-01",
-          "from": "阿森纳青年队",
-          "to": "阿森纳U18",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-07-01",
-          "from": "阿森纳U18",
-          "to": "阿森纳U21",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2019-07-03",
-          "from": "阿森纳U21",
-          "to": "斯文登",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2020-01-22",
-          "from": "斯文登",
-          "to": "阿森纳U21",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-10-05",
-          "from": "阿森纳U21",
-          "to": "布莱克浦",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2021-05-31",
-          "from": "布莱克浦",
-          "to": "阿森纳U21",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-07-01",
-          "from": "阿森纳U21",
-          "to": "米尔沃尔",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2022-05-31",
-          "from": "米尔沃尔",
-          "to": "阿森纳U21",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-07-01",
-          "from": "阿森纳U21",
-          "to": "桑德兰",
-          "fee": "230万欧元",
-          "type": "完全所有"
-        }
-      ],
       "positionPreferences": [
         "CB"
       ],
@@ -1967,8 +1758,8 @@
     {
       "name": "穆杰莱",
       "number": 20,
-      "caps": 25,
-      "lineups": 25,
+      "caps": 26,
+      "lineups": 26,
       "matches": [
         {
           "id": 2789156,
@@ -2333,113 +2124,44 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "RB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 1,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
         "CB": 8,
-        "RB": 12,
+        "RB": 13,
         "RCB": 5
       },
-      "goals": 2,
+      "goals": 3,
       "assists": 3,
-      "minutesPlayed": 2210,
+      "minutesPlayed": 2280,
       "substitutedIn": 0,
-      "substitutedOut": 2,
+      "substitutedOut": 3,
       "alternativeNames": [],
       "age": 29,
       "socialStatus": 1800,
       "nation": "法国",
       "height": 187,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2013-2014",
-          "date": "2013-07-01",
-          "from": "巴黎足球会青年队",
-          "to": "拉华尔U17",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2013-2014",
-          "date": "2014-01-01",
-          "from": "拉华尔U17",
-          "to": "拉华尔U19",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2014-2015",
-          "date": "2014-07-01",
-          "from": "拉华尔U19",
-          "to": "拉瓦勒B队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2015-07-01",
-          "from": "拉瓦勒B队",
-          "to": "拉瓦勒",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2017-01-06",
-          "from": "拉瓦勒",
-          "to": "蒙彼利埃",
-          "fee": "150万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-07-01",
-          "from": "蒙彼利埃",
-          "to": "RB莱比锡",
-          "fee": "1600万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-07-26",
-          "from": "RB莱比锡",
-          "to": "巴黎圣日耳曼",
-          "fee": "1200万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-08-28",
-          "from": "巴黎圣日耳曼",
-          "to": "勒沃库森",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2025-06-30",
-          "from": "勒沃库森",
-          "to": "巴黎圣日耳曼",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-08-17",
-          "from": "巴黎圣日耳曼",
-          "to": "桑德兰",
-          "fee": "1200万欧元",
-          "type": "完全所有"
-        }
-      ],
       "positionPreferences": [
         "RB",
         "CB",
         "RCB"
       ],
       "positionsWithCounts": {
-        "RB": 12,
+        "RB": 13,
         "CB": 8,
         "RCB": 5
       },
@@ -2449,8 +2171,8 @@
     {
       "name": "扎卡",
       "number": 34,
-      "caps": 27,
-      "lineups": 25,
+      "caps": 28,
+      "lineups": 26,
       "matches": [
         {
           "id": 2789133,
@@ -2829,14 +2551,28 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "CDM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "CDM": 25
+        "CDM": 26
       },
       "goals": 1,
       "assists": 5,
-      "minutesPlayed": 2250,
+      "minutesPlayed": 2340,
       "substitutedIn": 2,
       "substitutedOut": 2,
       "alternativeNames": [],
@@ -2844,94 +2580,11 @@
       "socialStatus": 1000,
       "nation": "瑞士",
       "height": 186,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2002-2003",
-          "date": "2003-01-01",
-          "from": "康戈迪亚U18",
-          "to": "巴塞尔U17",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2005-2006",
-          "date": "2005-07-01",
-          "from": "巴塞尔U17",
-          "to": "巴塞尔U17",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2006-2007",
-          "date": "2006-07-01",
-          "from": "巴塞尔U17",
-          "to": "巴素利B队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2007-2008",
-          "date": "2007-07-01",
-          "from": "巴素利B队",
-          "to": "巴素利U18",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2008-2009",
-          "date": "2008-07-01",
-          "from": "巴素利U18",
-          "to": "巴素利U21",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2010-2011",
-          "date": "2010-07-01",
-          "from": "巴素利U21",
-          "to": "巴塞尔",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2012-2013",
-          "date": "2012-07-01",
-          "from": "巴塞尔",
-          "to": "门兴格拉德巴赫",
-          "fee": "850万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2016-07-01",
-          "from": "门兴格拉德巴赫",
-          "to": "阿森纳",
-          "fee": "4500万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-07-06",
-          "from": "阿森纳",
-          "to": "勒沃库森",
-          "fee": "1500万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-07-30",
-          "from": "勒沃库森",
-          "to": "桑德兰",
-          "fee": "1500万欧元",
-          "type": "完全所有"
-        }
-      ],
       "positionPreferences": [
         "CDM"
       ],
       "positionsWithCounts": {
-        "CDM": 25
+        "CDM": 26
       },
       "mainPositionGroup": "MF",
       "recommendedPosition": "CDM"
@@ -2939,8 +2592,8 @@
     {
       "name": "N.薩迪基",
       "number": 27,
-      "caps": 26,
-      "lineups": 26,
+      "caps": 27,
+      "lineups": 27,
       "matches": [
         {
           "id": 2789133,
@@ -3305,16 +2958,30 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "CDM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
         "LDM": 5,
-        "CDM": 19,
+        "CDM": 20,
         "CAM": 2
       },
       "goals": 0,
       "assists": 0,
-      "minutesPlayed": 2240,
+      "minutesPlayed": 2330,
       "substitutedIn": 0,
       "substitutedOut": 5,
       "alternativeNames": [],
@@ -3322,56 +2989,13 @@
       "socialStatus": 3000,
       "nation": "刚果民主共和国",
       "height": 173,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2020-2021",
-          "date": "2020-07-01",
-          "from": "安德列治U20",
-          "to": "安德勒赫特U18",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2021-01-01",
-          "from": "安德勒赫特U18",
-          "to": "安德莱赫特B队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-07-01",
-          "from": "安德莱赫特B队",
-          "to": "安德莱赫特",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-07-27",
-          "from": "安德莱赫特",
-          "to": "圣吉罗斯",
-          "fee": "90万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-07-04",
-          "from": "圣吉罗斯",
-          "to": "桑德兰",
-          "fee": "1700万欧元",
-          "type": "完全所有"
-        }
-      ],
       "positionPreferences": [
         "CDM",
         "LDM",
         "CAM"
       ],
       "positionsWithCounts": {
-        "CDM": 19,
+        "CDM": 20,
         "LDM": 5,
         "CAM": 2
       },
@@ -3381,8 +3005,8 @@
     {
       "name": "勒费埃",
       "number": 28,
-      "caps": 29,
-      "lineups": 26,
+      "caps": 30,
+      "lineups": 27,
       "matches": [
         {
           "id": 2789133,
@@ -3789,18 +3413,32 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "LM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
         "LW": 3,
-        "LM": 8,
+        "LM": 9,
         "CAM": 9,
         "ST": 1,
         "CDM": 5
       },
       "goals": 4,
       "assists": 4,
-      "minutesPlayed": 2260,
+      "minutesPlayed": 2350,
       "substitutedIn": 3,
       "substitutedOut": 7,
       "alternativeNames": [],
@@ -3808,75 +3446,16 @@
       "socialStatus": 2500,
       "nation": "法国",
       "height": 173,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2017-2018",
-          "date": "2017-07-01",
-          "from": "罗连安特U19",
-          "to": "罗连安特B队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2019-07-01",
-          "from": "罗连安特B队",
-          "to": "洛里昂",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-07-07",
-          "from": "洛里昂",
-          "to": "雷恩",
-          "fee": "2000万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-07-10",
-          "from": "雷恩",
-          "to": "罗马",
-          "fee": "2300万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2025-01-10",
-          "from": "罗马",
-          "to": "桑德兰",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2025-06-30",
-          "from": "桑德兰",
-          "to": "罗马",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-07-01",
-          "from": "罗马",
-          "to": "桑德兰",
-          "fee": "2300万欧元",
-          "type": "完全所有"
-        }
-      ],
       "positionPreferences": [
-        "CAM",
         "LM",
+        "CAM",
         "CDM",
         "LW",
         "ST"
       ],
       "positionsWithCounts": {
+        "LM": 9,
         "CAM": 9,
-        "LM": 8,
         "CDM": 5,
         "LW": 3,
         "ST": 1
@@ -4281,6 +3860,20 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
@@ -4299,81 +3892,6 @@
       "socialStatus": 2000,
       "nation": "荷兰",
       "height": 184,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2007-2008",
-          "date": "2007-07-01",
-          "from": "奥弗马斯耶格德",
-          "to": "斯巴达20青年队",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2009-2010",
-          "date": "2009-07-01",
-          "from": "斯巴达20青年队",
-          "to": "布拉格斯巴达U23",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2012-2013",
-          "date": "2012-07-01",
-          "from": "布拉格斯巴达U23",
-          "to": "费耶诺德U21",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2016-07-01",
-          "from": "费耶诺德U21",
-          "to": "飞燕诺U17",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2017-07-01",
-          "from": "飞燕诺U17",
-          "to": "飞燕诺U19",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-07-01",
-          "from": "飞燕诺U19",
-          "to": "费耶诺德",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-08-30",
-          "from": "费耶诺德",
-          "to": "RB莱比锡",
-          "fee": "2000万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-09-01",
-          "from": "RB莱比锡",
-          "to": "桑德兰",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2026-06-30",
-          "from": "桑德兰",
-          "to": "RB莱比锡",
-          "fee": "",
-          "type": "租借结束"
-        }
-      ],
       "positionPreferences": [
         "CDM",
         "LCB",
@@ -4392,7 +3910,7 @@
     {
       "name": "塔尔比",
       "number": 7,
-      "caps": 23,
+      "caps": 24,
       "lineups": 14,
       "matches": [
         {
@@ -4744,6 +4262,20 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
@@ -4753,57 +4285,14 @@
       },
       "goals": 4,
       "assists": 1,
-      "minutesPlayed": 1200,
-      "substitutedIn": 9,
+      "minutesPlayed": 1220,
+      "substitutedIn": 10,
       "substitutedOut": 12,
       "alternativeNames": [],
       "age": 21,
       "socialStatus": 2500,
       "nation": "摩洛哥",
       "height": 175,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2015-2016",
-          "date": "2015-07-01",
-          "from": "蒂比兹后备队",
-          "to": "布鲁日青年队",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-07-01",
-          "from": "布鲁日青年队",
-          "to": "布鲁日U18",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-07-01",
-          "from": "布鲁日U18",
-          "to": "布鲁日B队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2023-01-01",
-          "from": "布鲁日B队",
-          "to": "布鲁日",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-07-09",
-          "from": "布鲁日",
-          "to": "桑德兰",
-          "fee": "2000万欧元",
-          "type": "完全所有"
-        }
-      ],
       "positionPreferences": [
         "LM",
         "RW",
@@ -4820,8 +4309,8 @@
     {
       "name": "马克·吉乌",
       "number": 9,
-      "caps": 24,
-      "lineups": 15,
+      "caps": 25,
+      "lineups": 16,
       "matches": [
         {
           "id": 2789133,
@@ -5228,16 +4717,30 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "ST",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "ST": 15
+        "ST": 16
       },
       "goals": 6,
       "assists": 1,
-      "minutesPlayed": 1310,
+      "minutesPlayed": 1380,
       "substitutedIn": 9,
-      "substitutedOut": 11,
+      "substitutedOut": 12,
       "alternativeNames": [
         "布罗贝"
       ],
@@ -5245,86 +4748,11 @@
       "socialStatus": 2500,
       "nation": "荷兰",
       "height": 180,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2010-2011",
-          "date": "2010-07-01",
-          "from": "阿姆斯特丹青年队",
-          "to": "阿贾克斯二队",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2017-07-01",
-          "from": "阿贾克斯二队",
-          "to": "阿积士U17",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-07-01",
-          "from": "阿积士U17",
-          "to": "阿贾克斯U19",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2019-07-01",
-          "from": "阿贾克斯U19",
-          "to": "阿贾克斯青年队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-07-01",
-          "from": "阿贾克斯青年队",
-          "to": "RB莱比锡",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2022-01-01",
-          "from": "RB莱比锡",
-          "to": "阿贾克斯",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2022-06-30",
-          "from": "阿贾克斯",
-          "to": "RB莱比锡",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-07-22",
-          "from": "RB莱比锡",
-          "to": "阿贾克斯",
-          "fee": "1635万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-09-01",
-          "from": "阿贾克斯",
-          "to": "桑德兰",
-          "fee": "2000万欧元",
-          "type": "完全所有"
-        }
-      ],
       "positionPreferences": [
         "ST"
       ],
       "positionsWithCounts": {
-        "ST": 15
+        "ST": 16
       },
       "mainPositionGroup": "FW",
       "recommendedPosition": "ST"
@@ -5504,6 +4932,20 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
@@ -5518,34 +4960,7 @@
       "age": 24,
       "socialStatus": 800,
       "nation": "拉脱维亚",
-      "height": 182,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2018-2019",
-          "date": "2018-07-01",
-          "from": "托特纳姆热刺后备队",
-          "to": "托特纳姆热刺U18",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-07-01",
-          "from": "托特纳姆热刺U18",
-          "to": "托特纳姆热刺U21",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-08-11",
-          "from": "托特纳姆热刺U21",
-          "to": "桑德兰",
-          "fee": "",
-          "type": "完全所有"
-        }
-      ]
+      "height": 182
     },
     "4": {
       "name": "尼尔",
@@ -6257,82 +5672,7 @@
       "age": 27,
       "socialStatus": 2000,
       "nation": "北爱尔兰",
-      "height": 187,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2016-2017",
-          "date": "2016-07-01",
-          "from": "阿森纳青年队",
-          "to": "阿森纳U18",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-07-01",
-          "from": "阿森纳U18",
-          "to": "阿森纳U21",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2019-07-03",
-          "from": "阿森纳U21",
-          "to": "斯文登",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2020-01-22",
-          "from": "斯文登",
-          "to": "阿森纳U21",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-10-05",
-          "from": "阿森纳U21",
-          "to": "布莱克浦",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2021-05-31",
-          "from": "布莱克浦",
-          "to": "阿森纳U21",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-07-01",
-          "from": "阿森纳U21",
-          "to": "米尔沃尔",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2022-05-31",
-          "from": "米尔沃尔",
-          "to": "阿森纳U21",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-07-01",
-          "from": "阿森纳U21",
-          "to": "桑德兰",
-          "fee": "230万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 187
     },
     "6": {
       "name": "海特勒伊达",
@@ -6731,6 +6071,20 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
@@ -6748,87 +6102,12 @@
       "age": 26,
       "socialStatus": 2000,
       "nation": "荷兰",
-      "height": 184,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2007-2008",
-          "date": "2007-07-01",
-          "from": "奥弗马斯耶格德",
-          "to": "斯巴达20青年队",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2009-2010",
-          "date": "2009-07-01",
-          "from": "斯巴达20青年队",
-          "to": "布拉格斯巴达U23",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2012-2013",
-          "date": "2012-07-01",
-          "from": "布拉格斯巴达U23",
-          "to": "费耶诺德U21",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2016-07-01",
-          "from": "费耶诺德U21",
-          "to": "飞燕诺U17",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2017-07-01",
-          "from": "飞燕诺U17",
-          "to": "飞燕诺U19",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-07-01",
-          "from": "飞燕诺U19",
-          "to": "费耶诺德",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-08-30",
-          "from": "费耶诺德",
-          "to": "RB莱比锡",
-          "fee": "2000万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-09-01",
-          "from": "RB莱比锡",
-          "to": "桑德兰",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2026-06-30",
-          "from": "桑德兰",
-          "to": "RB莱比锡",
-          "fee": "",
-          "type": "租借结束"
-        }
-      ]
+      "height": 184
     },
     "7": {
       "name": "塔尔比",
       "number": 7,
-      "caps": 23,
+      "caps": 24,
       "lineups": 14,
       "matches": [
         {
@@ -7180,6 +6459,20 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
@@ -7189,63 +6482,20 @@
       },
       "goals": 4,
       "assists": 1,
-      "minutesPlayed": 1200,
-      "substitutedIn": 9,
+      "minutesPlayed": 1220,
+      "substitutedIn": 10,
       "substitutedOut": 12,
       "alternativeNames": [],
       "age": 21,
       "socialStatus": 2500,
       "nation": "摩洛哥",
-      "height": 175,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2015-2016",
-          "date": "2015-07-01",
-          "from": "蒂比兹后备队",
-          "to": "布鲁日青年队",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-07-01",
-          "from": "布鲁日青年队",
-          "to": "布鲁日U18",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-07-01",
-          "from": "布鲁日U18",
-          "to": "布鲁日B队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2023-01-01",
-          "from": "布鲁日B队",
-          "to": "布鲁日",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-07-09",
-          "from": "布鲁日",
-          "to": "桑德兰",
-          "fee": "2000万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 175
     },
     "9": {
       "name": "马克·吉乌",
       "number": 9,
-      "caps": 24,
-      "lineups": 15,
+      "caps": 25,
+      "lineups": 16,
       "matches": [
         {
           "id": 2789133,
@@ -7652,98 +6902,37 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "ST",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "ST": 15
+        "ST": 16
       },
       "goals": 6,
       "assists": 1,
-      "minutesPlayed": 1310,
+      "minutesPlayed": 1380,
       "substitutedIn": 9,
-      "substitutedOut": 11,
+      "substitutedOut": 12,
       "alternativeNames": [
         "布罗贝"
       ],
       "age": 24,
       "socialStatus": 2500,
       "nation": "荷兰",
-      "height": 180,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2010-2011",
-          "date": "2010-07-01",
-          "from": "阿姆斯特丹青年队",
-          "to": "阿贾克斯二队",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2017-07-01",
-          "from": "阿贾克斯二队",
-          "to": "阿积士U17",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-07-01",
-          "from": "阿积士U17",
-          "to": "阿贾克斯U19",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2019-07-01",
-          "from": "阿贾克斯U19",
-          "to": "阿贾克斯青年队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-07-01",
-          "from": "阿贾克斯青年队",
-          "to": "RB莱比锡",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2022-01-01",
-          "from": "RB莱比锡",
-          "to": "阿贾克斯",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2022-06-30",
-          "from": "阿贾克斯",
-          "to": "RB莱比锡",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-07-22",
-          "from": "RB莱比锡",
-          "to": "阿贾克斯",
-          "fee": "1635万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-09-01",
-          "from": "阿贾克斯",
-          "to": "桑德兰",
-          "fee": "2000万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 180
     },
     "10": {
       "name": "罗伯茨",
@@ -7879,80 +7068,13 @@
       "age": 23,
       "socialStatus": 1700,
       "nation": "厄瓜多尔",
-      "height": 183,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2017-2018",
-          "date": "2018-01-01",
-          "from": "约森独立队U20",
-          "to": "北美U20",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2020-01-01",
-          "from": "北美U20",
-          "to": "基多体育大学U20",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-08-01",
-          "from": "基多体育大学U20",
-          "to": "马竞金武",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-12-31",
-          "from": "马竞金武",
-          "to": "基多体育大学U20",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2021-01-01",
-          "from": "基多体育大学U20",
-          "to": "基多体育大学后备队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-07-01",
-          "from": "基多体育大学后备队",
-          "to": "基多体育大学",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-07-01",
-          "from": "基多体育大学",
-          "to": "安德莱赫特",
-          "fee": "190万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2026-02-02",
-          "from": "安德莱赫特",
-          "to": "桑德兰",
-          "fee": "1734万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 183
     },
     "11": {
       "name": "里格",
       "number": 11,
-      "caps": 13,
-      "lineups": 8,
+      "caps": 14,
+      "lineups": 9,
       "matches": [
         {
           "id": 2789133,
@@ -8359,50 +7481,37 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "RM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
         "RDM": 1,
         "CAM": 2,
-        "RM": 5
+        "RM": 6
       },
       "goals": 0,
       "assists": 0,
-      "minutesPlayed": 700,
+      "minutesPlayed": 770,
       "substitutedIn": 5,
-      "substitutedOut": 6,
+      "substitutedOut": 7,
       "alternativeNames": [],
       "age": 19,
       "socialStatus": 2500,
       "nation": "英格兰",
-      "height": 177,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2021-2022",
-          "date": "2021-07-01",
-          "from": "桑德兰青年队",
-          "to": "桑德兰U18",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-08-01",
-          "from": "桑德兰U18",
-          "to": "桑德兰U21",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-07-01",
-          "from": "桑德兰U21",
-          "to": "桑德兰",
-          "fee": "",
-          "type": "完全所有"
-        }
-      ]
+      "height": 177
     },
     "12": {
       "name": "伊莱泽·梅恩达",
@@ -8843,6 +7952,20 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
@@ -8858,48 +7981,13 @@
       "age": 21,
       "socialStatus": 1800,
       "nation": "西班牙",
-      "height": 180,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2022-2023",
-          "date": "2022-02-02",
-          "from": "索绍U19",
-          "to": "索肖",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-07-28",
-          "from": "索肖",
-          "to": "桑德兰",
-          "fee": "80万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2024-02-01",
-          "from": "桑德兰",
-          "to": "希伯尼安",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2024-05-31",
-          "from": "希伯尼安",
-          "to": "桑德兰",
-          "fee": "",
-          "type": "租借结束"
-        }
-      ]
+      "height": 180
     },
     "13": {
       "name": "奥尼安",
       "number": 13,
-      "caps": 8,
-      "lineups": 2,
+      "caps": 9,
+      "lineups": 3,
       "matches": [
         {
           "id": 2789187,
@@ -9208,81 +8296,36 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
         "RB": 1,
-        "CB": 1
+        "CB": 2
       },
       "goals": 0,
       "assists": 0,
-      "minutesPlayed": 300,
+      "minutesPlayed": 390,
       "substitutedIn": 6,
       "substitutedOut": 0,
       "alternativeNames": [],
       "age": 32,
       "socialStatus": 100,
       "nation": "英格兰",
-      "height": 174,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2013-2014",
-          "date": "2013-07-01",
-          "from": "屈福特U18",
-          "to": "沃特福德U23",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2013-2014",
-          "date": "2014-03-27",
-          "from": "沃特福德U23",
-          "to": "石威德",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2013-2014",
-          "date": "2014-04-27",
-          "from": "石威德",
-          "to": "沃特福德U23",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2014-2015",
-          "date": "2014-08-22",
-          "from": "沃特福德U23",
-          "to": "石威德",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2014-2015",
-          "date": "2015-05-31",
-          "from": "石威德",
-          "to": "沃特福德U23",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2015-07-27",
-          "from": "沃特福德U23",
-          "to": "韦康比流浪者",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-07-30",
-          "from": "韦康比流浪者",
-          "to": "桑德兰",
-          "fee": "",
-          "type": "完全所有"
-        }
-      ]
+      "height": 174
     },
     "14": {
       "name": "罗曼·蒙德尔",
@@ -9513,48 +8556,13 @@
       "age": 23,
       "socialStatus": 800,
       "nation": "英格兰",
-      "height": 172,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2019-2020",
-          "date": "2019-07-01",
-          "from": "托特纳姆热刺后备队",
-          "to": "托特纳姆热刺U18",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-07-01",
-          "from": "托特纳姆热刺U18",
-          "to": "托特纳姆热刺U21",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-07-01",
-          "from": "托特纳姆热刺U21",
-          "to": "标准列日",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2024-02-01",
-          "from": "标准列日",
-          "to": "桑德兰",
-          "fee": "180万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 172
     },
     "15": {
       "name": "阿尔德雷特",
       "number": 15,
-      "caps": 27,
-      "lineups": 26,
+      "caps": 28,
+      "lineups": 27,
       "matches": [
         {
           "id": 2789133,
@@ -9947,127 +8955,42 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "CB": 24,
+        "CB": 25,
         "LCB": 2
       },
       "goals": 1,
       "assists": 1,
-      "minutesPlayed": 2300,
+      "minutesPlayed": 2390,
       "substitutedIn": 1,
       "substitutedOut": 3,
       "alternativeNames": [],
       "age": 30,
       "socialStatus": 1500,
       "nation": "巴拉圭",
-      "height": 188,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2016-2017",
-          "date": "2016-07-01",
-          "from": "波坦奴U20",
-          "to": "波特诺山丘",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2017-07-31",
-          "from": "波特诺山丘",
-          "to": "拉普拉塔体操",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2018-06-30",
-          "from": "拉普拉塔体操",
-          "to": "波特诺山丘",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-07-20",
-          "from": "波特诺山丘",
-          "to": "飓风队",
-          "fee": "138万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2019-07-01",
-          "from": "飓风队",
-          "to": "巴塞尔",
-          "fee": "170万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-10-05",
-          "from": "巴塞尔",
-          "to": "柏林赫塔",
-          "fee": "400万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-07-12",
-          "from": "柏林赫塔",
-          "to": "巴伦西亚",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2022-06-30",
-          "from": "巴伦西亚",
-          "to": "柏林赫塔",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-08-19",
-          "from": "柏林赫塔",
-          "to": "赫塔菲",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2023-06-30",
-          "from": "赫塔菲",
-          "to": "柏林赫塔",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-07-01",
-          "from": "柏林赫塔",
-          "to": "赫塔菲",
-          "fee": "400万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-08-12",
-          "from": "赫塔菲",
-          "to": "桑德兰",
-          "fee": "1160万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 188
     },
     "17": {
       "name": "曼达瓦",
       "number": 17,
-      "caps": 18,
-      "lineups": 17,
+      "caps": 19,
+      "lineups": 18,
       "matches": [
         {
           "id": 2789133,
@@ -10320,125 +9243,40 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "LB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "LB": 17
+        "LB": 18
       },
       "goals": 0,
       "assists": 1,
-      "minutesPlayed": 1530,
+      "minutesPlayed": 1620,
       "substitutedIn": 1,
       "substitutedOut": 1,
       "alternativeNames": [],
       "age": 32,
       "socialStatus": 500,
       "nation": "莫桑比克",
-      "height": 180,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2014-2015",
-          "date": "2014-07-01",
-          "from": "贝拉铁路",
-          "to": "穆库玛纳",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2016-01-01",
-          "from": "穆库玛纳",
-          "to": "本菲卡B队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2017-01-05",
-          "from": "本菲卡B队",
-          "to": "化夫",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2017-06-30",
-          "from": "化夫",
-          "to": "本菲卡B队",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2017-07-01",
-          "from": "本菲卡B队",
-          "to": "科维良",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2018-06-30",
-          "from": "科维良",
-          "to": "本菲卡B队",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-07-08",
-          "from": "本菲卡B队",
-          "to": "比兰尼塞斯",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2019-01-31",
-          "from": "比兰尼塞斯",
-          "to": "里尔",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2019-06-30",
-          "from": "里尔",
-          "to": "比兰尼塞斯",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2019-07-01",
-          "from": "比兰尼塞斯",
-          "to": "里尔",
-          "fee": "300万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2022-01-31",
-          "from": "里尔",
-          "to": "马德里竞技",
-          "fee": "300万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-07-08",
-          "from": "马德里竞技",
-          "to": "桑德兰",
-          "fee": "",
-          "type": "自由转会"
-        }
-      ]
+      "height": 180
     },
     "18": {
       "name": "威尔逊伊西多",
       "number": 18,
-      "caps": 26,
+      "caps": 27,
       "lineups": 11,
       "matches": [
         {
@@ -10846,6 +9684,20 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
@@ -10853,143 +9705,20 @@
       },
       "goals": 4,
       "assists": 0,
-      "minutesPlayed": 1070,
-      "substitutedIn": 15,
+      "minutesPlayed": 1090,
+      "substitutedIn": 16,
       "substitutedOut": 11,
       "alternativeNames": [],
       "age": 26,
       "socialStatus": 1800,
       "nation": "海地",
-      "height": 186,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2015-2016",
-          "date": "2015-07-01",
-          "from": "雷恩青年队",
-          "to": "雷恩U17",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2017-07-01",
-          "from": "雷恩U17",
-          "to": "雷恩U19",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-07-01",
-          "from": "雷恩U19",
-          "to": "摩纳哥B队",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2019-07-01",
-          "from": "摩纳哥B队",
-          "to": "摩纳哥",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2019-09-02",
-          "from": "摩纳哥",
-          "to": "拉瓦勒",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2020-06-30",
-          "from": "拉瓦勒",
-          "to": "摩纳哥",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-08-26",
-          "from": "摩纳哥",
-          "to": "巴斯蒂亚波高",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2021-06-30",
-          "from": "巴斯蒂亚波高",
-          "to": "摩纳哥",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2022-01-22",
-          "from": "摩纳哥",
-          "to": "莫斯科火车头",
-          "fee": "350万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-09-09",
-          "from": "莫斯科火车头",
-          "to": "圣彼得堡泽尼特",
-          "fee": "135万欧元",
-          "type": "租借"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2024-06-30",
-          "from": "圣彼得堡泽尼特",
-          "to": "莫斯科火车头",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-07-01",
-          "from": "莫斯科火车头",
-          "to": "圣彼得堡泽尼特",
-          "fee": "400万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-08-23",
-          "from": "圣彼得堡泽尼特",
-          "to": "桑德兰",
-          "fee": "75万欧元",
-          "type": "租借"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2025-01-31",
-          "from": "桑德兰",
-          "to": "圣彼得堡泽尼特",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2025-02-01",
-          "from": "圣彼得堡泽尼特",
-          "to": "桑德兰",
-          "fee": "600万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 186
     },
     "19": {
       "name": "H.迪亚拉",
       "number": 19,
-      "caps": 14,
-      "lineups": 12,
+      "caps": 15,
+      "lineups": 13,
       "matches": [
         {
           "id": 2789133,
@@ -11186,64 +9915,43 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "CAM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 1,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
         "RDM": 4,
         "RM": 1,
-        "CAM": 7
+        "CAM": 8
       },
       "goals": 2,
-      "assists": 0,
-      "minutesPlayed": 1040,
+      "assists": 1,
+      "minutesPlayed": 1130,
       "substitutedIn": 2,
       "substitutedOut": 4,
       "alternativeNames": [],
       "age": 22,
       "socialStatus": 3200,
       "nation": "塞内加尔",
-      "height": 178,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2019-2020",
-          "date": "2019-07-01",
-          "from": "斯特拉斯堡青年队",
-          "to": "史特拉斯堡U17",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-07-01",
-          "from": "史特拉斯堡U17",
-          "to": "史特拉斯堡U19",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-07-01",
-          "from": "史特拉斯堡U19",
-          "to": "斯特拉斯堡",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-07-01",
-          "from": "斯特拉斯堡",
-          "to": "桑德兰",
-          "fee": "3150万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 178
     },
     "20": {
       "name": "穆杰莱",
       "number": 20,
-      "caps": 25,
-      "lineups": 25,
+      "caps": 26,
+      "lineups": 26,
       "matches": [
         {
           "id": 2789156,
@@ -11608,106 +10316,37 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "RB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 1,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
         "CB": 8,
-        "RB": 12,
+        "RB": 13,
         "RCB": 5
       },
-      "goals": 2,
+      "goals": 3,
       "assists": 3,
-      "minutesPlayed": 2210,
+      "minutesPlayed": 2280,
       "substitutedIn": 0,
-      "substitutedOut": 2,
+      "substitutedOut": 3,
       "alternativeNames": [],
       "age": 29,
       "socialStatus": 1800,
       "nation": "法国",
-      "height": 187,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2013-2014",
-          "date": "2013-07-01",
-          "from": "巴黎足球会青年队",
-          "to": "拉华尔U17",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2013-2014",
-          "date": "2014-01-01",
-          "from": "拉华尔U17",
-          "to": "拉华尔U19",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2014-2015",
-          "date": "2014-07-01",
-          "from": "拉华尔U19",
-          "to": "拉瓦勒B队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2015-07-01",
-          "from": "拉瓦勒B队",
-          "to": "拉瓦勒",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2017-01-06",
-          "from": "拉瓦勒",
-          "to": "蒙彼利埃",
-          "fee": "150万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-07-01",
-          "from": "蒙彼利埃",
-          "to": "RB莱比锡",
-          "fee": "1600万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-07-26",
-          "from": "RB莱比锡",
-          "to": "巴黎圣日耳曼",
-          "fee": "1200万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-08-28",
-          "from": "巴黎圣日耳曼",
-          "to": "勒沃库森",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2025-06-30",
-          "from": "勒沃库森",
-          "to": "巴黎圣日耳曼",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-08-17",
-          "from": "巴黎圣日耳曼",
-          "to": "桑德兰",
-          "fee": "1200万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 187
     },
     "21": {
       "name": "莫尔",
@@ -11782,96 +10421,13 @@
       "age": 36,
       "socialStatus": 10,
       "nation": "英格兰",
-      "height": 191,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2008-2009",
-          "date": "2008-07-01",
-          "from": "布罗丁镇",
-          "to": "法保罗夫",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2009-2010",
-          "date": "2009-08-11",
-          "from": "法保罗夫",
-          "to": "布伦特福德",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2010-2011",
-          "date": "2010-10-01",
-          "from": "布伦特福德",
-          "to": "贝辛斯托克",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2010-2011",
-          "date": "2011-01-01",
-          "from": "贝辛斯托克",
-          "to": "布伦特福德",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2013-2014",
-          "date": "2013-07-29",
-          "from": "布伦特福德",
-          "to": "卡迪夫城",
-          "fee": "17.5万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2013-2014",
-          "date": "2014-01-30",
-          "from": "卡迪夫城",
-          "to": "布里斯托城",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2013-2014",
-          "date": "2014-05-31",
-          "from": "布里斯托城",
-          "to": "卡迪夫城",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2016-08-19",
-          "from": "卡迪夫城",
-          "to": "谢菲尔德联队",
-          "fee": "58万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-07-03",
-          "from": "谢菲尔德联队",
-          "to": "考文垂",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-07-01",
-          "from": "考文垂",
-          "to": "桑德兰",
-          "fee": "",
-          "type": "自由转会"
-        }
-      ]
+      "height": 191
     },
     "22": {
       "name": "罗宾罗夫斯",
       "number": 22,
-      "caps": 28,
-      "lineups": 28,
+      "caps": 29,
+      "lineups": 29,
       "matches": [
         {
           "id": 2789133,
@@ -12264,56 +10820,35 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "GK",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "GK": 28
+        "GK": 29
       },
       "goals": 0,
       "assists": 0,
-      "minutesPlayed": 2520,
+      "minutesPlayed": 2610,
       "substitutedIn": 0,
       "substitutedOut": 0,
       "alternativeNames": [],
       "age": 23,
       "socialStatus": 2500,
       "nation": "荷兰",
-      "height": 193,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2018-2019",
-          "date": "2018-07-01",
-          "from": "尼美根后备队",
-          "to": "尼美根U17",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-07-01",
-          "from": "尼美根U17",
-          "to": "特瑞尼克U21",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-07-01",
-          "from": "特瑞尼克U21",
-          "to": "奈梅亨",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-08-01",
-          "from": "奈梅亨",
-          "to": "桑德兰",
-          "fee": "1050万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 193
     },
     "25": {
       "name": "特劳雷",
@@ -12545,136 +11080,13 @@
       "age": 31,
       "socialStatus": 500,
       "nation": "布基纳法索",
-      "height": 181,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2010-2011",
-          "date": "2010-07-01",
-          "from": "欧塞尔U16",
-          "to": "欧塞尔U17",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2012-2013",
-          "date": "2012-07-01",
-          "from": "欧塞尔U17",
-          "to": "欧塞尔U19",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2013-2014",
-          "date": "2013-10-31",
-          "from": "欧塞尔U19",
-          "to": "切尔西U21",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2013-2014",
-          "date": "2014-01-01",
-          "from": "切尔西U21",
-          "to": "切尔西",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2013-2014",
-          "date": "2014-01-02",
-          "from": "切尔西",
-          "to": "维迪斯",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2014-2015",
-          "date": "2015-06-30",
-          "from": "维迪斯",
-          "to": "切尔西",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2016-08-12",
-          "from": "切尔西",
-          "to": "阿贾克斯",
-          "fee": "200万欧元",
-          "type": "租借"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2017-06-30",
-          "from": "阿贾克斯",
-          "to": "切尔西",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2017-07-01",
-          "from": "切尔西",
-          "to": "里昂",
-          "fee": "1000万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-09-19",
-          "from": "里昂",
-          "to": "阿斯顿维拉",
-          "fee": "1840万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-08-22",
-          "from": "阿斯顿维拉",
-          "to": "伊斯坦布尔巴萨克塞尔",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2023-01-31",
-          "from": "伊斯坦布尔巴萨克塞尔",
-          "to": "阿斯顿维拉",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2024-02-01",
-          "from": "阿斯顿维拉",
-          "to": "比利亚雷亚尔",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-07-15",
-          "from": "比利亚雷亚尔",
-          "to": "阿贾克斯",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-09-01",
-          "from": "阿贾克斯",
-          "to": "桑德兰",
-          "fee": "290万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 181
     },
     "27": {
       "name": "N.薩迪基",
       "number": 27,
-      "caps": 26,
-      "lineups": 26,
+      "caps": 27,
+      "lineups": 27,
       "matches": [
         {
           "id": 2789133,
@@ -13039,72 +11451,43 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "CDM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
         "LDM": 5,
-        "CDM": 19,
+        "CDM": 20,
         "CAM": 2
       },
       "goals": 0,
       "assists": 0,
-      "minutesPlayed": 2240,
+      "minutesPlayed": 2330,
       "substitutedIn": 0,
       "substitutedOut": 5,
       "alternativeNames": [],
       "age": 22,
       "socialStatus": 3000,
       "nation": "刚果民主共和国",
-      "height": 173,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2020-2021",
-          "date": "2020-07-01",
-          "from": "安德列治U20",
-          "to": "安德勒赫特U18",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2021-01-01",
-          "from": "安德勒赫特U18",
-          "to": "安德莱赫特B队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-07-01",
-          "from": "安德莱赫特B队",
-          "to": "安德莱赫特",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-07-27",
-          "from": "安德莱赫特",
-          "to": "圣吉罗斯",
-          "fee": "90万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-07-04",
-          "from": "圣吉罗斯",
-          "to": "桑德兰",
-          "fee": "1700万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 173
     },
     "28": {
       "name": "勒费埃",
       "number": 28,
-      "caps": 29,
-      "lineups": 26,
+      "caps": 30,
+      "lineups": 27,
       "matches": [
         {
           "id": 2789133,
@@ -13511,190 +11894,39 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "LM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
         "LW": 3,
-        "LM": 8,
+        "LM": 9,
         "CAM": 9,
         "ST": 1,
         "CDM": 5
       },
       "goals": 4,
       "assists": 4,
-      "minutesPlayed": 2260,
+      "minutesPlayed": 2350,
       "substitutedIn": 3,
       "substitutedOut": 7,
       "alternativeNames": [],
       "age": 26,
       "socialStatus": 2500,
       "nation": "法国",
-      "height": 173,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2017-2018",
-          "date": "2017-07-01",
-          "from": "罗连安特U19",
-          "to": "罗连安特B队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2019-07-01",
-          "from": "罗连安特B队",
-          "to": "洛里昂",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-07-07",
-          "from": "洛里昂",
-          "to": "雷恩",
-          "fee": "2000万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-07-10",
-          "from": "雷恩",
-          "to": "罗马",
-          "fee": "2300万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2025-01-10",
-          "from": "罗马",
-          "to": "桑德兰",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2025-06-30",
-          "from": "桑德兰",
-          "to": "罗马",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-07-01",
-          "from": "罗马",
-          "to": "桑德兰",
-          "fee": "2300万欧元",
-          "type": "完全所有"
-        }
-      ]
-    },
-    "30": {
-      "name": "米兰·阿列克西奇",
-      "number": 30,
-      "caps": 0,
-      "lineups": 0,
-      "matches": [
-        {
-          "id": 2789400,
-          "round": 28,
-          "position": "Substitute",
-          "caps": 0,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0.75,
-          "score": "1-1",
-          "handicapResult": "win",
-          "totalLine": "2.5",
-          "totalGoalsResult": "under"
-        },
-        {
-          "id": 2789414,
-          "round": 29,
-          "position": "Substitute",
-          "caps": 0,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0.5,
-          "score": "0-1",
-          "handicapResult": "win",
-          "totalLine": "2/2.5",
-          "totalGoalsResult": "under"
-        }
-      ],
-      "positions": {},
-      "goals": 0,
-      "assists": 0,
-      "minutesPlayed": 0,
-      "substitutedIn": 0,
-      "substitutedOut": 0,
-      "alternativeNames": [],
-      "age": 21,
-      "socialStatus": 70,
-      "nation": "塞尔维亚",
-      "height": 179,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2020-2021",
-          "date": "2020-07-01",
-          "from": "库卡里基青年队",
-          "to": "古拉瑞奇U16",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-07-13",
-          "from": "古拉瑞奇U16",
-          "to": "柏迪逊U17",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-07-01",
-          "from": "柏迪逊U17",
-          "to": "柏迪逊U19",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-09-15",
-          "from": "柏迪逊U19",
-          "to": "拉尼奇1923",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-08-30",
-          "from": "拉尼奇1923",
-          "to": "桑德兰",
-          "fee": "350万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-09-05",
-          "from": "桑德兰",
-          "to": "克拉科维亚",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2026-01-25",
-          "from": "克拉科维亚",
-          "to": "桑德兰",
-          "fee": "",
-          "type": "租借结束"
-        }
-      ]
+      "height": 173
     },
     "31": {
       "name": "埃尔伯格·梅克尔",
@@ -13799,6 +12031,20 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
@@ -13813,95 +12059,12 @@
       "age": 23,
       "socialStatus": 300,
       "nation": "瑞典",
-      "height": 191,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2019-2020",
-          "date": "2019-07-01",
-          "from": "贝尔加",
-          "to": "马模U16",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2020-01-01",
-          "from": "马模U16",
-          "to": "马模U19",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2021-01-01",
-          "from": "马模U19",
-          "to": "马尔默",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2022-01-14",
-          "from": "马尔默",
-          "to": "IFK马尔默",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-11-30",
-          "from": "IFK马尔默",
-          "to": "马尔默",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-07-18",
-          "from": "马尔默",
-          "to": "阿里安娜",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-11-30",
-          "from": "阿里安娜",
-          "to": "马尔默",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2024-02-01",
-          "from": "马尔默",
-          "to": "特雷勒堡",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-11-30",
-          "from": "特雷勒堡",
-          "to": "马尔默",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2026-02-01",
-          "from": "马尔默",
-          "to": "桑德兰",
-          "fee": "345万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 191
     },
     "32": {
       "name": "特雷休姆",
       "number": 32,
-      "caps": 31,
+      "caps": 32,
       "lineups": 29,
       "matches": [
         {
@@ -14337,6 +12500,20 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
@@ -14346,63 +12523,20 @@
       },
       "goals": 0,
       "assists": 1,
-      "minutesPlayed": 2530,
-      "substitutedIn": 2,
+      "minutesPlayed": 2550,
+      "substitutedIn": 3,
       "substitutedOut": 6,
       "alternativeNames": [],
       "age": 24,
       "socialStatus": 2200,
       "nation": "北爱尔兰",
-      "height": 180,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2019-2020",
-          "date": "2019-07-01",
-          "from": "林菲尔德U19",
-          "to": "林菲尔德后备队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-09-11",
-          "from": "林菲尔德后备队",
-          "to": "巴利米纳联队",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2021-05-31",
-          "from": "巴利米纳联队",
-          "to": "林菲尔德后备队",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2021-07-01",
-          "from": "林菲尔德后备队",
-          "to": "林菲尔德",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2022-01-04",
-          "from": "林菲尔德",
-          "to": "桑德兰",
-          "fee": "24万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 180
     },
     "34": {
       "name": "扎卡",
       "number": 34,
-      "caps": 27,
-      "lineups": 25,
+      "caps": 28,
+      "lineups": 26,
       "matches": [
         {
           "id": 2789133,
@@ -14781,104 +12915,35 @@
           "handicapResult": "win",
           "totalLine": "2.5",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "CDM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "CDM": 25
+        "CDM": 26
       },
       "goals": 1,
       "assists": 5,
-      "minutesPlayed": 2250,
+      "minutesPlayed": 2340,
       "substitutedIn": 2,
       "substitutedOut": 2,
       "alternativeNames": [],
       "age": 34,
       "socialStatus": 1000,
       "nation": "瑞士",
-      "height": 186,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
-        {
-          "season": "2002-2003",
-          "date": "2003-01-01",
-          "from": "康戈迪亚U18",
-          "to": "巴塞尔U17",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2005-2006",
-          "date": "2005-07-01",
-          "from": "巴塞尔U17",
-          "to": "巴塞尔U17",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2006-2007",
-          "date": "2006-07-01",
-          "from": "巴塞尔U17",
-          "to": "巴素利B队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2007-2008",
-          "date": "2007-07-01",
-          "from": "巴素利B队",
-          "to": "巴素利U18",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2008-2009",
-          "date": "2008-07-01",
-          "from": "巴素利U18",
-          "to": "巴素利U21",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2010-2011",
-          "date": "2010-07-01",
-          "from": "巴素利U21",
-          "to": "巴塞尔",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2012-2013",
-          "date": "2012-07-01",
-          "from": "巴塞尔",
-          "to": "门兴格拉德巴赫",
-          "fee": "850万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2016-07-01",
-          "from": "门兴格拉德巴赫",
-          "to": "阿森纳",
-          "fee": "4500万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-07-06",
-          "from": "阿森纳",
-          "to": "勒沃库森",
-          "fee": "1500万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-07-30",
-          "from": "勒沃库森",
-          "to": "桑德兰",
-          "fee": "1500万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 186
     },
     "37": {
       "name": "塔碧",
@@ -14913,50 +12978,358 @@
       "age": 21,
       "socialStatus": 300,
       "nation": "科特迪瓦",
-      "height": 175,
-      "currentClub": "桑德兰",
-      "recentTransfers": [
+      "height": 175
+    },
+    "50": {
+      "name": "琼斯",
+      "number": 50,
+      "caps": 0,
+      "lineups": 0,
+      "matches": [
         {
-          "season": "2023-2024",
-          "date": "2023-07-01",
-          "from": "阿比让青年",
-          "to": "夏普尔纳托布鲁克U19",
-          "fee": "",
-          "type": "完全所有"
+          "id": 2789133,
+          "round": 1,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": -0.25,
+          "score": "3-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "over"
         },
         {
-          "season": "2024-2025",
-          "date": "2024-07-01",
-          "from": "夏普尔纳托布鲁克U19",
-          "to": "尼坦耶马卡比",
-          "fee": "",
-          "type": "完全所有"
+          "id": 2789163,
+          "round": 4,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.75,
+          "score": "0-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         },
         {
-          "season": "2024-2025",
-          "date": "2024-09-01",
-          "from": "尼坦耶马卡比",
-          "to": "迪克瓦夏普尔",
-          "fee": "",
-          "type": "租借"
+          "id": 2789213,
+          "round": 9,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3",
+          "totalGoalsResult": "draw"
         },
         {
-          "season": "2025-2026",
-          "date": "2026-01-15",
-          "from": "迪克瓦夏普尔",
-          "to": "尼坦耶马卡比",
-          "fee": "",
-          "type": "租借结束"
+          "id": 2789291,
+          "round": 17,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1,
+          "score": "0-0",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         },
         {
-          "season": "2025-2026",
-          "date": "2026-01-16",
-          "from": "尼坦耶马卡比",
-          "to": "桑德兰",
-          "fee": "400万欧元",
-          "type": "完全所有"
+          "id": 2789307,
+          "round": 18,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-1",
+          "handicapResult": "draw",
+          "totalLine": "2/2.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789317,
+          "round": 19,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": -1.25,
+          "score": "0-0",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789327,
+          "round": 20,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789331,
+          "round": 21,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "3-0",
+          "handicapResult": "lose",
+          "totalLine": "2.5",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789400,
+          "round": 28,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.75,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789414,
+          "round": 29,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "0-1",
+          "handicapResult": "win",
+          "totalLine": "2/2.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789427,
+          "round": 30,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": -0.25,
+          "score": "0-1",
+          "handicapResult": "lose",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789436,
+          "round": 31,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.75,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
         }
-      ]
+      ],
+      "positions": {},
+      "goals": 0,
+      "assists": 0,
+      "minutesPlayed": 0,
+      "substitutedIn": 0,
+      "substitutedOut": 0,
+      "alternativeNames": [],
+      "age": 0,
+      "socialStatus": 0,
+      "nation": "",
+      "height": 0
+    },
+    "51": {
+      "name": "琼斯",
+      "number": 51,
+      "caps": 0,
+      "lineups": 0,
+      "matches": [
+        {
+          "id": 2789307,
+          "round": 18,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-1",
+          "handicapResult": "draw",
+          "totalLine": "2/2.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789366,
+          "round": 24,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.75,
+          "score": "3-0",
+          "handicapResult": "win",
+          "totalLine": "2/2.5",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789400,
+          "round": 28,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.75,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789414,
+          "round": 29,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "0-1",
+          "handicapResult": "win",
+          "totalLine": "2/2.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789427,
+          "round": 30,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": -0.25,
+          "score": "0-1",
+          "handicapResult": "lose",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789436,
+          "round": 31,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.75,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789447,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
+        }
+      ],
+      "positions": {},
+      "goals": 0,
+      "assists": 0,
+      "minutesPlayed": 0,
+      "substitutedIn": 0,
+      "substitutedOut": 0,
+      "alternativeNames": [],
+      "age": 20,
+      "socialStatus": 0,
+      "nation": "英格兰",
+      "height": 0
+    },
+    "52": {
+      "name": "琼斯",
+      "number": 52,
+      "caps": 0,
+      "lineups": 0,
+      "matches": [
+        {
+          "id": 2789427,
+          "round": 30,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": -0.25,
+          "score": "0-1",
+          "handicapResult": "lose",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
+        }
+      ],
+      "positions": {},
+      "goals": 0,
+      "assists": 0,
+      "minutesPlayed": 0,
+      "substitutedIn": 0,
+      "substitutedOut": 0,
+      "alternativeNames": [],
+      "age": 0,
+      "socialStatus": 0,
+      "nation": "",
+      "height": 0
     }
   },
   "formationStats": {
@@ -14965,14 +13338,14 @@
     "442": 3,
     "541": 5,
     "4141": 3,
-    "4231": 14
+    "4231": 15
   },
   "asianHandicap": {
-    "total": 31,
-    "win": 19,
+    "total": 32,
+    "win": 20,
     "lose": 10,
     "draw": 2,
-    "winRate": "61.29",
+    "winRate": "62.50",
     "matches": [
       {
         "score": "3-0",
@@ -15190,15 +13563,22 @@
         "status": "guest",
         "handicapResult": "away_win",
         "teamResult": "win"
+      },
+      {
+        "score": "1-0",
+        "handicap": 0,
+        "status": "home",
+        "handicapResult": "home_win",
+        "teamResult": "win"
       }
     ]
   },
   "totalGoals": {
-    "total": 31,
+    "total": 32,
     "over": 11,
-    "under": 18,
+    "under": 19,
     "draw": 2,
-    "overRate": "35.48",
+    "overRate": "34.38",
     "matches": [
       {
         "score": "3-0",
@@ -15447,6 +13827,14 @@
         "status": "guest",
         "totalGoals": 3,
         "result": "over"
+      },
+      {
+        "score": "1-0",
+        "totalLine": "2.5",
+        "totalLineValue": 2.5,
+        "status": "home",
+        "totalGoals": 1,
+        "result": "under"
       }
     ]
   }

@@ -17,10 +17,19 @@ function cupMatchReferer(cupSerial) {
 /**
  * 联赛赛程页 Referer（赛季目录 + 联赛序号）
  * @param {string} leagueSerial 如 '36' | '15'
- * @param {string} season 如 '2025-2026' | '2026'
+ * @param {string} season 球探路径赛季段：欧冠等常为 '25-26'；亚冠联2 / 部分联赛为全写 '2025-2026'；单年如 '2026'
  */
 function leagueMatchReferer(leagueSerial, season) {
   return `http://zq.titan007.com/cn/League/${season}/${leagueSerial}.html`;
+}
+
+/**
+ * 子联赛资料页 Referer（赛季目录 + 联赛序号），如墨西联
+ * @param {string} leagueSerial 如 '140'
+ * @param {string} season 如 '2025-2026'
+ */
+function subLeagueMatchReferer(leagueSerial, season) {
+  return `http://zq.titan007.com/cn/SubLeague/${season}/${leagueSerial}.html`;
 }
 
 const targets = {
@@ -72,8 +81,23 @@ const targets = {
     matchResultDataUrl: (basename, season) =>
       `http://zq.titan007.com/jsData/matchResult/${season}/${basename}.js?version=${versionTag()}`,
 
+    /**
+     * 亚盘盘路 JS（球探实际路径为 jsData/letGoal，非 matchResult 下的 l{n}）
+     * 例（亚冠联2 须全写）：https://zq.titan007.com/jsData/letGoal/2025-2026/l350.js
+     */
+    letGoalLineUrl: (serial, season) =>
+      `http://zq.titan007.com/jsData/letGoal/${season}/l${serial}.js?version=${versionTag()}`,
+
+    /**
+     * 大小球盘路 JS（球探实际路径为 jsData/bigSmall，非 matchResult 下的 bs{n}）
+     * 例（亚冠联2 须全写）：https://zq.titan007.com/jsData/bigSmall/2025-2026/bs350.js
+     */
+    bigSmallLineUrl: (serial, season) =>
+      `http://zq.titan007.com/jsData/bigSmall/${season}/bs${serial}.js?version=${versionTag()}`,
+
     cupMatchReferer,
     leagueMatchReferer,
+    subLeagueMatchReferer,
 
     headers: {
       /** desktop / detail 的 Referer 需与当前杯赛序号一致，由 getCupHeaders 生成 */

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>亚盘周期盈亏 — 布里斯班狮吼 vs 墨尔本城</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0; padding: 16px 20px 40px; background: #f5f5f5; color: #222; }
+    h1 { font-size: 1.25rem; margin: 0 0 8px; }
+    .meta { color: #666; font-size: 0.9rem; margin-bottom: 20px; }
+    .section { background: #fff; border-radius: 8px; padding: 16px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+    .section h2 { margin: 0 0 12px; font-size: 1.05rem; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+    .chart-wrap { margin-bottom: 24px; }
+    .chart { width: 100%; height: 360px; }
+    .hint { font-size: 12px; color: #888; margin: 6px 0 0; }
+    .note { font-size: 13px; color: #555; line-height: 1.5; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1>霍华德·马克斯周期视角 · 亚盘模拟盈亏</h1>
+  <div class="meta">
+    场次序号 matchSerial：2871795 ｜ 赛季 2025-2026 ｜ 第 25 轮<br/>
+    主队：布里斯班狮吼 ｜ 客队：墨尔本城<br/>
+    模拟规则：每场投注 1000 元、买己方盘、固定水位 0.9（港盘）、初盘盘口来自球探分析页。
+  </div>
+
+  <div class="section">
+    <h2>布里斯班狮吼（本场主场）</h2>
+    <p class="note">「主或客场」图仅包含该队历史<strong>主场</strong>比赛，便于对照本场主场节奏。</p>
+    
+    <div class="chart-wrap">
+      <div id="chart_home_0" class="chart"></div>
+      <p class="hint">全部近期 · 共 26 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_home_1" class="chart"></div>
+      <p class="hint">仅主场 · 共 12 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_home_2" class="chart"></div>
+      <p class="hint">同赛事（澳超） · 共 25 场。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>墨尔本城（本场客场）</h2>
+    <p class="note">「主或客场」图仅包含该队历史<strong>客场</strong>比赛，便于对照本场客场节奏。</p>
+    
+    <div class="chart-wrap">
+      <div id="chart_away_0" class="chart"></div>
+      <p class="hint">全部近期 · 共 30 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_away_1" class="chart"></div>
+      <p class="hint">仅客场 · 共 15 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_away_2" class="chart"></div>
+      <p class="hint">同赛事（澳超） · 共 23 场。</p>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var configs = [{"id":"chart_home_0","option":{"title":{"text":"布里斯班狮吼 — 全部近期（26 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-05-02 中央海岸水手","25-05-14 惠灵顿凤凰(中)","25-10-17 麦克阿瑟FC","25-10-26 惠灵顿凤凰","25-10-31 墨尔本城","25-11-09 纽卡斯尔喷气机","25-11-23 奥克兰FC","25-11-28 墨尔本胜利","25-12-07 阿德莱德联","25-12-13 西悉尼流浪者","25-12-19 麦克阿瑟FC","25-12-31 中央海岸水手","26-01-03 惠灵顿凤凰","26-01-06 墨尔本城","26-01-09 奥克兰FC","26-01-16 珀斯光荣","26-01-24 阿德莱德联","26-01-31 纽卡斯尔喷气机","26-02-07 中央海岸水手","26-02-14 墨尔本胜利","26-02-21 悉尼FC","26-02-28 珀斯光荣","26-03-13 西悉尼流浪者","26-03-21 惠灵顿凤凰","26-04-02 悉尼FC","26-04-10 中央海岸水手"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[900,-100,800,-200,700,1600,2500,3400,4300,5200,4200,5100,4100,3100,2100,3000,2000,1000,0,900,-100,-1100,-1100,-2100,-1650,-1650],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[25,-1650],"value":-1650}]}}]}},{"id":"chart_home_1","option":{"title":{"text":"布里斯班狮吼 — 仅主场（12 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-10-17 麦克阿瑟FC","25-10-31 墨尔本城","25-11-09 纽卡斯尔喷气机","25-11-28 墨尔本胜利","26-01-03 惠灵顿凤凰","26-01-09 奥克兰FC","26-01-24 阿德莱德联","26-02-07 中央海岸水手","26-02-28 珀斯光荣","26-03-13 西悉尼流浪者","26-03-21 惠灵顿凤凰","26-04-02 悉尼FC"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[900,1800,2700,3600,2600,1600,600,-400,-1400,-1400,-2400,-1950],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[11,-1950],"value":-1950}]}}]}},{"id":"chart_home_2","option":{"title":{"text":"布里斯班狮吼 — 同赛事（澳超）（25 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-05-02 中央海岸水手","25-10-17 麦克阿瑟FC","25-10-26 惠灵顿凤凰","25-10-31 墨尔本城","25-11-09 纽卡斯尔喷气机","25-11-23 奥克兰FC","25-11-28 墨尔本胜利","25-12-07 阿德莱德联","25-12-13 西悉尼流浪者","25-12-19 麦克阿瑟FC","25-12-31 中央海岸水手","26-01-03 惠灵顿凤凰","26-01-06 墨尔本城","26-01-09 奥克兰FC","26-01-16 珀斯光荣","26-01-24 阿德莱德联","26-01-31 纽卡斯尔喷气机","26-02-07 中央海岸水手","26-02-14 墨尔本胜利","26-02-21 悉尼FC","26-02-28 珀斯光荣","26-03-13 西悉尼流浪者","26-03-21 惠灵顿凤凰","26-04-02 悉尼FC","26-04-10 中央海岸水手"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[900,1800,800,1700,2600,3500,4400,5300,6200,5200,6100,5100,4100,3100,4000,3000,2000,1000,1900,900,-100,-100,-1100,-650,-650],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[24,-650],"value":-650}]}}]}},{"id":"chart_away_0","option":{"title":{"text":"墨尔本城 — 全部近期（30 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-10-25 珀斯光荣","25-10-31 布里斯班狮吼","25-11-04 町田泽维亚","25-11-08 墨尔本胜利","25-11-21 阿德莱德联","25-11-25 柔佛","25-11-29 中央海岸水手","25-12-06 纽卡斯尔喷气机","25-12-10 FC首尔","25-12-20 墨尔本胜利","25-12-23 麦克阿瑟FC","25-12-28 珀斯光荣","26-01-03 悉尼FC","26-01-06 布里斯班狮吼","26-01-11 纽卡斯尔喷气机","26-01-16 奥克兰FC","26-01-24 麦克阿瑟FC","26-01-30 惠灵顿凤凰","26-02-07 西悉尼流浪者","26-02-11 蔚山HD","26-02-18 江原FC","26-02-21 墨尔本胜利","26-02-28 奥克兰FC","26-03-03 武里南联","26-03-10 武里南联","26-03-17 悉尼FC","26-03-22 珀斯光荣","26-04-04 西悉尼流浪者","26-04-07 中央海岸水手","26-04-12 惠灵顿凤凰"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[900,-100,800,1700,700,1600,600,1500,2400,1400,400,-600,-1100,-200,-1200,-300,-1300,-2300,-1850,-950,-950,-1950,-2950,-2950,-2050,-1150,-1650,-750,-1250,-350],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[29,-350],"value":-350}]}}]}},{"id":"chart_away_1","option":{"title":{"text":"墨尔本城 — 仅客场（15 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-10-31 布里斯班狮吼","25-11-04 町田泽维亚","25-11-08 墨尔本胜利","25-11-21 阿德莱德联","25-11-29 中央海岸水手","25-12-06 纽卡斯尔喷气机","25-12-10 FC首尔","26-01-24 麦克阿瑟FC","26-01-30 惠灵顿凤凰","26-02-07 西悉尼流浪者","26-02-11 蔚山HD","26-02-28 奥克兰FC","26-03-10 武里南联","26-03-17 悉尼FC","26-03-22 珀斯光荣"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[-1000,-100,800,-200,-1200,-300,600,-400,-1400,-950,-50,-1050,-150,750,250],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[14,250],"value":250}]}}]}},{"id":"chart_away_2","option":{"title":{"text":"墨尔本城 — 同赛事（澳超）（23 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-10-25 珀斯光荣","25-10-31 布里斯班狮吼","25-11-08 墨尔本胜利","25-11-21 阿德莱德联","25-11-29 中央海岸水手","25-12-06 纽卡斯尔喷气机","25-12-20 墨尔本胜利","25-12-23 麦克阿瑟FC","25-12-28 珀斯光荣","26-01-03 悉尼FC","26-01-06 布里斯班狮吼","26-01-11 纽卡斯尔喷气机","26-01-16 奥克兰FC","26-01-24 麦克阿瑟FC","26-01-30 惠灵顿凤凰","26-02-07 西悉尼流浪者","26-02-21 墨尔本胜利","26-02-28 奥克兰FC","26-03-17 悉尼FC","26-03-22 珀斯光荣","26-04-04 西悉尼流浪者","26-04-07 中央海岸水手","26-04-12 惠灵顿凤凰"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[900,-100,800,-200,-1200,-300,-1300,-2300,-3300,-3800,-2900,-3900,-3000,-4000,-5000,-4550,-5550,-6550,-5650,-6150,-5250,-5750,-4850],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[22,-4850],"value":-4850}]}}]}}];
+      configs.forEach(function(item) {
+        var el = document.getElementById(item.id);
+        if (!el) return;
+        var chart = echarts.init(el);
+        chart.setOption(item.option);
+        window.addEventListener('resize', function() { chart.resize(); });
+      });
+    })();
+  </script>
+</body>
+</html>

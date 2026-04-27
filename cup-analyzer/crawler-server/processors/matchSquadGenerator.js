@@ -1,5 +1,5 @@
 /**
- * 赛中大名单：从双方 squad-final 读取推荐首发、伤停、伤疑，输出预测首发/替补/伤疑/伤停/落选。
+ * 赛中大名单：从双方 squad-final 读阵型/名单/伤停/伤疑；预测首发与 teamProfileGenerator.computePredictedStartingLineup 同源（非静态「推荐首发」段）。
  *
  * - 联赛/欧冠（有出场统计）：预测替补 = 非首发且非伤停且非伤疑中出场数最高的 9 人；落选 = 其余未列入者。
  * - 世界杯国家队（无出场统计）：预测替补 = 除首发与伤停外的全部球员（伤疑仍可进替补）；不输出落选。
@@ -17,32 +17,6 @@ const predLineupUtil = require('../utils/predictedStartingLineup');
 
 function isWorldCupNationalContext() {
   return (config.activeCupKey || '') === 'theWorldCup';
-}
-
-/**
- * @param {string} content
- * @returns {{ formationLabel: string, lineupText: string }}
- */
-function extractRecommendedLineupSection(content) {
-  const lines = String(content || '').split('\n');
-  let idx = -1;
-  for (let i = 0; i < lines.length; i++) {
-    if (/^##\s*推荐首发/.test(lines[i].trim())) {
-      idx = i;
-      break;
-    }
-  }
-  if (idx === -1) return { formationLabel: '', lineupText: '' };
-  const headerLine = lines[idx];
-  const fm = headerLine.match(/（([^）]+)）/);
-  const formationLabel = fm ? fm[1].trim() : '';
-  const bodyLines = [];
-  for (let j = idx + 1; j < lines.length; j++) {
-    const t = lines[j].trim();
-    if (/^##\s+/.test(t)) break;
-    bodyLines.push(lines[j]);
-  }
-  return { formationLabel, lineupText: bodyLines.join('\n').trim() };
 }
 
 /**
@@ -146,21 +120,45 @@ class MatchSquadGenerator extends BaseCrawler {
     const parsed = this.profileGen.parseFinalSquadMarkdown(content);
     const players = parsed.players || [];
     const national = isWorldCupNationalContext();
-    const { formationLabel, lineupText } = extractRecommendedLineupSection(content);
-    const tokens = extractStarterTokens(lineupText);
+
+    const analyzerReport = !national ? this.profileGen.loadAnalyzerReport(teamInfo.id) : null;
+    const { predLine, predFormationLabel, starters: analyzerStarters } =
+      this.profileGen.computePredictedStartingLineup({
+        players,
+        formation: parsed.formation || null,
+        analyzerReport,
+        injured: parsed.injured || [],
+      });
 
     const starters = [];
     const seen = new Set();
-    for (const t of tokens) {
-      const pl = this.findPlayerForToken(players, t);
-      if (pl) {
-        const k = this.playerKey(pl);
-        if (!seen.has(k)) {
-          seen.add(k);
-          starters.push(pl);
-        }
+    const pushStarter = (pl) => {
+      if (!pl) return;
+      const k = this.playerKey(pl);
+      if (!seen.has(k)) {
+        seen.add(k);
+        starters.push(pl);
+      }
+    };
+
+    if (analyzerStarters && analyzerStarters.length > 0) {
+      for (const s of analyzerStarters) {
+        pushStarter(
+          this.findPlayerForToken(players, {
+            number: s.number != null ? Number(s.number) : null,
+            name: s.name || '',
+          })
+        );
       }
     }
+
+    if (starters.length < 11 && predLine) {
+      const tokens = extractStarterTokens(predLine);
+      for (const t of tokens) {
+        pushStarter(this.findPlayerForToken(players, t));
+      }
+    }
+
     const starterKeys = new Set(starters.map((p) => this.playerKey(p)));
 
     const injuredPlayers = (parsed.injured || [])
@@ -183,9 +181,9 @@ class MatchSquadGenerator extends BaseCrawler {
 
     const lines = [];
     lines.push(`=== ${teamInfo.chineseName} ===`);
-    const title = formationLabel ? `预测首发（${formationLabel}）` : '预测首发';
+    const title = predFormationLabel ? `预测首发（${predFormationLabel}）` : '预测首发';
     lines.push(title);
-    lines.push(lineupText || '（无推荐首发文本）');
+    lines.push(predLine || '（无推荐首发文本）');
     lines.push('');
 
     const doubtFmt = doubtfulPlayers.map((p) =>

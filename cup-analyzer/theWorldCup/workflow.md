@@ -53,6 +53,14 @@
   1. 大名单与预测块：以 **`theWorldCup/squad-final/group-*/{队名}.md`** 为准（与 `teamProfile` 同源）；赛前更新该文件中的 **伤停 / 伤疑** 后可重跑 `teamProfileGenerator`。
      生成单场用文案（预测首发、预测替补=除首发与伤停外全部球员、伤疑、伤停；国家队无「落选」行）：
      `cd cup-analyzer/crawler-server && CUP_ANALYZER_CUP=theWorldCup node processors/matchSquadGenerator.js --home <主队序号> --away <客队序号>`
+     **可选（赛中用球探赛程统计国家队本赛事出场，与联赛俱乐部流水线同源）**：需要 `player_center` 中该队大名单与 `*-new.json` 出场统计时，编辑 `crawler-server/config/squadTarget.js`：
+     - teamSerial：该队球探**国家队**序号
+     - leagueSerial：`'75'`（世界杯序号）
+     - isNation：true（杯赛格式 c75、G\* 迭代）
+     - matchByName：不设（默认 true，国家队用**全名**匹配）
+     - roundSerial：不填或删除
+     - teamChineseName：国家队中文名  
+     然后 `npm run crawl:player-list` → `npm run analyze:club-domestic`（输出 `output/player_center/{teamSerial}-new.json`）。
   2. 收集素材、笔记 → news/{阶段}/{对阵}/
   3. 预测首发阵容（可与 `matchSquadGenerator` 输出对照）
   4. 交锋、近况、未来赛程、球探伤病摘要：`cd cup-analyzer/crawler-server`，在 `config/squadTarget.js` 填写本场 **`matchSerial`**，执行 **`npm run crawl:match-statistics`**（亦可 `-- --match <序号>`），将输出并入笔记或 `news/...`。（与 **`npm run generate:cycle-report`** 同源；国家队 `squad-final` 伤停与球探页不一致时以 `squad-final` 为准。）详见 [crawler-server/README.md](../crawler-server/README.md)「matchStatisticsCrawler」。

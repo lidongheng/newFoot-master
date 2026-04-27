@@ -10,11 +10,11 @@
  * - roundSerial：联赛渠道时填当前国内联赛轮次（仅分析该轮之前已完赛场次）；杯赛渠道可不填
  */
 const squadTarget = {
-  leagueSerial: '15',
-  leagueSlug: 'koreanKLeague',
-  season: '2026',
-  teamSerial: '480',
-  roundSerial: '8',
+  leagueSerial: '36',
+  leagueSlug: 'epl',
+  season: '25-26',
+  teamSerial: '28',
+  roundSerial: '34',
   /**
    * 赛程格式开关：
    *   false（默认）= 联赛格式，读 s 开头文件，R_* 轮次迭代
@@ -34,15 +34,15 @@ const squadTarget = {
    *   isNation: true + 俱乐部杯赛 → 必须显式设 matchByName: false
    *   isNation: true + 国家队杯赛 → 不用设（自动 true）
    */
-  // matchByName: false,
-  teamChineseName: 'FC首尔',
+  matchByName: false,
+  teamChineseName: '纽卡斯尔联',
   /** 单场分析 / 周期报告等场景可选 */
-  matchSerial: '2929562',
+  matchSerial: '2789467',
   /**
    * 周期报告「同赛事」筛选：与球探战绩表「联赛」列文案一致（如 英超、欧冠杯）。
    * 不填则回退为当前 CUP_ANALYZER_CUP 对应 chineseName。
    */
-  matchLeagueName: '韩K联',
+  matchLeagueName: '英超',
 };
 
 module.exports = squadTarget;

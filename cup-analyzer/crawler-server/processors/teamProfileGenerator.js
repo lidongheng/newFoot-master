@@ -3,6 +3,7 @@ const BaseCrawler = require('../crawlers/base');
 const config = require('../config');
 const { readJSON, readFile, saveMarkdown, fileExists } = require('../utils/fileWriter');
 const predLineupUtil = require('../utils/predictedStartingLineup');
+const recommendedLineupUtil = require('../utils/recommendedLineup');
 
 /** 英超/澳超/韩K联及欧冠模块：联赛式档位与俱乐部备注 */
 function useLeagueStyleAnalysis() {
@@ -689,23 +690,169 @@ class TeamProfileGenerator extends BaseCrawler {
   /**
    * 读取 clubMatchAnalyzer 报告（与 `npm run analyze:club-domestic` 输出一致），用于预测首发与联赛大名单对齐
    * @param {number} teamId
-   * @returns {{ recommendedLineup: object[], mostUsedFormation: string } | null}
+   * @returns {{ recommendedLineup: object[], mostUsedFormation: string, players: Record<string, object>|null } | null}
    */
   loadAnalyzerReport(teamId) {
     const p = path.join(config.paths.playerCenter, `${teamId}-new.json`);
     if (!fileExists(p)) return null;
     try {
       const data = readJSON(p);
-      if (!data || !Array.isArray(data.recommendedLineup) || data.recommendedLineup.length === 0) {
-        return null;
-      }
+      if (!data) return null;
+      const players =
+        data.players && typeof data.players === 'object' ? data.players : null;
+      const hasPlayers = players && Object.keys(players).length > 0;
+      const hasRec = Array.isArray(data.recommendedLineup) && data.recommendedLineup.length > 0;
+      if (!hasPlayers && !hasRec) return null;
       return {
-        recommendedLineup: data.recommendedLineup,
+        recommendedLineup: Array.isArray(data.recommendedLineup) ? data.recommendedLineup : [],
         mostUsedFormation: data.mostUsedFormation || '',
+        players: hasPlayers ? players : null,
       };
     } catch {
       return null;
     }
+  }
+
+  /**
+   * analyzer 的 players 字典 ∩ squad-final 当前名单，并剔除伤停（伤疑保留）
+   * @param {Record<string, object>} analyzerPlayersMap
+   * @param {any[]} squadFinalPlayers
+   * @param {string[]} injuredLines
+   * @returns {Record<string, object>}
+   */
+  buildCandidatePool(analyzerPlayersMap, squadFinalPlayers, injuredLines) {
+    const injuredResolved = (injuredLines || [])
+      .map((line) => this.findPlayerByInjuryLine(squadFinalPlayers, line))
+      .filter(Boolean);
+    const injuredNums = new Set(
+      injuredResolved.map((p) => Number(p.number)).filter((n) => !Number.isNaN(n))
+    );
+
+    const squadNums = new Set();
+    const squadNames = new Set();
+    for (const sp of squadFinalPlayers || []) {
+      if (sp.number != null && sp.number !== '') {
+        const n = Number(sp.number);
+        if (!Number.isNaN(n)) squadNums.add(n);
+      }
+      const nm = String(sp.name || '').trim();
+      if (nm) squadNames.add(nm);
+    }
+
+    const out = {};
+    for (const [key, ap] of Object.entries(analyzerPlayersMap || {})) {
+      const num = ap.number != null ? Number(ap.number) : NaN;
+      const nm = String(ap.name || '').trim();
+      const inSquad =
+        (Number.isFinite(num) && squadNums.has(num)) || (nm && squadNames.has(nm));
+      if (!inSquad) continue;
+      if (Number.isFinite(num) && injuredNums.has(num)) continue;
+      out[key] = ap;
+    }
+    return out;
+  }
+
+  /**
+   * 从 squad-final 球员列表中剔除伤停行解析到的球员（用于无 analyzer 或 analyzer 重算失败时的 fallback）
+   * @param {any[]} squadPlayers
+   * @param {string[]} injuredLines
+   * @returns {any[]}
+   */
+  filterSquadPlayersExcludingInjured(squadPlayers, injuredLines) {
+    const injuredResolved = (injuredLines || [])
+      .map((line) => this.findPlayerByInjuryLine(squadPlayers, line))
+      .filter(Boolean);
+    const injuredNums = new Set(
+      injuredResolved.map((p) => Number(p.number)).filter((n) => !Number.isNaN(n))
+    );
+    return (squadPlayers || []).filter((p) => {
+      const n = Number(p.number);
+      return Number.isNaN(n) || !injuredNums.has(n);
+    });
+  }
+
+  /**
+   * 按球衣号用 squad-final 表中的姓名、位置覆盖 analyzer 输出的 11 人（人工审核名单为展示真源）
+   * @param {object[]} lineupPlayers determineStartingLineup 返回的数组
+   * @param {any[]} squadFinalPlayers parseFinalSquadMarkdown 的 players
+   * @returns {object[]}
+   */
+  overlaySquadFinalOnLineupPlayers(lineupPlayers, squadFinalPlayers) {
+    if (!lineupPlayers || lineupPlayers.length === 0) return lineupPlayers || [];
+    if (!squadFinalPlayers || squadFinalPlayers.length === 0) return lineupPlayers;
+    const byNum = new Map();
+    for (const sp of squadFinalPlayers) {
+      const n = Number(sp.number);
+      if (!Number.isNaN(n)) byNum.set(n, sp);
+    }
+    return lineupPlayers.map((p) => {
+      const n = p.number != null ? Number(p.number) : NaN;
+      const sq = Number.isFinite(n) ? byNum.get(n) : null;
+      if (!sq) return p;
+      const name =
+        sq.name != null && String(sq.name).trim() !== '' ? String(sq.name).trim() : p.name;
+      const pos =
+        sq.position != null &&
+        String(sq.position).trim() !== '' &&
+        String(sq.position).trim() !== '-'
+          ? String(sq.position).trim()
+          : p.position;
+      return { ...p, name, position: pos };
+    });
+  }
+
+  /**
+   * 预测首发：与画像 / matchSquadGenerator 共用（阵型 squad-final 优先、analyzer 选人、伤停剔除）
+   * @param {{ players: any[], formation: string|null, analyzerReport: object|null, injured: string[] }} opts
+   * @returns {{ predLine: string, predFormationLabel: string|null, starters: object[] }}
+   */
+  computePredictedStartingLineup(opts) {
+    const players = opts.players || [];
+    const formation = opts.formation || null;
+    const ar = opts.analyzerReport || null;
+    const injuredLines = opts.injured || [];
+    const leagueStyle = useLeagueStyleAnalysis();
+
+    let predLine = '';
+    let predFormationLabel = formation;
+    let starters = [];
+
+    if (
+      leagueStyle &&
+      ar &&
+      ar.players &&
+      typeof ar.players === 'object' &&
+      Object.keys(ar.players).length > 0
+    ) {
+      const effectiveFormation = formation || ar.mostUsedFormation;
+      if (effectiveFormation) {
+        const pool = this.buildCandidatePool(ar.players, players, injuredLines);
+        const elevens = recommendedLineupUtil.determineStartingLineup(pool, effectiveFormation);
+        if (elevens && elevens.length === 11) {
+          starters = this.overlaySquadFinalOnLineupPlayers(elevens, players);
+          predLine = predLineupUtil.formatAnalyzerRecommendedLineup(
+            starters,
+            effectiveFormation,
+            (p) => formatClubJerseyLabel(p)
+          );
+          const fd = predLineupUtil.formationDigitsToDisplay(effectiveFormation);
+          predFormationLabel = fd || String(effectiveFormation).trim();
+        }
+      }
+    }
+
+    if (!predLine && formation) {
+      const filtered = this.filterSquadPlayersExcludingInjured(players, injuredLines);
+      predLine = this.buildPredictedStartingLineup(filtered, formation);
+      predFormationLabel = formation;
+    } else if (!predLine && leagueStyle && ar && ar.mostUsedFormation) {
+      const filtered = this.filterSquadPlayersExcludingInjured(players, injuredLines);
+      predLine = this.buildPredictedStartingLineup(filtered, ar.mostUsedFormation);
+      const fd = predLineupUtil.formationDigitsToDisplay(ar.mostUsedFormation);
+      predFormationLabel = fd || ar.mostUsedFormation;
+    }
+
+    return { predLine, predFormationLabel, starters };
   }
 
   /**
@@ -941,22 +1088,12 @@ class TeamProfileGenerator extends BaseCrawler {
       lines.push('');
     }
 
-    let predLine = '';
-    let predFormationLabel = formation;
-    const ar = meta.analyzerReport;
-    if (leagueStyle && ar && Array.isArray(ar.recommendedLineup) && ar.recommendedLineup.length > 0) {
-      predLine = predLineupUtil.formatAnalyzerRecommendedLineup(
-        ar.recommendedLineup,
-        ar.mostUsedFormation,
-        (p) => formatClubJerseyLabel(p)
-      );
-      const fd = predLineupUtil.formationDigitsToDisplay(ar.mostUsedFormation);
-      if (fd) predFormationLabel = fd;
-    }
-    if (!predLine && formation) {
-      predLine = this.buildPredictedStartingLineup(players, formation);
-      predFormationLabel = formation;
-    }
+    const { predLine, predFormationLabel } = this.computePredictedStartingLineup({
+      players,
+      formation,
+      analyzerReport: meta.analyzerReport,
+      injured: meta.injured || [],
+    });
 
     if (predLine) {
       lines.push(`### 预测首发(${predFormationLabel || formation || '-'})：`);

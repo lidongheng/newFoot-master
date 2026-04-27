@@ -30,7 +30,7 @@ const targets = require('../config/targets');
 const CRAWL_DELAY_MS = config.crawlDelayMs || 3000;
 
 /**
- * config.season 如 2025-2026 → 目录名 25-26；已是 25-26 或 2026 则保持
+ * 本地 basicData 目录统一短赛季名：全写如 2025-2026 → 25-26；已是 25-26 或 2026 则保持
  */
 function folderSeasonForBasicData(season) {
   if (!season) return 'unknown';
