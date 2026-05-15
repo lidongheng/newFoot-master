@@ -2,14 +2,15 @@
   "teamId": 348,
   "teamChineseName": "伯恩茅斯",
   "isNation": false,
-  "analysisDate": "2026-04-11T11:38:30.093Z",
+  "matchByName": false,
+  "analysisDate": "2026-05-03T07:48:22.523Z",
   "mostUsedFormation": "4231",
   "recommendedLineup": [
     {
       "name": "彼得罗维奇",
       "number": 1,
-      "caps": 31,
-      "lineups": 31,
+      "caps": 34,
+      "lineups": 34,
       "matches": [
         {
           "id": 2789129,
@@ -444,14 +445,56 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "GK",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "GK",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "GK",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
-        "GK": 31
+        "GK": 34
       },
       "goals": 1,
       "assists": 0,
-      "minutesPlayed": 2790,
+      "minutesPlayed": 3060,
       "substitutedIn": 0,
       "substitutedOut": 0,
       "alternativeNames": [],
@@ -459,78 +502,11 @@
       "socialStatus": 2800,
       "nation": "塞尔维亚",
       "height": 194,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2017-2018",
-          "date": "2018-01-01",
-          "from": "古拉瑞奇U19",
-          "to": "古拉瑞奇",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-08-14",
-          "from": "古拉瑞奇",
-          "to": "诺维贝尔格莱德",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2019-06-30",
-          "from": "诺维贝尔格莱德",
-          "to": "古拉瑞奇",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2022-04-06",
-          "from": "古拉瑞奇",
-          "to": "新英格兰革命",
-          "fee": "91.5万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-08-26",
-          "from": "新英格兰革命",
-          "to": "切尔西",
-          "fee": "1600万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-08-30",
-          "from": "切尔西",
-          "to": "斯特拉斯堡",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2025-06-30",
-          "from": "斯特拉斯堡",
-          "to": "切尔西",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-07-16",
-          "from": "切尔西",
-          "to": "伯恩茅斯",
-          "fee": "2890万欧元",
-          "type": "完全所有"
-        }
-      ],
       "positionPreferences": [
         "GK"
       ],
       "positionsWithCounts": {
-        "GK": 31
+        "GK": 34
       },
       "mainPositionGroup": "GK",
       "recommendedPosition": "GK"
@@ -538,8 +514,8 @@
     {
       "name": "A·特鲁弗特",
       "number": 3,
-      "caps": 31,
-      "lineups": 31,
+      "caps": 34,
+      "lineups": 34,
       "matches": [
         {
           "id": 2789129,
@@ -974,14 +950,56 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "LB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "LB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 1,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "LB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
-        "LB": 31
+        "LB": 34
       },
-      "goals": 0,
+      "goals": 1,
       "assists": 3,
-      "minutesPlayed": 2750,
+      "minutesPlayed": 3020,
       "substitutedIn": 0,
       "substitutedOut": 2,
       "alternativeNames": [],
@@ -989,46 +1007,11 @@
       "socialStatus": 2500,
       "nation": "法国",
       "height": 176,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2018-2019",
-          "date": "2018-07-01",
-          "from": "雷恩青年队",
-          "to": "雷恩U19",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2019-07-01",
-          "from": "雷恩U19",
-          "to": "雷恩B队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-07-01",
-          "from": "雷恩B队",
-          "to": "雷恩",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-07-01",
-          "from": "雷恩",
-          "to": "伯恩茅斯",
-          "fee": "1350万欧元",
-          "type": "完全所有"
-        }
-      ],
       "positionPreferences": [
         "LB"
       ],
       "positionsWithCounts": {
-        "LB": 31
+        "LB": 34
       },
       "mainPositionGroup": "DF",
       "recommendedPosition": "LB"
@@ -1036,8 +1019,8 @@
     {
       "name": "塞内西",
       "number": 5,
-      "caps": 30,
-      "lineups": 30,
+      "caps": 33,
+      "lineups": 33,
       "matches": [
         {
           "id": 2789129,
@@ -1458,14 +1441,56 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 1,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
-        "CB": 30
+        "CB": 33
       },
       "goals": 0,
-      "assists": 4,
-      "minutesPlayed": 2660,
+      "assists": 5,
+      "minutesPlayed": 2930,
       "substitutedIn": 0,
       "substitutedOut": 2,
       "alternativeNames": [],
@@ -1473,54 +1498,27 @@
       "socialStatus": 2200,
       "nation": "阿根廷",
       "height": 184,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2016-2017",
-          "date": "2016-07-01",
-          "from": "圣洛伦索后备队",
-          "to": "圣洛伦索",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2019-09-02",
-          "from": "圣洛伦索",
-          "to": "费耶诺德",
-          "fee": "700万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-08-08",
-          "from": "费耶诺德",
-          "to": "伯恩茅斯",
-          "fee": "1500万欧元",
-          "type": "完全所有"
-        }
-      ],
       "positionPreferences": [
         "CB"
       ],
       "positionsWithCounts": {
-        "CB": 30
+        "CB": 33
       },
       "mainPositionGroup": "DF",
       "recommendedPosition": "CB"
     },
     {
-      "name": "迪亚科特",
-      "number": 18,
-      "caps": 18,
-      "lineups": 15,
+      "name": "希尔",
+      "number": 23,
+      "caps": 25,
+      "lineups": 18,
       "matches": [
         {
           "id": 2789129,
           "round": 1,
-          "position": "CB",
+          "position": "Substitute",
           "caps": 1,
-          "lineups": 1,
+          "lineups": 0,
           "goals": 0,
           "assists": 0,
           "handicap": 1.25,
@@ -1532,9 +1530,9 @@
         {
           "id": 2789140,
           "round": 2,
-          "position": "CB",
+          "position": "Substitute",
           "caps": 1,
-          "lineups": 1,
+          "lineups": 0,
           "goals": 0,
           "assists": 0,
           "handicap": 0.5,
@@ -1546,9 +1544,9 @@
         {
           "id": 2789157,
           "round": 3,
-          "position": "CB",
+          "position": "Substitute",
           "caps": 1,
-          "lineups": 1,
+          "lineups": 0,
           "goals": 0,
           "assists": 0,
           "handicap": 0.5,
@@ -1558,11 +1556,25 @@
           "totalGoalsResult": "under"
         },
         {
-          "id": 2789170,
-          "round": 5,
-          "position": "CB",
+          "id": 2789160,
+          "round": 4,
+          "position": "RB",
           "caps": 1,
           "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "2-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789170,
+          "round": 5,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
           "goals": 0,
           "assists": 0,
           "handicap": 0,
@@ -1574,9 +1586,9 @@
         {
           "id": 2789184,
           "round": 6,
-          "position": "CB",
-          "caps": 1,
-          "lineups": 1,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
           "goals": 0,
           "assists": 0,
           "handicap": 0,
@@ -1588,7 +1600,7 @@
         {
           "id": 2789191,
           "round": 7,
-          "position": "CB",
+          "position": "RB",
           "caps": 1,
           "lineups": 1,
           "goals": 0,
@@ -1602,9 +1614,9 @@
         {
           "id": 2789201,
           "round": 8,
-          "position": "CB",
+          "position": "Substitute",
           "caps": 1,
-          "lineups": 1,
+          "lineups": 0,
           "goals": 0,
           "assists": 0,
           "handicap": 0.25,
@@ -1614,53 +1626,11 @@
           "totalGoalsResult": "over"
         },
         {
-          "id": 2789211,
-          "round": 9,
-          "position": "Substitute",
-          "caps": 0,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0.5,
-          "score": "2-0",
-          "handicapResult": "win",
-          "totalLine": "2.5",
-          "totalGoalsResult": "under"
-        },
-        {
-          "id": 2789224,
-          "round": 10,
-          "position": "CB",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 1.25,
-          "score": "3-1",
-          "handicapResult": "lose",
-          "totalLine": "3",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 2789229,
-          "round": 11,
-          "position": "Substitute",
-          "caps": 0,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0.5,
-          "score": "4-0",
-          "handicapResult": "lose",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "over"
-        },
-        {
           "id": 2789240,
           "round": 12,
-          "position": "CB",
-          "caps": 1,
-          "lineups": 1,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
           "goals": 0,
           "assists": 0,
           "handicap": 1,
@@ -1670,25 +1640,11 @@
           "totalGoalsResult": "over"
         },
         {
-          "id": 2789256,
-          "round": 13,
-          "position": "CB",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0,
-          "score": "3-2",
-          "handicapResult": "lose",
-          "totalLine": "2.5",
-          "totalGoalsResult": "over"
-        },
-        {
           "id": 2789260,
           "round": 14,
-          "position": "CB",
-          "caps": 1,
-          "lineups": 1,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
           "goals": 0,
           "assists": 0,
           "handicap": 0.5,
@@ -1700,9 +1656,9 @@
         {
           "id": 2789270,
           "round": 15,
-          "position": "CB",
+          "position": "Substitute",
           "caps": 1,
-          "lineups": 1,
+          "lineups": 0,
           "goals": 0,
           "assists": 0,
           "handicap": -0.25,
@@ -1714,9 +1670,9 @@
         {
           "id": 2789285,
           "round": 16,
-          "position": "CB",
+          "position": "Substitute",
           "caps": 1,
-          "lineups": 1,
+          "lineups": 0,
           "goals": 0,
           "assists": 0,
           "handicap": 0.5,
@@ -1728,9 +1684,9 @@
         {
           "id": 2789290,
           "round": 17,
-          "position": "CB",
-          "caps": 1,
-          "lineups": 1,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
           "goals": 0,
           "assists": 0,
           "handicap": 1.25,
@@ -1742,9 +1698,9 @@
         {
           "id": 2789300,
           "round": 18,
-          "position": "CB",
-          "caps": 1,
-          "lineups": 1,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
           "goals": 0,
           "assists": 0,
           "handicap": 0.25,
@@ -1756,9 +1712,9 @@
         {
           "id": 2789312,
           "round": 19,
-          "position": "Substitute",
-          "caps": 0,
-          "lineups": 0,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
           "goals": 0,
           "assists": 0,
           "handicap": 1,
@@ -1770,9 +1726,9 @@
         {
           "id": 2789320,
           "round": 20,
-          "position": "Substitute",
-          "caps": 0,
-          "lineups": 0,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
           "goals": 0,
           "assists": 0,
           "handicap": -1,
@@ -1784,9 +1740,9 @@
         {
           "id": 2789330,
           "round": 21,
-          "position": "Substitute",
+          "position": "CB",
           "caps": 1,
-          "lineups": 0,
+          "lineups": 1,
           "goals": 0,
           "assists": 0,
           "handicap": 0.5,
@@ -1798,9 +1754,9 @@
         {
           "id": 2789340,
           "round": 22,
-          "position": "Substitute",
+          "position": "CB",
           "caps": 1,
-          "lineups": 0,
+          "lineups": 1,
           "goals": 0,
           "assists": 0,
           "handicap": 0.5,
@@ -1812,11 +1768,11 @@
         {
           "id": 2789350,
           "round": 23,
-          "position": "Substitute",
-          "caps": 0,
-          "lineups": 0,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
           "goals": 0,
-          "assists": 0,
+          "assists": 1,
           "handicap": -0.5,
           "score": "3-2",
           "handicapResult": "win",
@@ -1826,9 +1782,9 @@
         {
           "id": 2789368,
           "round": 24,
-          "position": "Substitute",
+          "position": "CB",
           "caps": 1,
-          "lineups": 0,
+          "lineups": 1,
           "goals": 0,
           "assists": 0,
           "handicap": -0.25,
@@ -1840,11 +1796,11 @@
         {
           "id": 2789370,
           "round": 25,
-          "position": "Substitute",
-          "caps": 0,
-          "lineups": 0,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
           "goals": 0,
-          "assists": 0,
+          "assists": 1,
           "handicap": 0,
           "score": "1-1",
           "handicapResult": "draw",
@@ -1854,11 +1810,11 @@
         {
           "id": 2789383,
           "round": 26,
-          "position": "Substitute",
-          "caps": 0,
-          "lineups": 0,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
           "goals": 0,
-          "assists": 0,
+          "assists": 1,
           "handicap": 0.25,
           "score": "1-2",
           "handicapResult": "win",
@@ -1868,9 +1824,9 @@
         {
           "id": 2789398,
           "round": 27,
-          "position": "Substitute",
-          "caps": 0,
-          "lineups": 0,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
           "goals": 0,
           "assists": 0,
           "handicap": 0,
@@ -1882,9 +1838,9 @@
         {
           "id": 2789400,
           "round": 28,
-          "position": "Substitute",
-          "caps": 0,
-          "lineups": 0,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
           "goals": 0,
           "assists": 0,
           "handicap": 0.75,
@@ -1896,9 +1852,9 @@
         {
           "id": 2789410,
           "round": 29,
-          "position": "Substitute",
-          "caps": 0,
-          "lineups": 0,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
           "goals": 0,
           "assists": 0,
           "handicap": 0.25,
@@ -1910,9 +1866,9 @@
         {
           "id": 2789421,
           "round": 30,
-          "position": "Substitute",
-          "caps": 0,
-          "lineups": 0,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
           "goals": 0,
           "assists": 0,
           "handicap": -0.5,
@@ -1924,71 +1880,81 @@
         {
           "id": 2789430,
           "round": 31,
-          "position": "Substitute",
-          "caps": 0,
-          "lineups": 0,
-          "goals": 0,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 1,
           "assists": 0,
           "handicap": -0.25,
           "score": "2-2",
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 1,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
-        "CB": 15
+        "RB": 2,
+        "CB": 16
       },
-      "goals": 0,
-      "assists": 0,
-      "minutesPlayed": 1370,
-      "substitutedIn": 3,
+      "goals": 2,
+      "assists": 3,
+      "minutesPlayed": 1720,
+      "substitutedIn": 7,
       "substitutedOut": 2,
       "alternativeNames": [],
-      "age": 25,
-      "socialStatus": 3000,
-      "nation": "法国",
+      "age": 24,
+      "socialStatus": 1500,
+      "nation": "英格兰",
       "height": 184,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2016-2017",
-          "date": "2016-07-01",
-          "from": "图卢兹FO",
-          "to": "图鲁兹U17",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-10-26",
-          "from": "图鲁兹U17",
-          "to": "图卢兹",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-08-05",
-          "from": "图卢兹",
-          "to": "里尔",
-          "fee": "300万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-08-13",
-          "from": "里尔",
-          "to": "伯恩茅斯",
-          "fee": "3500万欧元",
-          "type": "完全所有"
-        }
-      ],
       "positionPreferences": [
-        "CB"
+        "CB",
+        "RB"
       ],
       "positionsWithCounts": {
-        "CB": 15
+        "CB": 16,
+        "RB": 2
       },
       "mainPositionGroup": "DF",
       "recommendedPosition": "CB"
@@ -1996,8 +1962,8 @@
     {
       "name": "索勒",
       "number": 20,
-      "caps": 27,
-      "lineups": 22,
+      "caps": 30,
+      "lineups": 25,
       "matches": [
         {
           "id": 2789129,
@@ -2432,17 +2398,59 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "RB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "RB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "RB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
-        "RB": 17,
+        "RB": 20,
         "RM": 5
       },
       "goals": 1,
       "assists": 0,
-      "minutesPlayed": 1820,
+      "minutesPlayed": 2070,
       "substitutedIn": 5,
-      "substitutedOut": 14,
+      "substitutedOut": 15,
       "alternativeNames": [
         "A·希门尼斯"
       ],
@@ -2450,87 +2458,12 @@
       "socialStatus": 2200,
       "nation": "西班牙",
       "height": 177,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2021-2022",
-          "date": "2021-07-01",
-          "from": "皇家马德里青年队",
-          "to": "皇家马德里U17",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2022-01-01",
-          "from": "皇家马德里U17",
-          "to": "皇家马德里U18",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-07-01",
-          "from": "皇家马德里U18",
-          "to": "皇家马德里U19",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-07-25",
-          "from": "皇家马德里U19",
-          "to": "AC米兰青年队",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2024-06-30",
-          "from": "AC米兰青年队",
-          "to": "皇家马德里U19",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-07-01",
-          "from": "皇家马德里U19",
-          "to": "AC米兰",
-          "fee": "1475万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-09-01",
-          "from": "AC米兰",
-          "to": "伯恩茅斯",
-          "fee": "150万欧元",
-          "type": "租借"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2026-06-30",
-          "from": "伯恩茅斯",
-          "to": "AC米兰",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2026-2027",
-          "date": "2026-07-01",
-          "from": "AC米兰",
-          "to": "伯恩茅斯",
-          "fee": "1850万欧元",
-          "type": "完全所有"
-        }
-      ],
       "positionPreferences": [
         "RB",
         "RM"
       ],
       "positionsWithCounts": {
-        "RB": 17,
+        "RB": 20,
         "RM": 5
       },
       "mainPositionGroup": "DF",
@@ -2539,8 +2472,8 @@
     {
       "name": "斯科特",
       "number": 8,
-      "caps": 31,
-      "lineups": 28,
+      "caps": 34,
+      "lineups": 31,
       "matches": [
         {
           "id": 2789129,
@@ -2975,15 +2908,57 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "CDM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 1,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "CDM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "CDM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
         "CAM": 3,
-        "CDM": 25
+        "CDM": 28
       },
-      "goals": 2,
+      "goals": 3,
       "assists": 1,
-      "minutesPlayed": 2300,
+      "minutesPlayed": 2570,
       "substitutedIn": 3,
       "substitutedOut": 14,
       "alternativeNames": [],
@@ -2991,39 +2966,12 @@
       "socialStatus": 4000,
       "nation": "英格兰",
       "height": 178,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2019-2020",
-          "date": "2020-01-01",
-          "from": "格恩西",
-          "to": "布里斯托城U18",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-07-01",
-          "from": "布里斯托城U18",
-          "to": "布里斯托城",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-08-10",
-          "from": "布里斯托城",
-          "to": "伯恩茅斯",
-          "fee": "2300万欧元",
-          "type": "完全所有"
-        }
-      ],
       "positionPreferences": [
         "CDM",
         "CAM"
       ],
       "positionsWithCounts": {
-        "CDM": 25,
+        "CDM": 28,
         "CAM": 3
       },
       "mainPositionGroup": "MF",
@@ -3032,7 +2980,7 @@
     {
       "name": "亚当斯",
       "number": 12,
-      "caps": 18,
+      "caps": 21,
       "lineups": 18,
       "matches": [
         {
@@ -3300,80 +3248,63 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 1,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
         "CDM": 18
       },
       "goals": 2,
-      "assists": 1,
-      "minutesPlayed": 1420,
-      "substitutedIn": 0,
+      "assists": 2,
+      "minutesPlayed": 1480,
+      "substitutedIn": 3,
       "substitutedOut": 10,
       "alternativeNames": [],
       "age": 27,
       "socialStatus": 2500,
       "nation": "美国",
       "height": 175,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2014-2015",
-          "date": "2015-03-19",
-          "from": "纽约红牛学院",
-          "to": "纽约红牛后备队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2015-11-03",
-          "from": "纽约红牛后备队",
-          "to": "纽约红牛",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2016-03-26",
-          "from": "纽约红牛",
-          "to": "纽约红牛后备队",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2016-11-30",
-          "from": "纽约红牛后备队",
-          "to": "纽约红牛",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2019-01-01",
-          "from": "纽约红牛",
-          "to": "RB莱比锡",
-          "fee": "263万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-07-06",
-          "from": "RB莱比锡",
-          "to": "利兹联",
-          "fee": "1700万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-08-20",
-          "from": "利兹联",
-          "to": "伯恩茅斯",
-          "fee": "2690万欧元",
-          "type": "完全所有"
-        }
-      ],
       "positionPreferences": [
         "CDM"
       ],
@@ -3384,473 +3315,10 @@
       "recommendedPosition": "CDM"
     },
     {
-      "name": "布鲁克斯",
-      "number": 7,
-      "caps": 25,
-      "lineups": 12,
-      "matches": [
-        {
-          "id": 2789129,
-          "round": 1,
-          "position": "LM",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 1,
-          "handicap": 1.25,
-          "score": "4-2",
-          "handicapResult": "lose",
-          "totalLine": "3/3.5",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 2789140,
-          "round": 2,
-          "position": "RM",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0.5,
-          "score": "1-0",
-          "handicapResult": "win",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "under"
-        },
-        {
-          "id": 2789157,
-          "round": 3,
-          "position": "RM",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0.5,
-          "score": "0-1",
-          "handicapResult": "win",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "under"
-        },
-        {
-          "id": 2789160,
-          "round": 4,
-          "position": "LM",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0,
-          "score": "2-1",
-          "handicapResult": "win",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 2789170,
-          "round": 5,
-          "position": "LM",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0,
-          "score": "0-0",
-          "handicapResult": "draw",
-          "totalLine": "2.5",
-          "totalGoalsResult": "under"
-        },
-        {
-          "id": 2789184,
-          "round": 6,
-          "position": "Substitute",
-          "caps": 1,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0,
-          "score": "2-2",
-          "handicapResult": "draw",
-          "totalLine": "2.5",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 2789191,
-          "round": 7,
-          "position": "RM",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0.5,
-          "score": "3-1",
-          "handicapResult": "win",
-          "totalLine": "2.5",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 2789211,
-          "round": 9,
-          "position": "Substitute",
-          "caps": 1,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0.5,
-          "score": "2-0",
-          "handicapResult": "win",
-          "totalLine": "2.5",
-          "totalGoalsResult": "under"
-        },
-        {
-          "id": 2789224,
-          "round": 10,
-          "position": "RM",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 1.25,
-          "score": "3-1",
-          "handicapResult": "lose",
-          "totalLine": "3",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 2789229,
-          "round": 11,
-          "position": "Substitute",
-          "caps": 1,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0.5,
-          "score": "4-0",
-          "handicapResult": "lose",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 2789240,
-          "round": 12,
-          "position": "RM",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 1,
-          "score": "2-2",
-          "handicapResult": "lose",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 2789256,
-          "round": 13,
-          "position": "Substitute",
-          "caps": 1,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0,
-          "score": "3-2",
-          "handicapResult": "lose",
-          "totalLine": "2.5",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 2789270,
-          "round": 15,
-          "position": "Substitute",
-          "caps": 1,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 0,
-          "handicap": -0.25,
-          "score": "0-0",
-          "handicapResult": "win",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "under"
-        },
-        {
-          "id": 2789285,
-          "round": 16,
-          "position": "Substitute",
-          "caps": 1,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0.5,
-          "score": "4-4",
-          "handicapResult": "win",
-          "totalLine": "3",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 2789290,
-          "round": 17,
-          "position": "RM",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 1.25,
-          "score": "1-1",
-          "handicapResult": "lose",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "under"
-        },
-        {
-          "id": 2789300,
-          "round": 18,
-          "position": "Substitute",
-          "caps": 1,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0.25,
-          "score": "4-1",
-          "handicapResult": "lose",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 2789312,
-          "round": 19,
-          "position": "RM",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 1,
-          "assists": 0,
-          "handicap": 1,
-          "score": "2-2",
-          "handicapResult": "win",
-          "totalLine": "3",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 2789320,
-          "round": 20,
-          "position": "LM",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 0,
-          "handicap": -1,
-          "score": "2-3",
-          "handicapResult": "draw",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 2789330,
-          "round": 21,
-          "position": "Substitute",
-          "caps": 1,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 1,
-          "handicap": 0.5,
-          "score": "3-2",
-          "handicapResult": "win",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 2789370,
-          "round": 25,
-          "position": "Substitute",
-          "caps": 1,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0,
-          "score": "1-1",
-          "handicapResult": "draw",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "under"
-        },
-        {
-          "id": 2789383,
-          "round": 26,
-          "position": "Substitute",
-          "caps": 1,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0.25,
-          "score": "1-2",
-          "handicapResult": "win",
-          "totalLine": "2.5",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 2789398,
-          "round": 27,
-          "position": "Substitute",
-          "caps": 1,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0,
-          "score": "0-0",
-          "handicapResult": "draw",
-          "totalLine": "3",
-          "totalGoalsResult": "under"
-        },
-        {
-          "id": 2789400,
-          "round": 28,
-          "position": "LM",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0.75,
-          "score": "1-1",
-          "handicapResult": "lose",
-          "totalLine": "2.5",
-          "totalGoalsResult": "under"
-        },
-        {
-          "id": 2789410,
-          "round": 29,
-          "position": "Substitute",
-          "caps": 0,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0.25,
-          "score": "0-0",
-          "handicapResult": "lose",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "under"
-        },
-        {
-          "id": 2789421,
-          "round": 30,
-          "position": "Substitute",
-          "caps": 1,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 0,
-          "handicap": -0.5,
-          "score": "0-0",
-          "handicapResult": "lose",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "under"
-        },
-        {
-          "id": 2789430,
-          "round": 31,
-          "position": "Substitute",
-          "caps": 1,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 0,
-          "handicap": -0.25,
-          "score": "2-2",
-          "handicapResult": "win",
-          "totalLine": "3",
-          "totalGoalsResult": "over"
-        }
-      ],
-      "positions": {
-        "LM": 5,
-        "RM": 7
-      },
-      "goals": 1,
-      "assists": 2,
-      "minutesPlayed": 1100,
-      "substitutedIn": 13,
-      "substitutedOut": 12,
-      "alternativeNames": [],
-      "age": 29,
-      "socialStatus": 1400,
-      "nation": "威尔士",
-      "height": 173,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2013-2014",
-          "date": "2013-07-01",
-          "from": "曼彻斯特城青年队",
-          "to": "曼彻斯特城U18",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2014-2015",
-          "date": "2014-07-01",
-          "from": "曼彻斯特城U18",
-          "to": "锡菲联青年队",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2015-07-01",
-          "from": "锡菲联青年队",
-          "to": "谢菲尔德联队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2015-08-29",
-          "from": "谢菲尔德联队",
-          "to": "夏利法斯",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2015-09-28",
-          "from": "夏利法斯",
-          "to": "谢菲尔德联队",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-07-01",
-          "from": "谢菲尔德联队",
-          "to": "伯恩茅斯",
-          "fee": "1130万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2024-01-30",
-          "from": "伯恩茅斯",
-          "to": "南安普敦",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2024-05-31",
-          "from": "南安普敦",
-          "to": "伯恩茅斯",
-          "fee": "",
-          "type": "租借结束"
-        }
-      ],
-      "positionPreferences": [
-        "RM",
-        "LM"
-      ],
-      "positionsWithCounts": {
-        "RM": 7,
-        "LM": 5
-      },
-      "mainPositionGroup": "MF",
-      "recommendedPosition": "LM"
-    },
-    {
       "name": "塔维尼尔",
       "number": 16,
-      "caps": 27,
-      "lineups": 24,
+      "caps": 30,
+      "lineups": 27,
       "matches": [
         {
           "id": 2789129,
@@ -4229,87 +3697,86 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "LM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "LM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 1,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "LM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
         "CAM": 11,
         "RM": 5,
-        "LM": 3,
+        "LM": 6,
         "CDM": 5
       },
-      "goals": 5,
+      "goals": 6,
       "assists": 4,
-      "minutesPlayed": 1980,
+      "minutesPlayed": 2210,
       "substitutedIn": 3,
-      "substitutedOut": 12,
+      "substitutedOut": 14,
       "alternativeNames": [],
       "age": 27,
       "socialStatus": 2300,
       "nation": "英格兰",
       "height": 178,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2016-2017",
-          "date": "2016-07-01",
-          "from": "米德尔斯堡U18",
-          "to": "米杜士堡U21",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2018-01-17",
-          "from": "米杜士堡U21",
-          "to": "米尔顿凯恩斯",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2018-05-31",
-          "from": "米尔顿凯恩斯",
-          "to": "米杜士堡U21",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-07-01",
-          "from": "米杜士堡U21",
-          "to": "米德尔斯堡",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-08-01",
-          "from": "米德尔斯堡",
-          "to": "伯恩茅斯",
-          "fee": "1190万欧元",
-          "type": "完全所有"
-        }
-      ],
       "positionPreferences": [
         "CAM",
+        "LM",
         "RM",
-        "CDM",
-        "LM"
+        "CDM"
       ],
       "positionsWithCounts": {
         "CAM": 11,
+        "LM": 6,
         "RM": 5,
-        "CDM": 5,
-        "LM": 3
+        "CDM": 5
       },
       "mainPositionGroup": "MF",
-      "recommendedPosition": "CAM"
+      "recommendedPosition": "LM"
     },
     {
       "name": "克鲁皮",
       "number": 22,
-      "caps": 26,
-      "lineups": 14,
+      "caps": 29,
+      "lineups": 17,
       "matches": [
         {
           "id": 2789129,
@@ -4744,72 +4211,509 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "CAM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 1,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "CAM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "CAM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 1,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
         "ST": 6,
-        "CAM": 8
+        "CAM": 11
       },
-      "goals": 9,
+      "goals": 11,
       "assists": 0,
-      "minutesPlayed": 1220,
+      "minutesPlayed": 1430,
       "substitutedIn": 12,
-      "substitutedOut": 14,
+      "substitutedOut": 17,
       "alternativeNames": [],
       "age": 20,
       "socialStatus": 4000,
       "nation": "法国",
       "height": 179,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2022-2023",
-          "date": "2022-07-01",
-          "from": "罗连安特U17",
-          "to": "罗连安特B队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-07-01",
-          "from": "罗连安特B队",
-          "to": "洛里昂",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2025-02-03",
-          "from": "洛里昂",
-          "to": "伯恩茅斯",
-          "fee": "1300万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2025-02-04",
-          "from": "伯恩茅斯",
-          "to": "洛里昂",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2025-06-30",
-          "from": "洛里昂",
-          "to": "伯恩茅斯",
-          "fee": "",
-          "type": "租借结束"
-        }
-      ],
       "positionPreferences": [
         "CAM",
         "ST"
       ],
       "positionsWithCounts": {
-        "CAM": 8,
+        "CAM": 11,
         "ST": 6
+      },
+      "mainPositionGroup": "MF",
+      "recommendedPosition": "CAM"
+    },
+    {
+      "name": "布鲁克斯",
+      "number": 7,
+      "caps": 28,
+      "lineups": 13,
+      "matches": [
+        {
+          "id": 2789129,
+          "round": 1,
+          "position": "LM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 1,
+          "handicap": 1.25,
+          "score": "4-2",
+          "handicapResult": "lose",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789140,
+          "round": 2,
+          "position": "RM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-0",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789157,
+          "round": 3,
+          "position": "RM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "0-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789160,
+          "round": 4,
+          "position": "LM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "2-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789170,
+          "round": 5,
+          "position": "LM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "0-0",
+          "handicapResult": "draw",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789184,
+          "round": 6,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "2-2",
+          "handicapResult": "draw",
+          "totalLine": "2.5",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789191,
+          "round": 7,
+          "position": "RM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "3-1",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789211,
+          "round": 9,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-0",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789224,
+          "round": 10,
+          "position": "RM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "3-1",
+          "handicapResult": "lose",
+          "totalLine": "3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789229,
+          "round": 11,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "4-0",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789240,
+          "round": 12,
+          "position": "RM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789256,
+          "round": 13,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "3-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789270,
+          "round": 15,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": -0.25,
+          "score": "0-0",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789285,
+          "round": 16,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "4-4",
+          "handicapResult": "win",
+          "totalLine": "3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789290,
+          "round": 17,
+          "position": "RM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-1",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789300,
+          "round": 18,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "4-1",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789312,
+          "round": 19,
+          "position": "RM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 1,
+          "assists": 0,
+          "handicap": 1,
+          "score": "2-2",
+          "handicapResult": "win",
+          "totalLine": "3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789320,
+          "round": 20,
+          "position": "LM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": -1,
+          "score": "2-3",
+          "handicapResult": "draw",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789330,
+          "round": 21,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 1,
+          "handicap": 0.5,
+          "score": "3-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789370,
+          "round": 25,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "1-1",
+          "handicapResult": "draw",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789383,
+          "round": 26,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789398,
+          "round": 27,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "0-0",
+          "handicapResult": "draw",
+          "totalLine": "3",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789400,
+          "round": 28,
+          "position": "LM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.75,
+          "score": "1-1",
+          "handicapResult": "lose",
+          "totalLine": "2.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789410,
+          "round": 29,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "0-0",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789421,
+          "round": 30,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": -0.5,
+          "score": "0-0",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789430,
+          "round": 31,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": -0.25,
+          "score": "2-2",
+          "handicapResult": "win",
+          "totalLine": "3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "RM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        }
+      ],
+      "positions": {
+        "LM": 5,
+        "RM": 8
+      },
+      "goals": 1,
+      "assists": 2,
+      "minutesPlayed": 1210,
+      "substitutedIn": 15,
+      "substitutedOut": 13,
+      "alternativeNames": [],
+      "age": 29,
+      "socialStatus": 1400,
+      "nation": "威尔士",
+      "height": 173,
+      "positionPreferences": [
+        "RM",
+        "LM"
+      ],
+      "positionsWithCounts": {
+        "RM": 8,
+        "LM": 5
       },
       "mainPositionGroup": "MF",
       "recommendedPosition": "RM"
@@ -4817,8 +4721,8 @@
     {
       "name": "伊瓦尼尔森",
       "number": 9,
-      "caps": 29,
-      "lineups": 25,
+      "caps": 32,
+      "lineups": 28,
       "matches": [
         {
           "id": 2789129,
@@ -5225,93 +5129,68 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "ST",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 1,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "ST",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "ST",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
-        "ST": 25
+        "ST": 28
       },
       "goals": 6,
-      "assists": 0,
-      "minutesPlayed": 1990,
+      "assists": 1,
+      "minutesPlayed": 2220,
       "substitutedIn": 4,
-      "substitutedOut": 18,
+      "substitutedOut": 20,
       "alternativeNames": [],
       "age": 27,
       "socialStatus": 3500,
       "nation": "巴西",
       "height": 183,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2017-2018",
-          "date": "2018-02-28",
-          "from": "富明尼斯PI青年队",
-          "to": "沙莫林",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2018-06-30",
-          "from": "沙莫林",
-          "to": "富明尼斯PI青年队",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2019-07-01",
-          "from": "富明尼斯PI青年队",
-          "to": "弗鲁米嫩塞",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2020-01-10",
-          "from": "弗鲁米嫩塞",
-          "to": "托姆本斯",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2020-01-13",
-          "from": "托姆本斯",
-          "to": "弗鲁米嫩塞",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-09-08",
-          "from": "弗鲁米嫩塞",
-          "to": "托姆本斯",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-09-09",
-          "from": "托姆本斯",
-          "to": "波尔图",
-          "fee": "1205万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-08-16",
-          "from": "波尔图",
-          "to": "伯恩茅斯",
-          "fee": "3700万欧元",
-          "type": "完全所有"
-        }
-      ],
       "positionPreferences": [
         "ST"
       ],
       "positionsWithCounts": {
-        "ST": 25
+        "ST": 28
       },
       "mainPositionGroup": "FW",
       "recommendedPosition": "ST"
@@ -5321,8 +5200,8 @@
     "1": {
       "name": "彼得罗维奇",
       "number": 1,
-      "caps": 31,
-      "lineups": 31,
+      "caps": 34,
+      "lineups": 34,
       "matches": [
         {
           "id": 2789129,
@@ -5757,94 +5636,69 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "GK",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "GK",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "GK",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
-        "GK": 31
+        "GK": 34
       },
       "goals": 1,
       "assists": 0,
-      "minutesPlayed": 2790,
+      "minutesPlayed": 3060,
       "substitutedIn": 0,
       "substitutedOut": 0,
       "alternativeNames": [],
       "age": 27,
       "socialStatus": 2800,
       "nation": "塞尔维亚",
-      "height": 194,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2017-2018",
-          "date": "2018-01-01",
-          "from": "古拉瑞奇U19",
-          "to": "古拉瑞奇",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-08-14",
-          "from": "古拉瑞奇",
-          "to": "诺维贝尔格莱德",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2019-06-30",
-          "from": "诺维贝尔格莱德",
-          "to": "古拉瑞奇",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2022-04-06",
-          "from": "古拉瑞奇",
-          "to": "新英格兰革命",
-          "fee": "91.5万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-08-26",
-          "from": "新英格兰革命",
-          "to": "切尔西",
-          "fee": "1600万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-08-30",
-          "from": "切尔西",
-          "to": "斯特拉斯堡",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2025-06-30",
-          "from": "斯特拉斯堡",
-          "to": "切尔西",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-07-16",
-          "from": "切尔西",
-          "to": "伯恩茅斯",
-          "fee": "2890万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 194
     },
     "3": {
       "name": "A·特鲁弗特",
       "number": 3,
-      "caps": 31,
-      "lineups": 31,
+      "caps": 34,
+      "lineups": 34,
       "matches": [
         {
           "id": 2789129,
@@ -6279,56 +6133,63 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "LB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "LB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 1,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "LB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
-        "LB": 31
+        "LB": 34
       },
-      "goals": 0,
+      "goals": 1,
       "assists": 3,
-      "minutesPlayed": 2750,
+      "minutesPlayed": 3020,
       "substitutedIn": 0,
       "substitutedOut": 2,
       "alternativeNames": [],
       "age": 25,
       "socialStatus": 2500,
       "nation": "法国",
-      "height": 176,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2018-2019",
-          "date": "2018-07-01",
-          "from": "雷恩青年队",
-          "to": "雷恩U19",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2019-07-01",
-          "from": "雷恩U19",
-          "to": "雷恩B队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-07-01",
-          "from": "雷恩B队",
-          "to": "雷恩",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-07-01",
-          "from": "雷恩",
-          "to": "伯恩茅斯",
-          "fee": "1350万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 176
     },
     "4": {
       "name": "L.库克",
@@ -6588,32 +6449,13 @@
       "age": 29,
       "socialStatus": 1300,
       "nation": "英格兰",
-      "height": 175,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2014-2015",
-          "date": "2014-07-01",
-          "from": "利兹联U18",
-          "to": "利兹联",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2016-07-08",
-          "from": "利兹联",
-          "to": "伯恩茅斯",
-          "fee": "700万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 175
     },
     "5": {
       "name": "塞内西",
       "number": 5,
-      "caps": 30,
-      "lineups": 30,
+      "caps": 33,
+      "lineups": 33,
       "matches": [
         {
           "id": 2789129,
@@ -7034,48 +6876,63 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 1,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
-        "CB": 30
+        "CB": 33
       },
       "goals": 0,
-      "assists": 4,
-      "minutesPlayed": 2660,
+      "assists": 5,
+      "minutesPlayed": 2930,
       "substitutedIn": 0,
       "substitutedOut": 2,
       "alternativeNames": [],
       "age": 29,
       "socialStatus": 2200,
       "nation": "阿根廷",
-      "height": 184,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2016-2017",
-          "date": "2016-07-01",
-          "from": "圣洛伦索后备队",
-          "to": "圣洛伦索",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2019-09-02",
-          "from": "圣洛伦索",
-          "to": "费耶诺德",
-          "fee": "700万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-08-08",
-          "from": "费耶诺德",
-          "to": "伯恩茅斯",
-          "fee": "1500万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 184
     },
     "6": {
       "name": "索勒",
@@ -7290,40 +7147,13 @@
       "age": 21,
       "socialStatus": 800,
       "nation": "阿根廷",
-      "height": 175,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2021-2022",
-          "date": "2022-01-01",
-          "from": "拉努斯U20",
-          "to": "拉努斯B队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2023-01-01",
-          "from": "拉努斯B队",
-          "to": "拉努斯",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2025-01-07",
-          "from": "拉努斯",
-          "to": "伯恩茅斯",
-          "fee": "800万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 175
     },
     "7": {
       "name": "布鲁克斯",
       "number": 7,
-      "caps": 25,
-      "lineups": 12,
+      "caps": 28,
+      "lineups": 13,
       "matches": [
         {
           "id": 2789129,
@@ -7688,95 +7518,70 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "RM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
         "LM": 5,
-        "RM": 7
+        "RM": 8
       },
       "goals": 1,
       "assists": 2,
-      "minutesPlayed": 1100,
-      "substitutedIn": 13,
-      "substitutedOut": 12,
+      "minutesPlayed": 1210,
+      "substitutedIn": 15,
+      "substitutedOut": 13,
       "alternativeNames": [],
       "age": 29,
       "socialStatus": 1400,
       "nation": "威尔士",
-      "height": 173,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2013-2014",
-          "date": "2013-07-01",
-          "from": "曼彻斯特城青年队",
-          "to": "曼彻斯特城U18",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2014-2015",
-          "date": "2014-07-01",
-          "from": "曼彻斯特城U18",
-          "to": "锡菲联青年队",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2015-07-01",
-          "from": "锡菲联青年队",
-          "to": "谢菲尔德联队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2015-08-29",
-          "from": "谢菲尔德联队",
-          "to": "夏利法斯",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2015-09-28",
-          "from": "夏利法斯",
-          "to": "谢菲尔德联队",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-07-01",
-          "from": "谢菲尔德联队",
-          "to": "伯恩茅斯",
-          "fee": "1130万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2024-01-30",
-          "from": "伯恩茅斯",
-          "to": "南安普敦",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2024-05-31",
-          "from": "南安普敦",
-          "to": "伯恩茅斯",
-          "fee": "",
-          "type": "租借结束"
-        }
-      ]
+      "height": 173
     },
     "8": {
       "name": "斯科特",
       "number": 8,
-      "caps": 31,
-      "lineups": 28,
+      "caps": 34,
+      "lineups": 31,
       "matches": [
         {
           "id": 2789129,
@@ -8211,55 +8016,70 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "CDM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 1,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "CDM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "CDM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
         "CAM": 3,
-        "CDM": 25
+        "CDM": 28
       },
-      "goals": 2,
+      "goals": 3,
       "assists": 1,
-      "minutesPlayed": 2300,
+      "minutesPlayed": 2570,
       "substitutedIn": 3,
       "substitutedOut": 14,
       "alternativeNames": [],
       "age": 23,
       "socialStatus": 4000,
       "nation": "英格兰",
-      "height": 178,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2019-2020",
-          "date": "2020-01-01",
-          "from": "格恩西",
-          "to": "布里斯托城U18",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-07-01",
-          "from": "布里斯托城U18",
-          "to": "布里斯托城",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-08-10",
-          "from": "布里斯托城",
-          "to": "伯恩茅斯",
-          "fee": "2300万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 178
     },
     "9": {
       "name": "伊瓦尼尔森",
       "number": 9,
-      "caps": 29,
-      "lineups": 25,
+      "caps": 32,
+      "lineups": 28,
       "matches": [
         {
           "id": 2789129,
@@ -8666,94 +8486,69 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "ST",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 1,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "ST",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "ST",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
-        "ST": 25
+        "ST": 28
       },
       "goals": 6,
-      "assists": 0,
-      "minutesPlayed": 1990,
+      "assists": 1,
+      "minutesPlayed": 2220,
       "substitutedIn": 4,
-      "substitutedOut": 18,
+      "substitutedOut": 20,
       "alternativeNames": [],
       "age": 27,
       "socialStatus": 3500,
       "nation": "巴西",
-      "height": 183,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2017-2018",
-          "date": "2018-02-28",
-          "from": "富明尼斯PI青年队",
-          "to": "沙莫林",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2018-06-30",
-          "from": "沙莫林",
-          "to": "富明尼斯PI青年队",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2019-07-01",
-          "from": "富明尼斯PI青年队",
-          "to": "弗鲁米嫩塞",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2020-01-10",
-          "from": "弗鲁米嫩塞",
-          "to": "托姆本斯",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2020-01-13",
-          "from": "托姆本斯",
-          "to": "弗鲁米嫩塞",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-09-08",
-          "from": "弗鲁米嫩塞",
-          "to": "托姆本斯",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-09-09",
-          "from": "托姆本斯",
-          "to": "波尔图",
-          "fee": "1205万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-08-16",
-          "from": "波尔图",
-          "to": "伯恩茅斯",
-          "fee": "3700万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 183
     },
     "10": {
       "name": "克里斯蒂",
       "number": 10,
-      "caps": 21,
-      "lineups": 5,
+      "caps": 24,
+      "lineups": 8,
       "matches": [
         {
           "id": 2789140,
@@ -9062,109 +8857,68 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "CDM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "CDM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "CDM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
-        "CDM": 5
+        "CDM": 8
       },
       "goals": 2,
       "assists": 0,
-      "minutesPlayed": 670,
+      "minutesPlayed": 880,
       "substitutedIn": 16,
-      "substitutedOut": 5,
+      "substitutedOut": 8,
       "alternativeNames": [],
       "age": 31,
       "socialStatus": 900,
       "nation": "苏格兰",
-      "height": 178,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2011-2012",
-          "date": "2011-07-01",
-          "from": "因弗内斯U17",
-          "to": "恩华利斯U20",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2013-2014",
-          "date": "2013-07-01",
-          "from": "恩华利斯U20",
-          "to": "因弗内斯",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2015-09-01",
-          "from": "因弗内斯",
-          "to": "凯尔特人",
-          "fee": "68万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2015-09-02",
-          "from": "凯尔特人",
-          "to": "因弗内斯",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2016-01-01",
-          "from": "因弗内斯",
-          "to": "凯尔特人",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2017-01-24",
-          "from": "凯尔特人",
-          "to": "阿伯丁",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2017-05-31",
-          "from": "阿伯丁",
-          "to": "凯尔特人",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2017-07-01",
-          "from": "凯尔特人",
-          "to": "阿伯丁",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2018-05-14",
-          "from": "阿伯丁",
-          "to": "凯尔特人",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-08-31",
-          "from": "凯尔特人",
-          "to": "伯恩茅斯",
-          "fee": "290万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 178
     },
     "11": {
       "name": "本多克",
       "number": 11,
-      "caps": 5,
+      "caps": 6,
       "lineups": 0,
       "matches": [
         {
@@ -9334,67 +9088,66 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {},
       "goals": 0,
       "assists": 1,
-      "minutesPlayed": 100,
-      "substitutedIn": 5,
+      "minutesPlayed": 120,
+      "substitutedIn": 6,
       "substitutedOut": 0,
       "alternativeNames": [],
       "age": 21,
       "socialStatus": 1600,
       "nation": "苏格兰",
-      "height": 173,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2022-2023",
-          "date": "2022-07-01",
-          "from": "凯尔特人青年队",
-          "to": "利物浦U18",
-          "fee": "71万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-07-01",
-          "from": "利物浦U18",
-          "to": "利物浦",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-08-30",
-          "from": "利物浦",
-          "to": "米德尔斯堡",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2025-06-30",
-          "from": "米德尔斯堡",
-          "to": "利物浦",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-08-18",
-          "from": "利物浦",
-          "to": "伯恩茅斯",
-          "fee": "2320万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 173
     },
     "12": {
       "name": "亚当斯",
       "number": 12,
-      "caps": 18,
+      "caps": 21,
       "lineups": 18,
       "matches": [
         {
@@ -9662,85 +9415,68 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 1,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
         "CDM": 18
       },
       "goals": 2,
-      "assists": 1,
-      "minutesPlayed": 1420,
-      "substitutedIn": 0,
+      "assists": 2,
+      "minutesPlayed": 1480,
+      "substitutedIn": 3,
       "substitutedOut": 10,
       "alternativeNames": [],
       "age": 27,
       "socialStatus": 2500,
       "nation": "美国",
-      "height": 175,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2014-2015",
-          "date": "2015-03-19",
-          "from": "纽约红牛学院",
-          "to": "纽约红牛后备队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2015-11-03",
-          "from": "纽约红牛后备队",
-          "to": "纽约红牛",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2016-03-26",
-          "from": "纽约红牛",
-          "to": "纽约红牛后备队",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2016-11-30",
-          "from": "纽约红牛后备队",
-          "to": "纽约红牛",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2019-01-01",
-          "from": "纽约红牛",
-          "to": "RB莱比锡",
-          "fee": "263万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-07-06",
-          "from": "RB莱比锡",
-          "to": "利兹联",
-          "fee": "1700万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-08-20",
-          "from": "利兹联",
-          "to": "伯恩茅斯",
-          "fee": "2690万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 175
     },
     "15": {
       "name": "史密斯",
       "number": 15,
-      "caps": 18,
+      "caps": 19,
       "lineups": 11,
       "matches": [
         {
@@ -10106,6 +9842,48 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
@@ -10113,151 +9891,20 @@
       },
       "goals": 0,
       "assists": 1,
-      "minutesPlayed": 990,
-      "substitutedIn": 7,
+      "minutesPlayed": 1010,
+      "substitutedIn": 8,
       "substitutedOut": 7,
       "alternativeNames": [],
       "age": 35,
       "socialStatus": 50,
       "nation": "英格兰",
-      "height": 174,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2008-2009",
-          "date": "2008-07-01",
-          "from": "托特纳姆热刺U18",
-          "to": "托特纳姆热刺",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2009-2010",
-          "date": "2009-08-06",
-          "from": "托特纳姆热刺",
-          "to": "韦康比流浪者",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2009-2010",
-          "date": "2009-09-06",
-          "from": "韦康比流浪者",
-          "to": "托特纳姆热刺",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2009-2010",
-          "date": "2009-11-20",
-          "from": "托特纳姆热刺",
-          "to": "托奎联",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2009-2010",
-          "date": "2010-05-31",
-          "from": "托奎联",
-          "to": "托特纳姆热刺",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2010-2011",
-          "date": "2010-09-23",
-          "from": "托特纳姆热刺",
-          "to": "伯恩茅斯",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2010-2011",
-          "date": "2011-06-01",
-          "from": "伯恩茅斯",
-          "to": "托特纳姆热刺",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2011-2012",
-          "date": "2011-08-16",
-          "from": "托特纳姆热刺",
-          "to": "米尔顿凯恩斯",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2011-2012",
-          "date": "2012-01-30",
-          "from": "米尔顿凯恩斯",
-          "to": "托特纳姆热刺",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2011-2012",
-          "date": "2012-01-31",
-          "from": "托特纳姆热刺",
-          "to": "利兹联",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2011-2012",
-          "date": "2012-02-28",
-          "from": "利兹联",
-          "to": "托特纳姆热刺",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2012-2013",
-          "date": "2012-11-01",
-          "from": "托特纳姆热刺",
-          "to": "米尔沃尔",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2012-2013",
-          "date": "2013-05-31",
-          "from": "米尔沃尔",
-          "to": "托特纳姆热刺",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2013-2014",
-          "date": "2013-07-29",
-          "from": "托特纳姆热刺",
-          "to": "德比郡",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2013-2014",
-          "date": "2013-11-29",
-          "from": "德比郡",
-          "to": "托特纳姆热刺",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2013-2014",
-          "date": "2014-01-28",
-          "from": "托特纳姆热刺",
-          "to": "伯恩茅斯",
-          "fee": "",
-          "type": "完全所有"
-        }
-      ]
+      "height": 174
     },
     "16": {
       "name": "塔维尼尔",
       "number": 16,
-      "caps": 27,
-      "lineups": 24,
+      "caps": 30,
+      "lineups": 27,
       "matches": [
         {
           "id": 2789129,
@@ -10636,67 +10283,66 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "LM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "LM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 1,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "LM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
         "CAM": 11,
         "RM": 5,
-        "LM": 3,
+        "LM": 6,
         "CDM": 5
       },
-      "goals": 5,
+      "goals": 6,
       "assists": 4,
-      "minutesPlayed": 1980,
+      "minutesPlayed": 2210,
       "substitutedIn": 3,
-      "substitutedOut": 12,
+      "substitutedOut": 14,
       "alternativeNames": [],
       "age": 27,
       "socialStatus": 2300,
       "nation": "英格兰",
-      "height": 178,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2016-2017",
-          "date": "2016-07-01",
-          "from": "米德尔斯堡U18",
-          "to": "米杜士堡U21",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2018-01-17",
-          "from": "米杜士堡U21",
-          "to": "米尔顿凯恩斯",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2018-05-31",
-          "from": "米尔顿凯恩斯",
-          "to": "米杜士堡U21",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-07-01",
-          "from": "米杜士堡U21",
-          "to": "米德尔斯堡",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-08-01",
-          "from": "米德尔斯堡",
-          "to": "伯恩茅斯",
-          "fee": "1190万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 178
     },
     "17": {
       "name": "阿德利",
@@ -10801,154 +10447,7 @@
       "age": 38,
       "socialStatus": 60,
       "nation": "英格兰",
-      "height": 201,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2007-2008",
-          "date": "2007-07-01",
-          "from": "纽卡斯尔联U18",
-          "to": "纽卡斯尔联",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2008-2009",
-          "date": "2008-10-02",
-          "from": "纽卡斯尔联",
-          "to": "斯托克港",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2008-2009",
-          "date": "2008-11-02",
-          "from": "斯托克港",
-          "to": "纽卡斯尔联",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2009-2010",
-          "date": "2009-07-31",
-          "from": "纽卡斯尔联",
-          "to": "布里斯托流浪",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2009-2010",
-          "date": "2009-08-27",
-          "from": "布里斯托流浪",
-          "to": "纽卡斯尔联",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2009-2010",
-          "date": "2009-08-28",
-          "from": "纽卡斯尔联",
-          "to": "诺维奇",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2009-2010",
-          "date": "2010-05-31",
-          "from": "诺维奇",
-          "to": "纽卡斯尔联",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2010-2011",
-          "date": "2010-08-24",
-          "from": "纽卡斯尔联",
-          "to": "凯尔特人",
-          "fee": "75万欧元",
-          "type": "租借"
-        },
-        {
-          "season": "2010-2011",
-          "date": "2011-05-31",
-          "from": "凯尔特人",
-          "to": "纽卡斯尔联",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2011-2012",
-          "date": "2011-08-17",
-          "from": "纽卡斯尔联",
-          "to": "凯尔特人",
-          "fee": "11.5万欧元",
-          "type": "租借"
-        },
-        {
-          "season": "2011-2012",
-          "date": "2012-05-31",
-          "from": "凯尔特人",
-          "to": "纽卡斯尔联",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2012-2013",
-          "date": "2012-07-05",
-          "from": "纽卡斯尔联",
-          "to": "凯尔特人",
-          "fee": "250万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2014-2015",
-          "date": "2014-08-09",
-          "from": "凯尔特人",
-          "to": "南安普敦",
-          "fee": "1250万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2019-08-22",
-          "from": "南安普敦",
-          "to": "凯尔特人",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2020-05-31",
-          "from": "凯尔特人",
-          "to": "南安普敦",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-07-01",
-          "from": "南安普敦",
-          "to": "托特纳姆热刺",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-07-01",
-          "from": "托特纳姆热刺",
-          "to": "自由球员",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2026-01-02",
-          "from": "自由球员",
-          "to": "伯恩茅斯",
-          "fee": "",
-          "type": "完全所有"
-        }
-      ]
+      "height": 201
     },
     "18": {
       "name": "迪亚科特",
@@ -11375,6 +10874,48 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
@@ -11389,42 +10930,7 @@
       "age": 25,
       "socialStatus": 3000,
       "nation": "法国",
-      "height": 184,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2016-2017",
-          "date": "2016-07-01",
-          "from": "图卢兹FO",
-          "to": "图鲁兹U17",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-10-26",
-          "from": "图鲁兹U17",
-          "to": "图卢兹",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-08-05",
-          "from": "图卢兹",
-          "to": "里尔",
-          "fee": "300万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-08-13",
-          "from": "里尔",
-          "to": "伯恩茅斯",
-          "fee": "3500万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 184
     },
     "19": {
       "name": "克鲁伊维特",
@@ -11697,112 +11203,13 @@
       "age": 27,
       "socialStatus": 3000,
       "nation": "荷兰",
-      "height": 172,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2007-2008",
-          "date": "2007-07-01",
-          "from": "阿姆斯特丹青年队",
-          "to": "阿贾克斯二队",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2014-2015",
-          "date": "2014-07-01",
-          "from": "阿贾克斯二队",
-          "to": "阿积士U17",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2016-07-01",
-          "from": "阿积士U17",
-          "to": "阿贾克斯U19",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2017-01-01",
-          "from": "阿贾克斯U19",
-          "to": "阿贾克斯",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-07-01",
-          "from": "阿贾克斯",
-          "to": "罗马",
-          "fee": "1725万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-10-05",
-          "from": "罗马",
-          "to": "RB莱比锡",
-          "fee": "100万欧元",
-          "type": "租借"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2021-06-30",
-          "from": "RB莱比锡",
-          "to": "罗马",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-07-20",
-          "from": "罗马",
-          "to": "尼斯",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2022-06-30",
-          "from": "尼斯",
-          "to": "罗马",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-09-01",
-          "from": "罗马",
-          "to": "巴伦西亚",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2023-06-30",
-          "from": "巴伦西亚",
-          "to": "罗马",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-07-01",
-          "from": "罗马",
-          "to": "伯恩茅斯",
-          "fee": "1080万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 172
     },
     "20": {
       "name": "索勒",
       "number": 20,
-      "caps": 27,
-      "lineups": 22,
+      "caps": 30,
+      "lineups": 25,
       "matches": [
         {
           "id": 2789129,
@@ -12237,104 +11644,71 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "RB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "RB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "RB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
-        "RB": 17,
+        "RB": 20,
         "RM": 5
       },
       "goals": 1,
       "assists": 0,
-      "minutesPlayed": 1820,
+      "minutesPlayed": 2070,
       "substitutedIn": 5,
-      "substitutedOut": 14,
+      "substitutedOut": 15,
       "alternativeNames": [
         "A·希门尼斯"
       ],
       "age": 21,
       "socialStatus": 2200,
       "nation": "西班牙",
-      "height": 177,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2021-2022",
-          "date": "2021-07-01",
-          "from": "皇家马德里青年队",
-          "to": "皇家马德里U17",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2022-01-01",
-          "from": "皇家马德里U17",
-          "to": "皇家马德里U18",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-07-01",
-          "from": "皇家马德里U18",
-          "to": "皇家马德里U19",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-07-25",
-          "from": "皇家马德里U19",
-          "to": "AC米兰青年队",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2024-06-30",
-          "from": "AC米兰青年队",
-          "to": "皇家马德里U19",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-07-01",
-          "from": "皇家马德里U19",
-          "to": "AC米兰",
-          "fee": "1475万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-09-01",
-          "from": "AC米兰",
-          "to": "伯恩茅斯",
-          "fee": "150万欧元",
-          "type": "租借"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2026-06-30",
-          "from": "伯恩茅斯",
-          "to": "AC米兰",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2026-2027",
-          "date": "2026-07-01",
-          "from": "AC米兰",
-          "to": "伯恩茅斯",
-          "fee": "1850万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 177
     },
     "21": {
       "name": "费华利",
       "number": 21,
-      "caps": 25,
+      "caps": 26,
       "lineups": 10,
       "matches": [
         {
@@ -12742,6 +12116,48 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
@@ -12750,8 +12166,8 @@
       },
       "goals": 3,
       "assists": 1,
-      "minutesPlayed": 1040,
-      "substitutedIn": 15,
+      "minutesPlayed": 1060,
+      "substitutedIn": 16,
       "substitutedOut": 8,
       "alternativeNames": [
         "阿德利"
@@ -12759,64 +12175,13 @@
       "age": 26,
       "socialStatus": 2000,
       "nation": "摩洛哥",
-      "height": 180,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2015-2016",
-          "date": "2015-07-01",
-          "from": "AS贝兹尔青年队",
-          "to": "图鲁兹U17",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2016-07-01",
-          "from": "图鲁兹U17",
-          "to": "图鲁兹U19",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2017-07-01",
-          "from": "图鲁兹U19",
-          "to": "洛德奥图卢兹",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2019-07-01",
-          "from": "洛德奥图卢兹",
-          "to": "图卢兹",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-08-26",
-          "from": "图卢兹",
-          "to": "勒沃库森",
-          "fee": "750万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-08-21",
-          "from": "勒沃库森",
-          "to": "伯恩茅斯",
-          "fee": "2100万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 180
     },
     "22": {
       "name": "克鲁皮",
       "number": 22,
-      "caps": 26,
-      "lineups": 14,
+      "caps": 29,
+      "lineups": 17,
       "matches": [
         {
           "id": 2789129,
@@ -13251,71 +12616,70 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "CAM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 1,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "CAM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "CAM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 1,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
         "ST": 6,
-        "CAM": 8
+        "CAM": 11
       },
-      "goals": 9,
+      "goals": 11,
       "assists": 0,
-      "minutesPlayed": 1220,
+      "minutesPlayed": 1430,
       "substitutedIn": 12,
-      "substitutedOut": 14,
+      "substitutedOut": 17,
       "alternativeNames": [],
       "age": 20,
       "socialStatus": 4000,
       "nation": "法国",
-      "height": 179,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2022-2023",
-          "date": "2022-07-01",
-          "from": "罗连安特U17",
-          "to": "罗连安特B队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-07-01",
-          "from": "罗连安特B队",
-          "to": "洛里昂",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2025-02-03",
-          "from": "洛里昂",
-          "to": "伯恩茅斯",
-          "fee": "1300万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2025-02-04",
-          "from": "伯恩茅斯",
-          "to": "洛里昂",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2025-06-30",
-          "from": "洛里昂",
-          "to": "伯恩茅斯",
-          "fee": "",
-          "type": "租借结束"
-        }
-      ]
+      "height": 179
     },
     "23": {
       "name": "希尔",
       "number": 23,
-      "caps": 22,
-      "lineups": 15,
+      "caps": 25,
+      "lineups": 18,
       "matches": [
         {
           "id": 2789129,
@@ -13694,78 +13058,69 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 1,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
         "RB": 2,
-        "CB": 13
+        "CB": 16
       },
-      "goals": 1,
+      "goals": 2,
       "assists": 3,
-      "minutesPlayed": 1450,
+      "minutesPlayed": 1720,
       "substitutedIn": 7,
       "substitutedOut": 2,
       "alternativeNames": [],
       "age": 24,
       "socialStatus": 1500,
       "nation": "英格兰",
-      "height": 184,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2019-2020",
-          "date": "2019-07-01",
-          "from": "富力特城U18",
-          "to": "弗利特伍德",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2022-01-05",
-          "from": "弗利特伍德",
-          "to": "伯恩茅斯",
-          "fee": "120万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2023-01-09",
-          "from": "伯恩茅斯",
-          "to": "哈茨",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2023-06-30",
-          "from": "哈茨",
-          "to": "伯恩茅斯",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-08-31",
-          "from": "伯恩茅斯",
-          "to": "布莱克本",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2024-01-10",
-          "from": "布莱克本",
-          "to": "伯恩茅斯",
-          "fee": "",
-          "type": "租借结束"
-        }
-      ]
+      "height": 184
     },
     "26": {
       "name": "于纳尔",
       "number": 26,
-      "caps": 17,
+      "caps": 19,
       "lineups": 0,
       "matches": [
         {
@@ -14047,171 +13402,66 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {},
       "goals": 1,
       "assists": 0,
-      "minutesPlayed": 340,
-      "substitutedIn": 17,
+      "minutesPlayed": 380,
+      "substitutedIn": 19,
       "substitutedOut": 0,
       "alternativeNames": [],
       "age": 29,
       "socialStatus": 800,
       "nation": "土耳其",
-      "height": 187,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2012-2013",
-          "date": "2012-07-01",
-          "from": "柏萨士邦青年队",
-          "to": "布尔萨体育U16",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2013-2014",
-          "date": "2013-07-01",
-          "from": "布尔萨体育U16",
-          "to": "布尔萨体育",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2015-07-06",
-          "from": "布尔萨体育",
-          "to": "曼彻斯特城",
-          "fee": "440万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2015-07-31",
-          "from": "曼彻斯特城",
-          "to": "亨克",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2016-01-29",
-          "from": "亨克",
-          "to": "曼彻斯特城",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2016-02-01",
-          "from": "曼彻斯特城",
-          "to": "布雷达",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2015-2016",
-          "date": "2016-06-30",
-          "from": "布雷达",
-          "to": "曼彻斯特城",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2016-07-23",
-          "from": "曼彻斯特城",
-          "to": "特温特",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2016-2017",
-          "date": "2017-06-30",
-          "from": "特温特",
-          "to": "曼彻斯特城",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2017-07-01",
-          "from": "曼彻斯特城",
-          "to": "比利亚雷亚尔",
-          "fee": "1400万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2017-10-30",
-          "from": "比利亚雷亚尔",
-          "to": "莱万特",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2017-2018",
-          "date": "2017-12-31",
-          "from": "莱万特",
-          "to": "比利亚雷亚尔",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-08-19",
-          "from": "比利亚雷亚尔",
-          "to": "巴拉多利德",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2019-2020",
-          "date": "2020-07-20",
-          "from": "巴拉多利德",
-          "to": "比利亚雷亚尔",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2020-08-12",
-          "from": "比利亚雷亚尔",
-          "to": "赫塔菲",
-          "fee": "900万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2024-02-01",
-          "from": "赫塔菲",
-          "to": "伯恩茅斯",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2024-06-30",
-          "from": "伯恩茅斯",
-          "to": "赫塔菲",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-07-01",
-          "from": "赫塔菲",
-          "to": "伯恩茅斯",
-          "fee": "1650万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 187
     },
     "27": {
       "name": "T.阿莱克斯",
       "number": 27,
-      "caps": 4,
+      "caps": 7,
       "lineups": 1,
       "matches": [
         {
@@ -14339,6 +13589,48 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
@@ -14346,65 +13638,14 @@
       },
       "goals": 0,
       "assists": 0,
-      "minutesPlayed": 130,
-      "substitutedIn": 3,
+      "minutesPlayed": 190,
+      "substitutedIn": 6,
       "substitutedOut": 1,
       "alternativeNames": [],
       "age": 21,
       "socialStatus": 1200,
       "nation": "匈牙利",
-      "height": 181,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2016-2017",
-          "date": "2016-08-17",
-          "from": "费伦斯华路士U21",
-          "to": "汉维德马可亚U21",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2018-2019",
-          "date": "2018-08-30",
-          "from": "汉维德马可亚U21",
-          "to": "费伦斯华路士U21",
-          "fee": "",
-          "type": "自由转会"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-07-01",
-          "from": "费伦斯华路士U21",
-          "to": "费伦茨瓦罗斯U17",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-07-01",
-          "from": "费伦茨瓦罗斯U17",
-          "to": "费伦斯华路士B队",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2024-01-02",
-          "from": "费伦斯华路士B队",
-          "to": "费伦茨瓦罗斯",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2026-01-20",
-          "from": "费伦茨瓦罗斯",
-          "to": "伯恩茅斯",
-          "fee": "1200万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 181
     },
     "29": {
       "name": "P·比林",
@@ -14537,6 +13778,48 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {},
@@ -14551,56 +13834,13 @@
       "age": 25,
       "socialStatus": 1000,
       "nation": "希腊",
-      "height": 189,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2017-2018",
-          "date": "2017-07-28",
-          "from": "艾杜美图斯U20",
-          "to": "阿特罗米托斯",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2022-01-31",
-          "from": "阿特罗米托斯",
-          "to": "OFI克里特",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-09-01",
-          "from": "OFI克里特",
-          "to": "拉齐奥",
-          "fee": "130万欧元",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2026-01-27",
-          "from": "拉齐奥",
-          "to": "伯恩茅斯",
-          "fee": "150万欧元",
-          "type": "租借"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2026-06-30",
-          "from": "伯恩茅斯",
-          "to": "拉齐奥",
-          "fee": "",
-          "type": "租借结束"
-        }
-      ]
+      "height": 189
     },
     "37": {
       "name": "拉扬.维托",
       "number": 37,
-      "caps": 8,
-      "lineups": 7,
+      "caps": 11,
+      "lineups": 9,
       "matches": [
         {
           "id": 2789368,
@@ -14713,49 +13953,64 @@
           "handicapResult": "win",
           "totalLine": "3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789439,
+          "round": 32,
+          "position": "RM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 2789456,
+          "round": 33,
+          "position": "RM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 1,
+          "handicap": 0.5,
+          "score": "1-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 2789460,
+          "round": 34,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 1,
+          "assists": 0,
+          "handicap": 0.5,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
         }
       ],
       "positions": {
-        "RM": 6,
+        "RM": 8,
         "LM": 1
       },
-      "goals": 2,
-      "assists": 1,
-      "minutesPlayed": 550,
-      "substitutedIn": 1,
-      "substitutedOut": 5,
+      "goals": 3,
+      "assists": 2,
+      "minutesPlayed": 710,
+      "substitutedIn": 2,
+      "substitutedOut": 7,
       "alternativeNames": [],
       "age": 20,
       "socialStatus": 4000,
       "nation": "巴西",
-      "height": 185,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2022-2023",
-          "date": "2022-07-01",
-          "from": "瓦斯科达伽马青年队",
-          "to": "华斯高U19",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-07-01",
-          "from": "华斯高U19",
-          "to": "瓦斯科达伽马",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2026-01-27",
-          "from": "瓦斯科达伽马",
-          "to": "伯恩茅斯",
-          "fee": "2850万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 185
     },
     "44": {
       "name": "米洛萨夫列维奇",
@@ -15084,78 +14339,19 @@
       "age": 19,
       "socialStatus": 2000,
       "nation": "塞尔维亚",
-      "height": 192,
-      "currentClub": "伯恩茅斯",
-      "recentTransfers": [
-        {
-          "season": "2020-2021",
-          "date": "2020-08-17",
-          "from": "贝尔格莱德红星U15",
-          "to": "格拉菲卡贝尔格莱德U15",
-          "fee": "",
-          "type": "租借"
-        },
-        {
-          "season": "2020-2021",
-          "date": "2021-06-30",
-          "from": "格拉菲卡贝尔格莱德U15",
-          "to": "贝尔格莱德红星U15",
-          "fee": "",
-          "type": "租借结束"
-        },
-        {
-          "season": "2021-2022",
-          "date": "2021-07-01",
-          "from": "贝尔格莱德红星U15",
-          "to": "贝尔格莱德红星U16",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2022-2023",
-          "date": "2022-07-01",
-          "from": "贝尔格莱德红星U16",
-          "to": "贝尔格莱德红星U17",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2023-2024",
-          "date": "2023-07-01",
-          "from": "贝尔格莱德红星U17",
-          "to": "贝尔格莱德红星U19",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2024-2025",
-          "date": "2024-07-01",
-          "from": "贝尔格莱德红星U19",
-          "to": "贝尔格莱德红星",
-          "fee": "",
-          "type": "完全所有"
-        },
-        {
-          "season": "2025-2026",
-          "date": "2025-09-01",
-          "from": "贝尔格莱德红星",
-          "to": "伯恩茅斯",
-          "fee": "1500万欧元",
-          "type": "完全所有"
-        }
-      ]
+      "height": 192
     }
   },
   "formationStats": {
     "4141": 2,
-    "4231": 29
+    "4231": 32
   },
   "asianHandicap": {
-    "total": 31,
-    "win": 15,
-    "lose": 11,
+    "total": 34,
+    "win": 17,
+    "lose": 12,
     "draw": 5,
-    "winRate": "48.39",
+    "winRate": "50.00",
     "matches": [
       {
         "score": "4-2",
@@ -15373,15 +14569,36 @@
         "status": "home",
         "handicapResult": "home_win",
         "teamResult": "win"
+      },
+      {
+        "score": "1-2",
+        "handicap": 1.25,
+        "status": "guest",
+        "handicapResult": "away_win",
+        "teamResult": "win"
+      },
+      {
+        "score": "1-2",
+        "handicap": 0.5,
+        "status": "guest",
+        "handicapResult": "away_win",
+        "teamResult": "win"
+      },
+      {
+        "score": "2-2",
+        "handicap": 0.5,
+        "status": "home",
+        "handicapResult": "away_win",
+        "teamResult": "lose"
       }
     ]
   },
   "totalGoals": {
-    "total": 31,
-    "over": 17,
-    "under": 14,
+    "total": 34,
+    "over": 19,
+    "under": 15,
     "draw": 0,
-    "overRate": "54.84",
+    "overRate": "55.88",
     "matches": [
       {
         "score": "4-2",
@@ -15627,6 +14844,30 @@
         "score": "2-2",
         "totalLine": "3",
         "totalLineValue": 3,
+        "status": "home",
+        "totalGoals": 4,
+        "result": "over"
+      },
+      {
+        "score": "1-2",
+        "totalLine": "2.5/3",
+        "totalLineValue": 2.75,
+        "status": "guest",
+        "totalGoals": 3,
+        "result": "over"
+      },
+      {
+        "score": "1-2",
+        "totalLine": "3/3.5",
+        "totalLineValue": 3.25,
+        "status": "guest",
+        "totalGoals": 3,
+        "result": "under"
+      },
+      {
+        "score": "2-2",
+        "totalLine": "2.5/3",
+        "totalLineValue": 2.75,
         "status": "home",
         "totalGoals": 4,
         "result": "over"

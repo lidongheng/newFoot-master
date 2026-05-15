@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>亚盘周期盈亏 — 仁川联队 vs 浦项制铁</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0; padding: 16px 20px 40px; background: #f5f5f5; color: #222; }
+    h1 { font-size: 1.25rem; margin: 0 0 8px; }
+    .meta { color: #666; font-size: 0.9rem; margin-bottom: 20px; }
+    .section { background: #fff; border-radius: 8px; padding: 16px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+    .section h2 { margin: 0 0 12px; font-size: 1.05rem; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+    .chart-wrap { margin-bottom: 24px; }
+    .chart { width: 100%; height: 360px; }
+    .hint { font-size: 12px; color: #888; margin: 6px 0 0; }
+    .note { font-size: 13px; color: #555; line-height: 1.5; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1>霍华德·马克斯周期视角 · 亚盘模拟盈亏</h1>
+  <div class="meta">
+    场次序号 matchSerial：2929635 ｜ 赛季 2026 ｜ 第 14 轮<br/>
+    主队：仁川联队 ｜ 客队：浦项制铁<br/>
+    模拟规则：每场投注 1000 元、买己方盘、固定水位 0.9（港盘）、初盘盘口来自球探分析页。
+  </div>
+
+  <div class="section">
+    <h2>仁川联队（本场主场）</h2>
+    <p class="note">「主或客场」图仅包含该队历史<strong>主场</strong>比赛，便于对照本场主场节奏。</p>
+    
+    <div class="chart-wrap">
+      <div id="chart_home_0" class="chart"></div>
+      <p class="hint">全部近期 · 共 27 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_home_1" class="chart"></div>
+      <p class="hint">仅主场 · 共 12 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_home_2" class="chart"></div>
+      <p class="hint">同赛事（韩K联） · 共 13 场。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>浦项制铁（本场客场）</h2>
+    <p class="note">「主或客场」图仅包含该队历史<strong>客场</strong>比赛，便于对照本场客场节奏。</p>
+    
+    <div class="chart-wrap">
+      <div id="chart_away_0" class="chart"></div>
+      <p class="hint">全部近期 · 共 30 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_away_1" class="chart"></div>
+      <p class="hint">仅客场 · 共 14 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_away_2" class="chart"></div>
+      <p class="hint">同赛事（韩K联） · 共 22 场。</p>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var configs = [{"id":"chart_home_0","option":{"title":{"text":"仁川联队 — 全部近期（27 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-08-30 忠南牙山","25-09-07 富川FC","25-09-13 天安城","25-09-20 金浦市民","25-09-28 首尔衣恋","25-10-04 华城FC","25-10-08 水原三星","25-10-12 城南FC","25-10-19 安山小绿人","25-10-26 庆南FC","25-11-02 釜山偶像","25-11-08 全南天龙","25-11-23 忠北清州","26-01-31 温哥华白浪(中)","26-02-28 FC首尔","26-03-07 光州FC","26-03-15 浦项制铁","26-03-18 大田市民","26-03-22 FC安养","26-04-05 金泉尚武","26-04-11 蔚山HD","26-04-18 富川FC","26-04-21 全北现代","26-04-25 济州SK","26-05-02 江原FC","26-05-05 大田市民","26-05-09 金泉尚武"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[-1000,-2000,-1550,-2550,-3050,-3050,-3550,-4050,-4050,-3150,-3650,-4650,-5650,-6650,-7650,-8650,-8200,-9200,-8300,-7400,-8400,-8900,-8000,-7100,-8100,-7650,-6750],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[26,-6750],"value":-6750}]}}]}},{"id":"chart_home_1","option":{"title":{"text":"仁川联队 — 仅主场（12 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-08-30 忠南牙山","25-09-20 金浦市民","25-10-08 水原三星","25-10-26 庆南FC","25-11-02 釜山偶像","25-11-23 忠北清州","26-02-28 FC首尔","26-03-18 大田市民","26-04-05 金泉尚武","26-04-11 蔚山HD","26-04-25 济州SK","26-05-02 江原FC"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[-1000,-2000,-2500,-1600,-2100,-3100,-4100,-5100,-4200,-5200,-4300,-5300],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[11,-5300],"value":-5300}]}}]}},{"id":"chart_home_2","option":{"title":{"text":"仁川联队 — 同赛事（韩K联）（13 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["26-02-28 FC首尔","26-03-07 光州FC","26-03-15 浦项制铁","26-03-18 大田市民","26-03-22 FC安养","26-04-05 金泉尚武","26-04-11 蔚山HD","26-04-18 富川FC","26-04-21 全北现代","26-04-25 济州SK","26-05-02 江原FC","26-05-05 大田市民","26-05-09 金泉尚武"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[-1000,-2000,-1550,-2550,-1650,-750,-1750,-2250,-1350,-450,-1450,-1000,-100],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[12,-100],"value":-100}]}}]}},{"id":"chart_away_0","option":{"title":{"text":"浦项制铁 — 全部近期（30 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-09-18 巴吞联","25-09-21 济州SK","25-09-27 金泉尚武","25-10-02 卡雅FC","25-10-05 大田市民","25-10-18 FC首尔","25-10-23 淡滨尼流浪者(中)","25-10-26 大田市民","25-11-01 金泉尚武","25-11-06 淡滨尼流浪者","25-11-09 FC首尔","25-11-22 全北现代","25-11-27 巴吞联","25-11-30 江原FC","25-12-11 卡雅FC","26-02-12 大阪钢巴","26-02-19 大阪钢巴","26-02-28 金泉尚武","26-03-15 仁川联队","26-03-18 FC首尔","26-03-22 富川FC","26-03-28 江原FC","26-04-04 大田市民","26-04-11 济州SK","26-04-19 FC安养","26-04-22 光州FC","26-04-26 全北现代","26-05-02 蔚山HD","26-05-05 江原FC","26-05-09 大田市民"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[900,1800,800,-200,-1200,-300,-1300,-2300,-1400,-2400,-2400,-2900,-2000,-3000,-4000,-4000,-5000,-5000,-5500,-6500,-7500,-6600,-5700,-6700,-7700,-7250,-8250,-7350,-6900,-6000],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[29,-6000],"value":-6000}]}}]}},{"id":"chart_away_1","option":{"title":{"text":"浦项制铁 — 仅客场（14 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-09-18 巴吞联","25-09-27 金泉尚武","25-10-18 FC首尔","25-10-23 淡滨尼流浪者(中)","25-10-26 大田市民","25-11-01 金泉尚武","25-11-30 江原FC","25-12-11 卡雅FC","26-02-19 大阪钢巴","26-02-28 金泉尚武","26-04-26 全北现代","26-05-02 蔚山HD","26-05-05 江原FC","26-05-09 大田市民"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[900,-100,800,-200,-1200,-300,-1300,-2300,-3300,-3300,-4300,-3400,-2950,-2050],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[13,-2050],"value":-2050}]}}]}},{"id":"chart_away_2","option":{"title":{"text":"浦项制铁 — 同赛事（韩K联）（22 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["25-09-21 济州SK","25-09-27 金泉尚武","25-10-05 大田市民","25-10-18 FC首尔","25-10-26 大田市民","25-11-01 金泉尚武","25-11-09 FC首尔","25-11-22 全北现代","25-11-30 江原FC","26-02-28 金泉尚武","26-03-15 仁川联队","26-03-18 FC首尔","26-03-22 富川FC","26-03-28 江原FC","26-04-04 大田市民","26-04-11 济州SK","26-04-19 FC安养","26-04-22 光州FC","26-04-26 全北现代","26-05-02 蔚山HD","26-05-05 江原FC","26-05-09 大田市民"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[900,-100,-1100,-200,-1200,-300,-300,-800,-1800,-1800,-2300,-3300,-4300,-3400,-2500,-3500,-4500,-4050,-5050,-4150,-3700,-2800],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[21,-2800],"value":-2800}]}}]}}];
+      configs.forEach(function(item) {
+        var el = document.getElementById(item.id);
+        if (!el) return;
+        var chart = echarts.init(el);
+        chart.setOption(item.option);
+        window.addEventListener('resize', function() { chart.resize(); });
+      });
+    })();
+  </script>
+</body>
+</html>
