@@ -13,7 +13,7 @@ const squadTarget = {
   leagueSerial: '75',
   leagueSlug: 'theWorldCup',
   season: '2026',
-  teamSerial: '903',
+  teamSerial: '2363',
   roundSerial: '14',
   /**
    * 赛程格式开关：
@@ -35,7 +35,7 @@ const squadTarget = {
    *   isNation: true + 国家队杯赛 → 不用设（自动 true）
    */
   matchByName: false,
-  teamChineseName: '日本',
+  teamChineseName: '新西兰',
   /** 单场分析 / 周期报告等场景可选 */
   matchSerial: '2929634',
   /**
