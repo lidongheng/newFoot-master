@@ -13,7 +13,7 @@ const squadTarget = {
   leagueSerial: '75',
   leagueSlug: 'theWorldCup',
   season: '2026',
-  teamSerial: '649',
+  teamSerial: '903',
   roundSerial: '14',
   /**
    * 赛程格式开关：
@@ -35,14 +35,14 @@ const squadTarget = {
    *   isNation: true + 国家队杯赛 → 不用设（自动 true）
    */
   matchByName: false,
-  teamChineseName: '法国',
+  teamChineseName: '日本',
   /** 单场分析 / 周期报告等场景可选 */
   matchSerial: '2929634',
   /**
    * 周期报告「同赛事」筛选：与球探战绩表「联赛」列文案一致（如 英超、欧冠杯）。
    * 不填则回退为当前 CUP_ANALYZER_CUP 对应 chineseName。
    */
-  matchLeagueName: '韩K联',
+  matchLeagueName: '世界杯',
 };
 
 module.exports = squadTarget;
