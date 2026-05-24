@@ -1,18 +1,6 @@
 [
   {
-    "number": 1,
-    "name": "尼兰",
-    "positionGroup": "GK",
-    "age": 36,
-    "height": 192,
-    "weight": 90,
-    "position": "守门员",
-    "nationality": "挪威",
-    "marketValue": "90",
-    "birthDate": "1990-09-10"
-  },
-  {
-    "number": 13,
+    "number": 0,
     "name": "E.塞尔维克",
     "positionGroup": "GK",
     "age": 29,
@@ -21,151 +9,189 @@
     "position": "守门员",
     "nationality": "挪威",
     "marketValue": "130",
-    "birthDate": "1997-07-30"
+    "birthDate": "1997-07-30",
+    "currentClub": null,
+    "recentTransfers": []
   },
   {
     "number": 0,
-    "name": "马蒂亚斯·迪格兰德",
+    "name": "S.塔纳维奇",
     "positionGroup": "GK",
-    "age": 31,
-    "height": 187,
-    "weight": 81,
+    "age": 24,
+    "height": 193,
+    "weight": 80,
+    "position": "守门员",
+    "nationality": "挪威",
+    "marketValue": "300",
+    "birthDate": "2002-11-29",
+    "currentClub": null,
+    "recentTransfers": []
+  },
+  {
+    "number": 0,
+    "name": "尼兰",
+    "positionGroup": "GK",
+    "age": 36,
+    "height": 192,
+    "weight": 90,
     "position": "守门员",
     "nationality": "挪威",
     "marketValue": "90",
-    "birthDate": "1995-10-07"
+    "birthDate": "1990-09-10",
+    "currentClub": "塞维利亚",
+    "recentTransfers": [
+      {
+        "season": "2008-2009",
+        "date": "2009-01-01",
+        "from": "禾特U19",
+        "to": "禾特",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2012-2013",
+        "date": "2013-01-01",
+        "from": "禾特",
+        "to": "莫尔德",
+        "fee": "",
+        "type": "自由转会"
+      },
+      {
+        "season": "2015-2016",
+        "date": "2015-07-01",
+        "from": "莫尔德",
+        "to": "因戈尔施塔特",
+        "fee": "100万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2018-2019",
+        "date": "2018-08-07",
+        "from": "因戈尔施塔特",
+        "to": "阿斯顿维拉",
+        "fee": "300万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2020-2021",
+        "date": "2020-10-05",
+        "from": "阿斯顿维拉",
+        "to": "自由球员",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2020-2021",
+        "date": "2021-02-01",
+        "from": "自由球员",
+        "to": "诺维奇",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2021-2022",
+        "date": "2021-08-17",
+        "from": "诺维奇",
+        "to": "伯恩茅斯",
+        "fee": "",
+        "type": "自由转会"
+      },
+      {
+        "season": "2021-2022",
+        "date": "2022-01-31",
+        "from": "伯恩茅斯",
+        "to": "自由球员",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2021-2022",
+        "date": "2022-03-10",
+        "from": "自由球员",
+        "to": "雷丁",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2022-2023",
+        "date": "2022-07-01",
+        "from": "雷丁",
+        "to": "自由球员",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2022-2023",
+        "date": "2022-10-09",
+        "from": "自由球员",
+        "to": "RB莱比锡",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2023-2024",
+        "date": "2023-08-20",
+        "from": "RB莱比锡",
+        "to": "塞维利亚",
+        "fee": "",
+        "type": "自由转会"
+      }
+    ]
   },
   {
-    "number": 3,
-    "name": "克里斯托弗.阿耶",
-    "positionGroup": "DF",
-    "age": 28,
-    "height": 198,
-    "weight": 84,
-    "position": "后卫",
-    "nationality": "挪威",
-    "marketValue": "1800",
-    "birthDate": "1998-04-17"
-  },
-  {
-    "number": 4,
-    "name": "里奥.奥斯加德",
-    "positionGroup": "DF",
-    "age": 27,
-    "height": 183,
-    "weight": 80,
-    "position": "后卫",
-    "nationality": "挪威",
-    "marketValue": "1000",
-    "birthDate": "1999-11-28"
-  },
-  {
-    "number": 5,
-    "name": "大卫.莫勒.沃尔夫",
-    "positionGroup": "DF",
-    "age": 24,
-    "height": 187,
-    "weight": 78,
-    "position": "后卫",
-    "nationality": "挪威",
-    "marketValue": "1000",
-    "birthDate": "2002-04-23"
-  },
-  {
-    "number": 14,
-    "name": "耶尔森",
-    "positionGroup": "DF",
-    "age": 29,
-    "height": 183,
-    "weight": 82,
-    "position": "后卫",
-    "nationality": "挪威",
-    "marketValue": "2500",
-    "birthDate": "1997-11-17"
-  },
-  {
-    "number": 15,
+    "number": 0,
     "name": "A.巴恩斯安",
     "positionGroup": "DF",
     "age": 28,
     "height": 180,
     "weight": 73,
-    "position": "后卫",
-    "nationality": "挪威",
-    "marketValue": "250",
-    "birthDate": "1998-08-21"
-  },
-  {
-    "number": 16,
-    "name": "霍姆格伦·佩德森",
-    "positionGroup": "DF",
-    "age": 26,
-    "height": 184,
-    "weight": 76,
-    "position": "后卫",
+    "position": "左后卫",
     "nationality": "挪威",
     "marketValue": "350",
-    "birthDate": "2000-07-16"
-  },
-  {
-    "number": 17,
-    "name": "托尔霍恩·赫根",
-    "positionGroup": "DF",
-    "age": 27,
-    "height": 192,
-    "weight": 79,
-    "position": "后卫",
-    "nationality": "挪威",
-    "marketValue": "1400",
-    "birthDate": "1999-01-12"
-  },
-  {
-    "number": 0,
-    "name": "安德烈亚斯·奥尔森",
-    "positionGroup": "DF",
-    "age": 29,
-    "height": 185,
-    "weight": 82,
-    "position": "后卫",
-    "nationality": "挪威",
-    "marketValue": "400",
-    "birthDate": "1997-01-17"
-  },
-  {
-    "number": 0,
-    "name": "艾温德·赫兰",
-    "positionGroup": "DF",
-    "age": 21,
-    "height": 196,
-    "weight": 82,
-    "position": "后卫",
-    "nationality": "挪威",
-    "marketValue": "600",
-    "birthDate": "2005-04-25"
-  },
-  {
-    "number": 0,
-    "name": "贡德森",
-    "positionGroup": "DF",
-    "age": 30,
-    "height": 186,
-    "weight": 82,
-    "position": "后卫",
-    "nationality": "挪威",
-    "marketValue": "120",
-    "birthDate": "1996-04-02"
-  },
-  {
-    "number": 0,
-    "name": "格雷格尔森",
-    "positionGroup": "DF",
-    "age": 31,
-    "height": 191,
-    "weight": 83,
-    "position": "后卫",
-    "nationality": "挪威",
-    "marketValue": "180",
-    "birthDate": "1995-05-17"
+    "birthDate": "1998-08-21",
+    "currentClub": "博德闪耀",
+    "recentTransfers": [
+      {
+        "season": "2015-2016",
+        "date": "2015-08-28",
+        "from": "博多格林特U19",
+        "to": "博德闪耀",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2021-2022",
+        "date": "2022-01-01",
+        "from": "博德闪耀",
+        "to": "柏林赫塔",
+        "fee": "",
+        "type": "自由转会"
+      },
+      {
+        "season": "2022-2023",
+        "date": "2022-08-29",
+        "from": "柏林赫塔",
+        "to": "费耶诺德",
+        "fee": "",
+        "type": "租借"
+      },
+      {
+        "season": "2022-2023",
+        "date": "2023-01-03",
+        "from": "费耶诺德",
+        "to": "柏林赫塔",
+        "fee": "",
+        "type": "租借结束"
+      },
+      {
+        "season": "2022-2023",
+        "date": "2023-01-08",
+        "from": "柏林赫塔",
+        "to": "博德闪耀",
+        "fee": "",
+        "type": "自由转会"
+      }
+    ]
   },
   {
     "number": 0,
@@ -174,142 +200,519 @@
     "age": 25,
     "height": 190,
     "weight": 83,
-    "position": "后卫",
+    "position": "中卫",
     "nationality": "挪威",
     "marketValue": "350",
-    "birthDate": "2001-02-02"
+    "birthDate": "2001-02-02",
+    "currentClub": null,
+    "recentTransfers": []
   },
   {
     "number": 0,
-    "name": "托比亚斯·克瓦尔瓦涅斯·古达尔",
+    "name": "克里斯托弗.阿耶",
+    "positionGroup": "DF",
+    "age": 28,
+    "height": 198,
+    "weight": 84,
+    "position": "中卫",
+    "nationality": "挪威",
+    "marketValue": "1800",
+    "birthDate": "1998-04-17",
+    "currentClub": "布伦特福德",
+    "recentTransfers": [
+      {
+        "season": "2014-2015",
+        "date": "2014-07-15",
+        "from": "利勒斯特罗姆U19",
+        "to": "斯达",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2016-2017",
+        "date": "2016-07-01",
+        "from": "斯达",
+        "to": "凯尔特人",
+        "fee": "60万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2016-2017",
+        "date": "2017-01-20",
+        "from": "凯尔特人",
+        "to": "基马诺克",
+        "fee": "",
+        "type": "租借"
+      },
+      {
+        "season": "2016-2017",
+        "date": "2017-05-31",
+        "from": "基马诺克",
+        "to": "凯尔特人",
+        "fee": "",
+        "type": "租借结束"
+      },
+      {
+        "season": "2021-2022",
+        "date": "2021-07-21",
+        "from": "凯尔特人",
+        "to": "布伦特福德",
+        "fee": "1570万欧元",
+        "type": "完全所有"
+      }
+    ]
+  },
+  {
+    "number": 0,
+    "name": "大卫.莫勒.沃尔夫",
     "positionGroup": "DF",
     "age": 24,
-    "height": 201,
-    "weight": 81,
-    "position": "后卫",
+    "height": 187,
+    "weight": 78,
+    "position": "左后卫",
     "nationality": "挪威",
-    "marketValue": "350",
-    "birthDate": "2002-07-25"
+    "marketValue": "1000",
+    "birthDate": "2002-04-23",
+    "currentClub": "狼队",
+    "recentTransfers": [
+      {
+        "season": "2019-2020",
+        "date": "2019-08-01",
+        "from": "北卑尔根",
+        "to": "布兰B队",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2020-2021",
+        "date": "2020-07-13",
+        "from": "布兰B队",
+        "to": "阿萨纳",
+        "fee": "",
+        "type": "租借"
+      },
+      {
+        "season": "2020-2021",
+        "date": "2020-12-31",
+        "from": "阿萨纳",
+        "to": "布兰B队",
+        "fee": "",
+        "type": "租借结束"
+      },
+      {
+        "season": "2020-2021",
+        "date": "2021-02-01",
+        "from": "布兰B队",
+        "to": "布兰",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2023-2024",
+        "date": "2023-07-01",
+        "from": "布兰",
+        "to": "阿尔克马尔",
+        "fee": "390万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2025-2026",
+        "date": "2025-08-02",
+        "from": "阿尔克马尔",
+        "to": "狼队",
+        "fee": "1200万欧元",
+        "type": "完全所有"
+      }
+    ]
   },
   {
     "number": 0,
-    "name": "塞巴斯蒂安·索拉斯",
+    "name": "托尔霍恩·赫根",
+    "positionGroup": "DF",
+    "age": 27,
+    "height": 192,
+    "weight": 79,
+    "position": "中卫",
+    "nationality": "挪威",
+    "marketValue": "1400",
+    "birthDate": "1999-01-12",
+    "currentClub": null,
+    "recentTransfers": []
+  },
+  {
+    "number": 0,
+    "name": "亨利.法尔切纳",
+    "positionGroup": "DF",
+    "age": 23,
+    "height": 194,
+    "weight": 80,
+    "position": "中卫",
+    "nationality": "挪威",
+    "marketValue": "400",
+    "birthDate": "2003-05-08",
+    "currentClub": "维京",
+    "recentTransfers": [
+      {
+        "season": "2017-2018",
+        "date": "2018-01-21",
+        "from": "斯托姆加斯特U19",
+        "to": "桑德菲杰U19",
+        "fee": "",
+        "type": "自由转会"
+      },
+      {
+        "season": "2019-2020",
+        "date": "2019-08-01",
+        "from": "桑德菲杰U19",
+        "to": "桑德菲杰B队",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2019-2020",
+        "date": "2020-01-01",
+        "from": "桑德菲杰B队",
+        "to": "桑德菲杰",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2021-2022",
+        "date": "2022-01-01",
+        "from": "桑德菲杰",
+        "to": "自由球员",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2021-2022",
+        "date": "2022-04-05",
+        "from": "自由球员",
+        "to": "ORN侯登",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2023-2024",
+        "date": "2024-02-09",
+        "from": "ORN侯登",
+        "to": "埃格尔森德",
+        "fee": "",
+        "type": "自由转会"
+      },
+      {
+        "season": "2024-2025",
+        "date": "2025-01-30",
+        "from": "埃格尔森德",
+        "to": "维京",
+        "fee": "25万欧元",
+        "type": "完全所有"
+      }
+    ]
+  },
+  {
+    "number": 0,
+    "name": "霍姆格伦·佩德森",
     "positionGroup": "DF",
     "age": 26,
-    "height": 187,
-    "weight": 78,
+    "height": 184,
+    "weight": 76,
     "position": "右后卫",
     "nationality": "挪威",
-    "marketValue": "550",
-    "birthDate": "2000-01-27"
+    "marketValue": "350",
+    "birthDate": "2000-07-16",
+    "currentClub": "都灵",
+    "recentTransfers": [
+      {
+        "season": "2017-2018",
+        "date": "2017-07-01",
+        "from": "特罗姆瑟U19",
+        "to": "特罗姆瑟B队",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2018-2019",
+        "date": "2019-01-01",
+        "from": "特罗姆瑟B队",
+        "to": "特罗姆瑟",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2019-2020",
+        "date": "2020-02-11",
+        "from": "特罗姆瑟",
+        "to": "莫尔德",
+        "fee": "24万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2021-2022",
+        "date": "2021-07-01",
+        "from": "莫尔德",
+        "to": "费耶诺德",
+        "fee": "200万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2023-2024",
+        "date": "2023-08-22",
+        "from": "费耶诺德",
+        "to": "萨索洛",
+        "fee": "100万欧元",
+        "type": "租借"
+      },
+      {
+        "season": "2023-2024",
+        "date": "2024-06-30",
+        "from": "萨索洛",
+        "to": "费耶诺德",
+        "fee": "",
+        "type": "租借结束"
+      },
+      {
+        "season": "2024-2025",
+        "date": "2024-08-22",
+        "from": "费耶诺德",
+        "to": "都灵",
+        "fee": "100万欧元",
+        "type": "租借"
+      },
+      {
+        "season": "2024-2025",
+        "date": "2025-06-30",
+        "from": "都灵",
+        "to": "费耶诺德",
+        "fee": "",
+        "type": "租借结束"
+      },
+      {
+        "season": "2025-2026",
+        "date": "2025-07-01",
+        "from": "费耶诺德",
+        "to": "都灵",
+        "fee": "360万欧元",
+        "type": "完全所有"
+      }
+    ]
   },
   {
-    "number": 2,
-    "name": "托尔斯比",
-    "positionGroup": "MF",
-    "age": 30,
-    "height": 188,
-    "weight": 79,
-    "position": "中场",
+    "number": 0,
+    "name": "里奥.奥斯加德",
+    "positionGroup": "DF",
+    "age": 27,
+    "height": 183,
+    "weight": 80,
+    "position": "中卫",
     "nationality": "挪威",
-    "marketValue": "300",
-    "birthDate": "1996-05-05"
+    "marketValue": "1000",
+    "birthDate": "1999-11-28",
+    "currentClub": null,
+    "recentTransfers": []
   },
   {
-    "number": 6,
-    "name": "帕特里克·伯格",
-    "positionGroup": "MF",
+    "number": 0,
+    "name": "耶尔森",
+    "positionGroup": "DF",
     "age": 29,
-    "height": 177,
-    "weight": 74,
-    "position": "中场",
-    "nationality": "挪威",
-    "marketValue": "700",
-    "birthDate": "1997-11-24"
-  },
-  {
-    "number": 8,
-    "name": "桑德尔·伯格",
-    "positionGroup": "MF",
-    "age": 28,
-    "height": 195,
-    "weight": 96,
-    "position": "中场",
+    "height": 183,
+    "weight": 82,
+    "position": "右后卫",
     "nationality": "挪威",
     "marketValue": "2500",
-    "birthDate": "1998-02-14"
+    "birthDate": "1997-11-17",
+    "currentClub": null,
+    "recentTransfers": []
   },
   {
-    "number": 18,
+    "number": 0,
+    "name": "F.奥尔斯内斯",
+    "positionGroup": "MF",
+    "age": 31,
+    "height": 181,
+    "weight": 71,
+    "position": "中前卫",
+    "nationality": "挪威",
+    "marketValue": "1700",
+    "birthDate": "1995-12-10",
+    "currentClub": "本菲卡",
+    "recentTransfers": [
+      {
+        "season": "2011-2012",
+        "date": "2012-01-01",
+        "from": "禾特U19",
+        "to": "禾特",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2015-2016",
+        "date": "2016-01-01",
+        "from": "禾特",
+        "to": "莫尔德",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2021-2022",
+        "date": "2021-08-10",
+        "from": "莫尔德",
+        "to": "费耶诺德",
+        "fee": "75万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2022-2023",
+        "date": "2022-08-24",
+        "from": "费耶诺德",
+        "to": "本菲卡",
+        "fee": "1300万欧元",
+        "type": "完全所有"
+      }
+    ]
+  },
+  {
+    "number": 0,
     "name": "克里斯蒂安·托斯特维特",
     "positionGroup": "MF",
     "age": 27,
     "height": 189,
     "weight": 84,
-    "position": "前腰",
+    "position": "中前卫",
     "nationality": "挪威",
     "marketValue": "1000",
-    "birthDate": "1999-03-13"
-  },
-  {
-    "number": 19,
-    "name": "菲力克斯迈尔",
-    "positionGroup": "MF",
-    "age": 27,
-    "height": 180,
-    "weight": 75,
-    "position": "中场",
-    "nationality": "挪威",
-    "marketValue": "350",
-    "birthDate": "1999-03-04"
-  },
-  {
-    "number": 22,
-    "name": "奥斯卡.鲍伯",
-    "positionGroup": "MF",
-    "age": 23,
-    "height": 175,
-    "weight": 70,
-    "position": "中场",
-    "nationality": "挪威",
-    "marketValue": "3000",
-    "birthDate": "2003-07-12"
-  },
-  {
-    "number": 25,
-    "name": "阿南·哈莱利",
-    "positionGroup": "MF",
-    "age": 22,
-    "height": null,
-    "weight": null,
-    "position": "中场",
-    "nationality": "",
-    "marketValue": "",
-    "birthDate": "2004-03-09"
-  },
-  {
-    "number": 0,
-    "name": "莱塞·约翰森",
-    "positionGroup": "MF",
-    "age": 27,
-    "height": 179,
-    "weight": 75,
-    "position": "中场",
-    "nationality": "挪威",
-    "marketValue": "400",
-    "birthDate": "1999-08-18"
+    "birthDate": "1999-03-13",
+    "currentClub": "挪威",
+    "recentTransfers": [
+      {
+        "season": "2012-2013",
+        "date": "2013-01-01",
+        "from": "维京U19",
+        "to": "斯塔贝克B队",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2017-2018",
+        "date": "2018-02-01",
+        "from": "斯塔贝克B队",
+        "to": "维京",
+        "fee": "1万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2019-2020",
+        "date": "2020-01-03",
+        "from": "维京",
+        "to": "亨克",
+        "fee": "150万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2022-2023",
+        "date": "2022-07-12",
+        "from": "亨克",
+        "to": "萨索洛",
+        "fee": "1015万欧元",
+        "type": "完全所有"
+      }
+    ]
   },
   {
     "number": 0,
-    "name": "阿恩斯塔德",
+    "name": "托尔斯比",
     "positionGroup": "MF",
-    "age": 23,
-    "height": 175,
-    "weight": 65,
-    "position": "中场",
+    "age": 30,
+    "height": 188,
+    "weight": 79,
+    "position": "中前卫",
     "nationality": "挪威",
-    "marketValue": "250",
-    "birthDate": "2003-09-07"
+    "marketValue": "300",
+    "birthDate": "1996-05-05",
+    "currentClub": "挪威",
+    "recentTransfers": [
+      {
+        "season": "2009-2010",
+        "date": "2010-01-12",
+        "from": "河明",
+        "to": "利恩",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2011-2012",
+        "date": "2012-01-30",
+        "from": "利恩",
+        "to": "斯塔贝克U19",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2012-2013",
+        "date": "2013-03-13",
+        "from": "斯塔贝克U19",
+        "to": "斯塔贝克",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2014-2015",
+        "date": "2014-07-01",
+        "from": "斯塔贝克",
+        "to": "海伦芬",
+        "fee": "60万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2019-2020",
+        "date": "2019-07-01",
+        "from": "海伦芬",
+        "to": "桑普多利亚",
+        "fee": "",
+        "type": "自由转会"
+      },
+      {
+        "season": "2022-2023",
+        "date": "2022-07-19",
+        "from": "桑普多利亚",
+        "to": "柏林联合",
+        "fee": "300万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2023-2024",
+        "date": "2023-08-01",
+        "from": "柏林联合",
+        "to": "热那亚",
+        "fee": "35万欧元",
+        "type": "租借"
+      },
+      {
+        "season": "2023-2024",
+        "date": "2024-06-30",
+        "from": "热那亚",
+        "to": "柏林联合",
+        "fee": "",
+        "type": "租借结束"
+      },
+      {
+        "season": "2024-2025",
+        "date": "2024-07-01",
+        "from": "柏林联合",
+        "to": "热那亚",
+        "fee": "310万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2025-2026",
+        "date": "2026-02-02",
+        "from": "热那亚",
+        "to": "克雷莫纳",
+        "fee": "220万欧元",
+        "type": "完全所有"
+      }
+    ]
   },
   {
     "number": 0,
@@ -318,10 +721,45 @@
     "age": 24,
     "height": 188,
     "weight": 72,
-    "position": "中场",
+    "position": "前腰",
     "nationality": "挪威",
-    "marketValue": "300",
-    "birthDate": "2002-05-02"
+    "marketValue": "280",
+    "birthDate": "2002-05-02",
+    "currentClub": "格拉斯哥流浪者",
+    "recentTransfers": [
+      {
+        "season": "2018-2019",
+        "date": "2018-07-01",
+        "from": "维冈竞技U18",
+        "to": "韦根青年队",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2020-2021",
+        "date": "2020-07-01",
+        "from": "韦根青年队",
+        "to": "维冈竞技",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2024-2025",
+        "date": "2025-01-28",
+        "from": "维冈竞技",
+        "to": "卢顿",
+        "fee": "360万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2025-2026",
+        "date": "2025-07-05",
+        "from": "卢顿",
+        "to": "格拉斯哥流浪者",
+        "fee": "395万欧元",
+        "type": "完全所有"
+      }
+    ]
   },
   {
     "number": 0,
@@ -330,117 +768,762 @@
     "age": 28,
     "height": 178,
     "weight": 68,
-    "position": "中场",
+    "position": "前腰",
     "nationality": "挪威",
     "marketValue": "6500",
-    "birthDate": "1998-12-17"
+    "birthDate": "1998-12-17",
+    "currentClub": "阿森纳",
+    "recentTransfers": [
+      {
+        "season": "2013-2014",
+        "date": "2014-01-01",
+        "from": "斯托姆加斯特U19",
+        "to": "斯托姆加斯特B队",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2013-2014",
+        "date": "2014-05-05",
+        "from": "斯托姆加斯特B队",
+        "to": "斯托姆加斯特",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2014-2015",
+        "date": "2015-01-22",
+        "from": "斯托姆加斯特",
+        "to": "皇家马德里B队",
+        "fee": "280万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2016-2017",
+        "date": "2017-01-08",
+        "from": "皇家马德里B队",
+        "to": "皇家马德里",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2016-2017",
+        "date": "2017-01-09",
+        "from": "皇家马德里",
+        "to": "海伦芬",
+        "fee": "",
+        "type": "租借"
+      },
+      {
+        "season": "2017-2018",
+        "date": "2018-06-30",
+        "from": "海伦芬",
+        "to": "皇家马德里",
+        "fee": "",
+        "type": "租借结束"
+      },
+      {
+        "season": "2018-2019",
+        "date": "2018-08-21",
+        "from": "皇家马德里",
+        "to": "维特斯",
+        "fee": "",
+        "type": "租借"
+      },
+      {
+        "season": "2018-2019",
+        "date": "2019-06-30",
+        "from": "维特斯",
+        "to": "皇家马德里",
+        "fee": "",
+        "type": "租借结束"
+      },
+      {
+        "season": "2019-2020",
+        "date": "2019-07-05",
+        "from": "皇家马德里",
+        "to": "皇家社会",
+        "fee": "200万欧元",
+        "type": "租借"
+      },
+      {
+        "season": "2020-2021",
+        "date": "2020-07-20",
+        "from": "皇家社会",
+        "to": "皇家马德里",
+        "fee": "",
+        "type": "租借结束"
+      },
+      {
+        "season": "2020-2021",
+        "date": "2021-01-27",
+        "from": "皇家马德里",
+        "to": "阿森纳",
+        "fee": "200万欧元",
+        "type": "租借"
+      },
+      {
+        "season": "2020-2021",
+        "date": "2021-06-30",
+        "from": "阿森纳",
+        "to": "皇家马德里",
+        "fee": "",
+        "type": "租借结束"
+      },
+      {
+        "season": "2021-2022",
+        "date": "2021-08-20",
+        "from": "皇家马德里",
+        "to": "阿森纳",
+        "fee": "3500万欧元",
+        "type": "完全所有"
+      }
+    ]
   },
   {
     "number": 0,
-    "name": "A.杜牧",
+    "name": "帕特里克·伯格",
+    "positionGroup": "MF",
+    "age": 29,
+    "height": 177,
+    "weight": 74,
+    "position": "后腰",
+    "nationality": "挪威",
+    "marketValue": "800",
+    "birthDate": "1997-11-24",
+    "currentClub": "博德闪耀",
+    "recentTransfers": [
+      {
+        "season": "2013-2014",
+        "date": "2014-03-05",
+        "from": "博多格林特U19",
+        "to": "博德闪耀",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2021-2022",
+        "date": "2022-01-01",
+        "from": "博德闪耀",
+        "to": "朗斯",
+        "fee": "450万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2022-2023",
+        "date": "2022-08-31",
+        "from": "朗斯",
+        "to": "博德闪耀",
+        "fee": "400万欧元",
+        "type": "完全所有"
+      }
+    ]
+  },
+  {
+    "number": 0,
+    "name": "桑德尔·伯格",
     "positionGroup": "MF",
     "age": 28,
-    "height": 178,
-    "weight": 73,
-    "position": "中场",
-    "nationality": "挪威",
-    "marketValue": "500",
-    "birthDate": "1998-04-20"
-  },
-  {
-    "number": 7,
-    "name": "亚历山大·索尔洛特",
-    "positionGroup": "FW",
-    "age": 31,
     "height": 195,
-    "weight": 94,
-    "position": "前锋",
+    "weight": 96,
+    "position": "后腰",
     "nationality": "挪威",
-    "marketValue": "2000",
-    "birthDate": "1995-12-05"
+    "marketValue": "2500",
+    "birthDate": "1998-02-14",
+    "currentClub": "富勒姆",
+    "recentTransfers": [
+      {
+        "season": "2013-2014",
+        "date": "2014-01-01",
+        "from": "阿斯克尔FHU19",
+        "to": "艾斯可",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2014-2015",
+        "date": "2015-02-09",
+        "from": "艾斯可",
+        "to": "瓦勒伦加",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2016-2017",
+        "date": "2017-01-02",
+        "from": "瓦勒伦加",
+        "to": "亨克",
+        "fee": "200万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2019-2020",
+        "date": "2020-01-30",
+        "from": "亨克",
+        "to": "谢菲尔德联队",
+        "fee": "2500万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2023-2024",
+        "date": "2023-08-09",
+        "from": "谢菲尔德联队",
+        "to": "伯恩利",
+        "fee": "1390万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2024-2025",
+        "date": "2024-08-22",
+        "from": "伯恩利",
+        "to": "富勒姆",
+        "fee": "2355万欧元",
+        "type": "完全所有"
+      }
+    ]
   },
   {
-    "number": 9,
-    "name": "哈兰德",
-    "positionGroup": "FW",
-    "age": 26,
-    "height": 195,
-    "weight": 94,
-    "position": "前锋",
-    "nationality": "挪威",
-    "marketValue": "20000",
-    "birthDate": "2000-07-21"
-  },
-  {
-    "number": 10,
-    "name": "延斯·豪格",
-    "positionGroup": "FW",
-    "age": 27,
-    "height": 184,
-    "weight": 70,
-    "position": "前锋",
-    "nationality": "挪威",
-    "marketValue": "450",
-    "birthDate": "1999-10-12"
-  },
-  {
-    "number": 11,
-    "name": "约根·斯特兰德·拉森",
-    "positionGroup": "FW",
-    "age": 26,
-    "height": 193,
-    "weight": 79,
-    "position": "前锋",
-    "nationality": "挪威",
-    "marketValue": "4500",
-    "birthDate": "2000-02-06"
-  },
-  {
-    "number": 20,
-    "name": "安东尼奥·努萨",
-    "positionGroup": "FW",
-    "age": 21,
-    "height": 183,
-    "weight": 77,
-    "position": "前锋",
-    "nationality": "挪威",
-    "marketValue": "3200",
-    "birthDate": "2005-04-17"
-  },
-  {
-    "number": 21,
+    "number": 0,
     "name": "A.施耶尔德鲁普",
     "positionGroup": "FW",
     "age": 22,
     "height": 176,
     "weight": 69,
-    "position": "前锋",
+    "position": "左边锋",
     "nationality": "挪威",
     "marketValue": "2000",
-    "birthDate": "2004-06-01"
+    "birthDate": "2004-06-01",
+    "currentClub": "本菲卡",
+    "recentTransfers": [
+      {
+        "season": "2020-2021",
+        "date": "2020-07-08",
+        "from": "博多格林特U19",
+        "to": "北西兰U19",
+        "fee": "",
+        "type": "自由转会"
+      },
+      {
+        "season": "2020-2021",
+        "date": "2021-01-01",
+        "from": "北西兰U19",
+        "to": "北西兰",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2022-2023",
+        "date": "2023-01-12",
+        "from": "北西兰",
+        "to": "本菲卡",
+        "fee": "900万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2023-2024",
+        "date": "2023-09-01",
+        "from": "本菲卡",
+        "to": "北西兰",
+        "fee": "250万欧元",
+        "type": "租借"
+      },
+      {
+        "season": "2023-2024",
+        "date": "2024-06-30",
+        "from": "北西兰",
+        "to": "本菲卡",
+        "fee": "",
+        "type": "租借结束"
+      }
+    ]
   },
   {
     "number": 0,
-    "name": "埃里克包迪文",
+    "name": "哈兰德",
     "positionGroup": "FW",
     "age": 26,
-    "height": 187,
-    "weight": 70,
-    "position": "前锋",
+    "height": 195,
+    "weight": 94,
+    "position": "中锋",
     "nationality": "挪威",
-    "marketValue": "350",
-    "birthDate": "2000-01-10"
+    "marketValue": "20000",
+    "birthDate": "2000-07-21",
+    "currentClub": "曼彻斯特城",
+    "recentTransfers": [
+      {
+        "season": "2015-2016",
+        "date": "2015-09-08",
+        "from": "布莱尼FKU19",
+        "to": "布莱尼",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2016-2017",
+        "date": "2017-02-01",
+        "from": "布莱尼",
+        "to": "莫尔德",
+        "fee": "10万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2018-2019",
+        "date": "2019-01-01",
+        "from": "莫尔德",
+        "to": "萨尔茨堡",
+        "fee": "800万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2019-2020",
+        "date": "2020-01-01",
+        "from": "萨尔茨堡",
+        "to": "多特蒙德",
+        "fee": "2000万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2022-2023",
+        "date": "2022-07-01",
+        "from": "多特蒙德",
+        "to": "曼彻斯特城",
+        "fee": "6000万欧元",
+        "type": "完全所有"
+      }
+    ]
   },
   {
     "number": 0,
-    "name": "赫格博阿",
+    "name": "奥斯卡.鲍伯",
     "positionGroup": "FW",
-    "age": 25,
-    "height": 185,
-    "weight": 84,
-    "position": "前锋",
+    "age": 23,
+    "height": 175,
+    "weight": 70,
+    "position": "右边锋",
     "nationality": "挪威",
-    "marketValue": "600",
-    "birthDate": "2001-07-29"
+    "marketValue": "3000",
+    "birthDate": "2003-07-12",
+    "currentClub": "富勒姆",
+    "recentTransfers": [
+      {
+        "season": "2015-2016",
+        "date": "2015-07-01",
+        "from": "利恩U19",
+        "to": "瓦勒伦加青年队",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2019-2020",
+        "date": "2019-07-12",
+        "from": "瓦勒伦加青年队",
+        "to": "曼彻斯特城U18",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2021-2022",
+        "date": "2021-07-01",
+        "from": "曼彻斯特城U18",
+        "to": "曼彻斯特城U21",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2023-2024",
+        "date": "2023-07-01",
+        "from": "曼彻斯特城U21",
+        "to": "曼彻斯特城",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2025-2026",
+        "date": "2026-01-30",
+        "from": "曼彻斯特城",
+        "to": "富勒姆",
+        "fee": "3120万欧元",
+        "type": "完全所有"
+      }
+    ]
+  },
+  {
+    "number": 0,
+    "name": "延斯·豪格",
+    "positionGroup": "FW",
+    "age": 27,
+    "height": 184,
+    "weight": 70,
+    "position": "左边锋",
+    "nationality": "挪威",
+    "marketValue": "1200",
+    "birthDate": "1999-10-12",
+    "currentClub": "博德闪耀",
+    "recentTransfers": [
+      {
+        "season": "2015-2016",
+        "date": "2016-04-12",
+        "from": "博多格林特U19",
+        "to": "博德闪耀",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2018-2019",
+        "date": "2018-08-15",
+        "from": "博德闪耀",
+        "to": "奥勒松",
+        "fee": "",
+        "type": "租借"
+      },
+      {
+        "season": "2018-2019",
+        "date": "2018-12-31",
+        "from": "奥勒松",
+        "to": "博德闪耀",
+        "fee": "",
+        "type": "租借结束"
+      },
+      {
+        "season": "2020-2021",
+        "date": "2020-10-01",
+        "from": "博德闪耀",
+        "to": "AC米兰",
+        "fee": "480万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2021-2022",
+        "date": "2021-08-10",
+        "from": "AC米兰",
+        "to": "法兰克福",
+        "fee": "160万欧元",
+        "type": "租借"
+      },
+      {
+        "season": "2021-2022",
+        "date": "2022-06-30",
+        "from": "法兰克福",
+        "to": "AC米兰",
+        "fee": "",
+        "type": "租借结束"
+      },
+      {
+        "season": "2022-2023",
+        "date": "2022-07-01",
+        "from": "AC米兰",
+        "to": "法兰克福",
+        "fee": "820万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2022-2023",
+        "date": "2022-08-16",
+        "from": "法兰克福",
+        "to": "根特",
+        "fee": "",
+        "type": "租借"
+      },
+      {
+        "season": "2022-2023",
+        "date": "2023-06-30",
+        "from": "根特",
+        "to": "法兰克福",
+        "fee": "",
+        "type": "租借结束"
+      },
+      {
+        "season": "2023-2024",
+        "date": "2024-01-31",
+        "from": "法兰克福",
+        "to": "博德闪耀",
+        "fee": "",
+        "type": "租借"
+      },
+      {
+        "season": "2024-2025",
+        "date": "2024-12-31",
+        "from": "博德闪耀",
+        "to": "法兰克福",
+        "fee": "",
+        "type": "租借结束"
+      },
+      {
+        "season": "2024-2025",
+        "date": "2025-01-30",
+        "from": "法兰克福",
+        "to": "博德闪耀",
+        "fee": "400万欧元",
+        "type": "完全所有"
+      }
+    ]
+  },
+  {
+    "number": 0,
+    "name": "安东尼奥·努萨",
+    "positionGroup": "FW",
+    "age": 21,
+    "height": 183,
+    "weight": 77,
+    "position": "左边锋",
+    "nationality": "挪威",
+    "marketValue": "3200",
+    "birthDate": "2005-04-17",
+    "currentClub": null,
+    "recentTransfers": []
+  },
+  {
+    "number": 0,
+    "name": "亚历山大·索尔洛特",
+    "positionGroup": "FW",
+    "age": 31,
+    "height": 195,
+    "weight": 94,
+    "position": "中锋",
+    "nationality": "挪威",
+    "marketValue": "2000",
+    "birthDate": "1995-12-05",
+    "currentClub": "马德里竞技",
+    "recentTransfers": [
+      {
+        "season": "2009-2010",
+        "date": "2010-03-04",
+        "from": "史特连希咸青年队",
+        "to": "罗森博格U19",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2013-2014",
+        "date": "2013-07-01",
+        "from": "罗森博格U19",
+        "to": "罗森博格",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2014-2015",
+        "date": "2015-01-01",
+        "from": "罗森博格",
+        "to": "博德闪耀",
+        "fee": "",
+        "type": "租借"
+      },
+      {
+        "season": "2015-2016",
+        "date": "2015-12-31",
+        "from": "博德闪耀",
+        "to": "罗森博格",
+        "fee": "",
+        "type": "租借结束"
+      },
+      {
+        "season": "2015-2016",
+        "date": "2016-01-01",
+        "from": "罗森博格",
+        "to": "格罗宁根",
+        "fee": "55万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2017-2018",
+        "date": "2017-07-01",
+        "from": "格罗宁根",
+        "to": "中日德兰",
+        "fee": "45万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2017-2018",
+        "date": "2018-01-31",
+        "from": "中日德兰",
+        "to": "水晶宫",
+        "fee": "1600万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2018-2019",
+        "date": "2019-01-08",
+        "from": "水晶宫",
+        "to": "根特",
+        "fee": "35万欧元",
+        "type": "租借"
+      },
+      {
+        "season": "2018-2019",
+        "date": "2019-06-30",
+        "from": "根特",
+        "to": "水晶宫",
+        "fee": "",
+        "type": "租借结束"
+      },
+      {
+        "season": "2019-2020",
+        "date": "2019-08-04",
+        "from": "水晶宫",
+        "to": "特拉布宗体育",
+        "fee": "37.5万欧元",
+        "type": "租借"
+      },
+      {
+        "season": "2020-2021",
+        "date": "2020-09-21",
+        "from": "特拉布宗体育",
+        "to": "水晶宫",
+        "fee": "1000万欧元",
+        "type": "租借结束"
+      },
+      {
+        "season": "2020-2021",
+        "date": "2020-09-22",
+        "from": "水晶宫",
+        "to": "RB莱比锡",
+        "fee": "2000万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2021-2022",
+        "date": "2021-08-25",
+        "from": "RB莱比锡",
+        "to": "皇家社会",
+        "fee": "200万欧元",
+        "type": "租借"
+      },
+      {
+        "season": "2021-2022",
+        "date": "2022-06-30",
+        "from": "皇家社会",
+        "to": "RB莱比锡",
+        "fee": "",
+        "type": "租借结束"
+      },
+      {
+        "season": "2022-2023",
+        "date": "2022-08-29",
+        "from": "RB莱比锡",
+        "to": "皇家社会",
+        "fee": "150万欧元",
+        "type": "租借"
+      },
+      {
+        "season": "2022-2023",
+        "date": "2023-06-30",
+        "from": "皇家社会",
+        "to": "RB莱比锡",
+        "fee": "",
+        "type": "租借结束"
+      },
+      {
+        "season": "2023-2024",
+        "date": "2023-07-25",
+        "from": "RB莱比锡",
+        "to": "比利亚雷亚尔",
+        "fee": "1000万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2024-2025",
+        "date": "2024-08-03",
+        "from": "比利亚雷亚尔",
+        "to": "马德里竞技",
+        "fee": "3200万欧元",
+        "type": "完全所有"
+      }
+    ]
+  },
+  {
+    "number": 0,
+    "name": "约根·斯特兰德·拉森",
+    "positionGroup": "FW",
+    "age": 26,
+    "height": 193,
+    "weight": 79,
+    "position": "中锋",
+    "nationality": "挪威",
+    "marketValue": "4500",
+    "birthDate": "2000-02-06",
+    "currentClub": "水晶宫",
+    "recentTransfers": [
+      {
+        "season": "2015-2016",
+        "date": "2015-08-12",
+        "from": "哈尔登青年队",
+        "to": "萨尔普斯堡U19",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2015-2016",
+        "date": "2016-03-18",
+        "from": "萨尔普斯堡U19",
+        "to": "萨普斯堡",
+        "fee": "",
+        "type": "完全所有"
+      },
+      {
+        "season": "2017-2018",
+        "date": "2017-08-28",
+        "from": "萨普斯堡",
+        "to": "AC米兰青年队",
+        "fee": "",
+        "type": "租借"
+      },
+      {
+        "season": "2017-2018",
+        "date": "2018-06-30",
+        "from": "AC米兰青年队",
+        "to": "萨普斯堡",
+        "fee": "",
+        "type": "租借结束"
+      },
+      {
+        "season": "2020-2021",
+        "date": "2020-09-09",
+        "from": "萨普斯堡",
+        "to": "格罗宁根",
+        "fee": "110万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2022-2023",
+        "date": "2022-09-01",
+        "from": "格罗宁根",
+        "to": "塞尔塔",
+        "fee": "1504万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2024-2025",
+        "date": "2024-07-02",
+        "from": "塞尔塔",
+        "to": "狼队",
+        "fee": "300万欧元",
+        "type": "租借"
+      },
+      {
+        "season": "2024-2025",
+        "date": "2025-06-30",
+        "from": "狼队",
+        "to": "塞尔塔",
+        "fee": "",
+        "type": "租借结束"
+      },
+      {
+        "season": "2025-2026",
+        "date": "2025-07-01",
+        "from": "塞尔塔",
+        "to": "狼队",
+        "fee": "2700万欧元",
+        "type": "完全所有"
+      },
+      {
+        "season": "2025-2026",
+        "date": "2026-02-02",
+        "from": "狼队",
+        "to": "水晶宫",
+        "fee": "4970万欧元",
+        "type": "完全所有"
+      }
+    ]
   }
 ]
