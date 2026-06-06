@@ -236,7 +236,7 @@ function formatPlayerSquadLine(p, allSameNonEmptyClub, normalizePositionCode) {
  * 分析维度：主教练与阵型（元数据）、按位置 26 人名单、预测首发、年龄结构、身高、身价、位置深度、打法推断、球队目标
  * 输入（优先）: cup-analyzer/.../squad-final/group-X/{队名}.md（最终26人，含 **主教练** / **阵型** 元数据）
  * 回退: output/player_center/{teamSerial}.json + c75.js + 冠军赔率.md（无主教练/阵型时相应章节为提示）
- * 输出: cup-analyzer/theWorldCup/teamProfile/{队名}.md
+ * 输出: cup-analyzer/theWorldCup/teamProfile/group-X/{队名}.md
  *
  * 当数据来源为 squad-final 时，生成画像后会根据当前解析的球员列表**回写**该 md 末尾的「## 统计摘要」（总人数、平均年龄、平均身高、位置分布）。
  * 「五、身价分析」含身价/进球/助攻 TOP5 表（球衣号列；进球助攻缺失按 0，世界杯未开赛时多为 0）。
@@ -292,6 +292,18 @@ class TeamProfileGenerator extends BaseCrawler {
       if (group.teams.some((t) => Number(t.teamId) === id)) return letter;
     }
     return null;
+  }
+
+  /**
+   * 世界杯球队画像按小组分目录；其他赛事沿用平铺输出。
+   */
+  getTeamProfilePath(teamInfo, scheduleData) {
+    const profileRoot = path.join(config.paths.cupAnalyzer, 'teamProfile');
+    if (isWorldCupNationalContext()) {
+      const letter = this.findGroupLetterForTeam(teamInfo.id, scheduleData);
+      if (letter) return path.join(profileRoot, `group-${letter}`, `${teamInfo.chineseName}.md`);
+    }
+    return path.join(profileRoot, `${teamInfo.chineseName}.md`);
   }
 
   /**
@@ -1311,6 +1323,17 @@ class TeamProfileGenerator extends BaseCrawler {
    * 获取单个球队画像
    */
   async getProfile(teamName) {
+    if (isWorldCupNationalContext()) {
+      const scheduleData = this.parseScheduleData();
+      if (scheduleData) {
+        const teamMap = this.buildTeamMap(scheduleData.arrTeam);
+        const team = Object.values(teamMap).find((t) => t.chineseName === teamName);
+        if (team) {
+          const groupedPath = this.getTeamProfilePath(team, scheduleData);
+          if (fileExists(groupedPath)) return readFile(groupedPath);
+        }
+      }
+    }
     const profilePath = path.join(config.paths.cupAnalyzer, 'teamProfile', `${teamName}.md`);
     if (fileExists(profilePath)) {
       return readFile(profilePath);
@@ -1353,7 +1376,7 @@ class TeamProfileGenerator extends BaseCrawler {
           doubtful,
           manualSections,
         });
-        const mdPath = path.join(config.paths.cupAnalyzer, 'teamProfile', `${team.chineseName}.md`);
+        const mdPath = this.getTeamProfilePath(team, scheduleData);
         saveMarkdown(mdPath, md);
         this.syncSquadFinalStatsAfterProfile(finalPath, players, dataSource);
         results.success.push(team.chineseName);
@@ -1418,7 +1441,7 @@ class TeamProfileGenerator extends BaseCrawler {
         doubtful,
         manualSections,
       });
-      const mdPath = path.join(config.paths.cupAnalyzer, 'teamProfile', `${team.chineseName}.md`);
+      const mdPath = this.getTeamProfilePath(team, scheduleData);
       saveMarkdown(mdPath, md);
       this.syncSquadFinalStatsAfterProfile(finalPath, players, dataSource);
       this.log(`单队画像完成: ${team.chineseName} → ${mdPath}（来源: ${dataSource}）`);

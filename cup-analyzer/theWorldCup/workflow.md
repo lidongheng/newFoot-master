@@ -31,7 +31,7 @@
    └─ 详见: squad-final/README.md
 
 4. 生成球队画像
-   └─ node processors/teamProfileGenerator.js（默认优先读 squad-final，无则回退 player_center JSON；若已填伤停/伤疑，画像「二、球队阵容」中会多出 **### 伤停 / ### 伤疑**）
+   └─ npx cross-env CUP_ANALYZER_CUP=theWorldCup node processors/teamProfileGenerator.js --team <序号>（默认优先读 squad-final，无则回退 player_center JSON；若已填伤停/伤疑，画像「二、球队阵容」中会多出 **### 伤停 / ### 伤疑**）
    └─ 可选: --source raw 仅用 JSON；--team <序号> 只生成一队
    └─ 输出到: teamProfile/{球队名}.md
    └─ 分析: 年龄结构、身高、身价、位置深度、打法、目标
