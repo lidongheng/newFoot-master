@@ -78,6 +78,15 @@ function formatAbilityForDisplay(p) {
   return s;
 }
 
+/** FIFA 综合能力值转数值；手工未填或非数值时不参与能力优先排序 */
+function parseAbilityValue(p) {
+  const s = String(p.ability ?? '').trim();
+  if (!s || s === '-') return null;
+  const n = parseInt(s, 10);
+  if (Number.isNaN(n)) return null;
+  return n;
+}
+
 /**
  * 大名单行展示：俱乐部括号规则
  * - 俱乐部/联赛画像：无俱乐部或占位「-」时不输出（-）；若全员有效俱乐部相同则只写姓名，不重复括号
@@ -378,6 +387,32 @@ class TeamProfileGenerator extends BaseCrawler {
     return predLineupUtil.buildPredictedStartingLineupString(players, formation, (p) =>
       formatSquadJerseyLabel(p)
     );
+  }
+
+  /**
+   * 无出场统计且无伤停时，按手工能力值优先选择同位置首发。
+   */
+  sortPlayersByAbilityForLineup(players) {
+    return (players || [])
+      .map((player, index) => ({ player, index, ability: parseAbilityValue(player) }))
+      .sort((a, b) => {
+        const aHasAbility = a.ability !== null;
+        const bHasAbility = b.ability !== null;
+        if (aHasAbility && bHasAbility && b.ability !== a.ability) return b.ability - a.ability;
+        if (aHasAbility !== bHasAbility) return aHasAbility ? -1 : 1;
+        return a.index - b.index;
+      })
+      .map((row) => row.player);
+  }
+
+  /**
+   * squad-final 国家队名单通常没有出场统计；有统计时保留原有按出场逻辑。
+   */
+  shouldPreferAbilityForLineup(players, injuredLines) {
+    if (injuredLines && injuredLines.length > 0) return false;
+    const hasSeasonStats = (players || []).some((p) => getPlayerSeasonStatsQuad(p));
+    if (hasSeasonStats) return false;
+    return (players || []).some((p) => parseAbilityValue(p) !== null);
   }
 
   /**
@@ -941,11 +976,17 @@ class TeamProfileGenerator extends BaseCrawler {
 
     if (!predLine && formation) {
       const filtered = this.filterSquadPlayersExcludingInjured(players, injuredLines);
-      predLine = this.buildPredictedStartingLineup(filtered, formation);
+      const lineupPool = this.shouldPreferAbilityForLineup(filtered, injuredLines)
+        ? this.sortPlayersByAbilityForLineup(filtered)
+        : filtered;
+      predLine = this.buildPredictedStartingLineup(lineupPool, formation);
       predFormationLabel = formation;
     } else if (!predLine && leagueStyle && ar && ar.mostUsedFormation) {
       const filtered = this.filterSquadPlayersExcludingInjured(players, injuredLines);
-      predLine = this.buildPredictedStartingLineup(filtered, ar.mostUsedFormation);
+      const lineupPool = this.shouldPreferAbilityForLineup(filtered, injuredLines)
+        ? this.sortPlayersByAbilityForLineup(filtered)
+        : filtered;
+      predLine = this.buildPredictedStartingLineup(lineupPool, ar.mostUsedFormation);
       const fd = predLineupUtil.formationDigitsToDisplay(ar.mostUsedFormation);
       predFormationLabel = fd || ar.mostUsedFormation;
     }
