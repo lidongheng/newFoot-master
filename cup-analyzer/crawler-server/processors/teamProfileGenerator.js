@@ -32,6 +32,15 @@ function formatClubJerseyLabel(p) {
   return `${s}-${p.name}`;
 }
 
+/** 球队阵容名单展示：需要稳定输出球衣号，缺失时延续原逻辑只显示姓名 */
+function formatSquadJerseyLabel(p) {
+  const raw = p.number;
+  if (raw == null || raw === '') return p.name;
+  const s = String(raw).trim();
+  if (s === '' || s === '-') return p.name;
+  return `${s}-${p.name}`;
+}
+
 /** 身价列（万）或 JSON socialStatus → 展示用，如 6500万 */
 function getMarketValueRaw(p) {
   const mv = p.marketValue;
@@ -61,6 +70,14 @@ function formatAgeForDisplay(p) {
   return `${n}岁`;
 }
 
+/** FIFA 综合能力值：手工未填时不展示，保持既有缺省省略逻辑 */
+function formatAbilityForDisplay(p) {
+  const ability = p.ability;
+  const s = String(ability ?? '').trim();
+  if (!s || s === '-') return null;
+  return s;
+}
+
 /**
  * 大名单行展示：俱乐部括号规则
  * - 俱乐部/联赛画像：无俱乐部或占位「-」时不输出（-）；若全员有效俱乐部相同则只写姓名，不重复括号
@@ -68,35 +85,38 @@ function formatAgeForDisplay(p) {
  */
 function formatPlayerNameWithClub(p, allSameNonEmptyClub, normalizePositionCode) {
   const national = isWorldCupNationalContext();
-  const displayName = national ? p.name : formatClubJerseyLabel(p);
+  const displayName = formatSquadJerseyLabel(p);
   const club = String(p.currentClub || '').trim();
   const missing = !club || club === '-';
   const posCode =
     typeof normalizePositionCode === 'function' ? normalizePositionCode(p.position) : null;
+  const ability = formatAbilityForDisplay(p);
   const ageSeg = formatAgeForDisplay(p);
   const mv = formatMarketValueForDisplay(p);
 
   if (!national) {
     if (missing) return displayName;
     if (allSameNonEmptyClub) return displayName;
-    return `${displayName}（${club}）`;
+    return `${displayName}(${club})`;
   }
 
   if (allSameNonEmptyClub && !missing) {
     const parts = [];
     if (posCode) parts.push(posCode);
+    if (ability) parts.push(ability);
     if (ageSeg) parts.push(ageSeg);
     if (mv) parts.push(mv);
-    if (parts.length === 0) return p.name;
-    return `${p.name}（${parts.join('，')}）`;
+    if (parts.length === 0) return displayName;
+    return `${displayName}(${parts.join('，')})`;
   }
 
   const parts = [];
   parts.push(missing ? '-' : club);
   if (posCode) parts.push(posCode);
+  if (ability) parts.push(ability);
   if (ageSeg) parts.push(ageSeg);
   if (mv) parts.push(mv);
-  return `${p.name}（${parts.join('，')}）`;
+  return `${displayName}(${parts.join('，')})`;
 }
 
 function computeAllSameNonEmptyClub(players) {
@@ -176,7 +196,7 @@ function getPlayerSeasonStatsQuad(p) {
 
 /**
  * 联赛统计半角括号：出场始终保留；首发、进球、助攻为 0 时不输出该段（国家队名单无此块，不变）
- * 例：拉亚(31场31首发，GK，31岁，3500万)、约克雷斯(29场23首发11球，ST，28岁，6500万)
+ * 例：拉亚(31场31首发，GK，75，31岁，3500万)、约克雷斯(29场23首发11球，ST，82，28岁，6500万)
  */
 function formatStatsParen(p, positionCode) {
   const q = getPlayerSeasonStatsQuad(p);
@@ -186,11 +206,13 @@ function formatStatsParen(p, positionCode) {
   if (q.goals > 0) core += `${q.goals}球`;
   if (q.assists > 0) core += `${q.assists}助`;
   const posSuffix = positionCode ? `，${positionCode}` : '';
+  const ability = formatAbilityForDisplay(p);
+  const abilitySuffix = ability ? `，${ability}` : '';
   const ageSeg = formatAgeForDisplay(p);
   const ageSuffix = ageSeg ? `，${ageSeg}` : '';
   const mv = formatMarketValueForDisplay(p);
   const mvSuffix = mv ? `，${mv}` : '';
-  return `(${core}${posSuffix}${ageSuffix}${mvSuffix})`;
+  return `(${core}${posSuffix}${abilitySuffix}${ageSuffix}${mvSuffix})`;
 }
 
 /**
@@ -203,7 +225,7 @@ function formatPlayerSquadLine(p, allSameNonEmptyClub, normalizePositionCode) {
   const posCode =
     typeof normalizePositionCode === 'function' ? normalizePositionCode(p.position) : null;
   const statParen = formatStatsParen(p, posCode);
-  const base = national ? p.name : formatClubJerseyLabel(p);
+  const base = formatSquadJerseyLabel(p);
   if (useStats && statParen) return `${base}${statParen}`;
   return formatPlayerNameWithClub(p, allSameNonEmptyClub, normalizePositionCode);
 }
@@ -360,6 +382,18 @@ class TeamProfileGenerator extends BaseCrawler {
   }
 
   /**
+   * 按表头读列位置，兼容 squad-final 中已加/未加「能力」列的 Markdown 表。
+   */
+  buildMarkdownTableColumnMap(parts) {
+    const map = {};
+    parts.forEach((name, index) => {
+      const key = String(name || '').trim();
+      if (key) map[key] = index;
+    });
+    return map;
+  }
+
+  /**
    * 伤停/伤疑行与球员匹配：`球衣号-姓名` 或纯姓名
    * @param {any[]} players
    * @param {string} line
@@ -428,6 +462,7 @@ class TeamProfileGenerator extends BaseCrawler {
     const injured = [];
     const doubtful = [];
     let lineMode = 'normal';
+    let tableColumnMap = null;
 
     for (const line of content.split('\n')) {
       const trimmed = line.trim();
@@ -479,8 +514,11 @@ class TeamProfileGenerator extends BaseCrawler {
         continue;
       }
       if (!currentGroup || !trimmed.startsWith('|')) continue;
-      if (trimmed.includes('球衣号') && trimmed.includes('姓名')) continue;
       const parts = trimmed.split('|').map((s) => s.trim());
+      if (trimmed.includes('球衣号') && trimmed.includes('姓名')) {
+        tableColumnMap = this.buildMarkdownTableColumnMap(parts);
+        continue;
+      }
       if (parts.length < 10) continue;
       const jersey = parts[1];
       const name = parts[2];
@@ -503,6 +541,7 @@ class TeamProfileGenerator extends BaseCrawler {
           position: parts[5] || '-',
           nationality: parts[7] || '-',
           marketValue: parts[6] || '-',
+          ability: tableColumnMap && tableColumnMap['能力'] != null ? parts[tableColumnMap['能力']] || '-' : '-',
           positionGroup: currentGroup,
           appearances: parseStatIntCell(parts[8]),
           starts: parseStatIntCell(parts[9]),
@@ -522,6 +561,9 @@ class TeamProfileGenerator extends BaseCrawler {
       if (parts.length < 10) continue;
       const ageW = parseInt(parts[4], 10);
       const heightW = parseInt(String(parts[5] || '').replace(/cm/gi, '').trim(), 10);
+      const abilityIndex = tableColumnMap && tableColumnMap['能力'] != null ? tableColumnMap['能力'] : null;
+      const nationalityIndex =
+        tableColumnMap && tableColumnMap['国籍'] != null ? tableColumnMap['国籍'] : 8;
       let numW = null;
       if (jersey && jersey !== '-') {
         numW = /^[0-9]+$/.test(jersey) ? parseInt(jersey, 10) : jersey;
@@ -534,8 +576,9 @@ class TeamProfileGenerator extends BaseCrawler {
         age: Number.isNaN(ageW) ? null : ageW,
         height: Number.isNaN(heightW) ? null : heightW,
         position: parts[6] || '-',
-        nationality: parts[8] || '-',
+        nationality: parts[nationalityIndex] || '-',
         marketValue: parts[7] || '-',
+        ability: abilityIndex === null ? '-' : parts[abilityIndex] || '-',
         positionGroup: currentGroup,
       });
     }
