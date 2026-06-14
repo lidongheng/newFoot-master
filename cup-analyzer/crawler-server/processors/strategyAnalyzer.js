@@ -15,23 +15,23 @@ class StrategyAnalyzer extends BaseCrawler {
     // 32强对阵规则 (from 16th-finals-rule.md)
     this.knockoutBracket = {
       upper: [
-        { matchNum: 1, home: 'A2', away: 'B2', time: '2026-06-29 03:00' },
-        { matchNum: 2, home: 'C1', away: 'F2', time: '2026-06-30 01:00' },
-        { matchNum: 3, home: 'E1', away: '3rd_ABCDF', time: '2026-06-30 04:30' },
-        { matchNum: 5, home: 'E2', away: 'I2', time: '2026-07-01 01:00' },
-        { matchNum: 9, home: 'G1', away: '3rd_AEHIJ', time: '2026-07-02 04:00' },
-        { matchNum: 10, home: 'D1', away: '3rd_BEFIJ', time: '2026-07-02 08:00' },
-        { matchNum: 11, home: 'H1', away: 'J2', time: '2026-07-03 03:00' },
-        { matchNum: 12, home: 'K2', away: 'L2', time: '2026-07-03 07:00' },
+        { matchNum: 1, home: 'E1', away: '3rd_ABCDF', time: '2026-06-29 03:00' },
+        { matchNum: 2, home: 'I1', away: '3rd_CDFGH', time: '2026-06-30 01:00' },
+        { matchNum: 3, home: 'A2', away: 'B2', time: '2026-06-30 04:30' },
+        { matchNum: 5, home: 'K2', away: 'L2', time: '2026-07-01 01:00' },
+        { matchNum: 9, home: 'C1', away: 'F2', time: '2026-07-02 04:00' },
+        { matchNum: 10, home: 'E2', away: 'I2', time: '2026-07-02 08:00' },
+        { matchNum: 11, home: 'A1', away: '3rd_CEFHI', time: '2026-07-03 03:00' },
+        { matchNum: 12, home: 'L1', away: '3rd_EHIJK', time: '2026-07-03 07:00' },
       ],
       lower: [
         { matchNum: 4, home: 'F1', away: 'C2', time: '2026-06-30 09:00' },
-        { matchNum: 6, home: 'I1', away: '3rd_CDFGH', time: '2026-07-01 05:00' },
-        { matchNum: 7, home: 'A1', away: '3rd_CEFHI', time: '2026-07-01 09:00' },
-        { matchNum: 8, home: 'L1', away: '3rd_EHIJK', time: '2026-07-02 00:00' },
-        { matchNum: 13, home: 'B1', away: '3rd_EFGIJ', time: '2026-07-03 11:00' },
+        { matchNum: 6, home: 'H1', away: 'J2', time: '2026-07-01 05:00' },
+        { matchNum: 7, home: 'D1', away: '3rd_BEFIJ', time: '2026-07-01 09:00' },
+        { matchNum: 8, home: 'G1', away: '3rd_AEHIJ', time: '2026-07-02 00:00' },
+        { matchNum: 13, home: 'J1', away: 'H2', time: '2026-07-03 11:00' },
         { matchNum: 14, home: 'D2', away: 'G2', time: '2026-07-04 02:00' },
-        { matchNum: 15, home: 'J1', away: 'H2', time: '2026-07-04 06:00' },
+        { matchNum: 15, home: 'B1', away: '3rd_EFGIJ', time: '2026-07-04 06:00' },
         { matchNum: 16, home: 'K1', away: '3rd_DEIJL', time: '2026-07-04 09:30' },
       ],
     };
@@ -375,14 +375,15 @@ class StrategyAnalyzer extends BaseCrawler {
 
   generateFatigueReport(strategyDir, scheduleData) {
     const fatigue = this.calculateFatigueSchedule(scheduleData);
+    const flightDistanceMap = this.loadFlightDistanceMap();
     const lines = [];
     lines.push('# 赛程疲劳度分析\n');
     lines.push('> 分析各队比赛间隔，识别背靠背紧密赛程\n');
     lines.push('> 2026世界杯横跨美国/加拿大/墨西哥三国，旅行距离也是重要因素\n');
 
     lines.push('\n## 小组赛赛程概览\n');
-    lines.push('| 球队 | 小组赛场次 | 平均间隔(天) | 紧密赛程(≤3天) |');
-    lines.push('|------|-----------|-------------|----------------|');
+    lines.push('| 球队 | 小组赛场次 | 平均间隔(天) | 紧密赛程(≤3天) | 飞行距离 |');
+    lines.push('|------|-----------|-------------|----------------|----------|');
 
     const entries = Object.entries(fatigue)
       .filter(([, data]) => data.matchCount >= 3)
@@ -390,7 +391,8 @@ class StrategyAnalyzer extends BaseCrawler {
 
     entries.forEach(([team, data]) => {
       const tightLabel = data.tightGapCount > 0 ? `${data.tightGapCount}次 ⚠️` : '无';
-      lines.push(`| ${team} | ${data.matchCount} | ${data.avgGap} | ${tightLabel} |`);
+      const flightDistance = this.getFlightDistance(team, flightDistanceMap);
+      lines.push(`| ${team} | ${data.matchCount} | ${data.avgGap} | ${tightLabel} | ${flightDistance} |`);
     });
 
     lines.push('\n## 注意事项\n');
@@ -400,6 +402,35 @@ class StrategyAnalyzer extends BaseCrawler {
     lines.push('- 跨时区旅行会加重疲劳（美东 vs 美西 vs 墨西哥）');
 
     saveMarkdown(path.join(strategyDir, 'fatigue-schedule.md'), lines.join('\n'));
+  }
+
+  loadFlightDistanceMap() {
+    // 飞行距离是疲劳分析的固定输入，缺失时应直接暴露数据问题。
+    const flightDistancePath = path.join(config.paths.cupAnalyzer, 'data', '世界杯小组赛飞行距离.md');
+    const content = readFile(flightDistancePath);
+    const distanceMap = new Map();
+
+    content
+      .trim()
+      .split('\n')
+      .forEach((line) => {
+        const match = line.match(/^(\d+)-(.+)，(\d+)公里$/);
+        if (!match) return;
+
+        const [, rank, team, distance] = match;
+        distanceMap.set(team, `飞行距离${distance}公里排第${rank}高`);
+      });
+
+    return distanceMap;
+  }
+
+  getFlightDistance(team, flightDistanceMap) {
+    const flightDistance = flightDistanceMap.get(team);
+    if (!flightDistance) {
+      throw new Error(`缺少${team}的小组赛飞行距离`);
+    }
+
+    return flightDistance;
   }
 
   generateStrategyReadme(strategyDir) {

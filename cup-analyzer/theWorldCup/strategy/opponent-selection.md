@@ -19,19 +19,19 @@
 
 | 球队 | 第一名路径 | 第二名路径 |
 |------|-----------|-----------|
+| 捷克 | vs 3rd_CEFHI | vs B2 |
 | 南非 | vs 3rd_CEFHI | vs B2 |
 | 墨西哥 | vs 3rd_CEFHI | vs B2 |
 | 韩国 | vs 3rd_CEFHI | vs B2 |
-| 欧洲附加D胜者 | vs 3rd_CEFHI | vs B2 |
 
 ### 小组 B
 
 | 球队 | 第一名路径 | 第二名路径 |
 |------|-----------|-----------|
 | 瑞士 | vs 3rd_EFGIJ | vs A2 |
+| 波黑 | vs 3rd_EFGIJ | vs A2 |
 | 加拿大 | vs 3rd_EFGIJ | vs A2 |
 | 卡塔尔 | vs 3rd_EFGIJ | vs A2 |
-| 欧洲附加A胜者 | vs 3rd_EFGIJ | vs A2 |
 
 ### 小组 C
 
@@ -46,10 +46,10 @@
 
 | 球队 | 第一名路径 | 第二名路径 |
 |------|-----------|-----------|
+| 土耳其 | vs 3rd_BEFIJ | vs G2 |
 | 巴拉圭 | vs 3rd_BEFIJ | vs G2 |
 | 美国 | vs 3rd_BEFIJ | vs G2 |
 | 澳大利亚 | vs 3rd_BEFIJ | vs G2 |
-| 欧洲附加C胜者 | vs 3rd_BEFIJ | vs G2 |
 
 ### 小组 E
 
@@ -64,10 +64,10 @@
 
 | 球队 | 第一名路径 | 第二名路径 |
 |------|-----------|-----------|
+| 瑞典 | vs C2 | vs C1 |
 | 荷兰 | vs C2 | vs C1 |
 | 突尼斯 | vs C2 | vs C1 |
 | 日本 | vs C2 | vs C1 |
-| 欧洲附加B胜者 | vs C2 | vs C1 |
 
 ### 小组 G
 
@@ -94,7 +94,7 @@
 | 挪威 | vs 3rd_CDFGH | vs E2 |
 | 法国 | vs 3rd_CDFGH | vs E2 |
 | 塞内加尔 | vs 3rd_CDFGH | vs E2 |
-| 附加赛2胜者 | vs 3rd_CDFGH | vs E2 |
+| 伊拉克 | vs 3rd_CDFGH | vs E2 |
 
 ### 小组 J
 
@@ -111,8 +111,8 @@
 |------|-----------|-----------|
 | 葡萄牙 | vs 3rd_DEIJL | vs L2 |
 | 哥伦比亚 | vs 3rd_DEIJL | vs L2 |
+| 刚果民主共和国 | vs 3rd_DEIJL | vs L2 |
 | 乌兹别克斯坦 | vs 3rd_DEIJL | vs L2 |
-| 附加赛1胜者 | vs 3rd_DEIJL | vs L2 |
 
 ### 小组 L
 
