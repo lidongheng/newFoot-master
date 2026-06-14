@@ -316,6 +316,18 @@ class TeamProfileGenerator extends BaseCrawler {
   }
 
   /**
+   * 世界杯球队描述按小组分目录维护；其他赛事沿用平铺读取。
+   */
+  getDescriptionPath(teamInfo, scheduleData) {
+    const descriptionRoot = path.join(config.paths.cupAnalyzer, 'description');
+    if (isWorldCupNationalContext()) {
+      const letter = this.findGroupLetterForTeam(teamInfo.id, scheduleData);
+      if (letter) return path.join(descriptionRoot, `group-${letter}`, `${teamInfo.chineseName}.md`);
+    }
+    return path.join(descriptionRoot, `${teamInfo.chineseName}.md`);
+  }
+
+  /**
    * 将「位置」列标准化为与阵型、POSITION_GROUPS 一致的英文缩写（与 squadProcessor 对齐并扩展）
    * @returns {string|null}
    */
@@ -506,7 +518,6 @@ class TeamProfileGenerator extends BaseCrawler {
 
     let coach = null;
     let formation = null;
-    const manualSections = this.extractManualProfileSections(content);
     const sectionRe = /^##\s+(门将|后卫|中场|前锋)/;
     const labelToGroup = { 门将: 'GK', 后卫: 'DF', 中场: 'MF', 前锋: 'FW' };
     let currentGroup = null;
@@ -634,28 +645,35 @@ class TeamProfileGenerator extends BaseCrawler {
         positionGroup: currentGroup,
       });
     }
-    return { players, coach, formation, injured, doubtful, manualSections };
+    return { players, coach, formation, injured, doubtful, manualSections: [] };
   }
 
   /**
-   * squad-final 中手工维护的画像段落，按标题在文件里的出现顺序原样透传。
+   * description 中手工维护的画像段落，按标题在文件里的出现顺序原样透传。
    */
   extractManualProfileSections(content) {
-    const titles = ['球队打法', '球员简介', '其他信息'];
-    return titles
-      .map((title) => this.extractMarkdownSection(content, title))
+    const sections = [
+      { title: '参考球队', prefix: true },
+      { title: '第一场赛后复盘' },
+      { title: '球队打法' },
+      { title: '球员简介' },
+      { title: '其他信息' },
+    ];
+    return sections
+      .map((section) => this.extractMarkdownSection(content, section.title, { prefix: section.prefix }))
       .filter((section) => section);
   }
 
   /**
-   * 原样截取 squad-final 中指定二级标题段落，供人工内容透传到球队画像。
+   * 原样截取指定二级标题段落，供人工内容透传到球队画像。
    */
-  extractMarkdownSection(content, title) {
+  extractMarkdownSection(content, title, options = {}) {
     const lines = String(content || '').split('\n');
-    const headingRe = new RegExp(`^##\\s+${title}\\s*$`);
     let start = -1;
     for (let i = 0; i < lines.length; i += 1) {
-      if (headingRe.test(lines[i].trim())) {
+      const heading = lines[i].trim();
+      const matched = options.prefix ? heading.startsWith(`## ${title}`) : heading === `## ${title}`;
+      if (matched) {
         start = i;
         break;
       }
@@ -671,6 +689,14 @@ class TeamProfileGenerator extends BaseCrawler {
     }
     const section = lines.slice(start, end).join('\n').trimEnd();
     return section.trim() ? section : null;
+  }
+
+  loadManualProfileSections(teamInfo, scheduleData) {
+    const descriptionPath = this.getDescriptionPath(teamInfo, scheduleData);
+    if (!fileExists(descriptionPath)) return [];
+
+    const content = readFile(descriptionPath);
+    return this.extractManualProfileSections(content);
   }
 
   /**
@@ -733,6 +759,7 @@ class TeamProfileGenerator extends BaseCrawler {
     const squadFinalRoot =
       config.paths.squadFinal || path.join(config.paths.cupAnalyzer, 'squad-final');
     const flatPath = path.join(squadFinalRoot, `${teamInfo.chineseName}.md`);
+    const manualSections = this.loadManualProfileSections(teamInfo, scheduleData);
 
     if (source !== 'raw') {
       if (fileExists(flatPath)) {
@@ -747,7 +774,7 @@ class TeamProfileGenerator extends BaseCrawler {
             formation: parsed.formation,
             injured: parsed.injured || [],
             doubtful: parsed.doubtful || [],
-            manualSections: parsed.manualSections || [],
+            manualSections,
           };
         }
       }
@@ -768,7 +795,7 @@ class TeamProfileGenerator extends BaseCrawler {
             formation: parsed.formation,
             injured: parsed.injured || [],
             doubtful: parsed.doubtful || [],
-            manualSections: parsed.manualSections || [],
+            manualSections,
           };
         }
       }
@@ -785,7 +812,7 @@ class TeamProfileGenerator extends BaseCrawler {
           formation: null,
           injured: [],
           doubtful: [],
-          manualSections: [],
+          manualSections,
         };
       }
       return {
@@ -796,7 +823,7 @@ class TeamProfileGenerator extends BaseCrawler {
         formation: null,
         injured: [],
         doubtful: [],
-        manualSections: [],
+        manualSections,
       };
     }
 
@@ -809,6 +836,7 @@ class TeamProfileGenerator extends BaseCrawler {
         formation: null,
         injured: [],
         doubtful: [],
+        manualSections,
       };
     }
     return {
@@ -819,7 +847,7 @@ class TeamProfileGenerator extends BaseCrawler {
       formation: null,
       injured: [],
       doubtful: [],
-      manualSections: [],
+      manualSections,
     };
   }
 
