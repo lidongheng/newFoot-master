@@ -384,8 +384,11 @@ class TeamProfileGenerator extends BaseCrawler {
    * @returns {string}
    */
   buildPredictedStartingLineup(players, formation) {
+    const allSameNonEmptyClub = computeAllSameNonEmptyClub(players);
+    const normPos = (raw) => this.normalizePositionCode(raw);
+    // 预测首发的球员展示与「球队阵容」保持同一套括号明细规则。
     return predLineupUtil.buildPredictedStartingLineupString(players, formation, (p) =>
-      formatSquadJerseyLabel(p)
+      formatPlayerSquadLine(p, allSameNonEmptyClub, normPos)
     );
   }
 
