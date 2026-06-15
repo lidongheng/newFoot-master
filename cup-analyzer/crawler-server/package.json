@@ -32,6 +32,7 @@
     "analyze:club-domestic": "node analyzers/clubMatchAnalyzer.js",
     "generate:match-squad": "node processors/matchSquadGenerator.js",
     "generate:cycle-report": "node processors/cycleReportGenerator.js",
+    "generate:worldcup-routes": "cross-env CUP_ANALYZER_CUP=theWorldCup node processors/worldCupTeamRouteMonitor.js",
     "crawl:match-statistics": "node crawlers/matchStatisticsCrawler.js"
   },
   "keywords": ["world-cup", "champions-league", "crawler", "football"],

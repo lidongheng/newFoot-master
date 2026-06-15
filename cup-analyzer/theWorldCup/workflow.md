@@ -78,6 +78,9 @@
   10. 爬取赛后数据: 在 `cup-analyzer/crawler-server` 使用 `matchDataCrawler` 等（比赛 ID 来自 `data/c75` 或赛后页）
   11. 赛后复盘 → postMatchSummary/{阶段}/{轮次}/{主队}_vs_{客队}.md
   12. 更新赛程数据: 先 `cd cup-analyzer/crawler-server`，再 `npx cross-env CUP_ANALYZER_CUP=theWorldCup node crawlers/scheduleCrawler.js`（更新 `theWorldCup/data/c75.js` 并同步 `match_center/c75.js`；Bash 简写与 Windows 见 [crawler-server/README.md](../crawler-server/README.md)）
+  13. 手动刷新强队视角晋级路线监控器：
+      `cd cup-analyzer/crawler-server && npm run generate:worldcup-routes`
+      输出到 `theWorldCup/strategy/team-route-monitor.md`。该报告读取最新 `c75.js`，从强队视角比较小组第一/第二/第三出线后的晋级路线；每天 `c75.js` 更新后都要手动刷新一次。
 ```
 
 ### 赛前报告与大名单正文约定
@@ -85,6 +88,8 @@
 `matchSquadGenerator.js` 输出的双方块（每队含 **预测首发、预测替补、伤疑、伤停**；国家队**无落选**行）应写入该场赛前报告 **`theWorldCup/report/{阶段}/{轮次}/{主队}_vs_{客队}.md`** 的正文，作为大名单与预测部分；可与模板、交锋、盘口等章节合并。**盘口章节须包含**：合理让球（Fair）、初盘/临场（Market）、Δ、三档结论（与下 **「亚盘安全边际」** 一致）；无独立 `prompts/match_analysis_template.md` 时，建议沿用 `epl/prompts/match_analysis_template.md` 中「四、盘口解析」结构。
 
 ### 阶段三：策略分析（贯穿全程）
+
+> **强队视角路线监控**：每天更新 `theWorldCup/data/c75.js` 后，手动执行 `npm run generate:worldcup-routes` 刷新 `strategy/team-route-monitor.md`。该报告以强队为视角，比较小组第一、第二、第三三条晋级路线，并重点标记“两轮后 4 分控位”、第三轮挑对手空间、以及 H/J、C/F、E/I、K/L 等联动小组的强队互避关系。
 
 ```
 小组赛第1轮结束后:
