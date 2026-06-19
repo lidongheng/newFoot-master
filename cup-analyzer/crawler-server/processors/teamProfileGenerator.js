@@ -351,7 +351,7 @@ class TeamProfileGenerator extends BaseCrawler {
    */
   buildPositionSquadList(players) {
     if (!players || players.length === 0) return '';
-    const allSameNonEmptyClub = computeAllSameNonEmptyClub(players);
+    const formatSquadPlayer = this.createSquadPlayerLineFormatter(players);
     const normPos = (raw) => this.normalizePositionCode(raw);
     const codeToPlayers = new Map();
     for (const p of players) {
@@ -377,16 +377,22 @@ class TeamProfileGenerator extends BaseCrawler {
       uniq.forEach((p) => usedNames.add(p.name));
       if (uniq.length === 0) continue;
       const codesStr = g.codes.join('、');
-      const playersStr = uniq.map((p) => formatPlayerSquadLine(p, allSameNonEmptyClub, normPos)).join('、');
+      const playersStr = uniq.map((p) => formatSquadPlayer(p)).join('、');
       lines.push(`${g.label}(${codesStr})：${playersStr}`);
     }
     const rest = players.filter((p) => !usedNames.has(p.name));
     if (rest.length > 0) {
       lines.push(
-        `其他：${rest.map((p) => formatPlayerSquadLine(p, allSameNonEmptyClub, normPos)).join('、')}`
+        `其他：${rest.map((p) => formatSquadPlayer(p)).join('、')}`
       );
     }
     return lines.join('\n');
+  }
+
+  createSquadPlayerLineFormatter(players) {
+    const allSameNonEmptyClub = computeAllSameNonEmptyClub(players || []);
+    const normPos = (raw) => this.normalizePositionCode(raw);
+    return (player) => formatPlayerSquadLine(player, allSameNonEmptyClub, normPos);
   }
 
   /**
@@ -396,12 +402,9 @@ class TeamProfileGenerator extends BaseCrawler {
    * @returns {string}
    */
   buildPredictedStartingLineup(players, formation) {
-    const allSameNonEmptyClub = computeAllSameNonEmptyClub(players);
-    const normPos = (raw) => this.normalizePositionCode(raw);
+    const formatSquadPlayer = this.createSquadPlayerLineFormatter(players);
     // 预测首发的球员展示与「球队阵容」保持同一套括号明细规则。
-    return predLineupUtil.buildPredictedStartingLineupString(players, formation, (p) =>
-      formatPlayerSquadLine(p, allSameNonEmptyClub, normPos)
-    );
+    return predLineupUtil.buildPredictedStartingLineupString(players, formation, (p) => formatSquadPlayer(p));
   }
 
   /**

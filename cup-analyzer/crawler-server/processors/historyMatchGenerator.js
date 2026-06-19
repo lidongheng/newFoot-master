@@ -115,16 +115,30 @@ class HistoryMatchGenerator extends TeamProfileGenerator {
     return labels;
   }
 
-  formatPlayerLabel(player) {
+  buildLineupPlayerDisplayMap(players) {
+    const displayMap = new Map();
+    const formatSquadPlayer = this.createSquadPlayerLineFormatter(players || []);
+    for (const player of players || []) {
+      const key = this.getLineupPlayerMatchKey(player);
+      if (!key) continue;
+      displayMap.set(key, formatSquadPlayer(player));
+    }
+    return displayMap;
+  }
+
+  formatPlayerLabel(player, displayMap) {
     if (!player || !player.name) return null;
+    const key = this.getLineupPlayerMatchKey(player);
+    if (key && displayMap && displayMap.has(key)) return displayMap.get(key);
+
     const number = String(player.number ?? '').trim();
     if (!number || number === '-') return player.name;
     return `${number}-${player.name}`;
   }
 
-  formatPlayerList(players) {
+  formatPlayerList(players, displayMap) {
     return (players || [])
-      .map((player) => this.formatPlayerLabel(player))
+      .map((player) => this.formatPlayerLabel(player, displayMap))
       .filter(Boolean)
       .join('，');
   }
@@ -135,9 +149,9 @@ class HistoryMatchGenerator extends TeamProfileGenerator {
     return digits.split('').join('-');
   }
 
-  formatStartingByFormation(players, formation) {
+  formatStartingByFormation(players, formation, displayMap) {
     const labels = (players || [])
-      .map((player) => this.formatPlayerLabel(player))
+      .map((player) => this.formatPlayerLabel(player, displayMap))
       .filter(Boolean);
     if (labels.length === 0) return '';
 
@@ -282,6 +296,7 @@ class HistoryMatchGenerator extends TeamProfileGenerator {
     const teamMap = this.buildTeamMap(scheduleData.arrTeam);
     const allMatches = this.flattenScheduleMatches(scheduleData);
     const groupRoundLabels = this.getGroupRoundLabelsForTeam(scheduleData, teamInfo.id);
+    const displayMap = this.buildLineupPlayerDisplayMap(options.profilePlayers || []);
     const blocks = [];
     let analyzer = null;
     const crawlMissing = options.crawlMissing !== false;
@@ -306,8 +321,8 @@ class HistoryMatchGenerator extends TeamProfileGenerator {
       this.collectLineupHistoryStats(lineup, options.playerStats);
 
       const formation = this.formatFormationLabel(lineup.formation);
-      const startLine = this.formatStartingByFormation(lineup.starting, lineup.formation);
-      const subLine = this.formatPlayerList(lineup.subs);
+      const startLine = this.formatStartingByFormation(lineup.starting, lineup.formation, displayMap);
+      const subLine = this.formatPlayerList(lineup.subs, displayMap);
       if (!formation || !startLine || !subLine) continue;
 
       const homeName = teamMap[homeTeamId]?.chineseName;
@@ -328,6 +343,7 @@ class HistoryMatchGenerator extends TeamProfileGenerator {
     const section = await this.buildHistoryMatchSection(team, scheduleData, this.buildLineupIndex(), {
       crawlMissing: options.crawlMissing,
       playerStats,
+      profilePlayers: resolved.players,
     });
     const afterPredictedLineupSections = section ? [section] : [];
     const playersForProfile = this.applyHistoryStatsToPlayers(resolved.players, playerStats);
