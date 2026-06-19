@@ -464,6 +464,50 @@ class ClubAnalyzer {
     
     throw lastError; // 如果所有重试都失败，抛出最后一个错误
   }
+
+  /**
+   * 获取单场阵型、首发、替补；供 historyMatchGenerator 复用，不写入 *-new.json。
+   * @param {{ matchSerial: string|number, status: 'home'|'guest', round?: number|string, score?: string }} matchInfo
+   * @returns {Promise<{ matchSerial: string|number, status: string, formation: string, starting: object[], subs: object[], round: any }|null>}
+   */
+  async fetchSingleMatchLineup(matchInfo) {
+    if (!matchInfo || !matchInfo.matchSerial) return null;
+    if (matchInfo.status !== 'home' && matchInfo.status !== 'guest') return null;
+
+    const matchData = await this.fetchMatchData(matchInfo);
+    if (!matchData || !matchData.formation) return null;
+
+    const normalizePlayer = (player) => {
+      const numberValue = Number(player.number);
+      let number = null;
+      if (Number.isFinite(numberValue) && numberValue > 0) {
+        number = numberValue;
+      }
+      return {
+        name: player.name,
+        number,
+        position: player.position,
+      };
+    };
+
+    const starting = (matchData.players || [])
+      .filter((player) => player && player.isStarter && player.name)
+      .map((player) => normalizePlayer(player));
+    const subs = (matchData.players || [])
+      .filter((player) => player && !player.isStarter && player.name)
+      .map((player) => normalizePlayer(player));
+
+    if (starting.length === 0 || subs.length === 0) return null;
+
+    return {
+      matchSerial: matchData.id,
+      status: matchData.status,
+      formation: matchData.formation,
+      starting,
+      subs,
+      round: matchData.round,
+    };
+  }
   
   /**
    * 提取球员事件信息（进球、助攻、换人等）
@@ -1202,4 +1246,4 @@ if (require.main === module) {
     console.error('配置文件读取失败:', error.message);
     process.exit(1);
   }
-} 
+}

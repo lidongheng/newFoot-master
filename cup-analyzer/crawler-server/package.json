@@ -16,6 +16,8 @@
     "process:squad-final:init:one": "node processors/squadFinalInitializer.js --team",
     "process:profile": "node processors/teamProfileGenerator.js",
     "process:profile:one": "node processors/teamProfileGenerator.js --team",
+    "process:history-match": "node processors/historyMatchGenerator.js",
+    "process:history-match:one": "node processors/historyMatchGenerator.js --team",
     "process:league-squad": "node processors/leagueSquadProcessor.js",
     "crawl:schedule:ucl": "cross-env CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js",
     "crawl:schedule:acl2": "cross-env CUP_ANALYZER_CUP=afcChampionsLeagueTwo node crawlers/scheduleCrawler.js",

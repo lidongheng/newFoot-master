@@ -1276,6 +1276,15 @@ class TeamProfileGenerator extends BaseCrawler {
       );
     }
 
+    if (meta.afterPredictedLineupSections && meta.afterPredictedLineupSections.length > 0) {
+      for (const section of meta.afterPredictedLineupSections) {
+        const text = String(section || '').trimEnd();
+        if (!text) continue;
+        lines.push(text);
+        lines.push('');
+      }
+    }
+
     const injuredList = meta.injured || [];
     const doubtfulList = meta.doubtful || [];
     if (meta.dataSource === 'final' && (injuredList.length > 0 || doubtfulList.length > 0)) {

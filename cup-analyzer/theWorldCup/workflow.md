@@ -33,14 +33,19 @@
 4. 生成球队画像
    └─ npx cross-env CUP_ANALYZER_CUP=theWorldCup node processors/teamProfileGenerator.js --team <序号>（默认优先读 squad-final，无则回退 player_center JSON；若已填伤停/伤疑，画像「二、球队阵容」中会多出 **### 伤停 / ### 伤疑**）
    └─ 可选: --source raw 仅用 JSON；--team <序号> 只生成一队
-   └─ 输出到: teamProfile/{球队名}.md
+   └─ 输出到: teamProfile/group-{A~L}/{球队名}.md
    └─ 分析: 年龄结构、身高、身价、位置深度、打法、目标
 
-5. 生成策略分析报告
+5. 生成历史比赛画像（画像主体 + 每场比赛首发）
+   └─ npx cross-env CUP_ANALYZER_CUP=theWorldCup node processors/historyMatchGenerator.js --team <序号>
+   └─ 读取: 优先使用 theWorldCup/basicData/**/lineup.json；缺失时联网抓取球探详情页解析阵型、首发、替补（可加 --no-crawl 只读本地）
+   └─ 输出到: historyMatch/group-{A~L}/{球队名}.md
+
+6. 生成策略分析报告
    └─ node processors/strategyAnalyzer.js
    └─ 输出到: strategy/ 目录下4个分析文件
 
-6. 东恒手动补充
+7. 东恒手动补充
    └─ 编辑 description/{球队名}.md（球队背景、教练、战术、核心球员等）
 ```
 

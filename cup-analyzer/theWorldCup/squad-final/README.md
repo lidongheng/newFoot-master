@@ -43,9 +43,15 @@ node processors/squadFinalInitializer.js --team 744 # 仅一队（球队序号�
 生成球队画像（默认优先读 `squad-final/`，无则读 JSON）：
 
 ```bash
-node processors/teamProfileGenerator.js
-node processors/teamProfileGenerator.js --source raw   # 强制仅用 player_center JSON
-node processors/teamProfileGenerator.js --team 744     # 仅一队
+npx cross-env CUP_ANALYZER_CUP=theWorldCup node processors/teamProfileGenerator.js
+npx cross-env CUP_ANALYZER_CUP=theWorldCup node processors/teamProfileGenerator.js --source raw   # 强制仅用 player_center JSON
+npx cross-env CUP_ANALYZER_CUP=theWorldCup node processors/teamProfileGenerator.js --team 744     # 仅一队
+```
+
+生成历史比赛画像（球队画像 + 每场比赛首发；优先读取 `basicData/**/lineup.json`，缺失时抓取球探详情页）：
+
+```bash
+npx cross-env CUP_ANALYZER_CUP=theWorldCup node processors/historyMatchGenerator.js --team 744
 ```
 
 ## 目录结构（与 squad 镜像）

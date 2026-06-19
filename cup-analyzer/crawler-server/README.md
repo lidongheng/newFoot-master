@@ -207,6 +207,18 @@ node processors/teamProfileGenerator.js --team 744
 
 npm：`npm run process:profile` / `npm run process:profile:one -- 744`
 
+### 8a. `historyMatchGenerator.js` — 历史比赛画像
+
+- **作用**：复用 `teamProfileGenerator.js` 的球队画像主体，并在「预测首发」下方插入 **### 每场比赛首发**。
+- **真实首发来源**：优先读取 `{杯赛}/basicData/**/lineup.json`（由 `postMatchDataCrawler.js` 写入）；缺失时复用 `clubMatchAnalyzer.js` 抓取球探详情页即时解析阵型、首发、替补。可加 `--no-crawl` 只使用本地数据。
+- **输出**：`{杯赛}/historyMatch/{队名}.md`；世界杯按小组输出到 `theWorldCup/historyMatch/group-X/{队名}.md`。
+
+```bash
+npx cross-env CUP_ANALYZER_CUP=theWorldCup node processors/historyMatchGenerator.js --team 819
+```
+
+npm：`npm run process:history-match` / `npm run process:history-match:one -- 819`
+
 ### 8b. `matchSquadGenerator.js` — 赛中大名单（单场双方）
 
 - **作用**：读取双方 **`squad-final/{队名}.md`**（联赛平铺；世界杯为 `group-X/{队名}.md`），解析 **推荐首发、伤停、伤疑**，在 stdout 输出预测首发、预测替补、伤疑、伤停；**联赛类**另输出「落选」（替补为除首发/伤停/伤疑外出场数最高的 9 人）；**世界杯**替补为除首发与伤停外的全部球员，**不输出落选**。
