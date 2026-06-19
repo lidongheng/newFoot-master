@@ -487,6 +487,8 @@ class ClubAnalyzer {
         name: player.name,
         number,
         position: player.position,
+        caps: player.caps,
+        lineups: player.lineups,
       };
     };
 

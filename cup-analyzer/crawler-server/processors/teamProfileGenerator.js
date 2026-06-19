@@ -421,6 +421,32 @@ class TeamProfileGenerator extends BaseCrawler {
   }
 
   /**
+   * historyMatch 画像用：预测首发优先按真实出场数排序，缺失统计的球员保持原顺序靠后。
+   */
+  sortPlayersByAppearancesForLineup(players) {
+    return (players || [])
+      .map((player, index) => {
+        const apps = parseStatIntCell(player.historyAppearances ?? player.appearances ?? player.caps);
+        const starts = parseStatIntCell(player.historyStarts ?? player.starts ?? player.lineups);
+        return { player, index, apps, starts };
+      })
+      .sort((a, b) => {
+        const aHasApps = a.apps !== null;
+        const bHasApps = b.apps !== null;
+        if (aHasApps !== bHasApps) return aHasApps ? -1 : 1;
+        if (aHasApps && bHasApps && b.apps !== a.apps) return b.apps - a.apps;
+
+        const aHasStarts = a.starts !== null;
+        const bHasStarts = b.starts !== null;
+        if (aHasStarts !== bHasStarts) return aHasStarts ? -1 : 1;
+        if (aHasStarts && bHasStarts && b.starts !== a.starts) return b.starts - a.starts;
+
+        return a.index - b.index;
+      })
+      .map((row) => row.player);
+  }
+
+  /**
    * squad-final 国家队名单通常没有出场统计；有统计时保留原有按出场逻辑。
    */
   shouldPreferAbilityForLineup(players, injuredLines) {
@@ -1007,16 +1033,22 @@ class TeamProfileGenerator extends BaseCrawler {
 
     if (!predLine && formation) {
       const filtered = this.filterSquadPlayersExcludingInjured(players, injuredLines);
-      const lineupPool = this.shouldPreferAbilityForLineup(filtered, injuredLines)
-        ? this.sortPlayersByAbilityForLineup(filtered)
-        : filtered;
+      let lineupPool = filtered;
+      if (opts.preferAppearancesForLineup) {
+        lineupPool = this.sortPlayersByAppearancesForLineup(filtered);
+      } else if (this.shouldPreferAbilityForLineup(filtered, injuredLines)) {
+        lineupPool = this.sortPlayersByAbilityForLineup(filtered);
+      }
       predLine = this.buildPredictedStartingLineup(lineupPool, formation);
       predFormationLabel = formation;
     } else if (!predLine && leagueStyle && ar && ar.mostUsedFormation) {
       const filtered = this.filterSquadPlayersExcludingInjured(players, injuredLines);
-      const lineupPool = this.shouldPreferAbilityForLineup(filtered, injuredLines)
-        ? this.sortPlayersByAbilityForLineup(filtered)
-        : filtered;
+      let lineupPool = filtered;
+      if (opts.preferAppearancesForLineup) {
+        lineupPool = this.sortPlayersByAppearancesForLineup(filtered);
+      } else if (this.shouldPreferAbilityForLineup(filtered, injuredLines)) {
+        lineupPool = this.sortPlayersByAbilityForLineup(filtered);
+      }
       predLine = this.buildPredictedStartingLineup(lineupPool, ar.mostUsedFormation);
       const fd = predLineupUtil.formationDigitsToDisplay(ar.mostUsedFormation);
       predFormationLabel = fd || ar.mostUsedFormation;
@@ -1263,6 +1295,7 @@ class TeamProfileGenerator extends BaseCrawler {
       formation,
       analyzerReport: meta.analyzerReport,
       injured: meta.injured || [],
+      preferAppearancesForLineup: meta.preferAppearancesForLineup,
     });
 
     if (predLine) {

@@ -159,6 +159,70 @@ class HistoryMatchGenerator extends TeamProfileGenerator {
     return groups.join('/');
   }
 
+  getLineupPlayerKeys(player) {
+    if (!player) return [];
+    const keys = [];
+    const number = String(player.number ?? '').trim();
+    const name = String(player.name || '').trim();
+    if (number && number !== '-') keys.push(`number:${number}`);
+    if (name) keys.push(`name:${name}`);
+    return keys;
+  }
+
+  incrementPlayerHistoryStats(playerStats, player, appsIncrement, startsIncrement) {
+    if (!playerStats || !player) return;
+    const keys = this.getLineupPlayerKeys(player);
+    if (keys.length === 0) return;
+
+    let stat = null;
+    for (const key of keys) {
+      if (playerStats.has(key)) {
+        stat = playerStats.get(key);
+        break;
+      }
+    }
+    if (!stat) stat = { apps: 0, starts: 0 };
+
+    stat.apps += appsIncrement;
+    stat.starts += startsIncrement;
+    for (const key of keys) playerStats.set(key, stat);
+  }
+
+  collectLineupHistoryStats(lineup, playerStats) {
+    if (!lineup || !playerStats) return;
+
+    for (const player of lineup.starting || []) {
+      const caps = Number(player.caps);
+      const lineups = Number(player.lineups);
+      const appsIncrement = Number.isFinite(caps) && caps >= 0 ? caps : 1;
+      const startsIncrement = Number.isFinite(lineups) && lineups >= 0 ? lineups : 1;
+      this.incrementPlayerHistoryStats(playerStats, player, appsIncrement, startsIncrement);
+    }
+
+    for (const player of lineup.subs || []) {
+      const caps = Number(player.caps);
+      const lineups = Number(player.lineups);
+      const appsIncrement = Number.isFinite(caps) && caps > 0 ? caps : 0;
+      const startsIncrement = Number.isFinite(lineups) && lineups > 0 ? lineups : 0;
+      if (appsIncrement === 0 && startsIncrement === 0) continue;
+      this.incrementPlayerHistoryStats(playerStats, player, appsIncrement, startsIncrement);
+    }
+  }
+
+  applyHistoryStatsToPlayers(players, playerStats) {
+    if (!playerStats || playerStats.size === 0) return players;
+    return (players || []).map((player) => {
+      const keys = this.getLineupPlayerKeys(player);
+      const stat = keys.map((key) => playerStats.get(key)).find(Boolean);
+      if (!stat) return player;
+      return {
+        ...player,
+        historyAppearances: stat.apps,
+        historyStarts: stat.starts,
+      };
+    });
+  }
+
   isFinishedMatch(match) {
     if (!match) return false;
     if (match[2] !== -1) return false;
@@ -241,6 +305,7 @@ class HistoryMatchGenerator extends TeamProfileGenerator {
 
       const lineup = localLineup || await this.fetchLineupForMatch(match, isHome, analyzer);
       if (!lineup) continue;
+      this.collectLineupHistoryStats(lineup, options.playerStats);
 
       const formation = this.formatFormationLabel(lineup.formation);
       const startLine = this.formatStartingByFormation(lineup.starting, lineup.formation);
@@ -261,12 +326,15 @@ class HistoryMatchGenerator extends TeamProfileGenerator {
 
   async generateHistoryMarkdown(team, scheduleData, resolved, source, options = {}) {
     const analyzerReport = this.loadAnalyzerReportForCurrentCup(team.id);
+    const playerStats = new Map();
     const section = await this.buildHistoryMatchSection(team, scheduleData, this.buildLineupIndex(), {
       crawlMissing: options.crawlMissing,
+      playerStats,
     });
     const afterPredictedLineupSections = section ? [section] : [];
+    const playersForProfile = this.applyHistoryStatsToPlayers(resolved.players, playerStats);
 
-    return this.generateProfileMarkdown(team, resolved.players, {
+    return this.generateProfileMarkdown(team, playersForProfile, {
       dataSource: resolved.dataSource,
       coach: resolved.coach,
       formation: resolved.formation,
@@ -275,6 +343,7 @@ class HistoryMatchGenerator extends TeamProfileGenerator {
       doubtful: resolved.doubtful,
       manualSections: resolved.manualSections,
       afterPredictedLineupSections,
+      preferAppearancesForLineup: true,
       source,
     });
   }
