@@ -159,33 +159,30 @@ class HistoryMatchGenerator extends TeamProfileGenerator {
     return groups.join('/');
   }
 
-  getLineupPlayerKeys(player) {
-    if (!player) return [];
-    const keys = [];
+  getLineupPlayerMatchKey(player) {
+    if (!player) return null;
+    if (config.lineupMatchByName) {
+      const name = String(player.name || '').trim();
+      if (!name) return null;
+      return `name:${name}`;
+    }
+
     const number = String(player.number ?? '').trim();
-    const name = String(player.name || '').trim();
-    if (number && number !== '-') keys.push(`number:${number}`);
-    if (name) keys.push(`name:${name}`);
-    return keys;
+    if (!number || number === '-') return null;
+    return `number:${number}`;
   }
 
   incrementPlayerHistoryStats(playerStats, player, appsIncrement, startsIncrement) {
     if (!playerStats || !player) return;
-    const keys = this.getLineupPlayerKeys(player);
-    if (keys.length === 0) return;
+    const key = this.getLineupPlayerMatchKey(player);
+    if (!key) return;
 
-    let stat = null;
-    for (const key of keys) {
-      if (playerStats.has(key)) {
-        stat = playerStats.get(key);
-        break;
-      }
-    }
+    let stat = playerStats.get(key);
     if (!stat) stat = { apps: 0, starts: 0 };
 
     stat.apps += appsIncrement;
     stat.starts += startsIncrement;
-    for (const key of keys) playerStats.set(key, stat);
+    playerStats.set(key, stat);
   }
 
   collectLineupHistoryStats(lineup, playerStats) {
@@ -212,8 +209,9 @@ class HistoryMatchGenerator extends TeamProfileGenerator {
   applyHistoryStatsToPlayers(players, playerStats) {
     if (!playerStats || playerStats.size === 0) return players;
     return (players || []).map((player) => {
-      const keys = this.getLineupPlayerKeys(player);
-      const stat = keys.map((key) => playerStats.get(key)).find(Boolean);
+      const key = this.getLineupPlayerMatchKey(player);
+      if (!key) return player;
+      const stat = playerStats.get(key);
       if (!stat) return player;
       return {
         ...player,

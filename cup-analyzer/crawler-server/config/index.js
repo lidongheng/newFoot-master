@@ -24,6 +24,7 @@ const cups = {
     cupName: 'theWorldCup',
     chineseName: '世界杯',
     crossYear: false,
+    lineupMatchByName: false,
     season: '2026',
     paths: {
       cupAnalyzer: path.resolve(__dirname, '../../theWorldCup'),
@@ -254,6 +255,8 @@ const config = {
   cupSerial: active.cupSerial,
   cupName: active.cupName,
   season: active.season,
+  /** 阵容球员匹配方式：true=姓名，false=球衣号 */
+  lineupMatchByName: Boolean(active.lineupMatchByName),
   /** 联赛赛程爬虫用 SubLeague 页作 Referer（如墨西联） */
   useSubLeagueReferer: Boolean(active.useSubLeagueReferer),
 
