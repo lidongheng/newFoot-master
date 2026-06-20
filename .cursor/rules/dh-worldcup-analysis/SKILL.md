@@ -173,6 +173,15 @@ description: |
 - 强队 vs 弱队：结合冠军赔率、身价、世界排名判断让球合理性。
 - 高温/高海拔/长途飞行：判断节奏下降、后程体能、轮换概率和冷门风险。
 
+### Step 8：生成亚盘周期盈亏 HTML（霍华德·马克斯周期视角）
+
+赛前分析报告必须同步生成亚盘周期盈亏 HTML。除非用户明确要求只写文字报告或本地缺少球探单场序号，否则不要跳过这一步。
+
+1. 编辑 `cup-analyzer/crawler-server/config/squadTarget.js`：设置 `matchSerial`（球探单场序号）、`roundSerial`、`season`；`matchLeagueName` 填与球探战绩表「联赛」列一致的文案，供「同赛事」折线图筛选。
+2. 在 `cup-analyzer/crawler-server` 执行：`CUP_ANALYZER_CUP=theWorldCup npm run generate:cycle-report`
+3. 输出：`cup-analyzer/theWorldCup/report/{阶段}/{轮次}/{主队}_vs_{客队}_cycle.html`（ECharts 远程 CDN；每场模拟投注 1000 元、固定港盘水位 0.9，初盘盘口来自球探分析页；每队含「全部 / 仅主或仅客 / 同赛事」三张累计盈亏图）。
+4. 赛前报告交付时必须说明 HTML 路径；如果命令因网络、球探页面缺失或配置缺失失败，必须把失败原因写进回复和报告检查项，不能静默略过。
+
 ---
 
 ## 4. 赛前报告推荐结构

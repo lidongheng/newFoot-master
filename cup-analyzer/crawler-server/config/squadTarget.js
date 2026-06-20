@@ -10,11 +10,11 @@
  * - roundSerial：联赛渠道时填当前国内联赛轮次（仅分析该轮之前已完赛场次）；杯赛渠道可不填
  */
 const squadTarget = {
-  leagueSerial: '36',
-  leagueSlug: 'epl',
-  season: '25-26',
-  teamSerial: '26',
-  roundSerial: '37',
+  leagueSerial: '75',
+  leagueSlug: 'theWorldCup',
+  season: 'group-stage',
+  teamSerial: '823',
+  roundSerial: '2',
   /**
    * 赛程格式开关：
    *   false（默认）= 联赛格式，读 s 开头文件，R_* 轮次迭代
@@ -23,7 +23,7 @@ const squadTarget = {
    * 四个俱乐部杯赛（欧冠/欧罗巴/欧会杯/亚冠联2）使用本赛事数据时设 true，
    * 同时须设 matchByName: false；世界杯赛中同样设 true，matchByName 不设即可。
    */
-  isNation: false,
+  isNation: true,
   /**
    * 球员匹配方式（可选，不设则跟随 isNation）：
    *   false = 按球衣号码匹配（俱乐部 / 俱乐部杯赛）
@@ -34,15 +34,15 @@ const squadTarget = {
    *   isNation: true + 俱乐部杯赛 → 必须显式设 matchByName: false
    *   isNation: true + 国家队杯赛 → 不用设（自动 true）
    */
-  matchByName: false,
-  teamChineseName: '曼彻斯特城',
+  matchByName: true,
+  teamChineseName: '突尼斯',
   /** 单场分析 / 周期报告等场景可选 */
-  matchSerial: '2789491',
+  matchSerial: '2906957',
   /**
    * 周期报告「同赛事」筛选：与球探战绩表「联赛」列文案一致（如 英超、欧冠杯）。
    * 不填则回退为当前 CUP_ANALYZER_CUP 对应 chineseName。
    */
-  matchLeagueName: '英超',
+  matchLeagueName: '世界杯',
 };
 
 module.exports = squadTarget;

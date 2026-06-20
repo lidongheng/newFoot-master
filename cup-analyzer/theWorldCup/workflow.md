@@ -92,6 +92,15 @@
 
 `matchSquadGenerator.js` 输出的双方块（每队含 **预测首发、预测替补、伤疑、伤停**；国家队**无落选**行）应写入该场赛前报告 **`theWorldCup/report/{阶段}/{轮次}/{主队}_vs_{客队}.md`** 的正文，作为大名单与预测部分；可与模板、交锋、盘口等章节合并。**盘口章节须包含**：合理让球（Fair）、初盘/临场（Market）、Δ、三档结论（与下 **「亚盘安全边际」** 一致）；无独立 `prompts/match_analysis_template.md` 时，建议沿用 `epl/prompts/match_analysis_template.md` 中「四、盘口解析」结构。
 
+### 亚盘周期盈亏 HTML（霍华德·马克斯周期视角）
+
+赛前分析报告必须同步生成亚盘周期盈亏 HTML。除非用户明确要求只写文字报告或本地缺少球探单场序号，否则不要跳过这一步。
+
+1. 编辑 `cup-analyzer/crawler-server/config/squadTarget.js`：设置 `matchSerial`（球探单场序号）、`roundSerial`、`season`；`matchLeagueName` 填与球探战绩表「联赛」列一致的文案，供「同赛事」折线图筛选。
+2. 在 `cup-analyzer/crawler-server` 执行：`CUP_ANALYZER_CUP=theWorldCup npm run generate:cycle-report`
+3. 输出：`cup-analyzer/theWorldCup/report/{阶段}/{轮次}/{主队}_vs_{客队}_cycle.html`（ECharts 远程 CDN；每场模拟投注 1000 元、固定港盘水位 0.9，初盘盘口来自球探分析页；每队含「全部 / 仅主或仅客 / 同赛事」三张累计盈亏图）。
+4. 赛前报告交付时必须说明 HTML 路径；如果命令因网络、球探页面缺失或配置缺失失败，必须把失败原因写进回复和报告检查项，不能静默略过。
+
 ### 阶段三：策略分析（贯穿全程）
 
 > **强队视角路线监控**：每天更新 `theWorldCup/data/c75.js` 后，手动执行 `npm run generate:worldcup-routes` 刷新 `strategy/team-route-monitor.md`。该报告以强队为视角，比较小组第一、第二、第三三条晋级路线，并重点标记“两轮后 4 分控位”、第三轮挑对手空间、以及 H/J、C/F、E/I、K/L 等联动小组的强队互避关系。
