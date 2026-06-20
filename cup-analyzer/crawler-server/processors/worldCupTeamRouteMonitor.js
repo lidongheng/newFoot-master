@@ -17,7 +17,7 @@ class WorldCupTeamRouteMonitor extends BaseCrawler {
     this.focusTeams = [
       {
         name: '瑞士',
-        angle: '重点看 B1 是否落入更差半区；当前选择权不足时，先看能否抢到 4 分。',
+        angle: '重点看 B1 是否落入更差半区；进入 4 分控位后，第三轮重点比较 B1 与 B2 的路径差异。',
       },
       {
         name: '巴西',
@@ -139,30 +139,27 @@ class WorldCupTeamRouteMonitor extends BaseCrawler {
     const index = new Map();
 
     for (const letter of this.groupLetters) {
-      const standings = scheduleData.rounds[`S27970${letter}`];
-      if (!standings) {
-        throw new Error(`缺少小组 ${letter} 积分榜`);
-      }
+      const standings = this.getStandings(scheduleData, letter);
 
-      standings.forEach((row) => {
-        const team = teamMap[row[1]];
+      standings.forEach((standing) => {
+        const team = teamMap[standing.teamId];
         if (!team) {
-          throw new Error(`缺少球队信息: ${row[1]}`);
+          throw new Error(`缺少球队信息: ${standing.teamId}`);
         }
 
         index.set(team.chineseName, {
           group: letter,
-          teamId: row[1],
+          teamId: standing.teamId,
           teamName: team.chineseName,
-          rank: row[0],
-          played: row[2],
-          won: row[3],
-          drawn: row[4],
-          lost: row[5],
-          goalsFor: row[6],
-          goalsAgainst: row[7],
-          goalDiff: row[8],
-          points: row[9],
+          rank: standing.rank,
+          played: standing.played,
+          won: standing.wins,
+          drawn: standing.draws,
+          lost: standing.losses,
+          goalsFor: standing.goalsFor,
+          goalsAgainst: standing.goalsAgainst,
+          goalDiff: standing.goalDiff,
+          points: standing.points,
         });
       });
     }
@@ -624,10 +621,10 @@ class WorldCupTeamRouteMonitor extends BaseCrawler {
 
     const standings = this.getStandings(this.cachedScheduleDataForGroupOrder, group);
     const teamMap = this.buildTeamMap(this.cachedScheduleDataForGroupOrder.arrTeam);
-    return standings.map((row) => {
-      const team = teamMap[row[1]];
+    return standings.map((standing) => {
+      const team = teamMap[standing.teamId];
       if (!team) {
-        throw new Error(`缺少 ${group} 组球队信息: ${row[1]}`);
+        throw new Error(`缺少 ${group} 组球队信息: ${standing.teamId}`);
       }
 
       return team.chineseName;
@@ -774,14 +771,14 @@ class WorldCupTeamRouteMonitor extends BaseCrawler {
       const group = directRankMatch[1];
       const rank = Number(directRankMatch[2]);
       const standings = this.getStandings(scheduleData, group);
-      const currentTeam = standings.find((row) => row[0] === rank);
+      const currentTeam = standings.find((standing) => standing.rank === rank);
       if (!currentTeam) {
         throw new Error(`缺少 ${group}${rank} 当前占位`);
       }
 
-      const team = teamMap[currentTeam[1]];
+      const team = teamMap[currentTeam.teamId];
       if (!team) {
-        throw new Error(`缺少 ${group}${rank} 球队信息: ${currentTeam[1]}`);
+        throw new Error(`缺少 ${group}${rank} 球队信息: ${currentTeam.teamId}`);
       }
 
       return `当前占位：${team.chineseName}（${group}组第${rank}）`;
@@ -791,14 +788,14 @@ class WorldCupTeamRouteMonitor extends BaseCrawler {
       const groups = slot.replace('3rd_', '').split('');
       const candidates = groups.map((group) => {
         const standings = this.getStandings(scheduleData, group);
-        const currentThird = standings.find((row) => row[0] === 3);
+        const currentThird = standings.find((standing) => standing.rank === 3);
         if (!currentThird) {
           throw new Error(`缺少 ${group}3 当前占位`);
         }
 
-        const team = teamMap[currentThird[1]];
+        const team = teamMap[currentThird.teamId];
         if (!team) {
-          throw new Error(`缺少 ${group}3 球队信息: ${currentThird[1]}`);
+          throw new Error(`缺少 ${group}3 球队信息: ${currentThird.teamId}`);
         }
 
         return `${group}3-${team.chineseName}`;
@@ -811,12 +808,10 @@ class WorldCupTeamRouteMonitor extends BaseCrawler {
   }
 
   getStandings(scheduleData, group) {
-    const standings = scheduleData.rounds[`S27970${group}`];
-    if (!standings) {
-      throw new Error(`缺少 ${group} 组积分榜`);
-    }
-
-    return standings;
+    return this.strategyAnalyzer.buildDynamicGroupStandings(group, scheduleData).map((standing, index) => ({
+      ...standing,
+      rank: index + 1,
+    }));
   }
 
   formatBracket(bracket) {

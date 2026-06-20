@@ -146,8 +146,9 @@ class StrategyAnalyzer extends BaseCrawler {
     const teamMap = this.buildTeamMap(scheduleData.arrTeam);
     const teamSchedules = {};
 
-    // 收集每个队的比赛时间
+    // 疲劳度只看小组赛，淘汰赛占位符可能混入真实球队 ID，不能计入小组赛间隔。
     for (const [key, matches] of Object.entries(scheduleData.rounds)) {
+      if (!/^G27970[A-L]$/.test(key)) continue;
       if (!Array.isArray(matches)) continue;
       for (const match of matches) {
         if (!match[3]) continue;
@@ -199,18 +200,17 @@ class StrategyAnalyzer extends BaseCrawler {
    * 识别保留实力风险
    */
   identifyRotationRisk(groupLetter, roundNumber, scheduleData) {
-    const standingKey = `S27970${groupLetter}`;
-    const standings = scheduleData.rounds[standingKey];
+    const teamMap = this.buildTeamMap(scheduleData.arrTeam);
+    const standings = this.buildDynamicGroupStandings(groupLetter, scheduleData);
     if (!standings) return null;
 
-    const teamMap = this.buildTeamMap(scheduleData.arrTeam);
     const risks = [];
 
-    standings.forEach((row) => {
-      const teamId = row[1];
-      const teamName = teamMap[teamId]?.chineseName || String(teamId);
-      const points = row[2] || 0;
-      const played = row[3] || 0;
+    standings.forEach((standing) => {
+      const teamId = standing.teamId;
+      const teamName = this.getTeamName(teamId, teamMap);
+      const points = standing.points;
+      const played = standing.played;
 
       if (roundNumber === 3) {
         if (points >= 6 && played >= 2) {
@@ -242,6 +242,107 @@ class StrategyAnalyzer extends BaseCrawler {
     });
 
     return risks;
+  }
+
+  /**
+   * 根据 G27970X 的已完赛比分重算小组积分，避免 S27970X 未同步时漏掉新赛果。
+   */
+  buildDynamicGroupStandings(groupLetter, scheduleData) {
+    const standingKey = `S27970${groupLetter}`;
+    const matchKey = `G27970${groupLetter}`;
+    const sourceStandings = scheduleData.rounds[standingKey];
+    const matches = scheduleData.rounds[matchKey];
+    if (!sourceStandings) {
+      throw new Error(`缺少 ${standingKey} 小组积分榜数据`);
+    }
+    if (!matches) {
+      throw new Error(`缺少 ${matchKey} 小组赛程数据`);
+    }
+
+    const standingMap = new Map();
+    sourceStandings.forEach((row, index) => {
+      const teamId = row[1];
+      standingMap.set(teamId, {
+        sourceRank: row[0],
+        sourceOrder: index,
+        teamId,
+        played: 0,
+        wins: 0,
+        draws: 0,
+        losses: 0,
+        goalsFor: 0,
+        goalsAgainst: 0,
+        goalDiff: 0,
+        points: 0,
+      });
+    });
+
+    matches.forEach((match) => {
+      const score = this.parseFinalScore(match);
+      if (!score) return;
+
+      const homeStanding = standingMap.get(match[4]);
+      const awayStanding = standingMap.get(match[5]);
+      if (!homeStanding || !awayStanding) {
+        throw new Error(`小组 ${groupLetter} 比赛 ${match[0]} 的球队不在积分榜中`);
+      }
+
+      this.applyMatchResult(homeStanding, score.homeGoals, score.awayGoals);
+      this.applyMatchResult(awayStanding, score.awayGoals, score.homeGoals);
+    });
+
+    return Array.from(standingMap.values()).sort((a, b) => {
+      if (b.points !== a.points) return b.points - a.points;
+      if (b.goalDiff !== a.goalDiff) return b.goalDiff - a.goalDiff;
+      if (b.goalsFor !== a.goalsFor) return b.goalsFor - a.goalsFor;
+      if (b.wins !== a.wins) return b.wins - a.wins;
+      return a.sourceOrder - b.sourceOrder;
+    });
+  }
+
+  parseFinalScore(match) {
+    const finalScore = match[6];
+    if (finalScore === '') return null;
+
+    const scoreParts = finalScore.match(/^(\d+)-(\d+)$/);
+    if (!scoreParts) {
+      throw new Error(`比赛 ${match[0]} 的比分格式异常: ${finalScore}`);
+    }
+
+    return {
+      homeGoals: Number(scoreParts[1]),
+      awayGoals: Number(scoreParts[2]),
+    };
+  }
+
+  applyMatchResult(standing, goalsFor, goalsAgainst) {
+    standing.played += 1;
+    standing.goalsFor += goalsFor;
+    standing.goalsAgainst += goalsAgainst;
+    standing.goalDiff = standing.goalsFor - standing.goalsAgainst;
+
+    if (goalsFor > goalsAgainst) {
+      standing.wins += 1;
+      standing.points += 3;
+      return;
+    }
+
+    if (goalsFor === goalsAgainst) {
+      standing.draws += 1;
+      standing.points += 1;
+      return;
+    }
+
+    standing.losses += 1;
+  }
+
+  getTeamName(teamId, teamMap) {
+    const team = teamMap[teamId];
+    if (!team) {
+      throw new Error(`缺少球队 ${teamId} 的基础信息`);
+    }
+
+    return team.chineseName;
   }
 
   /**
@@ -323,18 +424,20 @@ class StrategyAnalyzer extends BaseCrawler {
 
     for (const letter of 'ABCDEFGHIJKL') {
       const paths = this.analyzeGroupPath(letter);
-      const standingKey = `S27970${letter}`;
-      const standings = scheduleData.rounds[standingKey];
+      const standings = this.buildDynamicGroupStandings(letter, scheduleData);
 
       lines.push(`\n### 小组 ${letter}\n`);
       if (standings) {
-        lines.push('| 球队 | 第一名路径 | 第二名路径 |');
-        lines.push('|------|-----------|-----------|');
-        standings.forEach((row) => {
-          const name = teamMap[row[1]]?.chineseName || String(row[1]);
+        lines.push('| 排名 | 球队 | 战绩 | 进失球 | 积分 | 第一名路径 | 第二名路径 |');
+        lines.push('|------|------|------|--------|------|-----------|-----------|');
+        standings.forEach((standing, index) => {
+          const name = this.getTeamName(standing.teamId, teamMap);
+          const rank = index + 1;
+          const record = `${standing.played}场${standing.wins}胜${standing.draws}平${standing.losses}负`;
+          const goals = `${standing.goalsFor}/${standing.goalsAgainst} (${standing.goalDiff})`;
           const firstPath = paths.first[0] ? `vs ${paths.first[0].opponent}` : '-';
           const secondPath = paths.second[0] ? `vs ${paths.second[0].opponent}` : '-';
-          lines.push(`| ${name} | ${firstPath} | ${secondPath} |`);
+          lines.push(`| ${rank} | ${name} | ${record} | ${goals} | ${standing.points} | ${firstPath} | ${secondPath} |`);
         });
       }
     }
