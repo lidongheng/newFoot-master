@@ -13,7 +13,7 @@ const squadTarget = {
   leagueSerial: '75',
   leagueSlug: 'theWorldCup',
   season: 'group-stage',
-  teamSerial: '646',
+  teamSerial: '650',
   roundSerial: '2',
   /**
    * 赛程格式开关：
@@ -35,9 +35,9 @@ const squadTarget = {
    *   isNation: true + 国家队杯赛 → 不用设（自动 true）
    */
   matchByName: true,
-  teamChineseName: '荷兰',
+  teamChineseName: '德国',
   /** 单场分析 / 周期报告等场景可选 */
-  matchSerial: '2907357',
+  matchSerial: '2906954',
   /**
    * 周期报告「同赛事」筛选：与球探战绩表「联赛」列文案一致（如 英超、欧冠杯）。
    * 不填则回退为当前 CUP_ANALYZER_CUP 对应 chineseName。
