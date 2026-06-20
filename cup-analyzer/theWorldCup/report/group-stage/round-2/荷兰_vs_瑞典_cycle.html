@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>亚盘周期盈亏 — 荷兰 vs 瑞典</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0; padding: 16px 20px 40px; background: #f5f5f5; color: #222; }
+    h1 { font-size: 1.25rem; margin: 0 0 8px; }
+    .meta { color: #666; font-size: 0.9rem; margin-bottom: 20px; }
+    .section { background: #fff; border-radius: 8px; padding: 16px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+    .section h2 { margin: 0 0 12px; font-size: 1.05rem; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+    .chart-wrap { margin-bottom: 24px; }
+    .chart { width: 100%; height: 360px; }
+    .hint { font-size: 12px; color: #888; margin: 6px 0 0; }
+    .note { font-size: 13px; color: #555; line-height: 1.5; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1>霍华德·马克斯周期视角 · 亚盘模拟盈亏</h1>
+  <div class="meta">
+    场次序号 matchSerial：2907357 ｜ 赛季 group-stage ｜ 第 2 轮<br/>
+    主队：荷兰 ｜ 客队：瑞典<br/>
+    模拟规则：每场投注 1000 元、买己方盘、固定水位 0.9（港盘）、初盘盘口来自球探分析页。
+  </div>
+
+  <div class="section">
+    <h2>荷兰（本场主场）</h2>
+    <p class="note">「主或客场」图仅包含该队历史<strong>主场</strong>比赛，便于对照本场主场节奏。</p>
+    
+    <div class="chart-wrap">
+      <div id="chart_home_0" class="chart"></div>
+      <p class="hint">全部近期 · 共 30 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_home_1" class="chart"></div>
+      <p class="hint">仅主场 · 共 19 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_home_2" class="chart"></div>
+      <p class="hint">同赛事（世界杯） · 共 1 场。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>瑞典（本场客场）</h2>
+    <p class="note">「主或客场」图仅包含该队历史<strong>客场</strong>比赛，便于对照本场客场节奏。</p>
+    
+    <div class="chart-wrap">
+      <div id="chart_away_0" class="chart"></div>
+      <p class="hint">全部近期 · 共 30 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_away_1" class="chart"></div>
+      <p class="hint">仅客场 · 共 14 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_away_2" class="chart"></div>
+      <p class="hint">同赛事（世界杯） · 共 1 场。</p>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var configs = [{"id":"chart_home_0","option":{"title":{"text":"荷兰 — 全部近期（30 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["24-03-27 德国","24-06-07 加拿大","24-06-11 冰岛","24-06-16 波兰(中)","24-06-22 法国","24-06-25 奥地利","24-07-02 罗马尼亚(中)","24-07-07 土耳其","24-07-11 英格兰","24-09-08 波黑","24-09-11 德国","24-10-12 匈牙利","24-10-15 德国","24-11-17 匈牙利","24-11-20 波黑","25-03-21 西班牙","25-03-24 西班牙","25-06-08 芬兰","25-06-11 马耳他","25-09-05 波兰","25-09-08 立陶宛","25-10-10 马耳他","25-10-13 芬兰","25-11-15 波兰","25-11-18 立陶宛","26-03-28 挪威","26-04-01 厄瓜多尔","26-06-04 阿尔及利亚","26-06-09 乌兹别克斯坦","26-06-15 日本"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[-1000,-100,800,1700,2600,1600,2500,2500,1500,2400,2400,1400,900,1800,800,800,1700,2600,3500,2500,1500,2400,3300,2300,3200,3650,2650,1650,650,-350],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[29,-350],"value":-350}]}}]}},{"id":"chart_home_1","option":{"title":{"text":"荷兰 — 仅主场（19 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["24-06-07 加拿大","24-06-11 冰岛","24-06-22 法国","24-06-25 奥地利","24-07-07 土耳其","24-07-11 英格兰","24-09-08 波黑","24-09-11 德国","24-11-17 匈牙利","25-03-21 西班牙","25-06-11 马耳他","25-09-05 波兰","25-10-13 芬兰","25-11-18 立陶宛","26-03-28 挪威","26-04-01 厄瓜多尔","26-06-04 阿尔及利亚","26-06-09 乌兹别克斯坦","26-06-15 日本"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[900,1800,2700,1700,1700,700,1600,1600,2500,2500,3400,2400,3300,4200,4650,3650,2650,1650,650],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[18,650],"value":650}]}}]}},{"id":"chart_home_2","option":{"title":{"text":"荷兰 — 同赛事（世界杯）（1 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["26-06-15 日本"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[-1000],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[0,-1000],"value":-1000}]}}]}},{"id":"chart_away_0","option":{"title":{"text":"瑞典 — 全部近期（30 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["23-10-13 摩尔多瓦","23-10-17 比利时","23-11-17 阿塞拜疆","23-11-20 爱沙尼亚","24-01-13 爱沙尼亚","24-03-22 葡萄牙","24-03-26 阿尔巴尼亚","24-06-06 丹麦","24-06-08 塞尔维亚","24-09-06 阿塞拜疆","24-09-09 爱沙尼亚","24-10-12 斯洛伐克","24-10-15 爱沙尼亚","24-11-17 斯洛伐克","24-11-20 阿塞拜疆","25-03-23 卢森堡","25-03-26 北爱尔兰","25-06-07 匈牙利","25-06-11 阿尔及利亚","25-09-06 斯洛文尼亚","25-09-09 科索沃","25-10-11 瑞士","25-10-14 科索沃","25-11-16 瑞士","25-11-19 斯洛文尼亚","26-03-27 乌克兰(中)","26-04-01 波兰","26-06-02 挪威","26-06-05 希腊","26-06-15 突尼斯"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[0,900,-100,-100,-1100,-2100,-1650,-2650,-3650,-2750,-1850,-1850,-950,-500,400,-600,300,1200,2100,1600,600,-400,-1400,-2400,-3400,-2500,-1600,-2600,-3600,-2700],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[29,-2700],"value":-2700}]}}]}},{"id":"chart_away_1","option":{"title":{"text":"瑞典 — 仅客场（14 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["23-10-17 比利时","23-11-17 阿塞拜疆","24-03-22 葡萄牙","24-06-06 丹麦","24-09-06 阿塞拜疆","24-10-12 斯洛伐克","24-10-15 爱沙尼亚","25-03-23 卢森堡","25-06-07 匈牙利","25-09-06 斯洛文尼亚","25-09-09 科索沃","25-11-16 瑞士","26-03-27 乌克兰(中)","26-06-02 挪威"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[900,-100,-1100,-2100,-1200,-1200,-300,-1300,-400,-900,-1900,-2900,-2000,-3000],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[13,-3000],"value":-3000}]}}]}},{"id":"chart_away_2","option":{"title":{"text":"瑞典 — 同赛事（世界杯）（1 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["26-06-15 突尼斯"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[900],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[0,900],"value":900}]}}]}}];
+      configs.forEach(function(item) {
+        var el = document.getElementById(item.id);
+        if (!el) return;
+        var chart = echarts.init(el);
+        chart.setOption(item.option);
+        window.addEventListener('resize', function() { chart.resize(); });
+      });
+    })();
+  </script>
+</body>
+</html>
