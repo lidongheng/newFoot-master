@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>亚盘周期盈亏 — 厄瓜多尔 vs 库拉索</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0; padding: 16px 20px 40px; background: #f5f5f5; color: #222; }
+    h1 { font-size: 1.25rem; margin: 0 0 8px; }
+    .meta { color: #666; font-size: 0.9rem; margin-bottom: 20px; }
+    .section { background: #fff; border-radius: 8px; padding: 16px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+    .section h2 { margin: 0 0 12px; font-size: 1.05rem; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+    .chart-wrap { margin-bottom: 24px; }
+    .chart { width: 100%; height: 360px; }
+    .hint { font-size: 12px; color: #888; margin: 6px 0 0; }
+    .note { font-size: 13px; color: #555; line-height: 1.5; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1>霍华德·马克斯周期视角 · 亚盘模拟盈亏</h1>
+  <div class="meta">
+    场次序号 matchSerial：2906953 ｜ 赛季 group-stage ｜ 第 2 轮<br/>
+    主队：厄瓜多尔 ｜ 客队：库拉索<br/>
+    模拟规则：每场投注 1000 元、买己方盘、固定水位 0.9（港盘）、初盘盘口来自球探分析页。
+  </div>
+
+  <div class="section">
+    <h2>厄瓜多尔（本场主场）</h2>
+    <p class="note">「主或客场」图仅包含该队历史<strong>主场</strong>比赛，便于对照本场主场节奏。</p>
+    
+    <div class="chart-wrap">
+      <div id="chart_home_0" class="chart"></div>
+      <p class="hint">全部近期 · 共 30 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_home_1" class="chart"></div>
+      <p class="hint">仅主场 · 共 15 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_home_2" class="chart"></div>
+      <p class="hint">同赛事（世界杯） · 共 1 场。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>库拉索（本场客场）</h2>
+    <p class="note">「主或客场」图仅包含该队历史<strong>客场</strong>比赛，便于对照本场客场节奏。</p>
+    
+    <div class="chart-wrap">
+      <div id="chart_away_0" class="chart"></div>
+      <p class="hint">全部近期 · 共 26 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_away_1" class="chart"></div>
+      <p class="hint">仅客场 · 共 13 场。</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div id="chart_away_2" class="chart"></div>
+      <p class="hint">同赛事（世界杯） · 共 1 场。</p>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var configs = [{"id":"chart_home_0","option":{"title":{"text":"厄瓜多尔 — 全部近期（30 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["24-03-22 危地马拉","24-03-25 意大利(中)","24-06-10 阿根廷(中)","24-06-13 玻利维亚","24-06-17 洪都拉斯","24-06-23 委内瑞拉","24-06-27 牙买加","24-07-01 墨西哥(中)","24-07-05 阿根廷(中)","24-09-07 巴西","24-09-11 秘鲁","24-10-11 巴拉圭","24-10-16 乌拉圭","24-11-15 玻利维亚","24-11-20 哥伦比亚","25-03-22 委内瑞拉","25-03-26 智利","25-06-06 巴西","25-06-11 秘鲁","25-09-05 巴拉圭","25-09-10 阿根廷","25-10-11 美国","25-10-15 墨西哥","25-11-14 加拿大(中)","25-11-19 新西兰","26-03-28 摩洛哥","26-04-01 荷兰","26-05-31 沙特阿拉伯","26-06-08 危地马拉","26-06-15 科特迪瓦(中)"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[450,-550,-550,350,-650,-1650,-750,-750,150,600,100,-900,0,900,1800,1300,1300,1750,1750,2200,3100,3100,3100,3100,4000,4450,5350,5800,6700,5700],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[29,5700],"value":5700}]}}]}},{"id":"chart_home_1","option":{"title":{"text":"厄瓜多尔 — 仅主场（15 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["24-03-22 危地马拉","24-06-13 玻利维亚","24-06-17 洪都拉斯","24-06-23 委内瑞拉","24-06-27 牙买加","24-09-11 秘鲁","24-10-11 巴拉圭","24-11-15 玻利维亚","25-03-22 委内瑞拉","25-06-06 巴西","25-09-10 阿根廷","25-11-19 新西兰","26-03-28 摩洛哥","26-05-31 沙特阿拉伯","26-06-08 危地马拉"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[450,1350,350,-650,250,-250,-1250,-350,-850,-400,500,1400,1850,2300,3200],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[14,3200],"value":3200}]}}]}},{"id":"chart_home_2","option":{"title":{"text":"厄瓜多尔 — 同赛事（世界杯）（1 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["26-06-15 科特迪瓦(中)"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[-1000],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[0,-1000],"value":-1000}]}}]}},{"id":"chart_away_0","option":{"title":{"text":"库拉索 — 全部近期（26 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["23-10-18 特立尼达和多巴哥","24-03-24 阿拉尼亚体育","24-06-06 巴巴多斯","24-06-09 阿鲁巴","24-09-07 圣卢西亚(中)","24-09-10 法属圣马丁岛","24-10-12 格林纳达(中)","24-10-15 格林纳达","24-11-16 法属圣马丁岛","24-11-19 圣卢西亚","25-06-07 圣卢西亚","25-06-11 海地(中)","25-06-18 萨尔瓦多","25-06-22 加拿大","25-06-25 洪都拉斯(中)","25-09-06 特立尼达和多巴哥","25-09-10 百慕大群岛","25-10-11 牙买加","25-10-15 特立尼达和多巴哥","25-11-14 百慕大群岛","25-11-19 牙买加","26-03-27 中国(中)","26-03-31 澳大利亚","26-05-30 苏格兰","26-06-07 阿鲁巴","26-06-15 德国(中)"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[900,1800,800,800,-200,700,-300,-800,100,1000,1900,2800,3250,4150,3150,2650,1650,2550,1550,2450,3350,2350,1350,350,1250,250],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[25,250],"value":250}]}}]}},{"id":"chart_away_1","option":{"title":{"text":"库拉索 — 仅客场（13 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["24-03-24 阿拉尼亚体育","24-06-09 阿鲁巴","24-09-07 圣卢西亚(中)","24-10-12 格林纳达(中)","25-06-11 海地(中)","25-06-25 洪都拉斯(中)","25-09-06 特立尼达和多巴哥","25-11-14 百慕大群岛","25-11-19 牙买加","26-03-27 中国(中)","26-03-31 澳大利亚","26-05-30 苏格兰","26-06-15 德国(中)"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[900,900,-100,-1100,-200,-1200,-1700,-800,100,-900,-1900,-2900,-3900],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[12,-3900],"value":-3900}]}}]}},{"id":"chart_away_2","option":{"title":{"text":"库拉索 — 同赛事（世界杯）（1 场）","left":"center","textStyle":{"fontSize":14}},"tooltip":{"trigger":"axis"},"grid":{"left":56,"right":24,"top":48,"bottom":72},"xAxis":{"type":"category","data":["26-06-15 德国(中)"],"axisLabel":{"rotate":35,"fontSize":10}},"yAxis":{"type":"value","name":"累计盈亏(元)","splitLine":{"show":true},"axisLine":{"onZero":true}},"series":[{"name":"累计盈亏","type":"line","smooth":true,"data":[-1000],"symbol":"circle","symbolSize":6,"lineStyle":{"width":2},"areaStyle":{"color":{"type":"linear","x":0,"y":0,"x2":0,"y2":1,"colorStops":[{"offset":0,"color":"rgba(82, 196, 26, 0.35)"},{"offset":0.5,"color":"rgba(200, 200, 200, 0.1)"},{"offset":1,"color":"rgba(245, 34, 45, 0.25)"}]}},"markLine":{"symbol":"none","data":[{"yAxis":0,"lineStyle":{"color":"#999","type":"dashed"}}],"label":{"formatter":"保本线"}},"markPoint":{"data":[{"name":"当前位置","coord":[0,-1000],"value":-1000}]}}]}}];
+      configs.forEach(function(item) {
+        var el = document.getElementById(item.id);
+        if (!el) return;
+        var chart = echarts.init(el);
+        chart.setOption(item.option);
+        window.addEventListener('resize', function() { chart.resize(); });
+      });
+    })();
+  </script>
+</body>
+</html>
