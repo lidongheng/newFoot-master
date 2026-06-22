@@ -8,14 +8,15 @@
  * - 客队未来5场比赛
  * - 主队伤病信息
  * - 客队伤病信息
+ *
+ * 使用:
+ *   node crawlerStatistics.js --matchSerial <比赛ID>
  */
 
-const fs = require('fs');
 const cheerio = require('cheerio');
 const iconv = require('iconv-lite');
 
 const { service } = require('./utils/utils');
-const staticData = require('./config/wudaconfig');
 const { qiutanHeaders } = require('./config/league');
 
 // ========== 亚盘盘口中文 → 数字映射 ==========
@@ -635,10 +636,22 @@ function parseInjuries($, homeTeam, awayTeam) {
   }
 }
 
+function parseCliArgs(argv) {
+  const matchSerialIdx = argv.indexOf('--matchSerial');
+  const matchSerial = matchSerialIdx !== -1 ? argv[matchSerialIdx + 1] : undefined;
+
+  if (!matchSerial) {
+    console.error('用法: node crawlerStatistics.js --matchSerial <比赛ID>');
+    process.exit(1);
+  }
+
+  return { matchSerial };
+}
+
 // ==========================================================
-// 入口：从 wudaconfig.js 取 matchSerial，用 service 爬取页面
+// 入口：从命令行读取 matchSerial，用 service 爬取页面
 // ==========================================================
-const matchSerial = staticData.matchSerial;
+const { matchSerial } = parseCliArgs(process.argv.slice(2));
 
 console.log('====================================');
 console.log('  球探体育数据分析页面解析');
