@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📊 多股票情绪对比报告</title>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<style>
+
+        body { background: #12122a; color: #e0e0e0; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .report-header { text-align: center; padding: 30px 0; }
+        .report-header h1 { font-size: 28px; background: linear-gradient(135deg, #00ff88, #4488ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .report-header p { color: #888; font-size: 14px; margin-top: 8px; }
+        .comp-summaries { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 20px; }
+        .comp-summary-card { flex: 1; min-width: 160px; background: rgba(26,26,46,0.8); border-radius: 12px; padding: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
+        .comp-stock-name { font-size: 14px; color: #ccc; margin-bottom: 6px; }
+        .comp-score { font-size: 30px; font-weight: bold; }
+        .comp-detail { font-size: 12px; color: #aaa; margin-top: 4px; }
+        .chart-grid { display: flex; flex-direction: column; gap: 20px; }
+        .chart-card { background: rgba(26,26,46,0.8); border-radius: 15px; padding: 20px; border: 1px solid rgba(255,255,255,0.05); }
+        .chart-card.full-width { width: 100%; }
+        .chart-title { font-size: 16px; font-weight: bold; color: #e0e0e0; margin-bottom: 12px; }
+        .comparison-table-wrap { overflow-x: auto; margin-bottom: 20px; }
+        .comparison-table { width: 100%; border-collapse: collapse; background: rgba(26,26,46,0.8); border-radius: 12px; overflow: hidden; }
+        .comparison-table th { background: rgba(0,255,136,0.1); color: #00ff88; padding: 12px; font-size: 13px; text-align: center; }
+        .comparison-table td { padding: 10px; text-align: center; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        @media (max-width: 768px) { .comp-summaries { flex-direction: column; } }
+        
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="report-header">
+        <h1>📊 多股票情绪对比报告</h1>
+        <p>生成时间: 2026-06-06 10:54 | 共 3 只股票</p>
+    </div>
+
+    
+            <div class="comparison-table-wrap">
+                <table class="comparison-table">
+                    <thead><tr><th>股票</th><th>情绪分</th><th>判断</th><th>置信度</th><th>波动率</th><th>新闻数</th></tr></thead>
+                    <tbody><tr><td>平安银行</td><td style='color:#00ff88'>76分</td><td>看好</td><td>77%</td><td>0%</td><td>6</td></tr><tr><td>招商银行</td><td style='color:#ffcc44'>50分</td><td>中性</td><td>66%</td><td>50%</td><td>4</td></tr><tr><td>五 粮 液</td><td style='color:#ff4444'>14分</td><td>极度看空</td><td>67%</td><td>19%</td><td>3</td></tr></tbody>
+                </table>
+            </div>
+
+    <div class="comp-summaries">
+        
+            <div class="comp-summary-card">
+                <div class="comp-stock-name">平安银行</div>
+                <div class="comp-score" style="color:#00ff88">76分</div>
+                <div class="comp-detail">看好 | 置信77% | 6条新闻</div>
+                <div class="comp-detail" style="font-size:11px;color:#888">波动0% </div>
+            </div>
+            <div class="comp-summary-card">
+                <div class="comp-stock-name">招商银行</div>
+                <div class="comp-score" style="color:#ffcc44">50分</div>
+                <div class="comp-detail">中性 | 置信66% | 4条新闻</div>
+                <div class="comp-detail" style="font-size:11px;color:#888">波动50% 高度分歧</div>
+            </div>
+            <div class="comp-summary-card">
+                <div class="comp-stock-name">五 粮 液</div>
+                <div class="comp-score" style="color:#ff4444">14分</div>
+                <div class="comp-detail">极度看空 | 置信67% | 3条新闻</div>
+                <div class="comp-detail" style="font-size:11px;color:#888">波动19% 存在分歧</div>
+            </div>
+    </div>
+
+    <div class="chart-grid">
+        <div class="chart-card full-width"><div class="chart-title">📊 情绪得分对比</div><div>                            <div id="ec4d0fc0-08b0-4a42-bd73-c8e90f70a360" class="plotly-graph-div" style="height:380px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("ec4d0fc0-08b0-4a42-bd73-c8e90f70a360")) {                    Plotly.newPlot(                        "ec4d0fc0-08b0-4a42-bd73-c8e90f70a360",                        [{"marker":{"color":["#00ff88","#ffcc44","#ff4444"]},"name":"\u60c5\u7eea\u5f97\u5206","text":["75.7%","50.0%","13.6%"],"textposition":"auto","x":["\u5e73\u5b89\u94f6\u884c","\u62db\u5546\u94f6\u884c","\u4e94 \u7cae \u6db2"],"y":[75.69,49.99,13.59],"type":"bar","xaxis":"x","yaxis":"y"},{"line":{"color":"#4488ff","dash":"dot","width":1},"marker":{"color":"#4488ff","size":12},"mode":"markers+lines","name":"\u7f6e\u4fe1\u5ea6","x":["\u5e73\u5b89\u94f6\u884c","\u62db\u5546\u94f6\u884c","\u4e94 \u7cae \u6db2"],"y":[77.13,65.92,66.86],"type":"scatter","xaxis":"x","yaxis":"y2"}],                        {"template":{"layout":{"font":{"color":"#e0e0e0","family":"Arial, sans-serif"},"hovermode":"x unified","paper_bgcolor":"#1a1a2e","plot_bgcolor":"#16213e","xaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"},"yaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"}}},"xaxis":{"anchor":"y","domain":[0.0,0.94]},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"\u60c5\u7eea\u5f97\u5206 (%)"},"range":[0,100]},"yaxis2":{"anchor":"x","overlaying":"y","side":"right","title":{"text":"\u7f6e\u4fe1\u5ea6 (%)"},"range":[0,100]},"legend":{"x":0.01,"y":0.99},"margin":{"l":40,"r":40,"t":20,"b":40},"height":380},                        {"responsive": true}                    )                };            </script>        </div></div><div class="chart-card full-width"><div class="chart-title">🎯 六维主题雷达对比</div><div>                            <div id="ead33f50-bf89-4145-a9bd-d7150b11aed1" class="plotly-graph-div" style="height:420px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("ead33f50-bf89-4145-a9bd-d7150b11aed1")) {                    Plotly.newPlot(                        "ead33f50-bf89-4145-a9bd-d7150b11aed1",                        [{"fill":"toself","line":{"color":"#00ff88","width":2},"name":"\u5e73\u5b89\u94f6\u884c","opacity":0.25,"r":[50.0,62.629999999999995,97.53,81.26,98.59,99.09],"theta":["\u516c\u53f8\u7ecf\u8425","\u8d22\u52a1\u8868\u73b0","\u5e02\u573a\u7ade\u4e89","\u4ea7\u54c1\u6280\u672f","\u884c\u4e1a\u653f\u7b56","\u8d44\u672c\u5e02\u573a"],"type":"scatterpolar"},{"fill":"toself","line":{"color":"#4488ff","width":2},"name":"\u62db\u5546\u94f6\u884c","opacity":0.25,"r":[50.0,50.0,99.97,50.0,99.95,66.64999999999999],"theta":["\u516c\u53f8\u7ecf\u8425","\u8d22\u52a1\u8868\u73b0","\u5e02\u573a\u7ade\u4e89","\u4ea7\u54c1\u6280\u672f","\u884c\u4e1a\u653f\u7b56","\u8d44\u672c\u5e02\u573a"],"type":"scatterpolar"},{"fill":"toself","line":{"color":"#ff8844","width":2},"name":"\u4e94 \u7cae \u6db2","opacity":0.25,"r":[50.0,50.0,50.0,0.0,50.0,40.760000000000005],"theta":["\u516c\u53f8\u7ecf\u8425","\u8d22\u52a1\u8868\u73b0","\u5e02\u573a\u7ade\u4e89","\u4ea7\u54c1\u6280\u672f","\u884c\u4e1a\u653f\u7b56","\u8d44\u672c\u5e02\u573a"],"type":"scatterpolar"}],                        {"template":{"layout":{"font":{"color":"#e0e0e0","family":"Arial, sans-serif"},"hovermode":"x unified","paper_bgcolor":"#1a1a2e","plot_bgcolor":"#16213e","xaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"},"yaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"}}},"polar":{"radialaxis":{"range":[0,100],"showticklabels":true,"ticks":""}},"legend":{"x":0.01,"y":0.99},"margin":{"l":40,"r":40,"t":20,"b":40},"height":420},                        {"responsive": true}                    )                };            </script>        </div></div><div class="chart-card full-width"><div class="chart-title">💡 置信度 vs 分歧度散点</div><div>                            <div id="a78f8dae-f957-41cb-ab8f-311590eb31b2" class="plotly-graph-div" style="height:300px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("a78f8dae-f957-41cb-ab8f-311590eb31b2")) {                    Plotly.newPlot(                        "a78f8dae-f957-41cb-ab8f-311590eb31b2",                        [{"marker":{"color":"#00ff88","line":{"color":"#fff","width":1},"size":18,"symbol":"circle"},"mode":"markers+text","name":"\u5e73\u5b89\u94f6\u884c","text":["\u5e73\u5b89\u94f6\u884c"],"textposition":"top center","x":[77.13],"y":[0],"type":"scatter"},{"marker":{"color":"#4488ff","line":{"color":"#fff","width":1},"size":18,"symbol":"circle"},"mode":"markers+text","name":"\u62db\u5546\u94f6\u884c","text":["\u62db\u5546\u94f6\u884c"],"textposition":"top center","x":[65.92],"y":[49.97],"type":"scatter"},{"marker":{"color":"#ff8844","line":{"color":"#fff","width":1},"size":18,"symbol":"circle"},"mode":"markers+text","name":"\u4e94 \u7cae \u6db2","text":["\u4e94 \u7cae \u6db2"],"textposition":"top center","x":[66.86],"y":[19.21],"type":"scatter"}],                        {"template":{"layout":{"font":{"color":"#e0e0e0","family":"Arial, sans-serif"},"hovermode":"x unified","paper_bgcolor":"#1a1a2e","plot_bgcolor":"#16213e","xaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"},"yaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"}}},"legend":{"x":0.01,"y":0.99},"margin":{"l":40,"r":40,"t":20,"b":40},"height":300,"xaxis":{"title":{"text":"\u7f6e\u4fe1\u5ea6 (%)"},"range":[0,105]},"yaxis":{"title":{"text":"\u6ce2\u52a8\u7387 (%)"},"range":[0,59.97]}},                        {"responsive": true}                    )                };            </script>        </div></div>
+    </div>
+</div>
+</body>
+</html>

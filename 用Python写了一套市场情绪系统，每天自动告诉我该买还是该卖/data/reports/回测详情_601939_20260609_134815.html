@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📈 回测详情 - 建设银行(601939)</title>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #0f0c29, #16213e, #1a1a2e);
+            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .report-header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, rgba(26,26,46,0.9), rgba(22,33,62,0.9));
+            border-radius: 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+        }
+        .report-header h1 { font-size: 28px; background: linear-gradient(90deg, #00ff88, #4488ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .report-header .subtitle { color: #888; font-size: 14px; margin-top: 8px; }
+        .summary-box {
+            background: rgba(26,26,46,0.8);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(0,255,136,0.1);
+        }
+        .summary-box p { line-height: 1.8; color: #ccc; font-size: 15px; }
+        .summary-box .label { color: #4488ff; font-weight: bold; }
+        .chart-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .chart-card {
+            background: rgba(26,26,46,0.8);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            overflow: hidden;
+        }
+        .chart-card > div {
+            width: 100% !important; height: auto !important;
+        }
+        .chart-card .js-plotly-plot, .chart-card .plot-container {
+            width: 100% !important; height: auto !important;
+        }
+        .chart-card.half-left { grid-column: 1; }
+        .chart-card.half-right { grid-column: 2; }
+        .chart-card.full-width { grid-column: 1 / -1; }
+        .chart-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #ccc;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .stat-card {
+            background: rgba(26,26,46,0.8);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .stat-value { font-size: 28px; font-weight: bold; }
+        .stat-label { font-size: 13px; color: #888; margin-top: 5px; }
+        .info-card {
+            background: rgba(26,26,46,0.8);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(68,136,255,0.2);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .info-card div { font-size: 14px; color: #ccc; }
+        .info-card strong { color: #4488ff; }
+        .perf-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(26,26,46,0.8);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .perf-table th {
+            background: rgba(68,136,255,0.15);
+            color: #4488ff;
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 13px;
+        }
+        .perf-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            font-size: 14px;
+        }
+        .perf-table tr:hover { background: rgba(255,255,255,0.03); }
+        .news-item {
+            background: rgba(26,26,46,0.6);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 3px solid #4488ff;
+        }
+        .news-title { font-size: 15px; font-weight: bold; color: #e0e0e0; }
+        .news-meta { font-size: 12px; color: #888; margin: 5px 0; }
+        .news-content { font-size: 13px; color: #aaa; line-height: 1.6; }
+        .news-link { display: inline-block; margin-top: 8px; color: #4488ff; text-decoration: none; font-size: 13px; }
+        .news-link:hover { color: #00ff88; }
+        .risk-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 15px;
+            background: rgba(26,26,46,0.6);
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .risk-factor { font-weight: bold; color: #ff8844; min-width: 60px; font-size: 14px; }
+        .risk-desc { color: #aaa; flex: 1; font-size: 13px; }
+        .risk-severity { padding: 2px 10px; border-radius: 10px; font-size: 12px; color: white; }
+        .event-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(26,26,46,0.6);
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 13px;
+        }
+        .event-date { color: #4488ff; }
+        .event-text { color: #ccc; }
+        .event-score { font-weight: bold; }
+        .topic-block {
+            background: rgba(26,26,46,0.6);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 3px solid #4488ff;
+        }
+        .topic-name { font-weight: bold; font-size: 15px; color: #e0e0e0; }
+        .topic-score { font-size: 14px; font-weight: bold; }
+        .topic-summary { font-size: 13px; color: #aaa; margin: 5px 0; }
+        .topic-points { font-size: 12px; color: #888; }
+        /* ✨ 新增样式 - Dashboard & AI结论 & 词云 */
+        .ai-conclusion {
+            background: linear-gradient(135deg, rgba(0,255,136,0.08), rgba(68,136,255,0.08));
+            border-radius: 10px;
+            padding: 10px 18px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(0,255,136,0.15);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .ai-badge {
+            background: linear-gradient(135deg, #00ff88, #4488ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        .ai-text {
+            color: #ccc;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        .dash-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+        .dash-grid-5 {
+            grid-template-columns: repeat(5, 1fr);
+        }
+        .dash-card {
+            background: rgba(26,26,46,0.8);
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .dash-card.wide-card {
+            grid-column: span 1;
+        }
+        .dash-value { font-size: 26px; font-weight: bold; }
+        .dash-label { font-size: 11px; color: #888; margin-top: 2px; }
+        .dashboard-quote {
+            background: rgba(26,26,46,0.8);
+            border-radius: 10px;
+            padding: 8px 16px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+            font-size: 14px;
+        }
+        .quote-price { font-size: 28px; font-weight: bold; color: #e0e0e0; }
+        .quote-change { font-weight: bold; font-size: 14px; margin-left: 8px; }
+        .quote-divider { color: #444; margin: 0 8px; }
+        .dashboard-market, .dashboard-market-compact {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 12px;
+            padding: 0 4px;
+            line-height: 1.8;
+        }
+        .dashboard-market {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 10px;
+            padding: 0 5px;
+        }
+        .topic-tags { display: flex; flex-wrap: wrap; gap: 15px; }
+        .topic-tag {
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+        .wordcloud-container {
+            background: rgba(26,26,46,0.8);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+        .wordcloud-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .vol-bar-bg {
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+            height: 4px;
+            overflow: hidden;
+        }
+        .vol-bar-fg {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s;
+        }
+        .sentiment-ratio-bar {
+            display: flex;
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+            gap: 1px;
+        }
+        .ratio-pos { background: #00ff88; }
+        .ratio-neu { background: #ffcc44; }
+        .ratio-neg { background: #ff4444; }
+        @media (max-width: 768px) {
+            .chart-grid { grid-template-columns: 1fr; }
+            .chart-card.half-left, .chart-card.half-right { grid-column: 1; }
+            .dash-grid { grid-template-columns: repeat(2, 1fr); }
+            .ai-conclusion { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="report-header">
+            <h1>📈 回测详情 - 建设银行(601939)</h1>
+            <div class="subtitle">生成时间: 2026-06-09 13:48</div>
+        </div>
+
+        
+        <div class="stat-grid">
+            <div class="stat-card">
+                <div class="stat-value" style="color:#00ff88">+16.07%</div>
+                <div class="stat-label">总收益率</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" style="color:#ffcc44">+47.90%</div>
+                <div class="stat-label">年化收益</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" style="color:#ff4444">4.56%</div>
+                <div class="stat-label">最大回撤</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" style="color:#00ff88">2.55</div>
+                <div class="stat-label">夏普比率</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" style="color:#00ff88">100.0%</div>
+                <div class="stat-label">胜率</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">1</div>
+                <div class="stat-label">交易次数</div>
+            </div>
+        </div>
+        
+            <div class="info-card">
+                <div><strong>策略:</strong> 买入持有</div>
+                <div><strong>股票:</strong> 建设银行(601939)</div>
+                <div><strong>回测区间:</strong> 2026-01-21 ~ 2026-06-09</div>
+                <div><strong>初始资金:</strong> ¥100,000</div>
+                <div><strong>最终资产:</strong> ¥116,072.74</div>
+                <div><strong>盈利因子:</strong> inf</div>
+            </div>
+            
+            <table class="perf-table">
+                <thead><tr><th>日期</th><th>方向</th><th>价格</th><th>数量</th><th>金额</th><th>理由</th></tr></thead>
+                <tbody>
+            <tr>
+                <td>2026-01-21</td>
+                <td style="color:#00ff88">买入</td>
+                <td>8.87</td>
+                <td>11200</td>
+                <td>99331.23</td>
+                <td>期初建仓</td>
+            </tr>
+            
+            <tr>
+                <td>2026-06-09</td>
+                <td style="color:#ff4444">卖出</td>
+                <td>10.31</td>
+                <td>11200</td>
+                <td>115468.42</td>
+                <td>期末平仓</td>
+            </tr>
+            </tbody>
+            </table>
+            
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        <div class="chart-grid"><div class="chart-card full-width"><div class="chart-title">📈 策略净值曲线</div><div>                            <div id="670a195a-48fc-4b24-b336-fe0acb9e082b" class="plotly-graph-div" style="height:400px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("670a195a-48fc-4b24-b336-fe0acb9e082b")) {                    Plotly.newPlot(                        "670a195a-48fc-4b24-b336-fe0acb9e082b",                        [{"fill":"tozeroy","fillcolor":"rgba(0, 255, 136, 0.08)","line":{"color":"#00ff88","width":2},"mode":"lines","name":"\u7b56\u7565\u51c0\u503c","x":["2026-01-21","2026-01-22","2026-01-23","2026-01-26","2026-01-27","2026-01-28","2026-01-29","2026-01-30","2026-02-02","2026-02-03","2026-02-04","2026-02-05","2026-02-06","2026-02-09","2026-02-10","2026-02-11","2026-02-12","2026-02-13","2026-02-24","2026-02-25","2026-02-26","2026-02-27","2026-03-02","2026-03-03","2026-03-04","2026-03-05","2026-03-06","2026-03-09","2026-03-10","2026-03-11","2026-03-12","2026-03-13","2026-03-16","2026-03-17","2026-03-18","2026-03-19","2026-03-20","2026-03-23","2026-03-24","2026-03-25","2026-03-26","2026-03-27","2026-03-30","2026-03-31","2026-04-01","2026-04-02","2026-04-03","2026-04-07","2026-04-08","2026-04-09","2026-04-10","2026-04-13","2026-04-14","2026-04-15","2026-04-16","2026-04-17","2026-04-20","2026-04-21","2026-04-22","2026-04-23","2026-04-24","2026-04-27","2026-04-28","2026-04-29","2026-04-30","2026-05-06","2026-05-07","2026-05-08","2026-05-11","2026-05-12","2026-05-13","2026-05-14","2026-05-15","2026-05-18","2026-05-19","2026-05-20","2026-05-21","2026-05-22","2026-05-25","2026-05-26","2026-05-27","2026-05-28","2026-05-29","2026-06-01","2026-06-02","2026-06-03","2026-06-04","2026-06-05","2026-06-08","2026-06-09"],"y":[99935.56,98016.82,97565.36,98016.82,98355.42,98242.56,98919.76,98355.42,99145.49,97565.36,98355.42,99596.96,99709.83,99935.56,101177.1,101064.23,99371.23,98129.69,97903.96,97565.36,97226.76,96888.16,98242.56,100387.03,100387.03,100838.49,101177.1,102192.9,100838.49,102080.03,102644.36,103208.7,103547.3,104450.23,104111.63,105353.17,105804.63,103321.56,105127.43,105917.5,106481.84,106256.1,107271.9,108852.04,106594.7,108061.97,106030.37,103885.9,104901.7,104563.1,104224.5,105127.43,105578.9,106707.57,106594.7,106143.24,109754.97,111109.38,110432.17,109754.97,109867.84,109190.64,110545.04,110657.91,112238.04,110545.04,109529.24,109303.51,108287.7,108626.31,108400.57,109867.84,110770.77,110093.57,112012.31,111109.38,113366.71,113931.05,114382.51,116301.25,115285.45,113818.18,112350.91,113705.31,114833.98,113479.58,113140.98,115285.45,116526.98,116414.12],"type":"scatter"},{"line":{"color":"#ffcc44","dash":"dash","width":1},"mode":"lines","name":"\u521d\u59cb\u8d44\u672c\u7ebf","x":["2026-01-21","2026-01-22","2026-01-23","2026-01-26","2026-01-27","2026-01-28","2026-01-29","2026-01-30","2026-02-02","2026-02-03","2026-02-04","2026-02-05","2026-02-06","2026-02-09","2026-02-10","2026-02-11","2026-02-12","2026-02-13","2026-02-24","2026-02-25","2026-02-26","2026-02-27","2026-03-02","2026-03-03","2026-03-04","2026-03-05","2026-03-06","2026-03-09","2026-03-10","2026-03-11","2026-03-12","2026-03-13","2026-03-16","2026-03-17","2026-03-18","2026-03-19","2026-03-20","2026-03-23","2026-03-24","2026-03-25","2026-03-26","2026-03-27","2026-03-30","2026-03-31","2026-04-01","2026-04-02","2026-04-03","2026-04-07","2026-04-08","2026-04-09","2026-04-10","2026-04-13","2026-04-14","2026-04-15","2026-04-16","2026-04-17","2026-04-20","2026-04-21","2026-04-22","2026-04-23","2026-04-24","2026-04-27","2026-04-28","2026-04-29","2026-04-30","2026-05-06","2026-05-07","2026-05-08","2026-05-11","2026-05-12","2026-05-13","2026-05-14","2026-05-15","2026-05-18","2026-05-19","2026-05-20","2026-05-21","2026-05-22","2026-05-25","2026-05-26","2026-05-27","2026-05-28","2026-05-29","2026-06-01","2026-06-02","2026-06-03","2026-06-04","2026-06-05","2026-06-08","2026-06-09"],"y":[99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56,99935.56],"type":"scatter"}],                        {"template":{"layout":{"font":{"color":"#e0e0e0","family":"Arial, sans-serif"},"hovermode":"x unified","paper_bgcolor":"#1a1a2e","plot_bgcolor":"#16213e","xaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"},"yaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"}}},"title":{"font":{"size":16},"text":"\u51c0\u503c\u66f2\u7ebf - \u5efa\u8bbe\u94f6\u884c(601939) - buy_hold"},"height":400,"yaxis":{"title":{"text":"\u51c0\u503c (\u5143)"}},"hovermode":"x unified"},                        {"responsive": true}                    )                };            </script>        </div></div>
+<div class="chart-card full-width"><div class="chart-title">📊 每日收益率分布</div><div>                            <div id="94235706-c42f-4a3d-9ab1-85f6c7e83710" class="plotly-graph-div" style="height:350px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("94235706-c42f-4a3d-9ab1-85f6c7e83710")) {                    Plotly.newPlot(                        "94235706-c42f-4a3d-9ab1-85f6c7e83710",                        [{"marker":{"color":["#ff4444","#ff4444","#ff4444","#00ff88","#00ff88","#ff4444","#00ff88","#ff4444","#00ff88","#ff4444","#00ff88","#00ff88","#00ff88","#00ff88","#00ff88","#ff4444","#ff4444","#ff4444","#ff4444","#ff4444","#ff4444","#ff4444","#00ff88","#00ff88","#ff4444","#00ff88","#00ff88","#00ff88","#ff4444","#00ff88","#00ff88","#00ff88","#00ff88","#00ff88","#ff4444","#00ff88","#00ff88","#ff4444","#00ff88","#00ff88","#00ff88","#ff4444","#00ff88","#00ff88","#ff4444","#00ff88","#ff4444","#ff4444","#00ff88","#ff4444","#ff4444","#00ff88","#00ff88","#00ff88","#ff4444","#ff4444","#00ff88","#00ff88","#ff4444","#ff4444","#00ff88","#ff4444","#00ff88","#00ff88","#00ff88","#ff4444","#ff4444","#ff4444","#ff4444","#00ff88","#ff4444","#00ff88","#00ff88","#ff4444","#00ff88","#ff4444","#00ff88","#00ff88","#00ff88","#00ff88","#ff4444","#ff4444","#ff4444","#00ff88","#00ff88","#ff4444","#ff4444","#00ff88","#00ff88","#ff4444"]},"name":"\u65e5\u6536\u76ca\u7387","x":["2026-01-21","2026-01-22","2026-01-23","2026-01-26","2026-01-27","2026-01-28","2026-01-29","2026-01-30","2026-02-02","2026-02-03","2026-02-04","2026-02-05","2026-02-06","2026-02-09","2026-02-10","2026-02-11","2026-02-12","2026-02-13","2026-02-24","2026-02-25","2026-02-26","2026-02-27","2026-03-02","2026-03-03","2026-03-04","2026-03-05","2026-03-06","2026-03-09","2026-03-10","2026-03-11","2026-03-12","2026-03-13","2026-03-16","2026-03-17","2026-03-18","2026-03-19","2026-03-20","2026-03-23","2026-03-24","2026-03-25","2026-03-26","2026-03-27","2026-03-30","2026-03-31","2026-04-01","2026-04-02","2026-04-03","2026-04-07","2026-04-08","2026-04-09","2026-04-10","2026-04-13","2026-04-14","2026-04-15","2026-04-16","2026-04-17","2026-04-20","2026-04-21","2026-04-22","2026-04-23","2026-04-24","2026-04-27","2026-04-28","2026-04-29","2026-04-30","2026-05-06","2026-05-07","2026-05-08","2026-05-11","2026-05-12","2026-05-13","2026-05-14","2026-05-15","2026-05-18","2026-05-19","2026-05-20","2026-05-21","2026-05-22","2026-05-25","2026-05-26","2026-05-27","2026-05-28","2026-05-29","2026-06-01","2026-06-02","2026-06-03","2026-06-04","2026-06-05","2026-06-08","2026-06-09"],"y":[-0.0644398943999986,-1.9199731202990844,-0.4606018122333277,0.46273316959830224,0.34545135917501435,-0.11475403368924057,0.6893152191542716,-0.5704968278361618,0.8032782358247137,-1.5937541910997932,0.8097830467970475,1.2622943705816907,0.11332355681108609,0.22639055978750725,1.2423355484288354,-0.11155372374602726,-1.6751745758088268,-1.2493908331831287,-0.23003601859904232,-0.3458496065638582,-0.3470498771987453,-0.3482585079228107,1.3979023455420756,2.1828315273219023,0.0,0.44972670317255026,0.3357849129606222,1.003983513714159,-1.3253385048625013,1.2312113475222475,0.5528349549031659,0.5497954932360888,0.32807356228172646,0.8720020246458368,-0.3241739557843641,1.1925036240470024,0.42852747579277883,-2.3468442444586755,1.747814293297839,0.7515333460761967,0.5328053232377388,-0.21199262132379737,0.9559934314922944,1.4730189292244389,-2.073765793351081,1.3764930068011116,-1.8800348458536822,-2.02250502541587,0.9778048484482441,-0.3227788027001963,-0.32382403805306553,0.8663361729197759,0.4294476263292454,1.0690281498089882,-0.10577208165339336,-0.42353630978495,3.4027021574302077,1.2340231758098372,-0.6094903359055429,-0.6132279006973302,0.10283526465081644,-0.6163777342306936,1.240401024189662,0.10210029886298796,1.4279462466966013,-1.5084032200097326,-0.9189026897670496,-0.20609440475477964,-0.9293401394249237,0.31268596263609905,-0.207807523468895,1.3535617056067686,0.821836978974245,-0.6113534058690434,1.74282278977918,-0.8061029550626493,2.0316344530184502,0.4977952337796612,0.39626360568143565,1.6774731087211687,-0.8734225699975244,-1.2727266607950813,-1.2891338104945564,1.2055103122499613,0.9926257214409472,-1.1794434071004107,-0.2983800759085356,1.895395964672074,1.0769225591342968,-0.09685895489458453],"type":"bar"}],                        {"template":{"layout":{"font":{"color":"#e0e0e0","family":"Arial, sans-serif"},"hovermode":"x unified","paper_bgcolor":"#1a1a2e","plot_bgcolor":"#16213e","xaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"},"yaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"}}},"height":350,"yaxis":{"title":{"text":"\u65e5\u6536\u76ca\u7387 (%)"}},"hovermode":"x unified"},                        {"responsive": true}                    )                };            </script>        </div></div>
+<div class="chart-card full-width"><div class="chart-title">🔻 回撤曲线</div><div>                            <div id="db42fc15-6d60-426c-afbb-be658b60ef48" class="plotly-graph-div" style="height:350px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("db42fc15-6d60-426c-afbb-be658b60ef48")) {                    Plotly.newPlot(                        "db42fc15-6d60-426c-afbb-be658b60ef48",                        [{"fill":"tozeroy","fillcolor":"rgba(255, 68, 68, 0.15)","line":{"color":"#ff4444","width":2},"mode":"lines","name":"\u56de\u64a4","x":["2026-01-21","2026-01-22","2026-01-23","2026-01-26","2026-01-27","2026-01-28","2026-01-29","2026-01-30","2026-02-02","2026-02-03","2026-02-04","2026-02-05","2026-02-06","2026-02-09","2026-02-10","2026-02-11","2026-02-12","2026-02-13","2026-02-24","2026-02-25","2026-02-26","2026-02-27","2026-03-02","2026-03-03","2026-03-04","2026-03-05","2026-03-06","2026-03-09","2026-03-10","2026-03-11","2026-03-12","2026-03-13","2026-03-16","2026-03-17","2026-03-18","2026-03-19","2026-03-20","2026-03-23","2026-03-24","2026-03-25","2026-03-26","2026-03-27","2026-03-30","2026-03-31","2026-04-01","2026-04-02","2026-04-03","2026-04-07","2026-04-08","2026-04-09","2026-04-10","2026-04-13","2026-04-14","2026-04-15","2026-04-16","2026-04-17","2026-04-20","2026-04-21","2026-04-22","2026-04-23","2026-04-24","2026-04-27","2026-04-28","2026-04-29","2026-04-30","2026-05-06","2026-05-07","2026-05-08","2026-05-11","2026-05-12","2026-05-13","2026-05-14","2026-05-15","2026-05-18","2026-05-19","2026-05-20","2026-05-21","2026-05-22","2026-05-25","2026-05-26","2026-05-27","2026-05-28","2026-05-29","2026-06-01","2026-06-02","2026-06-03","2026-06-04","2026-06-05","2026-06-08","2026-06-09"],"y":[0.0,1.9199772333291483,2.3717283417434167,1.9199772333291483,1.5811588987943825,1.694091672673871,1.0164550036043254,1.5811588987943825,0.7905794493971839,2.3717283417434167,1.5811588987943825,0.3388183345347655,0.22587555420712702,0.0,0.0,0.11155686415207582,1.7848604081358428,3.0119562628302288,3.2350601074749123,3.569720816271671,3.9043815250684304,4.239042233865175,2.900399398678167,0.7808782817455797,0.7808782817455797,0.3346705924561987,0.0,0.0,1.3253464771035846,0.11044798611253359,0.0,0.0,0.0,0.0,0.3241735322172017,0.0,0.0,2.3468443677748385,0.6400476047220349,0.0,0.0,0.21199859055778028,0.0,0.0,2.0737691273401917,0.7258201132472965,2.5922068157840665,4.562284730722547,3.6290913794541626,3.9401558298769483,4.251220280299748,3.4217181414330873,3.006962478608577,1.9700779149384677,2.0737691273401917,2.4885156033823423,0.0,0.0,0.6094984959865732,1.2189879918329158,1.1174034091451217,1.7268929049914643,0.5079139132987792,0.40632933061097193,0.0,1.508401251483009,2.4134420023728036,2.6145591993587907,3.5196088598838653,3.2179196999519912,3.4190458065732323,2.1117617520762098,1.3072840544970221,1.9106445550902234,0.2011171969859737,1.0055948945651483,0.0,0.0,0.0,0.0,0.8734213948689312,2.1350329424662307,3.3966444900635175,2.232082630238284,1.2616115475972993,2.4261734074225325,2.7173138723788473,0.8734213948689312,0.0,0.09685310646512986],"type":"scatter"}],                        {"template":{"layout":{"font":{"color":"#e0e0e0","family":"Arial, sans-serif"},"hovermode":"x unified","paper_bgcolor":"#1a1a2e","plot_bgcolor":"#16213e","xaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"},"yaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"}}},"height":350,"yaxis":{"title":{"text":"\u56de\u64a4 (%)"}},"hovermode":"x unified"},                        {"responsive": true}                    )                };            </script>        </div></div>
+<div class="chart-card full-width"><div class="chart-title">🎯 买卖信号标注</div><div>                            <div id="63ed5e7a-dd08-41df-8685-3099cd171cfc" class="plotly-graph-div" style="height:450px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("63ed5e7a-dd08-41df-8685-3099cd171cfc")) {                    Plotly.newPlot(                        "63ed5e7a-dd08-41df-8685-3099cd171cfc",                        [{"line":{"color":"#4488ff","width":2},"mode":"lines","name":"\u51c0\u503c","x":["2026-01-21","2026-01-22","2026-01-23","2026-01-26","2026-01-27","2026-01-28","2026-01-29","2026-01-30","2026-02-02","2026-02-03","2026-02-04","2026-02-05","2026-02-06","2026-02-09","2026-02-10","2026-02-11","2026-02-12","2026-02-13","2026-02-24","2026-02-25","2026-02-26","2026-02-27","2026-03-02","2026-03-03","2026-03-04","2026-03-05","2026-03-06","2026-03-09","2026-03-10","2026-03-11","2026-03-12","2026-03-13","2026-03-16","2026-03-17","2026-03-18","2026-03-19","2026-03-20","2026-03-23","2026-03-24","2026-03-25","2026-03-26","2026-03-27","2026-03-30","2026-03-31","2026-04-01","2026-04-02","2026-04-03","2026-04-07","2026-04-08","2026-04-09","2026-04-10","2026-04-13","2026-04-14","2026-04-15","2026-04-16","2026-04-17","2026-04-20","2026-04-21","2026-04-22","2026-04-23","2026-04-24","2026-04-27","2026-04-28","2026-04-29","2026-04-30","2026-05-06","2026-05-07","2026-05-08","2026-05-11","2026-05-12","2026-05-13","2026-05-14","2026-05-15","2026-05-18","2026-05-19","2026-05-20","2026-05-21","2026-05-22","2026-05-25","2026-05-26","2026-05-27","2026-05-28","2026-05-29","2026-06-01","2026-06-02","2026-06-03","2026-06-04","2026-06-05","2026-06-08","2026-06-09"],"y":[99935.56,98016.82,97565.36,98016.82,98355.42,98242.56,98919.76,98355.42,99145.49,97565.36,98355.42,99596.96,99709.83,99935.56,101177.1,101064.23,99371.23,98129.69,97903.96,97565.36,97226.76,96888.16,98242.56,100387.03,100387.03,100838.49,101177.1,102192.9,100838.49,102080.03,102644.36,103208.7,103547.3,104450.23,104111.63,105353.17,105804.63,103321.56,105127.43,105917.5,106481.84,106256.1,107271.9,108852.04,106594.7,108061.97,106030.37,103885.9,104901.7,104563.1,104224.5,105127.43,105578.9,106707.57,106594.7,106143.24,109754.97,111109.38,110432.17,109754.97,109867.84,109190.64,110545.04,110657.91,112238.04,110545.04,109529.24,109303.51,108287.7,108626.31,108400.57,109867.84,110770.77,110093.57,112012.31,111109.38,113366.71,113931.05,114382.51,116301.25,115285.45,113818.18,112350.91,113705.31,114833.98,113479.58,113140.98,115285.45,116526.98,116414.12],"type":"scatter"},{"marker":{"color":"#00ff88","size":12,"symbol":"triangle-up"},"mode":"markers","name":"\u4e70\u5165","x":["2026-01-21"],"y":[99935.56],"type":"scatter"},{"marker":{"color":"#ff4444","size":12,"symbol":"triangle-down"},"mode":"markers","name":"\u5356\u51fa","x":["2026-06-09"],"y":[116414.12],"type":"scatter"}],                        {"template":{"layout":{"font":{"color":"#e0e0e0","family":"Arial, sans-serif"},"hovermode":"x unified","paper_bgcolor":"#1a1a2e","plot_bgcolor":"#16213e","xaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"},"yaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"}}},"height":450,"hovermode":"x unified","title":{"text":"\u4e70\u5356\u4fe1\u53f7\u6807\u6ce8"}},                        {"responsive": true}                    )                };            </script>        </div></div></div>
+
+        
+
+        
+
+        
+    </div>
+</body>
+</html>

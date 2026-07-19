@@ -1,0 +1,164 @@
+{
+  "_cached_at": "2026-06-09T15:16:30.948151",
+  "_key": "7a6ac13b5f9fdca7730d144c587156a0",
+  "_value": {
+    "overall_sentiment": {
+      "score": 0.575,
+      "label": "中性",
+      "summary": "基于8条新闻分析，整体情感中性（0.58），其中正面新闻5条、中性0条、负面3条。市场情绪总体改善。",
+      "market_expectation": "市场预期温和向好，投资者信心逐步恢复。",
+      "investor_sentiment": "无",
+      "confidence_index": 0.672,
+      "volatility": 0.4451,
+      "volatility_label": "高度分歧",
+      "cv": 0.774,
+      "score_range": 0.999,
+      "positive_ratio": 0.625,
+      "negative_ratio": 0.375,
+      "positive_count": 5,
+      "negative_count": 3,
+      "neutral_count": 0
+    },
+    "time_analysis": {
+      "trend": [
+        {
+          "date": "2026-06-08",
+          "score": 0.0295,
+          "key_events": [
+            {
+              "title": "百亿红包即",
+              "description": "百亿红包即将到账，中信银行涨超4.5%！"
+            },
+            {
+              "title": "银行行业资",
+              "description": "银行行业资金流入榜：工商银行等5股净流入"
+            }
+          ]
+        },
+        {
+          "date": "2026-06-05",
+          "score": 0.6366,
+          "key_events": [
+            {
+              "title": "近七成A股",
+              "description": "近七成A股上市银行已设国际业务部，离岸联"
+            },
+            {
+              "title": "银行行业今",
+              "description": "银行行业今日涨1.33%，主力资金净流入"
+            },
+            {
+              "title": "A股午后跌",
+              "description": "A股午后跌幅迅速扩大：创指跌3.2%，3"
+            }
+          ]
+        },
+        {
+          "date": "2026-06-03",
+          "score": 0.999,
+          "key_events": [
+            {
+              "title": "富时中国A",
+              "description": "富时中国A50及富时中国50指数成分股调"
+            }
+          ]
+        },
+        {
+          "date": "2026-06-02",
+          "score": 0.9959,
+          "key_events": [
+            {
+              "title": "ETF市场",
+              "description": "ETF市场日报 | 通信与互联网板块批量"
+            }
+          ]
+        }
+      ],
+      "trend_prediction": "近期情感呈下降趋势，市场情绪有所转弱，需警惕潜在的负面因素发酵。"
+    },
+    "topic_analysis": {
+      "company_operation": {
+        "score": 0.0007,
+        "summary": "公司经营相关新闻1条，情感得分0.00，整体偏负面",
+        "key_points": [
+          "百亿红包即将到账，中信银行涨超4.5%！银行股年内仍跌近5%，有投资者追问市值管理"
+        ]
+      },
+      "financial_performance": {
+        "score": 0.6263,
+        "summary": "财务表现相关新闻1条，情感得分0.63，整体偏正面",
+        "key_points": [
+          "分红季丨每10股派发现金股利人民币3.60元！红利低波（H30269.CSI）成分股平安银行，发布2025年年度权益分派实施公告"
+        ]
+      },
+      "market_competition": {
+        "score": 0.9753,
+        "summary": "市场竞争相关新闻2条，情感得分0.98，整体偏正面",
+        "key_points": [
+          "ETF市场日报 | 通信与互联网板块批量领涨，传媒影视板块集体回调",
+          "近七成A股上市银行已设国际业务部，离岸联动与流程嵌入“双轨”并行"
+        ]
+      },
+      "product_technology": {
+        "score": 0.8126,
+        "summary": "产品技术相关新闻2条，情感得分0.81，整体偏正面",
+        "key_points": [
+          "富时中国A50及富时中国50指数成分股调整：兆易创新等获纳入，中国建筑等被剔除",
+          "分红季丨每10股派发现金股利人民币3.60元！红利低波（H30269.CSI）成分股平安银行，发布2025年年度权益分派实施公告"
+        ]
+      },
+      "industry_policy": {
+        "score": 0.5221,
+        "summary": "行业政策相关新闻2条，情感得分0.52，整体偏正面",
+        "key_points": [
+          "银行行业今日涨1.33%，主力资金净流入8.20亿元",
+          "银行行业资金流入榜：工商银行等5股净流入资金超5000万元"
+        ]
+      },
+      "capital_market": {
+        "score": 0.5102,
+        "summary": "资本市场相关新闻4条，情感得分0.51，整体偏正面",
+        "key_points": [
+          "银行行业今日涨1.33%，主力资金净流入8.20亿元",
+          "银行行业资金流入榜：工商银行等5股净流入资金超5000万元",
+          "百亿红包即将到账，中信银行涨超4.5%！银行股年内仍跌近5%，有投资者追问市值管理"
+        ]
+      }
+    },
+    "source_analysis": {
+      "mainstream_media": {
+        "score": 0.6001,
+        "summary": "共6条来源"
+      },
+      "industry_media": {
+        "score": 0.511,
+        "summary": "共4条来源"
+      },
+      "official_announcement": {
+        "score": 0.5,
+        "summary": "未匹配到该类型来源"
+      },
+      "self_media": {
+        "score": 0.5,
+        "summary": "未匹配到"
+      }
+    },
+    "impact_analysis": {
+      "importance_level": "中",
+      "market_impact": {
+        "score": 0.8705,
+        "duration": "短期",
+        "key_factors": [
+          "利好: 近七成A股上市银行已设国际业务部，离岸联动与流程嵌入“双轨”",
+          "利好: 银行行业今日涨1.33%，主力资金净流入8.20亿元",
+          "利空: 百亿红包即将到账，中信银行涨超4.5%！银行股年内仍跌近5%",
+          "利空: 银行行业资金流入榜：工商银行等5股净流入资金超5000万元"
+        ]
+      }
+    },
+    "risk_analysis": {
+      "risk_level": "低",
+      "risk_factors": []
+    }
+  }
+}

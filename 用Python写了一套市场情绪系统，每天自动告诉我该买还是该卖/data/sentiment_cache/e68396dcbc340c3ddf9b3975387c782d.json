@@ -1,0 +1,161 @@
+{
+  "_cached_at": "2026-05-02T01:24:27.370911",
+  "_key": "8b296e788edb8e0724538eb727b85b02",
+  "_value": {
+    "overall_sentiment": {
+      "score": 0.4138,
+      "label": "中性",
+      "summary": "基于9条新闻分析，整体情感中性（0.41），其中正面新闻4条、中性0条、负面5条。市场情绪总体恶化。",
+      "market_expectation": "市场预期偏谨慎，利空因素仍需消化。",
+      "investor_sentiment": "无",
+      "confidence_index": 0.6115
+    },
+    "time_analysis": {
+      "trend": [
+        {
+          "date": "2026-04-30",
+          "score": 0.0282,
+          "key_events": [
+            {
+              "title": "寒武纪午间",
+              "description": "寒武纪午间收盘涨逾17%，报1661.3"
+            },
+            {
+              "title": "26家公司",
+              "description": "26家公司派现金额超百亿元"
+            }
+          ]
+        },
+        {
+          "date": "2026-04-29",
+          "score": 0.629,
+          "key_events": [
+            {
+              "title": "中欧基金葛",
+              "description": "中欧基金葛兰卸任一只基金，剩余在管基金规"
+            },
+            {
+              "title": "五粮液道歉",
+              "description": "五粮液道歉，股价创近6年新低"
+            },
+            {
+              "title": "3519家",
+              "description": "3519家公司公布派现方案 合计派现15"
+            }
+          ]
+        },
+        {
+          "date": "2026-04-28",
+          "score": 0.4457,
+          "key_events": [
+            {
+              "title": "贵州茅台：",
+              "description": "贵州茅台：将于5月11日召开2025年度"
+            },
+            {
+              "title": "上市公司派",
+              "description": "上市公司派现榜：137家每10股派现超1"
+            }
+          ]
+        },
+        {
+          "date": "2026-04-25",
+          "score": 0.4448,
+          "key_events": [
+            {
+              "title": "贵州茅台2",
+              "description": "贵州茅台2026年一季度归母净利润约27"
+            },
+            {
+              "title": "贵州茅台(",
+              "description": "贵州茅台(600519.SH)：2026"
+            }
+          ]
+        }
+      ],
+      "trend_prediction": "近期情感呈下降趋势，市场情绪有所转弱，需警惕潜在的负面因素发酵。"
+    },
+    "topic_analysis": {
+      "company_operation": {
+        "score": 0.8913,
+        "summary": "公司经营相关新闻1条，情感得分0.89，整体偏正面",
+        "key_points": [
+          "贵州茅台：将于5月11日召开2025年度及2026年第一季度业绩说明会"
+        ]
+      },
+      "financial_performance": {
+        "score": 0.4706,
+        "summary": "财务表现相关新闻7条，情感得分0.47，整体偏负面",
+        "key_points": [
+          "26家公司派现金额超百亿元",
+          "3519家公司公布派现方案 合计派现15208.90亿元",
+          "五粮液道歉，股价创近6年新低"
+        ]
+      },
+      "market_competition": {
+        "score": 0.5,
+        "summary": "未发现与市场竞争直接相关的新闻报道",
+        "key_points": []
+      },
+      "product_technology": {
+        "score": 0.4448,
+        "summary": "产品技术相关新闻2条，情感得分0.44，整体偏负面",
+        "key_points": [
+          "贵州茅台2026年一季度归母净利润约272.43亿元，同比增1.47%",
+          "贵州茅台(600519.SH)：2026年一季报净利润为272.43亿元、同比较去年同期上涨1.47%"
+        ]
+      },
+      "industry_policy": {
+        "score": 0.2503,
+        "summary": "行业政策相关新闻4条，情感得分0.25，整体偏负面",
+        "key_points": [
+          "中欧基金葛兰卸任一只基金，剩余在管基金规模约322亿元",
+          "26家公司派现金额超百亿元",
+          "3519家公司公布派现方案 合计派现15208.90亿元"
+        ]
+      },
+      "capital_market": {
+        "score": 0.8869,
+        "summary": "资本市场相关新闻1条，情感得分0.89，整体偏正面",
+        "key_points": [
+          "五粮液道歉，股价创近6年新低"
+        ]
+      }
+    },
+    "source_analysis": {
+      "mainstream_media": {
+        "score": 0.1777,
+        "summary": "共5条来源"
+      },
+      "industry_media": {
+        "score": 0.2228,
+        "summary": "共4条来源"
+      },
+      "official_announcement": {
+        "score": 0.5,
+        "summary": "未匹配到该类型来源"
+      },
+      "self_media": {
+        "score": 0.6488,
+        "summary": "共3条来源"
+      }
+    },
+    "impact_analysis": {
+      "importance_level": "中",
+      "market_impact": {
+        "score": 0.9134,
+        "duration": "短期",
+        "key_factors": [
+          "利好: 中欧基金葛兰卸任一只基金，剩余在管基金规模约322亿元",
+          "利好: 五粮液道歉，股价创近6年新低",
+          "利空: 寒武纪午间收盘涨逾17%，报1661.33元每股，成为A股新",
+          "利空: 26家公司派现金额超百亿元"
+        ]
+      }
+    },
+    "risk_analysis": {
+      "risk_level": "中",
+      "risk_factors": []
+    }
+  }
+}

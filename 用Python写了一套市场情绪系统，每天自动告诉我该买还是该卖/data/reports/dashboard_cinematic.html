@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>市场情绪分析 · 贵州茅台 600519</title>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --neon-green: #00ff88;
+  --neon-blue: #00d4ff;
+  --neon-purple: #b044ff;
+  --neon-orange: #ff6b35;
+  --neon-red: #ff3366;
+  --neon-yellow: #ffcc00;
+  --bg-deep: #020b18;
+  --bg-mid: #041020;
+  --glass-bg: rgba(4, 16, 32, 0.7);
+  --glass-border: rgba(0, 212, 255, 0.15);
+  --text-primary: #e8f4ff;
+  --text-secondary: rgba(200, 220, 255, 0.6);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===== 星空粒子画布 ===== */
+#particle-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== 网格背景线 ===== */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image:
+    linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 20px 24px 40px;
+}
+
+/* ===== 顶部 Header ===== */
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 36px;
+  margin-bottom: 28px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+}
+.dashboard-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.05), transparent);
+  animation: header-sweep 4s ease-in-out infinite;
+}
+@keyframes header-sweep {
+  0% { left: -60%; }
+  100% { left: 140%; }
+}
+
+.header-left { display: flex; align-items: center; gap: 20px; }
+
+.stock-badge {
+  background: linear-gradient(135deg, rgba(0,255,136,0.15), rgba(0,212,255,0.1));
+  border: 1px solid rgba(0,255,136,0.4);
+  border-radius: 12px;
+  padding: 10px 20px;
+  text-align: center;
+}
+.stock-code {
+  font-family: 'Orbitron', monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--neon-green);
+  text-shadow: 0 0 10px rgba(0,255,136,0.6), 0 0 30px rgba(0,255,136,0.3);
+  letter-spacing: 3px;
+}
+.stock-name {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+  letter-spacing: 2px;
+}
+
+.header-title h1 {
+  font-family: 'Orbitron', monospace;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, var(--neon-green), var(--neon-blue), var(--neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  filter: drop-shadow(0 0 8px rgba(0,212,255,0.4));
+}
+.header-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 2px;
+}
+
+.header-right { text-align: right; }
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,51,102,0.12);
+  border: 1px solid rgba(255,51,102,0.4);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-family: 'Orbitron', monospace;
+  font-size: 12px;
+  color: var(--neon-red);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.live-dot {
+  width: 8px; height: 8px;
+  background: var(--neon-red);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--neon-red);
+  animation: pulse-dot 1.2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+.gen-time {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 1px;
+}
+
+/* ===== KPI 卡片行 ===== */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.kpi-card {
+  background: var(--glass-bg);
+  border-radius: 16px;
+  padding: 20px 16px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  cursor: default;
+  transition: transform 0.3s ease;
+  animation: kpi-enter 0.6s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.kpi-card:nth-child(1) { animation-delay: 0.1s; --glow: var(--neon-green); }
+.kpi-card:nth-child(2) { animation-delay: 0.2s; --glow: var(--neon-blue); }
+.kpi-card:nth-child(3) { animation-delay: 0.3s; --glow: var(--neon-yellow); }
+.kpi-card:nth-child(4) { animation-delay: 0.4s; --glow: var(--neon-purple); }
+.kpi-card:nth-child(5) { animation-delay: 0.5s; --glow: var(--neon-orange); }
+
+@keyframes kpi-enter {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.kpi-card:hover { transform: translateY(-4px) scale(1.02); }
+
+/* 呼吸发光边框 */
+.kpi-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--glow), transparent, var(--glow));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  animation: border-glow 3s ease-in-out infinite;
+}
+@keyframes border-glow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.kpi-icon { font-size: 24px; margin-bottom: 8px; }
+.kpi-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-family: 'Rajdhani', sans-serif;
+}
+.kpi-value {
+  font-family: 'Orbitron', monospace;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--glow);
+  text-shadow: 0 0 12px var(--glow), 0 0 30px color-mix(in srgb, var(--glow) 40%, transparent);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.kpi-value.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.kpi-suffix {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-family: 'Rajdhani', sans-serif;
+  margin-top: 4px;
+}
+
+/* 卡片内光晕 */
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  bottom: -20px; left: 50%;
+  transform: translateX(-50%);
+  width: 60%; height: 40px;
+  background: radial-gradient(ellipse, var(--glow), transparent 70%);
+  opacity: 0.15;
+  filter: blur(10px);
+}
+
+/* ===== 摘要总结条 ===== */
+.summary-strip {
+  background: linear-gradient(135deg, rgba(0,255,136,0.05), rgba(0,212,255,0.05));
+  border: 1px solid rgba(0,255,136,0.2);
+  border-radius: 16px;
+  padding: 20px 28px;
+  margin-bottom: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  backdrop-filter: blur(12px);
+}
+.summary-item { display: flex; flex-direction: column; gap: 4px; }
+.summary-tag {
+  font-size: 11px;
+  color: var(--neon-blue);
+  letter-spacing: 2px;
+  font-family: 'Rajdhani', sans-serif;
+  text-transform: uppercase;
+}
+.summary-text { font-size: 14px; color: var(--text-primary); line-height: 1.6; }
+
+/* ===== 图表大区 ===== */
+.chart-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.chart-layout.triple {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.chart-layout.sidebar {
+  grid-template-columns: 2fr 1fr;
+}
+
+.chart-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  padding: 20px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+.chart-card:hover { border-color: rgba(0,212,255,0.4); }
+.chart-card.full { grid-column: 1 / -1; }
+
+.chart-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent, var(--neon-blue)), transparent);
+  opacity: 0.6;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.card-title-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent, var(--neon-blue));
+  box-shadow: 0 0 6px var(--accent, var(--neon-blue));
+}
+.card-badge {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 10px;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.25);
+  color: var(--neon-blue);
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 1px;
+}
+
+/* ===== 仪表盘容器 ===== */
+.gauge-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.gauge-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  padding: 16px;
+  backdrop-filter: blur(16px);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== 新闻流 ===== */
+.news-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.news-item {
+  background: rgba(4, 16, 32, 0.5);
+  border-left: 2px solid var(--neon-blue);
+  border-radius: 0 12px 12px 0;
+  padding: 12px 16px;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.news-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 2px; height: 100%;
+  background: var(--neon-blue);
+  box-shadow: 0 0 8px var(--neon-blue);
+}
+.news-item:hover { background: rgba(0,212,255,0.06); transform: translateX(4px); }
+.news-item.positive { border-left-color: var(--neon-green); }
+.news-item.positive::before { background: var(--neon-green); box-shadow: 0 0 8px var(--neon-green); }
+.news-item.negative { border-left-color: var(--neon-red); }
+.news-item.negative::before { background: var(--neon-red); box-shadow: 0 0 8px var(--neon-red); }
+
+.news-title { font-size: 13px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px; line-height: 1.5; }
+.news-meta { font-size: 11px; color: var(--text-secondary); display: flex; gap: 12px; }
+.news-score { margin-left: auto; font-family: 'Orbitron', monospace; font-size: 12px; }
+
+/* ===== 事件时间线 ===== */
+.timeline {
+  position: relative;
+  padding-left: 28px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px; top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--neon-blue), transparent);
+}
+.timeline-item {
+  position: relative;
+  padding: 10px 0 10px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -20px; top: 50%;
+  transform: translateY(-50%);
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--neon-blue);
+  box-shadow: 0 0 8px var(--neon-blue), 0 0 20px rgba(0,212,255,0.3);
+  border: 2px solid var(--bg-deep);
+}
+.timeline-date { font-family: 'Orbitron', monospace; font-size: 11px; color: var(--neon-blue); letter-spacing: 1px; margin-bottom: 3px; }
+.timeline-text { font-size: 13px; color: var(--text-primary); line-height: 1.5; }
+.timeline-score { display: inline-block; font-family: 'Orbitron', monospace; font-size: 12px; font-weight: 700; padding: 1px 8px; border-radius: 6px; margin-top: 4px; }
+
+/* ===== 主题条 ===== */
+.topic-bars { display: flex; flex-direction: column; gap: 12px; }
+.topic-row { display: flex; align-items: center; gap: 12px; }
+.topic-name { font-size: 13px; color: var(--text-secondary); min-width: 72px; text-align: right; }
+.topic-bar-wrap { flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
+.topic-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  position: relative;
+  transition: width 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+  box-shadow: 0 0 8px currentColor;
+}
+.topic-val { font-family: 'Orbitron', monospace; font-size: 12px; min-width: 40px; }
+
+/* ===== 情绪分布 ===== */
+.sentiment-dist { display: flex; gap: 8px; align-items: stretch; height: 50px; border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+.dist-seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  font-family: 'Orbitron', monospace;
+  transition: flex 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.dist-pos { background: linear-gradient(135deg, rgba(0,255,136,0.7), rgba(0,200,100,0.5)); border-radius: 8px 0 0 8px; }
+.dist-neu { background: linear-gradient(135deg, rgba(255,204,0,0.5), rgba(200,150,0,0.4)); }
+.dist-neg { background: linear-gradient(135deg, rgba(255,51,102,0.6), rgba(200,30,60,0.5)); border-radius: 0 8px 8px 0; }
+
+/* ===== 来源分析 ===== */
+.source-list { display: flex; flex-direction: column; gap: 10px; }
+.source-item { display: flex; align-items: center; gap: 12px; }
+.source-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; box-shadow: 0 0 6px currentColor; }
+.source-name { font-size: 13px; color: var(--text-primary); flex: 1; }
+.source-val { font-family: 'Orbitron', monospace; font-size: 13px; }
+.source-bar-outer { width: 80px; height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+.source-bar-inner { height: 100%; border-radius: 2px; transition: width 1.2s ease; }
+
+/* ===== 底部脚注 ===== */
+.footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 11px;
+  color: rgba(200,220,255,0.25);
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 2px;
+}
+
+/* ===== 扫描线特效 ===== */
+body::after {
+  content: '';
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.6), transparent);
+  animation: scanline 6s linear infinite;
+  pointer-events: none;
+  z-index: 999;
+}
+@keyframes scanline {
+  0% { top: -1%; }
+  100% { top: 101%; }
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 1100px) {
+  .kpi-row { grid-template-columns: repeat(3, 1fr); }
+  .chart-layout { grid-template-columns: 1fr; }
+  .chart-layout.triple { grid-template-columns: 1fr; }
+  .gauge-row { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<div class="container">
+
+  <!-- ===== HEADER ===== -->
+  <header class="dashboard-header">
+    <div class="header-left">
+      <div class="stock-badge">
+        <div class="stock-code">600519</div>
+        <div class="stock-name">贵州茅台</div>
+      </div>
+      <div class="header-title">
+        <h1>市场情绪分析系统</h1>
+        <div class="header-subtitle">MARKET SENTIMENT INTELLIGENCE DASHBOARD · AI POWERED</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="live-badge"><span class="live-dot"></span>LIVE ANALYSIS</div>
+      <div class="gen-time">生成时间: 2026-05-02 01:36 · 数据来源: 东方财富</div>
+    </div>
+  </header>
+
+  <!-- ===== KPI 行 ===== -->
+  <div class="kpi-row">
+    <div class="kpi-card" style="--glow: var(--neon-green)">
+      <div class="kpi-icon">🧠</div>
+      <div class="kpi-label">综合情感评分</div>
+      <div class="kpi-value" id="kpi-0">41.4</div>
+      <div class="kpi-suffix">/ 100 · 中性偏弱</div>
+    </div>
+    <div class="kpi-card" style="--glow: var(--neon-blue)">
+      <div class="kpi-icon">🔒</div>
+      <div class="kpi-label">分析置信度</div>
+      <div class="kpi-value" id="kpi-1">61.2</div>
+      <div class="kpi-suffix">% · 数据可靠</div>
+    </div>
+    <div class="kpi-card" style="--glow: var(--neon-yellow)">
+      <div class="kpi-icon">📰</div>
+      <div class="kpi-label">新闻数量</div>
+      <div class="kpi-value" id="kpi-2">9</div>
+      <div class="kpi-suffix">条 · 近7日</div>
+    </div>
+    <div class="kpi-card" style="--glow: var(--neon-purple)">
+      <div class="kpi-icon">📈</div>
+      <div class="kpi-label">正面新闻占比</div>
+      <div class="kpi-value" id="kpi-3">44</div>
+      <div class="kpi-suffix">% · 4 条</div>
+    </div>
+    <div class="kpi-card" style="--glow: var(--neon-orange)">
+      <div class="kpi-icon">⚡</div>
+      <div class="kpi-label">市场影响力</div>
+      <div class="kpi-value" id="kpi-4">91</div>
+      <div class="kpi-suffix">% · 高影响</div>
+    </div>
+  </div>
+
+  <!-- ===== 摘要条 ===== -->
+  <div class="summary-strip">
+    <div class="summary-item">
+      <div class="summary-tag">📝 分析总结</div>
+      <div class="summary-text">基于9条新闻，整体情感中性（0.41），正面4条、负面5条，市场情绪总体恶化。</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-tag">📊 市场预期</div>
+      <div class="summary-text">市场预期偏谨慎，利空因素仍需消化，短期波动风险较高。</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-tag">🔮 趋势预测</div>
+      <div class="summary-text">近期情感呈下降趋势，需警惕潜在负面因素持续发酵，建议密切跟踪。</div>
+    </div>
+  </div>
+
+  <!-- ===== 仪表盘 + 情感趋势 ===== -->
+  <div class="chart-layout" style="margin-bottom:20px">
+    <div class="chart-card" style="--accent: var(--neon-green)">
+      <div class="card-header">
+        <div class="card-title"><div class="card-title-dot" style="background:var(--neon-green);box-shadow:0 0 6px var(--neon-green)"></div>情感综合评分仪表盘</div>
+        <div class="card-badge">COMPOSITE SCORE</div>
+      </div>
+      <div id="gauge-main" style="height:280px;width:100%"></div>
+    </div>
+    <div class="chart-card" style="--accent: var(--neon-blue)">
+      <div class="card-header">
+        <div class="card-title"><div class="card-title-dot"></div>情感时间趋势</div>
+        <div class="card-badge">TIME SERIES</div>
+      </div>
+      <div id="chart-trend" style="height:280px;width:100%"></div>
+    </div>
+  </div>
+
+  <!-- ===== 三列图表 ===== -->
+  <div class="chart-layout triple">
+    <div class="chart-card" style="--accent: var(--neon-blue)">
+      <div class="card-header">
+        <div class="card-title"><div class="card-title-dot"></div>置信度指数</div>
+      </div>
+      <div id="gauge-confidence" style="height:240px;width:100%"></div>
+    </div>
+    <div class="chart-card" style="--accent: var(--neon-orange)">
+      <div class="card-header">
+        <div class="card-title"><div class="card-title-dot" style="background:var(--neon-orange);box-shadow:0 0 6px var(--neon-orange)"></div>情绪分布</div>
+      </div>
+      <div id="chart-dist" style="height:240px;width:100%"></div>
+    </div>
+    <div class="chart-card" style="--accent: var(--neon-purple)">
+      <div class="card-header">
+        <div class="card-title"><div class="card-title-dot" style="background:var(--neon-purple);box-shadow:0 0 6px var(--neon-purple)"></div>信息来源分布</div>
+      </div>
+      <div id="chart-source" style="height:240px;width:100%"></div>
+    </div>
+  </div>
+
+  <!-- ===== 雷达 + 柱状 ===== -->
+  <div class="chart-layout" style="margin-bottom:20px">
+    <div class="chart-card" style="--accent: var(--neon-green)">
+      <div class="card-header">
+        <div class="card-title"><div class="card-title-dot" style="background:var(--neon-green);box-shadow:0 0 6px var(--neon-green)"></div>六维情感雷达分析</div>
+        <div class="card-badge">RADAR · 6D</div>
+      </div>
+      <div id="chart-radar" style="height:320px;width:100%"></div>
+    </div>
+    <div class="chart-card" style="--accent: var(--neon-yellow)">
+      <div class="card-header">
+        <div class="card-title"><div class="card-title-dot" style="background:var(--neon-yellow);box-shadow:0 0 6px var(--neon-yellow)"></div>主题情感评分排行</div>
+        <div class="card-badge">RANKING</div>
+      </div>
+      <div id="chart-topics" style="height:320px;width:100%"></div>
+    </div>
+  </div>
+
+  <!-- ===== 关键事件 + 影响力&风险 ===== -->
+  <div class="chart-layout sidebar" style="margin-bottom:20px">
+    <div class="chart-card" style="--accent: var(--neon-orange)">
+      <div class="card-header">
+        <div class="card-title"><div class="card-title-dot" style="background:var(--neon-orange);box-shadow:0 0 6px var(--neon-orange)"></div>关键事件标注图</div>
+        <div class="card-badge">EVENTS</div>
+      </div>
+      <div id="chart-events" style="height:320px;width:100%"></div>
+    </div>
+    <div class="chart-card" style="--accent: var(--neon-purple)">
+      <div class="card-header">
+        <div class="card-title"><div class="card-title-dot" style="background:var(--neon-purple);box-shadow:0 0 6px var(--neon-purple)"></div>影响力 & 风险</div>
+      </div>
+      <div id="chart-risk1" style="height:150px;width:100%"></div>
+      <div id="chart-risk2" style="height:150px;width:100%"></div>
+    </div>
+  </div>
+
+  <!-- ===== 新闻流 ===== -->
+  <div class="chart-card full" style="--accent: var(--neon-blue); margin-bottom:20px">
+    <div class="card-header">
+      <div class="card-title"><div class="card-title-dot"></div>实时新闻情感流</div>
+      <div class="card-badge">NEWS FEED · TOP 9</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div class="news-feed" id="news-left"></div>
+      <div class="news-feed" id="news-right"></div>
+    </div>
+  </div>
+
+  <!-- ===== 事件时间线 ===== -->
+  <div class="chart-card full" style="--accent: var(--neon-green); margin-bottom:20px">
+    <div class="card-header">
+      <div class="card-title"><div class="card-title-dot" style="background:var(--neon-green);box-shadow:0 0 6px var(--neon-green)"></div>关键事件时间线</div>
+      <div class="card-badge">TIMELINE</div>
+    </div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+
+  <!-- ===== 主题详情条形 ===== -->
+  <div class="chart-card full" style="--accent: var(--neon-purple)">
+    <div class="card-header">
+      <div class="card-title"><div class="card-title-dot" style="background:var(--neon-purple);box-shadow:0 0 6px var(--neon-purple)"></div>六维主题情感分析详情</div>
+      <div class="card-badge">TOPIC DETAIL</div>
+    </div>
+    <div class="topic-bars" id="topic-bars"></div>
+  </div>
+
+  <div class="footer">
+    MARKET SENTIMENT INTELLIGENCE SYSTEM · POWERED BY AI NLP · DATA: EASTMONEY · 贵州茅台 600519 · 2026
+  </div>
+</div>
+
+<script>
+/* ====================================================
+   星空粒子系统
+==================================================== */
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  const COLORS = ['#00ff88','#00d4ff','#b044ff','#ff6b35','#00aaff'];
+
+  for (let i = 0; i < 160; i++) {
+    particles.push({
+      x: Math.random() * 3000,
+      y: Math.random() * 3000,
+      r: Math.random() * 1.6 + 0.3,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      alpha: Math.random() * 0.5 + 0.15,
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x % W, p.y % H, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color.replace(')', `,${p.alpha})`).replace('rgb', 'rgba').replace('#', '');
+      // simpler approach:
+      ctx.globalAlpha = p.alpha;
+      ctx.fillStyle = p.color;
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ====================================================
+   Plotly 通用暗色主题
+==================================================== */
+const DARK = {
+  paper_bgcolor: 'rgba(0,0,0,0)',
+  plot_bgcolor: 'rgba(0,0,0,0)',
+  font: { color: '#c8dcff', family: 'Noto Sans SC, Rajdhani, sans-serif', size: 12 },
+  xaxis: { gridcolor: 'rgba(0,212,255,0.06)', color: 'rgba(200,220,255,0.5)', zerolinecolor: 'rgba(0,212,255,0.1)' },
+  yaxis: { gridcolor: 'rgba(0,212,255,0.06)', color: 'rgba(200,220,255,0.5)', zerolinecolor: 'rgba(0,212,255,0.1)' },
+};
+const MARGIN = { l: 36, r: 20, t: 16, b: 36 };
+
+/* ====================================================
+   仪表盘 - 综合评分
+==================================================== */
+Plotly.newPlot('gauge-main', [{
+  type: 'indicator',
+  mode: 'gauge+number+delta',
+  value: 41.38,
+  delta: { reference: 55, increasing: { color: '#00ff88' }, decreasing: { color: '#ff3366' } },
+  number: { font: { size: 46, color: '#00ff88', family: 'Orbitron' }, suffix: '%' },
+  gauge: {
+    axis: { range: [0, 100], tickcolor: 'rgba(200,220,255,0.3)', tickwidth: 1, tickfont: { size: 10 } },
+    bar: { color: 'rgba(0,255,136,0.9)', thickness: 0.28 },
+    bgcolor: 'rgba(0,0,0,0)',
+    borderwidth: 0,
+    steps: [
+      { range: [0, 20], color: 'rgba(255,51,102,0.3)' },
+      { range: [20, 40], color: 'rgba(255,107,53,0.2)' },
+      { range: [40, 60], color: 'rgba(255,204,0,0.2)' },
+      { range: [60, 80], color: 'rgba(0,212,255,0.2)' },
+      { range: [80, 100], color: 'rgba(0,255,136,0.2)' },
+    ],
+    threshold: { line: { color: '#fff', width: 3 }, thickness: 0.8, value: 41.38 },
+  },
+  title: { text: '综合情感评分<br><span style="font-size:14px;color:#ffcc00">中性</span>', font: { size: 16, color: '#c8dcff' } },
+}], {
+  ...DARK,
+  margin: { l: 40, r: 40, t: 40, b: 20 },
+  height: 280,
+}, { responsive: true, displayModeBar: false });
+
+/* ====================================================
+   情感时间趋势
+==================================================== */
+const dates = ['2026-04-25', '2026-04-28', '2026-04-29', '2026-04-30'];
+const scores = [44.48, 44.57, 62.9, 2.82];
+
+Plotly.newPlot('chart-trend', [
+  {
+    x: dates, y: scores,
+    type: 'scatter', mode: 'lines+markers',
+    name: '情感评分',
+    line: { color: '#00ff88', width: 3, shape: 'spline' },
+    marker: { color: '#00ff88', size: 10, symbol: 'circle',
+      line: { color: '#041020', width: 2 } },
+    fill: 'tozeroy',
+    fillcolor: 'rgba(0,255,136,0.08)',
+    hovertemplate: '<b>%{x}</b><br>情感评分: %{y:.1f}%<extra></extra>',
+  },
+  {
+    x: dates, y: [65, 65, 65, 65],
+    type: 'scatter', mode: 'lines', name: '积极阈值',
+    line: { color: 'rgba(0,212,255,0.5)', width: 1.5, dash: 'dot' },
+    hoverinfo: 'skip',
+  },
+  {
+    x: dates, y: [35, 35, 35, 35],
+    type: 'scatter', mode: 'lines', name: '消极阈值',
+    line: { color: 'rgba(255,51,102,0.5)', width: 1.5, dash: 'dot' },
+    hoverinfo: 'skip',
+  }
+], {
+  ...DARK,
+  margin: MARGIN,
+  height: 280,
+  yaxis: { ...DARK.yaxis, range: [0, 100], title: { text: '情感得分 (%)', font: { size: 11, color: 'rgba(200,220,255,0.5)' } } },
+  showlegend: false,
+  hovermode: 'x unified',
+  shapes: [
+    { type: 'rect', x0: '2026-04-28', x1: '2026-04-29', y0: 0, y1: 100,
+      fillcolor: 'rgba(0,255,136,0.04)', line: { width: 0 } }
+  ],
+}, { responsive: true, displayModeBar: false });
+
+/* ====================================================
+   置信度仪表
+==================================================== */
+Plotly.newPlot('gauge-confidence', [{
+  type: 'indicator', mode: 'gauge+number',
+  value: 61.15,
+  number: { font: { size: 34, color: '#00d4ff', family: 'Orbitron' }, suffix: '%' },
+  gauge: {
+    axis: { range: [0, 100], tickcolor: 'rgba(200,220,255,0.3)', tickfont: { size: 9 } },
+    bar: { color: '#00d4ff', thickness: 0.25 },
+    bgcolor: 'rgba(0,0,0,0)', borderwidth: 0,
+    steps: [
+      { range: [0, 33], color: 'rgba(255,51,102,0.15)' },
+      { range: [33, 66], color: 'rgba(255,204,0,0.15)' },
+      { range: [66, 100], color: 'rgba(0,212,255,0.15)' },
+    ],
+  },
+  title: { text: '置信度指数', font: { size: 13, color: '#c8dcff' } },
+}], { ...DARK, margin: { l: 24, r: 24, t: 32, b: 16 }, height: 240 }, { responsive: true, displayModeBar: false });
+
+/* ====================================================
+   情绪分布饼图
+==================================================== */
+Plotly.newPlot('chart-dist', [{
+  type: 'pie',
+  labels: ['正面新闻', '中性新闻', '负面新闻'],
+  values: [4, 0, 5],
+  hole: 0.55,
+  marker: {
+    colors: ['rgba(0,255,136,0.8)', 'rgba(255,204,0,0.7)', 'rgba(255,51,102,0.8)'],
+    line: { color: '#041020', width: 3 },
+  },
+  textinfo: 'label+percent',
+  textfont: { size: 11, color: '#c8dcff' },
+  hovertemplate: '<b>%{label}</b><br>数量: %{value}<br>占比: %{percent}<extra></extra>',
+  rotation: -90,
+}], {
+  ...DARK,
+  margin: { l: 16, r: 16, t: 16, b: 16 },
+  height: 240,
+  showlegend: false,
+  annotations: [{ x: 0.5, y: 0.5, text: '9<br><span style="font-size:10px">篇新闻</span>', showarrow: false, font: { size: 18, color: '#00d4ff', family: 'Orbitron' } }]
+}, { responsive: true, displayModeBar: false });
+
+/* ====================================================
+   信息来源环图
+==================================================== */
+Plotly.newPlot('chart-source', [{
+  type: 'pie',
+  labels: ['主流媒体', '行业媒体', '自媒体', '官方公告'],
+  values: [17.77, 22.28, 64.88, 50.0],
+  hole: 0.5,
+  marker: {
+    colors: ['rgba(0,255,136,0.75)', 'rgba(255,107,53,0.75)', 'rgba(200,200,200,0.5)', 'rgba(0,212,255,0.75)'],
+    line: { color: '#041020', width: 3 },
+  },
+  textinfo: 'label',
+  textfont: { size: 11, color: '#c8dcff' },
+  hovertemplate: '<b>%{label}</b><br>情感倾向: %{value:.1f}%<extra></extra>',
+  rotation: 30,
+}], {
+  ...DARK,
+  margin: { l: 16, r: 16, t: 16, b: 16 },
+  height: 240,
+  showlegend: false,
+}, { responsive: true, displayModeBar: false });
+
+/* ====================================================
+   六维雷达图
+==================================================== */
+Plotly.newPlot('chart-radar', [
+  {
+    type: 'scatterpolar',
+    r: [89.13, 47.06, 50.0, 44.48, 25.03, 88.69, 89.13],
+    theta: ['公司经营', '财务表现', '市场竞争', '产品技术', '行业政策', '资本市场', '公司经营'],
+    fill: 'toself',
+    fillcolor: 'rgba(0,255,136,0.12)',
+    line: { color: '#00ff88', width: 2.5 },
+    marker: { size: 8, color: '#00ff88', symbol: 'circle',
+      line: { color: '#041020', width: 2 } },
+    name: '情感评分',
+    hovertemplate: '<b>%{theta}</b><br>评分: %{r:.1f}%<extra></extra>',
+  },
+  {
+    type: 'scatterpolar',
+    r: [65, 65, 65, 65, 65, 65, 65],
+    theta: ['公司经营', '财务表现', '市场竞争', '产品技术', '行业政策', '资本市场', '公司经营'],
+    fill: 'toself',
+    fillcolor: 'rgba(0,212,255,0.04)',
+    line: { color: 'rgba(0,212,255,0.3)', width: 1, dash: 'dot' },
+    hoverinfo: 'skip',
+    name: '积极基准线',
+  }
+], {
+  ...DARK,
+  margin: { l: 50, r: 50, t: 30, b: 30 },
+  height: 320,
+  polar: {
+    bgcolor: 'rgba(0,0,0,0)',
+    radialaxis: {
+      visible: true, range: [0, 100],
+      color: 'rgba(200,220,255,0.3)',
+      gridcolor: 'rgba(0,212,255,0.08)',
+      tickfont: { size: 9, color: 'rgba(200,220,255,0.4)' },
+    },
+    angularaxis: { color: 'rgba(200,220,255,0.5)', gridcolor: 'rgba(0,212,255,0.1)' },
+  },
+  showlegend: false,
+}, { responsive: true, displayModeBar: false });
+
+/* ====================================================
+   主题评分水平柱状图
+==================================================== */
+const topics = ['公司经营', '财务表现', '市场竞争', '产品技术', '行业政策', '资本市场'];
+const topicScores = [89.13, 47.06, 50.0, 44.48, 25.03, 88.69];
+const topicColors = topicScores.map(v => v >= 65 ? 'rgba(0,255,136,0.75)' : v >= 35 ? 'rgba(255,204,0,0.65)' : 'rgba(255,51,102,0.7)');
+
+Plotly.newPlot('chart-topics', [{
+  type: 'bar',
+  orientation: 'h',
+  x: topicScores,
+  y: topics,
+  marker: {
+    color: topicColors,
+    line: { color: 'rgba(0,0,0,0)', width: 0 },
+  },
+  text: topicScores.map(v => v.toFixed(1) + '%'),
+  textposition: 'outside',
+  textfont: { size: 12, color: '#c8dcff', family: 'Orbitron' },
+  hovertemplate: '<b>%{y}</b><br>评分: %{x:.1f}%<extra></extra>',
+}], {
+  ...DARK,
+  margin: { l: 80, r: 60, t: 16, b: 36 },
+  height: 320,
+  xaxis: { ...DARK.xaxis, range: [0, 110], title: { text: '情感评分 (%)', font: { size: 11 } } },
+  bargap: 0.35,
+  shapes: [
+    { type: 'line', x0: 65, x1: 65, y0: -0.5, y1: 5.5, line: { color: 'rgba(0,212,255,0.5)', width: 1.5, dash: 'dot' } },
+    { type: 'line', x0: 35, x1: 35, y0: -0.5, y1: 5.5, line: { color: 'rgba(255,51,102,0.5)', width: 1.5, dash: 'dot' } },
+  ],
+}, { responsive: true, displayModeBar: false });
+
+/* ====================================================
+   关键事件标注图
+==================================================== */
+Plotly.newPlot('chart-events', [
+  {
+    x: dates, y: scores,
+    type: 'scatter', mode: 'lines+markers',
+    line: { color: '#00d4ff', width: 3, shape: 'spline' },
+    marker: { size: 12, color: scores.map(s => s >= 65 ? '#00ff88' : s >= 35 ? '#ffcc00' : '#ff3366'),
+      symbol: 'diamond', line: { color: '#041020', width: 2 } },
+    fill: 'tozeroy', fillcolor: 'rgba(0,212,255,0.05)',
+    hovertemplate: '<b>%{x}</b><br>情感: %{y:.1f}%<extra></extra>',
+  }
+], {
+  ...DARK,
+  margin: { l: 40, r: 20, t: 50, b: 36 },
+  height: 320,
+  yaxis: { ...DARK.yaxis, range: [-5, 78], title: { text: '情感评分', font: { size: 11 } } },
+  hovermode: 'x unified',
+  annotations: [
+    { x: '2026-04-30', y: 2.82, text: '寒武纪成A股新晋股王', showarrow: true, arrowhead: 2, arrowcolor: '#ff3366', ax: 0, ay: -56, font: { size: 11, color: '#ff3366' }, bgcolor: 'rgba(4,16,32,0.9)', bordercolor: '#ff3366', borderpad: 4, borderwidth: 1 },
+    { x: '2026-04-30', y: 2.82, text: '26家公司派现超百亿', showarrow: true, arrowhead: 2, arrowcolor: '#ff6b35', ax: 60, ay: -90, font: { size: 11, color: '#ff6b35' }, bgcolor: 'rgba(4,16,32,0.9)', bordercolor: '#ff6b35', borderpad: 4, borderwidth: 1 },
+    { x: '2026-04-29', y: 62.9, text: '中欧基金葛兰卸任', showarrow: true, arrowhead: 2, arrowcolor: '#ffcc00', ax: -80, ay: -36, font: { size: 11, color: '#ffcc00' }, bgcolor: 'rgba(4,16,32,0.9)', bordercolor: '#ffcc00', borderpad: 4, borderwidth: 1 },
+    { x: '2026-04-25', y: 44.48, text: '茅台Q1净利润272亿', showarrow: true, arrowhead: 2, arrowcolor: '#00ff88', ax: 60, ay: -40, font: { size: 11, color: '#00ff88' }, bgcolor: 'rgba(4,16,32,0.9)', bordercolor: '#00ff88', borderpad: 4, borderwidth: 1 },
+  ],
+}, { responsive: true, displayModeBar: false });
+
+/* ====================================================
+   影响力 & 风险 仪表
+==================================================== */
+Plotly.newPlot('chart-risk1', [{
+  type: 'indicator', mode: 'gauge+number',
+  value: 91.34,
+  number: { font: { size: 26, color: '#00d4ff', family: 'Orbitron' }, suffix: '%' },
+  gauge: {
+    axis: { range: [0, 100], tickfont: { size: 8 }, tickcolor: 'rgba(200,220,255,0.3)' },
+    bar: { color: '#00d4ff', thickness: 0.2 },
+    bgcolor: 'rgba(0,0,0,0)', borderwidth: 0,
+    steps: [
+      { range: [0, 33], color: 'rgba(0,212,255,0.08)' },
+      { range: [33, 66], color: 'rgba(0,212,255,0.14)' },
+      { range: [66, 100], color: 'rgba(0,212,255,0.22)' },
+    ],
+  },
+  title: { text: '市场影响力', font: { size: 12, color: '#c8dcff' } },
+}], { ...DARK, margin: { l: 24, r: 24, t: 28, b: 4 }, height: 150 }, { responsive: true, displayModeBar: false });
+
+Plotly.newPlot('chart-risk2', [{
+  type: 'indicator', mode: 'gauge+number',
+  value: 50,
+  number: { font: { size: 26, color: '#ff8844', family: 'Orbitron' }, valueformat: '.0f' },
+  gauge: {
+    axis: { range: [0, 100], ticktext: ['低', '中', '高'], tickvals: [10, 50, 90], tickfont: { size: 9 }, tickcolor: 'rgba(200,220,255,0.3)' },
+    bar: { color: '#ff8844', thickness: 0.2 },
+    bgcolor: 'rgba(0,0,0,0)', borderwidth: 0,
+    steps: [
+      { range: [0, 33], color: 'rgba(0,255,136,0.12)' },
+      { range: [33, 66], color: 'rgba(255,204,0,0.12)' },
+      { range: [66, 100], color: 'rgba(255,51,102,0.12)' },
+    ],
+  },
+  title: { text: '风险等级: 中', font: { size: 12, color: '#c8dcff' } },
+}], { ...DARK, margin: { l: 24, r: 24, t: 28, b: 4 }, height: 150 }, { responsive: true, displayModeBar: false });
+
+/* ====================================================
+   新闻流渲染
+==================================================== */
+const newsData = [
+  { title: '寒武纪午间收盘涨逾17%，成A股新晋"股王"', time: '2026-04-30 12:06', src: '红星资本局', score: 17.8, type: 'negative' },
+  { title: '26家公司派现金额超百亿元', time: '2026-04-30 09:17', src: '证券时报网', score: 22.3, type: 'negative' },
+  { title: '中欧基金葛兰卸任一只基金', time: '2026-04-29 14:41', src: '红星资本局', score: 38.4, type: 'negative' },
+  { title: '五粮液道歉，股价创近6年新低', time: '2026-04-29 11:20', src: '21世纪经济报道', score: 45.2, type: 'neutral' },
+  { title: '3519家公司公布派现方案，合计派现15208亿', time: '2026-04-29 09:22', src: '证券时报网', score: 62.9, type: 'positive' },
+  { title: '贵州茅台：将于5月11日召开业绩说明会', time: '2026-04-28 17:10', src: '财联社', score: 89.1, type: 'positive' },
+  { title: '上市公司派现榜：137家每10股派现超10元', time: '2026-04-28 09:33', src: '证券时报网', score: 44.5, type: 'neutral' },
+  { title: '贵州茅台2026年一季度归母净利润约272.43亿', time: '2026-04-25 19:11', src: '央广财经', score: 88.7, type: 'positive' },
+  { title: '贵州茅台(600519)：一季报净利润272.43亿，同比+1.47%', time: '2026-04-25 10:15', src: '界面新闻', score: 86.2, type: 'positive' },
+];
+
+const leftEl = document.getElementById('news-left');
+const rightEl = document.getElementById('news-right');
+newsData.forEach((n, i) => {
+  const scoreColor = n.score >= 65 ? '#00ff88' : n.score >= 35 ? '#ffcc00' : '#ff3366';
+  const html = `<div class="news-item ${n.type}">
+    <div class="news-title">${n.title}</div>
+    <div class="news-meta">
+      <span>🕐 ${n.time}</span>
+      <span>📰 ${n.src}</span>
+      <span class="news-score" style="color:${scoreColor}">${n.score.toFixed(1)}%</span>
+    </div>
+  </div>`;
+  (i % 2 === 0 ? leftEl : rightEl).insertAdjacentHTML('beforeend', html);
+});
+
+/* ====================================================
+   时间线渲染
+==================================================== */
+const events = [
+  { date: '2026-04-30', text: '寒武纪午间收盘涨逾17%，成A股新晋"股王"；同日26家公司派现超百亿数据曝光', score: 3, color: '#ff3366' },
+  { date: '2026-04-29', text: '中欧基金葛兰卸任基金；五粮液道歉，股价创近6年新低；3519家公司派现合计15208亿', score: 63, color: '#ffcc00' },
+  { date: '2026-04-28', text: '贵州茅台公告将于5月11日召开2025年度及2026年一季度业绩说明会；上市公司派现榜发布', score: 45, color: '#ffcc00' },
+  { date: '2026-04-25', text: '贵州茅台2026年一季度归母净利润272.43亿元，同比增1.47%；营收547亿，同比+6.34%', score: 88, color: '#00ff88' },
+];
+
+const tlEl = document.getElementById('timeline');
+events.forEach(e => {
+  const scolor = e.score >= 65 ? '#00ff88' : e.score >= 35 ? '#ffcc00' : '#ff3366';
+  tlEl.insertAdjacentHTML('beforeend', `<div class="timeline-item">
+    <div class="timeline-date">${e.date}</div>
+    <div class="timeline-text">${e.text}</div>
+    <span class="timeline-score" style="background:${scolor}22;color:${scolor};border:1px solid ${scolor}55">情感 ${e.score}%</span>
+  </div>`);
+});
+
+/* ====================================================
+   主题详情条渲染
+==================================================== */
+const topicDetails = [
+  { name: '公司经营', score: 89.13, color: '#00ff88' },
+  { name: '资本市场', score: 88.69, color: '#00ff88' },
+  { name: '市场竞争', score: 50.00, color: '#ffcc00' },
+  { name: '财务表现', score: 47.06, color: '#ffcc00' },
+  { name: '产品技术', score: 44.48, color: '#ffcc00' },
+  { name: '行业政策', score: 25.03, color: '#ff3366' },
+];
+
+const tbEl = document.getElementById('topic-bars');
+topicDetails.forEach(t => {
+  tbEl.insertAdjacentHTML('beforeend', `<div class="topic-row">
+    <div class="topic-name">${t.name}</div>
+    <div class="topic-bar-wrap">
+      <div class="topic-bar-fill" style="width:0%;background:linear-gradient(90deg,${t.color}cc,${t.color}66);color:${t.color}" data-width="${t.score}"></div>
+    </div>
+    <div class="topic-val" style="color:${t.color}">${t.score.toFixed(1)}%</div>
+  </div>`);
+});
+
+/* ====================================================
+   KPI 数值滚动动画
+==================================================== */
+function animateKPI(id, target, decimals = 0, delay = 0) {
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.add('visible');
+    let start = 0, duration = 1200, startTime = null;
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      const progress = Math.min((ts - startTime) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = (start + (target - start) * ease).toFixed(decimals);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }, delay);
+}
+
+window.addEventListener('load', () => {
+  animateKPI('kpi-0', 41.4, 1, 400);
+  animateKPI('kpi-1', 61.2, 1, 600);
+  animateKPI('kpi-2', 9, 0, 800);
+  animateKPI('kpi-3', 44, 0, 1000);
+  animateKPI('kpi-4', 91, 0, 1200);
+
+  // 主题条动画
+  setTimeout(() => {
+    document.querySelectorAll('.topic-bar-fill').forEach(el => {
+      el.style.width = el.dataset.width + '%';
+    });
+  }, 800);
+});
+</script>
+</body>
+</html>

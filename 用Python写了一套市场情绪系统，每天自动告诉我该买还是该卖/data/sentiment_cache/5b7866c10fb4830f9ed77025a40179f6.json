@@ -1,0 +1,140 @@
+{
+  "_cached_at": "2026-05-02T01:35:47.058825",
+  "_key": "76c8a0f716c3fb9f64c7875d1497a32d",
+  "_value": {
+    "overall_sentiment": {
+      "score": 0.3991,
+      "label": "中性",
+      "summary": "基于5条新闻分析，整体情感中性（0.40），其中正面新闻2条、中性0条、负面3条。市场情绪总体恶化。",
+      "market_expectation": "市场预期偏谨慎，利空因素仍需消化。",
+      "investor_sentiment": "0",
+      "confidence_index": 0.6377
+    },
+    "time_analysis": {
+      "trend": [
+        {
+          "date": "2026-04-28",
+          "score": 0.3329,
+          "key_events": [
+            {
+              "title": "中国平安一",
+              "description": "中国平安一季度净利润250亿降7.4%，"
+            },
+            {
+              "title": "解密主力资",
+              "description": "解密主力资金出逃股 连续5日净流出673"
+            },
+            {
+              "title": "上市35年",
+              "description": "上市35年“活化石”*ST国华提前锁定退"
+            }
+          ]
+        },
+        {
+          "date": "2026-04-27",
+          "score": 0.9896,
+          "key_events": [
+            {
+              "title": "一季度平安",
+              "description": "一季度平安银行营收利润止跌 非息收入贡献"
+            }
+          ]
+        },
+        {
+          "date": "2026-04-25",
+          "score": 0.0074,
+          "key_events": [
+            {
+              "title": "平安银行(",
+              "description": "平安银行(000001.SZ)：2026"
+            }
+          ]
+        }
+      ],
+      "trend_prediction": "近期情感呈上升趋势，市场情绪持续改善，预计短期内正面情绪有望延续。"
+    },
+    "topic_analysis": {
+      "company_operation": {
+        "score": 0.0074,
+        "summary": "公司经营相关新闻1条，情感得分0.01，整体偏负面",
+        "key_points": [
+          "平安银行(000001.SZ)：2026年一季报净利润为145.23亿元"
+        ]
+      },
+      "financial_performance": {
+        "score": 0.7171,
+        "summary": "财务表现相关新闻3条，情感得分0.72，整体偏正面",
+        "key_points": [
+          "中国平安一季度净利润250亿降7.4%，营运利润增7.6%",
+          "平安银行(000001.SZ)：2026年一季报净利润为145.23亿元",
+          "一季度平安银行营收利润止跌 非息收入贡献较大"
+        ]
+      },
+      "market_competition": {
+        "score": 0.5,
+        "summary": "未发现与市场竞争直接相关的新闻报道",
+        "key_points": []
+      },
+      "product_technology": {
+        "score": 0.0074,
+        "summary": "产品技术相关新闻1条，情感得分0.01，整体偏负面",
+        "key_points": [
+          "平安银行(000001.SZ)：2026年一季报净利润为145.23亿元"
+        ]
+      },
+      "industry_policy": {
+        "score": 0.5,
+        "summary": "未发现与行业政策直接相关的新闻报道",
+        "key_points": []
+      },
+      "capital_market": {
+        "score": 0.1674,
+        "summary": "资本市场相关新闻1条，情感得分0.17，整体偏负面",
+        "key_points": [
+          "解密主力资金出逃股 连续5日净流出673股"
+        ]
+      }
+    },
+    "source_analysis": {
+      "mainstream_media": {
+        "score": 0.3991,
+        "summary": "共5条来源"
+      },
+      "industry_media": {
+        "score": 0.1674,
+        "summary": "共1条来源"
+      },
+      "official_announcement": {
+        "score": 0.5,
+        "summary": "未匹配到该类型来源"
+      },
+      "self_media": {
+        "score": 0.5,
+        "summary": "未匹配到"
+      }
+    },
+    "impact_analysis": {
+      "importance_level": "低",
+      "market_impact": {
+        "score": 0.8549,
+        "duration": "短期",
+        "key_factors": [
+          "利好: 中国平安一季度净利润250亿降7.4%，营运利润增7.6%",
+          "利好: 一季度平安银行营收利润止跌 非息收入贡献较大",
+          "利空: 解密主力资金出逃股 连续5日净流出673股",
+          "利空: 上市35年“活化石”*ST国华提前锁定退市，股票自4月28日"
+        ]
+      }
+    },
+    "risk_analysis": {
+      "risk_level": "中",
+      "risk_factors": [
+        {
+          "factor": "退市",
+          "description": "新闻「上市35年“活化石”*ST国华提前锁定退」中提到退市相关内容",
+          "severity": "高"
+        }
+      ]
+    }
+  }
+}

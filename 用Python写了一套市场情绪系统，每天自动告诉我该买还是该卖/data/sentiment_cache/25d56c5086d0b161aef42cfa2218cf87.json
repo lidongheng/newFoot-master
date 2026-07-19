@@ -1,0 +1,136 @@
+{
+  "_cached_at": "2026-06-06T10:54:03.280964",
+  "_key": "b81a53007f9a358b62f52f59a6d318eb",
+  "_value": {
+    "overall_sentiment": {
+      "score": 0.603,
+      "label": "中性",
+      "summary": "基于4条新闻分析，整体情感中性（0.60），其中正面新闻3条、中性0条、负面1条。市场情绪总体改善。",
+      "market_expectation": "市场预期温和向好，投资者信心逐步恢复。",
+      "investor_sentiment": "无",
+      "confidence_index": 0.4521,
+      "volatility": 0.3264,
+      "volatility_label": "高度分歧",
+      "cv": 0.5413,
+      "score_range": 0.7994,
+      "positive_ratio": 0.75,
+      "negative_ratio": 0.25,
+      "positive_count": 3,
+      "negative_count": 1,
+      "neutral_count": 0
+    },
+    "time_analysis": {
+      "trend": [
+        {
+          "date": "",
+          "score": 0.603,
+          "key_events": [
+            {
+              "title": "公司业绩大",
+              "description": "公司业绩大增"
+            },
+            {
+              "title": "监管介入",
+              "description": "公司被调查"
+            },
+            {
+              "title": "利好/利空",
+              "description": "行业利好政策出台"
+            }
+          ]
+        }
+      ],
+      "trend_prediction": "数据量较少，无法形成有效趋势预测。"
+    },
+    "topic_analysis": {
+      "company_operation": {
+        "score": 0.5,
+        "summary": "未发现与公司经营直接相关的新闻报道",
+        "key_points": []
+      },
+      "financial_performance": {
+        "score": 0.8417,
+        "summary": "财务表现相关新闻1条，情感得分0.84，整体偏正面",
+        "key_points": [
+          "公司业绩大增"
+        ]
+      },
+      "market_competition": {
+        "score": 0.8516,
+        "summary": "市场竞争相关新闻1条，情感得分0.85，整体偏正面",
+        "key_points": [
+          "公司发布新产品"
+        ]
+      },
+      "product_technology": {
+        "score": 0.8516,
+        "summary": "产品技术相关新闻1条，情感得分0.85，整体偏正面",
+        "key_points": [
+          "公司发布新产品"
+        ]
+      },
+      "industry_policy": {
+        "score": 0.6667,
+        "summary": "行业政策相关新闻1条，情感得分0.67，整体偏正面",
+        "key_points": [
+          "行业利好政策出台"
+        ]
+      },
+      "capital_market": {
+        "score": 0.5,
+        "summary": "未发现与资本市场直接相关的新闻报道",
+        "key_points": []
+      }
+    },
+    "source_analysis": {
+      "mainstream_media": {
+        "score": 0.5,
+        "summary": "未匹配到该类型来源"
+      },
+      "industry_media": {
+        "score": 0.5,
+        "summary": "未匹配到该类型来源"
+      },
+      "official_announcement": {
+        "score": 0.5,
+        "summary": "未匹配到该类型来源"
+      },
+      "self_media": {
+        "score": 0.603,
+        "summary": "共4条来源"
+      }
+    },
+    "impact_analysis": {
+      "importance_level": "低",
+      "market_impact": {
+        "score": 0.6539,
+        "duration": "短期",
+        "key_factors": [
+          "利好: 公司业绩大增",
+          "利好: 公司发布新产品",
+          "利空: 公司被调查"
+        ]
+      }
+    },
+    "risk_analysis": {
+      "risk_level": "低",
+      "risk_factors": [
+        {
+          "factor": "违规",
+          "description": "新闻「公司被调查」中提到违规相关内容",
+          "severity": "高"
+        },
+        {
+          "factor": "立案",
+          "description": "新闻「公司被调查」中提到立案相关内容",
+          "severity": "高"
+        },
+        {
+          "factor": "调查",
+          "description": "新闻「公司被调查」中提到调查相关内容",
+          "severity": "高"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "_cached_at": "2026-06-03T16:24:13.393061",
+  "_key": "cda0a0c8c66c66df3b711c62c71c12c5",
+  "_value": {
+    "overall_sentiment": {
+      "score": 0.4894,
+      "label": "中性",
+      "summary": "基于6条新闻分析，整体情感中性（0.49），其中正面新闻3条、中性0条、负面3条。市场情绪总体平稳。",
+      "market_expectation": "市场预期中性，多空双方力量相对均衡，等待明确信号。",
+      "investor_sentiment": "0",
+      "confidence_index": 0.6711
+    },
+    "time_analysis": {
+      "trend": [
+        {
+          "date": "2026-06-02",
+          "score": 0.9959,
+          "key_events": [
+            {
+              "title": "ETF市场",
+              "description": "ETF市场日报 | 通信与互联网板块批量"
+            }
+          ]
+        },
+        {
+          "date": "2026-05-29",
+          "score": 0.4053,
+          "key_events": [
+            {
+              "title": "高股息精选",
+              "description": "高股息精选概念涨1.11%，主力资金净流"
+            },
+            {
+              "title": "ETF市场",
+              "description": "ETF市场日报 | 创新药板块批量涨超4"
+            },
+            {
+              "title": "零售业务承",
+              "description": "零售业务承压，这些银行何以逆势增长？"
+            }
+          ]
+        },
+        {
+          "date": "2026-05-28",
+          "score": 0.6413,
+          "key_events": [
+            {
+              "title": "解密主力资",
+              "description": "解密主力资金出逃股 连续5日净流出722"
+            }
+          ]
+        },
+        {
+          "date": "2026-05-27",
+          "score": 0.0832,
+          "key_events": [
+            {
+              "title": "解密主力资",
+              "description": "解密主力资金出逃股 连续5日净流出813"
+            }
+          ]
+        }
+      ],
+      "trend_prediction": "近期情感呈上升趋势，市场情绪持续改善，预计短期内正面情绪有望延续。"
+    },
+    "topic_analysis": {
+      "company_operation": {
+        "score": 0.5,
+        "summary": "未发现与公司经营直接相关的新闻报道",
+        "key_points": []
+      },
+      "financial_performance": {
+        "score": 0.0,
+        "summary": "财务表现相关新闻1条，情感得分0.00，整体偏负面",
+        "key_points": [
+          "零售业务承压，这些银行何以逆势增长？"
+        ]
+      },
+      "market_competition": {
+        "score": 0.7692,
+        "summary": "市场竞争相关新闻2条，情感得分0.77，整体偏正面",
+        "key_points": [
+          "ETF市场日报 | 创新药板块批量涨超4%，卫星ETF重挫逾7%",
+          "ETF市场日报 | 通信与互联网板块批量领涨，传媒影视板块集体回调"
+        ]
+      },
+      "product_technology": {
+        "score": 0.3157,
+        "summary": "产品技术相关新闻1条，情感得分0.32，整体偏负面",
+        "key_points": [
+          "ETF市场日报 | 创新药板块批量涨超4%，卫星ETF重挫逾7%"
+        ]
+      },
+      "industry_policy": {
+        "score": 0.5,
+        "summary": "未发现与行业政策直接相关的新闻报道",
+        "key_points": []
+      },
+      "capital_market": {
+        "score": 0.5873,
+        "summary": "资本市场相关新闻5条，情感得分0.59，整体偏正面",
+        "key_points": [
+          "ETF市场日报 | 创新药板块批量涨超4%，卫星ETF重挫逾7%",
+          "高股息精选概念涨1.11%，主力资金净流入这些股",
+          "ETF市场日报 | 通信与互联网板块批量领涨，传媒影视板块集体回调"
+        ]
+      }
+    },
+    "source_analysis": {
+      "mainstream_media": {
+        "score": 0.4894,
+        "summary": "共6条来源"
+      },
+      "industry_media": {
+        "score": 0.5416,
+        "summary": "共3条来源"
+      },
+      "official_announcement": {
+        "score": 0.5,
+        "summary": "未匹配到该类型来源"
+      },
+      "self_media": {
+        "score": 0.5,
+        "summary": "未匹配到"
+      }
+    },
+    "impact_analysis": {
+      "importance_level": "中",
+      "market_impact": {
+        "score": 0.7129,
+        "duration": "短期",
+        "key_factors": [
+          "利好: ETF市场日报 | 通信与互联网板块批量领涨，传媒影视板块集",
+          "利好: 高股息精选概念涨1.11%，主力资金净流入这些股",
+          "利空: 零售业务承压，这些银行何以逆势增长？",
+          "利空: 解密主力资金出逃股 连续5日净流出813股"
+        ]
+      }
+    },
+    "risk_analysis": {
+      "risk_level": "低",
+      "risk_factors": []
+    }
+  }
+}

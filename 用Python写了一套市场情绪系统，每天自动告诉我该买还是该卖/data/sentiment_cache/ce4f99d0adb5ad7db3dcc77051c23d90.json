@@ -1,0 +1,136 @@
+{
+  "_cached_at": "2026-06-06T10:32:16.344555",
+  "_key": "bd53237418135f78719eec2328a7e15d",
+  "_value": {
+    "overall_sentiment": {
+      "score": 0.7569,
+      "label": "看好",
+      "summary": "基于6条新闻分析，整体情感看好（0.76），其中正面新闻5条、中性0条、负面1条。市场情绪总体改善。",
+      "market_expectation": "短期内市场预期偏向乐观，关注利好因素的持续发酵。",
+      "investor_sentiment": "无",
+      "confidence_index": 0.7713
+    },
+    "time_analysis": {
+      "trend": [
+        {
+          "date": "2026-06-05",
+          "score": 0.6366,
+          "key_events": [
+            {
+              "title": "近七成A股",
+              "description": "近七成A股上市银行已设国际业务部，离岸联"
+            },
+            {
+              "title": "银行行业今",
+              "description": "银行行业今日涨1.33%，主力资金净流入"
+            },
+            {
+              "title": "A股午后跌",
+              "description": "A股午后跌幅迅速扩大：创指跌3.2%，3"
+            }
+          ]
+        },
+        {
+          "date": "2026-06-03",
+          "score": 0.999,
+          "key_events": [
+            {
+              "title": "富时中国A",
+              "description": "富时中国A50及富时中国50指数成分股调"
+            }
+          ]
+        },
+        {
+          "date": "2026-06-02",
+          "score": 0.9959,
+          "key_events": [
+            {
+              "title": "ETF市场",
+              "description": "ETF市场日报 | 通信与互联网板块批量"
+            }
+          ]
+        }
+      ],
+      "trend_prediction": "近期情感呈下降趋势，市场情绪有所转弱，需警惕潜在的负面因素发酵。"
+    },
+    "topic_analysis": {
+      "company_operation": {
+        "score": 0.5,
+        "summary": "未发现与公司经营直接相关的新闻报道",
+        "key_points": []
+      },
+      "financial_performance": {
+        "score": 0.6263,
+        "summary": "财务表现相关新闻1条，情感得分0.63，整体偏正面",
+        "key_points": [
+          "分红季丨每10股派发现金股利人民币3.60元！红利低波（H30269.CSI）成分股平安银行，发布2025年年度权益分派实施公告"
+        ]
+      },
+      "market_competition": {
+        "score": 0.9753,
+        "summary": "市场竞争相关新闻2条，情感得分0.98，整体偏正面",
+        "key_points": [
+          "ETF市场日报 | 通信与互联网板块批量领涨，传媒影视板块集体回调",
+          "近七成A股上市银行已设国际业务部，离岸联动与流程嵌入“双轨”并行"
+        ]
+      },
+      "product_technology": {
+        "score": 0.8126,
+        "summary": "产品技术相关新闻2条，情感得分0.81，整体偏正面",
+        "key_points": [
+          "分红季丨每10股派发现金股利人民币3.60元！红利低波（H30269.CSI）成分股平安银行，发布2025年年度权益分派实施公告",
+          "富时中国A50及富时中国50指数成分股调整：兆易创新等获纳入，中国建筑等被剔除"
+        ]
+      },
+      "industry_policy": {
+        "score": 0.9859,
+        "summary": "行业政策相关新闻1条，情感得分0.99，整体偏正面",
+        "key_points": [
+          "银行行业今日涨1.33%，主力资金净流入8.20亿元"
+        ]
+      },
+      "capital_market": {
+        "score": 0.9909,
+        "summary": "资本市场相关新闻2条，情感得分0.99，整体偏正面",
+        "key_points": [
+          "ETF市场日报 | 通信与互联网板块批量领涨，传媒影视板块集体回调",
+          "银行行业今日涨1.33%，主力资金净流入8.20亿元"
+        ]
+      }
+    },
+    "source_analysis": {
+      "mainstream_media": {
+        "score": 0.7084,
+        "summary": "共5条来源"
+      },
+      "industry_media": {
+        "score": 0.9924,
+        "summary": "共2条来源"
+      },
+      "official_announcement": {
+        "score": 0.5,
+        "summary": "未匹配到该类型来源"
+      },
+      "self_media": {
+        "score": 0.5,
+        "summary": "未匹配到"
+      }
+    },
+    "impact_analysis": {
+      "importance_level": "中",
+      "market_impact": {
+        "score": 0.8471,
+        "duration": "短期",
+        "key_factors": [
+          "利好: 近七成A股上市银行已设国际业务部，离岸联动与流程嵌入“双轨”",
+          "利好: 银行行业今日涨1.33%，主力资金净流入8.20亿元",
+          "利空: A股午后跌幅迅速扩大：创指跌3.2%，3276股收涨"
+        ]
+      }
+    },
+    "risk_analysis": {
+      "risk_level": "低",
+      "risk_factors": []
+    }
+  }
+}

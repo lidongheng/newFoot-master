@@ -1,0 +1,121 @@
+{
+  "_cached_at": "2026-06-06T10:54:04.083761",
+  "_key": "f877b66b26869cadd66c44cd9b35efb5",
+  "_value": {
+    "overall_sentiment": {
+      "score": 0.1359,
+      "label": "极度看空",
+      "summary": "基于3条新闻分析，整体情感极度看空（0.14），其中正面新闻0条、中性1条、负面2条。市场情绪总体恶化。",
+      "market_expectation": "市场预期较为悲观，需关注风险释放后的投资机会。",
+      "investor_sentiment": "66",
+      "confidence_index": 0.6686,
+      "volatility": 0.1921,
+      "volatility_label": "存在分歧",
+      "cv": 1.4142,
+      "score_range": 0.4076,
+      "positive_ratio": 0.0,
+      "negative_ratio": 1.0,
+      "positive_count": 0,
+      "negative_count": 3,
+      "neutral_count": 0
+    },
+    "time_analysis": {
+      "trend": [
+        {
+          "date": "2026-06-05",
+          "score": 0.4076,
+          "key_events": [
+            {
+              "title": "解密主力资",
+              "description": "解密主力资金出逃股 连续5日净流出526"
+            }
+          ]
+        },
+        {
+          "date": "2026-06-01",
+          "score": 0.0,
+          "key_events": [
+            {
+              "title": "增减持",
+              "description": "五粮液首次回购119万股，金额达1亿元"
+            },
+            {
+              "title": "增减持",
+              "description": "五粮液：首次回购公司股份119万股 成交"
+            }
+          ]
+        }
+      ],
+      "trend_prediction": "数据量较少，无法形成有效趋势预测。"
+    },
+    "topic_analysis": {
+      "company_operation": {
+        "score": 0.5,
+        "summary": "未发现与公司经营直接相关的新闻报道",
+        "key_points": []
+      },
+      "financial_performance": {
+        "score": 0.5,
+        "summary": "未发现与财务表现直接相关的新闻报道",
+        "key_points": []
+      },
+      "market_competition": {
+        "score": 0.5,
+        "summary": "未发现与市场竞争直接相关的新闻报道",
+        "key_points": []
+      },
+      "product_technology": {
+        "score": 0.0,
+        "summary": "产品技术相关新闻1条，情感得分0.00，整体偏负面",
+        "key_points": [
+          "五粮液首次回购119万股，金额达1亿元"
+        ]
+      },
+      "industry_policy": {
+        "score": 0.5,
+        "summary": "未发现与行业政策直接相关的新闻报道",
+        "key_points": []
+      },
+      "capital_market": {
+        "score": 0.4076,
+        "summary": "资本市场相关新闻1条，情感得分0.41，整体偏负面",
+        "key_points": [
+          "解密主力资金出逃股 连续5日净流出526股"
+        ]
+      }
+    },
+    "source_analysis": {
+      "mainstream_media": {
+        "score": 0.4076,
+        "summary": "共1条来源"
+      },
+      "industry_media": {
+        "score": 0.4076,
+        "summary": "共1条来源"
+      },
+      "official_announcement": {
+        "score": 0.5,
+        "summary": "未匹配到该类型来源"
+      },
+      "self_media": {
+        "score": 0.0,
+        "summary": "共2条来源"
+      }
+    },
+    "impact_analysis": {
+      "importance_level": "中",
+      "market_impact": {
+        "score": 0.7283,
+        "duration": "短期",
+        "key_factors": [
+          "利空: 五粮液首次回购119万股，金额达1亿元",
+          "利空: 五粮液：首次回购公司股份119万股 成交总金额约1亿元"
+        ]
+      }
+    },
+    "risk_analysis": {
+      "risk_level": "高",
+      "risk_factors": []
+    }
+  }
+}

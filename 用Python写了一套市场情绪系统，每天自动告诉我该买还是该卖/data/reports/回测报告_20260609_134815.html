@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 量化回测绩效报告</title>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #0f0c29, #16213e, #1a1a2e);
+            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .report-header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, rgba(26,26,46,0.9), rgba(22,33,62,0.9));
+            border-radius: 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+        }
+        .report-header h1 { font-size: 28px; background: linear-gradient(90deg, #00ff88, #4488ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .report-header .subtitle { color: #888; font-size: 14px; margin-top: 8px; }
+        .summary-box {
+            background: rgba(26,26,46,0.8);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(0,255,136,0.1);
+        }
+        .summary-box p { line-height: 1.8; color: #ccc; font-size: 15px; }
+        .summary-box .label { color: #4488ff; font-weight: bold; }
+        .chart-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .chart-card {
+            background: rgba(26,26,46,0.8);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            overflow: hidden;
+        }
+        .chart-card > div {
+            width: 100% !important; height: auto !important;
+        }
+        .chart-card .js-plotly-plot, .chart-card .plot-container {
+            width: 100% !important; height: auto !important;
+        }
+        .chart-card.half-left { grid-column: 1; }
+        .chart-card.half-right { grid-column: 2; }
+        .chart-card.full-width { grid-column: 1 / -1; }
+        .chart-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #ccc;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .stat-card {
+            background: rgba(26,26,46,0.8);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .stat-value { font-size: 28px; font-weight: bold; }
+        .stat-label { font-size: 13px; color: #888; margin-top: 5px; }
+        .info-card {
+            background: rgba(26,26,46,0.8);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(68,136,255,0.2);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .info-card div { font-size: 14px; color: #ccc; }
+        .info-card strong { color: #4488ff; }
+        .perf-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(26,26,46,0.8);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .perf-table th {
+            background: rgba(68,136,255,0.15);
+            color: #4488ff;
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 13px;
+        }
+        .perf-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            font-size: 14px;
+        }
+        .perf-table tr:hover { background: rgba(255,255,255,0.03); }
+        .news-item {
+            background: rgba(26,26,46,0.6);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 3px solid #4488ff;
+        }
+        .news-title { font-size: 15px; font-weight: bold; color: #e0e0e0; }
+        .news-meta { font-size: 12px; color: #888; margin: 5px 0; }
+        .news-content { font-size: 13px; color: #aaa; line-height: 1.6; }
+        .news-link { display: inline-block; margin-top: 8px; color: #4488ff; text-decoration: none; font-size: 13px; }
+        .news-link:hover { color: #00ff88; }
+        .risk-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 15px;
+            background: rgba(26,26,46,0.6);
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .risk-factor { font-weight: bold; color: #ff8844; min-width: 60px; font-size: 14px; }
+        .risk-desc { color: #aaa; flex: 1; font-size: 13px; }
+        .risk-severity { padding: 2px 10px; border-radius: 10px; font-size: 12px; color: white; }
+        .event-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(26,26,46,0.6);
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 13px;
+        }
+        .event-date { color: #4488ff; }
+        .event-text { color: #ccc; }
+        .event-score { font-weight: bold; }
+        .topic-block {
+            background: rgba(26,26,46,0.6);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 3px solid #4488ff;
+        }
+        .topic-name { font-weight: bold; font-size: 15px; color: #e0e0e0; }
+        .topic-score { font-size: 14px; font-weight: bold; }
+        .topic-summary { font-size: 13px; color: #aaa; margin: 5px 0; }
+        .topic-points { font-size: 12px; color: #888; }
+        /* ✨ 新增样式 - Dashboard & AI结论 & 词云 */
+        .ai-conclusion {
+            background: linear-gradient(135deg, rgba(0,255,136,0.08), rgba(68,136,255,0.08));
+            border-radius: 10px;
+            padding: 10px 18px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(0,255,136,0.15);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .ai-badge {
+            background: linear-gradient(135deg, #00ff88, #4488ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        .ai-text {
+            color: #ccc;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        .dash-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+        .dash-grid-5 {
+            grid-template-columns: repeat(5, 1fr);
+        }
+        .dash-card {
+            background: rgba(26,26,46,0.8);
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .dash-card.wide-card {
+            grid-column: span 1;
+        }
+        .dash-value { font-size: 26px; font-weight: bold; }
+        .dash-label { font-size: 11px; color: #888; margin-top: 2px; }
+        .dashboard-quote {
+            background: rgba(26,26,46,0.8);
+            border-radius: 10px;
+            padding: 8px 16px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+            font-size: 14px;
+        }
+        .quote-price { font-size: 28px; font-weight: bold; color: #e0e0e0; }
+        .quote-change { font-weight: bold; font-size: 14px; margin-left: 8px; }
+        .quote-divider { color: #444; margin: 0 8px; }
+        .dashboard-market, .dashboard-market-compact {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 12px;
+            padding: 0 4px;
+            line-height: 1.8;
+        }
+        .dashboard-market {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 10px;
+            padding: 0 5px;
+        }
+        .topic-tags { display: flex; flex-wrap: wrap; gap: 15px; }
+        .topic-tag {
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+        .wordcloud-container {
+            background: rgba(26,26,46,0.8);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+        .wordcloud-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .vol-bar-bg {
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+            height: 4px;
+            overflow: hidden;
+        }
+        .vol-bar-fg {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s;
+        }
+        .sentiment-ratio-bar {
+            display: flex;
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+            gap: 1px;
+        }
+        .ratio-pos { background: #00ff88; }
+        .ratio-neu { background: #ffcc44; }
+        .ratio-neg { background: #ff4444; }
+        @media (max-width: 768px) {
+            .chart-grid { grid-template-columns: 1fr; }
+            .chart-card.half-left, .chart-card.half-right { grid-column: 1; }
+            .dash-grid { grid-template-columns: repeat(2, 1fr); }
+            .ai-conclusion { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="report-header">
+            <h1>📊 量化回测绩效报告</h1>
+            <div class="subtitle">生成时间: 2026-06-09 13:48</div>
+        </div>
+
+        
+        <div class="stat-grid">
+            <div class="stat-card">
+                <div class="stat-value" style="color:#00ff88">6</div>
+                <div class="stat-label">回测股票数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" style="color:#ffcc44">6</div>
+                <div class="stat-label">策略数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" style="color:##00ff88">+16.1%</div>
+                <div class="stat-label">最佳收益 (建设银行)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" style="color:##ff4444">-4.5%</div>
+                <div class="stat-label">最差收益 (建设银行)</div>
+            </div>
+        </div>
+        
+        <table class="perf-table">
+            <thead>
+                <tr>
+                    <th>策略</th>
+                    <th>平均收益</th>
+                    <th>平均回撤</th>
+                    <th>夏普比率</th>
+                    <th>平均胜率</th>
+                    <th>总交易</th>
+                    <th>覆盖股票</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr>
+                <td>买入持有</td>
+                <td style="color:#00ff88">+16.07%</td>
+                <td style="color:#00ff88">4.56%</td>
+                <td style="color:#00ff88">2.55</td>
+                <td>100.0%</td>
+                <td>1</td>
+                <td>1只</td>
+            </tr>
+            
+            <tr>
+                <td>纯情绪策略</td>
+                <td style="color:#00ff88">+0.12%</td>
+                <td style="color:#00ff88">2.52%</td>
+                <td style="color:#ff8844">0.11</td>
+                <td>66.7%</td>
+                <td>3</td>
+                <td>1只</td>
+            </tr>
+            
+            <tr>
+                <td>情绪+均线</td>
+                <td style="color:#00ff88">+0.12%</td>
+                <td style="color:#00ff88">2.52%</td>
+                <td style="color:#ff8844">0.12</td>
+                <td>66.7%</td>
+                <td>3</td>
+                <td>1只</td>
+            </tr>
+            
+            <tr>
+                <td>RSI均值回归</td>
+                <td style="color:#00ff88">+0.00%</td>
+                <td style="color:#00ff88">0.00%</td>
+                <td style="color:#ff4444">0.00</td>
+                <td>0.0%</td>
+                <td>0</td>
+                <td>1只</td>
+            </tr>
+            
+            <tr>
+                <td>布林带突破</td>
+                <td style="color:#ff4444">-4.51%</td>
+                <td style="color:#00ff88">7.70%</td>
+                <td style="color:#ff4444">-1.28</td>
+                <td>33.3%</td>
+                <td>3</td>
+                <td>1只</td>
+            </tr>
+            
+            <tr>
+                <td>动量策略</td>
+                <td style="color:#00ff88">+3.80%</td>
+                <td style="color:#00ff88">5.66%</td>
+                <td style="color:#00ff88">1.02</td>
+                <td>66.7%</td>
+                <td>3</td>
+                <td>1只</td>
+            </tr>
+            
+            </tbody>
+        </table>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        <div class="chart-grid"><div class="chart-card full-width"><div class="chart-title">📊 策略绩效对比</div><div>                            <div id="20242a71-531c-412b-a16e-526875a108da" class="plotly-graph-div" style="height:350px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("20242a71-531c-412b-a16e-526875a108da")) {                    Plotly.newPlot(                        "20242a71-531c-412b-a16e-526875a108da",                        [{"marker":{"color":["#00ff88","#00ff88","#00ff88","#ff4444","#ff4444","#00ff88"]},"name":"\u5e73\u5747\u6536\u76ca\u7387 (%)","text":["+16.1%","+0.1%","+0.1%","+0.0%","-4.5%","+3.8%"],"textposition":"outside","x":["\u4e70\u5165\u6301\u6709","\u7eaf\u60c5\u7eea\u7b56\u7565","\u60c5\u7eea+\u5747\u7ebf","RSI\u5747\u503c\u56de\u5f52","\u5e03\u6797\u5e26\u7a81\u7834","\u52a8\u91cf\u7b56\u7565"],"y":[16.07,0.12,0.12,0.0,-4.51,3.8],"type":"bar"},{"marker":{"color":"#ff4444"},"name":"\u6700\u5927\u56de\u64a4 (%)","text":["4.6%","2.5%","2.5%","0.0%","7.7%","5.7%"],"textposition":"outside","x":["\u4e70\u5165\u6301\u6709","\u7eaf\u60c5\u7eea\u7b56\u7565","\u60c5\u7eea+\u5747\u7ebf","RSI\u5747\u503c\u56de\u5f52","\u5e03\u6797\u5e26\u7a81\u7834","\u52a8\u91cf\u7b56\u7565"],"y":[-4.56,-2.52,-2.52,-0.0,-7.7,-5.66],"type":"bar"}],                        {"template":{"layout":{"font":{"color":"#e0e0e0","family":"Arial, sans-serif"},"hovermode":"x unified","paper_bgcolor":"#1a1a2e","plot_bgcolor":"#16213e","xaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"},"yaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"}}},"barmode":"group","height":350,"yaxis":{"title":{"text":"\u767e\u5206\u6bd4 (%)"}}},                        {"responsive": true}                    )                };            </script>        </div></div>
+<div class="chart-card half-left"><div class="chart-title">⚡ 夏普比率对比</div><div>                            <div id="0baf7c8b-ab3f-4bb5-a3c8-cf4bf46bd894" class="plotly-graph-div" style="height:450px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("0baf7c8b-ab3f-4bb5-a3c8-cf4bf46bd894")) {                    Plotly.newPlot(                        "0baf7c8b-ab3f-4bb5-a3c8-cf4bf46bd894",                        [{"marker":{"color":["#00ff88","#ff8844","#ff8844","#ff4444","#ff4444","#00ff88"]},"text":["2.55","0.11","0.12","0.00","-1.28","1.02"],"textposition":"outside","x":["\u4e70\u5165\u6301\u6709","\u7eaf\u60c5\u7eea\u7b56\u7565","\u60c5\u7eea+\u5747\u7ebf","RSI\u5747\u503c\u56de\u5f52","\u5e03\u6797\u5e26\u7a81\u7834","\u52a8\u91cf\u7b56\u7565"],"y":[2.55,0.11,0.12,0.0,-1.28,1.02],"type":"bar"}],                        {"template":{"layout":{"font":{"color":"#e0e0e0","family":"Arial, sans-serif"},"hovermode":"x unified","paper_bgcolor":"#1a1a2e","plot_bgcolor":"#16213e","xaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"},"yaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"}}},"shapes":[{"line":{"color":"#00ff88","dash":"dash","width":1},"type":"line","x0":0,"x1":1,"xref":"x domain","y0":1,"y1":1,"yref":"y"}],"annotations":[{"showarrow":false,"text":"\u4f18\u79c0","x":1,"xanchor":"right","xref":"x domain","y":1,"yanchor":"bottom","yref":"y"}],"height":450,"yaxis":{"title":{"text":"\u590f\u666e\u6bd4\u7387"}}},                        {"responsive": true}                    )                };            </script>        </div></div>
+<div class="chart-card half-right"><div class="chart-title">🎯 交易胜率对比</div><div>                            <div id="3c126d46-8289-451c-a4f6-de5d8c951a3a" class="plotly-graph-div" style="height:450px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("3c126d46-8289-451c-a4f6-de5d8c951a3a")) {                    Plotly.newPlot(                        "3c126d46-8289-451c-a4f6-de5d8c951a3a",                        [{"marker":{"color":["#00ff88","#00ff88","#00ff88","#ff8844","#ff8844","#00ff88"]},"text":["100.0%","66.7%","66.7%","0.0%","33.3%","66.7%"],"textposition":"outside","x":["\u4e70\u5165\u6301\u6709","\u7eaf\u60c5\u7eea\u7b56\u7565","\u60c5\u7eea+\u5747\u7ebf","RSI\u5747\u503c\u56de\u5f52","\u5e03\u6797\u5e26\u7a81\u7834","\u52a8\u91cf\u7b56\u7565"],"y":[100.0,66.67,66.67,0.0,33.33,66.67],"type":"bar"}],                        {"template":{"layout":{"font":{"color":"#e0e0e0","family":"Arial, sans-serif"},"hovermode":"x unified","paper_bgcolor":"#1a1a2e","plot_bgcolor":"#16213e","xaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"},"yaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"}}},"shapes":[{"line":{"color":"#ffcc44","dash":"dash","width":1},"type":"line","x0":0,"x1":1,"xref":"x domain","y0":50,"y1":50,"yref":"y"}],"annotations":[{"showarrow":false,"text":"50%","x":1,"xanchor":"right","xref":"x domain","y":50,"yanchor":"bottom","yref":"y"}],"yaxis":{"range":[0,100],"title":{"text":"\u80dc\u7387 (%)"}},"height":450},                        {"responsive": true}                    )                };            </script>        </div></div>
+<div class="chart-card half-left"><div class="chart-title">🏆 收益 Top 10</div><div>                            <div id="dfd10ca8-b1a6-4df5-87c5-e43c64071457" class="plotly-graph-div" style="height:350px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("dfd10ca8-b1a6-4df5-87c5-e43c64071457")) {                    Plotly.newPlot(                        "dfd10ca8-b1a6-4df5-87c5-e43c64071457",                        [{"marker":{"color":["#ff4444","#ff4444","#00ff88","#00ff88","#00ff88","#00ff88"]},"orientation":"h","text":["-4.5%","+0.0%","+0.1%","+0.1%","+3.8%","+16.1%"],"textposition":"outside","x":[-4.51,0.0,0.12,0.12,3.8,16.07],"y":["\u5efa\u8bbe\u94f6\u884c(601939)","\u5efa\u8bbe\u94f6\u884c(601939)","\u5efa\u8bbe\u94f6\u884c(601939)","\u5efa\u8bbe\u94f6\u884c(601939)","\u5efa\u8bbe\u94f6\u884c(601939)","\u5efa\u8bbe\u94f6\u884c(601939)"],"type":"bar"}],                        {"template":{"layout":{"font":{"color":"#e0e0e0","family":"Arial, sans-serif"},"hovermode":"x unified","paper_bgcolor":"#1a1a2e","plot_bgcolor":"#16213e","xaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"},"yaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"}}},"height":350,"xaxis":{"title":{"text":"\u6536\u76ca\u7387 (%)"}},"title":{"text":"\ud83c\udfc6 \u8868\u73b0\u6700\u4f73\u80a1\u7968 Top 10"}},                        {"responsive": true}                    )                };            </script>        </div></div>
+<div class="chart-card half-right"><div class="chart-title">📉 收益 Bottom 10</div><div>                            <div id="fd2816ce-6bfa-4b8d-89a1-fc98b74d4134" class="plotly-graph-div" style="height:350px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("fd2816ce-6bfa-4b8d-89a1-fc98b74d4134")) {                    Plotly.newPlot(                        "fd2816ce-6bfa-4b8d-89a1-fc98b74d4134",                        [{"marker":{"color":["#ff4444","#ff4444","#00ff88","#00ff88","#00ff88","#00ff88"]},"orientation":"h","text":["-4.5%","+0.0%","+0.1%","+0.1%","+3.8%","+16.1%"],"textposition":"outside","x":[-4.51,0.0,0.12,0.12,3.8,16.07],"y":["\u5efa\u8bbe\u94f6\u884c(601939)","\u5efa\u8bbe\u94f6\u884c(601939)","\u5efa\u8bbe\u94f6\u884c(601939)","\u5efa\u8bbe\u94f6\u884c(601939)","\u5efa\u8bbe\u94f6\u884c(601939)","\u5efa\u8bbe\u94f6\u884c(601939)"],"type":"bar"}],                        {"template":{"layout":{"font":{"color":"#e0e0e0","family":"Arial, sans-serif"},"hovermode":"x unified","paper_bgcolor":"#1a1a2e","plot_bgcolor":"#16213e","xaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"},"yaxis":{"gridcolor":"#2a2a4a","showgrid":true,"zerolinecolor":"#3a3a5a"}}},"height":350,"xaxis":{"title":{"text":"\u6536\u76ca\u7387 (%)"}},"title":{"text":"\ud83d\udcc9 \u8868\u73b0\u6700\u5dee\u80a1\u7968 Bottom 10"}},                        {"responsive": true}                    )                };            </script>        </div></div></div>
+
+        
+
+        
+
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+{
+  "_cached_at": "2026-06-03T16:19:57.459726",
+  "_key": "faff1578872847c5132205b54cece989",
+  "_value": {
+    "overall_sentiment": {
+      "score": 0.9829,
+      "label": "极度看好",
+      "summary": "基于1条新闻分析，整体情感极度看好（0.98），其中正面新闻1条、中性0条、负面0条。市场情绪总体改善。",
+      "market_expectation": "短期内市场预期偏向乐观，关注利好因素的持续发酵。",
+      "investor_sentiment": "无",
+      "confidence_index": 0.46
+    },
+    "time_analysis": {
+      "trend": [
+        {
+          "date": "",
+          "score": 0.9829,
+          "key_events": [
+            {
+              "title": "公司业绩大",
+              "description": "公司业绩大幅增长 净利润创历史新高"
+            }
+          ]
+        }
+      ],
+      "trend_prediction": "数据量较少，无法形成有效趋势预测。"
+    },
+    "topic_analysis": {
+      "company_operation": {
+        "score": 0.5,
+        "summary": "未发现与公司经营直接相关的新闻报道",
+        "key_points": []
+      },
+      "financial_performance": {
+        "score": 0.9829,
+        "summary": "财务表现相关新闻1条，情感得分0.98，整体偏正面",
+        "key_points": [
+          "公司业绩大幅增长 净利润创历史新高"
+        ]
+      },
+      "market_competition": {
+        "score": 0.5,
+        "summary": "未发现与市场竞争直接相关的新闻报道",
+        "key_points": []
+      },
+      "product_technology": {
+        "score": 0.9829,
+        "summary": "产品技术相关新闻1条，情感得分0.98，整体偏正面",
+        "key_points": [
+          "公司业绩大幅增长 净利润创历史新高"
+        ]
+      },
+      "industry_policy": {
+        "score": 0.5,
+        "summary": "未发现与行业政策直接相关的新闻报道",
+        "key_points": []
+      },
+      "capital_market": {
+        "score": 0.5,
+        "summary": "未发现与资本市场直接相关的新闻报道",
+        "key_points": []
+      }
+    },
+    "source_analysis": {
+      "mainstream_media": {
+        "score": 0.5,
+        "summary": "未匹配到该类型来源"
+      },
+      "industry_media": {
+        "score": 0.5,
+        "summary": "未匹配到该类型来源"
+      },
+      "official_announcement": {
+        "score": 0.5,
+        "summary": "未匹配到该类型来源"
+      },
+      "self_media": {
+        "score": 0.9829,
+        "summary": "共1条来源"
+      }
+    },
+    "impact_analysis": {
+      "importance_level": "中",
+      "market_impact": {
+        "score": 0.9657,
+        "duration": "短期",
+        "key_factors": [
+          "利好: 公司业绩大幅增长 净利润创历史新高"
+        ]
+      }
+    },
+    "risk_analysis": {
+      "risk_level": "低",
+      "risk_factors": []
+    }
+  }
+}
