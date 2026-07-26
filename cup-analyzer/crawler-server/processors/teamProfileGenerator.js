@@ -4,6 +4,7 @@ const config = require('../config');
 const { readJSON, readFile, saveMarkdown, fileExists } = require('../utils/fileWriter');
 const predLineupUtil = require('../utils/predictedStartingLineup');
 const recommendedLineupUtil = require('../utils/recommendedLineup');
+const { getTeamObject, getFundamentalPaths } = require('../domain/teamPaths');
 
 /** 英超/澳超/韩K联及欧冠模块：联赛式档位与俱乐部备注 */
 function useLeagueStyleAnalysis() {
@@ -307,6 +308,10 @@ class TeamProfileGenerator extends BaseCrawler {
    * 世界杯球队画像按小组分目录；其他赛事沿用平铺输出。
    */
   getTeamProfilePath(teamInfo, scheduleData) {
+    const teamObject = getTeamObject(teamInfo.id);
+    if (teamObject && teamObject.deep) {
+      return getFundamentalPaths(teamInfo.id).teamProfile;
+    }
     const profileRoot = path.join(config.paths.cupAnalyzer, 'teamProfile');
     if (isWorldCupNationalContext()) {
       const letter = this.findGroupLetterForTeam(teamInfo.id, scheduleData);
@@ -785,12 +790,67 @@ class TeamProfileGenerator extends BaseCrawler {
    * @returns {{ players: any[]|null, dataSource: 'final'|'raw'|null, finalPath: string|null, coach: string|null, formation: string|null }}
    */
   resolvePlayers(teamInfo, scheduleData, source = 'final') {
+    const teamObject = getTeamObject(teamInfo.id);
+    const teamFinalPath = teamObject && teamObject.deep
+      ? getFundamentalPaths(teamInfo.id).confirmedSquad
+      : null;
     const squadFinalRoot =
       config.paths.squadFinal || path.join(config.paths.cupAnalyzer, 'squad-final');
     const flatPath = path.join(squadFinalRoot, `${teamInfo.chineseName}.md`);
     const manualSections = this.loadManualProfileSections(teamInfo, scheduleData);
 
     if (source !== 'raw') {
+      if (teamFinalPath) {
+        if (!fileExists(teamFinalPath)) {
+          return {
+            players: null,
+            dataSource: null,
+            finalPath: teamFinalPath,
+            coach: null,
+            formation: null,
+            injured: [],
+            doubtful: [],
+            manualSections,
+          };
+        }
+        const teamFinalContent = readFile(teamFinalPath);
+        const isConfirmed = /<!--\s*confirmation-status:\s*confirmed\s*-->/i.test(teamFinalContent);
+        if (!isConfirmed) {
+          return {
+            players: null,
+            dataSource: null,
+            finalPath: teamFinalPath,
+            coach: null,
+            formation: null,
+            injured: [],
+            doubtful: [],
+            manualSections,
+          };
+        }
+        const parsed = this.parseFinalSquadMarkdown(teamFinalContent);
+        if (parsed && parsed.players && parsed.players.length > 0) {
+          return {
+            players: parsed.players,
+            dataSource: 'final',
+            finalPath: teamFinalPath,
+            coach: parsed.coach,
+            formation: parsed.formation,
+            injured: parsed.injured || [],
+            doubtful: parsed.doubtful || [],
+            manualSections,
+          };
+        }
+        return {
+          players: null,
+          dataSource: null,
+          finalPath: teamFinalPath,
+          coach: null,
+          formation: null,
+          injured: [],
+          doubtful: [],
+          manualSections,
+        };
+      }
       if (fileExists(flatPath)) {
         const mdContent = readFile(flatPath);
         const parsed = this.parseFinalSquadMarkdown(mdContent);
@@ -1541,6 +1601,14 @@ class TeamProfileGenerator extends BaseCrawler {
       source
     );
     if (!players || players.length === 0) {
+      const teamObject = getTeamObject(id);
+      if (teamObject && teamObject.deep && source === 'final') {
+        const confirmedPath = getFundamentalPaths(id).confirmedSquad;
+        this.error(
+          `人工确认门禁未通过（序号 ${id}）。请检查 ${confirmedPath} 是否存在，且 confirmation-status 已改为 confirmed`
+        );
+        return null;
+      }
       this.error(
         `无可用球员数据（序号 ${id}）。请确认存在 squad-final 名单或 output/player_center/${id}.json`
       );
@@ -1579,7 +1647,7 @@ function printTeamProfileUsage() {
 
 选项:
   （无参数）              批量生成全部球队（--source 默认 final）
-  --source final|raw     final：优先 squad-final，否则 player_center JSON；raw：仅 JSON（final 成功时同步 squad-final 统计摘要）
+  --source final|raw     final：深度球队必须使用人工确认名单；raw：显式使用原始 JSON 调试
   --team <序号>           只生成一队
   -t <序号>               同 --team
   --help, -h              显示本说明

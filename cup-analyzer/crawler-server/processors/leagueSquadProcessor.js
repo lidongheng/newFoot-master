@@ -5,6 +5,7 @@ const squadTarget = require('../config/squadTarget');
 const { readJSON, saveMarkdown, fileExists } = require('../utils/fileWriter');
 const { formatTransferColumn } = require('../utils/playerDetailEnricher');
 const predLineupUtil = require('../utils/predictedStartingLineup');
+const { getTeamObject, getFundamentalPaths } = require('../domain/teamPaths');
 
 /**
  * 联赛大名单 Markdown：从 clubMatchAnalyzer 输出的 *-new.json 生成 squad/{队名}.md（平铺）
@@ -118,12 +119,11 @@ class LeagueSquadProcessor extends BaseCrawler {
     return rows;
   }
 
-  generateMarkdown(teamInfo, data) {
+  generateMarkdown(teamInfo, data, options = {}) {
     const cn = teamInfo.chineseName;
     const en = teamInfo.englishName || '';
-    const serial = data.teamId || squadTarget.teamSerial;
-    const season = squadTarget.season || config.season || '';
-    const round = squadTarget.roundSerial || '';
+    const serial = data.teamId;
+    const season = config.season;
     const formation = formationDisplay(data.mostUsedFormation || '');
     const rows = this.buildTableRows(data);
 
@@ -135,7 +135,10 @@ class LeagueSquadProcessor extends BaseCrawler {
     const lines = [];
     lines.push(`# ${cn}（${en}）赛季大名单\n`);
     lines.push(`> 球队ID: ${serial} | 数据来源: titan007 + clubMatchAnalyzer`);
-    lines.push(`> 赛季: ${season} | 截至第 ${round} 轮`);
+    lines.push(`> 赛季: ${season}`);
+    if (options.roundSerial) {
+      lines.push(`> 截至第 ${options.roundSerial} 轮`);
+    }
     if (data.analysisDate) {
       lines.push(`> 分析时间: ${data.analysisDate}`);
     }
@@ -195,8 +198,8 @@ class LeagueSquadProcessor extends BaseCrawler {
     return lines.join('\n');
   }
 
-  async processOne() {
-    const serial = Number(squadTarget.teamSerial);
+  async processOne(teamSerial, options = {}) {
+    const serial = Number(teamSerial);
     if (Number.isNaN(serial)) {
       this.error('squadTarget.teamSerial 无效');
       return null;
@@ -227,9 +230,11 @@ class LeagueSquadProcessor extends BaseCrawler {
       return null;
     }
 
-    const md = this.generateMarkdown(teamInfo, data);
-    const outDir = path.join(config.paths.cupAnalyzer, 'squad');
-    const outPath = path.join(outDir, `${teamInfo.chineseName}.md`);
+    const md = this.generateMarkdown(teamInfo, data, options);
+    const teamObject = getTeamObject(serial);
+    const outPath = teamObject && teamObject.deep
+      ? getFundamentalPaths(serial).draftSquad
+      : path.join(config.paths.cupAnalyzer, 'squad', `${teamInfo.chineseName}.md`);
     saveMarkdown(outPath, md);
     this.log(`已写入: ${outPath}`);
     return { outPath, teamInfo };
@@ -238,15 +243,17 @@ class LeagueSquadProcessor extends BaseCrawler {
 
 function printUsage() {
   console.log(`
-联赛大名单 Markdown（*-new.json → cup-analyzer/.../squad/{队名}.md）
+联赛大名单 Markdown（*-new.json → 球队对象 fundamentals/squad/draft.md）
 
 用法:
   1. 编辑 config/squadTarget.js（teamSerial、leagueSerial、roundSerial 等）
   2. npm run crawl:player-list:club（需要「转会记录」列；否则可用 crawl:player-list）
   3. npm run analyze:club-domestic
-  4. CUP_ANALYZER_CUP=epl node processors/leagueSquadProcessor.js
+  4. CUP_ANALYZER_CUP=epl node processors/leagueSquadProcessor.js --team 19
 
 选项:
+  --team <序号>  要处理的球队
+  --round <轮次>  原始分析明确对应的截止轮次；不明确时不写
   --help, -h   显示本说明
 `);
 }
@@ -257,8 +264,16 @@ if (require.main === module) {
     printUsage();
     process.exit(0);
   }
+  const teamIndex = argv.indexOf('--team');
+  const teamSerial = teamIndex === -1 ? null : argv[teamIndex + 1];
+  const roundIndex = argv.indexOf('--round');
+  const roundSerial = roundIndex === -1 ? null : argv[roundIndex + 1];
+  if (!teamSerial) {
+    console.error('错误: 请通过 --team 提供球队序号');
+    process.exit(1);
+  }
   const p = new LeagueSquadProcessor();
-  p.processOne().catch((e) => {
+  p.processOne(teamSerial, { roundSerial }).catch((e) => {
     console.error(e);
     process.exit(1);
   });

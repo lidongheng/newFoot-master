@@ -2,9 +2,15 @@ const path = require('path');
 const BaseCrawler = require('../crawlers/base');
 const config = require('../config');
 const { readFile, saveMarkdown, fileExists } = require('../utils/fileWriter');
+const { getTeamObject, getFundamentalPaths } = require('../domain/teamPaths');
 
 const TODO_COMMENT = '<!-- TODO: 请从初选名单中裁剪至26人 -->';
 const LEAGUE_TODO_COMMENT = '<!-- TODO: 请审核并确认名单 -->';
+const TEAM_OBJECT_CONFIRMATION = '<!-- confirmation-status: pending -->';
+
+function injectTeamObjectConfirmationGate(content) {
+  return `${TEAM_OBJECT_CONFIRMATION}\n${content}`;
+}
 
 /** 在 `## 统计摘要` 前插入伤停/伤疑占位（若已存在则跳过） */
 function injectInjurySections(content) {
@@ -114,7 +120,13 @@ class SquadFinalInitializer extends BaseCrawler {
       this.log(`平铺模式（联赛或无小组积分榜），共 ${teams.length} 支球队`);
       for (const teamInfo of teams) {
         const baseName = `${teamInfo.chineseName}.md`;
-        const srcPath = path.join(squadRoot, baseName);
+        const teamObject = getTeamObject(teamInfo.id);
+        const teamFundamentals = teamObject && teamObject.deep
+          ? getFundamentalPaths(teamInfo.id)
+          : null;
+        const srcPath = teamFundamentals
+          ? teamFundamentals.draftSquad
+          : path.join(squadRoot, baseName);
         if (!fileExists(srcPath)) {
           this.log(`  ${teamInfo.chineseName}(${teamInfo.id}) 无初选文件，跳过`);
           results.skipped.push({ team: teamInfo.chineseName, reason: 'no_squad_md' });
@@ -122,8 +134,18 @@ class SquadFinalInitializer extends BaseCrawler {
         }
         try {
           const raw = readFile(srcPath);
-          const out = this.transformToFinalDraftLeague(raw);
-          const destPath = path.join(finalRoot, baseName);
+          let out = this.transformToFinalDraftLeague(raw);
+          const destPath = teamFundamentals
+            ? teamFundamentals.confirmedSquad
+            : path.join(finalRoot, baseName);
+          if (teamFundamentals) {
+            out = injectTeamObjectConfirmationGate(out);
+          }
+          if (fileExists(destPath)) {
+            this.log(`  ${teamInfo.chineseName} 已有人工确认文件，跳过以避免覆盖`);
+            results.skipped.push({ team: teamInfo.chineseName, reason: 'confirmed_squad_exists' });
+            continue;
+          }
           saveMarkdown(destPath, out);
           results.success.push({ team: teamInfo.chineseName, group: 'flat' });
         } catch (err) {
@@ -212,10 +234,19 @@ class SquadFinalInitializer extends BaseCrawler {
     let destPath;
     let groupFolder;
     let out;
+    let teamFundamentals = null;
 
     if (this.isFlatSquadMode(scheduleData)) {
-      srcPath = path.join(squadRoot, baseName);
-      destPath = path.join(finalRoot, baseName);
+      const teamObject = getTeamObject(id);
+      teamFundamentals = teamObject && teamObject.deep
+        ? getFundamentalPaths(id)
+        : null;
+      srcPath = teamFundamentals
+        ? teamFundamentals.draftSquad
+        : path.join(squadRoot, baseName);
+      destPath = teamFundamentals
+        ? teamFundamentals.confirmedSquad
+        : path.join(finalRoot, baseName);
       groupFolder = 'flat';
       if (!fileExists(srcPath)) {
         this.error(`无初选文件: ${srcPath}，请先执行 leagueSquadProcessor`);
@@ -237,6 +268,13 @@ class SquadFinalInitializer extends BaseCrawler {
     }
 
     try {
+      if (fileExists(destPath)) {
+        this.error(`人工确认文件已存在，拒绝覆盖: ${destPath}`);
+        return null;
+      }
+      if (teamFundamentals) {
+        out = injectTeamObjectConfirmationGate(out);
+      }
       saveMarkdown(destPath, out);
       this.log(`单队初始化完成: ${teamInfo.chineseName} → ${destPath}`);
       return { teamInfo, destPath, groupFolder };

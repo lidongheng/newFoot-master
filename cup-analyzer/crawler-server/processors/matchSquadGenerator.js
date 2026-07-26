@@ -14,6 +14,7 @@ const { readFile, fileExists } = require('../utils/fileWriter');
 const BaseCrawler = require('../crawlers/base');
 const TeamProfileGenerator = require('./teamProfileGenerator');
 const predLineupUtil = require('../utils/predictedStartingLineup');
+const { getTeamObject, getFundamentalPaths } = require('../domain/teamPaths');
 
 function isWorldCupNationalContext() {
   return (config.activeCupKey || '') === 'theWorldCup';
@@ -55,6 +56,11 @@ class MatchSquadGenerator extends BaseCrawler {
    * @returns {string|null}
    */
   resolveSquadFinalPath(teamInfo, scheduleData) {
+    const teamObject = getTeamObject(teamInfo.id);
+    if (teamObject && teamObject.deep) {
+      const confirmedPath = getFundamentalPaths(teamInfo.id).confirmedSquad;
+      return fileExists(confirmedPath) ? confirmedPath : null;
+    }
     const root = config.paths.squadFinal;
     const flat = path.join(root, `${teamInfo.chineseName}.md`);
     if (fileExists(flat)) return flat;

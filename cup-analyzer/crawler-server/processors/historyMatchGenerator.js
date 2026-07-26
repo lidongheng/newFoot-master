@@ -4,6 +4,7 @@ const TeamProfileGenerator = require('./teamProfileGenerator');
 const ClubAnalyzer = require('../analyzers/clubMatchAnalyzer');
 const config = require('../config');
 const { readJSON, saveMarkdown, fileExists } = require('../utils/fileWriter');
+const { getTeamObject, getFundamentalPaths } = require('../domain/teamPaths');
 
 /**
  * 历史比赛首发生成器
@@ -23,6 +24,10 @@ class HistoryMatchGenerator extends TeamProfileGenerator {
   }
 
   getHistoryMatchPath(teamInfo, scheduleData) {
+    const teamObject = getTeamObject(teamInfo.id);
+    if (teamObject && teamObject.deep) {
+      return getFundamentalPaths(teamInfo.id).historyMatchProfile;
+    }
     const historyRoot = path.join(config.paths.cupAnalyzer, 'historyMatch');
     const letter = this.findGroupLetterForTeam(teamInfo.id, scheduleData);
     if (letter) return path.join(historyRoot, `group-${letter}`, `${teamInfo.chineseName}.md`);
@@ -397,6 +402,14 @@ class HistoryMatchGenerator extends TeamProfileGenerator {
 
     const resolved = this.resolvePlayers(team, scheduleData, source);
     if (!resolved.players || resolved.players.length === 0) {
+      const teamObject = getTeamObject(id);
+      if (teamObject && teamObject.deep && source === 'final') {
+        const confirmedPath = getFundamentalPaths(id).confirmedSquad;
+        this.error(
+          `人工确认门禁未通过（序号 ${id}）。请检查 ${confirmedPath} 是否存在，且 confirmation-status 已改为 confirmed`
+        );
+        return null;
+      }
       this.error(`无可用球员数据（序号 ${id}）。请确认存在 squad-final 名单或 output/player_center/${id}.json`);
       return null;
     }
@@ -462,7 +475,7 @@ function printHistoryMatchUsage() {
 
 选项:
   （无参数）              批量生成全部球队（--source 默认 final）
-  --source final|raw     final：优先 squad-final，否则 player_center JSON；raw：仅 JSON
+  --source final|raw     final：深度球队必须使用人工确认名单；raw：显式使用原始 JSON 调试
   --no-crawl             只读取本地 basicData/**/lineup.json，不联网抓缺失比赛
   --team <序号>           只生成一队
   -t <序号>               同 --team
