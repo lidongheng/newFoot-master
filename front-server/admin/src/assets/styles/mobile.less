@@ -1,0 +1,333 @@
+.mobile-page {
+  min-height: calc(100vh - 98px - env(safe-area-inset-bottom));
+  min-height: calc(100dvh - 98px - env(safe-area-inset-bottom));
+  padding: 12px;
+  color: #1f2329;
+
+  .mobile-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+
+    .van-search {
+      flex: 1;
+      min-width: 0;
+      padding: 0;
+      background: transparent;
+    }
+  }
+
+  .toolbar-button {
+    flex: none;
+    min-width: 40px;
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+
+  .mobile-action-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+
+    .van-button {
+      height: 36px;
+      padding: 0 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+  }
+
+  .mobile-card {
+    margin-bottom: 12px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(31, 35, 41, 0.05);
+  }
+
+  .card-main {
+    padding: 16px;
+  }
+
+  .card-title-row,
+  .card-meta-row,
+  .card-actions,
+  .field-pair {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .card-title {
+    display: -webkit-box;
+    min-width: 0;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    overflow-wrap: anywhere;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .card-title-row > .van-tag {
+    flex: none;
+    white-space: nowrap;
+  }
+
+  .card-subtitle,
+  .field-label,
+  .card-time {
+    color: #86909c;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .card-meta-row {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2px 10px;
+
+    > span {
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    > span:last-child {
+      margin-left: auto;
+    }
+  }
+
+  .field-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+  }
+
+  .field-value {
+    margin-top: 4px;
+    overflow-wrap: anywhere;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .card-actions {
+    justify-content: flex-end;
+    min-height: 48px;
+    padding: 8px 16px;
+    border-top: 1px solid #f2f3f5;
+
+    .van-button {
+      height: 32px;
+      padding: 0 12px;
+      border-radius: 7px;
+      white-space: nowrap;
+    }
+  }
+
+  .manage-checkbox {
+    flex: none;
+  }
+
+  .empty-state {
+    padding: 28px 0;
+  }
+
+  &.has-batch-bar {
+    padding-bottom: 78px;
+  }
+}
+
+.mobile-sheet {
+  max-height: 82vh;
+  padding-bottom: env(safe-area-inset-bottom);
+
+  .sheet-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+    padding: 0 16px;
+    border-bottom: 1px solid #f2f3f5;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .sheet-body {
+    max-height: calc(82vh - 112px);
+    padding: 12px 16px 16px;
+    overflow-y: auto;
+  }
+
+  .van-field {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .van-radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 16px;
+  }
+
+  .van-radio {
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .sheet-footer {
+    display: flex;
+    gap: 12px;
+    padding: 10px 16px;
+    border-top: 1px solid #f2f3f5;
+    background: #fff;
+
+    .van-button {
+      height: 40px;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
+  }
+}
+
+.mobile-full-popup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: #f5f6f8;
+
+  .popup-body {
+    flex: 1;
+    min-height: 0;
+    padding: 12px 12px calc(76px + env(safe-area-inset-bottom));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .form-section {
+    margin-bottom: 12px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #fff;
+  }
+
+  .form-section-title {
+    padding: 14px 16px 8px;
+    color: #646a73;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .van-field__label {
+    flex: none;
+    width: 76px;
+  }
+
+  .van-radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 16px;
+  }
+
+  .van-radio {
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .popup-footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    gap: 12px;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    border-top: 1px solid #f2f3f5;
+    background: #fff;
+
+    .van-button {
+      height: 40px;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
+  }
+}
+
+.mobile-batch-bar {
+  position: fixed;
+  z-index: 100;
+  right: 0;
+  bottom: calc(50px + env(safe-area-inset-bottom));
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 58px;
+  padding: 9px 12px;
+  border-top: 1px solid #ebedf0;
+  background: #fff;
+  box-shadow: 0 -2px 12px rgba(31, 35, 41, 0.08);
+
+  .selection-count {
+    flex: 1;
+    color: #646a73;
+    font-size: 13px;
+  }
+
+  .van-button {
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 359px) {
+  .mobile-page {
+    .card-main {
+      padding: 14px;
+    }
+
+    .field-grid {
+      gap: 12px 8px;
+    }
+
+    .mobile-action-row .van-button {
+      padding: 0 10px;
+    }
+  }
+
+  .mobile-full-popup {
+    .van-field {
+      flex-wrap: wrap;
+      row-gap: 8px;
+    }
+
+    .van-field__label {
+      width: 100%;
+    }
+
+    .van-field__value {
+      width: 100%;
+    }
+  }
+
+  .mobile-batch-bar {
+    flex-wrap: wrap;
+
+    .selection-count {
+      min-width: calc(100% - 76px);
+    }
+  }
+
+  .mobile-page.has-batch-bar {
+    padding-bottom: 122px;
+  }
+}

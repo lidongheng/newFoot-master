@@ -32,7 +32,7 @@
       <div class="match-list">
         <MatchCard 
           v-for="match in matches" 
-          :key="match.id" 
+          :key="match.matchId"
           :match="match"
         />
       </div>
@@ -47,7 +47,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router'
 import { useMatchStore, useUserStore } from '@/store'
 import TopNavBar from '@/components/TopNavBar.vue'
@@ -73,13 +73,58 @@ const activePlayType = ref('main')
 
 // 比赛数据
 const matches = computed(() => matchStore.liveMatches)
+const pollTimer = ref(null)
+const pollInFlight = ref(false)
+
+// 刷新过程中不再发起第二个请求，避免慢请求重叠
+const refreshLiveMatches = async () => {
+  if (pollInFlight.value) return
+
+  pollInFlight.value = true
+  try {
+    await matchStore.fetchLiveMatches(currentSport.value)
+  } finally {
+    pollInFlight.value = false
+  }
+}
+
+const stopPolling = () => {
+  if (pollTimer.value) {
+    window.clearInterval(pollTimer.value)
+    pollTimer.value = null
+  }
+}
+
+const startPolling = () => {
+  stopPolling()
+  if (document.hidden) return
+
+  pollTimer.value = window.setInterval(refreshLiveMatches, 5000)
+}
+
+const handleVisibilityChange = () => {
+  if (document.hidden) {
+    stopPolling()
+    return
+  }
+
+  refreshLiveMatches()
+  startPolling()
+}
 
 // 页面加载时获取数据
 onMounted(async () => {
   await Promise.all([
-    matchStore.fetchLiveMatches(currentSport.value),
+    refreshLiveMatches(),
     userStore.fetchBalance()
   ])
+  startPolling()
+  document.addEventListener('visibilitychange', handleVisibilityChange)
+})
+
+onBeforeUnmount(() => {
+  stopPolling()
+  document.removeEventListener('visibilitychange', handleVisibilityChange)
 })
 
 // 筛选标签
@@ -95,7 +140,7 @@ const filterTabs = ref([
 // 处理运动类型切换
 const handleSportChange = async (sport) => {
   currentSport.value = sport
-  await matchStore.fetchLiveMatches(sport)
+  await refreshLiveMatches()
 }
 
 // 处理筛选切换

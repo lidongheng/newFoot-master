@@ -99,10 +99,16 @@ export const useBetStore = defineStore('bet', () => {
   // 加载状态
   const loading = ref(false)
 
+  // 变盘信息
+  const quoteChange = ref(null)
+
   // 计算可赢金额
   const potentialWin = computed(() => {
     if (!currentBet.value || !betAmount.value) return 0
     const amount = parseFloat(betAmount.value) || 0
+    if (currentBet.value.marketType === 'moneyline') {
+      return (amount * (currentBet.value.odds - 1)).toFixed(2)
+    }
     return (amount * currentBet.value.odds).toFixed(2)
   })
 
@@ -152,6 +158,7 @@ export const useBetStore = defineStore('bet', () => {
     showBetPopup.value = true
     betAmount.value = ''
     betSuccess.value = false
+    quoteChange.value = null
   }
 
   // 关闭投注弹窗
@@ -159,6 +166,7 @@ export const useBetStore = defineStore('bet', () => {
     showBetPopup.value = false
     betAmount.value = ''
     betSuccess.value = false
+    quoteChange.value = null
   }
 
   // 设置投注金额
@@ -174,27 +182,34 @@ export const useBetStore = defineStore('bet', () => {
 
   // 确认投注（调用API）
   async function confirmBet() {
-    if (!currentBet.value || !betAmount.value) return false
+    if (!currentBet.value || !betAmount.value || loading.value || quoteChange.value) {
+      return {
+        success: false,
+        message: '当前投注信息不可提交'
+      }
+    }
     
     const amount = parseFloat(betAmount.value)
-    if (amount <= 0) return false
+    if (amount <= 0) {
+      return {
+        success: false,
+        message: '投注金额必须大于0'
+      }
+    }
 
     try {
       loading.value = true
       
       // 构建投注数据
       const betData = {
-        matchId: currentBet.value.matchId || currentBet.value.id?.toString(),
-        league: currentBet.value.league,
-        homeTeam: currentBet.value.homeTeam,
-        awayTeam: currentBet.value.awayTeam,
-        homeScore: currentBet.value.homeScore || 0,
-        awayScore: currentBet.value.awayScore || 0,
-        betType: currentBet.value.betType || '足球 (滚球) 让球',
-        selection: currentBet.value.selection,
-        value: currentBet.value.value,
-        odds: currentBet.value.odds,
-        amount: amount
+        matchId: currentBet.value.matchId,
+        betMode: currentBet.value.betMode,
+        marketType: currentBet.value.marketType,
+        selectionKey: currentBet.value.selectionKey,
+        quotedValue: currentBet.value.value,
+        quotedOdds: currentBet.value.odds,
+        marketVersion: currentBet.value.marketVersion,
+        amount
       }
       
       // 调用API提交投注
@@ -205,20 +220,58 @@ export const useBetStore = defineStore('bet', () => {
       
       lastBetResult.value = {
         orderId: result.orderId,
-        bet: { ...currentBet.value },
+        bet: {
+          ...currentBet.value,
+          homeScore: result.homeScore,
+          awayScore: result.awayScore,
+          value: result.value,
+          odds: result.odds,
+          marketVersion: result.marketVersion
+        },
         amount: result.amount,
         potentialWin: result.potentialWin,
         timestamp: new Date()
       }
+
+      Object.assign(currentBet.value, lastBetResult.value.bet)
       
       betSuccess.value = true
-      return true
+      return {
+        success: true,
+        order: result
+      }
     } catch (error) {
       console.error('投注失败:', error)
-      return false
+      if (error.data?.reason === 'QUOTE_CHANGED') {
+        quoteChange.value = {
+          oldValue: currentBet.value.value,
+          oldOdds: currentBet.value.odds,
+          currentQuote: error.data.currentQuote
+        }
+      }
+      return {
+        success: false,
+        reason: error.data?.reason,
+        message: error.message
+      }
     } finally {
       loading.value = false
     }
+  }
+
+  // 接受服务端返回的最新盘口，用户仍需再次点击下注
+  function acceptLatestQuote() {
+    if (!quoteChange.value) return
+
+    const latestQuote = quoteChange.value.currentQuote
+    currentBet.value.value = latestQuote.value
+    currentBet.value.odds = latestQuote.odds
+    currentBet.value.marketVersion = latestQuote.marketVersion
+    currentBet.value.homeScore = latestQuote.homeScore
+    currentBet.value.awayScore = latestQuote.awayScore
+    currentBet.value.betPeriod = latestQuote.period
+    currentBet.value.betMinute = latestQuote.minute
+    quoteChange.value = null
   }
 
   // 添加到注单
@@ -255,6 +308,7 @@ export const useBetStore = defineStore('bet', () => {
     betAmount.value = ''
     betSuccess.value = false
     lastBetResult.value = null
+    quoteChange.value = null
   }
 
   // 结算投注（API调用）
@@ -281,6 +335,7 @@ export const useBetStore = defineStore('bet', () => {
     betSuccess,
     lastBetResult,
     loading,
+    quoteChange,
     potentialWin,
     slipCount,
     recordCount,
@@ -292,6 +347,7 @@ export const useBetStore = defineStore('bet', () => {
     setBetAmount,
     addAmount,
     confirmBet,
+    acceptLatestQuote,
     addToSlip,
     removeFromSlip,
     clearSlips,

@@ -41,6 +41,8 @@
   hasVideo: Boolean,                // 是否有视频
   hasCashOut: Boolean,              // 是否可提前兑现
   isLive: Boolean,                  // 是否滚球
+  bettingOpen: Boolean,             // 滚球是否开盘
+  marketVersion: Number,            // 盘口版本
   
   // 赔率
   odds: {
@@ -113,6 +115,14 @@ db.leagues.createIndex({ "country": 1 })
   awayTeam: String,
   homeScore: Number,                // 下注时比分
   awayScore: Number,
+
+  // 服务端成交快照
+  betMode: String,                  // early/live
+  marketType: String,               // handicap/overUnder/moneyline
+  selectionKey: String,             // home/away/over/under/draw
+  betPeriod: String,
+  betMinute: Number,
+  marketVersion: Number,
   
   // 投注信息
   betType: String,                  // 足球 (滚球) 让球

@@ -40,7 +40,10 @@ service.interceptors.response.use(
     } else {
       // 业务错误
       console.error('业务错误:', res.message)
-      return Promise.reject(new Error(res.message || '请求失败'))
+      const businessError = new Error(res.message || '请求失败')
+      businessError.code = res.code
+      businessError.data = res.data
+      return Promise.reject(businessError)
     }
   },
   (error) => {

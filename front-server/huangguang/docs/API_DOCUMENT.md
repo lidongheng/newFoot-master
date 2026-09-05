@@ -147,18 +147,17 @@
 ```json
 {
   "matchId": "match001",
-  "league": "澳大利亚甲组联赛",
-  "homeTeam": "中央海岸水手",
-  "awayTeam": "麦克阿瑟",
-  "homeScore": 0,
-  "awayScore": 0,
-  "betType": "足球 (滚球) 让球",
-  "selection": "麦克阿瑟",
-  "value": "-0.5",
-  "odds": 0.85,
+  "betMode": "live",
+  "marketType": "handicap",
+  "selectionKey": "away",
+  "quotedValue": "-0.5",
+  "quotedOdds": 0.85,
+  "marketVersion": 1,
   "amount": 50.00
 }
 ```
+
+比赛、球队、比分和实际成交盘口均由服务端根据 `matchId` 生成。滚球比赛必须处于开盘状态；盘口版本、盘口值或赔率变化时返回 `code: 409` 和 `data.currentQuote`，用户确认最新盘口后方可重新提交。
 
 **响应数据**
 ```json
@@ -173,6 +172,12 @@
     "awayTeam": "麦克阿瑟",
     "homeScore": 0,
     "awayScore": 0,
+    "betMode": "live",
+    "marketType": "handicap",
+    "selectionKey": "away",
+    "betPeriod": "上半场",
+    "betMinute": 59,
+    "marketVersion": 1,
     "betType": "足球 (滚球) 让球",
     "selection": "麦克阿瑟",
     "value": "-0.5",

@@ -1,0 +1,100 @@
+// 全局样式
+
+// 卡片样式覆盖
+.el-card {
+  border-radius: 8px;
+  
+  &.el-card--shadow-never {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  }
+}
+
+// 表格样式覆盖
+.el-table {
+  --el-table-border-color: #ebeef5;
+  
+  th.el-table__cell {
+    background-color: #fafafa;
+    font-weight: 600;
+  }
+}
+
+// 分页样式
+.el-pagination {
+  justify-content: flex-end;
+}
+
+// 对话框样式
+.el-dialog {
+  border-radius: 8px;
+  
+  .el-dialog__header {
+    border-bottom: 1px solid #ebeef5;
+    padding: 16px 20px;
+    margin-right: 0;
+  }
+  
+  .el-dialog__body {
+    padding: 20px;
+  }
+  
+  .el-dialog__footer {
+    border-top: 1px solid #ebeef5;
+    padding: 12px 20px;
+  }
+}
+
+// 表单项目
+.el-form-item {
+  margin-bottom: 18px;
+}
+
+// 按钮间距
+.el-button + .el-button {
+  margin-left: 8px;
+}
+
+// 消息框样式
+.el-message-box {
+  border-radius: 8px;
+}
+
+// 下拉菜单
+.el-dropdown-menu {
+  border-radius: 6px;
+}
+
+// 标签样式
+.el-tag {
+  border-radius: 4px;
+}
+
+// 输入框聚焦
+.el-input__wrapper:focus-within {
+  box-shadow: 0 0 0 1px #409eff inset, 0 0 0 3px rgba(64, 158, 255, 0.15);
+}
+
+// 动画
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.2s ease;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
