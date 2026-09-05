@@ -163,6 +163,80 @@ class MatchAdminController {
       error(ctx, err.message)
     }
   }
+
+  /**
+   * PUT /admin/match/live/:id
+   * 一次更新滚球比分、阶段、赔率和封盘状态
+   */
+  async updateLive(ctx) {
+    try {
+      const { id } = ctx.params
+      const data = ctx.request.body
+      const requiredFields = ['homeScore', 'awayScore', 'minute', 'period', 'odds', 'bettingOpen']
+
+      for (const field of requiredFields) {
+        if (data[field] === undefined || data[field] === null || data[field] === '') {
+          paramError(ctx, `缺少必填参数: ${field}`)
+          return
+        }
+      }
+
+      if (
+        !Number.isInteger(data.homeScore) ||
+        data.homeScore < 0 ||
+        !Number.isInteger(data.awayScore) ||
+        data.awayScore < 0
+      ) {
+        paramError(ctx, '比分必须为非负整数')
+        return
+      }
+
+      if (!Number.isInteger(data.minute) || data.minute < 0) {
+        paramError(ctx, '比赛分钟必须为非负整数')
+        return
+      }
+
+      if (typeof data.bettingOpen !== 'boolean') {
+        paramError(ctx, '封盘状态必须为布尔值')
+        return
+      }
+
+      const quotes = [
+        data.odds?.handicap?.home,
+        data.odds?.handicap?.away,
+        data.odds?.overUnder?.over,
+        data.odds?.overUnder?.under,
+        data.odds?.moneyline?.home,
+        data.odds?.moneyline?.draw,
+        data.odds?.moneyline?.away
+      ]
+
+      if (quotes.some(quote => !quote || !Number.isFinite(quote.odds) || quote.odds <= 0)) {
+        paramError(ctx, '所有赔率必须为有效正数')
+        return
+      }
+
+      const marketValues = [
+        data.odds.handicap.home.value,
+        data.odds.handicap.away.value,
+        data.odds.overUnder.over.value,
+        data.odds.overUnder.under.value,
+        data.odds.moneyline.home.label,
+        data.odds.moneyline.draw.label,
+        data.odds.moneyline.away.label
+      ]
+
+      if (marketValues.some(value => typeof value !== 'string' || value.trim() === '')) {
+        paramError(ctx, '所有盘口名称不能为空')
+        return
+      }
+
+      const match = await matchAdminService.updateLive(id, data)
+      success(ctx, match, '滚球数据更新成功')
+    } catch (err) {
+      error(ctx, err.message)
+    }
+  }
 }
 
 module.exports = new MatchAdminController()

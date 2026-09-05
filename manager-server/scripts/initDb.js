@@ -11,6 +11,8 @@ const config = require('../config')
 const Match = require('../models/match')
 const League = require('../models/league')
 const Account = require('../models/account')
+const BetOrder = require('../models/betOrder')
+const QuotaLog = require('../models/balanceLog')
 
 // 示例比赛数据
 const sampleMatches = [
@@ -29,6 +31,8 @@ const sampleMatches = [
     hasVideo: true,
     hasCashOut: true,
     isLive: true,
+    bettingOpen: true,
+    marketVersion: 1,
     odds: {
       handicap: {
         home: { value: '+0.5', odds: 1.03 },
@@ -60,6 +64,8 @@ const sampleMatches = [
     hasVideo: true,
     hasCashOut: true,
     isLive: true,
+    bettingOpen: false,
+    marketVersion: 1,
     odds: {
       handicap: {
         home: { value: '-1', odds: 1.04 },
@@ -91,6 +97,8 @@ const sampleMatches = [
     hasVideo: true,
     hasCashOut: true,
     isLive: false,
+    bettingOpen: false,
+    marketVersion: 1,
     odds: {
       handicap: {
         home: { value: '+0.5', odds: 0.92 },
@@ -122,6 +130,8 @@ const sampleMatches = [
     hasVideo: true,
     hasCashOut: true,
     isLive: false,
+    bettingOpen: false,
+    marketVersion: 1,
     odds: {
       handicap: {
         home: { value: '-0.5', odds: 0.94 },
@@ -187,6 +197,8 @@ async function initDatabase() {
     await Match.deleteMany({})
     await League.deleteMany({})
     await Account.deleteMany({})
+    await BetOrder.deleteMany({})
+    await QuotaLog.deleteMany({})
     
     // 初始化账户
     console.log('💰 初始化账户...')

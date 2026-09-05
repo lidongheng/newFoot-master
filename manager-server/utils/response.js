@@ -21,12 +21,13 @@ function success(ctx, data = null, message = 'success') {
  * @param {Object} ctx - Koa 上下文
  * @param {string} message - 错误消息
  * @param {number} code - 错误码
+ * @param {*} data - 错误附加数据
  */
-function error(ctx, message = '操作失败', code = 400) {
+function error(ctx, message = '操作失败', code = 400, data = null) {
   ctx.body = {
     code,
     message,
-    data: null
+    data
   }
 }
 

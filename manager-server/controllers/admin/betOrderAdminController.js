@@ -66,7 +66,20 @@ class BetOrderAdminController {
     try {
       const data = ctx.request.body
       
-      const requiredFields = ['matchId', 'league', 'homeTeam', 'awayTeam', 'betType', 'selection', 'odds', 'amount']
+      const requiredFields = [
+        'matchId',
+        'league',
+        'homeTeam',
+        'awayTeam',
+        'betMode',
+        'marketType',
+        'selectionKey',
+        'marketVersion',
+        'betType',
+        'selection',
+        'odds',
+        'amount'
+      ]
       for (const field of requiredFields) {
         if (data[field] === undefined || data[field] === null || data[field] === '') {
           paramError(ctx, `缺少必填参数: ${field}`)

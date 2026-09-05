@@ -39,6 +39,44 @@ const betOrderSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
+
+  // 投注阶段: early/live
+  betMode: {
+    type: String,
+    enum: ['early', 'live'],
+    required: true
+  },
+
+  // 玩法: handicap/overUnder/moneyline
+  marketType: {
+    type: String,
+    enum: ['handicap', 'overUnder', 'moneyline'],
+    required: true
+  },
+
+  // 具体投注选项
+  selectionKey: {
+    type: String,
+    enum: ['home', 'away', 'over', 'under', 'draw'],
+    required: true
+  },
+
+  // 投注时比赛阶段和分钟
+  betPeriod: {
+    type: String,
+    default: ''
+  },
+  betMinute: {
+    type: Number,
+    default: 0
+  },
+
+  // 投注时服务端确认的盘口版本
+  marketVersion: {
+    type: Number,
+    required: true,
+    min: 1
+  },
   
   // 投注信息
   betType: {

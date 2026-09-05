@@ -68,7 +68,12 @@ class MatchAdminService {
       throw new Error('比赛ID已存在')
     }
     
-    return await Match.create(data)
+    return await Match.create({
+      ...data,
+      isLive: data.status === 'live',
+      bettingOpen: false,
+      marketVersion: 1
+    })
   }
   
   /**
@@ -90,7 +95,27 @@ class MatchAdminService {
       }
     }
     
-    Object.assign(match, data)
+    const updateData = { ...data }
+    delete updateData.marketVersion
+
+    const targetStatus = updateData.status || match.status
+    const statusChanged = targetStatus !== match.status
+    const oddsChanged = updateData.odds && JSON.stringify(updateData.odds) !== JSON.stringify(match.odds)
+
+    if (targetStatus === 'live') {
+      updateData.isLive = true
+      if (statusChanged) {
+        updateData.bettingOpen = false
+      }
+    } else {
+      updateData.isLive = false
+      updateData.bettingOpen = false
+    }
+
+    Object.assign(match, updateData)
+    if (statusChanged || oddsChanged) {
+      match.marketVersion += 1
+    }
     await match.save()
     return match
   }
@@ -129,11 +154,19 @@ class MatchAdminService {
       throw new Error('比赛不存在')
     }
     
+    const statusChanged = match.status !== status
+    const closesOpenMarket = status === 'live' && match.bettingOpen
     match.status = status
     if (status === 'live') {
       match.isLive = true
-    } else if (status === 'finished') {
+      match.bettingOpen = false
+    } else {
       match.isLive = false
+      match.bettingOpen = false
+    }
+
+    if (statusChanged || closesOpenMarket) {
+      match.marketVersion += 1
     }
     
     await match.save()
@@ -154,7 +187,46 @@ class MatchAdminService {
     
     match.homeScore = homeScore
     match.awayScore = awayScore
+    if (match.status === 'live') {
+      match.marketVersion += 1
+    }
     await match.save()
+    return match
+  }
+
+  /**
+   * 原子更新滚球比分、阶段、赔率和封盘状态
+   */
+  async updateLive(id, data) {
+    const match = await Match.findOneAndUpdate(
+      {
+        _id: id,
+        status: 'live',
+        isLive: true
+      },
+      {
+        $set: {
+          homeScore: data.homeScore,
+          awayScore: data.awayScore,
+          minute: data.minute,
+          period: data.period,
+          odds: data.odds,
+          bettingOpen: data.bettingOpen
+        },
+        $inc: {
+          marketVersion: 1
+        }
+      },
+      {
+        returnDocument: 'after',
+        runValidators: true
+      }
+    )
+
+    if (!match) {
+      throw new Error('比赛不存在或当前不是滚球状态')
+    }
+
     return match
   }
 }

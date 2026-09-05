@@ -28,4 +28,7 @@ router.put('/status/:id', matchAdminController.updateStatus)
 // 更新比分
 router.put('/score/:id', matchAdminController.updateScore)
 
+// 更新滚球数据
+router.put('/live/:id', matchAdminController.updateLive)
+
 module.exports = router

@@ -38,29 +38,73 @@ class QuotaService {
    */
   async deductForBet(amount, orderId) {
     const account = await Account.getAccount()
-    const quotaBefore = account.quota
-    
-    if (quotaBefore < amount) {
+    const accountBefore = await Account.findOneAndUpdate(
+      {
+        _id: account._id,
+        quota: { $gte: amount }
+      },
+      {
+        $inc: { quota: -amount }
+      },
+      {
+        returnDocument: 'before'
+      }
+    )
+
+    if (!accountBefore) {
       throw new Error('额度不足')
     }
-    
+
+    const quotaBefore = accountBefore.quota
     const quotaAfter = quotaBefore - amount
+
+    try {
+      // 记录额度变动日志
+      await QuotaLog.create({
+        type: 'bet',
+        amount: -amount,
+        quotaBefore,
+        quotaAfter,
+        relatedOrderId: orderId,
+        quotaDate: accountBefore.lastResetDate,
+        remark: '投注'
+      })
+    } catch (err) {
+      await Account.updateOne(
+        { _id: accountBefore._id },
+        { $inc: { quota: amount } }
+      )
+      throw err
+    }
     
-    // 更新账户额度
-    account.quota = quotaAfter
-    await account.save()
-    
-    // 记录额度变动日志
+    return quotaAfter
+  }
+
+  /**
+   * 订单创建失败时退还本次投注扣减
+   * @param {number} amount - 退还金额
+   * @param {string} orderId - 订单号
+   */
+  async refundFailedBet(amount, orderId) {
+    const account = await Account.getAccount()
+    const accountBefore = await Account.findOneAndUpdate(
+      { _id: account._id },
+      { $inc: { quota: amount } },
+      { returnDocument: 'before' }
+    )
+    const quotaBefore = accountBefore.quota
+    const quotaAfter = quotaBefore + amount
+
     await QuotaLog.create({
-      type: 'bet',
-      amount: -amount,
+      type: 'adjust',
+      amount,
       quotaBefore,
       quotaAfter,
       relatedOrderId: orderId,
-      quotaDate: account.lastResetDate,
-      remark: '投注'
+      quotaDate: accountBefore.lastResetDate,
+      remark: '订单创建失败退还'
     })
-    
+
     return quotaAfter
   }
   

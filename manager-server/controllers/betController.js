@@ -14,15 +14,39 @@ class BetController {
       const betData = ctx.request.body
       
       // 参数校验
-      const requiredFields = ['matchId', 'league', 'homeTeam', 'awayTeam', 'betType', 'selection', 'odds', 'amount']
+      const requiredFields = [
+        'matchId',
+        'betMode',
+        'marketType',
+        'selectionKey',
+        'quotedValue',
+        'quotedOdds',
+        'marketVersion',
+        'amount'
+      ]
       for (const field of requiredFields) {
         if (betData[field] === undefined || betData[field] === null || betData[field] === '') {
           paramError(ctx, `缺少必填参数: ${field}`)
           return
         }
       }
-      
-      if (betData.amount <= 0) {
+
+      if (!['early', 'live'].includes(betData.betMode)) {
+        paramError(ctx, '无效的投注阶段')
+        return
+      }
+
+      if (!Number.isFinite(betData.quotedOdds) || betData.quotedOdds <= 0) {
+        paramError(ctx, '赔率必须为有效正数')
+        return
+      }
+
+      if (!Number.isInteger(betData.marketVersion) || betData.marketVersion < 1) {
+        paramError(ctx, '盘口版本无效')
+        return
+      }
+
+      if (!Number.isFinite(betData.amount) || betData.amount <= 0) {
         paramError(ctx, '投注金额必须大于0')
         return
       }
@@ -30,7 +54,7 @@ class BetController {
       const order = await betService.placeBet(betData)
       success(ctx, order, '投注成功')
     } catch (err) {
-      error(ctx, err.message)
+      error(ctx, err.message, err.code || 400, err.data || null)
     }
   }
   

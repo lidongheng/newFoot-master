@@ -39,3 +39,9 @@ exports.info = (content) => {
   logger.level = levels.info;
   logger.info(content);
 }
+
+exports.warn = (content) => {
+  const logger = log4js.getLogger('warn')
+  logger.level = levels.warn
+  logger.warn(content)
+}

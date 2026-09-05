@@ -184,6 +184,8 @@ interface Match {
   hasVideo: boolean              // 是否有视频
   hasCashOut: boolean            // 是否可提前兑现
   isLive: boolean                // 是否滚球
+  bettingOpen: boolean           // 滚球是否开盘
+  marketVersion: number          // 盘口版本
   
   // 赔率
   odds: MatchOdds
@@ -1082,6 +1084,7 @@ DELETE /admin/match/delete/:id        删除
 POST   /admin/match/batch-delete      批量删除
 PUT    /admin/match/status/:id        更新状态
 PUT    /admin/match/score/:id         更新比分
+PUT    /admin/match/live/:id          更新滚球数据
 ```
 
 ### 联赛管理

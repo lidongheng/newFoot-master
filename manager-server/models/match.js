@@ -80,6 +80,19 @@ const matchSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+
+  // 滚球是否开放投注
+  bettingOpen: {
+    type: Boolean,
+    required: true
+  },
+
+  // 盘口版本，滚球信息或赔率变化时递增
+  marketVersion: {
+    type: Number,
+    required: true,
+    min: 1
+  },
   
   // 赔率
   odds: {

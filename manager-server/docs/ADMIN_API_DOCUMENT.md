@@ -185,6 +185,38 @@
 
 ---
 
+### 1.9 更新滚球数据
+**PUT** `/admin/match/live/:id`
+
+比赛必须处于 `live` 状态。接口一次更新比分、分钟、阶段、三类赔率和开盘状态，成功后 `marketVersion` 自动递增。
+
+```json
+{
+  "homeScore": 1,
+  "awayScore": 0,
+  "minute": 59,
+  "period": "下半场",
+  "bettingOpen": true,
+  "odds": {
+    "handicap": {
+      "home": { "value": "+0.5", "odds": 1.03 },
+      "away": { "value": "-0.5", "odds": 0.85 }
+    },
+    "overUnder": {
+      "over": { "value": "大 2.5", "odds": 1.01 },
+      "under": { "value": "小 2.5", "odds": 0.86 }
+    },
+    "moneyline": {
+      "home": { "label": "主", "odds": 4.05 },
+      "draw": { "label": "和", "odds": 3.45 },
+      "away": { "label": "客", "odds": 1.84 }
+    }
+  }
+}
+```
+
+---
+
 ## 二、联赛管理 `/admin/league`
 
 ### 2.1 获取联赛列表
@@ -502,6 +534,7 @@
 | POST | `/admin/match/batch-delete` | 批量删除 |
 | PUT | `/admin/match/status/:id` | 更新状态 |
 | PUT | `/admin/match/score/:id` | 更新比分 |
+| PUT | `/admin/match/live/:id` | 更新滚球数据并递增盘口版本 |
 
 ### 联赛管理
 | 方法 | 路径 | 说明 |

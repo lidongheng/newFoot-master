@@ -6,7 +6,6 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const log4js = require('./utils/log4j')
-const db = require('./config/db')
 
 // 页面路由
 const index = require('./routes/index')
@@ -20,9 +19,6 @@ const adminRouter = require('./routes/admin')
 
 // error handler
 onerror(app)
-
-// 连接数据库
-db.connect()
 
 // middlewares
 app.use(bodyparser({

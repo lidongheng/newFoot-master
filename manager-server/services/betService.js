@@ -6,7 +6,7 @@
  * - 结算时不管输赢走，额度不增加
  * - actualWin 仅作为记录，不影响额度
  */
-const { BetOrder } = require('../models')
+const { BetOrder, Match } = require('../models')
 const quotaService = require('./balanceService')
 
 class BetService {
@@ -30,9 +30,9 @@ class BetService {
    * @param {number} odds - 赔率/水位
    * @param {string} betType - 投注类型
    */
-  calculatePotentialWin(amount, odds, betType) {
+  calculatePotentialWin(amount, odds, marketType) {
     let profit
-    if (betType === 'euroOdds') {
+    if (marketType === 'moneyline') {
       // 欧赔：赔率含本金，例如赔率3.00，投500，利润=500*(3-1)=1000
       profit = amount * (odds - 1)
     } else {
@@ -40,6 +40,90 @@ class BetService {
       profit = amount * odds
     }
     return parseFloat(profit.toFixed(2))
+  }
+
+  /**
+   * 创建带业务信息的投注错误
+   */
+  createBetError(message, code, data) {
+    const err = new Error(message)
+    err.code = code
+    err.data = data
+    return err
+  }
+
+  /**
+   * 获取指定玩法和选项的服务端盘口
+   */
+  getMarketQuote(match, marketType, selectionKey) {
+    const validSelections = {
+      handicap: ['home', 'away'],
+      overUnder: ['over', 'under'],
+      moneyline: ['home', 'draw', 'away']
+    }
+
+    if (!validSelections[marketType] || !validSelections[marketType].includes(selectionKey)) {
+      throw this.createBetError('无效的玩法或投注选项', 400, {
+        reason: 'INVALID_MARKET_SELECTION'
+      })
+    }
+
+    const quote = match.odds[marketType][selectionKey]
+    const value = marketType === 'moneyline' ? quote.label : quote.value
+
+    if (!value || !Number.isFinite(quote.odds) || quote.odds <= 0) {
+      throw this.createBetError('当前盘口不可投注', 409, {
+        reason: 'MARKET_UNAVAILABLE'
+      })
+    }
+
+    return {
+      marketType,
+      selectionKey,
+      value,
+      odds: quote.odds,
+      marketVersion: match.marketVersion,
+      homeScore: match.homeScore,
+      awayScore: match.awayScore,
+      period: match.period,
+      minute: match.minute,
+      bettingOpen: match.bettingOpen,
+      status: match.status
+    }
+  }
+
+  /**
+   * 获取投注选项显示名称
+   */
+  getSelectionName(match, marketType, selectionKey) {
+    if (marketType === 'handicap') {
+      return selectionKey === 'home' ? match.homeTeam : match.awayTeam
+    }
+
+    if (marketType === 'overUnder') {
+      return selectionKey === 'over' ? '大' : '小'
+    }
+
+    if (selectionKey === 'home') {
+      return match.homeTeam
+    }
+    if (selectionKey === 'away') {
+      return match.awayTeam
+    }
+    return '平局'
+  }
+
+  /**
+   * 获取投注类型显示名称
+   */
+  getBetType(betMode, marketType) {
+    const modeName = betMode === 'live' ? '滚球' : '早盘'
+    const marketNames = {
+      handicap: '让球',
+      overUnder: '大小',
+      moneyline: '独赢'
+    }
+    return `足球 (${modeName}) ${marketNames[marketType]}`
   }
   
   /**
@@ -49,46 +133,88 @@ class BetService {
   async placeBet(betData) {
     const {
       matchId,
-      league,
-      homeTeam,
-      awayTeam,
-      homeScore = 0,
-      awayScore = 0,
-      betType,
-      selection,
-      value,
-      odds,
+      betMode,
+      marketType,
+      selectionKey,
+      quotedValue,
+      quotedOdds,
+      marketVersion,
       amount
     } = betData
-    
+
+    const match = await Match.findOne({ matchId })
+    if (!match) {
+      throw this.createBetError('比赛不存在', 404, {
+        reason: 'MATCH_NOT_FOUND'
+      })
+    }
+
+    if (betMode === 'live') {
+      if (match.status !== 'live' || !match.isLive) {
+        throw this.createBetError('比赛当前不是滚球状态', 409, {
+          reason: 'MATCH_NOT_LIVE'
+        })
+      }
+      if (!match.bettingOpen) {
+        throw this.createBetError('比赛已封盘', 409, {
+          reason: 'BETTING_CLOSED'
+        })
+      }
+    } else if (match.status !== 'upcoming' || match.isLive) {
+      throw this.createBetError('比赛当前不可进行早盘投注', 409, {
+        reason: 'EARLY_BETTING_CLOSED'
+      })
+    }
+
+    const currentQuote = this.getMarketQuote(match, marketType, selectionKey)
+    if (
+      marketVersion !== currentQuote.marketVersion ||
+      quotedValue !== currentQuote.value ||
+      quotedOdds !== currentQuote.odds
+    ) {
+      throw this.createBetError('盘口或赔率已变化，请确认最新赔率', 409, {
+        reason: 'QUOTE_CHANGED',
+        currentQuote
+      })
+    }
+
     // 生成订单号
     const orderId = this.generateOrderId()
-    
+
     // 计算预计可赢（利润）
-    const potentialWin = this.calculatePotentialWin(amount, odds, betType)
-    
+    const potentialWin = this.calculatePotentialWin(amount, currentQuote.odds, marketType)
+
     // 扣除额度
     await quotaService.deductForBet(amount, orderId)
-    
-    // 创建投注订单
-    const order = await BetOrder.create({
-      orderId,
-      matchId,
-      league,
-      homeTeam,
-      awayTeam,
-      homeScore,
-      awayScore,
-      betType,
-      selection,
-      value,
-      odds,
-      amount,
-      potentialWin,
-      status: 'pending'
-    })
-    
-    return order
+
+    try {
+      // 订单信息全部使用服务端比赛快照
+      return await BetOrder.create({
+        orderId,
+        matchId: match.matchId,
+        league: match.league,
+        homeTeam: match.homeTeam,
+        awayTeam: match.awayTeam,
+        homeScore: match.homeScore,
+        awayScore: match.awayScore,
+        betMode,
+        marketType,
+        selectionKey,
+        betPeriod: match.period,
+        betMinute: match.minute,
+        marketVersion: match.marketVersion,
+        betType: this.getBetType(betMode, marketType),
+        selection: this.getSelectionName(match, marketType, selectionKey),
+        value: currentQuote.value,
+        odds: currentQuote.odds,
+        amount,
+        potentialWin,
+        status: 'pending'
+      })
+    } catch (err) {
+      await quotaService.refundFailedBet(amount, orderId)
+      throw err
+    }
   }
   
   /**

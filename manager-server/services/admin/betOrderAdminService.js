@@ -112,9 +112,9 @@ class BetOrderAdminService {
    * - 亚盘(handicap)/大小(overUnder)：水位不含本金，利润 = 投注额 × 水位
    * - 欧赔(euroOdds)：赔率含本金，利润 = 投注额 × (赔率 - 1)
    */
-  calculatePotentialWin(amount, odds, betType) {
+  calculatePotentialWin(amount, odds, marketType) {
     let profit
-    if (betType === 'euroOdds') {
+    if (marketType === 'moneyline') {
       profit = amount * (odds - 1)
     } else {
       profit = amount * odds
@@ -139,7 +139,7 @@ class BetOrderAdminService {
     
     // 计算预计可赢（利润）
     if (data.amount && data.odds) {
-      data.potentialWin = this.calculatePotentialWin(data.amount, data.odds, data.betType)
+      data.potentialWin = this.calculatePotentialWin(data.amount, data.odds, data.marketType)
     }
     
     return await BetOrder.create(data)
@@ -165,11 +165,11 @@ class BetOrderAdminService {
     }
     
     // 重新计算预计可赢（利润）
-    if (data.amount || data.odds || data.betType) {
+    if (data.amount || data.odds || data.marketType) {
       const amount = data.amount || order.amount
       const odds = data.odds || order.odds
-      const betType = data.betType || order.betType
-      data.potentialWin = this.calculatePotentialWin(amount, odds, betType)
+      const marketType = data.marketType || order.marketType
+      data.potentialWin = this.calculatePotentialWin(amount, odds, marketType)
     }
     
     Object.assign(order, data)
