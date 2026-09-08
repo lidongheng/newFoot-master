@@ -460,9 +460,10 @@ MONGO_URI=mongodb://127.0.0.1:27017/football pnpm init-db
 
 ## 11. 使用 systemd 管理后端
 
-创建 `/etc/systemd/system/newfoot-manager.service`：
+在 root 终端执行下面整段 Bash 命令，直接创建 `/etc/systemd/system/newfoot-manager.service`。开头和结尾的 `EOF` 也要一起复制：
 
-```ini
+```bash
+cat > /etc/systemd/system/newfoot-manager.service <<'EOF'
 [Unit]
 Description=newFoot manager server
 After=network-online.target mongod.service
@@ -481,11 +482,14 @@ RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
+EOF
 ```
 
-加载并启动服务：
+检查配置文件并加载、启动服务：
 
 ```bash
+cat /etc/systemd/system/newfoot-manager.service
+systemd-analyze verify /etc/systemd/system/newfoot-manager.service
 systemctl daemon-reload
 systemctl enable --now newfoot-manager
 systemctl --no-pager status newfoot-manager
@@ -502,9 +506,10 @@ journalctl -u newfoot-manager -f
 
 ## 12. 配置 Nginx
 
-创建 `/etc/nginx/sites-available/newFoot`：
+在 root 终端执行下面整段 Bash 命令，直接创建 `/etc/nginx/sites-available/newFoot`：
 
-```nginx
+```bash
+cat > /etc/nginx/sites-available/newFoot <<'EOF'
 server {
     listen 80 default_server;
     server_name 129.225.166.130 _;
@@ -540,16 +545,19 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
+EOF
 ```
 
-启用配置：
+检查刚写入的配置，然后启用站点：
 
 ```bash
+cat /etc/nginx/sites-available/newFoot
 rm -f /etc/nginx/sites-enabled/default
 test -L /etc/nginx/sites-enabled/newFoot || ln -s /etc/nginx/sites-available/newFoot /etc/nginx/sites-enabled/newFoot
 nginx -t
-systemctl enable nginx
+systemctl enable --now nginx
 systemctl reload nginx
+systemctl --no-pager status nginx
 ```
 
 如果软链接已存在，不要重复创建；直接执行 `nginx -t` 和 reload。
@@ -561,7 +569,7 @@ systemctl reload nginx
 ```bash
 ufw allow OpenSSH
 ufw allow 80/tcp
-ufw enable
+ufw --force enable
 ufw status verbose
 ```
 
