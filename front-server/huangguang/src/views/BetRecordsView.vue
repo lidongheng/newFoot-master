@@ -322,16 +322,22 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import TopNavBar from '@/components/TopNavBar.vue'
 import BottomTabBar from '@/components/BottomTabBar.vue'
 import { useBetStore, useAccountStore, useUserStore } from '@/store'
+import {
+  formatFixedTime,
+  getRecentFixedDates,
+  useFixedGmtMinusFourClock
+} from '@/composables/useFixedGmtMinusFourTime';
 
 const router = useRouter()
 const betStore = useBetStore()
 const accountStore = useAccountStore()
 const userStore = useUserStore()
+const { currentTime } = useFixedGmtMinusFourClock();
 
 const mainTab = ref('transaction')
 
@@ -352,17 +358,7 @@ const showToDatePicker = ref(false)
 
 // 动态生成最近7天日期选项（倒序，最新日期在前）
 const generateDateOptions = () => {
-  const options = []
-  const today = new Date()
-  for (let i = 0; i < 7; i++) {
-    const date = new Date()
-    date.setDate(today.getDate() - i)
-    const year = date.getFullYear()
-    const month = String(date.getMonth() + 1).padStart(2, '0')
-    const day = String(date.getDate()).padStart(2, '0')
-    options.push(`${year}-${month}-${day}`)
-  }
-  return options // 已经是倒序（今天在第一个）
+  return getRecentFixedDates(7);
 }
 
 const dateOptions = generateDateOptions()
@@ -416,10 +412,7 @@ const fetchDayBets = async (date) => {
     // 格式化投注记录
     const records = data.list || data || []
     dayBets.value = records.map(record => {
-      const createdAt = new Date(record.createdAt || record.timestamp)
-      const hours = createdAt.getHours().toString().padStart(2, '0')
-      const minutes = createdAt.getMinutes().toString().padStart(2, '0')
-      const seconds = createdAt.getSeconds().toString().padStart(2, '0')
+      const time = formatFixedTime(record.createdAt || record.timestamp);
       
       // 根据 result 计算赢/输金额
       let winLoss = null
@@ -471,7 +464,7 @@ const fetchDayBets = async (date) => {
         winLoss: winLoss,
         resultText: record.result === 'push' ? '注单平局' : null,
         orderId: record.orderId,
-        time: `${hours}:${minutes}:${seconds}`,
+        time,
         market: '香港盘',
         needConfirm: record.result === 'push'
       }
@@ -527,9 +520,6 @@ const formatNumber = (num) => {
   return num.toLocaleString()
 }
 
-// 定时器ID
-let timeInterval = null
-
 // 页面加载时获取数据
 onMounted(async () => {
   // 获取数据
@@ -539,16 +529,6 @@ onMounted(async () => {
     userStore.fetchBalance()
   ])
   
-  // 更新当前时间
-  updateCurrentTime()
-  timeInterval = setInterval(updateCurrentTime, 1000)
-})
-
-// 清理定时器
-onUnmounted(() => {
-  if (timeInterval) {
-    clearInterval(timeInterval)
-  }
 })
 
 // 计算总共 - 从store获取汇总数据
@@ -570,10 +550,7 @@ const scrollToTop = () => {
 const pendingBets = computed(() => {
   const records = betStore.pendingBets
   return records.map(record => {
-    const date = new Date(record.createdAt || record.timestamp)
-    const hours = date.getHours().toString().padStart(2, '0')
-    const minutes = date.getMinutes().toString().padStart(2, '0')
-    const seconds = date.getSeconds().toString().padStart(2, '0')
+    const time = formatFixedTime(record.createdAt || record.timestamp);
     
     return {
       league: record.league || '未知联赛',
@@ -587,7 +564,7 @@ const pendingBets = computed(() => {
       amount: record.amount?.toFixed(2) || '0.00',
       potentialWin: record.potentialWin?.toFixed(2) || '0.00',
       orderId: record.orderId,
-      time: `${hours}:${minutes}:${seconds}`,
+      time,
       market: '香港盘'
     }
   })
@@ -596,16 +573,6 @@ const pendingBets = computed(() => {
 const totalAmount = computed(() => {
   return pendingBets.value.reduce((sum, bet) => sum + parseFloat(bet.amount), 0).toFixed(2)
 })
-
-// 当前时间
-const currentTime = ref('')
-const updateCurrentTime = () => {
-  const now = new Date()
-  const hours = now.getHours().toString().padStart(2, '0')
-  const minutes = now.getMinutes().toString().padStart(2, '0')
-  const seconds = now.getSeconds().toString().padStart(2, '0')
-  currentTime.value = `${hours}:${minutes}:${seconds}`
-}
 
 
 // 获取结果样式类

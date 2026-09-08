@@ -7,6 +7,7 @@
  * - 额度只减不增（除了每日重置）
  */
 const mongoose = require('mongoose')
+const { getFixedDate } = require('../utils/fixedTimezone');
 
 // 默认额度
 const DEFAULT_QUOTA = 50000.00
@@ -38,25 +39,8 @@ const Account = mongoose.model('Account', accountSchema)
  *       北京时间 1月18日 13:00 → 额度日期为 1月18日
  */
 Account.getCurrentQuotaDate = function() {
-  const now = new Date()
-  // 获取北京时间（UTC+8）
-  const beijingOffset = 8 * 60 * 60 * 1000
-  const beijingTime = new Date(now.getTime() + beijingOffset)
-  
-  // 获取北京时间的小时
-  const beijingHours = beijingTime.getUTCHours()
-  
-  // 如果北京时间小于12点，属于前一天的额度日期
-  if (beijingHours < 12) {
-    beijingTime.setUTCDate(beijingTime.getUTCDate() - 1)
-  }
-  
-  // 返回日期字符串 YYYY-MM-DD
-  const year = beijingTime.getUTCFullYear()
-  const month = String(beijingTime.getUTCMonth() + 1).padStart(2, '0')
-  const day = String(beijingTime.getUTCDate()).padStart(2, '0')
-  
-  return `${year}-${month}-${day}`
+  // 固定 GMT-4 零点就是北京时间12点，且全年不跟随夏令时变化。
+  return getFixedDate();
 }
 
 /**

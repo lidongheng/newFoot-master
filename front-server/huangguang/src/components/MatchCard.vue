@@ -17,7 +17,7 @@
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
             </svg>
           </span>
-          <span class="match-time">{{ match.time }}</span>
+          <span class="match-time">{{ matchTime }}</span>
         </div>
         
         <div class="teams-wrapper">
@@ -130,8 +130,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue';
 import { useBetStore } from '@/store'
+import { formatFixedHourMinute } from '@/composables/useFixedGmtMinusFourTime';
 
 const props = defineProps({
   match: {
@@ -143,6 +144,7 @@ const props = defineProps({
 const betStore = useBetStore()
 const isFavorite = ref(false)
 const selectedOdds = ref('')
+const matchTime = computed(() => formatFixedHourMinute(props.match.startTime));
 
 // 格式化赔率，保留两位小数
 const formatOdds = (odds) => {

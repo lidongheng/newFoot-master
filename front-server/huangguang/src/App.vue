@@ -9,7 +9,10 @@
 </template>
 
 <script setup>
-// App 根组件
+import { useQuotaDayRefresh } from '@/composables/useQuotaDayRefresh';
+
+// 根组件统一监听固定 GMT-4 跨日，确保任意页面打开时都能刷新额度。
+useQuotaDayRefresh();
 </script>
 
 <style lang="less">

@@ -99,6 +99,8 @@ apt install -y ca-certificates curl gnupg git lsof nginx rsync unzip ufw build-e
 timedatectl set-timezone Asia/Shanghai
 ```
 
+服务器保留上海时区用于系统日志。业务时间由代码显式处理：admin 按北京时间录入比赛，huangguang 全年固定使用 GMT-4，额度在固定 GMT-4 的 00:00（北京时间 12:00）切换，不跟随美国夏令时。
+
 创建部署目录和仓库外的运行日志目录：
 
 ```bash
@@ -599,6 +601,8 @@ ss -lntp | grep -E ':80|:3000|:4000|:27017'
 - MongoDB 只监听 `127.0.0.1:27017`
 
 ## 14. 日常发布流程
+
+服务器环境已经安装完成后，优先使用独立的 [`VPS发版方案.md`](./VPS发版方案.md)。该文档包含提交与构建包一致性校验、线上静态文件备份、发布验收和回滚步骤。
 
 每次发布都先在 Windows 按第 9.1 节更新代码、安装完整依赖、构建并重新生成以下文件：
 

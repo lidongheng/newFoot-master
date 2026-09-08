@@ -397,7 +397,11 @@
 import { ref, reactive, onMounted } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Search, Refresh, Plus, Delete } from '@element-plus/icons-vue'
-import dayjs from 'dayjs'
+import {
+  beijingInputToIso,
+  formatBeijingTime,
+  utcToBeijingInputDate
+} from '@/composables/useBeijingMatchTime';
 import {
   getMatchList,
   createMatch,
@@ -571,7 +575,7 @@ function handleEdit(row) {
     leagueIcon: row.leagueIcon,
     homeTeam: row.homeTeam,
     awayTeam: row.awayTeam,
-    startTime: row.startTime,
+    startTime: utcToBeijingInputDate(row.startTime),
     status: row.status,
     hasVideo: row.hasVideo,
     hasCashOut: row.hasCashOut,
@@ -615,7 +619,7 @@ async function handleSubmit() {
   try {
     const submitData = {
       ...formData,
-      startTime: new Date(formData.startTime).toISOString()
+      startTime: beijingInputToIso(formData.startTime)
     }
     
     if (isEdit.value) {
@@ -781,7 +785,7 @@ function getStatusText(status) {
 
 // 格式化日期
 function formatDate(dateStr) {
-  return dayjs(dateStr).format('YYYY-MM-DD HH:mm')
+  return formatBeijingTime(dateStr);
 }
 
 onMounted(() => {

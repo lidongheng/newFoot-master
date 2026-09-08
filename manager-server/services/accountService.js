@@ -4,10 +4,11 @@
  * 时区规则：
  * - 比赛开始时间录入时使用北京时间（东八区 UTC+8）
  * - 数据库存储时自动转换为 UTC（北京时间 - 8小时）
- * - 查询规则：查询1月18日 = 北京1月18日12:00 ~ 1月19日12:00
+ * - 查询规则：查询1月18日 = 固定 GMT-4 的1月18日00:00 ~ 1月19日00:00
  *   - 转换为UTC: 1月18日04:00 ~ 1月19日04:00
  */
 const { BetOrder, Match } = require('../models')
+const { fixedDateToUtcRange } = require('../utils/fixedTimezone');
 
 class AccountService {
   /**
@@ -19,15 +20,7 @@ class AccountService {
    * @returns {Object} { start: Date, end: Date } UTC 时间范围
    */
   dateToUtcRange(dateStr) {
-    const [year, month, day] = dateStr.split('-').map(Number)
-    
-    // 北京时间 D 的 12:00 = UTC D 的 04:00
-    const start = new Date(Date.UTC(year, month - 1, day, 4, 0, 0, 0))
-    
-    // 北京时间 D+1 的 12:00 = UTC D+1 的 04:00
-    const end = new Date(Date.UTC(year, month - 1, day + 1, 4, 0, 0, 0))
-    
-    return { start, end }
+    return fixedDateToUtcRange(dateStr);
   }
   
   /**

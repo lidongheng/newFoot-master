@@ -2,6 +2,7 @@
  * 比赛业务逻辑服务
  */
 const { Match, League } = require('../models')
+const { fixedDateToUtcRange, getFixedDate } = require('../utils/fixedTimezone');
 
 class MatchService {
   /**
@@ -22,15 +23,13 @@ class MatchService {
    * @param {string} sportId - 体育类型
    */
   async getTodayMatches(sportId = 'football') {
-    const today = new Date()
-    today.setHours(0, 0, 0, 0)
-    const tomorrow = new Date(today)
-    tomorrow.setDate(tomorrow.getDate() + 1)
+    // 今日赛事按全年固定 GMT-4 划日，不受服务器系统时区影响。
+    const { start, end } = fixedDateToUtcRange(getFixedDate());
     
     const matches = await Match.find({
       startTime: {
-        $gte: today,
-        $lt: tomorrow
+        $gte: start,
+        $lt: end
       }
     }).sort({ startTime: 1 })
     

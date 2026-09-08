@@ -7,6 +7,7 @@
  * - actualWin 仅作为记录，不影响额度
  */
 const { BetOrder, Match } = require('../models')
+const { fixedDateToUtcRange } = require('../utils/fixedTimezone');
 const quotaService = require('./balanceService')
 
 class BetService {
@@ -241,12 +242,10 @@ class BetService {
     if (startDate || endDate) {
       query.createdAt = {}
       if (startDate) {
-        query.createdAt.$gte = new Date(startDate)
+        query.createdAt.$gte = fixedDateToUtcRange(startDate).start;
       }
       if (endDate) {
-        const end = new Date(endDate)
-        end.setDate(end.getDate() + 1)
-        query.createdAt.$lt = end
+        query.createdAt.$lt = fixedDateToUtcRange(endDate).end;
       }
     }
     

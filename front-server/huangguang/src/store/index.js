@@ -6,6 +6,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import * as api from '@/api'
+import { formatFixedDate } from '@/composables/useFixedGmtMinusFourTime';
 
 // 用户账户Store
 export const useUserStore = defineStore('user', () => {
@@ -34,8 +35,10 @@ export const useUserStore = defineStore('user', () => {
       loading.value = true
       const data = await api.getBalance()
       balance.value = data.balance
+      return true;
     } catch (error) {
       console.error('获取余额失败:', error)
+      return false;
     } finally {
       loading.value = false
     }
@@ -480,10 +483,7 @@ export const useAccountStore = defineStore('account', () => {
   
   // 格式化日期为 YYYY-MM-DD
   const formatDate = (date) => {
-    const year = date.getFullYear()
-    const month = String(date.getMonth() + 1).padStart(2, '0')
-    const day = String(date.getDate()).padStart(2, '0')
-    return `${year}-${month}-${day}`
+    return formatFixedDate(date);
   }
   
   // 计算最近7天的日期范围

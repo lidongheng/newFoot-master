@@ -148,6 +148,7 @@ import { useRouter } from 'vue-router'
 import { useAccountStore } from '@/store'
 import TopNavBar from '@/components/TopNavBar.vue'
 import BottomTabBar from '@/components/BottomTabBar.vue'
+import { getRecentFixedDates } from '@/composables/useFixedGmtMinusFourTime';
 
 const router = useRouter()
 const accountStore = useAccountStore()
@@ -183,19 +184,11 @@ const history = computed(() => accountStore.history)
 
 // 生成最近7天的日期选项
 const generateDateOptions = () => {
-  const options = []
-  const today = new Date()
-  for (let i = 0; i < 7; i++) {
-    const date = new Date()
-    date.setDate(today.getDate() - i)
-    const year = date.getFullYear()
-    const month = String(date.getMonth() + 1).padStart(2, '0')
-    const day = String(date.getDate()).padStart(2, '0')
-    const dateStr = `${year}-${month}-${day}`
-    const displayStr = `${month}月${day}日`
-    options.push({ name: displayStr, value: dateStr })
-  }
-  return options
+  return getRecentFixedDates(7).map(dateStr => {
+    const [, month, day] = dateStr.split('-');
+    const displayStr = `${month}月${day}日`;
+    return { name: displayStr, value: dateStr };
+  });
 }
 
 const dateOptions = ref(generateDateOptions())

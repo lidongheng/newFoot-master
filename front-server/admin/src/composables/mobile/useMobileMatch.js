@@ -1,6 +1,10 @@
 import { computed, reactive, ref } from 'vue';
-import dayjs from 'dayjs';
 import { showToast } from 'vant';
+import {
+  beijingInputToIso,
+  formatBeijingTime,
+  utcToBeijingInputText,
+} from '@/composables/useBeijingMatchTime';
 import {
   batchDeleteMatches,
   createMatch,
@@ -167,7 +171,7 @@ export function useMobileMatch() {
       leagueIcon: row.leagueIcon,
       homeTeam: row.homeTeam,
       awayTeam: row.awayTeam,
-      startTime: dayjs(row.startTime).format('YYYY-MM-DDTHH:mm'),
+      startTime: utcToBeijingInputText(row.startTime),
       status: row.status,
       hasVideo: row.hasVideo,
       hasCashOut: row.hasCashOut,
@@ -205,7 +209,7 @@ export function useMobileMatch() {
     try {
       const data = {
         ...clone(formData),
-        startTime: new Date(formData.startTime).toISOString(),
+        startTime: beijingInputToIso(formData.startTime),
       };
       if (isEdit.value) {
         await updateMatch(currentEditId.value, data);
@@ -359,7 +363,7 @@ export function useMobileMatch() {
   }
 
   function formatDate(value) {
-    return dayjs(value).format('YYYY-MM-DD HH:mm');
+    return formatBeijingTime(value);
   }
 
   function statusText(status) {

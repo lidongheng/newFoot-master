@@ -69,7 +69,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useMatchStore, useUserStore } from '@/store'
 import TopNavBar from '@/components/TopNavBar.vue'
@@ -77,6 +77,7 @@ import SportCategoryBar from '@/components/SportCategoryBar.vue'
 import SubFilterTabs from '@/components/SubFilterTabs.vue'
 import BottomTabBar from '@/components/BottomTabBar.vue'
 import BetPopup from '@/components/BetPopup.vue'
+import { useFixedGmtMinusFourClock } from '@/composables/useFixedGmtMinusFourTime';
 
 const router = useRouter()
 const matchStore = useMatchStore()
@@ -92,8 +93,7 @@ const activeFilter = ref('pre')
 const showEmpty = ref(true)
 
 // 当前时间
-const currentTime = ref('23:08:06')
-let timeInterval = null
+const { currentTime } = useFixedGmtMinusFourClock();
 
 // 筛选标签
 const filterTabs = ref([
@@ -104,15 +104,6 @@ const filterTabs = ref([
   { key: 'hour6', label: '下六个小时' },
   { key: 'fantasy', label: '梦幻赛' }
 ])
-
-// 更新时间
-const updateTime = () => {
-  const now = new Date()
-  const hours = String(now.getHours()).padStart(2, '0')
-  const minutes = String(now.getMinutes()).padStart(2, '0')
-  const seconds = String(now.getSeconds()).padStart(2, '0')
-  currentTime.value = `${hours}:${minutes}:${seconds}`
-}
 
 // 处理运动类型切换
 const handleSportChange = async (sport) => {
@@ -137,20 +128,11 @@ const handleSwitchChange = (type) => {
 }
 
 onMounted(async () => {
-  updateTime()
-  timeInterval = setInterval(updateTime, 1000)
-  
   // 获取余额和今日比赛数据
   await Promise.all([
     userStore.fetchBalance(),
     matchStore.fetchTodayMatches(currentSport.value)
   ])
-})
-
-onUnmounted(() => {
-  if (timeInterval) {
-    clearInterval(timeInterval)
-  }
 })
 </script>
 
