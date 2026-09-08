@@ -605,7 +605,11 @@ function handleLeagueChange(val) {
 
 // 提交表单
 async function handleSubmit() {
-  await formRef.value?.validate()
+  try {
+    await formRef.value?.validate();
+  } catch (e) {
+    return;
+  }
   
   submitLoading.value = true
   try {

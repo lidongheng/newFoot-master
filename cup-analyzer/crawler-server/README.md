@@ -4,11 +4,12 @@
 
 ## 环境
 
-建议使用 **Node.js LTS**（与团队开发机版本对齐）。安装依赖：
+使用 **Node.js 20.19+** 和 **pnpm 9.15.9**。依赖由仓库根工作区统一安装：
 
 ```bash
-cd cup-analyzer/crawler-server
-npm install
+cd ../..
+pnpm install --frozen-lockfile
+pnpm dev:crawler
 ```
 
 ## Windows 与手动设置环境变量

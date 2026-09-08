@@ -81,19 +81,20 @@ src/
 ### 安装依赖
 
 ```bash
-pnpm install
+cd ../..
+pnpm install --frozen-lockfile
 ```
 
 ### 开发模式
 
 ```bash
-pnpm run serve
+pnpm dev:huangguang
 ```
 
 ### 生产构建
 
 ```bash
-pnpm run build
+pnpm build:huangguang
 ```
 
 ## 🎨 设计规范

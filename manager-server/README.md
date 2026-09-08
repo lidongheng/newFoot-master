@@ -6,21 +6,22 @@
 
 ### 环境要求
 
-- Node.js 18+
+- Node.js 20.19+
 - MongoDB 8.x（确保服务已启动）
-- pnpm（包管理器）
+- pnpm 9.15.9
 
 ### 安装运行
 
 ```bash
-# 1. 安装依赖
-pnpm install
+# 1. 在仓库根目录安装全部工作区依赖
+cd ..
+pnpm install --frozen-lockfile
 
-# 2. 初始化数据库（首次运行必须执行）
-pnpm run init-db
+# 2. 首次部署时手动初始化数据库（可能重置数据）
+pnpm init-db
 
 # 3. 启动开发服务器
-pnpm run dev
+pnpm dev:manager
 ```
 
 服务将运行在 `http://localhost:3000`
@@ -203,9 +204,9 @@ POST   /balance-logs/batch-delete  批量删除日志
 
 | 命令 | 说明 |
 |------|------|
-| `pnpm run dev` | 开发模式启动（热重载） |
-| `pnpm run start` | 生产模式启动 |
-| `pnpm run init-db` | 初始化/重置数据库 |
+| `pnpm dev:manager` | 从仓库根目录启动开发模式（热重载） |
+| `pnpm start:manager` | 从仓库根目录启动生产模式 |
+| `pnpm init-db` | 从仓库根目录初始化/重置数据库 |
 
 ---
 

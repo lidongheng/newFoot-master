@@ -95,13 +95,50 @@ command -v node
 
 systemd 不会自动加载交互式 Shell 中的 NVM 环境。后面配置 `ExecStart` 时，必须使用 `command -v node` 输出的绝对路径，不能直接假定 Node 位于 `/usr/bin/node`。
 
-安装 pnpm：
+当前 VPS 的 pnpm 11.17.0 必须降级为 9.15.9。先确认命令来源，避免 PATH 中残留的其他版本覆盖刚安装的版本：
+
+```bash
+type -a pnpm
+command -v pnpm
+npm prefix -g
+corepack --version
+pnpm --version
+```
+
+如果 `pnpm` 由 Corepack 管理，执行：
 
 ```bash
 corepack enable
-corepack prepare pnpm@latest --activate
+corepack prepare pnpm@9.15.9 --activate
+hash -r
+```
+
+如果 `command -v pnpm` 指向当前 NVM Node 的全局 npm 目录，则使用 npm 降级：
+
+```bash
+npm install -g pnpm@9.15.9
+hash -r
+```
+
+如果 VPS 使用 pnpm 独立安装脚本，则按[官方指定版本安装方式](https://pnpm.io/installation#installing-a-specific-version)重新安装：
+
+```bash
+curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=9.15.9 sh -
+hash -r
+```
+
+以上三种方式只选择与 `command -v pnpm` 对应的一种。使用 NVM 时，必须在实际部署用户及 systemd 对应的 Node 环境中执行。若版本仍为 11.17.0，再次运行 `type -a pnpm` 检查 PATH 顺序并处理明确识别出的旧入口，不要直接删除未知目录。
+
+分别在仓库外和仓库根目录验证版本：
+
+```bash
+cd /tmp
+pnpm --version
+cd /var/www/newFoot-master
 pnpm --version
 ```
+
+两处都必须输出 `9.15.9`。仓库要求 Node.js 20.19.0 或更高版本；当前 Node.js 24.7.0 可以继续使用。
 
 安装 MongoDB 时，使用 MongoDB 官方针对当前 Ubuntu 版本的 APT 仓库，不建议直接混用其他 Ubuntu 版本的 MongoDB 仓库。
 
@@ -144,27 +181,39 @@ test -f /var/www/newFoot-master/front-server/admin/package.json
 test -f /var/www/newFoot-master/front-server/huangguang/package.json
 ```
 
-当前父仓库把这两个前端目录记录为 gitlink，但没有 `.gitmodules`。全新 clone 如果缺少上述文件，不能继续构建；需要先在主仓库中把前端目录整理为普通目录，或者补齐可用的子模块地址。已有完整前端源码的 VPS 目录可以继续使用。
+两个前端目录均由主仓库作为普通目录管理，全新 clone 后可以直接通过根工作区安装和构建。
 
-## 6. 构建两个前端
+## 6. 安装工作区依赖并构建前端
 
-管理端：
-
-```bash
-cd /var/www/newFoot-master/front-server/admin
-pnpm install --frozen-lockfile
-pnpm run build
-```
-
-如果安装出现 `ERR_PNPM_IGNORED_BUILDS`，应先在本地审核并通过 `pnpm approve-builds` 明确允许需要执行脚本的依赖，再把生成的 `pnpm-workspace.yaml` 提交到对应前端仓库。不要只在 VPS 上临时批准，否则下次全新部署仍会遇到同一问题。
-
-用户端：
+所有工作区依赖都在仓库根目录统一安装，构建过程需要前端开发依赖：
 
 ```bash
-cd /var/www/newFoot-master/front-server/huangguang
-pnpm install --frozen-lockfile
-pnpm run build
+cd /var/www/newFoot-master
+pnpm install --frozen-lockfile --prod=false
+pnpm build
 ```
+
+如果安装或任一前端构建失败，停止发布，不要覆盖当前线上静态文件。
+
+### 首次从 pnpm 11 迁移
+
+安排维护窗口并先停止后端。在确认当前命令版本已经是 pnpm 9.15.9 后，删除这 5 个工作区项目及根目录中由旧 pnpm 生成的依赖目录，再按根锁文件重新安装：
+
+```bash
+sudo systemctl stop newfoot-manager
+rm -rf /var/www/newFoot-master/node_modules
+rm -rf /var/www/newFoot-master/front-server/admin/node_modules
+rm -rf /var/www/newFoot-master/front-server/huangguang/node_modules
+rm -rf /var/www/newFoot-master/manager-server/node_modules
+rm -rf /var/www/newFoot-master/backend-server/node_modules
+rm -rf /var/www/newFoot-master/cup-analyzer/crawler-server/node_modules
+cd /var/www/newFoot-master
+pnpm install --frozen-lockfile --prod=false
+pnpm build
+sudo systemctl start newfoot-manager
+```
+
+这些命令不会删除根 `pnpm-lock.yaml`、数据库、日志或 `/etc/newfoot/manager-server.env`。数据库初始化不属于迁移步骤。
 
 准备静态文件目录：
 
@@ -195,14 +244,7 @@ sudo find /var/www/newfoot-frontend -type f -exec chmod 644 {} \;
 
 ## 7. 初始化和配置 manager-server
 
-安装后端依赖：
-
-```bash
-cd /var/www/newFoot-master/manager-server
-pnpm install --prod --frozen-lockfile
-```
-
-生产环境使用 `--prod`，不会安装仅用于开发的 `nodemon`，因此不需要在 VPS 上授权 `nodemon` 的安装脚本。
+manager-server 的依赖已经由根目录的工作区安装命令统一安装，无需进入子目录再次安装。
 
 创建环境变量文件：
 
@@ -225,11 +267,11 @@ MONGO_URI=mongodb://127.0.0.1:27017/football
 sudo chmod 600 /etc/newfoot/manager-server.env
 ```
 
-首次部署初始化数据库：
+首次部署需要初始化数据库时，必须先确认目标连接串。该脚本可能重置业务数据，只允许手动执行，不要加入日常发布流程：
 
 ```bash
-cd /var/www/newFoot-master/manager-server
-MONGO_URI=mongodb://127.0.0.1:27017/football pnpm run init-db
+cd /var/www/newFoot-master
+MONGO_URI=mongodb://127.0.0.1:27017/football pnpm init-db
 ```
 
 ## 8. 使用 systemd 管理后端
@@ -387,24 +429,15 @@ ss -lntp | grep -E ':80|:3000|:27017'
 cd /var/www/newFoot-master
 git fetch origin
 git pull --ff-only origin main
-
-cd front-server/admin
-pnpm install --frozen-lockfile
-pnpm run build
-sudo rsync -a --delete dist/ /var/www/newfoot-frontend/admin/
-
-cd ../huangguang
-pnpm install --frozen-lockfile
-pnpm run build
-sudo rsync -a --delete dist/ /var/www/newfoot-frontend/huangguang/
-
-cd ../../manager-server
-pnpm install --prod --frozen-lockfile
+pnpm install --frozen-lockfile --prod=false
+pnpm build
+sudo rsync -a --delete front-server/admin/dist/ /var/www/newfoot-frontend/admin/
+sudo rsync -a --delete front-server/huangguang/dist/ /var/www/newfoot-frontend/huangguang/
 sudo systemctl restart newfoot-manager
 sudo systemctl reload nginx
 ```
 
-如果后端依赖或环境变量发生变化，重启后端前先确认 `pnpm install --frozen-lockfile` 和环境变量文件正确。
+如果依赖或环境变量发生变化，重启后端前先确认根目录安装成功且环境变量文件正确。`backend-server` 和 `cup-analyzer/crawler-server` 仅属于 monorepo 工作区，本方案不新增它们的线上服务。
 
 ## 12. 验收清单
 

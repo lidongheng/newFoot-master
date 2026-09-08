@@ -1,0 +1,27 @@
+{
+  "name": "newfoot-master",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@9.15.9",
+  "engines": {
+    "node": ">=20.19.0",
+    "pnpm": ">=9 <10"
+  },
+  "scripts": {
+    "dev": "pnpm --parallel --filter admin --filter huangguang --filter manager-server run dev",
+    "dev:all": "pnpm --parallel --recursive run dev",
+    "dev:admin": "pnpm --filter admin run dev",
+    "dev:huangguang": "pnpm --filter huangguang run dev",
+    "dev:manager": "pnpm --filter manager-server run dev",
+    "dev:backend": "pnpm --filter backend-server run dev",
+    "dev:crawler": "pnpm --filter cup-analyzer-crawler-server run dev",
+    "build": "pnpm --filter admin --filter huangguang run build",
+    "build:admin": "pnpm --filter admin run build",
+    "build:huangguang": "pnpm --filter huangguang run build",
+    "start:manager": "pnpm --filter manager-server run start",
+    "start:backend": "pnpm --filter backend-server run start",
+    "start:crawler": "pnpm --filter cup-analyzer-crawler-server run start",
+    "test:manager": "pnpm --filter manager-server run test",
+    "init-db": "pnpm --filter manager-server run init-db"
+  }
+}

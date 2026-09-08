@@ -2,17 +2,18 @@
 
 ## Project setup
 ```
-pnpm install
+cd ../..
+pnpm install --frozen-lockfile
 ```
 
 ### Compiles and hot-reloads for development
 ```
-pnpm run serve
+pnpm dev:admin
 ```
 
 ### Compiles and minifies for production
 ```
-pnpm run build
+pnpm build:admin
 ```
 
 ### Customize configuration

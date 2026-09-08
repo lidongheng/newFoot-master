@@ -5,11 +5,9 @@
 ## 安装依赖
 
 ```bash
-# 使用pnpm
-pnpm install
-
-# 或使用npm
-npm install
+# 在仓库根目录统一安装
+cd ..
+pnpm install --frozen-lockfile
 ```
 
 ## 启动服务器
@@ -17,11 +15,7 @@ npm install
 ### 开发模式（带热更新）
 
 ```bash
-# 使用pnpm
-pnpm dev
-
-# 或使用npm
-npm run dev
+pnpm dev:backend
 ```
 
 使用开发模式启动服务器后，每当你修改代码，服务器会自动重启，无需手动停止和启动。
@@ -29,11 +23,7 @@ npm run dev
 ### 生产模式
 
 ```bash
-# 使用pnpm
-pnpm start
-
-# 或使用npm
-npm start
+pnpm start:backend
 ```
 
 ## 项目结构
@@ -245,4 +235,4 @@ analyzer.analyze()
   - 只使用球衣号码作为唯一标识符
   - 自动合并同一球衣号码的不同名称球员（如"科尔威尔"和"列维·科尔威尔"）
   - 保留所有球员名称变体在 `alternativeNames` 数组中
-- 提高了数据一致性，解决了同一球员在不同比赛中名称略有差异导致的统计数据分散问题 
+- 提高了数据一致性，解决了同一球员在不同比赛中名称略有差异导致的统计数据分散问题
