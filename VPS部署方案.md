@@ -11,6 +11,7 @@
 - pnpm：固定 `9.15.9`
 - MongoDB：8.0 Community Edition，只监听本机
 - Web 服务：Nginx + systemd
+- 前端构建：在 Windows 本地完成，VPS 只接收并发布构建包
 
 线上运行以下项目：
 
@@ -94,7 +95,7 @@ nproc
 ```bash
 apt update
 apt upgrade -y
-apt install -y ca-certificates curl gnupg git nginx rsync ufw build-essential
+apt install -y ca-certificates curl gnupg git nginx rsync unzip ufw build-essential
 timedatectl set-timezone Asia/Shanghai
 ```
 
@@ -309,26 +310,119 @@ test -f front-server/huangguang/package.json
 test -f manager-server/package.json
 ```
 
-## 9. 安装依赖并构建前端
+## 9. 在 Windows 构建前端并上传发布包
 
-2 核 12G 内存可以在 VPS 构建。项目根 `build` 已设置 `workspace-concurrency=1`，两个前端仍会顺序构建，降低峰值资源占用：
+VPS 不执行两个前端的依赖安装和构建。Windows 负责从同一 Git 提交构建两个前端，再通过 MobaXterm SFTP 上传 ZIP；VPS 只安装 manager-server 的生产依赖并解压静态文件。
 
-```bash
-cd /var/www/newFoot-master
-nvm use
+### 9.1 在 Windows 构建
+
+Windows 需要安装 Node.js 22 和 pnpm 9.15.9。打开 PowerShell，进入 Windows 上的项目根目录。下面的 `D:\workspace\newFoot-master` 替换为实际路径：
+
+```powershell
+cd 'D:\workspace\newFoot-master'
+git switch main
+git pull --ff-only origin main
+git status --short
+node --version
+npm install -g pnpm@9.15.9
+pnpm --version
 pnpm install --frozen-lockfile --prod=false
 pnpm build
 ```
 
-只有两个前端都构建成功后才发布静态文件：
+`git status --short` 在安装前必须没有输出，`pnpm --version` 必须为 `9.15.9`。`pnpm build` 会顺序构建 admin 和 huangguang；任意一个构建失败都停止本次发布。
+
+确认两个构建入口存在，然后在 Windows 桌面的 `newfoot-release` 目录生成两个前端 ZIP 和提交标识文件：
+
+```powershell
+Test-Path '.\front-server\admin\dist\index.html'
+Test-Path '.\front-server\huangguang\dist\index.html'
+$releaseDir = Join-Path $env:USERPROFILE 'Desktop\newfoot-release'
+New-Item -ItemType Directory -Force -Path $releaseDir | Out-Null
+Remove-Item -Path (Join-Path $releaseDir '*') -Recurse -Force -ErrorAction SilentlyContinue
+Compress-Archive -Path '.\front-server\admin\dist\*' -DestinationPath (Join-Path $releaseDir 'admin-dist.zip')
+Compress-Archive -Path '.\front-server\huangguang\dist\*' -DestinationPath (Join-Path $releaseDir 'huangguang-dist.zip')
+git rev-parse HEAD | Set-Content -NoNewline -Encoding ascii (Join-Path $releaseDir 'release-commit.txt')
+Get-FileHash -Algorithm SHA256 (Join-Path $releaseDir 'admin-dist.zip')
+Get-FileHash -Algorithm SHA256 (Join-Path $releaseDir 'huangguang-dist.zip')
+Get-Content (Join-Path $releaseDir 'release-commit.txt')
+```
+
+两个 `Test-Path` 都必须输出 `True`。记录两个 ZIP 的 SHA-256 和 `release-commit.txt` 中的 Git 提交值。
+
+### 9.2 使用 MobaXterm SFTP 上传
+
+先在 MobaXterm 的 root 终端确认上传目录仍允许 `ubuntu` 用户写入：
 
 ```bash
-rsync -a --delete front-server/admin/dist/ /var/www/newfoot-frontend/admin/
-rsync -a --delete front-server/huangguang/dist/ /var/www/newfoot-frontend/huangguang/
+mkdir -p /home/ubuntu/upload
+chown ubuntu:ubuntu /home/ubuntu/upload
+chmod 700 /home/ubuntu/upload
+```
+
+在 MobaXterm 左侧 SFTP 地址栏进入 `/home/ubuntu/upload`，从 Windows 桌面的 `newfoot-release` 目录拖入以下三个文件；同名文件已经存在时选择覆盖：
+
+- `admin-dist.zip`
+- `huangguang-dist.zip`
+- `release-commit.txt`
+
+等待三个文件全部上传完成。在 root 终端校验文件：
+
+```bash
+ls -lh /home/ubuntu/upload/admin-dist.zip
+ls -lh /home/ubuntu/upload/huangguang-dist.zip
+cat /home/ubuntu/upload/release-commit.txt
+sha256sum /home/ubuntu/upload/admin-dist.zip
+sha256sum /home/ubuntu/upload/huangguang-dist.zip
+```
+
+两个 SHA-256 必须分别与 Windows PowerShell 的结果一致。
+
+### 9.3 VPS 安装后端依赖并发布前端
+
+进入 VPS 仓库，确认源码提交与 Windows 构建提交完全一致：
+
+```bash
+cd /var/www/newFoot-master
+nvm use
+test "$(tr -d '\r\n' < /home/ubuntu/upload/release-commit.txt)" = "$(git rev-parse HEAD)"
+```
+
+`test` 返回码必须为 `0`。可以立即执行下面的命令确认；输出也必须是 `0`：
+
+```bash
+echo $?
+```
+
+VPS 只安装 manager-server 运行所需的生产依赖，不安装前端开发依赖，也不运行 `pnpm build`：
+
+```bash
+pnpm --filter manager-server install --frozen-lockfile --prod
+```
+
+先把两个 ZIP 解压到临时目录并检查 `index.html`：
+
+```bash
+rm -rf /tmp/newfoot-release
+mkdir -p /tmp/newfoot-release/admin
+mkdir -p /tmp/newfoot-release/huangguang
+unzip -q /home/ubuntu/upload/admin-dist.zip -d /tmp/newfoot-release/admin
+unzip -q /home/ubuntu/upload/huangguang-dist.zip -d /tmp/newfoot-release/huangguang
+test -f /tmp/newfoot-release/admin/index.html
+test -f /tmp/newfoot-release/huangguang/index.html
+```
+
+两个 `test` 都返回成功后，才执行静态文件替换：
+
+```bash
+rsync -a --delete /tmp/newfoot-release/admin/ /var/www/newfoot-frontend/admin/
+rsync -a --delete /tmp/newfoot-release/huangguang/ /var/www/newfoot-frontend/huangguang/
 chown -R www-data:www-data /var/www/newfoot-frontend
 find /var/www/newfoot-frontend -type d -exec chmod 755 {} \;
 find /var/www/newfoot-frontend -type f -exec chmod 644 {} \;
 ```
+
+保留上传的 ZIP，直到整套部署验收完成。
 
 ## 10. 配置 manager-server
 
@@ -485,29 +579,53 @@ ss -lntp | grep -E ':80|:3000|:27017'
 
 ## 14. 日常发布流程
 
-在 VPS 上执行：
+每次发布都先在 Windows 按第 9.1 节更新代码、安装完整依赖、构建并重新生成以下文件：
+
+- `admin-dist.zip`
+- `huangguang-dist.zip`
+- `release-commit.txt`
+
+按第 9.2 节通过 MobaXterm SFTP 上传并核对 SHA-256。然后在 VPS 更新同一 Git 提交：
 
 ```bash
 cd /var/www/newFoot-master
 git fetch origin
 git pull --ff-only origin main
 nvm use
-pnpm install --frozen-lockfile --prod=false
-pnpm build
+test "$(tr -d '\r\n' < /home/ubuntu/upload/release-commit.txt)" = "$(git rev-parse HEAD)"
+echo $?
 ```
 
-如果安装或构建失败，到此停止，继续使用当前线上静态文件和正在运行的后端。全部成功后再发布：
+只有输出 `0` 才安装 manager-server 的生产依赖：
 
 ```bash
-rsync -a --delete front-server/admin/dist/ /var/www/newfoot-frontend/admin/
-rsync -a --delete front-server/huangguang/dist/ /var/www/newfoot-frontend/huangguang/
+pnpm --filter manager-server install --frozen-lockfile --prod
+```
+
+只要提交检查或后端依赖安装失败，就停止发布，继续保留当前线上版本。全部成功后解压并检查临时目录：
+
+```bash
+rm -rf /tmp/newfoot-release
+mkdir -p /tmp/newfoot-release/admin
+mkdir -p /tmp/newfoot-release/huangguang
+unzip -q /home/ubuntu/upload/admin-dist.zip -d /tmp/newfoot-release/admin
+unzip -q /home/ubuntu/upload/huangguang-dist.zip -d /tmp/newfoot-release/huangguang
+test -f /tmp/newfoot-release/admin/index.html
+test -f /tmp/newfoot-release/huangguang/index.html
+```
+
+两个 `test` 都成功后才替换线上静态文件并重启后端：
+
+```bash
+rsync -a --delete /tmp/newfoot-release/admin/ /var/www/newfoot-frontend/admin/
+rsync -a --delete /tmp/newfoot-release/huangguang/ /var/www/newfoot-frontend/huangguang/
 chown -R www-data:www-data /var/www/newfoot-frontend
 systemctl restart newfoot-manager
 nginx -t
 systemctl reload nginx
 ```
 
-数据库初始化不属于日常发布步骤。
+VPS 日常发布过程中不执行 `pnpm build`，也不安装两个前端的开发依赖。数据库初始化不属于日常发布步骤。
 
 ## 15. 验收清单
 
