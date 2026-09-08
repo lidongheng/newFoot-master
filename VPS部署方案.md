@@ -17,7 +17,7 @@
 
 - `front-server/huangguang`：用户端前端，访问 `/huangguang/`
 - `front-server/admin`：管理端前端，访问 `/admin/`
-- `manager-server`：Koa API，监听 3000 端口，由两层防火墙禁止公网访问
+- `manager-server`：Koa API，监听 4000 端口，由两层防火墙禁止公网访问
 
 `backend-server` 和 `cup-analyzer/crawler-server` 继续属于 pnpm workspace，但本方案不启动它们。
 
@@ -38,7 +38,7 @@ Internet :80
 Nginx
     |-- /huangguang/ -> /var/www/newfoot-frontend/huangguang/
     |-- /admin/      -> /var/www/newfoot-frontend/admin/
-    |-- /api/        -> http://127.0.0.1:3000
+    |-- /api/        -> http://127.0.0.1:4000
                               |
                               v
                         manager-server
@@ -52,7 +52,7 @@ Oracle Cloud 和 Ubuntu 两层防火墙只开放：
 - `22/tcp`：SSH，建议仅允许自己的固定公网 IP
 - `80/tcp`：HTTP，来源 `0.0.0.0/0`
 
-不要开放 `3000`、`5000`、`5001` 和 `27017`。
+不要开放 `3000`、`4000`、`5000`、`5001` 和 `27017`。其中 3000 继续由现有 Docker 服务使用，manager-server 不再使用该端口。
 
 ## 3. 重装系统与 Oracle Cloud 网络
 
@@ -426,19 +426,15 @@ find /var/www/newfoot-frontend -type f -exec chmod 644 {} \;
 
 ## 10. 配置 manager-server
 
-创建生产环境变量文件：
+3000 端口由现有 `docker-proxy` 使用，因此 manager-server 改为 4000。执行下面整段 Bash 命令创建或覆盖生产环境变量文件：
 
 ```bash
 mkdir -p /etc/newfoot
-vim /etc/newfoot/manager-server.env
-```
-
-写入：
-
-```env
+cat > /etc/newfoot/manager-server.env <<'EOF'
 NODE_ENV=production
-PORT=3000
+PORT=4000
 MONGO_URI=mongodb://127.0.0.1:27017/football
+EOF
 ```
 
 限制权限并让服务用户可读：
@@ -495,22 +491,22 @@ systemd-analyze verify /etc/systemd/system/newfoot-manager.service
 systemctl daemon-reload
 ```
 
-首次让 systemd 接管服务前，先停止当前重启循环，然后检查 3000 端口：
+首次让 systemd 接管服务前，先停止当前重启循环，然后检查 4000 端口：
 
 ```bash
 systemctl stop newfoot-manager
 systemctl reset-failed newfoot-manager
-ss -lntp '( sport = :3000 )'
-lsof -nP -iTCP:3000 -sTCP:LISTEN
+ss -lntp '( sport = :4000 )'
+lsof -nP -iTCP:4000 -sTCP:LISTEN
 ```
 
-如果最后两条命令有输出，说明仍有旧进程占用 3000，先按第 16 节的“3000 端口被占用”步骤处理。确认两条命令都没有输出后，才能启动 systemd 服务：
+如果最后两条命令有输出，说明已有进程占用 4000，先按第 16 节的“4000 端口被占用”步骤处理。确认两条命令都没有输出后，才能启动 systemd 服务：
 
 ```bash
 systemctl enable newfoot-manager
 systemctl start newfoot-manager
 systemctl --no-pager status newfoot-manager
-curl http://127.0.0.1:3000/api/v1/system/time
+curl http://127.0.0.1:4000/api/v1/system/time
 ```
 
 systemd 使用 `/var/lib/newfoot` 作为工作目录，应用文件日志会写入 `/var/lib/newfoot/logs`，不会修改 Git 仓库中的已跟踪日志文件。
@@ -554,7 +550,7 @@ server {
     }
 
     location /api/ {
-        proxy_pass http://127.0.0.1:3000;
+        proxy_pass http://127.0.0.1:4000;
         proxy_http_version 1.1;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
@@ -593,13 +589,13 @@ ufw status verbose
 确认监听端口：
 
 ```bash
-ss -lntp | grep -E ':80|:3000|:27017'
+ss -lntp | grep -E ':80|:3000|:4000|:27017'
 ```
 
 预期结果：
 
 - Nginx 对外监听 `0.0.0.0:80`
-- manager-server 监听 3000，但 Oracle Cloud 和 UFW 均未开放该端口
+- Docker 服务继续监听 3000；manager-server 监听 4000，Oracle Cloud 和 UFW 均不开放这两个端口
 - MongoDB 只监听 `127.0.0.1:27017`
 
 ## 14. 日常发布流程
@@ -665,7 +661,7 @@ systemctl is-active nginx
 检查本机和公网接口：
 
 ```bash
-curl http://127.0.0.1:3000/api/v1/system/time
+curl http://127.0.0.1:4000/api/v1/system/time
 curl -I http://129.225.166.130/
 curl -I http://129.225.166.130/huangguang/
 curl -I http://129.225.166.130/admin/
@@ -680,24 +676,24 @@ curl http://129.225.166.130/api/v1/system/time
 4. 管理端 `/api/v1/admin/...` 请求正常。
 5. Hash Router 页面刷新不出现 404。
 6. 重启 VPS 后 MongoDB、manager-server 和 Nginx 自动恢复。
-7. 公网无法直接访问 3000 和 27017 端口。
+7. 公网无法直接访问 3000、4000 和 27017 端口。
 
 ## 16. 故障排查
 
-### 16.1 3000 端口被占用，服务反复重启
+### 16.1 4000 端口被占用，服务反复重启
 
-日志出现 `Port 3000 is already in use` 时，先停止 systemd 的重启循环：
+日志出现 `Port 4000 is already in use` 时，先停止 systemd 的重启循环：
 
 ```bash
 systemctl stop newfoot-manager
 systemctl reset-failed newfoot-manager
 ```
 
-查出监听 3000 端口的进程。不要直接执行 `kill -9`，先确认 PID 和启动命令：
+查出监听 4000 端口的进程。不要直接执行 `kill -9`，先确认 PID 和启动命令：
 
 ```bash
-ss -lntp '( sport = :3000 )'
-lsof -nP -iTCP:3000 -sTCP:LISTEN
+ss -lntp '( sport = :4000 )'
+lsof -nP -iTCP:4000 -sTCP:LISTEN
 ```
 
 将第一行的数字替换成 `lsof` 输出中的实际 PID：
@@ -735,15 +731,15 @@ echo
   systemctl disable --now "$OLD_SERVICE"
   ```
 
-再次确认 3000 端口没有监听进程，然后启动唯一的 `newfoot-manager` 服务：
+再次确认 4000 端口没有监听进程，然后启动唯一的 `newfoot-manager` 服务：
 
 ```bash
-ss -lntp '( sport = :3000 )'
-lsof -nP -iTCP:3000 -sTCP:LISTEN
+ss -lntp '( sport = :4000 )'
+lsof -nP -iTCP:4000 -sTCP:LISTEN
 systemctl start newfoot-manager
 systemctl --no-pager status newfoot-manager
 journalctl -u newfoot-manager -n 50 --no-pager
-curl http://127.0.0.1:3000/api/v1/system/time
+curl http://127.0.0.1:4000/api/v1/system/time
 ```
 
 修订后的 unit 使用 `Restart=on-failure`，并限制 60 秒内最多尝试 5 次，避免端口冲突时无限重启。
@@ -755,7 +751,7 @@ journalctl -u newfoot-manager -n 100 --no-pager
 journalctl -u mongod -n 100 --no-pager
 tail -n 100 /var/log/nginx/error.log
 nginx -t
-curl http://127.0.0.1:3000/api/v1/system/time
+curl http://127.0.0.1:4000/api/v1/system/time
 export NVM_DIR="$HOME/.nvm"
 . "$NVM_DIR/nvm.sh"
 node --version
