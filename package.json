@@ -15,7 +15,7 @@
     "dev:manager": "pnpm --filter manager-server run dev",
     "dev:backend": "pnpm --filter backend-server run dev",
     "dev:crawler": "pnpm --filter cup-analyzer-crawler-server run dev",
-    "build": "pnpm --filter admin --filter huangguang run build",
+    "build": "pnpm --workspace-concurrency=1 --filter admin --filter huangguang run build",
     "build:admin": "pnpm --filter admin run build",
     "build:huangguang": "pnpm --filter huangguang run build",
     "start:manager": "pnpm --filter manager-server run start",

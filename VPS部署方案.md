@@ -1,259 +1,345 @@
-# newFoot VPS 部署方案
+# newFoot Oracle Cloud VPS 部署方案
 
 ## 1. 部署目标
 
-本方案将以下项目部署到 Ubuntu 22.04/24.04 VPS：
+本方案用于全新安装 Oracle Cloud 弹性云服务器，配置如下：
 
-- `front-server/huangguang`：用户端前端，访问地址为 `/huangguang/`
-- `front-server/admin`：管理端前端，访问地址为 `/admin/`
-- `manager-server`：Koa 后端，监听 `3000` 端口，由防火墙禁止公网直接访问
-- MongoDB：部署在 VPS 本机，仅监听 `127.0.0.1:27017`
+- 公网 IP：`129.225.166.130`
+- 操作系统：Ubuntu 24.04 LTS
+- 配置：2 核 CPU、12G 内存
+- Node.js：22.x，由 NVM 管理
+- pnpm：固定 `9.15.9`
+- MongoDB：8.0 Community Edition，只监听本机
+- Web 服务：Nginx + systemd
 
-方案不使用 Docker，公网只通过 Nginx 提供 HTTP 80 端口。
+线上运行以下项目：
 
-最终访问结构：
+- `front-server/huangguang`：用户端前端，访问 `/huangguang/`
+- `front-server/admin`：管理端前端，访问 `/admin/`
+- `manager-server`：Koa API，监听 3000 端口，由两层防火墙禁止公网访问
+
+`backend-server` 和 `cup-analyzer/crawler-server` 继续属于 pnpm workspace，但本方案不启动它们。
+
+最终访问地址：
 
 ```text
-http://35.212.225.24/huangguang/
-http://35.212.225.24/admin/
-http://35.212.225.24/api/...
+http://129.225.166.130/huangguang/
+http://129.225.166.130/admin/
+http://129.225.166.130/api/...
 ```
 
-当前直接使用 VPS 公网 IP `35.212.225.24`。以后绑定域名时，再同步修改 Nginx 的 `server_name`。
-
-> 当前方案按要求使用 HTTP。HTTP 会明文传输登录信息和业务数据，正式环境建议后续增加 HTTPS。
-
-## 2. 部署架构
+## 2. 部署结构
 
 ```text
-浏览器
-  |
-  | HTTP :80
-  v
+Internet :80
+    |
+    v
 Nginx
-  |-- /huangguang/ -> /var/www/newfoot-frontend/huangguang/
-  |-- /admin/      -> /var/www/newfoot-frontend/admin/
-  |-- /api/        -> http://127.0.0.1:3000
-  v
-manager-server
-  |
-  v
-MongoDB 127.0.0.1:27017
+    |-- /huangguang/ -> /var/www/newfoot-frontend/huangguang/
+    |-- /admin/      -> /var/www/newfoot-frontend/admin/
+    |-- /api/        -> http://127.0.0.1:3000
+                              |
+                              v
+                        manager-server
+                              |
+                              v
+                    MongoDB 127.0.0.1:27017
 ```
 
-公网防火墙只开放 SSH 和 HTTP：
+Oracle Cloud 和 Ubuntu 两层防火墙只开放：
 
-- `22/tcp`：SSH
-- `80/tcp`：HTTP
-- 不开放 `3000/tcp`
-- 不开放 `27017/tcp`
+- `22/tcp`：SSH，建议仅允许自己的固定公网 IP
+- `80/tcp`：HTTP，来源 `0.0.0.0/0`
 
-## 3. 代码配置要求
+不要开放 `3000`、`5000`、`5001` 和 `27017`。
 
-两个前端通过子路径部署，因此需要设置生产资源路径。
+## 3. 重装系统与 Oracle Cloud 网络
 
-`front-server/admin/vue.config.js`：
+在 Oracle Cloud 控制台为实例重新安装 Ubuntu 24.04 LTS 镜像，并保留或重新绑定公网 IP `129.225.166.130`。重装会清空系统盘，执行前应确认旧实例没有需要保留的数据库或配置。
 
-```js
-module.exports = defineConfig({
-  publicPath: '/admin/',
-  // 其他现有配置保持不变
-})
-```
+在实例所在子网的 [Security List](https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/securitylists.htm) 或关联的 Network Security Group 中添加入站规则：
 
-`front-server/huangguang/vue.config.js`：
+| 来源 | 协议 | 端口 | 用途 |
+|------|------|------|------|
+| 自己的公网 IP `/32` | TCP | 22 | SSH |
+| `0.0.0.0/0` | TCP | 80 | HTTP |
 
-```js
-module.exports = defineConfig({
-  publicPath: '/huangguang/',
-  // 其他现有配置保持不变
-})
-```
+Windows 使用 MobaXterm 连接。Ubuntu 镜像默认 SSH 用户名通常为 `ubuntu`：
 
-两个项目使用 Vue Router Hash History，Nginx 不需要为前端路由额外配置 history fallback。
+1. 打开 MobaXterm，点击 `Session`，选择 `SSH`。
+2. `Remote host` 填写 `129.225.166.130`，端口保持 `22`。
+3. 勾选 `Specify username`，填写 `ubuntu`。
+4. 打开 `Advanced SSH settings`，勾选 `Use private key`，选择创建 Oracle Cloud 实例时保存到 Windows 的私钥文件。
+5. 点击 `OK`。首次连接时核对并接受服务器主机指纹。
+6. 进入终端后执行 `sudo -i`，提示符应从普通用户切换为 root。
 
-`manager-server` 运行时会加载 `log4js`，因此 `log4js` 必须位于 `dependencies`，不能只放在 `devDependencies`。当前项目配置已经按此要求调整。
+后续所有服务器命令均在 root Shell 中执行，不再重复添加 `sudo`。
 
-## 4. VPS 基础环境
-
-以下命令在 Ubuntu VPS 上执行。建议使用普通部署用户并通过 `sudo` 执行系统级操作。
-
-安装基础工具：
+登录后确认系统和架构：
 
 ```bash
-sudo apt update
-sudo apt install -y git nginx rsync curl ca-certificates gnupg
+cat /etc/os-release
+uname -m
+dpkg --print-architecture
+free -h
+nproc
 ```
 
-建议安装 Node.js 20 LTS。当前 VPS 使用 NVM 安装 Node.js，因此还需要记录 Node 可执行文件的绝对路径：
+系统应为 Ubuntu 24.04，架构应为 `amd64` 或 `arm64`，内存约 12G，CPU 为 2 核。
+
+## 4. 系统初始化
+
+更新系统并安装基础工具：
 
 ```bash
+apt update
+apt upgrade -y
+apt install -y ca-certificates curl gnupg git nginx rsync ufw build-essential
+timedatectl set-timezone Asia/Shanghai
+```
+
+创建部署目录和仓库外的运行日志目录：
+
+```bash
+mkdir -p /var/www/newFoot-master
+mkdir -p /var/www/newfoot-frontend/admin
+mkdir -p /var/www/newfoot-frontend/huangguang
+mkdir -p /var/lib/newfoot/logs
+```
+
+应用代码、NVM、Node.js、pnpm 和 manager-server 均由 root 用户管理。Nginx 静态目录在发布后设置为 `www-data` 所有。
+
+## 5. 使用 NVM 安装 Node.js 22 和 pnpm 9.15.9
+
+按照 [NVM 官方说明](https://github.com/nvm-sh/nvm)为 root 用户安装 NVM 0.40.7：
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.7/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+. "$NVM_DIR/nvm.sh"
+```
+
+安装 Node.js 22，并设置为 root 用户的默认版本：
+
+```bash
+nvm install 22
+nvm alias default 22
+nvm use 22
+npm install -g pnpm@9.15.9
 node --version
 npm --version
+pnpm --version
 command -v node
-```
-
-systemd 不会自动加载交互式 Shell 中的 NVM 环境。后面配置 `ExecStart` 时，必须使用 `command -v node` 输出的绝对路径，不能直接假定 Node 位于 `/usr/bin/node`。
-
-当前 VPS 的 pnpm 11.17.0 必须降级为 9.15.9。先确认命令来源，避免 PATH 中残留的其他版本覆盖刚安装的版本：
-
-```bash
-type -a pnpm
 command -v pnpm
-npm prefix -g
-corepack --version
-pnpm --version
 ```
 
-如果 `pnpm` 由 Corepack 管理，执行：
+Node 路径应位于 `/root/.nvm/versions/node/`。`pnpm --version` 必须输出 `9.15.9`。仓库根目录的 `.nvmrc` 固定 Node.js 22；不要安装其他 pnpm 版本，也不要执行 `pnpm self-update`。
+
+## 6. 安装 MongoDB 8.0
+
+按照 [MongoDB 8.0 官方 Ubuntu 安装说明](https://www.mongodb.com/docs/v8.0/tutorial/install-mongodb-on-ubuntu/)导入签名密钥，并添加 Ubuntu 24.04 Noble 仓库：
 
 ```bash
-corepack enable
-corepack prepare pnpm@9.15.9 --activate
-hash -r
+curl -fsSL https://pgp.mongodb.com/server-8.0.asc | \
+  gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg --dearmor
+
+echo 'deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0 multiverse' | \
+  tee /etc/apt/sources.list.d/mongodb-org-8.0.list
+
+apt update
+apt install -y mongodb-org
+systemctl enable --now mongod
+systemctl --no-pager status mongod
 ```
 
-如果 `command -v pnpm` 指向当前 NVM Node 的全局 npm 目录，则使用 npm 降级：
-
-```bash
-npm install -g pnpm@9.15.9
-hash -r
-```
-
-如果 VPS 使用 pnpm 独立安装脚本，则按[官方指定版本安装方式](https://pnpm.io/installation#installing-a-specific-version)重新安装：
-
-```bash
-curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=9.15.9 sh -
-hash -r
-```
-
-以上三种方式只选择与 `command -v pnpm` 对应的一种。使用 NVM 时，必须在实际部署用户及 systemd 对应的 Node 环境中执行。若版本仍为 11.17.0，再次运行 `type -a pnpm` 检查 PATH 顺序并处理明确识别出的旧入口，不要直接删除未知目录。
-
-分别在仓库外和仓库根目录验证版本：
-
-```bash
-cd /tmp
-pnpm --version
-cd /var/www/newFoot-master
-pnpm --version
-```
-
-两处都必须输出 `9.15.9`。仓库要求 Node.js 20.19.0 或更高版本；当前 Node.js 24.7.0 可以继续使用。
-
-安装 MongoDB 时，使用 MongoDB 官方针对当前 Ubuntu 版本的 APT 仓库，不建议直接混用其他 Ubuntu 版本的 MongoDB 仓库。
-
-确认 MongoDB 服务并启动：
-
-```bash
-sudo systemctl enable --now mongod
-sudo systemctl --no-pager status mongod
-```
-
-检查 MongoDB 仅监听本机地址：
+确认 MongoDB 只监听本机：
 
 ```bash
 ss -lntp | grep 27017
 ```
 
-结果应为 `127.0.0.1:27017`，不要出现 `0.0.0.0:27017`。
-
-## 5. 拉取 main 分支代码
-
-部署目录统一使用实际存在的 `/var/www/newFoot-master`，注意 Linux 路径区分大小写：
+结果必须包含 `127.0.0.1:27017`，不能出现 `0.0.0.0:27017`。如果监听地址不正确，检查 `/etc/mongod.conf` 中的 `net.bindIp`，修改为 `127.0.0.1` 后重启：
 
 ```bash
-sudo mkdir -p /var/www
-sudo git clone -b main git@github.com:lidongheng/newFoot-master.git /var/www/newFoot-master
+systemctl restart mongod
 ```
 
-后续更新只使用 `main` 分支：
+## 7. 使用 MobaXterm SFTP 上传并恢复 MongoDB 备份
+
+### 7.1 打开 SFTP 面板
+
+MobaXterm 建立 SSH 会话后，左侧通常会自动显示同一连接的 SFTP 文件浏览器。如果没有显示，在菜单中开启 SFTP browser，然后重新连接该 SSH Session。
+
+SFTP 面板仍使用 SSH 登录用户 `ubuntu`，不会因为终端执行了 `sudo -i` 而获得 root 权限，因此不能直接上传到 `/root` 或 `/tmp`。先在 root 终端准备上传目录：
+
+```bash
+mkdir -p /home/ubuntu/upload
+chown ubuntu:ubuntu /home/ubuntu/upload
+chmod 700 /home/ubuntu/upload
+```
+
+先在 macOS 本机导出 `football` 数据库。你当前使用的命令保持不变：
+
+```bash
+mongodump \
+  --uri='mongodb://127.0.0.1:27017/football' \
+  --archive="$HOME/Desktop/football.archive.gz" \
+  --gzip
+```
+
+导出完成后，macOS 桌面应出现 `football.archive.gz`。先在 macOS 终端记录原文件的 SHA-256：
+
+```bash
+shasum -a 256 "$HOME/Desktop/football.archive.gz"
+```
+
+然后按以下路径传输文件：
+
+1. 在 macOS 微信中把 `football.archive.gz` **作为文件**发送给 Windows 上登录的微信。
+2. 在 Windows 微信中下载该文件，并在资源管理器中确认文件名仍为 `football.archive.gz`。
+3. 在 Windows PowerShell 中输入 `Get-FileHash -Algorithm SHA256 `，再把下载后的文件拖入 PowerShell 窗口，让系统自动填入实际路径，然后按回车。
+4. 确认 Windows 输出的哈希值与 macOS 的 `shasum` 结果一致。
+5. 打开已经连接 VPS 的 MobaXterm，在左侧 SFTP 地址栏输入 `/home/ubuntu/upload`。
+6. 把 Windows 上的 `football.archive.gz` 拖入 SFTP 面板，等待传输进度结束。
+
+Windows PowerShell 最终执行的命令形式如下，路径以微信的实际下载位置为准：
+
+```powershell
+Get-FileHash -Algorithm SHA256 'C:\实际下载目录\football.archive.gz'
+```
+
+### 7.2 移动备份并校验
+
+在 root 终端把上传文件移动到恢复命令使用的固定路径，并限制文件权限：
+
+```bash
+mv /home/ubuntu/upload/football.archive.gz /tmp/football.archive.gz
+chown root:root /tmp/football.archive.gz
+chmod 600 /tmp/football.archive.gz
+ls -lh /tmp/football.archive.gz
+file /tmp/football.archive.gz
+```
+
+服务器计算上传后文件的校验值：
+
+```bash
+sha256sum /tmp/football.archive.gz
+```
+
+macOS、Windows 和 VPS 三处的 SHA-256 必须完全一致。接着确认 MongoDB 正常运行，且服务器已安装 `mongorestore`：
+
+```bash
+systemctl is-active mongod
+mongorestore --version
+```
+
+### 7.3 先预检，再正式导入
+
+全新服务器此时还没有启动 manager-server，可以直接恢复。以后需要重新导入备份时，应先停止后端，避免恢复过程中继续写入数据库：
+
+```bash
+systemctl stop newfoot-manager
+```
+
+先执行 dry run，确认 archive 能读取且内容属于预期数据库：
+
+```bash
+mongorestore \
+  --uri='mongodb://127.0.0.1:27017' \
+  --archive=/tmp/football.archive.gz \
+  --gzip \
+  --dryRun \
+  --verbose
+```
+
+检查输出没有读取错误，并确认列出的命名空间均为预期的 `football` 集合。然后使用你的正式导入命令：
+
+```bash
+mongorestore \
+  --uri='mongodb://127.0.0.1:27017' \
+  --archive=/tmp/football.archive.gz \
+  --gzip \
+  --drop
+```
+
+按照 [MongoDB 官方 `mongorestore` 说明](https://www.mongodb.com/docs/database-tools/mongorestore/mongorestore-examples/)，`--drop` 会在恢复前删除备份中存在的目标集合。命令结束时确认恢复失败数为 `0`，再进行数据检查。
+
+### 7.4 验证恢复结果
+
+```bash
+mongosh 'mongodb://127.0.0.1:27017/football' --quiet --eval 'db.getCollectionNames()'
+mongosh 'mongodb://127.0.0.1:27017/football' --quiet --eval 'db.getCollectionNames().map(name => ({ name, count: db.getCollection(name).countDocuments({}) }))'
+```
+
+确认主要集合存在且记录数符合备份预期。已经从备份恢复数据后，必须跳过后文的 `pnpm init-db`，否则初始化脚本可能覆盖恢复的数据。`/tmp/football.archive.gz` 暂时保留到整套部署验收完成。
+
+## 8. 配置 GitHub SSH 并拉取代码
+
+为 root 用户生成只用于部署的 SSH 密钥：
+
+```bash
+mkdir -p /root/.ssh
+chmod 700 /root/.ssh
+ssh-keygen -q -t ed25519 -N '' -C 'newfoot-oracle-deploy' -f /root/.ssh/id_ed25519
+cat /root/.ssh/id_ed25519.pub
+```
+
+将输出的公钥添加到 GitHub 仓库 `lidongheng/newFoot-master` 的 Deploy keys，并授予只读权限。随后验证连接并接受 GitHub 主机指纹：
+
+```bash
+ssh -T git@github.com
+```
+
+首次拉取：
+
+```bash
+rmdir /var/www/newFoot-master
+git clone -b main git@github.com:lidongheng/newFoot-master.git /var/www/newFoot-master
+cd /var/www/newFoot-master
+git status --short --branch
+```
+
+确认工作区配置和三个线上项目存在：
+
+```bash
+test -f package.json
+test -f pnpm-workspace.yaml
+test -f front-server/admin/package.json
+test -f front-server/huangguang/package.json
+test -f manager-server/package.json
+```
+
+## 9. 安装依赖并构建前端
+
+2 核 12G 内存可以在 VPS 构建。项目根 `build` 已设置 `workspace-concurrency=1`，两个前端仍会顺序构建，降低峰值资源占用：
 
 ```bash
 cd /var/www/newFoot-master
-git fetch origin
-git pull --ff-only origin main
-```
-
-拉取后必须确认两个前端源码存在：
-
-```bash
-test -f /var/www/newFoot-master/front-server/admin/package.json
-test -f /var/www/newFoot-master/front-server/huangguang/package.json
-```
-
-两个前端目录均由主仓库作为普通目录管理，全新 clone 后可以直接通过根工作区安装和构建。
-
-## 6. 安装工作区依赖并构建前端
-
-所有工作区依赖都在仓库根目录统一安装，构建过程需要前端开发依赖：
-
-```bash
-cd /var/www/newFoot-master
+nvm use
 pnpm install --frozen-lockfile --prod=false
 pnpm build
 ```
 
-如果安装或任一前端构建失败，停止发布，不要覆盖当前线上静态文件。
-
-### 首次从 pnpm 11 迁移
-
-安排维护窗口并先停止后端。在确认当前命令版本已经是 pnpm 9.15.9 后，删除这 5 个工作区项目及根目录中由旧 pnpm 生成的依赖目录，再按根锁文件重新安装：
+只有两个前端都构建成功后才发布静态文件：
 
 ```bash
-sudo systemctl stop newfoot-manager
-rm -rf /var/www/newFoot-master/node_modules
-rm -rf /var/www/newFoot-master/front-server/admin/node_modules
-rm -rf /var/www/newFoot-master/front-server/huangguang/node_modules
-rm -rf /var/www/newFoot-master/manager-server/node_modules
-rm -rf /var/www/newFoot-master/backend-server/node_modules
-rm -rf /var/www/newFoot-master/cup-analyzer/crawler-server/node_modules
-cd /var/www/newFoot-master
-pnpm install --frozen-lockfile --prod=false
-pnpm build
-sudo systemctl start newfoot-manager
+rsync -a --delete front-server/admin/dist/ /var/www/newfoot-frontend/admin/
+rsync -a --delete front-server/huangguang/dist/ /var/www/newfoot-frontend/huangguang/
+chown -R www-data:www-data /var/www/newfoot-frontend
+find /var/www/newfoot-frontend -type d -exec chmod 755 {} \;
+find /var/www/newfoot-frontend -type f -exec chmod 644 {} \;
 ```
 
-这些命令不会删除根 `pnpm-lock.yaml`、数据库、日志或 `/etc/newfoot/manager-server.env`。数据库初始化不属于迁移步骤。
+## 10. 配置 manager-server
 
-准备静态文件目录：
+创建生产环境变量文件：
 
 ```bash
-sudo mkdir -p /var/www/newfoot-frontend/admin
-sudo mkdir -p /var/www/newfoot-frontend/huangguang
+mkdir -p /etc/newfoot
+vim /etc/newfoot/manager-server.env
 ```
 
-复制构建产物：
-
-```bash
-sudo rsync -a --delete \
-  /var/www/newFoot-master/front-server/admin/dist/ \
-  /var/www/newfoot-frontend/admin/
-
-sudo rsync -a --delete \
-  /var/www/newFoot-master/front-server/huangguang/dist/ \
-  /var/www/newfoot-frontend/huangguang/
-```
-
-设置 Nginx 可读权限：
-
-```bash
-sudo chown -R www-data:www-data /var/www/newfoot-frontend
-sudo find /var/www/newfoot-frontend -type d -exec chmod 755 {} \;
-sudo find /var/www/newfoot-frontend -type f -exec chmod 644 {} \;
-```
-
-## 7. 初始化和配置 manager-server
-
-manager-server 的依赖已经由根目录的工作区安装命令统一安装，无需进入子目录再次安装。
-
-创建环境变量文件：
-
-```bash
-sudo mkdir -p /etc/newfoot
-sudo vim /etc/newfoot/manager-server.env
-```
-
-文件内容：
+写入：
 
 ```env
 NODE_ENV=production
@@ -261,40 +347,41 @@ PORT=3000
 MONGO_URI=mongodb://127.0.0.1:27017/football
 ```
 
-限制配置文件权限：
+限制权限并让服务用户可读：
 
 ```bash
-sudo chmod 600 /etc/newfoot/manager-server.env
+chown root:root /etc/newfoot/manager-server.env
+chmod 600 /etc/newfoot/manager-server.env
 ```
 
-首次部署需要初始化数据库时，必须先确认目标连接串。该脚本可能重置业务数据，只允许手动执行，不要加入日常发布流程：
+仅在没有恢复 MongoDB 备份、且确认目标是全新空数据库时，才手动初始化一次：
 
 ```bash
 cd /var/www/newFoot-master
+nvm use
 MONGO_URI=mongodb://127.0.0.1:27017/football pnpm init-db
 ```
 
-## 8. 使用 systemd 管理后端
+`init-db` 可能重置目标数据库。服务器投入使用后，不要在日常发布流程中再次执行。
 
-创建服务文件：
+## 11. 使用 systemd 管理后端
 
-```bash
-sudo vim /etc/systemd/system/newfoot-manager.service
-```
-
-先执行 `command -v node`。当前 VPS 的输出为 `/root/.nvm/versions/node/v24.7.0/bin/node`，因此服务文件写入：
+创建 `/etc/systemd/system/newfoot-manager.service`：
 
 ```ini
 [Unit]
 Description=newFoot manager server
-After=network.target mongod.service
-Wants=mongod.service
+After=network-online.target mongod.service
+Wants=network-online.target mongod.service
 
 [Service]
 Type=simple
-WorkingDirectory=/var/www/newFoot-master/manager-server
+WorkingDirectory=/var/lib/newfoot
 EnvironmentFile=/etc/newfoot/manager-server.env
-ExecStart=/root/.nvm/versions/node/v24.7.0/bin/node /var/www/newFoot-master/manager-server/bin/www
+Environment=HOME=/root
+Environment=NVM_DIR=/root/.nvm
+ExecStart=/bin/bash -c '. /root/.nvm/nvm.sh && nvm use 22 >/dev/null && exec node /var/www/newFoot-master/manager-server/bin/www'
+KillSignal=SIGINT
 Restart=always
 RestartSec=5
 
@@ -302,44 +389,31 @@ RestartSec=5
 WantedBy=multi-user.target
 ```
 
-不要再在 service 中重复写 `Environment=NODE_ENV=...`、`Environment=PORT=...` 或 `Environment=MONGO_URI=...`；这些变量统一由 `EnvironmentFile` 提供。
-
-当前 Node 安装在 `/root/.nvm/`，所以本配置没有设置 `User=www-data`，也不应把整个源码目录递归 `chown` 给 `www-data`。如果以后升级或切换 NVM 中的 Node 版本，需要同步修改 `ExecStart` 的绝对路径。
-
-启动并设置开机自启：
+加载并启动服务：
 
 ```bash
-sudo systemctl daemon-reload
-sudo systemctl enable --now newfoot-manager
-sudo systemctl --no-pager status newfoot-manager
-```
-
-查看后端日志：
-
-```bash
-sudo journalctl -u newfoot-manager -f
-```
-
-本机接口验证：
-
-```bash
+systemctl daemon-reload
+systemctl enable --now newfoot-manager
+systemctl --no-pager status newfoot-manager
 curl http://127.0.0.1:3000/api/v1/system/time
 ```
 
-## 9. 配置 Nginx
+systemd 使用 `/var/lib/newfoot` 作为工作目录，应用文件日志会写入 `/var/lib/newfoot/logs`，不会修改 Git 仓库中的已跟踪日志文件。
 
-创建站点配置：
+查看日志：
 
 ```bash
-sudo vim /etc/nginx/sites-available/newFoot
+journalctl -u newfoot-manager -f
 ```
 
-当前通过公网 IP `35.212.225.24` 访问，写入：
+## 12. 配置 Nginx
+
+创建 `/etc/nginx/sites-available/newFoot`：
 
 ```nginx
 server {
     listen 80 default_server;
-    server_name 35.212.225.24 _;
+    server_name 129.225.166.130 _;
 
     root /var/www/newfoot-frontend;
 
@@ -374,104 +448,116 @@ server {
 }
 ```
 
-启用配置前先检查文件名。Linux 区分 `newFoot` 和 `newfoot`，本方案统一使用 `newFoot`：
+启用配置：
 
 ```bash
-sudo ls -la /etc/nginx/sites-available/
-sudo ls -la /etc/nginx/sites-enabled/
-sudo rm -f /etc/nginx/sites-enabled/default
+rm -f /etc/nginx/sites-enabled/default
+test -L /etc/nginx/sites-enabled/newFoot || ln -s /etc/nginx/sites-available/newFoot /etc/nginx/sites-enabled/newFoot
+nginx -t
+systemctl enable nginx
+systemctl reload nginx
 ```
 
-只有 `/etc/nginx/sites-enabled/newFoot` 不存在时，才创建软链接：
+如果软链接已存在，不要重复创建；直接执行 `nginx -t` 和 reload。
+
+## 13. 配置 Ubuntu 防火墙
+
+先确保 SSH 规则存在，再启用 UFW：
 
 ```bash
-sudo ln -s /etc/nginx/sites-available/newFoot /etc/nginx/sites-enabled/newFoot
-sudo nginx -t
-sudo systemctl reload nginx
+ufw allow OpenSSH
+ufw allow 80/tcp
+ufw enable
+ufw status verbose
 ```
 
-如果 `nginx -t` 报错找不到 `/etc/nginx/sites-enabled/newfoot`，说明存在一个大小写错误的失效软链接。确认 `newFoot` 配置正确后删除错误链接：
-
-```bash
-sudo rm -f /etc/nginx/sites-enabled/newfoot
-sudo nginx -t
-sudo systemctl reload nginx
-```
-
-如果创建软链接时提示 `File exists`，说明 `/etc/nginx/sites-enabled/newFoot` 已经存在，不要重复执行 `ln -s`。
-
-## 10. 防火墙
-
-```bash
-sudo ufw allow OpenSSH
-sudo ufw allow 80/tcp
-sudo ufw enable
-sudo ufw status
-```
-
-确认公网没有暴露后端和数据库端口：
+确认监听端口：
 
 ```bash
 ss -lntp | grep -E ':80|:3000|:27017'
 ```
 
-理想结果是：
+预期结果：
 
 - Nginx 对外监听 `0.0.0.0:80`
-- 当前 Node 服务可能监听所有网卡的 `3000` 端口，因此必须同时通过 UFW 和 VPS 云防火墙禁止公网访问 `3000`
+- manager-server 监听 3000，但 Oracle Cloud 和 UFW 均未开放该端口
 - MongoDB 只监听 `127.0.0.1:27017`
 
-## 11. 发布更新流程
+## 14. 日常发布流程
 
-每次发布 `main` 分支的新版本：
+在 VPS 上执行：
 
 ```bash
 cd /var/www/newFoot-master
 git fetch origin
 git pull --ff-only origin main
+nvm use
 pnpm install --frozen-lockfile --prod=false
 pnpm build
-sudo rsync -a --delete front-server/admin/dist/ /var/www/newfoot-frontend/admin/
-sudo rsync -a --delete front-server/huangguang/dist/ /var/www/newfoot-frontend/huangguang/
-sudo systemctl restart newfoot-manager
-sudo systemctl reload nginx
 ```
 
-如果依赖或环境变量发生变化，重启后端前先确认根目录安装成功且环境变量文件正确。`backend-server` 和 `cup-analyzer/crawler-server` 仅属于 monorepo 工作区，本方案不新增它们的线上服务。
-
-## 12. 验收清单
-
-服务状态：
+如果安装或构建失败，到此停止，继续使用当前线上静态文件和正在运行的后端。全部成功后再发布：
 
 ```bash
-sudo systemctl is-active mongod
-sudo systemctl is-active newfoot-manager
-sudo systemctl is-active nginx
+rsync -a --delete front-server/admin/dist/ /var/www/newfoot-frontend/admin/
+rsync -a --delete front-server/huangguang/dist/ /var/www/newfoot-frontend/huangguang/
+chown -R www-data:www-data /var/www/newfoot-frontend
+systemctl restart newfoot-manager
+nginx -t
+systemctl reload nginx
 ```
 
-HTTP 验证：
+数据库初始化不属于日常发布步骤。
+
+## 15. 验收清单
+
+检查服务：
 
 ```bash
-curl -I http://35.212.225.24/
-curl -I http://35.212.225.24/huangguang/
-curl -I http://35.212.225.24/admin/
-curl http://35.212.225.24/api/v1/system/time
+systemctl is-active mongod
+systemctl is-active newfoot-manager
+systemctl is-active nginx
 ```
 
-浏览器验证：
-
-1. `/huangguang/` 可以加载页面、JS、CSS 和图片。
-2. `/admin/` 可以加载管理页面和 Element Plus 资源。
-3. 用户端请求 `/api/v1/...` 正常。
-4. 管理端请求 `/api/v1/admin/...` 正常。
-5. Hash Router 页面刷新后不出现 404。
-6. VPS 重启后 MongoDB、Node 后端和 Nginx 自动恢复。
-
-故障排查：
+检查本机和公网接口：
 
 ```bash
-sudo journalctl -u newfoot-manager -n 100 --no-pager
-sudo tail -n 100 /var/log/nginx/error.log
-sudo nginx -t
 curl http://127.0.0.1:3000/api/v1/system/time
+curl -I http://129.225.166.130/
+curl -I http://129.225.166.130/huangguang/
+curl -I http://129.225.166.130/admin/
+curl http://129.225.166.130/api/v1/system/time
 ```
+
+浏览器验收：
+
+1. `/huangguang/` 能加载页面、JS、CSS 和图片。
+2. `/admin/` 能加载管理页面和 Element Plus、Vant 资源。
+3. 用户端 `/api/v1/...` 请求正常。
+4. 管理端 `/api/v1/admin/...` 请求正常。
+5. Hash Router 页面刷新不出现 404。
+6. 重启 VPS 后 MongoDB、manager-server 和 Nginx 自动恢复。
+7. 公网无法直接访问 3000 和 27017 端口。
+
+## 16. 故障排查
+
+```bash
+journalctl -u newfoot-manager -n 100 --no-pager
+journalctl -u mongod -n 100 --no-pager
+tail -n 100 /var/log/nginx/error.log
+nginx -t
+curl http://127.0.0.1:3000/api/v1/system/time
+export NVM_DIR="$HOME/.nvm"
+. "$NVM_DIR/nvm.sh"
+node --version
+pnpm --version
+```
+
+如果公网无法访问但本机 `curl` 正常，依次检查：
+
+1. Oracle Cloud Security List 或 Network Security Group 是否允许 TCP 80。
+2. `ufw status verbose` 是否允许 TCP 80。
+3. Nginx 是否监听 80。
+4. 公网 IP 是否仍为 `129.225.166.130`。
+
+绑定域名后，将 Nginx `server_name` 改为域名，再配置 HTTPS；在此之前保持 HTTP 部署。

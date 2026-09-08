@@ -9,8 +9,9 @@
 - MongoDB 8.x（运行 `manager-server` 时需要）
 
 ```bash
-corepack enable
-corepack prepare pnpm@9.15.9 --activate
+nvm install
+nvm use
+npm install -g pnpm@9.15.9
 pnpm --version
 pnpm install --frozen-lockfile
 ```
@@ -36,7 +37,7 @@ pnpm dev
 # 启动全部工作区项目
 pnpm dev:all
 
-# 构建两个前端
+# 顺序构建两个前端，避免同时启动两个 webpack 进程
 pnpm build
 
 # 单独运行项目
