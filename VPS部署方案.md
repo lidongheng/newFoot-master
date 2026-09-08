@@ -95,7 +95,7 @@ nproc
 ```bash
 apt update
 apt upgrade -y
-apt install -y ca-certificates curl gnupg git nginx rsync unzip ufw build-essential
+apt install -y ca-certificates curl gnupg git lsof nginx rsync unzip ufw build-essential
 timedatectl set-timezone Asia/Shanghai
 ```
 
@@ -468,6 +468,8 @@ cat > /etc/systemd/system/newfoot-manager.service <<'EOF'
 Description=newFoot manager server
 After=network-online.target mongod.service
 Wants=network-online.target mongod.service
+StartLimitIntervalSec=60
+StartLimitBurst=5
 
 [Service]
 Type=simple
@@ -477,7 +479,7 @@ Environment=HOME=/root
 Environment=NVM_DIR=/root/.nvm
 ExecStart=/bin/bash -c '. /root/.nvm/nvm.sh && nvm use 22 >/dev/null && exec node /var/www/newFoot-master/manager-server/bin/www'
 KillSignal=SIGINT
-Restart=always
+Restart=on-failure
 RestartSec=5
 
 [Install]
@@ -485,13 +487,28 @@ WantedBy=multi-user.target
 EOF
 ```
 
-检查配置文件并加载、启动服务：
+检查配置文件并重新加载 systemd：
 
 ```bash
 cat /etc/systemd/system/newfoot-manager.service
 systemd-analyze verify /etc/systemd/system/newfoot-manager.service
 systemctl daemon-reload
-systemctl enable --now newfoot-manager
+```
+
+首次让 systemd 接管服务前，先停止当前重启循环，然后检查 3000 端口：
+
+```bash
+systemctl stop newfoot-manager
+systemctl reset-failed newfoot-manager
+ss -lntp '( sport = :3000 )'
+lsof -nP -iTCP:3000 -sTCP:LISTEN
+```
+
+如果最后两条命令有输出，说明仍有旧进程占用 3000，先按第 16 节的“3000 端口被占用”步骤处理。确认两条命令都没有输出后，才能启动 systemd 服务：
+
+```bash
+systemctl enable newfoot-manager
+systemctl start newfoot-manager
 systemctl --no-pager status newfoot-manager
 curl http://127.0.0.1:3000/api/v1/system/time
 ```
@@ -666,6 +683,72 @@ curl http://129.225.166.130/api/v1/system/time
 7. 公网无法直接访问 3000 和 27017 端口。
 
 ## 16. 故障排查
+
+### 16.1 3000 端口被占用，服务反复重启
+
+日志出现 `Port 3000 is already in use` 时，先停止 systemd 的重启循环：
+
+```bash
+systemctl stop newfoot-manager
+systemctl reset-failed newfoot-manager
+```
+
+查出监听 3000 端口的进程。不要直接执行 `kill -9`，先确认 PID 和启动命令：
+
+```bash
+ss -lntp '( sport = :3000 )'
+lsof -nP -iTCP:3000 -sTCP:LISTEN
+```
+
+将第一行的数字替换成 `lsof` 输出中的实际 PID：
+
+```bash
+PID=12345
+ps -fp "$PID"
+tr '\0' ' ' < "/proc/$PID/cmdline"
+echo
+```
+
+根据启动来源只执行对应的一种处理方式：
+
+- 如果是之前手动运行的 `node bin/www`、`pnpm start:manager` 或 `nohup` 进程：
+
+  ```bash
+  kill "$PID"
+  ```
+
+- 如果由 PM2 启动，先查看准确的应用名称，再停止并删除该应用：
+
+  ```bash
+  pm2 list
+  APP_NAME='填写 pm2 list 中的应用名称'
+  pm2 stop "$APP_NAME"
+  pm2 delete "$APP_NAME"
+  pm2 save
+  ```
+
+- 如果由另一个 systemd 服务启动，先找到服务名称，再停止并禁用旧服务：
+
+  ```bash
+  OLD_SERVICE='填写旧服务名称'
+  systemctl status "$OLD_SERVICE"
+  systemctl disable --now "$OLD_SERVICE"
+  ```
+
+再次确认 3000 端口没有监听进程，然后启动唯一的 `newfoot-manager` 服务：
+
+```bash
+ss -lntp '( sport = :3000 )'
+lsof -nP -iTCP:3000 -sTCP:LISTEN
+systemctl start newfoot-manager
+systemctl --no-pager status newfoot-manager
+journalctl -u newfoot-manager -n 50 --no-pager
+curl http://127.0.0.1:3000/api/v1/system/time
+```
+
+修订后的 unit 使用 `Restart=on-failure`，并限制 60 秒内最多尝试 5 次，避免端口冲突时无限重启。
+
+### 16.2 常规检查
 
 ```bash
 journalctl -u newfoot-manager -n 100 --no-pager
