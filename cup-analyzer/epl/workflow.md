@@ -63,7 +63,7 @@ npx cross-env CUP_ANALYZER_CUP=epl node processors/teamProfileGenerator.js --tea
    └─ `cd cup-analyzer/crawler-server`，再执行 **`npm run crawl:schedule:epl`**（推荐）
       （同步更新 `epl/data/` 下 s36、l36、bs36、td36，并把赛程主文件拷至 `match_center/s36.js`，见上文；亦可 `npx cross-env CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js`；手写 Shell 见 [crawler-server/README.md](../crawler-server/README.md)）
 
-2. 维护 data/冠军赔率.md、data/球队与序号对照表.md
+2. 维护 data/冠军赔率.md、data/降级赔率.md、data/球队与序号对照表.md
 
 3. 阅读 strategy/ 下框架文档，按轮次更新争冠、争四、欧战、保级与赛程拥堵
 ```
@@ -89,13 +89,15 @@ npx cross-env CUP_ANALYZER_CUP=epl node processors/teamProfileGenerator.js --tea
        （或 `npm run generate:match-squad -- --home … --away …`）
   1. 预测首发与报告结构（格式见 prompts/match_analysis_template.md）
   2. 交锋、近况、未来赛程（含欧冠/欧联/国内杯赛）、球探伤病摘要：`cd cup-analyzer/crawler-server`，在 `config/squadTarget.js` 填写本场 **`matchSerial`**，执行 **`npm run crawl:match-statistics`**（亦可 `npm run crawl:match-statistics -- --match <序号>` 临时指定场次），将输出并入赛前报告或 `epl/news/...`。（与 **`npm run generate:cycle-report`** 同源页面与解析；**伤停/伤疑**仍以 `squad-final` 与 `matchSquadGenerator` 为准。）详见 [crawler-server/README.md](../crawler-server/README.md)「matchStatisticsCrawler」。
+     - **未来赛程分析（必做，使用 `dh-team-schedule`）**：按 [.cursor/rules/dh-team-schedule/SKILL.md](../../.cursor/rules/dh-team-schedule/SKILL.md) 分别查询双方从本场计划开球时间起未来 14 天内的全部赛事，按技能规定输出开球时间、赛事、对手和距上一场开球的间隔；对本场前及未来赛程的相邻场次按休息间隔标注预警：**低于 67 小时为红色，67–92 小时（含边界）为黄色，超过 92 小时为绿色**。将预警、未来赛程密度及紧邻的欧战/杯赛纳入报告「未来赛程/赛程分析」，评估体能与轮换风险，并参考 `strategy/fixture-congestion.md`。配置或赛程文件缺失时，按技能说明指出实际缺项，不推测赛程、比分或间隔。
+     - **新闻发布会与伤停新闻搜集（必做）**：上网搜集双方最新的新闻发布会/主帅采访和球队伤停新闻，分别总结发布会中的阵容、伤停、轮换与战意信息，以及各队已确认伤停和存疑球员；记录来源与发布时间，区分已确认信息和未确认消息，并将摘要并入本场赛前报告或 `epl/news/...`。
   3. 盘口（初盘与临场 + 盘路三块固定句式；勿用空泛盘口闲聊替代数据块）：
      - 初盘全场/半场让球、大小球盘口等仍以 `epl/data/s36.js` 为准，报告章节层级见 `prompts/match_analysis_template.md`「四、盘口解析」。
      - **亚盘「盘口分析」内须有「盘路数据」**（数据来自 `epl/data/l36.js`）：连续三行，依次为 **总盘**、**主场**、**客场**；每行写清双方 **净胜盘** 与 **联赛排名**，句式示例：`总盘：主队净+x，排第a，客队净+y，排第b`（与同季报告范例 `epl/report/25-26/round-14/arsenal_vs_brentford.md` 中「盘路数据」同构）。
      - **「### 3、大小」下须有「大小球盘路数据」**（来自 `bs36.js`）：同样三行总盘/主场/客场；每行双方 **大球率%** 与 **排名**。
      - **「75分钟后进球数分析」**（来自 `td36.js`）：含小标题 **本场比赛球队数据**；每队一行，格式为 `队名：共N球（75分钟后总进球），排第k（该项联赛排名）(76-80分钟: …, 81-85分钟: …, 86-90分钟含补时: …)`，其中 **76–90 为比赛分钟区间**，非文档行号。
   3b. 格雷厄姆式亚盘安全边际：记录 Market（初盘/临场）→ 写 Fair（合理让球）与一行推导链 → 算 Δ → 标注三档结论（值得投 / 观望 / 反向投），定义见下 **「亚盘安全边际（格雷厄姆式）」**
-  4. 英超专项：积分榜位置、战意（争冠/争四/保级）、德比属性
+  4. 英超专项：积分榜位置、战意（争冠/争四/保级）、德比属性；赛前查阅 `data/冠军赔率.md` 与 `data/降级赔率.md`，分别辅助判断争冠定位与保级压力
   5. 赛前报告 → `epl/report/{赛季}/round-N/{主队}_vs_{客队}.md`（大名单与预测段落见下文 **「赛前报告正文中的大名单块」**）
 
 赛前 1–2 小时:
@@ -126,7 +128,7 @@ npx cross-env CUP_ANALYZER_CUP=epl node processors/teamProfileGenerator.js --tea
 ### 英超 vs 欧冠
 
 1. **盘路**：联赛轮次多，`l36`/`bs36` 样本优于杯赛短期数据。
-2. **广实**：联赛积分榜 + `data/冠军赔率.md` + `teamProfile/`（见上文「从大名单到球队画像」）；**档位与广实定位**以项目根目录 `.cursor/rules/dh-match-predict-analysis/references/epl-team-strength.md` 为准（与同目录其它 `*-team-strength.md` 一并维护）。
+2. **广实**：联赛积分榜 + `data/冠军赔率.md` + `data/降级赔率.md` + `teamProfile/`（见上文「从大名单到球队画像」）；冠军赔率辅助判断争冠定位，降级赔率辅助判断保级压力；**档位与广实定位**以项目根目录 `.cursor/rules/dh-match-predict-analysis/references/epl-team-strength.md` 为准（与同目录其它 `*-team-strength.md` 一并维护）。
 3. **无两回合**：单场决胜，战意与轮换更多来自积分榜与赛程密度。
 4. **Big 6**：新闻与热度集中，优先保证画像与赛前复盘深度（画像维护方式见上文「从大名单到球队画像」）。
 
@@ -143,7 +145,7 @@ npx cross-env CUP_ANALYZER_CUP=epl node processors/teamProfileGenerator.js --tea
 
 **定位 → Fair（可审计的最小推导链）**
 
-1. **实际定位**：**广实档位**见 `.cursor/rules/dh-match-predict-analysis/references/`（英超：`epl-team-strength.md`）+ 联赛积分榜 + `data/冠军赔率.md` + `teamProfile/` + 战意（争冠/争四/保级/欧战）与德比属性（可与 `strategy/` 文档对照）。
+1. **实际定位**：**广实档位**见 `.cursor/rules/dh-match-predict-analysis/references/`（英超：`epl-team-strength.md`）+ 联赛积分榜 + `data/冠军赔率.md` + `data/降级赔率.md` + `teamProfile/` + 战意（争冠/争四/保级/欧战）与德比属性（可与 `strategy/` 文档对照）。
 2. **广实差**：主客相对强度（档位或文字结论）。
 3. **主场加成**：英超主场折让的经验区间（与历史复盘自校）。
 4. **伤停与首发可信度**：相对 `squad-final` 与当场预测首发修正。

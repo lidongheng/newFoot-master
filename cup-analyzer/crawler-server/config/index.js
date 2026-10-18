@@ -110,9 +110,9 @@ const cups = {
     chineseName: '英超',
     crossYear: true,
     /**
-     * 球探 URL 赛季段（与 s36 等路径一致；站点目录多为全写，勿与本地 25-26 目录混用）
+     * 球探 URL 赛季段（与 s36 等路径一致；站点目录多为全写，勿与本地短赛季目录混用）
      */
-    season: '2025-2026',
+    season: '2026-2027',
     paths: {
       cupAnalyzer: path.resolve(__dirname, '../../epl'),
       squadFinal: path.resolve(__dirname, '../../epl/squad-final'),

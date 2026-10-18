@@ -1,9 +1,11 @@
 const path = require('path');
 const fs = require('fs');
+const iconv = require('iconv-lite');
 const BaseCrawler = require('./base');
 const targets = require('../config/targets');
 const config = require('../config');
 const { sleep } = require('../utils/fileWriter');
+const { fetchZqBuffer } = require('../utils/http');
 
 /**
  * 赛程更新爬虫 - 更新世界杯赛程和比分数据
@@ -86,7 +88,9 @@ class ScheduleCrawler extends BaseCrawler {
       }
       try {
         this.log(`更新${step.label}: ${step.url}`);
-        const text = await this.fetchText(step.url, headers);
+        // jsData 文件按脚本资源请求，并优先使用 HTTPS。
+        const response = await fetchZqBuffer(step.url, { headers, responseType: 'arraybuffer' });
+        const text = iconv.decode(response.data, 'utf-8');
         this.writeJsWithBackup(step.outputPath, text);
         this.log(`${step.label}已更新: ${step.outputPath}`);
         // 赛程文件同步到 match_center（与 clubMatchAnalyzer 兜底路径一致；l/bs/td 不同步）
