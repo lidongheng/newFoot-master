@@ -48,13 +48,16 @@ function formationDisplay(raw) {
 }
 
 function lineGroupFromPlayer(p) {
-  if (!p.positions || typeof p.positions !== 'object') return 'MF';
-  const entries = Object.entries(p.positions).filter(
-    ([k]) => k && k !== 'Substitute' && k !== 'Unknown'
-  );
-  if (entries.length === 0) return 'MF';
+  const entries = p.positions && typeof p.positions === 'object'
+    ? Object.entries(p.positions).filter(([k]) => k && k !== 'Substitute' && k !== 'Unknown')
+    : [];
   entries.sort((a, b) => b[1] - a[1]);
-  const mainPos = entries[0][0];
+  let mainPos = '';
+  if (entries.length > 0) {
+    mainPos = entries[0][0];
+  } else if (Array.isArray(p.position) && p.position.length > 0) {
+    mainPos = p.position[0];
+  }
   return POS_TO_LINE[mainPos] || 'MF';
 }
 
@@ -65,6 +68,40 @@ function formatMarketValue(socialStatus) {
   return String(n);
 }
 
+function mapQiutanClubName(clubName, teamMappings) {
+  if (typeof clubName !== 'string' || clubName === '') return clubName;
+  const mapping = Object.values(teamMappings).find((team) => {
+    return team.dqdName === clubName || team.qiutanName === clubName;
+  });
+  if (mapping) return mapping.qiutanName;
+
+  const affiliatedTeam = Object.values(teamMappings).find((team) => {
+    return clubName.startsWith(team.dqdName);
+  });
+  return affiliatedTeam
+    ? `${affiliatedTeam.qiutanName}${clubName.slice(affiliatedTeam.dqdName.length)}`
+    : clubName;
+}
+
+function formatPlayerTransfers(player, teamMappings) {
+  const recentTransfers = player.recentTransfers.map((transfer) => ({
+    ...transfer,
+    from: mapQiutanClubName(transfer.from, teamMappings),
+    to: mapQiutanClubName(transfer.to, teamMappings),
+  }));
+  const currentClub = mapQiutanClubName(player.currentClub, teamMappings);
+  const formattedTransfers = formatTransferColumn({ currentClub, recentTransfers });
+  if (formattedTransfers !== '-') return formattedTransfers;
+  if (recentTransfers.length === 0) {
+    return formattedTransfers;
+  }
+
+  // 转会记录中的球队名称已映射为球探名称；保留未命中当前俱乐部名称的记录。
+  return recentTransfers
+    .map((transfer) => `${transfer.season} ${transfer.from}->${transfer.to}`)
+    .join('；');
+}
+
 class LeagueSquadProcessor extends BaseCrawler {
   constructor() {
     super('LeagueSquadProcessor');
@@ -72,39 +109,53 @@ class LeagueSquadProcessor extends BaseCrawler {
 
   /**
    * @param {object} data -new.json 根对象
-   * @returns {string[][]} 表格行 [jersey, name, age, height, pos, value, nation, caps, lineups, goals, assists, transfer]
+   * @returns {object[]} 表格行，包含分组信息和 Markdown 单元格
    */
-  buildTableRows(data) {
+  buildTableRows(data, playerCenter, teamMappings) {
     const players = data.players;
     if (!players || typeof players !== 'object') return [];
-    const list = Object.values(players);
+    const analyzedPlayersByNumber = new Map(
+      Object.values(players).map((player) => [String(player.number), player])
+    );
+    const list = playerCenter.filter((player) => player.staff !== '主教练');
     const rows = [];
-    for (const p of list) {
+    for (const rosterPlayer of list) {
+      const analyzedPlayer = analyzedPlayersByNumber.get(String(rosterPlayer.number));
+      // 姓名取懂球帝名单数据，避免分析数据中的球探名称覆盖它。
+      const p = analyzedPlayer ? { ...rosterPlayer, ...analyzedPlayer } : rosterPlayer;
       const line = lineGroupFromPlayer(p);
-      const posKeys = p.positions && typeof p.positions === 'object'
+      const posKeys = analyzedPlayer && analyzedPlayer.positions && typeof analyzedPlayer.positions === 'object'
         ? Object.entries(p.positions)
             .filter(([k]) => k !== 'Substitute' && k !== 'Unknown')
             .sort((a, b) => b[1] - a[1])
         : [];
-      const posDisplay = posKeys.length > 0 ? posKeys[0][0] : p.qiutanPosition || '-';
+      let posDisplay = '';
+      if (posKeys.length > 0) {
+        posDisplay = posKeys[0][0];
+      } else if (Array.isArray(rosterPlayer.position) && rosterPlayer.position.length > 0) {
+        posDisplay = rosterPlayer.position[0];
+      } else {
+        posDisplay = p.qiutanPosition || '-';
+      }
       rows.push({
         line,
+        lineups: analyzedPlayer ? analyzedPlayer.lineups : 0,
         cells: [
           p.number != null ? String(p.number) : '-',
-          p.name || '-',
+          rosterPlayer.name,
+          mapQiutanClubName(p.currentClub, teamMappings) || '-',
           p.age != null ? String(p.age) : '-',
           p.height != null ? `${p.height}cm` : '-',
           posDisplay,
           formatMarketValue(p.socialStatus),
+          rosterPlayer.ability != null
+            ? String(rosterPlayer.ability)
+            : '-',
           p.nation || '-',
-          p.caps != null ? String(p.caps) : '-',
-          p.lineups != null ? String(p.lineups) : '-',
-          p.goals != null ? String(p.goals) : '0',
-          p.assists != null ? String(p.assists) : '0',
-          formatTransferColumn({
+          formatPlayerTransfers({
             currentClub: p.currentClub,
             recentTransfers: p.recentTransfers,
-          }),
+          }, teamMappings),
         ],
       });
     }
@@ -113,19 +164,20 @@ class LeagueSquadProcessor extends BaseCrawler {
       const la = order[a.line] ?? 2;
       const lb = order[b.line] ?? 2;
       if (la !== lb) return la - lb;
-      return parseInt(b.cells[8], 10) - parseInt(a.cells[8], 10);
+      return b.lineups - a.lineups;
     });
     return rows;
   }
 
-  generateMarkdown(teamInfo, data) {
+  generateMarkdown(teamInfo, data, playerCenter, teamMappings) {
     const cn = teamInfo.chineseName;
     const en = teamInfo.englishName || '';
     const serial = data.teamId || squadTarget.teamSerial;
     const season = squadTarget.season || config.season || '';
     const round = squadTarget.roundSerial || '';
     const formation = formationDisplay(data.mostUsedFormation || '');
-    const rows = this.buildTableRows(data);
+    const rows = this.buildTableRows(data, playerCenter, teamMappings);
+    const headCoach = playerCenter.find((player) => player.staff === '主教练');
 
     const byLine = { GK: [], DF: [], MF: [], FW: [] };
     for (const r of rows) {
@@ -140,14 +192,14 @@ class LeagueSquadProcessor extends BaseCrawler {
       lines.push(`> 分析时间: ${data.analysisDate}`);
     }
     lines.push('');
-    lines.push('- **主教练**: （请结合球队资料补充）');
+    lines.push(`- **主教练**: ${headCoach.name}`);
     lines.push(`- **阵型**: ${formation}`);
     lines.push('');
 
     const header =
-      '| 球衣号 | 姓名 | 年龄 | 身高 | 位置 | 身价(万) | 国籍 | 出场 | 首发 | 进球 | 助攻 | 转会记录 |';
+      '| 球衣号 | 姓名 | 俱乐部 | 年龄 | 身高 | 位置 | 身价(万) | 能力 | 国籍 | 转会记录 |';
     const sep =
-      '|--------|------|------|------|------|----------|------|------|------|------|------|----------|';
+      '|--------|------|------|------|------|------|----------|------|------|----------|';
 
     for (const key of ['GK', 'DF', 'MF', 'FW']) {
       const groupRows = byLine[key];
@@ -172,10 +224,10 @@ class LeagueSquadProcessor extends BaseCrawler {
     lines.push('');
 
     const ages = rows
-      .map((r) => parseInt(r.cells[2], 10))
+      .map((r) => parseInt(r.cells[3], 10))
       .filter((n) => !Number.isNaN(n));
     const heights = rows
-      .map((r) => parseInt(String(r.cells[3]).replace(/cm/gi, ''), 10))
+      .map((r) => parseInt(String(r.cells[4]).replace(/cm/gi, ''), 10))
       .filter((n) => !Number.isNaN(n));
     const avgAge = ages.length
       ? (ages.reduce((a, b) => a + b, 0) / ages.length).toFixed(1)
@@ -227,7 +279,29 @@ class LeagueSquadProcessor extends BaseCrawler {
       return null;
     }
 
-    const md = this.generateMarkdown(teamInfo, data);
+    const playerCenterPath = path.join(config.paths.playerCenter, `${serial}.json`);
+    if (!fileExists(playerCenterPath)) {
+      this.error(`缺少球员数据文件: ${playerCenterPath}，请先运行 npm run crawl:player-list:club`);
+      return null;
+    }
+    const playerCenter = readJSON(playerCenterPath);
+    if (!Array.isArray(playerCenter)) {
+      this.error(`${playerCenterPath} 格式无效`);
+      return null;
+    }
+
+    const eplConfigPath = path.resolve(__dirname, '../../epl/data/config.json');
+    if (!fileExists(eplConfigPath)) {
+      this.error(`缺少球队名称映射文件: ${eplConfigPath}`);
+      return null;
+    }
+    const eplConfig = readJSON(eplConfigPath);
+    if (!eplConfig || !eplConfig.team) {
+      this.error(`${eplConfigPath} 格式无效`);
+      return null;
+    }
+
+    const md = this.generateMarkdown(teamInfo, data, playerCenter, eplConfig.team);
     const outDir = path.join(config.paths.cupAnalyzer, 'squad');
     const outPath = path.join(outDir, `${teamInfo.chineseName}.md`);
     saveMarkdown(outPath, md);
