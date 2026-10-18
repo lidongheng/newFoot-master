@@ -449,7 +449,7 @@
   <!-- 1. 顶部品牌条 -->
   <div class="brand-bar">
     <div class="brand-name">Darwin<span class="dot">.</span>skill</div>
-    <div class="brand-date" data-field="date">2026.10.18</div>
+        <div class="brand-date" data-field="date">2026.10.19</div>
   </div>
 
   <!-- 2. 核心成就区 -->
@@ -471,7 +471,7 @@
         <div>
           <span class="ring-score" data-field="score-after">89</span><span class="ring-max">/100</span>
         </div>
-        <div class="ring-label">质量总分</div>
+        <div class="ring-label">上轮加权参考分</div>
       </div>
     </div>
 
@@ -481,8 +481,8 @@
         <span class="hero-skill-name" data-field="skill-name">dh-analysis 英超分析</span>
       </div>
       <div class="hero-journey">
-        从 <strong data-field="score-before">86</strong> 分进化到 <strong>89</strong> 分<br>
-        <span style="color:#999;font-size:14px;" data-field="skill-id">cup-analyzer/epl/workflow.md</span>
+        上轮参考 <strong data-field="score-before">86</strong> → <strong>89</strong> 分<br>
+        <span style="color:#999;font-size:14px;" data-field="skill-id">本轮聚焦画像首发直引与已确认伤停扣除；绝对分不重打</span>
       </div>
       <div class="delta-badge">
         <span data-field="score-delta">+3</span>
@@ -494,32 +494,32 @@
   <!-- 3. 最大突破区 -->
   <div class="breakthrough-section">
     <div class="breakthrough-card primary">
-      <div class="breakthrough-label">最大突破</div>
-      <div class="breakthrough-dim" data-field="top1-name">可执行性</div>
+      <div class="breakthrough-label">本轮核心改进</div>
+      <div class="breakthrough-dim" data-field="top1-name">预测首发</div>
       <div class="breakthrough-score-row">
-        <span class="breakthrough-from" data-field="top1-from">9</span>
+        <span class="breakthrough-from" data-field="top1-from">混合引用</span>
         <span class="breakthrough-arrow">&rarr;</span>
-        <span class="breakthrough-to" data-field="top1-to">10</span>
+        <span class="breakthrough-to" data-field="top1-to">画像直引</span>
       </div>
-      <div class="breakthrough-pct" data-field="top1-pct">+11%</div>
-      <div class="breakthrough-story" data-field="top1-story">命令、读写边界、验收标准都能直接照做</div>
+      <div class="breakthrough-pct" data-field="top1-pct">画像首发 − 伤停</div>
+      <div class="breakthrough-story" data-field="top1-story">画像预测行作为唯一基线，逐名扣除本场已确认伤停；来源标签只记录画像口径</div>
     </div>
     <div class="breakthrough-card secondary">
-      <div class="breakthrough-label">第二突破</div>
-      <div class="breakthrough-dim" data-field="top2-name">失败处理</div>
+      <div class="breakthrough-label">配套校验</div>
+      <div class="breakthrough-dim" data-field="top2-name">脚本边界</div>
       <div class="breakthrough-score-row">
-        <span class="breakthrough-from" data-field="top2-from">9</span>
+        <span class="breakthrough-from" data-field="top2-from">每场生成</span>
         <span class="breakthrough-arrow">&rarr;</span>
-        <span class="breakthrough-to" data-field="top2-to">10</span>
+        <span class="breakthrough-to" data-field="top2-to">按需运行</span>
       </div>
-      <div class="breakthrough-pct" data-field="top2-pct">+11%</div>
-      <div class="breakthrough-story" data-field="top2-story">区分解析空结果、未确认与网络拒绝</div>
+      <div class="breakthrough-pct" data-field="top2-pct">输入须新鲜</div>
+      <div class="breakthrough-story" data-field="top2-story">核验 squad-final、player_center 与阵型样本，拦截默认 442</div>
     </div>
   </div>
 
   <!-- 4. 全维度速览 -->
   <div class="dims-section">
-    <div class="dims-header">九维度全景（加权参考分）</div>
+    <div class="dims-header">上轮九维参考（本轮不重打分）</div>
     <div class="dims-grid">
       <div class="dim-cell warm"><div class="dim-name">Frontmatter</div><div class="dim-score-row"><span class="dim-old-score">9</span><span class="dim-score">9</span></div><span class="dim-arrow">0</span></div>
       <div class="dim-cell"><div class="dim-name">工作流清晰度</div><div class="dim-score-row"><span class="dim-old-score">9</span><span class="dim-score">9</span></div><span class="dim-arrow">0</span></div>
@@ -536,9 +536,9 @@
   <div class="summary-section">
     <div class="summary-header">关键改进</div>
     <div class="summary-items">
-      <div class="summary-item" data-field="improve-1">补齐赛前报告、赔率、盘口、赛程与缺项的固定格式</div>
-      <div class="summary-item" data-field="improve-2">实跑阵容脚本成功；统计脚本 EACCES 如实记录并禁止伪称成功</div>
-      <div class="summary-item" data-field="improve-3">独立 paired judges：3/3 better（2 clear、1 slight）</div>
+      <div class="summary-item" data-field="improve-1">预测首发=画像预测首发−本场已确认伤停；伤疑保留，被删除的位置不补人</div>
+      <div class="summary-item" data-field="improve-2">画像有效时不重复运行生成器；过期分支核验输入与 formationStats</div>
+      <div class="summary-item" data-field="improve-3">独立 paired judges：3/3 better（3 clear）</div>
     </div>
   </div>
 

@@ -35,8 +35,8 @@ description: |
 | 进球时间 | `cup-analyzer/epl/data/td36.js` |
 | 冠军与保级赔率 | `cup-analyzer/epl/data/冠军赔率.md`、`降级赔率.md` |
 | 球队序号 | `cup-analyzer/epl/data/球队与序号对照表.md` |
-| 阵容、伤停、预测首发 | `cup-analyzer/epl/squad-final/{队名}.md` |
-| 球队画像 | `cup-analyzer/epl/teamProfile/{队名}.md` |
+| 阵容、伤停、伤疑 | `cup-analyzer/epl/squad-final/{队名}.md` |
+| 预测首发与球队画像 | `cup-analyzer/epl/teamProfile/{队名}.md` |
 | 赛前报告模板 | `cup-analyzer/epl/prompts/match_analysis_template.md` |
 | 比赛新闻与名单 | `cup-analyzer/epl/news/{赛季}/round-{N}/{主队}_vs_{客队}/` |
 | 赛前报告 | `cup-analyzer/epl/report/{赛季}/round-{N}/{主队}_vs_{客队}.md` |
@@ -51,16 +51,18 @@ description: |
 ### Step 1：确定比赛资料版本
 
 1. 依据比赛时间确认赛季和轮次，并核对 `s36.js`、报告目录、新闻目录的赛季标记。
-2. 读取赛前模板、双方 `squad-final` 和 `teamProfile`，确认阵容、伤停、伤疑、预测首发和球队定位。
+2. 读取赛前模板、双方 `teamProfile` 和 `squad-final`，以画像中的预测首发为赛前预测正文；核对球队、赛季/统计轮次及伤停资料是否适用于本场。
 3. 读取 `s36.js`、`l36.js`、`bs36.js`、`td36.js` 中与本场有关的数据，以及冠军赔率、降级赔率。
 4. 不用赛后数据、其他赛季的名单或旧新闻替代本场赛前资料。若文件的赛季标签冲突，明确列出冲突并暂停受影响的判断。
 
 ### Step 2：核验阵容、新闻和近况
 
-- 阵容和伤停以本场适用的 `squad-final/{队名}.md` 为准；需要生成单场阵容文案时，可使用 `matchSquadGenerator.js`，并核对输出赛季和比赛双方。
-- 生成单场阵容文案时，在 `cup-analyzer/crawler-server` 执行 `npx cross-env CUP_ANALYZER_CUP=epl node processors/matchSquadGenerator.js --home <主队序号> --away <客队序号>`。球队序号读取 `epl/data/球队与序号对照表.md`。
+- 报告的预测首发直接以双方 `teamProfile/{队名}.md` 中 `### 预测首发(...)` 的阵型和球员行为基准，按集合差计算：`报告预测首发 = 画像预测首发 − 本场已确认伤停球员`。不重算、不重排，也不从 `squad-final` 的静态 `## 推荐首发` 另造一套；画像生成时已排除的球员本来就不在该行，重复核对时自然不产生变化。
+- 用 `squad-final/{队名}.md` 与本场最新可核实消息确认伤停状态。画像头部数据源标签用于记录画像来源与解释画像生成口径，不改变上述扣除规则；来源不明时如实注明。只剔除已确认无法出场的伤停球员；“伤疑”仍保留在预测行并标注出场存疑。
+- 引用前核对画像球队名、赛季和统计截至轮次，并对照本场最新已确认伤停。逐名从画像预测行中删除本场确认伤停球员并记录实际删除对象及来源；球员不在画像行中时不作为本次删除项记录。只有画像缺失、预测行缺失、球队/赛季不符，或统计轮次已不足以支撑本场而确需重新计算时，才检查 `output/player_center/{球队序号}-new.json` 的 `teamId`、`teamChineseName`、`mostUsedFormation` 与 `players` 中比赛序号/轮次是否能和本赛季 `s36.js` 对上。还需确认 `mostUsedFormation` 在 `formationStats` 中有正样本；没有时只采用适用本场的 `squad-final` 阵型，不把脚本默认的 `442` 当作有数据支持的阵型。`analysisDate` 仅是生成时间，不能单独证明底层统计新鲜。资料无法确认时报告冲突或缺失，不手工补位、不猜替代球员。
+- `matchSquadGenerator.js` 只用于画像缺失/失效且确需重新计算，或报告确需单场替补、伤疑、伤停、落选文案时；仅引用画像预测首发、扣除本场伤停或补足被删除的球员都不运行。需运行时使用 `npx cross-env CUP_ANALYZER_CUP=epl node processors/matchSquadGenerator.js --home <主队序号> --away <客队序号>`（工作目录 `cup-analyzer/crawler-server`；球队序号见 `epl/data/球队与序号对照表.md`）。该脚本读取 `squad-final` 与 `output/player_center/{球队序号}-new.json`；若底层资料无法确认适用于本赛季，不运行后将其输出称为当前预测。
 - 需要球探提供的交锋、近况、未来赛事和伤病摘要时，执行 `npm run crawl:match-statistics -- --match <本场序号>`。不要为此修改 `config/squadTarget.js`；若无法确认本场序号，报告缺项并跳过该脚本。球探伤病摘要是补充信息，已确认伤停仍以 `squad-final` 和本场名单为准。
-- 完整单场分析需要本地阵容文案与球探近况时，按第 5 节执行对应脚本并检查退出码与输出；不能只写“可运行”而跳过执行。
+- 只执行本场确有需要的脚本，并检查退出码与输出；有效画像已提供预测首发时，不为同一首发运行生成脚本。若报告确需替补/落选文案或要重算过期首发，再按第 5 节核验输入后执行对应命令。
 - 搜集双方最新的官方发布会、主帅采访和伤停消息。记录来源、发布时间与确认状态；区分俱乐部已确认信息和媒体传闻。
 - 交锋、近况、积分榜与未来赛事以本地数据和可核验来源为依据。引用新闻或外部数据时，保留可追溯来源。
 - Big 6 及相关欧战球队，结合画像中的转会窗、伤病、状态和多线作战信息；按比赛需要阅读争冠、欧战、保级、德比或赛程拥堵策略文档。
@@ -96,7 +98,7 @@ description: |
 ### Step 6：生成报告与周期图
 
 - 按 `prompts/match_analysis_template.md` 组织报告，至少覆盖比赛信息、双方阵容与伤停、新闻和战意、盘口、近况与积分、未来赛程、结论及风险点。
-- 报告路径为 `cup-analyzer/epl/report/{赛季}/round-{N}/{主队}_vs_{客队}.md`。大名单与预测部分以 `matchSquadGenerator.js` 针对本场输出为正文来源；其余章节结合模板和已核验资料填写。
+- 报告路径为 `cup-analyzer/epl/report/{赛季}/round-{N}/{主队}_vs_{客队}.md`。预测首发正文直接引用有效 `teamProfile` 的预测行，并按 Step 2 扣除本场已确认伤停；大名单、伤停和伤疑结合 `squad-final` 与最新核验信息填写。只有画像缺失/失效且确需重新计算，或需单场替补等文案时，才执行 `matchSquadGenerator.js`。
 - 赛前报告同时生成亚盘周期盈亏 HTML；用户明确只要文字报告，或本地没有本场球探 `matchSerial` 时，可以不生成，并在交付说明中写明原因。
   1. 读取 `cup-analyzer/crawler-server/config/squadTarget.js` 并核对 `matchSerial`、`roundSerial`、`season` 和球探战绩表中的 `matchLeagueName`；只有四项已匹配时才运行，不匹配就询问用户是否授权修改配置或说明跳过。
   2. 在 `cup-analyzer/crawler-server` 执行 `npx cross-env CUP_ANALYZER_CUP=epl npm run generate:cycle-report`。
@@ -171,6 +173,7 @@ description: |
 
 格式合同：
 
+- 预测首发逐队按画像中的阵型标题和球员行输出，格式为 `阵型：{画像阵型}` / `预测首发：{画像预测首发扣除本场已确认伤停后的球员行}`；发生实际剔除时另列 `伤停调整：{球衣号-姓名}（{确认来源}）`。段末标注 `来源：teamProfile/{队名}.md（数据源：{画像头部标签或“画像头部未注明数据源”}；统计截至第{N}轮）`。画像未注明统计截至轮次时如实写“画像未注明统计截至轮次”，不推定轮次。伤疑球员若仍在预测首发中，保留并标注“出场存疑”。若剔除后不足 11 人，标注预测首发不完整及缺项；不得猜人、补位或运行脚本补足。
 - 赛前未公布的实际首发，在对应标题下写“截至 {截点} 尚未公布”，保留模板表格表头但不造球员行；预测首发不得复制成实际首发。已公布时用 `| 位置 | 球衣号 | 球员名 | 数据 | 备注 |` 表格逐人列出。
 - 新闻逐条按 `| 球队 | 摘要 | 状态（官方/媒体/未核实） | 来源链接 | 发布时间（含时区） |` 输出；没有查到时标出搜索范围和缺失，不写“无新闻”。
 - 舆情按 `| 球队 | 指标/观点 | 样本或来源 | 发布时间 |` 输出；没有可核验样本时写明未取得舆情资料，不凭印象判冷热。
@@ -192,11 +195,11 @@ description: |
 
 | 用途 | 命令 | 读写行为与成功检查 |
 |---|---|---|
-| 生成双方阵容文案 | `npx cross-env CUP_ANALYZER_CUP=epl node processors/matchSquadGenerator.js --home <主队序号> --away <客队序号>` | 读取 `squad-final` 并向 stdout 输出；不写文件。退出码为 0，且输出含双方球队块，才可引用。若输出“未找到 squad-final 文件”或“无推荐首发文本”，把它作为缺失项处理。 |
+| 画像缺失/失效且确需重新计算，或生成单场替补等阵容文案 | `npx cross-env CUP_ANALYZER_CUP=epl node processors/matchSquadGenerator.js --home <主队序号> --away <客队序号>` | 仅引用画像预测首发、从中扣除本场伤停或补足被删除球员时不运行。需重算时，先确认 `squad-final` 的球队、赛季、阵型和伤停适用于本场；再核验 `output/player_center/{球队序号}-new.json` 的 `teamId`、`teamChineseName`、`players[*].matches[*].id/round` 是否对应本赛季数据，且 `mostUsedFormation` 在 `formationStats` 中有正样本；若无统计，只用适用本场的 `squad-final` 阵型，不接受代码默认 `442`。`analysisDate` 单独不足以证明统计最新。脚本读取两类输入并向 stdout 输出，不写文件；成功条件为退出码 0、双方球队块和预测行匹配目标，且输入版本已核实。若来源缺失/过期或输出“无推荐首发文本”，报告缺项，不猜阵容。 |
 | 取得交锋/近况/赛程/伤病摘要 | `npm run crawl:match-statistics -- --match <本场matchSerial>` | 明确传本场序号；不传 `--out` 时只向 stdout 输出，不改配置或文件。退出码为 0、比赛双方与目标匹配、且相关章节有可核验记录时才可引用。若摘要章节输出“（无）”或相应数组为空，先核对源页面；无法确认是确实无记录还是解析为空时，标为“未取得/未能核实”，不得断言没有交锋、近况、赛程或伤病。 |
 | 生成周期盈亏 HTML | `npx cross-env CUP_ANALYZER_CUP=epl npm run generate:cycle-report` | 读取 `config/squadTarget.js`，按配置季赛/轮次及远端页面双方名称写入报告目录。先确认其中 `matchSerial`、`season`、`roundSerial`、`matchLeagueName` 与目标一致；不一致时不得擅自修改该配置，先询问用户或说明跳过。目标 HTML 已存在时先报告现状，未获明确覆盖授权不覆盖。成功必须同时满足：退出码为 0；终端报告的生成路径确实存在；HTML 标题和图表双方与本场目标一致。 |
 
-运行失败时保留命令、退出码和原始错误摘要；仅用已读取的本地资料完成可支持的章节，并在报告标出脚本结果未取得。若报错含 `EACCES`、`ECONNRESET` 或网络拒绝，停止重跑，标注受阻的 URL；可用已允许的浏览能力另查官方来源，但必须标成独立来源，不能当作爬虫输出。不得把旧输出当作本次运行结果，不得声称脚本已成功。数据更新脚本 `npm run crawl:schedule:epl` 会改写赛程文件，只在用户明确要求刷新赛程时运行。
+运行失败时保留命令、退出码和原始错误摘要；仅用已读取的本地资料完成可支持的章节，并在报告标出脚本结果未取得。若报错含 `EACCES`、`ECONNRESET` 或网络拒绝，停止重跑，标注受阻的 URL；可用已允许的浏览能力另查官方来源，但必须标成独立来源，不能当作爬虫输出。不得把旧输出当作本次运行结果，不得声称脚本已成功。`npm run analyze:club-domestic` 会生成/改写 `output/player_center/*-new.json`，`npm run crawl:schedule:epl` 会改写赛程文件；仅在用户明确要求刷新对应数据时运行。
 
 ## 6. 数据更新与赛季维护
 
@@ -226,7 +229,7 @@ description: |
 | 触发情况 | 处理 |
 |---|---|
 | 赛季、轮次、主客队或比赛时间互相冲突 | 列出冲突文件和字段；不能唯一确认时询问用户，不选一个猜测值继续写结论。 |
-| 阵容、画像、伤停或新闻缺失 | 在对应章节标明文件路径和缺失项；只完成其他有依据的部分，不推测球员状态或“无人伤停”。 |
+| 画像预测首发缺失/过期，且 `squad-final` 或 `player_center/{序号}-new.json` 不足以更新 | 在对应章节标明文件路径、冲突字段及影响；只完成有依据的部分，不推测替代球员或“无人伤停”。 |
 | `l36.js`、`bs36.js` 或 `td36.js` 缺失/无本场数据 | 指出缺失文件或数据字段；不补联赛平均值，不用其他轮次或赛季代替。 |
 | 赛程配置、`qiutanSerial` 或赛程 JSON 缺失 | 按 `dh-team-schedule` 规则报告实际缺项；不推测赛程、比分或间隔。 |
 | 外部新闻未查到或来源时间无法核验 | 写明未能核实；不把传闻标为官方确认，不虚构来源或发布时间。 |
@@ -237,6 +240,7 @@ description: |
 - 禁止固定使用旧赛季路径；禁止把不同赛季的赛程、名单、新闻或盘口拼成本场资料。
 - 禁止在缺资料时填默认值、平均值、推测值，或把空缺写成“无”。
 - 禁止编造伤停、首发、比分、来源、发布时间、盘口排名或赛程间隔。
+- 禁止绕过画像预测首发行另造首发、把 `squad-final` 静态“推荐首发”替代画像预测行、因画像数据源不同而跳过本场确认伤停扣除，或猜测/运行脚本补足被删除球员。
 - 禁止将主队让球的符号、`Fair − Market` 的顺序或开盘/临场时点混淆。
 - 禁止在未给定阈值时自行分类安全边际；禁止只凭盘口差异给出“反向投”。
 - 禁止混用通用 67/92 小时休息预警与欧冠/英超专项 70 小时提示。
