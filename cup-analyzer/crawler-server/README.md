@@ -76,15 +76,22 @@ npm：`npm run crawl:squad` / `npm run crawl:squad:one -- 744`
 
 ### 2. `playerListCrawler.js` — 俱乐部大名单（欧冠 / 英超）
 
-- **作用**：按 [`config/squadTarget.js`](config/squadTarget.js) 中的 `teamSerial` 拉取单俱乐部大名单，写入 `output/player_center/{teamSerial}.json`。
-- **可选**：`--with-club` 同上，补充 `currentClub`、`recentTransfers`。联赛大名单 Markdown（`leagueSquadProcessor`）中的 **「转会记录」** 列依赖上述字段；若未使用 `--with-club`，分析合并后该列多为 `-`。
+- **作用**：按 [`config/squadTarget.js`](config/squadTarget.js) 中的 `teamSerial` 拉取单俱乐部大名单，写入 `output/player_center/{teamSerial}.json`。默认来源为懂球帝，只抓当前赛季的球队成员与联赛统计，并附个人资料、能力值和转会记录。
+- **来源参数**：`-w dqd` 抓懂球帝，`-w qiutan` 抓球探；不传 `-w` 时默认懂球帝。俱乐部命令会启用转会数据抓取。
 
 ```bash
 node crawlers/playerListCrawler.js
 node crawlers/playerListCrawler.js --with-club
+node crawlers/playerListCrawler.js --with-club -w qiutan
+node crawlers/playerListCrawler.js --with-club -w dqd
 ```
 
-npm：`npm run crawl:player-list` / `npm run crawl:player-list:club`（需要转会列时请用后者）
+npm：`npm run crawl:player-list` / `npm run crawl:player-list:club`。追加参数时用 `--` 分隔 npm 参数，例如：
+
+```bash
+npm run crawl:player-list:club -- -w qiutan
+npm run crawl:player-list:club -- -w dqd
+```
 
 ### 3. `scheduleCrawler.js` — 更新赛程 JS
 

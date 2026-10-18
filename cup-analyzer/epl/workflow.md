@@ -25,7 +25,14 @@
 
 工作目录：`cup-analyzer/crawler-server`。先编辑 `config/squadTarget.js`。
 
-**转会记录列**：`epl/squad/{队名}.md` 表末列「转会记录」来自球探 `player{序号}.js` 的转会数据。请先执行 `npm run crawl:player-list:club`（即 `playerListCrawler.js --with-club`）再跑 `analyze:club-domestic`；若仅用 `crawl:player-list`，该列多为 `-`。
+**大名单数据源**：`npm run crawl:player-list:club` 默认抓取懂球帝；也可通过 `-w` 指定来源。选择球探或显式指定懂球帝时使用：
+
+```bash
+npm run crawl:player-list:club -- -w qiutan
+npm run crawl:player-list:club -- -w dqd
+```
+
+也可省略 `-w dqd`，直接运行 `npm run crawl:player-list:club`。球探来源通过球探球员资料补充俱乐部与转会记录；懂球帝来源抓取当前赛季联赛数据、球员资料、能力值和转会记录。两种来源都写入 `output/player_center/{teamSerial}.json`。抓取完成后再运行 `analyze:club-domestic`。
 
 以下两条任意系统相同：
 
