@@ -13,8 +13,8 @@ const squadTarget = {
   leagueSerial: '36',
   leagueSlug: 'epl',
   season: '2026-2027',
-  teamSerial: '26',
-  roundSerial: '8',
+  teamSerial: '57',
+  roundSerial: '7',
   /**
    * 赛程格式开关：
    *   false（默认）= 联赛格式，读 s 开头文件，R_* 轮次迭代
@@ -35,7 +35,7 @@ const squadTarget = {
    *   isNation: true + 国家队杯赛 → 不用设（自动 true）
    */
   matchByName: false,
-  teamChineseName: '曼彻斯特城',
+  teamChineseName: '考文垂',
   /** 单场分析 / 周期报告等场景可选 */
   matchSerial: '2906967',
   /**
