@@ -1,11 +1,18 @@
 const axios = require('axios');
+const https = require('https');
 
 const ZQ_HOST = 'zq.titan007.com';
+
+const httpsAgent = new https.Agent({
+  maxVersion: 'TLSv1.2',
+  keepAlive: true,
+});
 
 const service = axios.create({
   timeout: 15000,
   retry: 4,
   retryDelay: 1500,
+  httpsAgent,
 });
 
 service.interceptors.request.use(
