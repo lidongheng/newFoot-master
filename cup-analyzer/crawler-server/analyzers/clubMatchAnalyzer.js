@@ -1158,6 +1158,18 @@ class ClubAnalyzer {
         
         // 输出所有上场过的球员信息，按首发数和出场数排序
         console.log('\n所有上场球员信息:');
+        // 控制台优先显示当前 DQD 名单名称，并保留比赛数据中的原名和别名。
+        const formatConsolePlayerName = (player) => {
+          const dqdPlayer = analyzer.teamData.find(p => p.number === player.number);
+          const displayName = dqdPlayer ? dqdPlayer.name : player.name;
+          const alternativeNames = [...new Set([player.name, ...player.alternativeNames])]
+            .filter(name => name !== displayName);
+          const alternativeNamesInfo = alternativeNames.length > 0
+            ? `(${alternativeNames.join('、')})`
+            : '';
+
+          return `${player.number}-${displayName}${alternativeNamesInfo}`;
+        };
         const allPlayers = Object.values(report.players)
           .filter(p => p.caps > 0) // 只包含上场过的球员
           .sort((a, b) => {
@@ -1185,7 +1197,7 @@ class ClubAnalyzer {
           const heightInfo = player.height ? `${player.height}cm` : '--';
           const valueInfo = player.socialStatus ? `${player.socialStatus}万欧元` : '--';
           
-          console.log(`${player.number}-${player.name} ${player.caps}场${player.lineups}首发 ${player.goals}球${player.assists}助 ${JSON.stringify(positionsObj)} ${nationInfo} ${ageInfo} ${heightInfo} ${valueInfo}`);
+          console.log(`${formatConsolePlayerName(player)} ${player.caps}场${player.lineups}首发 ${player.goals}球${player.assists}助 ${JSON.stringify(positionsObj)} ${nationInfo} ${ageInfo} ${heightInfo} ${valueInfo}`);
         });
         console.log(''); // 添加空行分隔
         
@@ -1193,10 +1205,10 @@ class ClubAnalyzer {
         const lineup = report.recommendedLineup;
         if (lineup && lineup.length > 0) {
           // 将球员按位置分组
-          const gk = lineup.filter(p => p.recommendedPosition === 'GK').map(p => `${p.number}-${p.name}`);
-          const defenders = lineup.filter(p => ['LB', 'CB', 'RB', 'LWB', 'RWB'].includes(p.recommendedPosition)).map(p => `${p.number}-${p.name}`);
-          const midfielders = lineup.filter(p => ['CDM', 'CM', 'LM', 'RM', 'CAM', 'LDM', 'RDM', 'LCM', 'RCM', 'LAM', 'RAM'].includes(p.recommendedPosition)).map(p => `${p.number}-${p.name}`);
-          const forwards = lineup.filter(p => ['CF', 'LW', 'RW', 'ST'].includes(p.recommendedPosition)).map(p => `${p.number}-${p.name}`);
+          const gk = lineup.filter(p => p.recommendedPosition === 'GK').map(formatConsolePlayerName);
+          const defenders = lineup.filter(p => ['LB', 'CB', 'RB', 'LWB', 'RWB'].includes(p.recommendedPosition)).map(formatConsolePlayerName);
+          const midfielders = lineup.filter(p => ['CDM', 'CM', 'LM', 'RM', 'CAM', 'LDM', 'RDM', 'LCM', 'RCM', 'LAM', 'RAM'].includes(p.recommendedPosition)).map(formatConsolePlayerName);
+          const forwards = lineup.filter(p => ['CF', 'LW', 'RW', 'ST'].includes(p.recommendedPosition)).map(formatConsolePlayerName);
           
           // 格式化输出
           const formattedLineup = [

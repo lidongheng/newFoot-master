@@ -103,7 +103,12 @@ function getAbilityPosition(abilityResponse, eplConfig, personName) {
   if (!Array.isArray(fields) || fields.length === 0) {
     throw new Error(`${personName}的懂球帝能力值列表为空`);
   }
-  const maxField = fields.reduce((current, field) => {
+  // 仅使用 lv 后缀为 _f 的位置项，同时以该位置项的 val 作为能力值。
+  const positionFields = fields.filter((field) => field.lv.endsWith('_f'));
+  if (positionFields.length === 0) {
+    throw new Error(`${personName}的懂球帝能力值列表没有lv以_f结尾的位置项`);
+  }
+  const maxField = positionFields.reduce((current, field) => {
     const currentValue = parseNumericValue(current.val, `${personName}能力值`);
     const fieldValue = parseNumericValue(field.val, `${personName}能力值`);
     return fieldValue > currentValue ? field : current;
@@ -195,6 +200,7 @@ function buildPlayerRecord(entry, groupType, profile, eplConfig, season, seasonR
     attacker: 'FW',
   })[groupType];
   const record = {
+    person_id: entry.person_id,
     name: entry.person_name,
     nation: baseInfo.nationality,
     staff,
