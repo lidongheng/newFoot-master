@@ -251,6 +251,22 @@ async function requestJson(url, headers) {
   return response.data;
 }
 
+async function fetchTeamSchedule(dqdTeamId) {
+  const scheduleUrl = `https://sport-data.dongqiudi.com/soccer/biz/dqd/team/schedule/${dqdTeamId}?app=dqd&version=444&lang=zh-cn&season=${squadTarget.season}`;
+  const scheduleResponse = await requestJson(scheduleUrl, {
+    ...DQD_SPORT_HEADERS,
+    Referer: `https://topic.dongqiudi.com/webapp/team_schedule/team_schedule.html?id=${dqdTeamId}`,
+  });
+
+  // 赛程只请求懂球帝当前配置赛季，文件名沿用球探球队序号供现有脚本读取。
+  const outDir = path.resolve(__dirname, '../output');
+  ensureDir(outDir);
+  const outPath = path.join(outDir, `${squadTarget.teamSerial}-schedule.json`);
+  fs.writeFileSync(outPath, JSON.stringify(scheduleResponse.data, null, 2), 'utf8');
+  console.log(`[playerListCrawler] 已写入懂球帝赛程 ${outPath}`);
+  return outPath;
+}
+
 async function fetchPlayerData(entry, groupType, eplConfig, seasonRange, season) {
   const personId = requireValue(entry.person_id, `${entry.person_name}的person_id`);
   const profileUrl = `https://api.dongqiudi.com/data/v1/detail/person/${personId}?app=dqd&lang=zh-cn`;
@@ -291,6 +307,7 @@ async function fetchPlayerList() {
   const eplConfig = loadEplConfig();
   const { dqdTeamId } = getTeamMapping(eplConfig);
   const seasonRange = parseSeason(squadTarget.season);
+  await fetchTeamSchedule(dqdTeamId);
   const rosterUrl = `https://sport-data.dongqiudi.com/soccer/biz/dqd/v1/team/member_v2/${dqdTeamId}?app=dqd`;
   const rosterResponse = await requestJson(rosterUrl, {
     ...DQD_SPORT_HEADERS,
