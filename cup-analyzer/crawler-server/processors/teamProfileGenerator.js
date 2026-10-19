@@ -266,6 +266,17 @@ const POSITION_GROUPS_FOR_PROFILE = [
   { label: '中锋', codes: ['ST', 'CF'] },
 ];
 
+const POSITION_GROUP_CODES = {
+  GK: ['GK'],
+  DF: ['CB', 'LB', 'RB', 'LCB', 'RCB', 'LWB', 'RWB'],
+  MF: ['CDM', 'CM', 'LM', 'RM', 'CAM', 'LDM', 'RDM', 'LCM', 'RCM', 'LAM', 'RAM'],
+  FW: ['CF', 'ST', 'LW', 'RW'],
+};
+
+const SUBSTITUTE_GROUP_ORDER = ['GK', 'DF', 'MF', 'FW'];
+const SUBSTITUTE_GROUP_LABELS = { GK: '门将', DF: '后卫', MF: '中场', FW: '前锋' };
+const SUBSTITUTE_GROUP_QUOTAS = { GK: 1, DF: 3, MF: 3, FW: 2 };
+
 class TeamProfileGenerator extends BaseCrawler {
   constructor() {
     super('TeamProfileGenerator');
@@ -918,7 +929,10 @@ class TeamProfileGenerator extends BaseCrawler {
       .map((line) => this.findPlayerByInjuryLine(squadFinalPlayers, line))
       .filter(Boolean);
     const injuredNums = new Set(
-      injuredResolved.map((p) => Number(p.number)).filter((n) => !Number.isNaN(n))
+      injuredResolved.map((p) => this.getPlayerJerseyNumber(p)).filter((n) => n !== null)
+    );
+    const injuredNames = new Set(
+      injuredResolved.map((p) => String(p.name || '').trim()).filter(Boolean)
     );
 
     const squadNums = new Set();
@@ -940,6 +954,7 @@ class TeamProfileGenerator extends BaseCrawler {
         (Number.isFinite(num) && squadNums.has(num)) || (nm && squadNames.has(nm));
       if (!inSquad) continue;
       if (Number.isFinite(num) && injuredNums.has(num)) continue;
+      if (nm && injuredNames.has(nm)) continue;
       out[key] = ap;
     }
     return out;
@@ -956,12 +971,170 @@ class TeamProfileGenerator extends BaseCrawler {
       .map((line) => this.findPlayerByInjuryLine(squadPlayers, line))
       .filter(Boolean);
     const injuredNums = new Set(
-      injuredResolved.map((p) => Number(p.number)).filter((n) => !Number.isNaN(n))
+      injuredResolved.map((p) => this.getPlayerJerseyNumber(p)).filter((n) => n !== null)
+    );
+    const injuredNames = new Set(
+      injuredResolved.map((p) => String(p.name || '').trim()).filter(Boolean)
     );
     return (squadPlayers || []).filter((p) => {
-      const n = Number(p.number);
-      return Number.isNaN(n) || !injuredNums.has(n);
+      const n = this.getPlayerJerseyNumber(p);
+      const name = String(p.name || '').trim();
+      return !(n !== null && injuredNums.has(n)) && !(name && injuredNames.has(name));
     });
+  }
+
+  /** 球衣号只接受完整数字，缺号时返回 null，供门将排序和球员去重使用。 */
+  getPlayerJerseyNumber(player) {
+    if (!player || player.number == null) return null;
+    const raw = String(player.number).trim();
+    if (!/^\d+$/.test(raw)) return null;
+    return Number(raw);
+  }
+
+  /** 读取球员已知的位置代码；原始数据缺少位置列时按 positions 频次排列。 */
+  getPlayerPositionCodes(player) {
+    if (!player) return [];
+    const rawPositions = Array.isArray(player.position) ? player.position : [player.position];
+    const positionCodes = rawPositions
+      .map((position) => this.normalizePositionCode(position))
+      .filter(Boolean);
+    if (positionCodes.length > 0) return [...new Set(positionCodes)];
+
+    if (!player.positions || typeof player.positions !== 'object') return [];
+    const rows = Object.entries(player.positions)
+      .map(([position, count], index) => ({
+        code: this.normalizePositionCode(position),
+        count: parseStatIntCell(count),
+        index,
+      }))
+      .filter((row) => row.code);
+    rows.sort((a, b) => {
+      if (a.count === null && b.count !== null) return 1;
+      if (a.count !== null && b.count === null) return -1;
+      if (a.count !== null && b.count !== null && b.count !== a.count) return b.count - a.count;
+      return a.index - b.index;
+    });
+    return [...new Set(rows.map((row) => row.code))];
+  }
+
+  /** 优先使用人工名单的位置分组，原始数据则由标准位置代码推导。 */
+  getPlayerPositionGroup(player, positionCodes = this.getPlayerPositionCodes(player)) {
+    const declaredGroup = String(player && player.positionGroup || '').trim().toUpperCase();
+    if (Object.prototype.hasOwnProperty.call(POSITION_GROUP_CODES, declaredGroup)) {
+      return declaredGroup;
+    }
+    for (const code of positionCodes) {
+      for (const [group, codes] of Object.entries(POSITION_GROUP_CODES)) {
+        if (codes.includes(code)) return group;
+      }
+    }
+    return null;
+  }
+
+  /** 球衣号或姓名匹配同一球员，兼容两条数据源之间缺少号码的情况。 */
+  isSamePlayer(first, second) {
+    const firstNumber = this.getPlayerJerseyNumber(first);
+    const secondNumber = this.getPlayerJerseyNumber(second);
+    if (firstNumber !== null && secondNumber !== null && firstNumber === secondNumber) return true;
+    const firstName = String(first && first.name || '').trim();
+    const secondName = String(second && second.name || '').trim();
+    return firstName !== '' && firstName === secondName;
+  }
+
+  /** 首发数降序；数据缺失时保持原名单顺序。 */
+  sortSubstituteRowsByStarts(rows) {
+    return rows.slice().sort((a, b) => {
+      if (a.starts === null && b.starts !== null) return 1;
+      if (a.starts !== null && b.starts === null) return -1;
+      if (a.starts !== null && b.starts !== null && b.starts !== a.starts) {
+        return b.starts - a.starts;
+      }
+      return a.index - b.index;
+    });
+  }
+
+  /** 按组内名额、首发位置优先级和赛季首发数生成最多 9 名替补。 */
+  selectPredictedSubstitutes(players, starters, injuredLines) {
+    const availablePlayers = this.filterSquadPlayersExcludingInjured(players, injuredLines);
+    const starterPlayers = (starters || []).filter(Boolean);
+    const candidateRows = [];
+
+    availablePlayers.forEach((player, index) => {
+      if (starterPlayers.some((starter) => this.isSamePlayer(player, starter))) return;
+      if (candidateRows.some((row) => this.isSamePlayer(player, row.player))) return;
+      const positionCodes = this.getPlayerPositionCodes(player);
+      const group = this.getPlayerPositionGroup(player, positionCodes);
+      if (!group) return;
+      candidateRows.push({
+        player,
+        index,
+        group,
+        positionCodes,
+        starts: parseStatIntCell(player.starts ?? player.lineups),
+        jerseyNumber: this.getPlayerJerseyNumber(player),
+      });
+    });
+
+    const selectedRows = [];
+    for (const group of SUBSTITUTE_GROUP_ORDER) {
+      const groupRows = candidateRows.filter((row) => row.group === group);
+      const quota = SUBSTITUTE_GROUP_QUOTAS[group];
+      let orderedRows = [];
+
+      if (group === 'GK') {
+        orderedRows = groupRows.sort((a, b) => {
+          if (a.jerseyNumber === null && b.jerseyNumber !== null) return 1;
+          if (a.jerseyNumber !== null && b.jerseyNumber === null) return -1;
+          if (a.jerseyNumber !== null && b.jerseyNumber !== null && a.jerseyNumber !== b.jerseyNumber) {
+            return a.jerseyNumber - b.jerseyNumber;
+          }
+          return a.index - b.index;
+        });
+      } else {
+        const starterCodes = new Set();
+        starterPlayers.forEach((starter) => {
+          const starterCodesForPlayer = this.getPlayerPositionCodes(starter);
+          if (this.getPlayerPositionGroup(starter, starterCodesForPlayer) !== group) return;
+          starterCodesForPlayer.forEach((code) => starterCodes.add(code));
+        });
+        const samePositionRows = groupRows.filter((row) =>
+          row.positionCodes.some((code) => starterCodes.has(code))
+        );
+        const otherRows = groupRows.filter((row) =>
+          !row.positionCodes.some((code) => starterCodes.has(code))
+        );
+        orderedRows = [
+          ...this.sortSubstituteRowsByStarts(samePositionRows),
+          ...this.sortSubstituteRowsByStarts(otherRows),
+        ];
+      }
+
+      selectedRows.push(...orderedRows.slice(0, quota));
+    }
+
+    // A short position group can be filled from unused players in the other groups.
+    const remainingRows = candidateRows.filter((row) =>
+      !selectedRows.some((selected) => this.isSamePlayer(row.player, selected.player))
+    );
+    const remainingSlots = 9 - selectedRows.length;
+    if (remainingSlots > 0) {
+      selectedRows.push(...this.sortSubstituteRowsByStarts(remainingRows).slice(0, remainingSlots));
+    }
+    return selectedRows.map((row) => row.player);
+  }
+
+  /** 替补沿用画像名单的球员格式，按实际位置组展示。 */
+  buildPredictedSubstitutesList(players, substitutes) {
+    const formatSquadPlayer = this.createSquadPlayerLineFormatter(players);
+    const lines = [];
+    for (const group of SUBSTITUTE_GROUP_ORDER) {
+      const groupPlayers = substitutes.filter((player) =>
+        this.getPlayerPositionGroup(player) === group
+      );
+      if (groupPlayers.length === 0) continue;
+      lines.push(`${SUBSTITUTE_GROUP_LABELS[group]}：${groupPlayers.map(formatSquadPlayer).join('、')}`);
+    }
+    return lines.join('\n');
   }
 
   /**
@@ -1042,6 +1215,9 @@ class TeamProfileGenerator extends BaseCrawler {
       } else if (this.shouldPreferAbilityForLineup(filtered, injuredLines)) {
         lineupPool = this.sortPlayersByAbilityForLineup(filtered);
       }
+      starters = predLineupUtil
+        .selectPredictedStartingLineupPlayers(lineupPool, formation)
+        .filter(Boolean);
       predLine = this.buildPredictedStartingLineup(lineupPool, formation);
       predFormationLabel = formation;
     } else if (!predLine && leagueStyle && ar && ar.mostUsedFormation) {
@@ -1052,6 +1228,9 @@ class TeamProfileGenerator extends BaseCrawler {
       } else if (this.shouldPreferAbilityForLineup(filtered, injuredLines)) {
         lineupPool = this.sortPlayersByAbilityForLineup(filtered);
       }
+      starters = predLineupUtil
+        .selectPredictedStartingLineupPlayers(lineupPool, ar.mostUsedFormation)
+        .filter(Boolean);
       predLine = this.buildPredictedStartingLineup(lineupPool, ar.mostUsedFormation);
       const fd = predLineupUtil.formationDigitsToDisplay(ar.mostUsedFormation);
       predFormationLabel = fd || ar.mostUsedFormation;
@@ -1293,7 +1472,7 @@ class TeamProfileGenerator extends BaseCrawler {
       lines.push('');
     }
 
-    const { predLine, predFormationLabel } = this.computePredictedStartingLineup({
+    const { predLine, predFormationLabel, starters } = this.computePredictedStartingLineup({
       players,
       formation,
       analyzerReport: meta.analyzerReport,
@@ -1305,6 +1484,13 @@ class TeamProfileGenerator extends BaseCrawler {
       lines.push(`### 预测首发(${predFormationLabel || formation || '-'})：`);
       lines.push(predLine);
       lines.push('');
+      if (starters.length > 0) {
+        const substitutes = this.selectPredictedSubstitutes(players, starters, meta.injured || []);
+        const substitutesList = this.buildPredictedSubstitutesList(players, substitutes);
+        lines.push(`### 预测替补（${substitutes.length}人）：`);
+        if (substitutesList) lines.push(substitutesList);
+        lines.push('');
+      }
     } else {
       lines.push(`### 预测首发`);
       lines.push(

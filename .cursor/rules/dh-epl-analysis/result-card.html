@@ -478,11 +478,11 @@
     <div class="hero-text">
       <div class="hero-title">
         我的Skill进化报告<br>
-        <span class="hero-skill-name" data-field="skill-name">dh-analysis 英超分析</span>
+      <span class="hero-skill-name" data-field="skill-name">dh-epl-analysis 英超分析</span>
       </div>
       <div class="hero-journey">
         上轮参考 <strong data-field="score-before">86</strong> → <strong>89</strong> 分<br>
-        <span style="color:#999;font-size:14px;" data-field="skill-id">本轮聚焦画像首发直引与已确认伤停扣除；绝对分不重打</span>
+        <span style="color:#999;font-size:14px;" data-field="skill-id">本轮聚焦阈值校准来源与反向投边界；绝对分不重打</span>
       </div>
       <div class="delta-badge">
         <span data-field="score-delta">+3</span>
@@ -495,25 +495,25 @@
   <div class="breakthrough-section">
     <div class="breakthrough-card primary">
       <div class="breakthrough-label">本轮核心改进</div>
-      <div class="breakthrough-dim" data-field="top1-name">预测首发</div>
+      <div class="breakthrough-dim" data-field="top1-name">安全边际分档</div>
       <div class="breakthrough-score-row">
-        <span class="breakthrough-from" data-field="top1-from">混合引用</span>
+        <span class="breakthrough-from" data-field="top1-from">模糊判读</span>
         <span class="breakthrough-arrow">&rarr;</span>
-        <span class="breakthrough-to" data-field="top1-to">画像直引</span>
+        <span class="breakthrough-to" data-field="top1-to">项目标准</span>
       </div>
-      <div class="breakthrough-pct" data-field="top1-pct">画像首发 − 伤停</div>
-      <div class="breakthrough-story" data-field="top1-story">画像预测行作为唯一基线，逐名扣除本场已确认伤停；来源标签只记录画像口径</div>
+      <div class="breakthrough-pct" data-field="top1-pct">|Δ| 对照 T</div>
+      <div class="breakthrough-story" data-field="top1-story">0.25–0.5 球是校准起点而非默认值；未列阈值与依据就不分类</div>
     </div>
     <div class="breakthrough-card secondary">
       <div class="breakthrough-label">配套校验</div>
-      <div class="breakthrough-dim" data-field="top2-name">脚本边界</div>
+      <div class="breakthrough-dim" data-field="top2-name">下注方向</div>
       <div class="breakthrough-score-row">
-        <span class="breakthrough-from" data-field="top2-from">每场生成</span>
+        <span class="breakthrough-from" data-field="top2-from">只看 Δ</span>
         <span class="breakthrough-arrow">&rarr;</span>
-        <span class="breakthrough-to" data-field="top2-to">按需运行</span>
+        <span class="breakthrough-to" data-field="top2-to">补充依据</span>
       </div>
-      <div class="breakthrough-pct" data-field="top2-pct">输入须新鲜</div>
-      <div class="breakthrough-story" data-field="top2-story">核验 squad-final、player_center 与阵型样本，拦截默认 442</div>
+      <div class="breakthrough-pct" data-field="top2-pct">水位 + 盘面叙事</div>
+      <div class="breakthrough-story" data-field="top2-story">反向投须有反向盘位或项目 R 阈值，并有市场假设错误证据</div>
     </div>
   </div>
 
@@ -536,9 +536,9 @@
   <div class="summary-section">
     <div class="summary-header">关键改进</div>
     <div class="summary-items">
-      <div class="summary-item" data-field="improve-1">预测首发=画像预测首发−本场已确认伤停；伤疑保留，被删除的位置不补人</div>
-      <div class="summary-item" data-field="improve-2">画像有效时不重复运行生成器；过期分支核验输入与 formationStats</div>
-      <div class="summary-item" data-field="improve-3">独立 paired judges：3/3 better（3 clear）</div>
+      <div class="summary-item" data-field="improve-1">T 由用户指定或按联赛波动率校准，必须披露数值与依据</div>
+      <div class="summary-item" data-field="improve-2">反向投边界可判定；Δ 符号仍不替代水位与盘面叙事</div>
+      <div class="summary-item" data-field="improve-3">独立 paired judges：3/3 better（1 clear，2 slight）</div>
     </div>
   </div>
 

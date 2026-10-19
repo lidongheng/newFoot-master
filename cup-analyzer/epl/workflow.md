@@ -50,6 +50,10 @@ npx cross-env CUP_ANALYZER_CUP=epl node processors/squadFinalInitializer.js --te
 npx cross-env CUP_ANALYZER_CUP=epl node processors/teamProfileGenerator.js --team <序号>
 ```
 
+`teamProfileGenerator` 会在球队画像的预测首发后生成预测替补：门将 1 人（候选门将按球衣号升序，无号码者排在有号码者后），后卫 3 人、中场 3 人、前锋 2 人。后卫、中场、前锋先选与同组首发标准位置代码相同的球员，再从该组其他候选补足；非门将候选按赛季首发数降序，并列沿用名单顺序，缺少首发数据者排后。只排除 `## 伤停` 球员，`## 伤疑` 球员仍可入选。位置组名额不足时，从其他已识别位置组按赛季首发数补足 9 人；全队可用球员不足 9 人时只输出实际人数，不生成占位球员。缺少阵型或无法选出首发球员时不生成预测替补栏。
+
+这套选择规则只用于球队画像。下方 `matchSquadGenerator.js` 的单场文案仍按其自身的出场数规则生成 Top 9 替补，两者不要混用。
+
 若在 macOS / Linux 终端习惯 Bash，也可将上述三条写成 `CUP_ANALYZER_CUP=epl node processors/...`。手写 PowerShell/cmd 见 [crawler-server/README.md](../crawler-server/README.md)「Windows 与手动设置环境变量」。
 
 可选：在 `teamProfile/{队名}.md` 中补充转会窗、赛程密度、多线作战、伤病等（Big 6 优先深度维护）。
@@ -84,7 +88,7 @@ npx cross-env CUP_ANALYZER_CUP=epl node processors/teamProfileGenerator.js --tea
 赛前 2–3 天:
   0. 大名单与预测块（基于球队画像流水线，优先不再每场重复爬取）
      - 双方大名单与「推荐首发」以 **`epl/squad-final/{队名}.md`** 为准（与 `teamProfile` 同源）；赛前在对应 `squad-final` 中更新 **伤停 / 伤疑** 后，可重跑 `teamProfileGenerator` 同步画像。
-     - 一键生成单场用文案（预测首发、预测替补 Top9 按出场、伤疑、伤停、落选）：
+     - 一键生成单场用文案（预测首发、预测替补 Top9 按出场、伤疑、伤停、落选；此规则仅用于单场文案，与球队画像替补规则分开）：
        `cd cup-analyzer/crawler-server && CUP_ANALYZER_CUP=epl node processors/matchSquadGenerator.js --home <主队序号> --away <客队序号>`
        （或 `npm run generate:match-squad -- --home … --away …`）
   1. 预测首发与报告结构（格式见 prompts/match_analysis_template.md）

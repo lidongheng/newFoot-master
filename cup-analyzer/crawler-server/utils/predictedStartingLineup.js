@@ -140,18 +140,17 @@ function formatSlotJerseyName(p) {
 /**
  * @param {object[]} players
  * @param {string} formation
- * @param {(p: object) => string} formatSlotLabel
- * @returns {string}
+ * @returns {(object|null)[]}
  */
-function buildPredictedStartingLineupString(players, formation, formatSlotLabel) {
-  if (!formation || !players || players.length === 0) return '';
+function selectPredictedStartingLineupPlayers(players, formation) {
+  if (!formation || !players || players.length === 0) return [];
   const digitStr = String(formation).replace(/[^0-9]/g, '');
-  if (digitStr.length < 2) return '';
+  if (digitStr.length < 2) return [];
   const digits = digitStr.split('').map(Number);
   const positions = getPositionsForFormation(formation);
-  if (!positions || positions.length !== 11) return '';
+  if (!positions || positions.length !== 11) return [];
   const sumLines = digits.reduce((a, b) => a + b, 0);
-  if (sumLines !== 10) return '';
+  if (sumLines !== 10) return [];
 
   const displayOrder = [];
   let idx = 0;
@@ -161,7 +160,7 @@ function buildPredictedStartingLineupString(players, formation, formatSlotLabel)
     idx += d;
     displayOrder.push(...slice.reverse());
   }
-  if (displayOrder.length !== 11) return '';
+  if (displayOrder.length !== 11) return [];
 
   const enriched = players.map(ensurePositionForLineupSlot);
   const queues = {};
@@ -196,8 +195,27 @@ function buildPredictedStartingLineupString(players, formation, formatSlotLabel)
         break;
       }
     }
-    starters.push(picked ? formatSlotLabel(picked) : '（待定）');
+    starters.push(picked);
   }
+
+  return starters;
+}
+
+/**
+ * @param {object[]} players
+ * @param {string} formation
+ * @param {(p: object) => string} formatSlotLabel
+ * @returns {string}
+ */
+function buildPredictedStartingLineupString(players, formation, formatSlotLabel) {
+  if (!formation || !players || players.length === 0) return '';
+  const selectedPlayers = selectPredictedStartingLineupPlayers(players, formation);
+  if (selectedPlayers.length !== 11) return '';
+  const digitStr = String(formation).replace(/[^0-9]/g, '');
+  const digits = digitStr.split('').map(Number);
+  const starters = selectedPlayers.map((player) =>
+    player ? formatSlotLabel(player) : '（待定）'
+  );
 
   const groups = [];
   groups.push(starters[0]);
@@ -249,6 +267,7 @@ function formatAnalyzerRecommendedLineup(recommendedLineup, mostUsedFormation, f
 module.exports = {
   normalizePositionCode,
   getPositionsForFormation,
+  selectPredictedStartingLineupPlayers,
   buildPredictedStartingLineupString,
   ensurePositionForLineupSlot,
   formatSlotJerseyName,
