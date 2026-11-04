@@ -76,7 +76,7 @@ npx cross-env CUP_ANALYZER_CUP=koreanKLeague node processors/teamProfileGenerato
 
 ```
   a. 确保韩K联赛程 JS 已更新（优先 `koreanKLeague/data/s15_313.js`；`leagueSerial=15` 时由 resolveScheduleData 指向该文件）
-  b. 编辑 config/squadTarget.js：teamSerial、leagueSerial=15、roundSerial、isNation=false 等
+  b. 编辑 config/squadTarget.js：teamSerial、leagueSerial=15、roundSerial、teamChineseName、isNation=false 等
   c. npm run crawl:player-list:club → output/player_center/{teamSerial}.json
   d. npm run analyze:club-domestic → {teamSerial}-new.json
   e. 将双方大名单、伤停等整理进 news/{赛季}/round-N/{对阵}/
