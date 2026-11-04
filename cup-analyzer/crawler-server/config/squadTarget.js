@@ -10,10 +10,10 @@
  * - roundSerial：联赛渠道时填当前国内联赛轮次（仅分析该轮之前已完赛场次）；杯赛渠道可不填
  */
 const squadTarget = {
-  leagueSerial: '103',
-  leagueSlug: 'championsLeague',
+  leagueSerial: '350',
+  leagueSlug: 'afcChampionsLeagueTwo',
   season: '2026-2027',
-  teamSerial: '155',
+  teamSerial: '10925',
   roundSerial: '4',
   /**
    * 赛程格式开关：
@@ -35,14 +35,14 @@ const squadTarget = {
    *   isNation: true + 国家队杯赛 → 不用设（自动 true）
    */
   matchByName: false,
-  teamChineseName: '加拉塔萨雷',
+  teamChineseName: '万隆',
   /** 单场分析 / 周期报告等场景可选 */
   matchSerial: '2906967',
   /**
    * 周期报告「同赛事」筛选：与球探战绩表「联赛」列文案一致（如 英超、欧冠杯）。
    * 不填则回退为当前 CUP_ANALYZER_CUP 对应 chineseName。
    */
-  matchLeagueName: '欧冠',
+  matchLeagueName: '亚冠联2',
 };
 
 module.exports = squadTarget;

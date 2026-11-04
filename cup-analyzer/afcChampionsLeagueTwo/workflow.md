@@ -14,18 +14,25 @@
 - **更新**：优先在 **`cup-analyzer/crawler-server`** 下执行 **`npm run crawl:schedule:acl2`**（各系统相同）。也可 `npx cross-env CUP_ANALYZER_CUP=afcChampionsLeagueTwo node crawlers/scheduleCrawler.js`；Bash 简写见 [crawler-server/README.md](../crawler-server/README.md)。会写入 `data/` 并**同步拷贝**赛程至 `crawler-server/match_center/c350.js`。
 - **分析亚冠联2场次时的「国内联赛」赛程**：`squadTarget.leagueSerial` 填该队**所属联赛**序号（如英超 36）；`resolveScheduleData` 会指向 **`epl/data/s36.js`** 等已登记模块路径，未登记的联赛仍用 `match_center/s{n}.js` 兜底。详见 `crawler-server/match_center/README.md`。
 
-### 从大名单到球队画像（联赛流水线）
+### 从大名单到球队画像（俱乐部流水线）
 
-亚冠联2 `CUP_ANALYZER_CUP=afcChampionsLeagueTwo` 下虽有 **A–H 小组**，大名单与画像仍按 **俱乐部** 维护：`squad/`、`squad-final/` 为**平铺** `{队名}.md`。生成大名单时仍用国内联赛数据：`playerListCrawler` / `clubMatchAnalyzer` 依赖 **`squadTarget.leagueSerial` = 该俱乐部所属联赛**（如韩 K 联 15、沙特联等），不是 350。
+亚冠联2 `CUP_ANALYZER_CUP=afcChampionsLeagueTwo` 下虽有 **A–H 小组**，`squad/`、`squad-final/` 与 `teamProfile/` 仍按俱乐部平铺 `{队名}.md`。大名单与出场数据按俱乐部所属**国内联赛**抓取和分析；`squadTarget.leagueSerial` 填所属联赛序号（如韩 K 联 15、英超 36），不要填亚冠联2赛事序号 350。
 
-与世界杯不同：前半段为 **`playerListCrawler` + `clubMatchAnalyzer` + `leagueSquadProcessor`**；后半段 **`squadFinalInitializer`** → **`teamProfileGenerator`**。输出：`afcChampionsLeagueTwo/squad/` → `squad-final/` → `teamProfile/`。序号见 `afcChampionsLeagueTwo/data/球队与序号对照表.md`。
+前半段使用 **`playerListCrawler` + `clubMatchAnalyzer` + `leagueSquadProcessor`**；后半段使用 **`squadFinalInitializer`** → 人工审核 **`squad-final/`**（在 **`## 伤停` / `## 伤疑`** 中填写当前伤停、伤疑名单，每行 `球衣号-姓名`）→ **`teamProfileGenerator`** → **`teamProfile/{队名}.md`**。输出路径：`afcChampionsLeagueTwo/squad/` → `squad-final/` → `teamProfile/`。球队序号见 `afcChampionsLeagueTwo/data/球队与序号对照表.md`。
 
-工作目录：`cup-analyzer/crawler-server`。**squadTarget**：`teamSerial`=俱乐部序号，`leagueSerial`=所属联赛（如 36）。
+工作目录：`cup-analyzer/crawler-server`。先编辑 `config/squadTarget.js`：`teamSerial` 填俱乐部序号，`leagueSerial` 填所属国内联赛序号，`roundSerial` 填当前国内联赛轮次，`teamChineseName` 填球队中文名，`isNation` 设为 `false`。
 
-以下两条任意系统相同：
+**大名单数据源**：`npm run crawl:player-list:club` 默认抓取懂球帝；也可通过 `-w` 指定来源：
 
 ```bash
-npm run crawl:player-list
+npm run crawl:player-list:club -- -w qiutan
+npm run crawl:player-list:club -- -w dqd
+```
+
+也可省略 `-w dqd`，直接运行 `npm run crawl:player-list:club`。球探来源通过球探球员资料补充俱乐部与转会记录；懂球帝来源抓取当前赛季联赛数据、球员资料、能力值和转会记录。两种来源都写入 `output/player_center/{teamSerial}.json`；抓取完成后运行 `npm run analyze:club-domestic`，生成出场、首发、进球助攻和阵型等数据。
+
+```bash
+npm run crawl:player-list:club
 npm run analyze:club-domestic
 ```
 
@@ -34,13 +41,17 @@ npm run analyze:club-domestic
 ```bash
 npx cross-env CUP_ANALYZER_CUP=afcChampionsLeagueTwo node processors/leagueSquadProcessor.js
 npx cross-env CUP_ANALYZER_CUP=afcChampionsLeagueTwo node processors/squadFinalInitializer.js --team <序号>
-# 人工审核 afcChampionsLeagueTwo/squad-final/{队名}.md（维护 ## 伤停 / ## 伤疑）
+# 人工审核 afcChampionsLeagueTwo/squad-final/{队名}.md
 npx cross-env CUP_ANALYZER_CUP=afcChampionsLeagueTwo node processors/teamProfileGenerator.js --team <序号>
 ```
 
-若在 macOS / Linux 终端习惯 Bash，也可将上述三条写成 `CUP_ANALYZER_CUP=afcChampionsLeagueTwo node processors/...`。手写 PowerShell/cmd 见 [crawler-server/README.md](../crawler-server/README.md)「Windows 与手动设置环境变量」。
+若在 macOS / Linux 终端习惯 Bash，也可将上述命令写成 `CUP_ANALYZER_CUP=afcChampionsLeagueTwo node processors/...`。手写 PowerShell/cmd 见 [crawler-server/README.md](../crawler-server/README.md)「Windows 与手动设置环境变量」。
 
-**赛中大名单脚本**（与英超相同逻辑：替补按国内联赛出场数取 Top9，含落选）：`cd cup-analyzer/crawler-server && npx cross-env CUP_ANALYZER_CUP=afcChampionsLeagueTwo node processors/matchSquadGenerator.js --home <序号> --away <序号>`
+**赛中大名单脚本**（替补按国内联赛出场数取 Top 9，含落选）：
+
+```bash
+npx cross-env CUP_ANALYZER_CUP=afcChampionsLeagueTwo npm run generate:match-squad -- --home <主队序号> --away <客队序号>
+```
 
 ## 三大阶段工作流
 
@@ -59,41 +70,23 @@ npx cross-env CUP_ANALYZER_CUP=afcChampionsLeagueTwo node processors/teamProfile
 4. 阅读 strategy/ 下框架文档，按轮次更新积分形势与疲劳分析
 ```
 
-**说明（大名单）**：亚冠联2是跨整个赛季的俱乐部赛事，**没有像世界杯那样赛前一次性公布的「最终大名单」可长期缓存**。每场比赛前都必须重新抓取双方最新阵容（伤病、转会、状态变化），具体见 **阶段二步骤 0**。世界杯模式见 `theWorldCup/squad/` + `squadCrawler.js`；俱乐部走 **`cup-analyzer/crawler-server`**（`playerListCrawler.js` + `analyzers/clubMatchAnalyzer.js`，配置 `config/squadTarget.js`；国内联赛赛程路径由 **`config.resolveScheduleData`** 解析，优先各联赛 `data/`，见上文与 `crawler-server/match_center/README.md`）。旧流程仍可用 `backend-server/crawlerPlayer.js` / `crawlerClub3_new.js`，将逐步废弃。
+**大名单（每场）**：使用 `cup-analyzer/crawler-server` 的俱乐部流水线；阵容、出场和首发数据按各队所属国内联赛抓取。需要刷新数据时，先运行 `npm run crawl:player-list:club` 和 `npm run analyze:club-domestic`，再按需更新 `squad-final` 与球队画像。
 
 ### 阶段二：赛中分析（每场）
 
-**大名单是分析基础**：每场赛前必须先完成步骤 0（或改用已维护的 `squad-final` + `teamProfile`），再写报告、预测首发。
+**大名单是分析基础**：以已维护的 `squad-final` 与 `teamProfile` 为基础；赛前更新双方 **伤停 / 伤疑**。如球员数据需要刷新，先运行上文的俱乐部抓取与分析脚本，再更新相关文件。
 
 ```
 赛前 2–3 天:
-  0. 双方大名单与推荐首发（二选一或组合）
-     A. **维护画像流水线**：`afcChampionsLeagueTwo/squad-final/{队名}.md` 与 `teamProfile` 已更新时，赛前在 `squad-final` 填写 **伤停/伤疑** 后，可用  
-        `cd cup-analyzer/crawler-server && npx cross-env CUP_ANALYZER_CUP=afcChampionsLeagueTwo node processors/matchSquadGenerator.js --home <主队序号> --away <客队序号>`  
-        生成预测首发、替补、伤疑、伤停、落选（替补按国内联赛出场统计）。
-     B. **临场抓取**（逻辑已迁入 cup-analyzer/crawler-server）：
-     a. 确保该队**国内联赛**赛程 JS 为最新（如英超：在 crawler-server 下跑 **`npm run crawl:schedule:epl`**，或确认 `epl/data/s36.js` 已更新；分析器通过 `leagueSerial` 读 `resolveScheduleData` 指向的路径，不必单独维护 `match_center` 为唯一来源）
-     b. 编辑 `crawler-server/config/squadTarget.js`：
-        - teamSerial：该队球探俱乐部序号（见 `data/球队与序号对照表.md` 或 titan007 球队页）
-        - teamChineseName：球队中文名
-        - **数据渠道二选一**：
-          ① **国内联赛渠道**（默认）：
-             - leagueSerial：该队所属国内联赛序号（如英超 36、西甲 4）
-             - roundSerial：当前国内联赛轮次（与 workflow 说明一致即可）
-             - isNation：false
-          ② **本赛事（亚冠联2）渠道**：
-             - leagueSerial：`'350'`（亚冠联2序号）
-             - roundSerial：不填或删除
-             - isNation：true
-             - matchByName：false（俱乐部杯赛必须加此项）
-     c. cd cup-analyzer/crawler-server && npm run crawl:player-list
-        → 输出 `crawler-server/output/player_center/{teamSerial}.json`（基础大名单）
-     d. npm run analyze:club-domestic
-        → 输出 `crawler-server/output/player_center/{teamSerial}-new.json`（出场、首发、进球助攻、阵型等）
-     e. 将 squadTarget 改为客队，对客队重复 c–d
-     f. 将双方大名单、伤停等整理进 news/{赛季}/{阶段}/{对阵}/（可与统计信息、新闻稿同目录）
-  1. 预测首发（格式见 [prompts/match_analysis_template.md](./prompts/match_analysis_template.md)）
-  2. 交锋、近况、未来赛程（含国内联赛/杯赛）、球探伤病摘要：`cd cup-analyzer/crawler-server`，在 `config/squadTarget.js` 填写本场 **`matchSerial`**，执行 **`npm run crawl:match-statistics`**（亦可 `-- --match <序号>`），将输出并入赛前报告或 `news/...`。（与 **`npm run generate:cycle-report`** 同源；大名单伤停等仍见步骤 0。）详见 [crawler-server/README.md](../crawler-server/README.md)「matchStatisticsCrawler」。
+  0. 双方大名单与预测块
+      - 赛前在 `afcChampionsLeagueTwo/squad-final/{队名}.md` 更新 **伤停 / 伤疑**；如需同步球队画像，运行 `npx cross-env CUP_ANALYZER_CUP=afcChampionsLeagueTwo node processors/teamProfileGenerator.js --team <序号>`。
+     - 生成单场文案（预测首发、替补 Top 9、伤疑、伤停、落选；单场替补按国内联赛出场数选择）：
+       `cd cup-analyzer/crawler-server && npx cross-env CUP_ANALYZER_CUP=afcChampionsLeagueTwo npm run generate:match-squad -- --home <主队序号> --away <客队序号>`
+       将脚本输出写入本场报告的「大名单与预测」部分。
+  1. 预测首发与报告结构（格式见 [prompts/match_analysis_template.md](./prompts/match_analysis_template.md)）
+  2. 交锋、近况、未来赛程（含国内联赛/杯赛）、球探伤病摘要：在 `config/squadTarget.js` 填写本场亚冠联2 **`matchSerial`**，执行 **`npx cross-env CUP_ANALYZER_CUP=afcChampionsLeagueTwo npm run crawl:match-statistics`**（亦可追加 `-- --match <序号>` 临时指定场次），将输出并入赛前报告或 `afcChampionsLeagueTwo/news/...`。（与 **`npm run generate:cycle-report`** 同源；大名单伤停仍以 `squad-final` 和 `matchSquadGenerator` 输出为准。）详见 [crawler-server/README.md](../crawler-server/README.md)「matchStatisticsCrawler」。
+     - **未来赛程分析（必做，使用 `dh-team-schedule`）**：按 [.cursor/rules/dh-team-schedule/SKILL.md](../../.cursor/rules/dh-team-schedule/SKILL.md) 分别查询双方从本场计划开球时间起未来 14 天内的全部赛事，按技能规定输出开球时间、赛事、对手和距上一场开球的间隔；对本场前及未来赛程的相邻场次按休息间隔标注预警：**低于 67 小时为红色，67–92 小时（含边界）为黄色，超过 92 小时为绿色**。将预警、未来赛程密度及紧邻的国内联赛/杯赛纳入报告「未来赛程/赛程分析」，评估体能与轮换风险，并参考 `strategy/cross-competition-fatigue.md`。配置或赛程文件缺失时，按技能说明指出实际缺项，不推测赛程、比分或间隔。
+     - **新闻发布会与伤停新闻搜集（必做）**：上网搜集双方最新的新闻发布会 / 主帅采访和球队伤停新闻，分别总结阵容、伤停、轮换与战意信息，以及各队已确认伤停和存疑球员；记录来源与发布时间，区分已确认信息和未确认消息，并将摘要并入本场赛前报告或 `afcChampionsLeagueTwo/news/...`。
   3. 盘口（初盘与临场；亚冠联2阶段样本少于国内联赛，勿用空泛盘口闲聊替代数据块）：
      - 赛程与初盘字段仍以 `afcChampionsLeagueTwo/data/c350.js` 为准，报告章节层级见 `prompts/match_analysis_template.md`「四、盘口解析」。
      - **亚盘「盘口分析」内须有「盘路数据」**（`afcChampionsLeagueTwo/data/l350.js`）：连续三行 **总盘**、**主场**、**客场**；每行双方 **净胜盘** 与 **排名**，句式与 `epl/report/25-26/round-14/arsenal_vs_brentford.md` 中「盘路数据」同构；结合小组赛/淘汰赛样本量**审慎**解读。
@@ -102,7 +95,7 @@ npx cross-env CUP_ANALYZER_CUP=afcChampionsLeagueTwo node processors/teamProfile
   3b. 格雷厄姆式亚盘安全边际：记录 Market（初盘/临场）→ 写 Fair（合理让球）与一行推导链 → 算 Δ → 标注三档结论（值得投 / 观望 / 反向投），定义见下 **「亚盘安全边际（格雷厄姆式）」**
   4. ACL2 专项：当前积分排名、是否轮换、两回合总比分（淘汰赛）
   5. 赛前报告 → `afcChampionsLeagueTwo/report/{赛季}/group-stage/round-{1~6}/...` 或淘汰赛阶段目录 `{主队}_vs_{客队}.md`  
-     其中 **大名单与预测正文**（预测首发、预测替补、伤疑、伤停、落选）以步骤 0-A 中 `matchSquadGenerator.js` 的输出为准，写入该 `.md` 文件（与 [prompts/match_analysis_template.md](./prompts/match_analysis_template.md) 其余部分并列）。
+     其中 **大名单与预测正文**（预测首发、预测替补、伤疑、伤停、落选）以步骤 0 中 `matchSquadGenerator.js` 的输出为准，写入该 `.md` 文件（与 [prompts/match_analysis_template.md](./prompts/match_analysis_template.md) 其余部分并列）。
 
 赛前 1–2 小时:
   6. 确认首发与临场盘
@@ -182,7 +175,7 @@ npx cross-env CUP_ANALYZER_CUP=afcChampionsLeagueTwo node processors/teamProfile
 ### 亚盘周期盈亏 HTML（霍华德·马克斯周期视角）
 
 1. 编辑 `cup-analyzer/crawler-server/config/squadTarget.js`：设置 `matchSerial`、`roundSerial`、`season`；`matchLeagueName` 建议填与球探「联赛」列一致（如 `亚冠联2`），供「同赛事」筛选。
-2. 在 `cup-analyzer/crawler-server` 执行：`CUP_ANALYZER_CUP=afcChampionsLeagueTwo npm run generate:cycle-report`
+2. 在 `cup-analyzer/crawler-server` 执行：`npx cross-env CUP_ANALYZER_CUP=afcChampionsLeagueTwo npm run generate:cycle-report`
 3. 输出：`cup-analyzer/afcChampionsLeagueTwo/report/{赛季}/round-{N}/{主队}_vs_{客队}_cycle.html`（规则同英超 workflow：每场 1000 元、水位 0.9、ECharts CDN）
 
 **赛前报告中的大名单块**：单场 `matchSquadGenerator.js` 打印的双方「预测首发、预测替补、伤疑、伤停、落选」即对应路径下 **`{主队}_vs_{客队}.md`** 内应落盘的大名单与预测部分。
