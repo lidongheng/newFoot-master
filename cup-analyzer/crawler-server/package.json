@@ -25,6 +25,8 @@
     "crawl:schedule:europa": "cross-env CUP_ANALYZER_CUP=europaLeague node crawlers/scheduleCrawler.js",
     "crawl:schedule:conference": "cross-env CUP_ANALYZER_CUP=uefaConferenceLeague node crawlers/scheduleCrawler.js",
     "crawl:schedule:epl": "cross-env CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js",
+    "crawl:schedule:jLeague": "cross-env CUP_ANALYZER_CUP=jLeague node crawlers/scheduleCrawler.js",
+    "crawl:schedule:bundesliga": "cross-env CUP_ANALYZER_CUP=bundesliga node crawlers/scheduleCrawler.js",
     "crawl:schedule:ligue1": "cross-env CUP_ANALYZER_CUP=ligue1 node crawlers/scheduleCrawler.js",
     "crawl:schedule:laliga": "cross-env CUP_ANALYZER_CUP=laLiga node crawlers/scheduleCrawler.js",
     "crawl:schedule:kleague": "cross-env CUP_ANALYZER_CUP=koreanKLeague node crawlers/scheduleCrawler.js",

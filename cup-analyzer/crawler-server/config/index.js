@@ -8,6 +8,7 @@ const path = require('path');
  * - europaLeague（欧罗巴，球探序号 113，c113.js）
  * - uefaConferenceLeague（欧会杯，球探序号 2187，c2187.js）
  * - epl（英超，球探序号 36，联赛格式 s36.js）
+ * - bundesliga（德甲，球探序号 8，联赛格式 s8.js）
  * - ligue1（法甲，球探序号 11，联赛格式 s11.js）
  * - laLiga（西甲，球探序号 31，联赛格式 s31.js）
  * - koreanKLeague（韩K联，s15_313，313 为 arrSubLeague 子联赛 ID）
@@ -121,6 +122,40 @@ const cups = {
       playerCenter: path.resolve(__dirname, '../output/player_center'),
       basicData: path.resolve(__dirname, '../../epl/basicData'),
       cupScheduleData: path.resolve(__dirname, '../../epl/data/s36.js'),
+    },
+  },
+  jLeague: {
+    fileId: 's25',
+    type: 'league',
+    cupSerial: '25',
+    cupName: 'jLeague',
+    chineseName: '日职联',
+    // 抓取前须核对球探实际赛季目录及阶段，避免混用不同赛季数据。
+    crossYear: false,
+    season: '2026',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../jLeague'),
+      squadFinal: path.resolve(__dirname, '../../jLeague/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../../jLeague/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../jLeague/data/s25.js'),
+    },
+  },
+  bundesliga: {
+    fileId: 's8',
+    type: 'league',
+    cupSerial: '8',
+    cupName: 'bundesliga',
+    chineseName: '德甲',
+    crossYear: true,
+    // 与当前 EPL 模块使用相同赛季，球探请求使用完整年份。
+    season: '2026-2027',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../bundesliga'),
+      squadFinal: path.resolve(__dirname, '../../bundesliga/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../../bundesliga/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../bundesliga/data/s8.js'),
     },
   },
   ligue1: {
