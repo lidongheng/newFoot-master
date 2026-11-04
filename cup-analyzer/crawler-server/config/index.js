@@ -8,6 +8,8 @@ const path = require('path');
  * - europaLeague（欧罗巴，球探序号 113，c113.js）
  * - uefaConferenceLeague（欧会杯，球探序号 2187，c2187.js）
  * - epl（英超，球探序号 36，联赛格式 s36.js）
+ * - ligue1（法甲，球探序号 11，联赛格式 s11.js）
+ * - laLiga（西甲，球探序号 31，联赛格式 s31.js）
  * - koreanKLeague（韩K联，s15_313，313 为 arrSubLeague 子联赛 ID）
  * - aLeague（澳超，s273_462，462 为 arrSubLeague 子联赛 ID）
  * - mls（美职联，s21_165，165 为 arrSubLeague 常规赛子联赛 ID）
@@ -119,6 +121,38 @@ const cups = {
       playerCenter: path.resolve(__dirname, '../output/player_center'),
       basicData: path.resolve(__dirname, '../../epl/basicData'),
       cupScheduleData: path.resolve(__dirname, '../../epl/data/s36.js'),
+    },
+  },
+  ligue1: {
+    fileId: 's11',
+    type: 'league',
+    cupSerial: '11',
+    cupName: 'ligue1',
+    chineseName: '法甲',
+    crossYear: true,
+    season: '2026-2027',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../ligue1'),
+      squadFinal: path.resolve(__dirname, '../../ligue1/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../../ligue1/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../ligue1/data/s11.js'),
+    },
+  },
+  laLiga: {
+    fileId: 's31',
+    type: 'league',
+    cupSerial: '31',
+    cupName: 'laLiga',
+    chineseName: '西甲',
+    crossYear: true,
+    season: '2026-2027',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../laLiga'),
+      squadFinal: path.resolve(__dirname, '../../laLiga/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../../laLiga/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../laLiga/data/s31.js'),
     },
   },
   koreanKLeague: {

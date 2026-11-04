@@ -87,6 +87,28 @@ function parsePlayerClubFromSandbox(sandbox) {
   return { currentClub, recentTransfers };
 }
 
+/** 从球员资料页 HTML 读取现效力球队与转会记录 */
+function parsePlayerClubFromHtml(html) {
+  const $ = loadHtml(html);
+  const currentClub = $('#nowTeamDiv table tr').eq(1).find('td').eq(0).text().trim() || null;
+  const recentTransfers = [];
+
+  $('#TransferDiv table tr').each((index, row) => {
+    if (index === 0) return;
+    const cells = $(row).find('td');
+    recentTransfers.push({
+      season: cells.eq(0).text().trim(),
+      date: cells.eq(1).text().trim(),
+      from: cells.eq(3).text().trim(),
+      to: cells.eq(4).text().trim(),
+      fee: formatFeeCell(cells.eq(5).text().trim()),
+      type: cells.eq(6).text().trim(),
+    });
+  });
+
+  return { currentClub, recentTransfers };
+}
+
 async function fetchText(url, headers = {}) {
   const res = await fetchZqBuffer(url, {
     headers: { ...targets.titan007.headers.desktop, ...headers },
@@ -115,7 +137,17 @@ async function fetchPlayerClubInfo(playerSerial, teamSerialForReferer) {
   const referer = refererTeam
     ? `https://zq.titan007.com/cn/team/player/${refererTeam}/${playerSerial}.html`
     : targets.titan007.cupMatchReferer('75');
-  const text = await fetchText(url, { Referer: referer });
+  let text;
+  try {
+    text = await fetchText(url, { Referer: referer });
+  } catch (e) {
+    if (e.response?.status !== 404 || !refererTeam) throw e;
+    // 静态球员 JS 缺失时，改从球探球员资料页读取同一组信息。
+    const profileUrl = targets.titan007.playerProfileUrl(refererTeam, playerSerial);
+    const profileHtml = await fetchText(profileUrl, { Referer: profileUrl });
+    return parsePlayerClubFromHtml(profileHtml);
+  }
+
   const sandbox = evalJsData(text);
   if (!sandbox) return { currentClub: null, recentTransfers: [] };
   return parsePlayerClubFromSandbox(sandbox);

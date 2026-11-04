@@ -48,6 +48,10 @@ const targets = {
     teamLineupUrl: (teamSerial) =>
       `http://zq.titan007.com/cn/team/lineup/${teamSerial}.html`,
 
+    /** 球员资料页 HTML，用于 playerInfo 静态 JS 缺失时读取俱乐部与转会记录 */
+    playerProfileUrl: (teamSerial, playerSerial) =>
+      `http://zq.titan007.com/cn/team/player/${teamSerial}/${playerSerial}.html`,
+
     /** 球员资料 JS：sandbox 含 nowTeamInfo、transferInfo 等 */
     playerDataUrl: (playerSerial) =>
       `http://zq.titan007.com/jsData/playerInfo/player${playerSerial}.js?version=${versionTag()}`,

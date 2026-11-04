@@ -1,0 +1,187 @@
+# 挪超联赛分析工作流程
+
+## 赛事概览
+
+- **赛事**：挪威足球超级联赛（Eliteserien）
+- **联赛序号（球探）**：**22** → `s22.js` / `l22.js` / `bs22.js` / `td22.js`
+- **当前赛季**：`2026`；资料目录按自然年命名，例如 `report/2026/`、`news/2026/`，不使用跨年赛季名。
+- **赛制**：胜 3 分、平 1 分、负 0 分；球队数量、轮次与分组规则以当季球探赛程数据为准。
+
+### 赛程数据与 `clubMatchAnalyzer`（与 crawler-server 统一）
+
+- **主文件**：`eliteSerien/data/s22.js`（及同目录 `l22.js`、`bs22.js`、`td22.js`）。
+- **更新**：先在 `crawler-server/config/index.js` 登记 `eliteSerien`，并在 `crawler-server/package.json` 增加 `crawl:schedule:eliteserien` 脚本；完成后，在 **`cup-analyzer/crawler-server`** 下运行 `npm run crawl:schedule:eliteserien`，或 `npx cross-env CUP_ANALYZER_CUP=eliteSerien node crawlers/scheduleCrawler.js`。各系统的 Shell 写法见 [crawler-server/README.md](../crawler-server/README.md)。运行后写入 `data/`，并把赛程主文件同步到 `crawler-server/match_center/s22.js`。
+- **分析器路径**：登记完成后，`config.resolveScheduleData('22', false)` 指向 **`eliteSerien/data/s22.js`**；当前 `eliteSerien` 尚未登记，完成中央配置后才能用新模块运行同一套爬虫和分析器。
+
+### 从大名单到球队画像（联赛流水线）
+
+与世界杯不同：联赛用 **`playerListCrawler` + `clubMatchAnalyzer` + `leagueSquadProcessor`** 生成 `squad/{队名}.md`；后半段与世界杯一致：**`squadFinalInitializer`** → 人工审核 **`squad-final/`**（在 **`## 伤停` / `## 伤疑`** 中填写当前伤停、伤疑名单，每行 `球衣号-姓名`）→ **`teamProfileGenerator`** → **`teamProfile/{队名}.md`**（画像会带上伤停/伤疑小节；单队操作，逐队改 `squadTarget.js`）。
+
+争冠、欧战资格和保级相关球队可优先用本流水线更新 `teamProfile/`；画像可补充转会、赛程密度、欧战与国内杯赛负荷、伤病和状态等与赛前分析相关的信息。
+
+**前置**：在 `cup-analyzer/crawler-server` 中编辑 `config/squadTarget.js`（`teamSerial`、`leagueSerial=22`、`roundSerial`、`teamChineseName`）；赛程见 `eliteSerien/data/s22.js`。以下 processors 需 `CUP_ANALYZER_CUP=eliteSerien`（推荐上文 `npx cross-env`）。
+
+**输出路径**：`eliteSerien/squad/` → `eliteSerien/squad-final/` → `eliteSerien/teamProfile/`。球队序号见 `eliteSerien/data/球队与序号对照表.md`。
+
+工作目录：`cup-analyzer/crawler-server`。先编辑 `config/squadTarget.js`。
+
+**大名单数据源**：`npm run crawl:player-list:club` 默认抓取懂球帝；也可通过 `-w` 指定来源。选择球探或显式指定懂球帝时使用：
+
+```bash
+npm run crawl:player-list:club -- -w qiutan
+npm run crawl:player-list:club -- -w dqd
+```
+
+也可省略 `-w dqd`，直接运行 `npm run crawl:player-list:club`。球探来源通过球探球员资料补充俱乐部与转会记录；懂球帝来源抓取当前赛季联赛数据、球员资料、能力值和转会记录。两种来源都写入 `output/player_center/{teamSerial}.json`。抓取完成后再运行 `analyze:club-domestic`。
+
+以下两条任意系统相同：
+
+```bash
+npm run crawl:player-list:club
+npm run analyze:club-domestic
+```
+
+下面三条需设置 `CUP_ANALYZER_CUP=eliteSerien`。**任意系统推荐**：
+
+```bash
+npx cross-env CUP_ANALYZER_CUP=eliteSerien node processors/leagueSquadProcessor.js
+npx cross-env CUP_ANALYZER_CUP=eliteSerien node processors/squadFinalInitializer.js --team <序号>
+# 人工审核 eliteSerien/squad-final/{队名}.md
+npx cross-env CUP_ANALYZER_CUP=eliteSerien node processors/teamProfileGenerator.js --team <序号>
+```
+
+`teamProfileGenerator` 会在球队画像的预测首发后生成预测替补：门将 1 人（候选门将按球衣号升序，无号码者排在有号码者后），后卫 3 人、中场 3 人、前锋 2 人。后卫、中场、前锋先选与同组首发标准位置代码相同的球员，再从该组其他候选补足；非门将候选按赛季首发数降序，并列沿用名单顺序，缺少首发数据者排后。只排除 `## 伤停` 球员，`## 伤疑` 球员仍可入选。位置组名额不足时，从其他已识别位置组按赛季首发数补足 9 人；全队可用球员不足 9 人时只输出实际人数，不生成占位球员。缺少阵型或无法选出首发球员时不生成预测替补栏。
+
+这套选择规则只用于球队画像。下方 `matchSquadGenerator.js` 的单场文案仍按其自身的出场数规则生成 Top 9 替补，两者不要混用。
+
+若在 macOS / Linux 终端习惯 Bash，也可将上述三条写成 `CUP_ANALYZER_CUP=eliteSerien node processors/...`。手写 PowerShell/cmd 见 [crawler-server/README.md](../crawler-server/README.md)「Windows 与手动设置环境变量」。
+
+可选：在 `teamProfile/{队名}.md` 中补充转会、赛程密度、多线作战、伤病等，并按赛季形势确定重点维护球队。
+
+## 三大阶段工作流
+
+### 阶段一：赛前准备（赛季初或数据更新时）
+
+```
+1. 确认 data/ 下赛程与盘路数据为最新
+   └─ `cd cup-analyzer/crawler-server`，再执行 **`npm run crawl:schedule:eliteserien`**（推荐）
+      （同步更新 `eliteSerien/data/` 下 s22、l22、bs22、td22，并把赛程主文件拷至 `match_center/s22.js`，见上文；亦可 `npx cross-env CUP_ANALYZER_CUP=eliteSerien node crawlers/scheduleCrawler.js`；手写 Shell 见 [crawler-server/README.md](../crawler-server/README.md)）
+
+2. 维护 data/冠军赔率.md、data/降级赔率.md、data/球队与序号对照表.md
+
+3. 结合积分榜和已核实赔率，按赛季形势跟踪争冠、欧战资格、保级与赛程密度；专题分析可记录在 strategy/
+```
+
+**大名单（每场）**：与欧冠俱乐部流程一致，使用 **`cup-analyzer/crawler-server`**：
+
+```
+  a. 确保挪超赛程 JS 已更新（优先 `eliteSerien/data/s22.js`；`leagueSerial=22` 时由 resolveScheduleData 指向该文件）
+  b. 编辑 config/squadTarget.js：teamSerial、leagueSerial=22、roundSerial、isNation=false 等
+  c. npm run crawl:player-list → output/player_center/{teamSerial}.json
+  d. npm run analyze:club-domestic → {teamSerial}-new.json
+  e. 将双方大名单、伤停等整理进 news/{赛季}/round-N/{对阵}/
+```
+
+### 阶段二：赛中分析（每场）
+
+```
+赛前 2–3 天:
+  0. 大名单与预测块（基于球队画像流水线，优先不再每场重复爬取）
+     - 双方大名单与「推荐首发」以 **`eliteSerien/squad-final/{队名}.md`** 为准（与 `teamProfile` 同源）；赛前在对应 `squad-final` 中更新 **伤停 / 伤疑** 后，可重跑 `teamProfileGenerator` 同步画像。
+     - 一键生成单场用文案（预测首发、预测替补 Top9 按出场、伤疑、伤停、落选；此规则仅用于单场文案，与球队画像替补规则分开）：
+       `cd cup-analyzer/crawler-server && npx cross-env CUP_ANALYZER_CUP=eliteSerien node processors/matchSquadGenerator.js --home <主队序号> --away <客队序号>`
+       （或 `npm run generate:match-squad -- --home … --away …`）
+  1. 预测首发与报告结构（复用 [EPL 报告模板](../epl/prompts/match_analysis_template.md)）
+  2. 交锋、近况、未来赛程（含欧洲赛事和国内杯赛）、球探伤病摘要：`cd cup-analyzer/crawler-server`，在 `config/squadTarget.js` 填写本场 **`matchSerial`**，执行 **`npm run crawl:match-statistics`**（亦可 `npm run crawl:match-statistics -- --match <序号>` 临时指定场次），将输出并入赛前报告或 `eliteSerien/news/...`。（与 **`npm run generate:cycle-report`** 同源页面与解析；**伤停/伤疑**仍以 `squad-final` 与 `matchSquadGenerator` 为准。）详见 [crawler-server/README.md](../crawler-server/README.md)「matchStatisticsCrawler」。
+     - **未来赛程分析（必做，使用 `dh-team-schedule`）**：按 [.cursor/rules/dh-team-schedule/SKILL.md](../../.cursor/rules/dh-team-schedule/SKILL.md) 分别查询双方从本场计划开球时间起未来 14 天内的全部赛事，按技能规定输出开球时间、赛事、对手和距上一场开球的间隔；对本场前及未来赛程的相邻场次按休息间隔标注预警：**低于 67 小时为红色，67–92 小时（含边界）为黄色，超过 92 小时为绿色**。将预警、未来赛程密度及紧邻的欧洲赛事/国内杯赛纳入报告「未来赛程/赛程分析」，评估体能与轮换风险。配置或赛程文件缺失时，按技能说明指出实际缺项，不推测赛程、比分或间隔。
+     - **新闻发布会与伤停新闻搜集（必做）**：上网搜集双方最新的新闻发布会/主帅采访和球队伤停新闻，分别总结发布会中的阵容、伤停、轮换与战意信息，以及各队已确认伤停和存疑球员；记录来源与发布时间，区分已确认信息和未确认消息，并将摘要并入本场赛前报告或 `eliteSerien/news/...`。
+  3. 盘口（初盘与临场 + 盘路三块固定句式；勿用空泛盘口闲聊替代数据块）：
+     - 初盘全场/半场让球、大小球盘口等仍以 `eliteSerien/data/s22.js` 为准，报告章节层级复用 [EPL 报告模板](../epl/prompts/match_analysis_template.md)「四、盘口解析」。
+     - **亚盘「盘口分析」内须有「盘路数据」**（数据来自 `eliteSerien/data/l22.js`）：连续三行，依次为 **总盘**、**主场**、**客场**；每行写清双方 **净胜盘** 与 **联赛排名**，句式示例：`总盘：主队净+x，排第a，客队净+y，排第b`；后续按本联赛已完成报告统一句式。
+     - **「### 3、大小」下须有「大小球盘路数据」**（来自 `bs22.js`）：同样三行总盘/主场/客场；每行双方 **大球率%** 与 **排名**。
+     - **「75分钟后进球数分析」**（来自 `td22.js`）：含小标题 **本场比赛球队数据**；每队一行，格式为 `队名：共N球（75分钟后总进球），排第k（该项联赛排名）(76-80分钟: …, 81-85分钟: …, 86-90分钟含补时: …)`，其中 **76–90 为比赛分钟区间**，非文档行号。
+  3b. 格雷厄姆式亚盘安全边际：记录 Market（初盘/临场）→ 写 Fair（合理让球）与一行推导链 → 算 Δ → 标注三档结论（值得投 / 观望 / 反向投），定义见下 **「亚盘安全边际（格雷厄姆式）」**
+  4. 挪超专项：积分榜位置、争冠/欧战资格/保级战意，以及国内杯赛和欧洲赛事赛程；赛前查阅 `data/冠军赔率.md` 与 `data/降级赔率.md`，分别辅助判断争冠定位与保级压力。
+  5. 赛前报告 → `eliteSerien/report/{赛季}/round-N/{主队}_vs_{客队}.md`（大名单与预测段落见下文 **「赛前报告正文中的大名单块」**）
+
+赛前 1–2 小时:
+  6. 确认首发与临场盘
+  7. 填写报告「结果」与星级
+
+赛后:
+  8. 可选：爬取赛后数据（matchDataCrawler 等）
+  9. 赛后复盘 → postMatchSummary/{赛季}/round-N/...
+```
+
+### 阶段三：策略分析（贯穿赛季）
+
+```
+争冠 / 欧战资格 / 保级:
+  - 按赛季形势跟踪积分榜、赔率来源和球队画像
+
+赛程密度（联赛、国内杯赛与欧洲赛事交错时）:
+  - 关注联赛与国内杯赛、欧洲赛事之间的休息间隔，以及短期内连续客场等情况
+
+重点对阵:
+  - 结合双方积分、历史交锋和赛前信息分析对阵背景
+```
+
+## 关键决策原则
+
+### 挪超分析重点
+
+1. **盘路**：联赛轮次和样本量以当季数据为准；有数据后结合 `l22`/`bs22` 与球队近况分析。
+2. **广实**：结合联赛积分榜、`data/冠军赔率.md`、`data/降级赔率.md` 和 `teamProfile/`（见上文「从大名单到球队画像」）；赔率应记录来源和日期。本模块尚无专属球队实力档位文档。
+3. **赛程形势**：结合联赛积分榜、国内杯赛和欧洲赛事安排判断战意与轮换。
+4. **球队关注度**：依据争冠、欧战资格和保级形势确定画像与赛前复盘的维护优先级。
+
+### 亚盘安全边际（格雷厄姆式）
+
+与下文 **「亚盘周期盈亏 HTML（霍华德·马克斯周期视角）」** 的关系：**马克斯章节**是历史盘口序列上的周期与模拟回测视角；**本章**是单场把广实换算为合理让球、与市场盘口对比的定价与安全边际视角。二者互补，不要混为一谈。
+
+**符号约定（主队视角）**
+
+- **Market（市场让球）**：初盘与临场亚盘，与 `l22.js` / `bs22.js`、赛前报告「盘口」一致。
+- **Fair（合理让球）**：在当前信息下，主队相对客队「应开」的让球，可写单值或闭区间（如 -0.75～-1.0）。
+- **记法**：主队**让球**为**负**（如让半球 **-0.5**），主队**受让**为**正**（如 **+0.5**）。
+- **偏差**：**Δ = Fair − Market**（两者均为同一场、同一主队视角）。例：Fair **-1.0**、临场 Market **-0.5**，则 **Δ = -0.5**（你认为市场让得偏浅）。具体选边仍要结合水位与叙事；本节规定的是**记录方式与决策分档**。
+
+**定位 → Fair（可审计的最小推导链）**
+
+1. **实际定位**：结合联赛积分榜、`data/冠军赔率.md`、`data/降级赔率.md`、`teamProfile/`、争冠/欧战资格/保级战意，以及已核实的赛前信息形成结论。
+2. **广实差**：主客相对强度（档位或文字结论）。
+3. **主场加成**：结合挪超主场表现和本联赛历史复盘校准。
+4. **伤停与首发可信度**：相对 `squad-final` 与当场预测首发修正。
+5. **战意与赛程密度**：轮换、一周双赛、欧战夹联赛等。
+6. 输出 **Fair**（单值或区间）。
+
+**阶段二中的操作（每场）**
+
+在完成阶段二步骤 **3**（`l22`/`bs22`/`td22` 固定句式与初临场记录）之后：**列出 Market（初盘+临场）→ 写 Fair 与一行推导链 → 计算 Δ → 标注三档之一**；赛前报告与 [EPL 报告模板](../epl/prompts/match_analysis_template.md)「四、盘口解析」下的亚盘子项对齐。
+
+**三档结论（rubric）**
+
+- **值得投**：|Δ| 达到**自设阈值**（常见起点 **0.25～0.5 球**，可按联赛波动率校准），且无重大未决信息（核心伤停疑云、高方差默契球等）；仍须满足模板中「完整项目、少买」等纪律。
+- **观望**：|Δ| 低于阈值，或信息不全，或高方差情境（德比、轮换未知、极端战意）。
+- **反向投**：Fair 与 Market **方向性或幅度严重背离**，且能说明「市场假设错在哪」；默认**小仓或仅记录**。「反向」指价值在让球方向的另一侧，不是鼓励盲目加注。
+
+以上为**纪律框架**，不保证结果。
+
+### 报告与素材路径约定
+
+| 类型 | 路径 |
+|------|------|
+| 赛前报告 | `cup-analyzer/eliteSerien/report/{赛季}/round-{N}/...` |
+| 素材 | `cup-analyzer/eliteSerien/news/{赛季}/round-{N}/...` |
+| 赛后 | `cup-analyzer/eliteSerien/postMatchSummary/{赛季}/round-{N}/...` |
+
+### 亚盘周期盈亏 HTML（霍华德·马克斯周期视角）
+
+1. 编辑 `cup-analyzer/crawler-server/config/squadTarget.js`：设置 `matchSerial`（球探单场序号）、`roundSerial`、`season`；`matchLeagueName` 填与球探战绩表「联赛」列一致的文案（如 `挪超`），供「同赛事」折线图筛选。
+2. 在 `cup-analyzer/crawler-server` 执行：`npx cross-env CUP_ANALYZER_CUP=eliteSerien npm run generate:cycle-report`
+3. 输出：`cup-analyzer/eliteSerien/report/{赛季}/round-{N}/{主队}_vs_{客队}_cycle.html`（ECharts 远程 CDN；每场模拟投注 1000 元、固定港盘水位 0.9，初盘盘口来自球探分析页；每队含「全部 / 仅主或仅客 / 同赛事」三张累计盈亏图）
+
+**赛前报告正文中的大名单块**：`matchSquadGenerator.js` 针对单场双方输出的内容（每队含 **预测首发、预测替补、伤疑、伤停、落选**），即该场赛前报告文件 **`eliteSerien/report/{赛季}/round-{N}/{主队}_vs_{客队}.md`** 里「大名单与预测」部分应写入的正文来源；可与 [EPL 报告模板](../epl/prompts/match_analysis_template.md) 其余章节（交锋、盘口、战意等）合并为完整报告。
+
+本模块的完整目录与命令状态见 [README.md](./README.md)。
+

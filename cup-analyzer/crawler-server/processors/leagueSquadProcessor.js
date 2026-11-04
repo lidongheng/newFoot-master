@@ -10,7 +10,7 @@ const predLineupUtil = require('../utils/predictedStartingLineup');
  * 联赛大名单 Markdown：从 clubMatchAnalyzer 输出的 *-new.json 生成 squad/{队名}.md（平铺）
  *
  * 前置：已运行 playerListCrawler、clubMatchAnalyzer，且 squadTarget 指向当前球队。
- * CLI: CUP_ANALYZER_CUP=epl node processors/leagueSquadProcessor.js
+ * CLI: CUP_ANALYZER_CUP=<leagueSlug> node processors/leagueSquadProcessor.js
  */
 
 const POS_TO_LINE = {
@@ -290,18 +290,18 @@ class LeagueSquadProcessor extends BaseCrawler {
       return null;
     }
 
-    const eplConfigPath = path.resolve(__dirname, '../../epl/data/config.json');
-    if (!fileExists(eplConfigPath)) {
-      this.error(`缺少球队名称映射文件: ${eplConfigPath}`);
+    const leagueConfigPath = path.resolve(__dirname, '../../', squadTarget.leagueSlug, 'data/config.json');
+    if (!fileExists(leagueConfigPath)) {
+      this.error(`缺少球队名称映射文件: ${leagueConfigPath}`);
       return null;
     }
-    const eplConfig = readJSON(eplConfigPath);
-    if (!eplConfig || !eplConfig.team) {
-      this.error(`${eplConfigPath} 格式无效`);
+    const leagueConfig = readJSON(leagueConfigPath);
+    if (!leagueConfig || !leagueConfig.team) {
+      this.error(`${leagueConfigPath} 格式无效`);
       return null;
     }
 
-    const md = this.generateMarkdown(teamInfo, data, playerCenter, eplConfig.team);
+    const md = this.generateMarkdown(teamInfo, data, playerCenter, leagueConfig.team);
     const outDir = path.join(config.paths.cupAnalyzer, 'squad');
     const outPath = path.join(outDir, `${teamInfo.chineseName}.md`);
     saveMarkdown(outPath, md);
@@ -318,7 +318,7 @@ function printUsage() {
   1. 编辑 config/squadTarget.js（teamSerial、leagueSerial、roundSerial 等）
   2. npm run crawl:player-list:club（需要「转会记录」列；否则可用 crawl:player-list）
   3. npm run analyze:club-domestic
-  4. CUP_ANALYZER_CUP=epl node processors/leagueSquadProcessor.js
+  4. CUP_ANALYZER_CUP=<leagueSlug> node processors/leagueSquadProcessor.js
 
 选项:
   --help, -h   显示本说明

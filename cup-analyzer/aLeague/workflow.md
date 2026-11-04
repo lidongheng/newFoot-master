@@ -15,18 +15,27 @@
 
 ### 从大名单到球队画像（联赛流水线）
 
-与世界杯不同：联赛用 **`playerListCrawler` + `clubMatchAnalyzer` + `leagueSquadProcessor`** 生成 `squad/{队名}.md`；后半段 **`squadFinalInitializer`** → 人工审核 **`squad-final/`**（填写 **`## 伤停` / `## 伤疑`**）→ **`teamProfileGenerator`** → **`teamProfile/{队名}.md`**（单队、逐队改 `squadTarget.js`）。
+与世界杯不同：联赛用 **`playerListCrawler` + `clubMatchAnalyzer` + `leagueSquadProcessor`** 生成 `squad/{队名}.md`；后半段 **`squadFinalInitializer`** → 人工审核 **`squad-final/`**（填写 **`## 伤停` / `## 伤疑`**，每行 `球衣号-姓名`）→ **`teamProfileGenerator`** → **`teamProfile/{队名}.md`**（单队、逐队改 `squadTarget.js`）。
 
-**前置**：在 `cup-analyzer/crawler-server` 中编辑 `config/squadTarget.js`（`leagueSerial=273` 等）；赛程数据见 `aLeague/data/s273_462.js`。以下 processors 需 `CUP_ANALYZER_CUP=aLeague`（推荐上文 `npx cross-env`）。
+**前置**：在 `cup-analyzer/crawler-server` 中编辑 `config/squadTarget.js`（`teamSerial`、`leagueSerial=273`、`roundSerial`、`teamChineseName`）；赛程数据见 `aLeague/data/s273_462.js`。以下 processors 需 `CUP_ANALYZER_CUP=aLeague`（推荐上文 `npx cross-env`）。
 
 **输出**：`aLeague/squad/` → `aLeague/squad-final/` → `aLeague/teamProfile/`。序号见 `aLeague/data/球队与序号对照表.md`。
 
 工作目录：`cup-analyzer/crawler-server`。
 
+**大名单数据源**：`npm run crawl:player-list:club` 默认抓取懂球帝；也可通过 `-w` 指定来源。选择球探或显式指定懂球帝时使用：
+
+```bash
+npm run crawl:player-list:club -- -w qiutan
+npm run crawl:player-list:club -- -w dqd
+```
+
+省略 `-w dqd` 时默认抓取懂球帝。球探来源通过球探球员资料补充俱乐部与转会记录；懂球帝来源抓取当前赛季联赛数据、球员资料、能力值和转会记录。两种来源都写入 `output/player_center/{teamSerial}.json`，抓取完成后再运行 `analyze:club-domestic`。
+
 以下两条任意系统相同：
 
 ```bash
-npm run crawl:player-list
+npm run crawl:player-list:club
 npm run analyze:club-domestic
 ```
 
@@ -39,7 +48,13 @@ npx cross-env CUP_ANALYZER_CUP=aLeague node processors/squadFinalInitializer.js 
 npx cross-env CUP_ANALYZER_CUP=aLeague node processors/teamProfileGenerator.js --team <序号>
 ```
 
+`teamProfileGenerator` 会在球队画像的预测首发后生成预测替补：门将 1 人、后卫 3 人、中场 3 人、前锋 2 人。门将按球衣号升序，无号码者排在有号码者后；其他位置先选与同组首发标准位置代码相同的球员，再按赛季首发数补足，并列沿用名单顺序。只排除 `## 伤停` 球员，`## 伤疑` 球员仍可入选；位置组名额不足时从其他已识别位置组补足，全队可用球员不足 9 人时只输出实际人数，不生成占位球员。缺少阵型或无法选出首发球员时不生成预测替补栏。
+
+这套选择规则只用于球队画像。下方 `matchSquadGenerator.js` 的单场文案仍按自身出场数规则生成 Top 9 替补，两者不要混用。
+
 若在 macOS / Linux 终端习惯 Bash，也可将上述三条写成 `CUP_ANALYZER_CUP=aLeague node processors/...`。手写 PowerShell/cmd 见 [crawler-server/README.md](../crawler-server/README.md)「Windows 与手动设置环境变量」。
+
+可选：在 `teamProfile/{队名}.md` 中补充球员转会、跨州与跨洋旅行、赛程密度、伤病等赛前分析信息。
 
 ## 三大阶段工作流
 
@@ -50,9 +65,9 @@ npx cross-env CUP_ANALYZER_CUP=aLeague node processors/teamProfileGenerator.js -
    └─ `cd cup-analyzer/crawler-server`，再执行 **`npm run crawl:schedule:aleague`**（推荐）
       （同步更新 s273_462、l273、bs273、td273，并拷赛程至 `match_center/s273.js`；亦可 `npx cross-env CUP_ANALYZER_CUP=aLeague node crawlers/scheduleCrawler.js`；手写 Shell 见 [crawler-server/README.md](../crawler-server/README.md)）
 
-2. 维护盘路与时间分布：`scheduleCrawler` 已拉取 l/bs/td；若需与 `league-analyzer/data` 对齐可再对照
+2. 维护 `data/冠军赔率.md`、`data/球队与序号对照表.md`；盘路与时间分布由 `scheduleCrawler` 更新 `l273` / `bs273` / `td273`
 
-3. 按需更新 teamProfile/ 下各队画像
+3. 按需更新 `teamProfile/` 下各队画像
 
 4. 关注积分榜：季后赛区（前六）、前二直通优势；洲际/杯赛资格以官方与 s273_462 内说明为准
 ```
@@ -61,8 +76,8 @@ npx cross-env CUP_ANALYZER_CUP=aLeague node processors/teamProfileGenerator.js -
 
 ```
   a. 确保澳超赛程已更新（见阶段一步骤 1）
-  b. 编辑 config/squadTarget.js：teamSerial、leagueSerial=273、roundSerial、isNation=false 等
-  c. npm run crawl:player-list → output/player_center/{teamSerial}.json
+  b. 编辑 config/squadTarget.js：teamSerial、leagueSerial=273、roundSerial、teamChineseName、isNation=false 等
+  c. npm run crawl:player-list:club → output/player_center/{teamSerial}.json
   d. npm run analyze:club-domestic → {teamSerial}-new.json（如启用出场分析）
   e. 将双方大名单、伤停等整理进 news/{赛季}/round-N/{对阵}/
 ```
@@ -71,18 +86,22 @@ npx cross-env CUP_ANALYZER_CUP=aLeague node processors/teamProfileGenerator.js -
 
 ```
 赛前 2–3 天:
-  0. 大名单与预测块：以已维护的 **`aLeague/squad-final/{队名}.md`** 为准时可运行  
-     `CUP_ANALYZER_CUP=aLeague node processors/matchSquadGenerator.js --home <主队序号> --away <客队序号>`  
-     生成预测首发、替补 Top9、伤疑、伤停、落选；赛前请在 `squad-final` 更新伤停/伤疑并重跑 `teamProfileGenerator` 若需同步画像。
+  0. 大名单与预测块（基于球队画像流水线，优先不再每场重复爬取）
+     - 双方大名单与「推荐首发」以 **`aLeague/squad-final/{队名}.md`** 为准；赛前在对应 `squad-final` 中更新 **伤停 / 伤疑** 后，可重跑 `teamProfileGenerator` 同步画像。
+     - 一键生成单场用文案（预测首发、按出场数排序的预测替补 Top 9、伤疑、伤停、落选；此规则仅用于单场文案，与球队画像替补规则分开）：
+       `npx cross-env CUP_ANALYZER_CUP=aLeague npm run generate:match-squad -- --home <主队序号> --away <客队序号>`
+       （也可在 Bash 中运行 `CUP_ANALYZER_CUP=aLeague node processors/matchSquadGenerator.js --home <主队序号> --away <客队序号>`。）
   1. 预测首发（格式见 prompts/match_analysis_template.md）
-  2. 交锋、近况、未来赛程、球探伤病摘要：`cd cup-analyzer/crawler-server`，在 `config/squadTarget.js` 填写本场 **`matchSerial`**，执行 **`npm run crawl:match-statistics`**（亦可 `-- --match <序号>`），将输出并入赛前报告或 `news/...`。（与 **`npm run generate:cycle-report`** 同源。）详见 [crawler-server/README.md](../crawler-server/README.md)「matchStatisticsCrawler」。
+  2. 交锋、近况与球探伤病摘要：在 `cup-analyzer/crawler-server/config/squadTarget.js` 填写本场 **`matchSerial`**，执行 **`npm run crawl:match-statistics`**（亦可 `npm run crawl:match-statistics -- --match <序号>`），将输出并入赛前报告或 `news/...`。（与 **`npm run generate:cycle-report`** 共用抓取与解析层。）详见 [crawler-server/README.md](../crawler-server/README.md)「matchStatisticsCrawler」。
+     - **未来赛程分析（必做，使用 `dh-team-schedule`）**：分别查询双方从本场计划开球时间起未来 14 天内的全部赛事，按技能规定输出开球时间、赛事、对手和距上一场开球的间隔；对本场前及未来赛程的相邻场次按休息间隔标注预警：**低于 67 小时为红色，67–92 小时（含边界）为黄色，超过 92 小时为绿色**。将预警、未来赛程密度及紧邻的杯赛纳入赛前报告「未来赛程/赛程分析」，评估体能与轮换风险。查询使用 `aLeague/data/config.json` 和 `crawler-server/output/{qiutanSerial}-schedule.json`；若配置或赛程文件缺失，按技能说明指出实际缺项，不推测赛程、比分或间隔。**当前 A-League 目录尚无 `data/config.json`，补齐球队映射后才能按该技能进行本地赛程查询。**
+     - **新闻发布会与伤停新闻搜集（必做）**：上网搜集双方最新的新闻发布会/主帅采访和球队伤停新闻，分别总结发布会中的阵容、伤停、轮换与战意信息，以及各队已确认伤停和存疑球员；记录来源与发布时间，区分已确认信息和未确认消息，并将摘要并入本场赛前报告或 `aLeague/news/...`。
   3. 盘口（初盘与临场 + 盘路三块固定句式；勿用空泛盘口闲聊替代数据块）：
      - 初盘全场/半场让球、大小球盘口等仍以 `aLeague/data/s273_462.js` 为准，报告章节层级见 `prompts/match_analysis_template.md`「四、盘口解析」。
      - **亚盘「盘口分析」内须有「盘路数据」**（数据来自 `aLeague/data/l273.js`）：连续三行 **总盘**、**主场**、**客场**；每行双方 **净胜盘** 与 **联赛排名**，句式与 `epl/report/25-26/round-14/arsenal_vs_brentford.md` 中「盘路数据」同构。
      - **「### 3、大小」下须有「大小球盘路数据」**（来自 `bs273.js`）：同样三行；每行双方 **大球率%** 与 **排名**。
      - **「75分钟后进球数分析」**（来自 `td273.js`）：含小标题 **本场比赛球队数据**；每队一行，格式为 `队名：共N球（75分钟后总进球），排第k（该项联赛排名）(76-80分钟: …, 81-85分钟: …, 86-90分钟含补时: …)`，其中 **76–90 为比赛分钟区间**，非文档行号。
   3b. 格雷厄姆式亚盘安全边际：记录 Market（初盘/临场）→ 写 Fair（合理让球）与一行推导链 → 算 Δ → 标注三档结论（值得投 / 观望 / 反向投），定义见下 **「亚盘安全边际（格雷厄姆式）」**
-  4. 澳超专项：常规赛排名、战意（季后赛资格/前二）、主客场与时差（新西兰球队等）
+  4. 澳超专项：常规赛排名、战意（季后赛资格/前二）、主客场、跨洋旅行与时差（新西兰球队等）
   5. 赛前报告 → `aLeague/report/{赛季}/round-N/{主队}_vs_{客队}.md`（大名单块见 **「报告与素材路径约定」** 中说明）
 
 赛前 1–2 小时:
@@ -98,10 +117,16 @@ npx cross-env CUP_ANALYZER_CUP=aLeague node processors/teamProfileGenerator.js -
 
 ```
 季后赛与排名:
-  - 跟踪前六边界球队、前二争夺；季后赛对阵与两回合/单回合规则以当季官方为准
+  - 跟踪前六边界球队、前二争夺与常规赛收官阶段战意；季后赛对阵和赛制以当季官方规则为准
 
-盘路与样本:
-  - 常规赛轮次少于英超， handicap 数据可结合近况与小样本谨慎使用
+赛程密度与旅行:
+  - 关注澳足总杯、国家队窗口和跨州 / 新西兰客场对联赛轮换与休息时间的影响
+  - 将未来赛程间隔预警纳入赛前报告，并按赛季进展更新相关 teamProfile 信息
+
+争冠与盘口样本:
+  - 按需维护 `data/冠军赔率.md`，结合积分榜判断常规赛排名和季后赛定位
+  - 常规赛轮次少于英超，盘路数据结合近况、主客场和小样本风险谨慎使用
+
 ```
 
 ## 关键决策原则
@@ -159,7 +184,7 @@ npx cross-env CUP_ANALYZER_CUP=aLeague node processors/teamProfileGenerator.js -
 ### 亚盘周期盈亏 HTML（霍华德·马克斯周期视角）
 
 1. 编辑 `cup-analyzer/crawler-server/config/squadTarget.js`：设置 `matchSerial`（球探单场序号）、`roundSerial`、`season`（须与本模块 `report/{赛季}/` 目录一致，当前内容赛季多为 **`25-26`**）；`matchLeagueName` 填与球探战绩表「联赛」列一致的文案（如 **`澳超`**），供「同赛事」折线图筛选。
-2. 在 `cup-analyzer/crawler-server` 执行：`cd cup-analyzer/crawler-server && CUP_ANALYZER_CUP=aLeague npm run generate:cycle-report`
-3. 输出：`cup-analyzer/aLeague/report/{赛季}/round-{N}/{主队}_vs_{客队}_cycle.html`（规则同英超 workflow：每场 1000 元、水位 0.9、ECharts CDN；每队含「全部 / 仅主或仅客 / 同赛事」三张累计盈亏图）
+2. 在 `cup-analyzer/crawler-server` 执行：`npx cross-env CUP_ANALYZER_CUP=aLeague npm run generate:cycle-report`
+3. 输出：`cup-analyzer/aLeague/report/{赛季}/round-{N}/{主队}_vs_{客队}_cycle.html`（每场模拟投注 1000 元、固定港盘水位 0.9、ECharts 远程 CDN；每队含「全部 / 仅主或仅客 / 同赛事」三张累计盈亏图）
 
 详细目录规划见 [README.md](./README.md) 与 [PLAN.md](./PLAN.md)。

@@ -42,6 +42,10 @@ service.interceptors.response.use(
     const config = err.config;
     if (!config || !config.retry) return Promise.reject(err);
 
+    const status = err.response?.status;
+    // 4xx 是明确的 HTTP 响应，不重试；429 仍保留限流重试。
+    if (status >= 400 && status < 500 && status !== 429) return Promise.reject(err);
+
     config.__retryCount = config.__retryCount || 0;
     if (config.__retryCount >= config.retry) return Promise.reject(err);
 
@@ -184,6 +188,8 @@ async function fetchZqBuffer(url, options = {}) {
   try {
     return await run(httpsUrl);
   } catch (e) {
+    // 收到 HTTP 响应说明 HTTPS 可达，只对传输层故障回退 HTTP。
+    if (e.response) throw e;
     console.log(`  [zq] HTTPS 不可达，回退 HTTP: ${httpsUrl}`);
     return run(httpUrl);
   }
