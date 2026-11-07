@@ -52,15 +52,33 @@ function parseNumericValue(value, label) {
 }
 
 function parseSeason(season) {
-  const match = String(season).match(/^(\d{4})-(\d{4})$/);
+  const match = String(season).match(/^(\d{4})(?:[-/](\d{4}))?$/);
   if (!match) {
     throw new Error(`当前赛季格式无效: ${season}`);
+  }
+  // 单年联赛按自然年筛选转会；跨年赛事保留 7 月至次年 6 月的范围。
+  if (!match[2]) {
+    return {
+      dqdName: match[1],
+      startDate: `${match[1]}-01-01`,
+      endDate: `${match[1]}-12-31`,
+    };
   }
   return {
     dqdName: `${match[1]}/${match[2]}`,
     startDate: `${match[1]}-07-01`,
     endDate: `${match[2]}-06-30`,
   };
+}
+
+function getCurrentSeason(seasons, label) {
+  if (!Array.isArray(seasons)) {
+    throw new Error(`懂球帝${label}赛季列表无效`);
+  }
+  const currentSeason = seasons.find((season) => season.current === true);
+  requireValue(currentSeason, `${label}当前赛季`);
+  requireValue(currentSeason.name, `${label}当前赛季名称`);
+  return currentSeason;
 }
 
 function getTeamMapping(leagueConfig) {
@@ -73,12 +91,13 @@ function getTeamMapping(leagueConfig) {
   return { dqdTeamId: match[0], mapping: match[1] };
 }
 
-function getSeasonLeagueStats(response, seasonName, personName) {
+function getSeasonLeagueStats(response, leagueSeason, personName) {
   if (!Array.isArray(response.league)) {
     throw new Error(`${personName}的懂球帝联赛统计结构无效`);
   }
   const rows = response.league.filter((row) => {
-    return row.season.name === seasonName && String(row.competition.id) === '4';
+    // 使用球队接口返回的联赛赛季 ID，排除杯赛和其他联赛的同年统计。
+    return row.season.name === leagueSeason.name && String(row.season.id) === String(leagueSeason.id);
   });
   if (rows.length === 0) {
     return null;
@@ -141,7 +160,7 @@ function mapTransfers(profile, season, seasonRange) {
   if (!Array.isArray(profile.transfer_info)) {
     return undefined;
   }
-  // 懂球帝转会记录没有赛季字段，按当前配置赛季的 7 月至次年 6 月日期范围筛选。
+  // 懂球帝转会记录没有赛季字段，按配置的分析赛季日期范围筛选。
   return profile.transfer_info
     .filter((transfer) => {
       return transfer.announced_date >= seasonRange.startDate && transfer.announced_date <= seasonRange.endDate;
@@ -261,14 +280,14 @@ async function requestJson(url, headers) {
   return response.data;
 }
 
-async function fetchTeamSchedule(dqdTeamId) {
-  const scheduleUrl = `https://sport-data.dongqiudi.com/soccer/biz/dqd/team/schedule/${dqdTeamId}?app=dqd&version=444&lang=zh-cn&season=${squadTarget.season}`;
+async function fetchTeamSchedule(dqdTeamId, rosterSeason) {
+  const scheduleUrl = `https://sport-data.dongqiudi.com/soccer/biz/dqd/team/schedule/${dqdTeamId}?app=dqd&version=444&lang=zh-cn&season=${rosterSeason}`;
   const scheduleResponse = await requestJson(scheduleUrl, {
     ...DQD_SPORT_HEADERS,
     Referer: `https://topic.dongqiudi.com/webapp/team_schedule/team_schedule.html?id=${dqdTeamId}`,
   });
 
-  // 赛程只请求懂球帝当前配置赛季，文件名沿用球探球队序号供现有脚本读取。
+  // 球队赛程使用懂球帝名单赛季，避免将欧冠跨年赛季传给单年制球队。
   const outDir = path.resolve(__dirname, '../output');
   ensureDir(outDir);
   const outPath = path.join(outDir, `${squadTarget.teamSerial}-schedule.json`);
@@ -277,7 +296,7 @@ async function fetchTeamSchedule(dqdTeamId) {
   return outPath;
 }
 
-async function fetchPlayerData(entry, groupType, leagueConfig, seasonRange, season) {
+async function fetchPlayerData(entry, groupType, leagueConfig, seasonRange, season, leagueSeason) {
   // 缺少主教练时不请求个人资料，仍生成姓名为空的主教练记录。
   if (groupType === 'coach' && entry.isPlaceholder) {
     return buildPlayerRecord(entry, groupType, { base_info: {} }, leagueConfig, season, seasonRange, null, null);
@@ -320,9 +339,9 @@ async function fetchPlayerData(entry, groupType, leagueConfig, seasonRange, seas
     } else {
       statsResponse = await statsRequest;
     }
-    stats = getSeasonLeagueStats(statsResponse, seasonRange.dqdName, entry.person_name);
+    stats = getSeasonLeagueStats(statsResponse, leagueSeason, entry.person_name);
     if (stats === null) {
-      console.log(`[playerListCrawler] ${entry.person_name}没有${seasonRange.dqdName}联赛统计记录，保留统计字段为空`);
+      console.log(`[playerListCrawler] ${entry.person_name}没有${leagueSeason.name}联赛统计记录，保留统计字段为空`);
     }
     if (abilityRequest) {
       ability = getAbilityPosition(abilityResponse, leagueConfig, entry.person_name);
@@ -336,7 +355,6 @@ async function fetchPlayerList() {
   const leagueConfig = loadLeagueConfig();
   const { dqdTeamId } = getTeamMapping(leagueConfig);
   const seasonRange = parseSeason(squadTarget.season);
-  await fetchTeamSchedule(dqdTeamId);
   const rosterUrl = `https://sport-data.dongqiudi.com/soccer/biz/dqd/v1/team/member_v2/${dqdTeamId}?app=dqd`;
   const rosterResponse = await requestJson(rosterUrl, {
     ...DQD_SPORT_HEADERS,
@@ -345,10 +363,24 @@ async function fetchPlayerList() {
   if (rosterResponse.code !== 0 || !Array.isArray(rosterResponse.data.list)) {
     throw new Error(`懂球帝球队名单响应无效: ${rosterResponse.message}`);
   }
-  const currentSeason = rosterResponse.seasons.find((season) => season.current === true);
-  if (!currentSeason || currentSeason.name !== seasonRange.dqdName) {
-    throw new Error(`懂球帝当前球队名单赛季与配置不匹配: ${currentSeason && currentSeason.name}`);
+  const currentSeason = getCurrentSeason(rosterResponse.seasons, '球队名单');
+  const rosterSeasonRange = parseSeason(currentSeason.name);
+  // 欧冠分析赛季可以与球队国内赛季名称不同，但两者必须有日期交集。
+  if (rosterSeasonRange.endDate < seasonRange.startDate || rosterSeasonRange.startDate > seasonRange.endDate) {
+    throw new Error(`懂球帝当前球队名单赛季与分析赛季不相交: ${currentSeason.name} / ${squadTarget.season}`);
   }
+  const teamStatsUrl = `https://sport-data.dongqiudi.com/soccer/biz/dqd/team/statistic/${dqdTeamId}?lang=zh-cn`;
+  const teamStatsResponse = await requestJson(teamStatsUrl, {
+    ...DQD_SPORT_HEADERS,
+    Referer: 'https://topic.dongqiudi.com/',
+  });
+  const leagueSeason = getCurrentSeason(teamStatsResponse.season_list, '球队联赛统计');
+  requireValue(leagueSeason.id, '球队联赛统计当前赛季ID');
+  if (leagueSeason.name !== currentSeason.name) {
+    throw new Error(`懂球帝球队名单与联赛统计赛季不一致: ${currentSeason.name} / ${leagueSeason.name}`);
+  }
+  console.log(`[playerListCrawler] 分析赛季: ${squadTarget.season}；名单与联赛统计赛季: ${currentSeason.name}（ID ${leagueSeason.id}）`);
+  await fetchTeamSchedule(dqdTeamId, currentSeason.name.replace('/', '-'));
 
   const groups = [
     ['coach', '主教练'],
@@ -380,7 +412,7 @@ async function fetchPlayerList() {
   for (let index = 0; index < entries.length; index += 1) {
     const { entry, type } = entries[index];
     console.log(`[playerListCrawler] 懂球帝 ${index + 1}/${entries.length}: ${entry.person_name}`);
-    players.push(await fetchPlayerData(entry, type, leagueConfig, seasonRange, squadTarget.season));
+    players.push(await fetchPlayerData(entry, type, leagueConfig, seasonRange, squadTarget.season, leagueSeason));
   }
 
   const outDir = config.paths.playerCenter;

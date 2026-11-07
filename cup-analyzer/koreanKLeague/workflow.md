@@ -19,25 +19,24 @@
 
 争冠组边界队、亚冠资格竞争队和保级组球队可优先更新 `teamProfile/`；自动化画像落地后，建议补充外援与教练变动、韩国杯和亚冠赛程、伤病与状态等赛前分析信息。
 
-**前置**：在 `cup-analyzer/crawler-server` 中编辑 `config/squadTarget.js`（`teamSerial`、`leagueSerial=15`、`roundSerial`、`teamChineseName`）；赛程见 `koreanKLeague/data/s15_313.js`。以下 processors 需 `CUP_ANALYZER_CUP=koreanKLeague`（推荐上文 `npx cross-env`）。
+**前置**：在 `cup-analyzer/crawler-server` 中编辑 `config/squadTarget.js`：设置 `leagueSlug='koreanKLeague'`、`leagueSerial='15'`、`season='2026'`、本次球队的 `teamSerial` / `teamChineseName` 和 `roundSerial`。`playerListCrawler` 按 `leagueSlug` 读取 `koreanKLeague/data/config.json`；赛程见 `koreanKLeague/data/s15_313.js`。以下 processors 需 `CUP_ANALYZER_CUP=koreanKLeague`（推荐上文 `npx cross-env`）。
 
 **输出路径**：`koreanKLeague/squad/` → `koreanKLeague/squad-final/` → `koreanKLeague/teamProfile/`。球队序号见 `koreanKLeague/data/球队与序号对照表.md`。
 
 工作目录：`cup-analyzer/crawler-server`。先编辑 `config/squadTarget.js`。
 
-**大名单数据源**：`npm run crawl:player-list:club` 默认抓取懂球帝；也可通过 `-w` 指定来源。选择球探或显式指定懂球帝时使用：
+**大名单数据源**：统一使用 `npm run crawl:player-list:club`。当前韩K联赛季是单年 `2026`，`playerListCrawler` 的懂球帝来源目前只接受 `YYYY-YYYY` 赛季格式，因此当前赛季先使用球探来源：
 
 ```bash
 npm run crawl:player-list:club -- -w qiutan
-npm run crawl:player-list:club -- -w dqd
 ```
 
-也可省略 `-w dqd`，直接运行 `npm run crawl:player-list:club`。球探来源通过球探球员资料补充俱乐部与转会记录；懂球帝来源抓取当前赛季联赛数据、球员资料、能力值和转会记录。两种来源都写入 `output/player_center/{teamSerial}.json`。抓取完成后再运行 `analyze:club-domestic`。
+该命令写入 `output/player_center/{teamSerial}.json`，抓取完成后再运行 `npm run analyze:club-domestic`。`-w dqd` 与省略数据源的默认懂球帝模式，需等 `playerListCrawler` 支持单年赛季后再用于韩K联。
 
 以下两条任意系统相同：
 
 ```bash
-npm run crawl:player-list:club
+npm run crawl:player-list:club -- -w qiutan
 npm run analyze:club-domestic
 ```
 
@@ -76,8 +75,8 @@ npx cross-env CUP_ANALYZER_CUP=koreanKLeague node processors/teamProfileGenerato
 
 ```
   a. 确保韩K联赛程 JS 已更新（优先 `koreanKLeague/data/s15_313.js`；`leagueSerial=15` 时由 resolveScheduleData 指向该文件）
-  b. 编辑 config/squadTarget.js：teamSerial、leagueSerial=15、roundSerial、teamChineseName、isNation=false 等
-  c. npm run crawl:player-list:club → output/player_center/{teamSerial}.json
+  b. 编辑 config/squadTarget.js：leagueSlug='koreanKLeague'、leagueSerial='15'、season='2026'、teamSerial、roundSerial、teamChineseName、isNation=false
+  c. npm run crawl:player-list:club -- -w qiutan → output/player_center/{teamSerial}.json
   d. npm run analyze:club-domestic → {teamSerial}-new.json
   e. 将双方大名单、伤停等整理进 news/{赛季}/round-N/{对阵}/
 ```
@@ -92,7 +91,7 @@ npx cross-env CUP_ANALYZER_CUP=koreanKLeague node processors/teamProfileGenerato
        `npx cross-env CUP_ANALYZER_CUP=koreanKLeague npm run generate:match-squad -- --home <主队序号> --away <客队序号>`
   1. 预测首发与报告结构（格式见 `epl/prompts/match_analysis_template.md`）
   2. 交锋、近况与球探伤病摘要：在 `config/squadTarget.js` 填写本场 **`matchSerial`**，执行 **`npm run crawl:match-statistics`**（亦可 `npm run crawl:match-statistics -- --match <序号>` 临时指定场次），将输出并入赛前报告或 `koreanKLeague/news/...`。（与 **`npm run generate:cycle-report`** 共用抓取与解析层；**伤停 / 伤疑**仍以 `squad-final` 与 `matchSquadGenerator` 为准。）详见 [crawler-server/README.md](../crawler-server/README.md)「matchStatisticsCrawler」。
-     - **未来赛程分析（必做，使用 `dh-team-schedule`）**：按 [.cursor/rules/dh-team-schedule/SKILL.md](../../.cursor/rules/dh-team-schedule/SKILL.md) 分别查询双方从本场计划开球时间起未来 14 天内的全部赛事，按技能规定输出开球时间、赛事、对手和距上一场开球的间隔；对本场前及未来赛程的相邻场次按休息间隔标注预警：**低于 67 小时为红色，67–92 小时（含边界）为黄色，超过 92 小时为绿色**。将预警、未来赛程密度及紧邻的韩国杯 / 亚冠赛事纳入赛前报告「未来赛程 / 赛程分析」，评估体能与轮换风险。查询使用 `koreanKLeague/data/config.json` 和 `crawler-server/output/{qiutanSerial}-schedule.json`；若配置或赛程文件缺失，按技能说明指出实际缺项，不推测赛程、比分或间隔。**当前韩K联目录尚无 `data/config.json`，补齐球队映射后才能按该技能进行本地赛程查询。**
+     - **未来赛程分析（必做，使用 `dh-team-schedule`）**：按 [.cursor/rules/dh-team-schedule/SKILL.md](../../.cursor/rules/dh-team-schedule/SKILL.md) 分别查询双方从本场计划开球时间起未来 14 天内的全部赛事，按技能规定输出开球时间、赛事、对手和距上一场开球的间隔；对本场前及未来赛程的相邻场次按休息间隔标注预警：**低于 67 小时为红色，67–92 小时（含边界）为黄色，超过 92 小时为绿色**。将预警、未来赛程密度及紧邻的韩国杯 / 亚冠赛事纳入赛前报告「未来赛程 / 赛程分析」，评估体能与轮换风险。查询使用 `koreanKLeague/data/config.json` 和 `crawler-server/output/{qiutanSerial}-schedule.json`。球探来源不会生成该 DQD 赛程 JSON；当前懂球帝抓取还不支持 `2026` 单年赛季，因此赛程 JSON 缺失时按技能说明指出路径，不推测赛程、比分或间隔。
      - **新闻发布会与伤停新闻搜集（必做）**：上网搜集双方最新的新闻发布会/主帅采访和球队伤停新闻，分别总结发布会中的阵容、伤停、轮换与战意信息，以及各队已确认伤停和存疑球员；记录来源与发布时间，区分已确认信息和未确认消息，并将摘要并入本场赛前报告或 `koreanKLeague/news/...`。
   3. 盘口（初盘与临场 + 盘路三块固定句式；勿用空泛盘口闲聊替代数据块）：
      - 初盘全场 / 半场让球、大小球盘口等仍以 `koreanKLeague/data/s15_313.js` 为准，报告章节层级参考 `epl/prompts/match_analysis_template.md`「四、盘口解析」。

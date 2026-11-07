@@ -10,8 +10,9 @@
 ### 赛程数据与 `clubMatchAnalyzer`（与 crawler-server 统一）
 
 - **主文件**：`eliteSerien/data/s22.js`（及同目录 `l22.js`、`bs22.js`、`td22.js`）。
-- **更新**：先在 `crawler-server/config/index.js` 登记 `eliteSerien`，并在 `crawler-server/package.json` 增加 `crawl:schedule:eliteserien` 脚本；完成后，在 **`cup-analyzer/crawler-server`** 下运行 `npm run crawl:schedule:eliteserien`，或 `npx cross-env CUP_ANALYZER_CUP=eliteSerien node crawlers/scheduleCrawler.js`。各系统的 Shell 写法见 [crawler-server/README.md](../crawler-server/README.md)。运行后写入 `data/`，并把赛程主文件同步到 `crawler-server/match_center/s22.js`。
-- **分析器路径**：登记完成后，`config.resolveScheduleData('22', false)` 指向 **`eliteSerien/data/s22.js`**；当前 `eliteSerien` 尚未登记，完成中央配置后才能用新模块运行同一套爬虫和分析器。
+- **更新**：在 **`cup-analyzer/crawler-server`** 下运行 `npm run crawl:schedule:eliteserien`，或 `npx cross-env CUP_ANALYZER_CUP=eliteSerien node crawlers/scheduleCrawler.js`。各系统的 Shell 写法见 [crawler-server/README.md](../crawler-server/README.md)。运行后写入 `data/`，并把赛程主文件同步到 `crawler-server/match_center/s22.js`。
+- **分析器路径**：`config.resolveScheduleData('22', false)` 指向 **`eliteSerien/data/s22.js`**。
+- **分析赛季与名单赛季**：分析挪超时，`squadTarget.js` 使用 `leagueSlug: 'eliteSerien'`、`leagueSerial: '22'`、`season: '2026'`、`isNation: false`；分析欧冠时使用欧冠赛事配置和跨年赛季。懂球帝名单与国内联赛统计读取球队接口返回的当前赛季，可以与欧冠分析赛季名称不同。
 
 ### 从大名单到球队画像（联赛流水线）
 

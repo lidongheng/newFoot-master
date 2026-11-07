@@ -12,6 +12,8 @@
 
 已建立目录骨架和工作流程说明。仓库里尚无球探 22 的赛程数据；本次未复制其他联赛的球队、报告或统计数据。
 
-爬虫中央配置目前尚未登记 `eliteSerien`。要运行赛程和球队流水线，需先在 `crawler-server/config/index.js` 登记联赛序号 `22`、`crossYear: false`、自然年赛季以及本目录路径，并在 `crawler-server/package.json` 增加赛程脚本。登记完成后再使用 workflow 中的命令。
+爬虫已登记 `eliteSerien`：联赛序号 `22`、`crossYear: false`、赛季 `'2026'`。在 `crawler-server/` 执行 `npm run crawl:schedule:eliteserien` 生成赛程数据，再按 workflow 运行分析脚本。
+
+`data/config.json` 当前包含已核实的维京懂球帝映射（`50001371` → 球探 `495`）；采集其他挪超球队前需补齐相应映射。懂球帝名单支持自然年赛季；分析欧冠时可保留欧冠分析赛季并读取球队当前国内赛季名单。
 
 球队与球探序号需从实际赛程文件的 `arrTeam` 核对，见 [data/球队与序号对照表.md](./data/球队与序号对照表.md)。

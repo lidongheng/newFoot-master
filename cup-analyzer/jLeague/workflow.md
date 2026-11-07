@@ -1,24 +1,24 @@
 # 日职联联赛分析工作流程
 
-## 使用前确认
+## 执行前配置
 
-- 本模块复用 `crawler-server` 下与 EPL 相同的脚本，无需复制共用脚本。
-- 执行下方任何命令前，先配置 `config/squadTarget.js`：`leagueSerial: '25'`、`leagueSlug: 'jLeague'`、实际 `season`、球队序号、轮次、中文队名和 `matchLeagueName: '日职联'`。请勿保留英超目标。
-- `data/config.json` 与 EPL 使用相同的 `positionMap`、`team` 格式。球队映射尚未核实，`team` 暂为空；须补齐懂球帝球队 ID、`dqdName`、`qiutanName`、`qiutanSerial` 后才能抓取大名单。
-- 当前 `playerListCrawler.js` 的 `parseSeason` 只接受跨年格式，`getSeasonLeagueStats` 固定筛选英超赛事 ID `4`；下方大名单抓取命令在日职联适配完成前不可直接使用。本次未更改其数据逻辑。
-- 尚未抓取日职联赛程。先确认球探实际赛季目录与赛程文件名，再更新 `crawler-server/config/index.js` 中本模块赛季配置并运行赛程命令；不要混用过渡赛事或不同阶段数据。
+- 本工作流沿用 [EPL 工作流](../epl/workflow.md) 的三阶段结构和 `crawler-server` 共用脚本；命令需在 `cup-analyzer/crawler-server` 目录执行。
+- 每次切换目标球队前，编辑 `config/squadTarget.js`：`leagueSerial: '25'`、`leagueSlug: 'jLeague'`、`season: '2026-2027'`、`teamSerial`、`roundSerial`、`teamChineseName`、`matchLeagueName: '日职联'`。不要沿用文件中的英超目标值。
+- `data/config.json` 沿用 EPL 的 `positionMap` 和 `team` 结构，已录入当前 J1 20 支球队的懂球帝 ID、两站球队名称及球探球队序号。切换球队时，用 `data/球队与序号对照表.md` 的球探序号填写 `teamSerial`。
+- 日职联球员名单可用球探来源：`npm run crawl:player-list:club -- -w qiutan`。也可选懂球帝来源 `npm run crawl:player-list:club -- -w dqd`，但共享脚本仍把赛季统计固定筛选为英超赛事 ID `4`，日职联的赛季统计字段不会被正确筛出；需日职联统计时使用球探来源。
+- 当前工作区没有 `jLeague/data/s25.js` 等赛程文件。并且 `crawler-server/config/index.js` 中 jLeague 仍配置 `season: '2026'`、`crossYear: false`，而当前联赛赛季为 `2026-2027`。更新该中央赛季配置前，不要运行赛程抓取命令，否则会按旧赛季配置抓取。
 
 ## 赛事概览
 
 - **赛事**：日本职业足球甲级联赛（J1 League）
 - **联赛序号（球探）**：**25** → `s25.js` / `l25.js` / `bs25.js` / `td25.js`
-- **当前架构赛季**：`2026`（目录 `report/2026/`、`news/2026/` 等）；新赛季增加平行目录如 `2027/`
-- **赛制与赛季**：以本次分析赛季的球探页面为准；不要沿用英超轮数、参赛队数或升降级规则。
+- **当前架构赛季**：`2026-2027`（目录 `report/2026-2027/`、`news/2026-2027/` 等）；新赛季增加平行目录。
+- **赛制**：20 队双循环，共 38 轮；赛季跨年。赛事序号及赛制仍以当前赛季球探资料为准。
 
 ### 赛程数据与 `clubMatchAnalyzer`（与 crawler-server 统一）
 
-- **主文件**：`jLeague/data/s25.js`（及同目录 `l25.js`、`bs25.js`、`td25.js`）。
-- **更新**：优先在 **`cup-analyzer/crawler-server`** 下执行 **`npm run crawl:schedule:jLeague`**（各系统相同）。也可 `npx cross-env CUP_ANALYZER_CUP=jLeague node crawlers/scheduleCrawler.js`；Bash 简写见 [crawler-server/README.md](../crawler-server/README.md)。会写入 `data/`，并把赛程主文件**同步拷贝**到 `crawler-server/match_center/s25.js`，避免两处脱节。
+- **主文件**：`jLeague/data/s25.js`（及同目录 `l25.js`、`bs25.js`、`td25.js`），当前均待生成。
+- **更新**：完成上面的中央赛季配置调整后，在 **`cup-analyzer/crawler-server`** 下执行 **`npm run crawl:schedule:jLeague`**。也可执行 `npx cross-env CUP_ANALYZER_CUP=jLeague node crawlers/scheduleCrawler.js`。脚本会写入联赛 `data/` 并同步赛程主文件到 `crawler-server/match_center/s25.js`。
 - **分析器路径**：`config.resolveScheduleData('25', false)` 指向 **`jLeague/data/s25.js`**（不再要求手工维护 `match_center` 为唯一来源）。未在 `config/index.js` 的 `cups` 中登记的其它联赛序号仍读 `match_center/s{n}.js` 兜底。
 
 ### 从大名单到球队画像（联赛流水线）
@@ -33,19 +33,19 @@
 
 工作目录：`cup-analyzer/crawler-server`。先编辑 `config/squadTarget.js`。
 
-**大名单数据源**：`npm run crawl:player-list:club` 默认抓取懂球帝；也可通过 `-w` 指定来源。选择球探或显式指定懂球帝时使用：
+**大名单数据源**：使用球探或懂球帝来源抓取日职联球员名单：
 
 ```bash
 npm run crawl:player-list:club -- -w qiutan
 npm run crawl:player-list:club -- -w dqd
 ```
 
-也可省略 `-w dqd`，直接运行 `npm run crawl:player-list:club`。球探来源通过球探球员资料补充俱乐部与转会记录；懂球帝来源抓取当前赛季联赛数据、球员资料、能力值和转会记录。两种来源都写入 `output/player_center/{teamSerial}.json`。抓取完成后再运行 `analyze:club-domestic`。
+球探来源使用 `config/squadTarget.js` 中的球探球队序号；懂球帝来源按 `data/config.json` 的 DQD ID 找球队。两种来源均写入 `output/player_center/{teamSerial}.json`。懂球帝来源的日职联赛季统计目前无法正常筛选；名单抓取后运行 `analyze:club-domestic`。
 
-以下两条任意系统相同：
+以下两条在任意系统均可执行；日职联名单建议明确使用球探来源：
 
 ```bash
-npm run crawl:player-list:club
+npm run crawl:player-list:club -- -w qiutan
 npm run analyze:club-domestic
 ```
 
@@ -97,7 +97,7 @@ npx cross-env CUP_ANALYZER_CUP=jLeague node processors/teamProfileGenerator.js -
   0. 大名单与预测块（基于球队画像流水线，优先不再每场重复爬取）
      - 双方大名单与「推荐首发」以 **`jLeague/squad-final/{队名}.md`** 为准（与 `teamProfile` 同源）；赛前在对应 `squad-final` 中更新 **伤停 / 伤疑** 后，可重跑 `teamProfileGenerator` 同步画像。
      - 一键生成单场用文案（预测首发、预测替补 Top9 按出场、伤疑、伤停、落选；此规则仅用于单场文案，与球队画像替补规则分开）：
-       `cd cup-analyzer/crawler-server && CUP_ANALYZER_CUP=jLeague node processors/matchSquadGenerator.js --home <主队序号> --away <客队序号>`
+        `npx cross-env CUP_ANALYZER_CUP=jLeague node processors/matchSquadGenerator.js --home <主队序号> --away <客队序号>`
        （或 `npm run generate:match-squad -- --home … --away …`）
   1. 预测首发与报告结构（格式见 prompts/match_analysis_template.md）
   2. 交锋、近况、未来赛程（含亚冠/亚冠二级/国内杯赛）、球探伤病摘要：`cd cup-analyzer/crawler-server`，在 `config/squadTarget.js` 填写本场 **`matchSerial`**，执行 **`npm run crawl:match-statistics`**（亦可 `npm run crawl:match-statistics -- --match <序号>` 临时指定场次），将输出并入赛前报告或 `jLeague/news/...`。（与 **`npm run generate:cycle-report`** 同源页面与解析；**伤停/伤疑**仍以 `squad-final` 与 `matchSquadGenerator` 为准。）详见 [crawler-server/README.md](../crawler-server/README.md)「matchStatisticsCrawler」。
@@ -187,7 +187,7 @@ npx cross-env CUP_ANALYZER_CUP=jLeague node processors/teamProfileGenerator.js -
 ### 亚盘周期盈亏 HTML（霍华德·马克斯周期视角）
 
 1. 编辑 `cup-analyzer/crawler-server/config/squadTarget.js`：设置 `matchSerial`（球探单场序号）、`roundSerial`、`season`；`matchLeagueName` 填与球探战绩表「联赛」列一致的文案（如 `日职联`），供「同赛事」折线图筛选。
-2. 在 `cup-analyzer/crawler-server` 执行：`CUP_ANALYZER_CUP=jLeague npm run generate:cycle-report`
+2. 在 `cup-analyzer/crawler-server` 执行：`npx cross-env CUP_ANALYZER_CUP=jLeague npm run generate:cycle-report`
 3. 输出：`cup-analyzer/jLeague/report/{赛季}/round-{N}/{主队}_vs_{客队}_cycle.html`（ECharts 远程 CDN；每场模拟投注 1000 元、固定港盘水位 0.9，初盘盘口来自球探分析页；每队含「全部 / 仅主或仅客 / 同赛事」三张累计盈亏图）
 
 **赛前报告正文中的大名单块**：`matchSquadGenerator.js` 针对单场双方输出的内容（每队含 **预测首发、预测替补、伤疑、伤停、落选**），即该场赛前报告文件 **`jLeague/report/{赛季}/round-{N}/{主队}_vs_{客队}.md`** 里「大名单与预测」部分应写入的正文来源；可与 `prompts/match_analysis_template.md` 其余章节（交锋、盘口、战意等）合并为完整报告。

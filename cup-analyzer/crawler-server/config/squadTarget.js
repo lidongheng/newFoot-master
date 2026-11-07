@@ -7,14 +7,16 @@
  *
  * - leagueSerial：球探「联赛」或「杯赛」序号 → resolveScheduleData 解析到各模块 data/ 下赛程 JS
  * - teamSerial：球探「俱乐部」序号 → 输出 player_center/{teamSerial}.json
+ * - season：分析赛事赛季；欧冠填 '2026-2027'，挪超、韩K联填 '2026'。
+ *   懂球帝当前名单和国内联赛统计按接口返回的球队赛季读取，可以与欧冠赛季名称不同。
  * - roundSerial：联赛渠道时填当前国内联赛轮次（仅分析该轮之前已完赛场次）；杯赛渠道可不填
  */
 const squadTarget = {
-  leagueSerial: '36',
-  leagueSlug: 'epl',
+  leagueSerial: '25',
+  leagueSlug: 'jLeague',
   season: '2026-2027',
-  teamSerial: '26',
-  roundSerial: '10',
+  teamSerial: '200',
+  roundSerial: '14',
   /**
    * 赛程格式开关：
    *   false（默认）= 联赛格式，读 s 开头文件，R_* 轮次迭代
@@ -35,14 +37,14 @@ const squadTarget = {
    *   isNation: true + 国家队杯赛 → 不用设（自动 true）
    */
   matchByName: false,
-  teamChineseName: '曼彻斯特城',
+  teamChineseName: '东京绿茵',
   /** 单场分析 / 周期报告等场景可选 */
   matchSerial: '2906967',
   /**
    * 周期报告「同赛事」筛选：与球探战绩表「联赛」列文案一致（如 英超、欧冠杯）。
    * 不填则回退为当前 CUP_ANALYZER_CUP 对应 chineseName。
    */
-  matchLeagueName: '英超',
+  matchLeagueName: '日职联',
 };
 
 module.exports = squadTarget;

@@ -4,7 +4,7 @@
 
 | 文件 | 说明 |
 |------|------|
-| `s273_462.js` | 赛程与积分榜等（`CUP_ANALYZER_CUP=aLeague node crawlers/scheduleCrawler.js` 更新） |
+| `s273.js` | 赛程与积分榜等（`CUP_ANALYZER_CUP=aLeague node crawlers/scheduleCrawler.js` 更新） |
 | `l273.js` | 亚盘盘路榜（与 `league-analyzer/data/l273.js` 同源，可同步更新） |
 | `bs273.js` | 大小球盘路榜 |
 | `td273.js` | 入球时间分布 |

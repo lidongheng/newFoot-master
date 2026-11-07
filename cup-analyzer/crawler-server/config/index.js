@@ -8,11 +8,14 @@ const path = require('path');
  * - europaLeague（欧罗巴，球探序号 113，c113.js）
  * - uefaConferenceLeague（欧会杯，球探序号 2187，c2187.js）
  * - epl（英超，球探序号 36，联赛格式 s36.js）
+ * - eredivisie（荷甲，球探序号 16，本地赛程 s16.js）
+ * - eliteSerien（挪超，球探序号 22，单年赛季 s22.js）
  * - bundesliga（德甲，球探序号 8，联赛格式 s8.js）
  * - ligue1（法甲，球探序号 11，联赛格式 s11.js）
  * - laLiga（西甲，球探序号 31，联赛格式 s31.js）
  * - koreanKLeague（韩K联，s15_313，313 为 arrSubLeague 子联赛 ID）
- * - aLeague（澳超，s273_462，462 为 arrSubLeague 子联赛 ID）
+ * - ChinaSuperLeague（中超，球探序号 60，单年赛季 s60_2187.js）
+ * - aLeague（澳超，本地 s273.js，远程 s273_462.js）
  * - mls（美职联，s21_165，165 为 arrSubLeague 常规赛子联赛 ID）
  * - serieA（意甲，s34_2948，2948 为 arrSubLeague 子联赛 ID）
  * - ligaMx（墨西联，s140_44，44 为 arrSubLeague 子联赛 ID，赛程 Referer 用 SubLeague 页）
@@ -124,6 +127,41 @@ const cups = {
       cupScheduleData: path.resolve(__dirname, '../../epl/data/s36.js'),
     },
   },
+  eliteSerien: {
+    fileId: 's22',
+    type: 'league',
+    cupSerial: '22',
+    cupName: 'eliteSerien',
+    chineseName: '挪超',
+    crossYear: false,
+    season: '2026',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../eliteSerien'),
+      squadFinal: path.resolve(__dirname, '../../eliteSerien/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../../eliteSerien/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../eliteSerien/data/s22.js'),
+    },
+  },
+  eredivisie: {
+    fileId: 's16_98',
+    type: 'league',
+    cupSerial: '16',
+    cupName: 'eredivisie',
+    chineseName: '荷甲',
+    crossYear: true,
+    // 球探 2026-2027 荷甲联赛阶段对应子联赛 98。
+    subLeagueId: '98',
+    // 与 EPL 使用相同赛季，球探请求使用完整年份。
+    season: '2026-2027',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../eredivisie'),
+      squadFinal: path.resolve(__dirname, '../../eredivisie/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../../eredivisie/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../eredivisie/data/s16.js'),
+    },
+  },
   jLeague: {
     fileId: 's25',
     type: 'league',
@@ -208,6 +246,24 @@ const cups = {
       cupScheduleData: path.resolve(__dirname, '../../koreanKLeague/data/s15_313.js'),
     },
   },
+  ChinaSuperLeague: {
+    fileId: 's60_2187',
+    type: 'league',
+    cupSerial: '60',
+    cupName: 'ChinaSuperLeague',
+    chineseName: '中超',
+    // 中超使用自然年赛季；赛程文件按球探页面的子联赛编号定位。
+    crossYear: false,
+    subLeagueId: '2187',
+    season: '2026',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../ChinaSuperLeague'),
+      squadFinal: path.resolve(__dirname, '../../ChinaSuperLeague/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../../ChinaSuperLeague/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../ChinaSuperLeague/data/s60_2187.js'),
+    },
+  },
   aLeague: {
     fileId: 's273_462',
     type: 'league',
@@ -224,7 +280,7 @@ const cups = {
       squadFinal: path.resolve(__dirname, '../../aLeague/squad-final'),
       playerCenter: path.resolve(__dirname, '../output/player_center'),
       basicData: path.resolve(__dirname, '../../aLeague/basicData'),
-      cupScheduleData: path.resolve(__dirname, '../../aLeague/data/s273_462.js'),
+      cupScheduleData: path.resolve(__dirname, '../../aLeague/data/s273.js'),
     },
   },
   mls: {

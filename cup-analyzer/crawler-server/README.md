@@ -39,9 +39,10 @@ pnpm dev:crawler
 | `europaLeague` | 欧罗巴（杯赛 `c`） | `europaLeague/data/c113.js` |
 | `uefaConferenceLeague` | 欧会杯（杯赛 `c`） | `uefaConferenceLeague/data/c2187.js` |
 | `epl` | 英超（联赛 `s`） | `epl/data/s36.js` |
+| `eliteSerien` | 挪超（单年联赛 `s`） | `eliteSerien/data/s22.js` |
 | `ligue1` | 法甲（联赛 `s`） | `ligue1/data/s11.js` |
 | `koreanKLeague` | 韩K联（联赛 `s`，子联赛 313） | `koreanKLeague/data/s15_313.js` |
-| `aLeague` | 澳超（联赛 `s`，子联赛 462） | `aLeague/data/s273_462.js` |
+| `aLeague` | 澳超（联赛 `s`，子联赛 462） | `aLeague/data/s273.js` |
 | `mls` | 美职联（联赛 `s`，子联赛 165） | `mls/data/s21_165.js` |
 | `serieA` | 意甲（联赛 `s`，子联赛 2948） | `serieA/data/s34_2948.js` |
 | `ligaMx` | 墨西联（联赛 `s`，子联赛 44） | `ligaMx/data/s140_44.js` |
@@ -75,10 +76,11 @@ node crawlers/squadCrawler.js --with-club        # 批量也抓俱乐部（耗�
 
 npm：`npm run crawl:squad` / `npm run crawl:squad:one -- 744`
 
-### 2. `playerListCrawler.js` — 俱乐部大名单（欧冠 / 英超 / 法甲）
+### 2. `playerListCrawler.js` — 俱乐部大名单（欧冠 / 跨年联赛 / 单年联赛）
 
 - **作用**：按 [`config/squadTarget.js`](config/squadTarget.js) 中的 `teamSerial` 拉取单俱乐部大名单，写入 `output/player_center/{teamSerial}.json`。默认来源为懂球帝，只抓当前赛季的球队成员与联赛统计，并附个人资料、能力值和转会记录。
 - **来源参数**：`-w dqd` 抓懂球帝，`-w qiutan` 抓球探；不传 `-w` 时默认懂球帝。俱乐部命令会启用转会数据抓取。
+- **赛季**：`squadTarget.season` 表示分析赛事赛季，支持跨年 `'2026-2027'` 和单年 `'2026'`。懂球帝名单读取接口中 `current: true` 的球队赛季，球队赛程也使用该赛季；当前国内联赛统计按球队统计接口返回的赛季 ID 筛选。名单赛季必须与分析赛季的日期范围相交，因此欧冠 `'2026-2027'` 可以读取维京 `'2026'` 的当前名单。转会筛选仍按分析赛季范围进行：单年为 1 月至 12 月，跨年为 7 月至次年 6 月。
 
 ```bash
 node crawlers/playerListCrawler.js

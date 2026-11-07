@@ -1149,7 +1149,7 @@ class TeamProfileGenerator extends BaseCrawler {
   }
 
   /**
-   * 按球衣号用 squad-final 表中的姓名、位置覆盖 analyzer 输出的 11 人（人工审核名单为展示真源）
+   * 按球衣号用 squad-final 表中的姓名、位置、能力覆盖 analyzer 输出的 11 人（人工审核名单为展示真源）
    * @param {object[]} lineupPlayers determineStartingLineup 返回的数组
    * @param {any[]} squadFinalPlayers parseFinalSquadMarkdown 的 players
    * @returns {object[]}
@@ -1174,7 +1174,7 @@ class TeamProfileGenerator extends BaseCrawler {
         String(sq.position).trim() !== '-'
           ? String(sq.position).trim()
           : p.position;
-      return { ...p, name, position: pos };
+      return { ...p, name, position: pos, ability: sq.ability };
     });
   }
 
