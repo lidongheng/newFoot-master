@@ -75,7 +75,10 @@ class ScheduleCrawler extends BaseCrawler {
     if (config.type === 'league') {
       steps.push({
         label: '入球时间',
-        url: targets.titan007.matchResultDataUrl(`td${serial}`, config.season),
+        // 英冠的入球时间文件使用独立数据目录。
+        url: config.timeDistriData
+          ? `https://zq.titan007.com/jsData/timeDistri/${config.season}/td${serial}.js`
+          : targets.titan007.matchResultDataUrl(`td${serial}`, config.season),
         outputPath: path.join(dataDir, `td${serial}.js`),
       });
     }

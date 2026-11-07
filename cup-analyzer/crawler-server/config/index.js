@@ -127,6 +127,29 @@ const cups = {
       cupScheduleData: path.resolve(__dirname, '../../epl/data/s36.js'),
     },
   },
+  eflChampionship: {
+    fileId: 's37_87',
+    type: 'league',
+    cupSerial: '37',
+    cupName: 'eflChampionship',
+    chineseName: '英冠',
+    crossYear: true,
+    // 球探 2026–2027 英冠常规联赛对应子联赛 87。
+    subLeagueId: '87',
+    // 英冠入球时间数据位于 timeDistri，非 matchResult。
+    timeDistriData: true,
+    /**
+     * 球探 URL 赛季段（与 s37 等路径一致；站点目录多为全写，勿与本地短赛季目录混用）
+     */
+    season: '2026-2027',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../eflChampionship'),
+      squadFinal: path.resolve(__dirname, '../../eflChampionship/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../../eflChampionship/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../eflChampionship/data/s37.js'),
+    },
+  },
   eliteSerien: {
     fileId: 's22',
     type: 'league',

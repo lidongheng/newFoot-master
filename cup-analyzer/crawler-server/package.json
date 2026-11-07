@@ -25,6 +25,7 @@
     "crawl:schedule:europa": "cross-env CUP_ANALYZER_CUP=europaLeague node crawlers/scheduleCrawler.js",
     "crawl:schedule:conference": "cross-env CUP_ANALYZER_CUP=uefaConferenceLeague node crawlers/scheduleCrawler.js",
     "crawl:schedule:epl": "cross-env CUP_ANALYZER_CUP=epl node crawlers/scheduleCrawler.js",
+    "crawl:schedule:eflChampionship": "cross-env CUP_ANALYZER_CUP=eflChampionship node crawlers/scheduleCrawler.js",
     "crawl:schedule:eredivisie": "cross-env CUP_ANALYZER_CUP=eredivisie node crawlers/scheduleCrawler.js",
     "crawl:schedule:eliteserien": "cross-env CUP_ANALYZER_CUP=eliteSerien node crawlers/scheduleCrawler.js",
     "crawl:schedule:jLeague": "cross-env CUP_ANALYZER_CUP=jLeague node crawlers/scheduleCrawler.js",

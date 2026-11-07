@@ -47,10 +47,12 @@ npm run crawl:player-list:club
 npm run analyze:club-domestic
 ```
 
-下面三条需设置 `CUP_ANALYZER_CUP=aLeague`。**任意系统推荐**（需已在本目录执行过 `npm install`）：
+下面四条需设置 `CUP_ANALYZER_CUP=aLeague`。**任意系统推荐**（需已在本目录执行过 `npm install`）：
 
 ```bash
 npx cross-env CUP_ANALYZER_CUP=aLeague node processors/leagueSquadProcessor.js
+  # 运行前在 squadTarget.js 设置 teamSerial 和 matchTime（北京时间，YYYY-MM-DD HH:mm:ss）
+npx cross-env CUP_ANALYZER_CUP=aLeague node processors/teamScheduleProcessor.js
 npx cross-env CUP_ANALYZER_CUP=aLeague node processors/squadFinalInitializer.js --team <序号>
 # 人工审核 aLeague/squad-final/{队名}.md
 npx cross-env CUP_ANALYZER_CUP=aLeague node processors/teamProfileGenerator.js --team <序号>

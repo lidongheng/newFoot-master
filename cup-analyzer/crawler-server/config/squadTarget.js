@@ -12,11 +12,12 @@
  * - roundSerial：联赛渠道时填当前国内联赛轮次（仅分析该轮之前已完赛场次）；杯赛渠道可不填
  */
 const squadTarget = {
-  leagueSerial: '25',
-  leagueSlug: 'jLeague',
+  leagueSerial: '31',
+  leagueSlug: 'laLiga',
   season: '2026-2027',
-  teamSerial: '9024',
-  roundSerial: '14',
+  teamSerial: '104',
+  matchTime: '2026-11-07 21:00:00',
+  roundSerial: '12',
   /**
    * 赛程格式开关：
    *   false（默认）= 联赛格式，读 s 开头文件，R_* 轮次迭代
@@ -37,14 +38,14 @@ const squadTarget = {
    *   isNation: true + 国家队杯赛 → 不用设（自动 true）
    */
   matchByName: false,
-  teamChineseName: '冈山绿雉',
+  teamChineseName: '桑坦德竞技',
   /** 单场分析 / 周期报告等场景可选 */
   matchSerial: '2906967',
   /**
    * 周期报告「同赛事」筛选：与球探战绩表「联赛」列文案一致（如 英超、欧冠杯）。
    * 不填则回退为当前 CUP_ANALYZER_CUP 对应 chineseName。
    */
-  matchLeagueName: '日职联',
+  matchLeagueName: '西甲',
 };
 
 module.exports = squadTarget;

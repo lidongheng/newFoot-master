@@ -31,6 +31,8 @@
 npm run crawl:player-list
 npm run analyze:club-domestic
 CUP_ANALYZER_CUP=mls node processors/leagueSquadProcessor.js
+  # 运行前在 squadTarget.js 设置 teamSerial 和 matchTime（北京时间，YYYY-MM-DD HH:mm:ss）
+CUP_ANALYZER_CUP=mls node processors/teamScheduleProcessor.js
 CUP_ANALYZER_CUP=mls node processors/squadFinalInitializer.js --team <序号>
 # 人工审核 mls/squad-final/{队名}.md
 CUP_ANALYZER_CUP=mls node processors/teamProfileGenerator.js --team <序号>

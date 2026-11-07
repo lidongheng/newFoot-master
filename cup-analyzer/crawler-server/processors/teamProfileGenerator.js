@@ -582,9 +582,19 @@ class TeamProfileGenerator extends BaseCrawler {
     const doubtful = [];
     let lineMode = 'normal';
     let tableColumnMap = null;
+    let inTeamSchedule = false;
 
     for (const line of content.split('\n')) {
       const trimmed = line.trim();
+      if (trimmed === '<!-- TEAM_SCHEDULE_START -->') {
+        inTeamSchedule = true;
+        continue;
+      }
+      if (trimmed === '<!-- TEAM_SCHEDULE_END -->') {
+        inTeamSchedule = false;
+        continue;
+      }
+      if (inTeamSchedule) continue;
 
       if (trimmed.match(/^##\s+/)) {
         const m = trimmed.match(/^##\s+([^\n]+)/);
@@ -749,10 +759,23 @@ class TeamProfileGenerator extends BaseCrawler {
 
   loadManualProfileSections(teamInfo, scheduleData) {
     const descriptionPath = this.getDescriptionPath(teamInfo, scheduleData);
-    if (!fileExists(descriptionPath)) return [];
-
-    const content = readFile(descriptionPath);
-    return this.extractManualProfileSections(content);
+    const manualSections = fileExists(descriptionPath)
+      ? this.extractManualProfileSections(readFile(descriptionPath))
+      : [];
+    const squadFinalRoot = config.paths.squadFinal || path.join(config.paths.cupAnalyzer, 'squad-final');
+    const flatPath = path.join(squadFinalRoot, `${teamInfo.chineseName}.md`);
+    const letter = this.findGroupLetterForTeam(teamInfo.id, scheduleData);
+    const groupPath = path.join(squadFinalRoot, letter ? `group-${letter}` : 'misc', `${teamInfo.chineseName}.md`);
+    const finalPath = fileExists(flatPath) ? flatPath : groupPath;
+    if (fileExists(finalPath)) {
+      const content = readFile(finalPath);
+      const start = content.indexOf('<!-- TEAM_SCHEDULE_START -->');
+      const end = content.indexOf('<!-- TEAM_SCHEDULE_END -->');
+      if (start >= 0 && end > start) {
+        manualSections.push(content.slice(start, end + '<!-- TEAM_SCHEDULE_END -->'.length));
+      }
+    }
+    return manualSections;
   }
 
   /**
@@ -1463,8 +1486,9 @@ class TeamProfileGenerator extends BaseCrawler {
     const ageAnalysis = this.analyzeAge(players);
     const heightAnalysis = this.analyzeHeight(players);
     const valueAnalysis = this.analyzeMarketValue(players);
-    const goalsTop5 = analyzeStatTop5(players, 'goals');
-    const assistsTop5 = analyzeStatTop5(players, 'assists');
+    // 进球、助攻排名使用已合并的赛季统计，squad-final 可能只包含球员资料。
+    const goalsTop5 = analyzeStatTop5(profilePlayers, 'goals');
+    const assistsTop5 = analyzeStatTop5(profilePlayers, 'assists');
     const positionDepth = this.analyzePositionDepth(players);
     const tacticalStyle = this.inferTacticalStyle(players, ageAnalysis, heightAnalysis, valueAnalysis);
     const teamGoal = this.inferTeamGoal(teamInfo.chineseName, valueAnalysis);

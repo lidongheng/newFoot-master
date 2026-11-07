@@ -34,10 +34,12 @@ npm run crawl:player-list:club -- -w qiutan
 npm run analyze:club-domestic
 ```
 
-下面三条需设置 `CUP_ANALYZER_CUP=ChinaSuperLeague`。**任意系统推荐**：
+下面四条需设置 `CUP_ANALYZER_CUP=ChinaSuperLeague`。**任意系统推荐**：
 
 ```bash
 npx cross-env CUP_ANALYZER_CUP=ChinaSuperLeague node processors/leagueSquadProcessor.js
+  # 运行前在 squadTarget.js 设置 teamSerial 和 matchTime（北京时间，YYYY-MM-DD HH:mm:ss）
+npx cross-env CUP_ANALYZER_CUP=ChinaSuperLeague node processors/teamScheduleProcessor.js
 npx cross-env CUP_ANALYZER_CUP=ChinaSuperLeague node processors/squadFinalInitializer.js --team <序号>
 # 人工审核 ChinaSuperLeague/squad-final/{队名}.md
 npx cross-env CUP_ANALYZER_CUP=ChinaSuperLeague node processors/teamProfileGenerator.js --team <序号>

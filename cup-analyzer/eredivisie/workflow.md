@@ -51,10 +51,12 @@ npx cross-env CUP_ANALYZER_CUP=eredivisie npm run crawl:player-list:club
 npx cross-env CUP_ANALYZER_CUP=eredivisie npm run analyze:club-domestic
 ```
 
-下面三条需设置 `CUP_ANALYZER_CUP=eredivisie`。**任意系统推荐**：
+下面四条需设置 `CUP_ANALYZER_CUP=eredivisie`。**任意系统推荐**：
 
 ```bash
 npx cross-env CUP_ANALYZER_CUP=eredivisie node processors/leagueSquadProcessor.js
+  # 运行前在 squadTarget.js 设置 teamSerial 和 matchTime（北京时间，YYYY-MM-DD HH:mm:ss）
+npx cross-env CUP_ANALYZER_CUP=eredivisie node processors/teamScheduleProcessor.js
 npx cross-env CUP_ANALYZER_CUP=eredivisie node processors/squadFinalInitializer.js --team <序号>
 # 人工审核 eredivisie/squad-final/{队名}.md
 npx cross-env CUP_ANALYZER_CUP=eredivisie node processors/teamProfileGenerator.js --team <序号>

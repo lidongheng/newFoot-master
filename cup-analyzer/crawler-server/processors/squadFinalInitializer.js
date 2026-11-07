@@ -90,7 +90,21 @@ class SquadFinalInitializer extends BaseCrawler {
         break;
       }
     }
-    return injectInjurySections(lines.join('\n'));
+    const transformed = injectInjurySections(lines.join('\n'));
+    return this.moveScheduleBeforeStats(transformed);
+  }
+
+  /** 保持赛程区块在统计摘要之前，并作为人工审核内容透传。 */
+  moveScheduleBeforeStats(content) {
+    const start = content.indexOf('<!-- TEAM_SCHEDULE_START -->');
+    const end = content.indexOf('<!-- TEAM_SCHEDULE_END -->');
+    if (start < 0 || end < start) return content;
+    const block = content.slice(start, end + '<!-- TEAM_SCHEDULE_END -->'.length);
+    let text = `${content.slice(0, start)}${content.slice(end + '<!-- TEAM_SCHEDULE_END -->'.length)}`;
+    const marker = '## 统计摘要';
+    const index = text.indexOf(marker);
+    text = index < 0 ? `${text.trimEnd()}\n\n${block}\n` : `${text.slice(0, index).trimEnd()}\n\n${block}\n\n${text.slice(index)}`;
+    return text;
   }
 
   /**
@@ -233,6 +247,7 @@ class SquadFinalInitializer extends BaseCrawler {
       }
       const raw = readFile(srcPath);
       out = this.transformToFinalDraft(raw);
+      out = this.moveScheduleBeforeStats(out);
       destPath = path.join(finalRoot, groupFolder, baseName);
     }
 

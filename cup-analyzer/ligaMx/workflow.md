@@ -31,6 +31,8 @@
 npm run crawl:player-list:club
 npm run analyze:club-domestic
 npx cross-env CUP_ANALYZER_CUP=ligaMx node processors/leagueSquadProcessor.js
+  # 运行前在 squadTarget.js 设置 teamSerial 和 matchTime（北京时间，YYYY-MM-DD HH:mm:ss）
+npx cross-env CUP_ANALYZER_CUP=ligaMx node processors/teamScheduleProcessor.js
 npx cross-env CUP_ANALYZER_CUP=ligaMx node processors/squadFinalInitializer.js --team <序号>
 # 人工审核 ligaMx/squad-final/{队名}.md
 npx cross-env CUP_ANALYZER_CUP=ligaMx node processors/teamProfileGenerator.js --team <序号>
