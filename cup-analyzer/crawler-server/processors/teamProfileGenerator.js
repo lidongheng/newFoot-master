@@ -54,7 +54,7 @@ function getMarketValueRaw(p) {
 function formatMarketValueForDisplay(p) {
   const raw = getMarketValueRaw(p);
   const s = String(raw ?? '').trim();
-  if (!s || s === '-') return null;
+  if (!s || s === '-' || /^0+(?:\.0+)?(?:万|亿)?$/.test(s)) return null;
   if (/[万亿]/.test(s)) return s;
   const n = s.replace(/,/g, '');
   if (/^\d+(\.\d+)?$/.test(n)) return `${n}万`;
@@ -74,7 +74,7 @@ function formatAgeForDisplay(p) {
 function formatAbilityForDisplay(p) {
   const ability = p.ability;
   const s = String(ability ?? '').trim();
-  if (!s || s === '-') return null;
+  if (!s || s === '-' || Number(s) === 0) return null;
   return s;
 }
 
@@ -104,6 +104,8 @@ function formatPlayerNameWithClub(p, allSameNonEmptyClub, normalizePositionCode)
   if (!national && !missing && !allSameNonEmptyClub) parts.push(club);
   if (posCode) parts.push(posCode);
   if (ability) parts.push(ability);
+  const nationality = String(p.nationality ?? '').trim();
+  if (nationality && nationality !== '-' && nationality !== '0') parts.push(nationality);
   if (ageSeg) parts.push(ageSeg);
   if (mv) parts.push(mv);
   if (parts.length === 0) return displayName;
@@ -181,7 +183,8 @@ function getPlayerSeasonStatsQuad(p) {
   starts = parseStatIntCell(starts);
   goals = parseStatIntCell(goals);
   assists = parseStatIntCell(assists);
-  if (apps === null || starts === null || goals === null || assists === null) return null;
+  // 各项统计独立展示，缺失某一项不影响其余已有数据。
+  if ([apps, starts, goals, assists].every((value) => value === null)) return null;
   return { apps, starts, goals, assists };
 }
 
@@ -200,6 +203,8 @@ function formatStatsParen(p, positionCode) {
   if (positionCode) parts.push(positionCode);
   const ability = formatAbilityForDisplay(p);
   if (ability) parts.push(ability);
+  const nationality = String(p.nationality ?? '').trim();
+  if (nationality && nationality !== '-' && nationality !== '0') parts.push(nationality);
   const ageSeg = formatAgeForDisplay(p);
   if (ageSeg) parts.push(ageSeg);
   const mv = formatMarketValueForDisplay(p);
@@ -1494,7 +1499,8 @@ class TeamProfileGenerator extends BaseCrawler {
         `> 请在 \`squad-final\` 对应文件中于表头增加 \`- **阵型**: 如 4-2-3-1\`，并将球员「位置」列规范为英文缩写（与阵型一致）。\n`
       );
     }
-    const squadList = this.buildPositionSquadList(players, showPlayerDetails);
+    // 阵型下的大名单复用 analyzer 的赛季统计，与预测首发、替补保持一致。
+    const squadList = this.buildPositionSquadList(profilePlayers, showPlayerDetails);
     if (squadList) {
       lines.push(squadList);
       lines.push('');

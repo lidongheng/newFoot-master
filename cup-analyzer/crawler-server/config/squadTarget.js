@@ -15,7 +15,7 @@ const squadTarget = {
   leagueSerial: '25',
   leagueSlug: 'jLeague',
   season: '2026-2027',
-  teamSerial: '200',
+  teamSerial: '9024',
   roundSerial: '14',
   /**
    * 赛程格式开关：
@@ -37,7 +37,7 @@ const squadTarget = {
    *   isNation: true + 国家队杯赛 → 不用设（自动 true）
    */
   matchByName: false,
-  teamChineseName: '东京绿茵',
+  teamChineseName: '冈山绿雉',
   /** 单场分析 / 周期报告等场景可选 */
   matchSerial: '2906967',
   /**
