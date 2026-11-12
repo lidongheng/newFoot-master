@@ -3,15 +3,15 @@
 ## 赛事概览
 
 - **赛事**：K League 1（韩K联）
-- **联赛序号（球探）**：**15**，子联赛 **313** → `s15_313.js` / `l15.js` / `bs15.js` / `td15.js`
+- **联赛序号（球探）**：**15**，子联赛 **313**，远程抓取 `s15_313.js`，本地保存 → `s15.js` / `l15.js` / `bs15.js` / `td15.js`
 - **当前架构赛季**：`2026`（与 `crawler-server/config/index.js` 中 `koreanKLeague.season` 及 `report/2026/` 等目录一致）
 - **赛制**：12 队先进行三循环常规赛，前六进入争冠组、后六进入保级组，再各进行单循环；升降级与亚冠名额以当季 `arrLeague` 说明为准
 
 ### 赛程数据与 `clubMatchAnalyzer`（与 crawler-server 统一）
 
-- **主文件**：`koreanKLeague/data/s15_313.js`（及同目录 `l15.js`、`bs15.js`、`td15.js`）。
+- **主文件**：`koreanKLeague/data/s15.js`（及同目录 `l15.js`、`bs15.js`、`td15.js`）。
 - **更新**：优先在 **`cup-analyzer/crawler-server`** 下执行 **`npm run crawl:schedule:kleague`**（各系统相同）。也可 `npx cross-env CUP_ANALYZER_CUP=koreanKLeague node crawlers/scheduleCrawler.js`；Bash 简写见 [crawler-server/README.md](../crawler-server/README.md)。会写入 `data/`，并把赛程主文件**同步拷贝**到 `crawler-server/match_center/s15.js`，避免两处脱节。
-- **分析器路径**：`config.resolveScheduleData('15', false)` 指向 **`koreanKLeague/data/s15_313.js`**（不再要求手工维护 `match_center` 为唯一来源）。未在 `config/index.js` 的 `cups` 中登记的其它联赛序号仍读 `match_center/s{n}.js` 兜底。
+- **分析器路径**：`config.resolveScheduleData('15', false)` 指向 **`koreanKLeague/data/s15.js`**（不再要求手工维护 `match_center` 为唯一来源）。未在 `config/index.js` 的 `cups` 中登记的其它联赛序号仍读 `match_center/s{n}.js` 兜底。
 
 ### 从大名单到球队画像（联赛流水线）
 
@@ -19,7 +19,7 @@
 
 争冠组边界队、亚冠资格竞争队和保级组球队可优先更新 `teamProfile/`；自动化画像落地后，建议补充外援与教练变动、韩国杯和亚冠赛程、伤病与状态等赛前分析信息。
 
-**前置**：在 `cup-analyzer/crawler-server` 中编辑 `config/squadTarget.js`：设置 `leagueSlug='koreanKLeague'`、`leagueSerial='15'`、`season='2026'`、本次球队的 `teamSerial` / `teamChineseName` 和 `roundSerial`。`playerListCrawler` 按 `leagueSlug` 读取 `koreanKLeague/data/config.json`；赛程见 `koreanKLeague/data/s15_313.js`。以下 processors 需 `CUP_ANALYZER_CUP=koreanKLeague`（推荐上文 `npx cross-env`）。
+**前置**：在 `cup-analyzer/crawler-server` 中编辑 `config/squadTarget.js`：设置 `leagueSlug='koreanKLeague'`、`leagueSerial='15'`、`season='2026'`、本次球队的 `teamSerial` / `teamChineseName` 和 `roundSerial`。`playerListCrawler` 按 `leagueSlug` 读取 `koreanKLeague/data/config.json`；赛程见 `koreanKLeague/data/s15.js`。以下 processors 需 `CUP_ANALYZER_CUP=koreanKLeague`（推荐上文 `npx cross-env`）。
 
 **输出路径**：`koreanKLeague/squad/` → `koreanKLeague/squad-final/` → `koreanKLeague/teamProfile/`。球队序号见 `koreanKLeague/data/球队与序号对照表.md`。
 
@@ -66,7 +66,7 @@ npx cross-env CUP_ANALYZER_CUP=koreanKLeague node processors/teamProfileGenerato
 ```
 1. 确认 data/ 下赛程与盘路数据为最新
    └─ `cd cup-analyzer/crawler-server`，再执行 **`npm run crawl:schedule:kleague`**（推荐）
-      （同步更新 `koreanKLeague/data/` 下 s15_313、l15、bs15、td15，并把赛程主文件拷至 `match_center/s15.js`，见上文；亦可 `npx cross-env CUP_ANALYZER_CUP=koreanKLeague node crawlers/scheduleCrawler.js`；手写 Shell 见 [crawler-server/README.md](../crawler-server/README.md)）
+      （同步更新 `koreanKLeague/data/` 下 s15、l15、bs15、td15，并把赛程主文件拷至 `match_center/s15.js`，见上文；亦可 `npx cross-env CUP_ANALYZER_CUP=koreanKLeague node crawlers/scheduleCrawler.js`；手写 Shell 见 [crawler-server/README.md](../crawler-server/README.md)）
 
 2. 维护 `data/冠军赔率.md`、`data/球队与序号对照表.md`；保级压力结合争冠组 / 保级组积分榜和当季升降级规则判断
 
@@ -76,7 +76,7 @@ npx cross-env CUP_ANALYZER_CUP=koreanKLeague node processors/teamProfileGenerato
 **大名单（每场）**：与欧冠俱乐部流程一致，使用 **`cup-analyzer/crawler-server`**：
 
 ```
-  a. 确保韩K联赛程 JS 已更新（优先 `koreanKLeague/data/s15_313.js`；`leagueSerial=15` 时由 resolveScheduleData 指向该文件）
+  a. 确保韩K联赛程 JS 已更新（优先 `koreanKLeague/data/s15.js`；`leagueSerial=15` 时由 resolveScheduleData 指向该文件）
   b. 编辑 config/squadTarget.js：leagueSlug='koreanKLeague'、leagueSerial='15'、season='2026'、teamSerial、roundSerial、teamChineseName、isNation=false
   c. npm run crawl:player-list:club -- -w qiutan → output/player_center/{teamSerial}.json
   d. npm run analyze:club-domestic → {teamSerial}-new.json
@@ -96,7 +96,7 @@ npx cross-env CUP_ANALYZER_CUP=koreanKLeague node processors/teamProfileGenerato
      - **未来赛程分析（必做，使用 `dh-team-schedule`）**：按 [.cursor/rules/dh-team-schedule/SKILL.md](../../.cursor/rules/dh-team-schedule/SKILL.md) 分别查询双方从本场计划开球时间起未来 14 天内的全部赛事，按技能规定输出开球时间、赛事、对手和距上一场开球的间隔；对本场前及未来赛程的相邻场次按休息间隔标注预警：**低于 67 小时为红色，67–92 小时（含边界）为黄色，超过 92 小时为绿色**。将预警、未来赛程密度及紧邻的韩国杯 / 亚冠赛事纳入赛前报告「未来赛程 / 赛程分析」，评估体能与轮换风险。查询使用 `koreanKLeague/data/config.json` 和 `crawler-server/output/{qiutanSerial}-schedule.json`。球探来源不会生成该 DQD 赛程 JSON；当前懂球帝抓取还不支持 `2026` 单年赛季，因此赛程 JSON 缺失时按技能说明指出路径，不推测赛程、比分或间隔。
      - **新闻发布会与伤停新闻搜集（必做）**：上网搜集双方最新的新闻发布会/主帅采访和球队伤停新闻，分别总结发布会中的阵容、伤停、轮换与战意信息，以及各队已确认伤停和存疑球员；记录来源与发布时间，区分已确认信息和未确认消息，并将摘要并入本场赛前报告或 `koreanKLeague/news/...`。
   3. 盘口（初盘与临场 + 盘路三块固定句式；勿用空泛盘口闲聊替代数据块）：
-     - 初盘全场 / 半场让球、大小球盘口等仍以 `koreanKLeague/data/s15_313.js` 为准，报告章节层级参考 `epl/prompts/match_analysis_template.md`「四、盘口解析」。
+     - 初盘全场 / 半场让球、大小球盘口等仍以 `koreanKLeague/data/s15.js` 为准，报告章节层级参考 `epl/prompts/match_analysis_template.md`「四、盘口解析」。
      - **亚盘「盘口分析」内须有「盘路数据」**（数据来自 `koreanKLeague/data/l15.js`）：连续三行，依次为 **总盘**、**主场**、**客场**；每行写清双方 **净胜盘** 与 **联赛排名**，句式示例：`总盘：主队净+x，排第a，客队净+y，排第b`（格式与 `epl/report/25-26/round-14/arsenal_vs_brentford.md` 中「盘路数据」同构）。
      - **「### 3、大小」下须有「大小球盘路数据」**（来自 `koreanKLeague/data/bs15.js`）：同样三行总盘 / 主场 / 客场；每行双方 **大球率%** 与 **排名**。
      - **「75分钟后进球数分析」**（来自 `td15.js`）：含小标题 **本场比赛球队数据**；每队一行，格式为 `队名：共N球（75分钟后总进球），排第k（该项联赛排名）(76-80分钟: …, 81-85分钟: …, 86-90分钟含补时: …)`，其中 **76–90 为比赛分钟区间**，非文档行号。
@@ -117,7 +117,7 @@ npx cross-env CUP_ANALYZER_CUP=koreanKLeague node processors/teamProfileGenerato
 
 ```
 争冠组 / 亚冠资格 / 保级组:
-  - 跟踪争冠组席位、亚冠名额和保级组排名；赛制与升降级规则以当季官方说明和 s15_313.js 内联赛说明为准
+  - 跟踪争冠组席位、亚冠名额和保级组排名；赛制与升降级规则以当季官方说明和 s15.js 内联赛说明为准
 
 赛程拥堵:
   - 关注韩国杯、亚冠赛事与韩K联之间的休息间隔、轮换和旅行负担

@@ -4,4 +4,4 @@
 
 | 文件 | 说明 |
 |------|------|
-| `s15_313.js` | 赛程与积分榜等（`CUP_ANALYZER_CUP=koreanKLeague node crawlers/scheduleCrawler.js` 更新） |
+| `s15.js` | 赛程与积分榜等（远程文件为 `s15_313.js`；`CUP_ANALYZER_CUP=koreanKLeague node crawlers/scheduleCrawler.js` 更新） |

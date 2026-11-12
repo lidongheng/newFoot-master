@@ -1,0 +1,41 @@
+
+> cup-analyzer-crawler-server@1.0.0 crawl:player-list:club
+> node crawlers/playerListCrawler.js --with-club -w qiutan
+
+[playerListCrawler] 数据源: 球探
+[playerListCrawler] 补充俱乐部与转会信息（本地优先，缺省再抓网）…
+[enricher] 使用 lineupDetail 映射 33 人（不请求阵容页）
+[enricher] [1/33] 彼得罗·阿米西 → player280835.js
+[enricher] [2/33] 科伦伯 → player189715.js
+[enricher] [3/33] 莱斯霍尔 → player386674.js
+[enricher] [4/33] 马特奥·扎沃利 → player168690.js
+[enricher] [5/33] M.德安吉利斯 → player179963.js
+[enricher] [6/33] 贾科莫·本韦努蒂 → player267344.js
+[enricher] [7/33] 皮耶特罗·马里努奇 → player367302.js
+[enricher] [8/33] 西蒙·乔孔迪 → player281372.js
+[enricher] [9/33] 菲利普·法布里 → player207823.js
+[enricher] [10/33] 米歇尔·塞沃利 → player154032.js
+[enricher] [11/33] 但丁·罗西 → player199665.js
+[enricher] [12/33] 阿尔贝托·里卡迪 → player289767.js
+[enricher] [13/33] 亚历山德罗·托西 → player224567.js
+[enricher] [14/33] 马蒂亚·桑兹斯 → player253304.js
+[enricher] [15/33] 马尔科·帕索里尼 → player280836.js
+[enricher] [16/33] 菲利波·特尔尼 → player299837.js
+[enricher] [17/33] 玛丽亚·布格利·朱利奥 → player318268.js
+[enricher] [18/33] L.卡皮奇奥尼 → player224566.js
+[enricher] [19/33] 塞缪尔·赞诺尼 → player240302.js
+[enricher] [20/33] 马泰奥·卡萨迪 → player263443.js
+[enricher] [21/33] 克里斯蒂安·梅洛尼 → player294904.js
+[enricher] [22/33] 亚历桑德罗·科林斯 → player130587.js
+[enricher] [23/33] 恩尼亚·德尔·巴尔达 → player294281.js
+[enricher] [24/33] 塞繆.潘克迪 → player179949.js
+[enricher] [25/33] 洛伦佐·拉扎里 → player234864.js
+[enricher] [26/33] 马尔塞洛·穆拉罗尼 → player163930.js
+[enricher] [27/33] 加布里埃尔·卡皮基奥尼 → player294282.js
+[enricher] [28/33] 尼古拉·南尼 → player170952.js
+[enricher] [29/33] 尼古拉斯·普罗蒂 → player346450.js
+[enricher] [30/33] 菲利普·贝拉尔迪 → player147160.js
+[enricher] [31/33] 尼古拉斯·贾科佩蒂 → player259737.js
+[enricher] [32/33] 西蒙娜·塔马尼尼 → player298576.js
+[enricher] [33/33] 福斯托·萨利乔尼 → player321927.js
+[playerListCrawler] 已写入 C:\www\newFoot-master\cup-analyzer\crawler-server\output\player_center\907.json（共 33 人）

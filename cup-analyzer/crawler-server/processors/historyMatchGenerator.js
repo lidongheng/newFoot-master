@@ -265,13 +265,12 @@ class HistoryMatchGenerator extends TeamProfileGenerator {
   }
 
   createLineupAnalyzer(teamInfo) {
-    const isWorldCup = (config.activeCupKey || '') === 'theWorldCup';
     const isCupSchedule = config.type === 'cup';
     return new ClubAnalyzer({
       leagueId: config.cupSerial,
       serial: Number(teamInfo.id),
       isNation: isCupSchedule,
-      matchByName: isWorldCup,
+      matchByName: config.isNation,
       roundSerial: null,
       teamChineseName: teamInfo.chineseName,
     });

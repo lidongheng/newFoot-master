@@ -17,9 +17,9 @@ function useLeagueStyleAnalysis() {
   );
 }
 
-/** 当前为世界杯国家队画像流程（需在按位置大名单中保留「所属俱乐部」列） */
+/** 国家队画像流程需在按位置大名单中保留「所属俱乐部」列。 */
 function isWorldCupNationalContext() {
-  return (config.activeCupKey || '') === 'theWorldCup';
+  return config.isNation;
 }
 
 /** 俱乐部/联赛画像：名单与预测首发用「球衣号-姓名」；国家队仍只显示姓名 */
@@ -511,7 +511,7 @@ class TeamProfileGenerator extends BaseCrawler {
     return players.find((p) => (p.name || '').includes(s) || s.includes((p.name || '').trim())) || null;
   }
 
-  /** 将 analyzer 赛季统计按球衣号补到最终名单展示对象上，供替补和伤停/伤疑行复用。 */
+  /** 国家队按姓名合并统计；俱乐部保留原有球衣号匹配规则。 */
   overlayAnalyzerStatsOnSquadPlayers(squadPlayers, analyzerPlayersMap) {
     const analyzerPlayersByNumber = new Map();
     const analyzerPlayersByName = new Map();
@@ -525,9 +525,13 @@ class TeamProfileGenerator extends BaseCrawler {
     return (squadPlayers || []).map((player) => {
       const number = this.getPlayerJerseyNumber(player);
       const name = String(player.name || '').trim();
-      const analyzerPlayer =
-        (number !== null ? analyzerPlayersByNumber.get(number) : null) ||
-        analyzerPlayersByName.get(name);
+      let analyzerPlayer;
+      if (config.isNation) {
+        analyzerPlayer = analyzerPlayersByName.get(name);
+      } else {
+        analyzerPlayer = (number !== null ? analyzerPlayersByNumber.get(number) : null) ||
+          analyzerPlayersByName.get(name);
+      }
       if (!analyzerPlayer) return player;
 
       const stats = {};
@@ -1177,7 +1181,7 @@ class TeamProfileGenerator extends BaseCrawler {
   }
 
   /**
-   * 按球衣号用 squad-final 表中的姓名、位置、能力覆盖 analyzer 输出的 11 人（人工审核名单为展示真源）
+   * 用最终名单覆盖首发资料：国家队按姓名匹配，俱乐部按球衣号匹配。
    * @param {object[]} lineupPlayers determineStartingLineup 返回的数组
    * @param {any[]} squadFinalPlayers parseFinalSquadMarkdown 的 players
    * @returns {object[]}
@@ -1186,13 +1190,20 @@ class TeamProfileGenerator extends BaseCrawler {
     if (!lineupPlayers || lineupPlayers.length === 0) return lineupPlayers || [];
     if (!squadFinalPlayers || squadFinalPlayers.length === 0) return lineupPlayers;
     const byNum = new Map();
+    const byName = new Map();
     for (const sp of squadFinalPlayers) {
+      byName.set(sp.name, sp);
       const n = Number(sp.number);
       if (!Number.isNaN(n)) byNum.set(n, sp);
     }
     return lineupPlayers.map((p) => {
       const n = p.number != null ? Number(p.number) : NaN;
-      const sq = Number.isFinite(n) ? byNum.get(n) : null;
+      let sq;
+      if (config.isNation) {
+        sq = byName.get(p.name);
+      } else {
+        sq = Number.isFinite(n) ? byNum.get(n) : null;
+      }
       if (!sq) return p;
       const name =
         sq.name != null && String(sq.name).trim() !== '' ? String(sq.name).trim() : p.name;

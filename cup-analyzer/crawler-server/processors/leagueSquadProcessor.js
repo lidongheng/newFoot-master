@@ -114,13 +114,15 @@ class LeagueSquadProcessor extends BaseCrawler {
   buildTableRows(data, playerCenter, teamMappings) {
     const players = data.players;
     if (!players || typeof players !== 'object') return [];
-    const analyzedPlayersByNumber = new Map(
-      Object.values(players).map((player) => [String(player.number), player])
+    // 国家队跨场可能更换球衣号，按姓名关联出场统计；俱乐部沿用球衣号。
+    const getPlayerKey = (player) => config.isNation ? player.name : String(player.number);
+    const analyzedPlayersByKey = new Map(
+      Object.values(players).map((player) => [getPlayerKey(player), player])
     );
     const list = playerCenter.filter((player) => player.staff !== '主教练');
     const rows = [];
     for (const rosterPlayer of list) {
-      const analyzedPlayer = analyzedPlayersByNumber.get(String(rosterPlayer.number));
+      const analyzedPlayer = analyzedPlayersByKey.get(getPlayerKey(rosterPlayer));
       // 姓名取懂球帝名单数据，避免分析数据中的球探名称覆盖它。
       const p = analyzedPlayer ? { ...rosterPlayer, ...analyzedPlayer } : rosterPlayer;
       const line = lineGroupFromPlayer(p);

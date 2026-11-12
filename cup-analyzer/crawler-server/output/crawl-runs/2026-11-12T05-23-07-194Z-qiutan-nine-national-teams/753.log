@@ -1,0 +1,43 @@
+
+> cup-analyzer-crawler-server@1.0.0 crawl:player-list:club
+> node crawlers/playerListCrawler.js --with-club -w qiutan
+
+[playerListCrawler] 数据源: 球探
+[playerListCrawler] 补充俱乐部与转会信息（本地优先，缺省再抓网）…
+[enricher] 使用 lineupDetail 映射 35 人（不请求阵容页）
+[enricher] [1/35] 法比亚诺·里贝罗 → player83279.js
+[enricher] [2/35] 乔尔·摩尔 → player65574.js
+[enricher] [3/35] 哈拉兰博斯·基里亚基季斯 → player195995.js
+[enricher] [4/35] N.米恰伊尔 → player158209.js
+[enricher] [5/35] 安德烈亚斯·帕莱斯科瓦斯 → player147734.js
+[enricher] [6/35] 埃瓦哥拉斯·安东尼奥 → player205038.js
+[enricher] [7/35] 科斯塔斯·皮莱斯 → player172078.js
+[enricher] [8/35] 帕纳吉奥图 → player195996.js
+[enricher] [9/35] 康斯坦丁·索蒂里 → player161828.js
+[enricher] [10/35] 安特列亚斯·希基斯 → player296732.js
+[enricher] [11/35] 安德森·科雷亚 → player125416.js
+[enricher] [12/35] 乔治斯·马莱基迪斯 → player162122.js
+[enricher] [13/35] 科诺米斯 → player254936.js
+[enricher] [14/35] 克里斯多斯西利斯 → player166287.js
+[enricher] [15/35] 斯特里奥斯·安德鲁 → player200445.js
+[enricher] [16/35] 安德烈亚斯·克里斯图 → player338045.js
+[enricher] [17/35] 诺斯塞尔吉 → player168988.js
+[enricher] [18/35] 康斯坦蒂诺斯·莱菲斯 → player155683.js
+[enricher] [19/35] 赫克托·基普里亚努 → player183086.js
+[enricher] [20/35] 萨特亚斯 → player199517.js
+[enricher] [21/35] N.察鲁拉 → player201869.js
+[enricher] [22/35] 查拉兰波斯 → player195994.js
+[enricher] [23/35] 查拉伦普·基里亚库 → player118236.js
+[enricher] [24/35] 吉戈斯·纳奥姆 → player195983.js
+[enricher] [25/35] 伊安尼斯·科斯蒂 → player164674.js
+[enricher] [26/35] 帕纳吉奥蒂斯·安德鲁 → player290356.js
+[enricher] [27/35] 科斯塔基斯·阿蒂马塔斯 → player107121.js
+[enricher] [28/35] 格里戈里斯·卡斯塔诺斯 → player130622.js
+[enricher] [29/35] 安杰洛斯·尼奥菲图 → player331511.js
+[enricher] [30/35] 伊洛安尼斯·皮塔斯 → player148833.js
+[enricher] [31/35] 洛伊佐斯·洛伊祖 → player184265.js
+[enricher] [32/35] 安德罗尼科斯·卡库利斯 → player182572.js
+[enricher] [33/35] 斯塔夫罗斯·乔治乌 → player213527.js
+[enricher] [34/35] 马里诺斯·齐尼斯 → player169271.js
+[enricher] [35/35] 马库斯·爱德华兹 → player145064.js
+[playerListCrawler] 已写入 C:\www\newFoot-master\cup-analyzer\crawler-server\output\player_center\753.json（共 35 人）

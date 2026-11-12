@@ -16,7 +16,7 @@ const TeamProfileGenerator = require('./teamProfileGenerator');
 const predLineupUtil = require('../utils/predictedStartingLineup');
 
 function isWorldCupNationalContext() {
-  return (config.activeCupKey || '') === 'theWorldCup';
+  return config.isNation;
 }
 
 /**

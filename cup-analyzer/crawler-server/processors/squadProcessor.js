@@ -72,7 +72,8 @@ class SquadProcessor extends BaseCrawler {
    */
   generateSquadMarkdown(teamInfo, players) {
     const lines = [];
-    lines.push(`# ${teamInfo.chineseName}（${teamInfo.englishName}）26人大名单\n`);
+    const squadTitle = config.flatSquad ? '大名单' : '26人大名单';
+    lines.push(`# ${teamInfo.chineseName}（${teamInfo.englishName}）${squadTitle}\n`);
     lines.push(`> 球队ID: ${teamInfo.id} | 数据来源: titan007\n`);
 
     const groups = {
@@ -131,6 +132,12 @@ class SquadProcessor extends BaseCrawler {
 
     const teamMap = this.buildTeamMap(scheduleData.arrTeam);
     const groupMap = this.buildGroupMap(scheduleData);
+    // 多级别国家队杯赛使用平铺名单，批量处理仍覆盖赛程中的全部球队。
+    if (config.flatSquad) {
+      groupMap.flat = {
+        teams: Object.values(teamMap).map((team) => ({ ...team, teamId: team.id })),
+      };
+    }
     const results = { success: [], failed: [], noData: [] };
 
     for (const [letter, group] of Object.entries(groupMap)) {
@@ -149,7 +156,8 @@ class SquadProcessor extends BaseCrawler {
           const players = readJSON(jsonPath);
           const teamInfo = teamMap[team.teamId] || { id: team.teamId, chineseName: team.chineseName, englishName: team.englishName || '' };
           const md = this.generateSquadMarkdown(teamInfo, players);
-          const mdPath = path.join(config.paths.cupAnalyzer, 'squad', `group-${letter}`, `${teamInfo.chineseName}.md`);
+          const folder = config.flatSquad ? '' : `group-${letter}`;
+          const mdPath = path.join(config.paths.cupAnalyzer, 'squad', folder, `${teamInfo.chineseName}.md`);
           saveMarkdown(mdPath, md);
           results.success.push({ team: teamInfo.chineseName, group: letter });
         } catch (err) {
@@ -207,7 +215,10 @@ class SquadProcessor extends BaseCrawler {
     }
 
     const letter = this.findGroupLetterForTeam(id, scheduleData);
-    const groupFolder = letter ? `group-${letter}` : 'misc';
+    let groupFolder = '';
+    if (!config.flatSquad) {
+      groupFolder = letter ? `group-${letter}` : 'misc';
+    }
 
     try {
       const players = readJSON(jsonPath);

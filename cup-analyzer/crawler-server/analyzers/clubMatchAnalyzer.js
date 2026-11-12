@@ -1160,7 +1160,10 @@ class ClubAnalyzer {
         console.log('\n所有上场球员信息:');
         // 控制台优先显示当前 DQD 名单名称，并保留比赛数据中的原名和别名。
         const formatConsolePlayerName = (player) => {
-          const dqdPlayer = analyzer.teamData.find(p => p.number === player.number);
+          const dqdPlayer = analyzer.teamData.find(p => {
+            if (analyzer.matchByName) return p.name === player.name;
+            return p.number === player.number;
+          });
           const displayName = dqdPlayer ? dqdPlayer.name : player.name;
           const alternativeNames = [...new Set([player.name, ...player.alternativeNames])]
             .filter(name => name !== displayName);
