@@ -3,6 +3,7 @@ const path = require('path');
 const BaseCrawler = require('../crawlers/base');
 const config = require('../config');
 const squadTarget = require('../config/squadTarget');
+const { refreshTeamSchedule } = require('../crawlers/playerListCrawler');
 const { readJSON, readFile, saveMarkdown, fileExists } = require('../utils/fileWriter');
 const { isDeepStrictEqual } = require('util');
 
@@ -99,7 +100,10 @@ function renderScheduleLine(fixture, anchorTime, teamName, isUpcomingMatch) {
   const hours = fixture.startTime === null
     ? '待定'
     : `${Math.round(Math.abs(fixture.startTime - anchorTime) / (60 * 60 * 1000))}小时${isUpcomingMatch ? '' : '前'}`;
-  return markdownCell(`${dateTime} ${competitionRound} ${fixture.opponentName}vs${teamName} ${hours}`);
+  const matchup = fixture.teamSide === 'A'
+    ? `${teamName}vs${fixture.opponentName}`
+    : `${fixture.opponentName}vs${teamName}`;
+  return markdownCell(`${dateTime} ${competitionRound} ${matchup} ${hours}`);
 }
 
 function makeSection(anchorTime, recent, upcoming, teamName) {
@@ -143,14 +147,15 @@ class TeamScheduleProcessor extends BaseCrawler {
     const mapping = Object.values(mappings.team || {}).find((team) => String(team.qiutanSerial) === String(squadTarget.teamSerial));
     if (!mapping) throw new Error(`球队映射中找不到球探球队 ID ${squadTarget.teamSerial}`);
     const dqdTeamId = Object.keys(mappings.team).find((id) => mappings.team[id] === mapping);
-    const schedulePath = path.join(config.paths.playerCenter, '..', `${squadTarget.teamSerial}-schedule.json`);
-    if (!fileExists(schedulePath)) throw new Error(`懂球帝赛程文件不存在: ${schedulePath}，请先抓取球队名单/赛程`);
+    const anchorTime = beijingTimeValue(squadTarget.matchTime);
+    if (anchorTime === null) throw new Error(`matchTime 必须是有效的北京时间，格式为 YYYY-MM-DD HH:mm:ss：${squadTarget.matchTime}`);
+    // 每次运行先请求最新赛程；请求失败直接终止，不能继续使用旧缓存的比赛状态。
+    this.log('正在请求懂球帝最新球队赛程...');
+    const schedulePath = await refreshTeamSchedule(dqdTeamId);
     const data = readJSON(schedulePath);
     const matches = Array.isArray(data) ? data : data.data;
     if (!Array.isArray(matches)) throw new Error(`${schedulePath} 赛程数据格式无效`);
 
-    const anchorTime = beijingTimeValue(squadTarget.matchTime);
-    if (anchorTime === null) throw new Error(`matchTime 必须是有效的北京时间，格式为 YYYY-MM-DD HH:mm:ss：${squadTarget.matchTime}`);
     const unique = new Map();
     matches.forEach((match, index) => {
       const fixture = parseMatch(match, index, dqdTeamId);
@@ -195,6 +200,11 @@ class TeamScheduleProcessor extends BaseCrawler {
     if (finalCandidates.length === 1) {
       this.updateScheduleSection(finalCandidates[0], section);
       this.log(`已同步赛程区块至最终名单: ${finalCandidates[0]}`);
+    }
+    const profilePath = path.join(config.paths.cupAnalyzer, 'teamProfile', finalName);
+    if (fileExists(profilePath)) {
+      this.updateScheduleSection(profilePath, section);
+      this.log(`已同步赛程区块至球队画像: ${profilePath}`);
     }
   }
 }

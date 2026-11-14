@@ -47,6 +47,7 @@ class SquadFinalInitializer extends BaseCrawler {
    */
   isFlatSquadMode(scheduleData) {
     if (!scheduleData) return false;
+    if (config.flatSquad) return true;
     if (config.type === 'league') return true;
     return Object.keys(this.buildGroupMap(scheduleData)).length === 0;
   }

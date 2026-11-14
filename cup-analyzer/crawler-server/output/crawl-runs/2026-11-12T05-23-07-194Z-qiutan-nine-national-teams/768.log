@@ -1,0 +1,40 @@
+
+> cup-analyzer-crawler-server@1.0.0 crawl:player-list:club
+> node crawlers/playerListCrawler.js --with-club -w qiutan
+
+[playerListCrawler] 数据源: 球探
+[playerListCrawler] 补充俱乐部与转会信息（本地优先，缺省再抓网）…
+[enricher] 已加载本地缓存 34 人（768.json）
+[enricher] 使用 lineupDetail 映射 31 人（不请求阵容页）
+[enricher] [1/31] 多米尼克.利瓦科维奇 使用本地缓存，跳过网络
+[enricher] [2/31] 潘杜尔 使用本地缓存，跳过网络
+[enricher] [3/31] 多米尼克·科塔尔斯基 使用本地缓存，跳过网络
+[enricher] [4/31] 约西普·斯塔尼希奇 使用本地缓存，跳过网络
+[enricher] [5/31] 马林·庞格拉契奇 使用本地缓存，跳过网络
+[enricher] [6/31] 伊万.斯莫西奇 → player205357.js
+[enricher] [7/31] 约什科·格瓦迪奥尔 使用本地缓存，跳过网络
+[enricher] [8/31] 卢卡·武什科维奇 使用本地缓存，跳过网络
+[enricher] [9/31] 杜耶·查莱塔·卡尔 使用本地缓存，跳过网络
+[enricher] [10/31] 约西普·萨塔洛 使用本地缓存，跳过网络
+[enricher] [11/31] 马丁.埃尔里克 使用本地缓存，跳过网络
+[enricher] [12/31] 尼克拉·摩罗 使用本地缓存，跳过网络
+[enricher] [13/31] 洛夫罗.马耶尔 使用本地缓存，跳过网络
+[enricher] [14/31] 马特奥·科瓦契奇 使用本地缓存，跳过网络
+[enricher] [15/31] 卢卡·莫德里奇 使用本地缓存，跳过网络
+[enricher] [16/31] 尼古拉·弗拉西奇 使用本地缓存，跳过网络
+[enricher] [17/31] 马里奥·帕萨利奇 使用本地缓存，跳过网络
+[enricher] [18/31] 马丁·巴图里纳 使用本地缓存，跳过网络
+[enricher] [19/31] 佩塔尔·苏西奇 使用本地缓存，跳过网络
+[enricher] [20/31] 克里斯蒂安·贾基奇 使用本地缓存，跳过网络
+[enricher] [21/31] 托尼·弗鲁克 → player216212.js
+[enricher] [22/31] 卢卡·苏西奇 → player180346.js
+[enricher] [23/31] 乔西普·米什奇 → player101711.js
+[enricher] [24/31] 布迪米尔 使用本地缓存，跳过网络
+[enricher] [25/31] 迪翁·德伦娜·贝尔乔 → player199336.js
+[enricher] [26/31] 法兰霍·伊万诺维奇 使用本地缓存，跳过网络
+[enricher] [27/31] 克拉马里奇 使用本地缓存，跳过网络
+[enricher] [28/31] 皮特·穆萨 使用本地缓存，跳过网络
+[enricher] [29/31] 伊凡.佩里西奇 使用本地缓存，跳过网络
+[enricher] [30/31] 马可·帕萨利克 → player218100.js
+[enricher] [31/31] 伊戈尔·马塔诺维奇 使用本地缓存，跳过网络
+[playerListCrawler] 已写入 C:\www\newFoot-master\cup-analyzer\crawler-server\output\player_center\768.json（共 31 人）

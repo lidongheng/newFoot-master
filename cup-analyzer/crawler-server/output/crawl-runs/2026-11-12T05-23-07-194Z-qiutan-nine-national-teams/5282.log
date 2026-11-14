@@ -1,0 +1,45 @@
+
+> cup-analyzer-crawler-server@1.0.0 crawl:player-list:club
+> node crawlers/playerListCrawler.js --with-club -w qiutan
+
+[playerListCrawler] 数据源: 球探
+[playerListCrawler] 补充俱乐部与转会信息（本地优先，缺省再抓网）…
+[enricher] 使用 lineupDetail 映射 37 人（不请求阵容页）
+[enricher] [1/37] 巴尔萨·波波维奇 → player234643.js
+[enricher] [2/37] 本杰明·克里耶斯塔拉克 → player268393.js
+[enricher] [3/37] 佩特科维奇 → player136638.js
+[enricher] [4/37] 伊戈尔·尼基奇 → player215268.js
+[enricher] [5/37] 米索·杜布尔雅尼奇 → player197442.js
+[enricher] [6/37] 米兰·罗加诺维奇 → player284926.js
+[enricher] [7/37] 里斯托·拉杜诺维奇 → player138671.js
+[enricher] [8/37] 安德里亚·拉兹纳托维奇 → player189379.js
+[enricher] [9/37] 安德烈·久里奇 → player240710.js
+[enricher] [10/37] 伊戈尔·武贾西奇 → player170979.js
+[enricher] [11/37] 鲁贝基奇 → player197621.js
+[enricher] [12/37] 维索维奇 → player85747.js
+[enricher] [13/37] J.德雷沙 → player213701.js
+[enricher] [14/37] 斯蒂芬·米利西 → player177362.js
+[enricher] [15/37] 萨维奇 → player78474.js
+[enricher] [16/37] 尼古拉·希普契奇 → player138038.js
+[enricher] [17/37] 马鲁希奇 → player115658.js
+[enricher] [18/37] 米洛斯布诺维奇 → player216777.js
+[enricher] [19/37] M.扬科维奇 → player149529.js
+[enricher] [20/37] 马尔科·西蒙 → player260569.js
+[enricher] [21/37] 米兰·武科蒂奇 → player205935.js
+[enricher] [22/37] 瓦西里耶·阿季奇 → player247808.js
+[enricher] [23/37] 达尼洛·武卡尼奇 → player278778.js
+[enricher] [24/37] 拉科维奇 → player230877.js
+[enricher] [25/37] 安德里亚·布拉托维奇 → player267823.js
+[enricher] [26/37] 斯蒂凡·隆卡尔 → player136047.js
+[enricher] [27/37] 尼古拉·克尔斯托维奇 → player154594.js
+[enricher] [28/37] 史蒂文·约维蒂奇 → player28667.js
+[enricher] [29/37] 奥格年·加斯维奇 → player182471.js
+[enricher] [30/37] 马尔科·佩罗维奇 → player268442.js
+[enricher] [31/37] 哈克萨巴诺维奇 → player130802.js
+[enricher] [32/37] 维克多·德约卡诺维奇 → player223881.js
+[enricher] [33/37] 米卢廷·奥斯马季奇 → player170235.js
+[enricher] [34/37] 拜萨·塞库利克 → player165069.js
+[enricher] [35/37] 卡麦加 → player164292.js
+[enricher] [36/37] 安德烈·科斯蒂奇 → player291399.js
+[enricher] [37/37] 杜桑·武科维奇 → player264738.js
+[playerListCrawler] 已写入 C:\www\newFoot-master\cup-analyzer\crawler-server\output\player_center\5282.json（共 37 人）

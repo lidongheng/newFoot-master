@@ -1,0 +1,58 @@
+
+> cup-analyzer-crawler-server@1.0.0 crawl:player-list:club
+> node crawlers/playerListCrawler.js --with-club -w qiutan
+
+[playerListCrawler] 数据源: 球探
+[playerListCrawler] 补充俱乐部与转会信息（本地优先，缺省再抓网）…
+[enricher] 使用 lineupDetail 映射 50 人（不请求阵容页）
+[enricher] [1/50] 多纳鲁马 → player129555.js
+[enricher] [2/50] 洛伦佐·帕米萨尼 → player239461.js
+[enricher] [3/50] 卡内塞基 → player156404.js
+[enricher] [4/50] 古列尔莫·维卡里奥 → player121286.js
+[enricher] [5/50] 乔瓦尼.达法拉 → player240231.js
+[enricher] [6/50] 奥内斯特·阿汉诺 → player273324.js
+[enricher] [7/50] 法瓦苏利 → player229571.js
+[enricher] [8/50] 迈克尔·卡约德 → player231775.js
+[enricher] [9/50] 马泰奥.鲁格里 → player200498.js
+[enricher] [10/50] 达维德·巴特萨吉 → player239897.js
+[enricher] [11/50] 法比奥·奇亚罗迪 → player220463.js
+[enricher] [12/50] 里卡多·卡拉菲奥里 → player182304.js
+[enricher] [13/50] 巴斯托尼 → player150761.js
+[enricher] [14/50] 迭戈.科波拉 → player220883.js
+[enricher] [15/50] 卢卡·雷吉亚尼 → player298570.js
+[enricher] [16/50] 尼科洛·福蒂尼 → player244064.js
+[enricher] [17/50] 皮埃特罗·科穆佐 → player239807.js
+[enricher] [18/50] 乔治·斯卡尔维尼 → player201557.js
+[enricher] [19/50] 丹妮尔·吉拉尔迪 → player236908.js
+[enricher] [20/50] 乔瓦尼·迪洛伦佐 → player161537.js
+[enricher] [21/50] 吉安卢卡·曼奇尼 → player125949.js
+[enricher] [22/50] 萨穆埃莱.里奇 → player174865.js
+[enricher] [23/50] 亚历山德罗·罗马诺 → player262550.js
+[enricher] [24/50] 卢卡·利帕尼 → player231984.js
+[enricher] [25/50] 桑德罗·托纳利 → player162438.js
+[enricher] [26/50] 谢尔·恩杜尔 → player217390.js
+[enricher] [27/50] 法乔利 → player166721.js
+[enricher] [28/50] 曼德拉格拉 → player124688.js
+[enricher] [29/50] 托马索·贝尔蒂尼 → player221325.js
+[enricher] [30/50] 伊萨·杜姆比亚 → player243178.js
+[enricher] [31/50] 吉亚科莫·法蒂坎蒂 → player229264.js
+[enricher] [32/50] 达维德·弗拉泰西 → player150271.js
+[enricher] [33/50] 丹尼尔·马尔蒂尼 → player177547.js
+[enricher] [34/50] 尼古拉·巴雷拉 → player121429.js
+[enricher] [35/50] 阿尔法德约·西塞 → player233787.js
+[enricher] [36/50] 尼科洛·皮西里 → player234485.js
+[enricher] [37/50] 阿莱西奥·卡恰马尼 → player311725.js
+[enricher] [38/50] 安东尼奥·维加拉 → player221324.js
+[enricher] [39/50] 尼科洛·坎比亚吉 → player175501.js
+[enricher] [40/50] 路基.凯鲁比尼 → player230672.js
+[enricher] [41/50] 弗朗西斯科·卡马尔达 → player244237.js
+[enricher] [42/50] 莫伊斯.基恩 → player148979.js
+[enricher] [43/50] 皮奥·埃斯波西托 → player237197.js
+[enricher] [44/50] 贾科莫·拉斯帕多里 → player168137.js
+[enricher] [45/50] 吉安卢卡·斯卡马卡 → player150836.js
+[enricher] [46/50] 卢卡·科莱索 → player226289.js
+[enricher] [47/50] 穆罕默德·阿里佐马 → player241209.js
+[enricher] [48/50] 塞缪尔·伊纳西奥 → player289829.js
+[enricher] [49/50] 赛义杜·菲尼 → player240031.js
+[enricher] [50/50] 埃斯波西托 → player173680.js
+[playerListCrawler] 已写入 C:\www\newFoot-master\cup-analyzer\crawler-server\output\player_center\771.json（共 50 人）

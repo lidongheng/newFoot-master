@@ -1,0 +1,48 @@
+
+> cup-analyzer-crawler-server@1.0.0 crawl:player-list:club
+> node crawlers/playerListCrawler.js --with-club -w qiutan
+
+[playerListCrawler] 数据源: 球探
+[playerListCrawler] 补充俱乐部与转会信息（本地优先，缺省再抓网）…
+[enricher] 已加载本地缓存 39 人（744.json）
+[enricher] 使用 lineupDetail 映射 39 人（不请求阵容页）
+[enricher] [1/39] 皮克福德 使用本地缓存，跳过网络
+[enricher] [2/39] 迪恩·亨德森 使用本地缓存，跳过网络
+[enricher] [3/39] 詹姆斯·特拉福德 使用本地缓存，跳过网络
+[enricher] [4/39] 贾森.斯蒂尔 → player27203.js
+[enricher] [5/39] 亚历山大·阿诺德 → player145108.js
+[enricher] [6/39] 路易斯·霍尔 使用本地缓存，跳过网络
+[enricher] [7/39] 加雷尔·宽萨 使用本地缓存，跳过网络
+[enricher] [8/39] 埃兹里.孔萨 使用本地缓存，跳过网络
+[enricher] [9/39] 约翰·斯通斯 使用本地缓存，跳过网络
+[enricher] [10/39] 马克·格伊 使用本地缓存，跳过网络
+[enricher] [11/39] 特雷沃.查洛巴 使用本地缓存，跳过网络
+[enricher] [12/39] 丹·布恩 使用本地缓存，跳过网络
+[enricher] [13/39] 贾拉德.布兰斯维特 → player182201.js
+[enricher] [14/39] 迈尔斯.刘易斯-斯凯利 → player249070.js
+[enricher] [15/39] 里科·刘易斯 → player228271.js
+[enricher] [16/39] 里斯.詹姆斯 使用本地缓存，跳过网络
+[enricher] [17/39] 蒂德.斯潘瑟 → player171940.js
+[enricher] [18/39] 瓦伦蒂诺·利夫拉门托 使用本地缓存，跳过网络
+[enricher] [19/39] 尼科·奥莱利 使用本地缓存，跳过网络
+[enricher] [20/39] 亚历克斯·斯科特 使用本地缓存，跳过网络
+[enricher] [21/39] 德克兰.赖斯 使用本地缓存，跳过网络
+[enricher] [22/39] 埃利奥特·安德森 使用本地缓存，跳过网络
+[enricher] [23/39] 祖德.贝林厄姆 使用本地缓存，跳过网络
+[enricher] [24/39] 乔丹.亨德森 → player29527.js
+[enricher] [25/39] 科比·梅努 使用本地缓存，跳过网络
+[enricher] [26/39] 摩根.罗杰斯 使用本地缓存，跳过网络
+[enricher] [27/39] 詹姆斯·加尔纳 → player166736.js
+[enricher] [28/39] 科尔.帕尔默 使用本地缓存，跳过网络
+[enricher] [29/39] 吉布斯·怀特 使用本地缓存，跳过网络
+[enricher] [30/39] 埃贝雷奇·埃泽 使用本地缓存，跳过网络
+[enricher] [31/39] 布卡约.萨卡 → player171322.js
+[enricher] [32/39] 哈里·凯恩 使用本地缓存，跳过网络
+[enricher] [33/39] 安东尼·戈登 使用本地缓存，跳过网络
+[enricher] [34/39] 拉什福德 使用本地缓存，跳过网络
+[enricher] [35/39] 里奥·恩古莫哈 → player261605.js
+[enricher] [36/39] 卡尔沃特·勒温 → player119033.js
+[enricher] [37/39] 奥利·沃特金斯 使用本地缓存，跳过网络
+[enricher] [38/39] 诺尼·马杜埃凯 使用本地缓存，跳过网络
+[enricher] [39/39] 埃文·托尼 → player121258.js
+[playerListCrawler] 已写入 C:\www\newFoot-master\cup-analyzer\crawler-server\output\player_center\744.json（共 39 人）

@@ -40,11 +40,12 @@ pnpm dev:crawler
 | `uefaConferenceLeague` | 欧会杯（杯赛 `c`） | `uefaConferenceLeague/data/c2187.js` |
 | `epl` | 英超（联赛 `s`） | `epl/data/s36.js` |
 | `eliteSerien` | 挪超（单年联赛 `s`） | `eliteSerien/data/s22.js` |
+| `allsvenskan` | 瑞典超（单年联赛 `s`，子联赛 431） | `allsvenskan/data/s26.js`（远程 `s26_431.js`） |
 | `ligue1` | 法甲（联赛 `s`） | `ligue1/data/s11.js` |
-| `koreanKLeague` | 韩K联（联赛 `s`，子联赛 313） | `koreanKLeague/data/s15_313.js` |
+| `koreanKLeague` | 韩K联（联赛 `s`，子联赛 313） | `koreanKLeague/data/s15.js` |
 | `aLeague` | 澳超（联赛 `s`，子联赛 462） | `aLeague/data/s273.js` |
 | `mls` | 美职联（联赛 `s`，子联赛 165） | `mls/data/s21_165.js` |
-| `serieA` | 意甲（联赛 `s`，子联赛 2948） | `serieA/data/s34_2948.js` |
+| `serieA` | 意甲（联赛 `s`，子联赛 2948） | `serieA/data/s34.js` |
 | `ligaMx` | 墨西联（联赛 `s`，子联赛 44） | `ligaMx/data/s140_44.js` |
 
 推荐（跨平台）：`npm run crawl:schedule:ucl`；亚冠联2 `crawl:schedule:acl2`、欧罗巴 `crawl:schedule:europa`、欧会杯 `crawl:schedule:conference`；英超 `crawl:schedule:epl`、法甲 `crawl:schedule:ligue1`、澳超 `crawl:schedule:aleague`、墨西联 `crawl:schedule:ligamx` 等见下文「npm」行。
@@ -191,6 +192,16 @@ CUP_ANALYZER_CUP=epl node processors/leagueSquadProcessor.js
 ```
 
 npm：`npm run process:league-squad`（运行前需已在本 shell 中导出 `CUP_ANALYZER_CUP`；Windows 请用上一节方式或 `npx cross-env ...`）
+
+### 6c. `teamScheduleProcessor.js` — 刷新近期与未来赛程
+
+在 `squadTarget.js` 设置目标球队及北京时间 `matchTime` 后执行：
+
+```bash
+npx cross-env CUP_ANALYZER_CUP=epl node processors/teamScheduleProcessor.js
+```
+
+每次执行都会请求懂球帝的球队当前赛季与最新赛程，再生成最近 3 场已完赛及未来 3 场比赛；接口失败会终止本次生成。`output/{球队序号}-schedule.json` 保存本次响应，不作为断网时的替代数据。赛程区块写入 `squad/`，并同步到已存在的 `squad-final/` 和 `teamProfile/`；对阵按实际主客顺序显示。时间间隔以配置的 `matchTime` 为基准。
 
 ### 7. `squadFinalInitializer.js` — 初选 `squad/` → 最终名单草稿 `squad-final/`
 

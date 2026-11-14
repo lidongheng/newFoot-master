@@ -1,0 +1,42 @@
+
+> cup-analyzer-crawler-server@1.0.0 crawl:player-list:club
+> node crawlers/playerListCrawler.js --with-club -w qiutan
+
+[playerListCrawler] 数据源: 球探
+[playerListCrawler] 补充俱乐部与转会信息（本地优先，缺省再抓网）…
+[enricher] 使用 lineupDetail 映射 34 人（不请求阵容页）
+[enricher] [1/34] 克里斯亚尼斯·兹韦德里斯 → player206217.js
+[enricher] [2/34] 托马斯·尼尔斯·普林斯 → player206112.js
+[enricher] [3/34] 弗兰克·戴维斯·奥洛斯 → player212367.js
+[enricher] [4/34] 里哈德斯·马特雷维奇斯 → player171969.js
+[enricher] [5/34] 丹尼尔斯·巴洛迪斯 → player182714.js
+[enricher] [6/34] 丹尼斯·西金 → player183569.js
+[enricher] [7/34] J.维塔利斯 → player116066.js
+[enricher] [8/34] 罗伯茨·维普斯 → player219537.js
+[enricher] [9/34] 奥斯卡尔斯·维恩蒂斯 → player203116.js
+[enricher] [10/34] 安东尼·赛诺莫迪斯 → player154026.js
+[enricher] [11/34] 萨瓦尔尼克斯 → player89211.js
+[enricher] [12/34] 杰科沃斯基 → player154721.js
+[enricher] [13/34] 奇加尼克斯 → player161353.js
+[enricher] [14/34] 通尼西斯 → player199643.js
+[enricher] [15/34] 格莱布斯·扎莱科 → player229328.js
+[enricher] [16/34] 伊利亚·科罗特科夫 → player202981.js
+[enricher] [17/34] 艾姆西斯 → player168879.js
+[enricher] [18/34] 克里斯特·彭克维奇 → player206314.js
+[enricher] [19/34] 基古尔斯 → player165929.js
+[enricher] [20/34] 卢卡斯·瓦普内 → player202982.js
+[enricher] [21/34] 克里斯特·库达斯 → player206229.js
+[enricher] [22/34] 马库斯·斯特罗兹 → player296111.js
+[enricher] [23/34] 丹尼斯·梅尔尼克 → player212373.js
+[enricher] [24/34] 萨维耶夫斯 → player170942.js
+[enricher] [25/34] 奥斯卡·鲁本尼斯 → player234969.js
+[enricher] [26/34] 达尼拉·帕蒂库克斯 → player234959.js
+[enricher] [27/34] 爱德华兹·达斯克维茨 → player219538.js
+[enricher] [28/34] 古特科夫斯基斯 → player117461.js
+[enricher] [29/34] 德米特里斯·泽伦科夫斯 → player212349.js
+[enricher] [30/34] 阿尔伯特·阿列克桑詹 → player315646.js
+[enricher] [31/34] 达里奥·希特斯 → player236999.js
+[enricher] [32/34] 乌尔德里基斯 → player161352.js
+[enricher] [33/34] 格拉博夫斯基 → player316762.js
+[enricher] [34/34] 马尔科·雷格沙 → player180231.js
+[playerListCrawler] 已写入 C:\www\newFoot-master\cup-analyzer\crawler-server\output\player_center\631.json（共 34 人）

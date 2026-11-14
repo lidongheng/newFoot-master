@@ -12,12 +12,12 @@
  * - roundSerial：联赛渠道时填当前国内联赛轮次（仅分析该轮之前已完赛场次）；杯赛渠道可不填
  */
 const squadTarget = {
-  leagueSerial: '31',
-  leagueSlug: 'laLiga',
-  season: '2026-2027',
-  teamSerial: '104',
-  matchTime: '2026-11-07 21:00:00',
-  roundSerial: '12',
+  leagueSerial: '1366',
+  leagueSlug: 'InternationalFriendship',
+  season: '2025',
+  teamSerial: '889',
+  matchTime: '2026-11-14 20:00:00',
+  roundSerial: '5',
   /**
    * 赛程格式开关：
    *   false（默认）= 联赛格式，读 s 开头文件，R_* 轮次迭代
@@ -26,7 +26,7 @@ const squadTarget = {
    * 四个俱乐部杯赛（欧冠/欧罗巴/欧会杯/亚冠联2）使用本赛事数据时设 true，
    * 同时须设 matchByName: false；世界杯赛中同样设 true，matchByName 不设即可。
    */
-  isNation: false,
+  isNation: true,
   /**
    * 球员匹配方式（可选，不设则跟随 isNation）：
    *   false = 按球衣号码匹配（俱乐部 / 俱乐部杯赛）
@@ -37,15 +37,15 @@ const squadTarget = {
    *   isNation: true + 俱乐部杯赛 → 必须显式设 matchByName: false
    *   isNation: true + 国家队杯赛 → 不用设（自动 true）
    */
-  matchByName: false,
-  teamChineseName: '桑坦德竞技',
+  matchByName: true,
+  teamChineseName: '亚美尼亚',
   /** 单场分析 / 周期报告等场景可选 */
   matchSerial: '2906967',
   /**
    * 周期报告「同赛事」筛选：与球探战绩表「联赛」列文案一致（如 英超、欧冠杯）。
    * 不填则回退为当前 CUP_ANALYZER_CUP 对应 chineseName。
    */
-  matchLeagueName: '西甲',
+  matchLeagueName: '欧国联',
 };
 
 module.exports = squadTarget;

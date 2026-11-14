@@ -3,6 +3,8 @@ const path = require('path');
 /**
  * 多杯赛/联赛配置：通过环境变量 CUP_ANALYZER_CUP 切换
  * - theWorldCup（默认）
+ * - europeanNationalLeague（欧国联，国家队杯赛，球探序号 1864，c1864.js）
+ * - InternationalFriendship（国际友谊赛，国家队杯赛格式，1366，c1366.js）
  * - championsLeague
  * - afcChampionsLeagueTwo（亚冠联2，球探序号 350，c350.js）
  * - europaLeague（欧罗巴，球探序号 113，c113.js）
@@ -10,6 +12,7 @@ const path = require('path');
  * - epl（英超，球探序号 36，联赛格式 s36.js）
  * - eredivisie（荷甲，球探序号 16，本地赛程 s16.js）
  * - eliteSerien（挪超，球探序号 22，单年赛季 s22.js）
+ * - allsvenskan（瑞典超，球探序号 26，远程 s26_431.js，本地 s26.js）
  * - bundesliga（德甲，球探序号 8，联赛格式 s8.js）
  * - ligue1（法甲，球探序号 11，联赛格式 s11.js）
  * - laLiga（西甲，球探序号 31，联赛格式 s31.js）
@@ -17,13 +20,14 @@ const path = require('path');
  * - ChinaSuperLeague（中超，球探序号 60，单年赛季 s60_2187.js）
  * - aLeague（澳超，本地 s273.js，远程 s273_462.js）
  * - mls（美职联，s21_165，165 为 arrSubLeague 常规赛子联赛 ID）
- * - serieA（意甲，s34_2948，2948 为 arrSubLeague 子联赛 ID）
+ * - serieA（意甲，本地 s34.js，远程 s34_2948.js）
  * - ligaMx（墨西联，s140_44，44 为 arrSubLeague 子联赛 ID，赛程 Referer 用 SubLeague 页）
  *
  * 示例：npm run crawl:schedule:ucl（跨平台）；或 CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js（Bash）
  */
 const cups = {
   theWorldCup: {
+    isNation: true,
     fileId: 'c75',
     type: 'cup',
     cupSerial: '75',
@@ -38,6 +42,46 @@ const cups = {
       playerCenter: path.resolve(__dirname, '../output/player_center'),
       basicData: path.resolve(__dirname, '../../theWorldCup/basicData'),
       cupScheduleData: path.resolve(__dirname, '../../theWorldCup/data/c75.js'),
+    },
+  },
+  europeanNationalLeague: {
+    fileId: 'c1864',
+    type: 'cup',
+    cupSerial: '1864',
+    cupName: 'europeanNationalLeague',
+    chineseName: '欧国联',
+    isNation: true,
+    // 欧国联有多个级别的同名小组，名单统一平铺，避免混用世界杯分组规则。
+    flatSquad: true,
+    lineupMatchByName: true,
+    crossYear: true,
+    season: '2026-2027',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../europeanNationalLeague'),
+      squadFinal: path.resolve(__dirname, '../../europeanNationalLeague/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../../europeanNationalLeague/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../europeanNationalLeague/data/c1864.js'),
+    },
+  },
+  InternationalFriendship: {
+    fileId: 'c1366',
+    type: 'cup',
+    cupSerial: '1366',
+    cupName: 'InternationalFriendship',
+    chineseName: '国际友谊',
+    isNation: true,
+    // 友谊赛按月份组织赛程，名单按球队平铺，不使用世界杯小组目录。
+    flatSquad: true,
+    lineupMatchByName: true,
+    crossYear: false,
+    season: '2026',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../InternationalFriendship'),
+      squadFinal: path.resolve(__dirname, '../../InternationalFriendship/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../../InternationalFriendship/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../InternationalFriendship/data/c1366.js'),
     },
   },
   championsLeague: {
@@ -148,6 +192,25 @@ const cups = {
       playerCenter: path.resolve(__dirname, '../output/player_center'),
       basicData: path.resolve(__dirname, '../../eflChampionship/basicData'),
       cupScheduleData: path.resolve(__dirname, '../../eflChampionship/data/s37.js'),
+    },
+  },
+  allsvenskan: {
+    fileId: 's26_431',
+    type: 'league',
+    cupSerial: '26',
+    cupName: 'allsvenskan',
+    chineseName: '瑞典超',
+    crossYear: false,
+    // 球探 2026 瑞典超页面的联赛阶段为 431。
+    subLeagueId: '431',
+    useSubLeagueReferer: true,
+    season: '2026',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../allsvenskan'),
+      squadFinal: path.resolve(__dirname, '../../allsvenskan/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../../allsvenskan/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../allsvenskan/data/s26.js'),
     },
   },
   eliteSerien: {
@@ -266,7 +329,7 @@ const cups = {
       squadFinal: path.resolve(__dirname, '../../koreanKLeague/squad-final'),
       playerCenter: path.resolve(__dirname, '../output/player_center'),
       basicData: path.resolve(__dirname, '../../koreanKLeague/basicData'),
-      cupScheduleData: path.resolve(__dirname, '../../koreanKLeague/data/s15_313.js'),
+      cupScheduleData: path.resolve(__dirname, '../../koreanKLeague/data/s15.js'),
     },
   },
   ChinaSuperLeague: {
@@ -341,7 +404,7 @@ const cups = {
       squadFinal: path.resolve(__dirname, '../../serieA/squad-final'),
       playerCenter: path.resolve(__dirname, '../output/player_center'),
       basicData: path.resolve(__dirname, '../../serieA/basicData'),
-      cupScheduleData: path.resolve(__dirname, '../../serieA/data/s34_2948.js'),
+      cupScheduleData: path.resolve(__dirname, '../../serieA/data/s34.js'),
     },
   },
   ligaMx: {
@@ -397,6 +460,9 @@ const config = {
 
   fileId: active.fileId,
   type: active.type,
+  /** 国家队身份与杯赛格式分开；俱乐部杯赛仍使用俱乐部名单规则。 */
+  isNation: active.isNation === true,
+  flatSquad: active.flatSquad === true,
   crossYear: active.crossYear,
   chineseName: active.chineseName,
 

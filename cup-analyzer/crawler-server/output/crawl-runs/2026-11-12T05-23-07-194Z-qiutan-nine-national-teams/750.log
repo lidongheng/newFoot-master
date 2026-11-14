@@ -1,0 +1,45 @@
+
+> cup-analyzer-crawler-server@1.0.0 crawl:player-list:club
+> node crawlers/playerListCrawler.js --with-club -w qiutan
+
+[playerListCrawler] 数据源: 球探
+[playerListCrawler] 补充俱乐部与转会信息（本地优先，缺省再抓网）…
+[enricher] 使用 lineupDetail 映射 37 人（不请求阵容页）
+[enricher] [1/37] 帕维尔·帕夫柳琴科 → player164284.js
+[enricher] [2/37] 安德烈·库德拉维兹 → player185442.js
+[enricher] [3/37] 米哈伊尔·科扎克维奇 → player223932.js
+[enricher] [4/37] 费多尔·拉普霍夫 → player234737.js
+[enricher] [5/37] 基里尔.佩切宁 → player157654.js
+[enricher] [6/37] 伊万·季霍米罗夫 → player234771.js
+[enricher] [7/37] 赫莱布·舍甫琴科 → player185444.js
+[enricher] [8/37] 弗拉迪斯拉夫·加里宁 → player224002.js
+[enricher] [9/37] 贝古诺夫 → player112873.js
+[enricher] [10/37] 基里尔·戈马诺夫 → player234212.js
+[enricher] [11/37] 叶戈尔·帕克霍缅科 → player202498.js
+[enricher] [12/37] 马尔科维奇 → player165847.js
+[enricher] [13/37] 安东·卢卡霍夫 → player224179.js
+[enricher] [14/37] 沃尔科夫 → player143814.js
+[enricher] [15/37] 瓦列里·波切罗夫 → player200220.js
+[enricher] [16/37] 西维尔帕 → player177000.js
+[enricher] [17/37] 亚历山德·塞利亚维 → player113024.js
+[enricher] [18/37] 阿尔乔姆·索科洛夫斯基 → player249146.js
+[enricher] [19/37] 马克斯 → player165540.js
+[enricher] [20/37] 格罗米科 → player152455.js
+[enricher] [21/37] 马克西姆·基里耶夫 → player251521.js
+[enricher] [22/37] 亚布隆斯基 → player125922.js
+[enricher] [23/37] 丹尼尔·加利亚塔 → player247159.js
+[enricher] [24/37] 安东·科瓦列夫 → player223898.js
+[enricher] [25/37] 里萨科维奇 → player186298.js
+[enricher] [26/37] 科瓦莱夫 → player115214.js
+[enricher] [27/37] 科兹洛夫 → player85259.js
+[enricher] [28/37] 阿尔特姆·舒曼斯基 → player223930.js
+[enricher] [29/37] 迪姆费 → player234800.js
+[enricher] [30/37] 鲁斯兰·迈尔科夫斯基 → player230840.js
+[enricher] [31/37] 弗拉迪斯拉夫·莫罗佐夫 → player185453.js
+[enricher] [32/37] 巴科夫斯基 → player185495.js
+[enricher] [33/37] 克伦·瓦达尼亚 → player243405.js
+[enricher] [34/37] 维塔利 → player152304.js
+[enricher] [35/37] 叶夫根尼·马拉什维奇 → player186839.js
+[enricher] [36/37] A.康茨沃伊 → player185524.js
+[enricher] [37/37] 特罗菲姆·梅尔尼琴科 → player246722.js
+[playerListCrawler] 已写入 C:\www\newFoot-master\cup-analyzer\crawler-server\output\player_center\750.json（共 37 人）

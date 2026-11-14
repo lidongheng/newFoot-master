@@ -4,7 +4,7 @@
 
 | 文件 | 说明 |
 |------|------|
-| `s34_2948.js` | 赛程与积分榜等（`CUP_ANALYZER_CUP=serieA node crawlers/scheduleCrawler.js` 更新） |
+| `s34.js` | 赛程与积分榜等（`CUP_ANALYZER_CUP=serieA node crawlers/scheduleCrawler.js` 更新） |
 | `l34.js` | 亚盘盘路榜 |
 | `bs34.js` | 大小球盘路榜 |
 | `td34.js` | 入球时间分布 |
