@@ -4,6 +4,7 @@ const path = require('path');
  * 多杯赛/联赛配置：通过环境变量 CUP_ANALYZER_CUP 切换
  * - theWorldCup（默认）
  * - europeanNationalLeague（欧国联，国家队杯赛，球探序号 1864，c1864.js）
+ * - InternationalFriendship（国际友谊赛，国家队杯赛格式，1366，c1366.js）
  * - championsLeague
  * - afcChampionsLeagueTwo（亚冠联2，球探序号 350，c350.js）
  * - europaLeague（欧罗巴，球探序号 113，c113.js）
@@ -61,6 +62,26 @@ const cups = {
       playerCenter: path.resolve(__dirname, '../output/player_center'),
       basicData: path.resolve(__dirname, '../../europeanNationalLeague/basicData'),
       cupScheduleData: path.resolve(__dirname, '../../europeanNationalLeague/data/c1864.js'),
+    },
+  },
+  InternationalFriendship: {
+    fileId: 'c1366',
+    type: 'cup',
+    cupSerial: '1366',
+    cupName: 'InternationalFriendship',
+    chineseName: '国际友谊',
+    isNation: true,
+    // 友谊赛按月份组织赛程，名单按球队平铺，不使用世界杯小组目录。
+    flatSquad: true,
+    lineupMatchByName: true,
+    crossYear: false,
+    season: '2026',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../InternationalFriendship'),
+      squadFinal: path.resolve(__dirname, '../../InternationalFriendship/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../../InternationalFriendship/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../InternationalFriendship/data/c1366.js'),
     },
   },
   championsLeague: {

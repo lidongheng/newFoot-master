@@ -797,13 +797,15 @@ class ClubAnalyzer {
     let maxUsage = 0;
     
     for (const [formation, count] of Object.entries(this.formationStats)) {
+      if (!formation) continue;
       if (count > maxUsage) {
         maxUsage = count;
         mostUsedFormation = formation;
       }
     }
     
-    return mostUsedFormation || '442'; // 默认为4-4-2
+    // 上游没有阵型时保留未知，不能生成虚假的 4-4-2。
+    return mostUsedFormation;
   }
   
   /**

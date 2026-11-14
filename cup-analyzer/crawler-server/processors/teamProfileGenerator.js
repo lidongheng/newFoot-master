@@ -151,7 +151,8 @@ function getStatIntOrZero(p, key) {
 function analyzeStatTop5(players, primaryKey) {
   if (!players || players.length === 0) return [];
   const secondaryKey = primaryKey === 'goals' ? 'assists' : 'goals';
-  const rows = players.map((p) => {
+  // 未取得统计的球员不参与该项排名，不能把缺失数据当作零球或零助攻。
+  const rows = players.filter((p) => parseStatIntCell(p[primaryKey]) !== null).map((p) => {
     const primary = getStatIntOrZero(p, primaryKey);
     const secondary = getStatIntOrZero(p, secondaryKey);
     const name = String(p.name || '');
@@ -188,7 +189,7 @@ function getPlayerSeasonStatsQuad(p) {
   return { apps, starts, goals, assists };
 }
 
-/** 联赛统计半角括号：数值为 0 的统计项省略，资料字段按现有规则展示。 */
+/** 统计半角括号：零值沿用联赛规则省略，国家队同时保留所属俱乐部。 */
 function formatStatsParen(p, positionCode) {
   const q = getPlayerSeasonStatsQuad(p);
   if (!q) return null;
@@ -200,7 +201,12 @@ function formatStatsParen(p, positionCode) {
 
   const parts = [];
   if (core) parts.push(core);
+  if (isWorldCupNationalContext()) {
+    const club = String(p.currentClub || '').trim();
+    if (club && club !== '-') parts.push(club);
+  }
   if (positionCode) parts.push(positionCode);
+  else if (isWorldCupNationalContext() && ['DF', 'MF', 'FW'].includes(p.position)) parts.push(p.position);
   const ability = formatAbilityForDisplay(p);
   if (ability) parts.push(ability);
   const nationality = String(p.nationality ?? '').trim();
@@ -220,12 +226,10 @@ function formatStatsParen(p, positionCode) {
 function formatPlayerSquadLine(p, allSameNonEmptyClub, normalizePositionCode, showPlayerDetails = true) {
   const base = formatSquadJerseyLabel(p);
   if (!showPlayerDetails) return base;
-  const national = isWorldCupNationalContext();
-  const useStats = !national || allSameNonEmptyClub;
   const posCode =
     typeof normalizePositionCode === 'function' ? normalizePositionCode(p.position) : null;
   const statParen = formatStatsParen(p, posCode);
-  if (useStats && statParen) return `${base}${statParen}`;
+  if (statParen) return `${base}${statParen}`;
   return formatPlayerNameWithClub(p, allSameNonEmptyClub, normalizePositionCode);
 }
 
@@ -249,11 +253,14 @@ const POSITION_GROUPS_FOR_PROFILE = [
   { label: '右后卫', codes: ['RB', 'RWB'] },
   { label: '中后卫', codes: ['CB', 'LCB', 'RCB'] },
   { label: '左后卫', codes: ['LB', 'LWB'] },
+  { label: '后卫（未细分）', codes: ['DF'] },
   { label: '后腰', codes: ['CDM', 'RDM', 'LDM'] },
   { label: '前腰', codes: ['CAM', 'CM'] },
+  { label: '中场（未细分）', codes: ['MF'] },
   { label: '右边锋', codes: ['RM', 'RW'] },
   { label: '左边锋', codes: ['LM', 'LW'] },
   { label: '中锋', codes: ['ST', 'CF'] },
+  { label: '前锋（未细分）', codes: ['FW'] },
 ];
 
 const POSITION_GROUP_CODES = {
@@ -333,6 +340,8 @@ class TeamProfileGenerator extends BaseCrawler {
    * @returns {string|null}
    */
   normalizePositionCode(raw) {
+    // 国家队只有懂球帝位置大类时保留原粒度，不推测具体场上位置。
+    if (config.isNation && ['DF', 'MF', 'FW'].includes(raw)) return raw;
     return predLineupUtil.normalizePositionCode(raw);
   }
 
@@ -544,16 +553,13 @@ class TeamProfileGenerator extends BaseCrawler {
   }
 
   /**
-   * 画像中伤停/伤疑单行展示：世界杯保留俱乐部与位置；联赛沿用名单行的位置、能力、年龄和身价明细。
+   * 伤停/伤疑与阵容名单共用完整统计和资料格式，国家队保留所属俱乐部。
    */
   formatInjuryDoubtfulDisplayLine(p, national, showPlayerDetails = true) {
     const label = formatClubJerseyLabel(p);
     if (!showPlayerDetails) return label;
     if (national) {
-      const posCode = predLineupUtil.normalizePositionCode(p.position) || String(p.position || '').trim() || '-';
-      const club = String(p.currentClub || '').trim();
-      const clubSeg = club && club !== '-' ? club : '-';
-      return `${label}(${clubSeg}，${posCode})`;
+      return formatPlayerSquadLine(p, false, predLineupUtil.normalizePositionCode, showPlayerDetails);
     }
     const positionCode = predLineupUtil.normalizePositionCode(p.position);
     const statParen = formatStatsParen(p, positionCode);
@@ -702,7 +708,7 @@ class TeamProfileGenerator extends BaseCrawler {
         numW = /^[0-9]+$/.test(jersey) ? parseInt(jersey, 10) : jersey;
       }
 
-      players.push({
+      const squadPlayer = {
         number: numW,
         name,
         currentClub: parts[3] || '-',
@@ -713,7 +719,17 @@ class TeamProfileGenerator extends BaseCrawler {
         marketValue: parts[7] || '-',
         ability: abilityIndex === null ? '-' : parts[abilityIndex] || '-',
         positionGroup: currentGroup,
-      });
+      };
+      // 国家队名单按表头读取分析器统计，避免新增列影响俱乐部、号码和位置字段。
+      if (tableColumnMap && tableColumnMap['出场'] != null && tableColumnMap['首发'] != null) {
+        squadPlayer.appearances = parseStatIntCell(parts[tableColumnMap['出场']]);
+        squadPlayer.starts = parseStatIntCell(parts[tableColumnMap['首发']]);
+      }
+      if (tableColumnMap && tableColumnMap['进球'] != null && tableColumnMap['助攻'] != null) {
+        squadPlayer.goals = parseStatIntCell(parts[tableColumnMap['进球']]);
+        squadPlayer.assists = parseStatIntCell(parts[tableColumnMap['助攻']]);
+      }
+      players.push(squadPlayer);
     }
     return { players, coach, formation, injured, doubtful, manualSections: [] };
   }
@@ -1519,10 +1535,17 @@ class TeamProfileGenerator extends BaseCrawler {
 
     // 球队目标
     lines.push(`## 一、球队定位\n`);
-    lines.push(`- **冠军赔率**: ${teamGoal.odds}`);
-    lines.push(`- **赔率定位**: ${teamGoal.oddsGoal}`);
-    lines.push(`- **身价定位**: ${teamGoal.valueGoal}`);
-    lines.push(`- **综合目标**: ${teamGoal.oddsGoal}\n`);
+    if (config.activeCupKey === 'InternationalFriendship') {
+      // 友谊赛不存在冠军或小组出线目标，不能套用国家队大赛的身价战意推断。
+      lines.push('- **赛事性质**: 国家队友谊赛，无晋级、升降级或出线积分规则');
+      lines.push('- **排名影响**: 符合 FIFA 认定条件的成年国家队 A 级赛影响排名积分');
+      lines.push('- **本场目标**: 按实际征召和发布会核实备战、试阵及出场时间安排\n');
+    } else {
+      lines.push(`- **冠军赔率**: ${teamGoal.odds}`);
+      lines.push(`- **赔率定位**: ${teamGoal.oddsGoal}`);
+      lines.push(`- **身价定位**: ${teamGoal.valueGoal}`);
+      lines.push(`- **综合目标**: ${teamGoal.oddsGoal}\n`);
+    }
 
     // 球队阵容（按位置大名单 + 预测首发）
     lines.push(`## 二、球队阵容\n`);
@@ -1649,20 +1672,28 @@ class TeamProfileGenerator extends BaseCrawler {
     });
     lines.push('');
     lines.push('**进球TOP 5**:\n');
-    lines.push('| 排名 | 球衣号 | 球员 | 位置 | 进球 |');
-    lines.push('|------|--------|------|------|------|');
-    goalsTop5.forEach((p, i) => {
-      const jersey = formatJerseyForTableCell(p);
-      lines.push(`| ${i + 1} | ${jersey} | ${p.name} | ${p.position || '-'} | ${p.value} |`);
-    });
+    if (goalsTop5.length === 0) {
+      lines.push('暂无可用的球员进球统计。');
+    } else {
+      lines.push('| 排名 | 球衣号 | 球员 | 位置 | 进球 |');
+      lines.push('|------|--------|------|------|------|');
+      goalsTop5.forEach((p, i) => {
+        const jersey = formatJerseyForTableCell(p);
+        lines.push(`| ${i + 1} | ${jersey} | ${p.name} | ${p.position || '-'} | ${p.value} |`);
+      });
+    }
     lines.push('');
     lines.push('**助攻TOP 5**:\n');
-    lines.push('| 排名 | 球衣号 | 球员 | 位置 | 助攻 |');
-    lines.push('|------|--------|------|------|------|');
-    assistsTop5.forEach((p, i) => {
-      const jersey = formatJerseyForTableCell(p);
-      lines.push(`| ${i + 1} | ${jersey} | ${p.name} | ${p.position || '-'} | ${p.value} |`);
-    });
+    if (assistsTop5.length === 0) {
+      lines.push('暂无可用的球员助攻统计。');
+    } else {
+      lines.push('| 排名 | 球衣号 | 球员 | 位置 | 助攻 |');
+      lines.push('|------|--------|------|------|------|');
+      assistsTop5.forEach((p, i) => {
+        const jersey = formatJerseyForTableCell(p);
+        lines.push(`| ${i + 1} | ${jersey} | ${p.name} | ${p.position || '-'} | ${p.value} |`);
+      });
+    }
     lines.push('');
 
     // 位置深度

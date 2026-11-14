@@ -12,11 +12,11 @@
  * - roundSerial：联赛渠道时填当前国内联赛轮次（仅分析该轮之前已完赛场次）；杯赛渠道可不填
  */
 const squadTarget = {
-  leagueSerial: '1864',
-  leagueSlug: 'europeanNationalLeague',
-  season: '2026-2027',
-  teamSerial: '748',
-  matchTime: '2026-11-13 01:00:00',
+  leagueSerial: '1366',
+  leagueSlug: 'InternationalFriendship',
+  season: '2025',
+  teamSerial: '889',
+  matchTime: '2026-11-14 20:00:00',
   roundSerial: '5',
   /**
    * 赛程格式开关：

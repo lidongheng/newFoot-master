@@ -1,0 +1,91 @@
+{
+  "teamId": 889,
+  "teamChineseName": "马来西亚",
+  "isNation": true,
+  "matchByName": true,
+  "analysisDate": "2026-11-14T03:59:11.535Z",
+  "mostUsedFormation": "",
+  "recommendedLineup": [],
+  "players": {},
+  "formationStats": {
+    "": 4
+  },
+  "asianHandicap": {
+    "total": 4,
+    "win": 4,
+    "lose": 0,
+    "draw": 0,
+    "winRate": "100.00",
+    "matches": [
+      {
+        "score": "0-3",
+        "handicap": -1.5,
+        "status": "guest",
+        "handicapResult": "away_win",
+        "teamResult": "win"
+      },
+      {
+        "score": "0-0",
+        "handicap": -1,
+        "status": "home",
+        "handicapResult": "home_win",
+        "teamResult": "win"
+      },
+      {
+        "score": "6-0",
+        "handicap": 1.5,
+        "status": "home",
+        "handicapResult": "home_win",
+        "teamResult": "win"
+      },
+      {
+        "score": "1-0",
+        "handicap": 0,
+        "status": "home",
+        "handicapResult": "home_win",
+        "teamResult": "win"
+      }
+    ]
+  },
+  "totalGoals": {
+    "total": 4,
+    "over": 1,
+    "under": 3,
+    "draw": 0,
+    "overRate": "25.00",
+    "matches": [
+      {
+        "score": "0-3",
+        "totalLine": "3/3.5",
+        "totalLineValue": 3.25,
+        "status": "guest",
+        "totalGoals": 3,
+        "result": "under"
+      },
+      {
+        "score": "0-0",
+        "totalLine": "2.5/3",
+        "totalLineValue": 2.75,
+        "status": "home",
+        "totalGoals": 0,
+        "result": "under"
+      },
+      {
+        "score": "6-0",
+        "totalLine": "2.5/3",
+        "totalLineValue": 2.75,
+        "status": "home",
+        "totalGoals": 6,
+        "result": "over"
+      },
+      {
+        "score": "1-0",
+        "totalLine": "2.5",
+        "totalLineValue": 2.5,
+        "status": "home",
+        "totalGoals": 1,
+        "result": "under"
+      }
+    ]
+  }
+}

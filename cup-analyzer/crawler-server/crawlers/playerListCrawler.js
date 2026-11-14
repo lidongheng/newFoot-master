@@ -247,6 +247,17 @@ function buildPlayerRecord(entry, groupType, profile, leagueConfig, season, seas
     record.ability = ability.value;
   }
 
+  // 国家队的位置以懂球帝名单分组为准，不用能力值最高位置或球探比赛位置替换。
+  if (!isCoach && config.cups[squadTarget.leagueSlug].isNation === true) {
+    record.position = [staff];
+    record.qiutanPosition = {
+      GK: '门将',
+      DF: '后卫',
+      MF: '中场',
+      FW: '前锋',
+    }[staff];
+  }
+
   if (!isCoach) {
     if (stats !== null) {
       setNumberIfPresent(record, 'caps', stats.appearances, `${entry.person_name}本赛季联赛出场`);

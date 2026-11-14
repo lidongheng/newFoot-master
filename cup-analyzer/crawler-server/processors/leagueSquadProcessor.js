@@ -119,25 +119,56 @@ class LeagueSquadProcessor extends BaseCrawler {
     const analyzedPlayersByKey = new Map(
       Object.values(players).map((player) => [getPlayerKey(player), player])
     );
+    const teamMapping = Object.values(teamMappings).find((team) => String(team.qiutanSerial) === String(data.teamId));
     const list = playerCenter.filter((player) => player.staff !== '主教练');
     const rows = [];
     for (const rosterPlayer of list) {
-      const analyzedPlayer = analyzedPlayersByKey.get(getPlayerKey(rosterPlayer));
-      // 姓名取懂球帝名单数据，避免分析数据中的球探名称覆盖它。
-      const p = analyzedPlayer ? { ...rosterPlayer, ...analyzedPlayer } : rosterPlayer;
-      const line = lineGroupFromPlayer(p);
+      let analyzedPlayer = analyzedPlayersByKey.get(getPlayerKey(rosterPlayer));
+      // 两站译名不同，只使用已核实的姓名对照，不通过球衣号或模糊姓名关联统计。
+      if (config.isNation && teamMapping && teamMapping.playerNames) {
+        const aliases = teamMapping.playerNames[rosterPlayer.name];
+        if (aliases) {
+          const names = [...new Set([rosterPlayer.name, ...aliases])];
+          const matches = names.filter((name) => analyzedPlayersByKey.has(name));
+          if (matches.length > 1) throw new Error(`${rosterPlayer.name} 匹配到多份出场统计，请核对姓名对照`);
+          if (matches.length === 1) analyzedPlayer = analyzedPlayersByKey.get(matches[0]);
+        }
+      }
+      const useDqdRoster = config.isNation && rosterPlayer.person_id !== undefined;
+      // 号码等球员资料保留懂球帝来源，比赛位置单独使用分析器统计。
+      let p = rosterPlayer;
+      if (!useDqdRoster && analyzedPlayer) {
+        p = { ...rosterPlayer, ...analyzedPlayer };
+      }
+      let line = useDqdRoster ? rosterPlayer.staff : lineGroupFromPlayer(p);
       const posKeys = analyzedPlayer && analyzedPlayer.positions && typeof analyzedPlayer.positions === 'object'
-        ? Object.entries(p.positions)
+        ? Object.entries(analyzedPlayer.positions)
             .filter(([k]) => k !== 'Substitute' && k !== 'Unknown')
             .sort((a, b) => b[1] - a[1])
         : [];
       let posDisplay = '';
       if (posKeys.length > 0) {
         posDisplay = posKeys[0][0];
+        // 国家队按实际比赛中出现最多的位置重新分组，不改用球探球衣号。
+        if (config.isNation) {
+          line = POS_TO_LINE[posDisplay];
+          if (!line) throw new Error(`${rosterPlayer.name} 的比赛位置未配置分组：${posDisplay}`);
+        }
+      } else if (useDqdRoster) {
+        posDisplay = rosterPlayer.position[0];
       } else if (Array.isArray(rosterPlayer.position) && rosterPlayer.position.length > 0) {
         posDisplay = rosterPlayer.position[0];
       } else {
         posDisplay = p.qiutanPosition || '-';
+      }
+      const statistics = [];
+      if (config.isNation) {
+        statistics.push(
+          analyzedPlayer && analyzedPlayer.caps != null ? String(analyzedPlayer.caps) : '-',
+          analyzedPlayer && analyzedPlayer.lineups != null ? String(analyzedPlayer.lineups) : '-',
+          analyzedPlayer && analyzedPlayer.goals != null ? String(analyzedPlayer.goals) : '-',
+          analyzedPlayer && analyzedPlayer.assists != null ? String(analyzedPlayer.assists) : '-'
+        );
       }
       rows.push({
         line,
@@ -154,6 +185,7 @@ class LeagueSquadProcessor extends BaseCrawler {
             ? String(rosterPlayer.ability)
             : '-',
           p.nation || '-',
+          ...statistics,
           formatPlayerTransfers({
             currentClub: p.currentClub,
             recentTransfers: p.recentTransfers,
@@ -195,13 +227,13 @@ class LeagueSquadProcessor extends BaseCrawler {
     }
     lines.push('');
     lines.push(`- **主教练**: ${headCoach.name}`);
-    lines.push(`- **阵型**: ${formation}`);
+    if (data.mostUsedFormation) lines.push(`- **阵型**: ${formation}`);
     lines.push('');
 
-    const header =
-      '| 球衣号 | 姓名 | 俱乐部 | 年龄 | 身高 | 位置 | 身价(万) | 能力 | 国籍 | 转会记录 |';
-    const sep =
-      '|--------|------|------|------|------|------|----------|------|------|----------|';
+    const statisticsHeader = config.isNation ? ' 出场 | 首发 | 进球 | 助攻 |' : '';
+    const statisticsSeparator = config.isNation ? '------|------|------|------|' : '';
+    const header = `| 球衣号 | 姓名 | 俱乐部 | 年龄 | 身高 | 位置 | 身价(万) | 能力 | 国籍 |${statisticsHeader} 转会记录 |`;
+    const sep = `|--------|------|------|------|------|------|----------|------|------|${statisticsSeparator}----------|`;
 
     for (const key of ['GK', 'DF', 'MF', 'FW']) {
       const groupRows = byLine[key];
