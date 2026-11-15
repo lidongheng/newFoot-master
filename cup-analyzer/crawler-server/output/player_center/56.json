@@ -1,452 +1,680 @@
 [
   {
-    "name": "佩里",
-    "nation": "巴西",
-    "stats": 0,
+    "person_id": "50194409",
+    "name": "法尔克",
+    "nation": "德国",
+    "staff": "主教练",
+    "attr": "主教练",
+    "attrDes": "主教练",
+    "qiutanPosition": "主教练",
     "position": [
-      ""
+      "主教练"
     ],
+    "age": 50,
+    "height": 182,
+    "currentClub": "利兹联",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50469448",
+    "name": "特拉福德",
+    "nation": "英格兰",
     "staff": "GK",
     "attr": "GK",
     "attrDes": "GK",
-    "caps": 0,
-    "lineups": 0,
-    "age": 29,
+    "qiutanPosition": "守门员",
+    "position": [
+      "GK"
+    ],
+    "stats": 77,
+    "ability": 77,
+    "caps": 9,
+    "lineups": 9,
+    "goals": 0,
+    "assists": 0,
+    "age": 24,
     "number": 1,
     "height": 197,
-    "qiutanPosition": "守门员",
-    "socialStatus": "1300"
+    "weight": 83,
+    "socialStatus": "3500",
+    "currentClub": "利兹联",
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2026-08-06",
+        "from": "曼城",
+        "to": "利兹联",
+        "fee": "4670万欧",
+        "type": "转会"
+      }
+    ]
   },
   {
-    "name": "伊拉姆·梅斯利耶",
-    "nation": "法国",
-    "stats": 0,
-    "position": [
-      ""
-    ],
+    "person_id": "50167248",
+    "name": "泽特尔",
+    "nation": "德国",
     "staff": "GK",
     "attr": "GK",
     "attrDes": "GK",
-    "caps": 0,
-    "lineups": 0,
-    "age": 26,
+    "qiutanPosition": "守门员",
+    "position": [
+      "GK"
+    ],
+    "stats": 75,
+    "ability": 75,
+    "age": 31,
     "number": 16,
-    "height": 197,
-    "qiutanPosition": "守门员",
-    "socialStatus": "1000"
+    "height": 187,
+    "weight": 79,
+    "socialStatus": "400",
+    "currentClub": "利兹联",
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2026-08-29",
+        "from": "法兰克福",
+        "to": "利兹联",
+        "fee": "500万欧",
+        "type": "转会"
+      }
+    ]
   },
   {
-    "name": "亚历克斯·凯恩斯",
+    "person_id": "50136156",
+    "name": "凯恩斯",
     "nation": "英格兰",
-    "stats": 0,
-    "position": [
-      ""
-    ],
     "staff": "GK",
     "attr": "GK",
     "attrDes": "GK",
-    "caps": 0,
-    "lineups": 0,
+    "qiutanPosition": "守门员",
+    "position": [
+      "GK"
+    ],
+    "stats": 61,
+    "ability": 61,
     "age": 33,
     "number": 21,
     "height": 183,
-    "qiutanPosition": "守门员",
-    "socialStatus": "7.5"
+    "weight": 79,
+    "socialStatus": "5",
+    "currentClub": "利兹联",
+    "recentTransfers": []
   },
   {
-    "name": "卡尔·达尔洛",
-    "nation": "威尔士",
-    "stats": 0,
-    "position": [
-      ""
-    ],
-    "staff": "GK",
-    "attr": "GK",
-    "attrDes": "GK",
-    "caps": 0,
-    "lineups": 0,
-    "age": 36,
-    "number": 26,
-    "height": 190,
-    "qiutanPosition": "守门员",
-    "socialStatus": "20"
-  },
-  {
-    "name": "杰登·博格尔",
+    "person_id": "50254139",
+    "name": "詹姆斯-贾斯廷",
     "nation": "英格兰",
-    "stats": 0,
-    "position": [
-      ""
-    ],
     "staff": "DF",
     "attr": "DF",
     "attrDes": "DF",
-    "caps": 0,
-    "lineups": 0,
-    "age": 26,
-    "number": 2,
-    "height": 178,
-    "qiutanPosition": "右后卫",
-    "socialStatus": "1200"
-  },
-  {
-    "name": "古德莫德森",
-    "nation": "瑞典",
-    "stats": 0,
+    "qiutanPosition": "中后卫",
     "position": [
-      ""
+      "CB"
     ],
-    "staff": "DF",
-    "attr": "DF",
-    "attrDes": "DF",
-    "caps": 0,
-    "lineups": 0,
-    "age": 27,
-    "number": 3,
-    "height": 180,
-    "qiutanPosition": "左后卫",
-    "socialStatus": "2000"
-  },
-  {
-    "name": "斯图伊杰克",
-    "nation": "荷兰",
-    "stats": 0,
-    "position": [
-      ""
-    ],
-    "staff": "DF",
-    "attr": "DF",
-    "attrDes": "DF",
-    "caps": 0,
-    "lineups": 0,
-    "age": 27,
-    "number": 5,
-    "height": 190,
-    "qiutanPosition": "中卫",
-    "socialStatus": "2200"
-  },
-  {
-    "name": "约瑟夫·罗登",
-    "nation": "威尔士",
-    "stats": 0,
-    "position": [
-      ""
-    ],
-    "staff": "DF",
-    "attr": "DF",
-    "attrDes": "DF",
-    "caps": 0,
-    "lineups": 0,
-    "age": 29,
-    "number": 6,
-    "height": 193,
-    "qiutanPosition": "中卫",
-    "socialStatus": "1500"
-  },
-  {
-    "name": "贾卡·比约尔",
-    "nation": "斯洛文尼亚",
-    "stats": 0,
-    "position": [
-      ""
-    ],
-    "staff": "DF",
-    "attr": "DF",
-    "attrDes": "DF",
-    "caps": 0,
-    "lineups": 0,
-    "age": 27,
-    "number": 15,
-    "height": 190,
-    "qiutanPosition": "中卫",
-    "socialStatus": "1800"
-  },
-  {
-    "name": "波亚纳乌",
-    "nation": "比利时",
-    "stats": 0,
-    "position": [
-      ""
-    ],
-    "staff": "DF",
-    "attr": "DF",
-    "attrDes": "DF",
-    "caps": 0,
-    "lineups": 0,
-    "age": 27,
-    "number": 23,
-    "height": 191,
-    "qiutanPosition": "中卫",
-    "socialStatus": "800"
-  },
-  {
-    "name": "詹姆斯·贾斯汀",
-    "nation": "英格兰",
-    "stats": 0,
-    "position": [
-      ""
-    ],
-    "staff": "DF",
-    "attr": "DF",
-    "attrDes": "DF",
-    "caps": 0,
-    "lineups": 0,
+    "stats": 75,
+    "ability": 75,
+    "caps": 9,
+    "lineups": 9,
+    "goals": 1,
+    "assists": 1,
     "age": 28,
     "number": 24,
     "height": 183,
-    "qiutanPosition": "右后卫",
-    "socialStatus": "1200"
+    "weight": 71,
+    "socialStatus": "1600",
+    "currentClub": "利兹联",
+    "recentTransfers": []
   },
   {
-    "name": "拜拉姆",
-    "nation": "英格兰",
-    "stats": 0,
-    "position": [
-      ""
-    ],
+    "person_id": "50631209",
+    "name": "穆哈雷莫维奇",
+    "nation": "波黑",
     "staff": "DF",
     "attr": "DF",
     "attrDes": "DF",
-    "caps": 0,
-    "lineups": 0,
-    "age": 33,
-    "number": 25,
-    "height": 183,
-    "qiutanPosition": "左后卫",
-    "socialStatus": "60"
-  },
-  {
-    "name": "阿姆帕杜",
-    "nation": "威尔士",
-    "stats": 0,
+    "qiutanPosition": "中后卫",
     "position": [
-      ""
+      "CB"
     ],
-    "staff": "MF",
-    "attr": "MF",
-    "attrDes": "MF",
-    "caps": 0,
-    "lineups": 0,
-    "age": 26,
-    "number": 4,
-    "height": 182,
-    "qiutanPosition": "后腰",
-    "socialStatus": "2500"
+    "stats": 77,
+    "ability": 77,
+    "caps": 9,
+    "lineups": 9,
+    "goals": 0,
+    "assists": 2,
+    "age": 23,
+    "number": 5,
+    "height": 192,
+    "weight": 76,
+    "socialStatus": "4000",
+    "currentClub": "利兹联",
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2026-07-17",
+        "from": "萨索洛",
+        "to": "利兹联",
+        "fee": "3700万欧",
+        "type": "转会"
+      }
+    ]
   },
   {
-    "name": "肖恩·朗斯塔夫",
+    "person_id": "50267450",
+    "name": "博格尔",
     "nation": "英格兰",
-    "stats": 0,
+    "staff": "DF",
+    "attr": "DF",
+    "attrDes": "DF",
+    "qiutanPosition": "右中场",
     "position": [
-      ""
+      "RM"
     ],
-    "staff": "MF",
-    "attr": "MF",
-    "attrDes": "MF",
-    "caps": 0,
-    "lineups": 0,
-    "age": 29,
-    "number": 8,
-    "height": 187,
-    "qiutanPosition": "中前卫",
-    "socialStatus": "1600"
+    "stats": 77,
+    "ability": 77,
+    "caps": 9,
+    "lineups": 9,
+    "goals": 1,
+    "assists": 0,
+    "age": 26,
+    "number": 2,
+    "height": 178,
+    "weight": 69,
+    "socialStatus": "1800",
+    "currentClub": "利兹联",
+    "recentTransfers": []
   },
   {
-    "name": "布伦登·阿隆森",
-    "nation": "美国",
-    "stats": 0,
+    "person_id": "50257633",
+    "name": "古德蒙松",
+    "nation": "瑞典",
+    "staff": "DF",
+    "attr": "DF",
+    "attrDes": "DF",
+    "qiutanPosition": "左中场",
     "position": [
-      ""
+      "LM"
     ],
+    "stats": 79,
+    "ability": 79,
+    "caps": 7,
+    "lineups": 7,
+    "goals": 0,
+    "assists": 1,
+    "age": 27,
+    "number": 3,
+    "height": 180,
+    "weight": 78,
+    "socialStatus": "2500",
+    "currentClub": "利兹联",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50175035",
+    "name": "尼科-埃尔维迪",
+    "nation": "瑞士",
+    "staff": "DF",
+    "attr": "DF",
+    "attrDes": "DF",
+    "qiutanPosition": "中后卫",
+    "position": [
+      "CB"
+    ],
+    "stats": 79,
+    "ability": 79,
+    "caps": 7,
+    "lineups": 6,
+    "goals": 0,
+    "assists": 0,
+    "age": 30,
+    "number": 30,
+    "height": 189,
+    "weight": 84,
+    "socialStatus": "1200",
+    "currentClub": "利兹联",
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2026-08-19",
+        "from": "门兴格拉德巴赫",
+        "to": "利兹联",
+        "fee": "800万欧",
+        "type": "转会"
+      }
+    ]
+  },
+  {
+    "person_id": "50405569",
+    "name": "比约尔",
+    "nation": "斯洛文尼亚",
+    "staff": "DF",
+    "attr": "DF",
+    "attrDes": "DF",
+    "qiutanPosition": "中后卫",
+    "position": [
+      "CB"
+    ],
+    "stats": 79,
+    "ability": 79,
+    "caps": 5,
+    "lineups": 3,
+    "goals": 0,
+    "assists": 0,
+    "age": 27,
+    "number": 15,
+    "height": 190,
+    "weight": 85,
+    "socialStatus": "2000",
+    "currentClub": "利兹联",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50254644",
+    "name": "乔-罗顿",
+    "nation": "威尔士",
+    "staff": "DF",
+    "attr": "DF",
+    "attrDes": "DF",
+    "qiutanPosition": "中后卫",
+    "position": [
+      "CB"
+    ],
+    "stats": 78,
+    "ability": 78,
+    "caps": 2,
+    "lineups": 2,
+    "goals": 0,
+    "assists": 0,
+    "age": 29,
+    "number": 6,
+    "height": 193,
+    "weight": 88,
+    "socialStatus": "1800",
+    "currentClub": "利兹联",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50426540",
+    "name": "巴尔",
+    "nation": "法国",
+    "staff": "DF",
+    "attr": "DF",
+    "attrDes": "DF",
+    "qiutanPosition": "左中场",
+    "position": [
+      "LM"
+    ],
+    "stats": 78,
+    "ability": 78,
+    "caps": 1,
+    "lineups": 0,
+    "goals": 0,
+    "assists": 0,
+    "age": 26,
+    "number": 26,
+    "height": 173,
+    "weight": 65,
+    "socialStatus": "1000",
+    "currentClub": "利兹联",
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2027-06-30",
+        "from": "利兹联",
+        "to": "尼斯",
+        "fee": "",
+        "type": "租借回归"
+      },
+      {
+        "season": "2026-2027",
+        "date": "2026-09-01",
+        "from": "尼斯",
+        "to": "利兹联",
+        "fee": "100万欧",
+        "type": "租借"
+      }
+    ]
+  },
+  {
+    "person_id": "50448947",
+    "name": "施塔赫",
+    "nation": "德国",
     "staff": "MF",
     "attr": "MF",
     "attrDes": "MF",
-    "caps": 0,
-    "lineups": 0,
+    "qiutanPosition": "后腰",
+    "position": [
+      "CDM"
+    ],
+    "stats": 81,
+    "ability": 81,
+    "caps": 9,
+    "lineups": 7,
+    "goals": 1,
+    "assists": 0,
+    "age": 27,
+    "number": 18,
+    "height": 194,
+    "weight": 88,
+    "socialStatus": "3200",
+    "currentClub": "利兹联",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50458960",
+    "name": "阿伦森",
+    "nation": "美国",
+    "staff": "MF",
+    "attr": "MF",
+    "attrDes": "MF",
+    "qiutanPosition": "右中场",
+    "position": [
+      "RM"
+    ],
+    "stats": 79,
+    "ability": 79,
+    "caps": 8,
+    "lineups": 3,
+    "goals": 0,
+    "assists": 0,
     "age": 26,
     "number": 11,
     "height": 177,
-    "qiutanPosition": "前腰",
-    "socialStatus": "1800"
+    "weight": 69,
+    "socialStatus": "2200",
+    "currentClub": "利兹联",
+    "recentTransfers": []
   },
   {
-    "name": "安东.斯塔赫",
-    "nation": "德国",
-    "stats": 0,
-    "position": [
-      ""
-    ],
-    "staff": "MF",
-    "attr": "MF",
-    "attrDes": "MF",
-    "caps": 0,
-    "lineups": 0,
-    "age": 28,
-    "number": 18,
-    "height": 194,
-    "qiutanPosition": "后腰",
-    "socialStatus": "2500"
-  },
-  {
+    "person_id": "50284309",
     "name": "田中碧",
     "nation": "日本",
-    "stats": 0,
-    "position": [
-      ""
-    ],
     "staff": "MF",
     "attr": "MF",
     "attrDes": "MF",
-    "caps": 0,
-    "lineups": 0,
+    "qiutanPosition": "中前卫",
+    "position": [
+      "CM"
+    ],
+    "stats": 77,
+    "ability": 77,
+    "caps": 8,
+    "lineups": 7,
+    "goals": 0,
+    "assists": 1,
     "age": 28,
     "number": 22,
     "height": 180,
-    "qiutanPosition": "中前卫",
-    "socialStatus": "1000"
+    "weight": 69,
+    "socialStatus": "1500",
+    "currentClub": "利兹联",
+    "recentTransfers": []
   },
   {
-    "name": "法昆多·博纳诺特",
-    "nation": "阿根廷",
-    "stats": 0,
-    "position": [
-      ""
-    ],
+    "person_id": "50279546",
+    "name": "肖恩-朗斯塔夫",
+    "nation": "英格兰",
     "staff": "MF",
     "attr": "MF",
     "attrDes": "MF",
-    "caps": 0,
+    "qiutanPosition": "后腰",
+    "position": [
+      "CDM"
+    ],
+    "stats": 75,
+    "ability": 75,
+    "caps": 5,
     "lineups": 0,
-    "age": 22,
-    "number": 40,
-    "height": 174,
-    "qiutanPosition": "前腰",
-    "socialStatus": "1600"
+    "goals": 0,
+    "assists": 0,
+    "age": 29,
+    "number": 8,
+    "height": 187,
+    "weight": 74,
+    "socialStatus": "1200",
+    "currentClub": "利兹联",
+    "recentTransfers": []
   },
   {
-    "name": "伊莉亚·格鲁夫",
+    "person_id": "50258906",
+    "name": "阿姆帕杜",
+    "nation": "威尔士",
+    "staff": "MF",
+    "attr": "MF",
+    "attrDes": "MF",
+    "qiutanPosition": "后腰",
+    "position": [
+      "CDM"
+    ],
+    "stats": 80,
+    "ability": 80,
+    "caps": 9,
+    "lineups": 9,
+    "goals": 0,
+    "assists": 0,
+    "age": 26,
+    "number": 4,
+    "height": 183,
+    "weight": 78,
+    "socialStatus": "3500",
+    "currentClub": "利兹联",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50455406",
+    "name": "伊利亚-格鲁耶夫",
     "nation": "保加利亚",
-    "stats": 0,
-    "position": [
-      ""
-    ],
     "staff": "MF",
     "attr": "MF",
     "attrDes": "MF",
-    "caps": 0,
-    "lineups": 0,
+    "qiutanPosition": "后腰",
+    "position": [
+      "CDM"
+    ],
+    "stats": 74,
+    "ability": 74,
     "age": 26,
     "number": 44,
     "height": 185,
-    "qiutanPosition": "后腰",
-    "socialStatus": "1200"
+    "weight": 77,
+    "socialStatus": "1200",
+    "currentClub": "利兹联",
+    "recentTransfers": []
   },
   {
-    "name": "丹尼尔·詹姆斯",
-    "nation": "威尔士",
-    "stats": 0,
-    "position": [
-      ""
-    ],
-    "staff": "FW",
-    "attr": "FW",
-    "attrDes": "FW",
-    "caps": 0,
-    "lineups": 0,
-    "age": 29,
-    "number": 7,
-    "height": 171,
-    "qiutanPosition": "右边锋",
-    "socialStatus": "1200"
-  },
-  {
-    "name": "卡尔沃特·勒温",
+    "person_id": "50208585",
+    "name": "卡尔弗特-勒温",
     "nation": "英格兰",
-    "stats": 0,
-    "position": [
-      ""
-    ],
     "staff": "FW",
     "attr": "FW",
     "attrDes": "FW",
-    "caps": 0,
-    "lineups": 0,
+    "qiutanPosition": "中锋",
+    "position": [
+      "ST"
+    ],
+    "stats": 81,
+    "ability": 81,
+    "caps": 9,
+    "lineups": 9,
+    "goals": 4,
+    "assists": 0,
     "age": 29,
     "number": 9,
-    "height": 189,
-    "qiutanPosition": "中锋",
-    "socialStatus": "2200"
+    "height": 186,
+    "weight": 80,
+    "socialStatus": "2500",
+    "currentClub": "利兹联",
+    "recentTransfers": []
   },
   {
-    "name": "乔尔·皮罗",
-    "nation": "苏里南",
-    "stats": 0,
-    "position": [
-      ""
-    ],
-    "staff": "FW",
-    "attr": "FW",
-    "attrDes": "FW",
-    "caps": 0,
-    "lineups": 0,
-    "age": 27,
-    "number": 10,
-    "height": 185,
-    "qiutanPosition": "中锋",
-    "socialStatus": "1300"
-  },
-  {
-    "name": "卢卡斯·恩梅查",
-    "nation": "德国",
-    "stats": 0,
-    "position": [
-      ""
-    ],
-    "staff": "FW",
-    "attr": "FW",
-    "attrDes": "FW",
-    "caps": 0,
-    "lineups": 0,
-    "age": 28,
-    "number": 14,
-    "height": 185,
-    "qiutanPosition": "中锋",
-    "socialStatus": "1000"
-  },
-  {
-    "name": "诺亚·奥卡福尔",
+    "person_id": "50271138",
+    "name": "奥卡福尔",
     "nation": "瑞士",
-    "stats": 0,
-    "position": [
-      ""
-    ],
     "staff": "FW",
     "attr": "FW",
     "attrDes": "FW",
-    "caps": 0,
-    "lineups": 0,
+    "qiutanPosition": "中锋",
+    "position": [
+      "ST"
+    ],
+    "stats": 78,
+    "ability": 78,
+    "caps": 8,
+    "lineups": 6,
+    "goals": 1,
+    "assists": 0,
     "age": 26,
     "number": 19,
     "height": 185,
-    "qiutanPosition": "左边锋",
-    "socialStatus": "1800"
+    "weight": 85,
+    "socialStatus": "3200",
+    "currentClub": "利兹联",
+    "recentTransfers": []
   },
   {
-    "name": "威尔弗里德·尼翁托",
-    "nation": "意大利",
-    "stats": 0,
-    "position": [
-      ""
-    ],
+    "person_id": "50202314",
+    "name": "丹尼尔-詹姆斯",
+    "nation": "威尔士",
     "staff": "FW",
     "attr": "FW",
     "attrDes": "FW",
-    "caps": 0,
+    "qiutanPosition": "右中场",
+    "position": [
+      "RM"
+    ],
+    "stats": 76,
+    "ability": 76,
+    "caps": 4,
+    "lineups": 1,
+    "goals": 0,
+    "assists": 0,
+    "age": 28,
+    "number": 7,
+    "height": 171,
+    "weight": 63,
+    "socialStatus": "1000",
+    "currentClub": "利兹联",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50229343",
+    "name": "卢卡斯-恩梅加",
+    "nation": "德国",
+    "staff": "FW",
+    "attr": "FW",
+    "attrDes": "FW",
+    "qiutanPosition": "中锋",
+    "position": [
+      "ST"
+    ],
+    "stats": 78,
+    "ability": 78,
+    "caps": 8,
     "lineups": 0,
-    "age": 23,
-    "number": 29,
-    "height": 170,
+    "goals": 0,
+    "assists": 1,
+    "age": 27,
+    "number": 14,
+    "height": 185,
+    "weight": 80,
+    "socialStatus": "1000",
+    "currentClub": "利兹联",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50202317",
+    "name": "哈里-威尔逊",
+    "nation": "威尔士",
+    "staff": "FW",
+    "attr": "FW",
+    "attrDes": "FW",
     "qiutanPosition": "右边锋",
-    "socialStatus": "1800"
+    "position": [
+      "RW"
+    ],
+    "stats": 81,
+    "ability": 81,
+    "caps": 7,
+    "lineups": 3,
+    "goals": 0,
+    "assists": 0,
+    "age": 29,
+    "number": 10,
+    "height": 173,
+    "weight": 70,
+    "socialStatus": "2200",
+    "currentClub": "利兹联",
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2026-07-08",
+        "from": "富勒姆",
+        "to": "利兹联",
+        "fee": "",
+        "type": "免签"
+      }
+    ]
+  },
+  {
+    "person_id": "50783355",
+    "name": "巴霍亚",
+    "nation": "法国",
+    "staff": "FW",
+    "attr": "FW",
+    "attrDes": "FW",
+    "qiutanPosition": "左中场",
+    "position": [
+      "LM"
+    ],
+    "stats": 77,
+    "ability": 77,
+    "caps": 3,
+    "lineups": 0,
+    "goals": 0,
+    "assists": 0,
+    "age": 21,
+    "number": 23,
+    "height": 180,
+    "weight": 75,
+    "socialStatus": "2500",
+    "currentClub": "利兹联",
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2027-06-30",
+        "from": "利兹联",
+        "to": "法兰克福",
+        "fee": "",
+        "type": "租借回归"
+      },
+      {
+        "season": "2026-2027",
+        "date": "2026-09-01",
+        "from": "法兰克福",
+        "to": "利兹联",
+        "fee": "200万欧",
+        "type": "租借"
+      }
+    ]
+  },
+  {
+    "person_id": "50790244",
+    "name": "马特奥-约瑟夫",
+    "nation": "西班牙",
+    "staff": "FW",
+    "attr": "FW",
+    "attrDes": "FW",
+    "qiutanPosition": "中锋",
+    "position": [
+      "ST"
+    ],
+    "stats": 75,
+    "ability": 75,
+    "age": 23,
+    "height": 185,
+    "weight": 74,
+    "socialStatus": "350",
+    "currentClub": "利兹联",
+    "recentTransfers": []
   }
 ]
