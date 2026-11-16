@@ -1,2047 +1,725 @@
 [
   {
-    "number": 1,
-    "name": "塞纳·拉门斯",
-    "positionGroup": "GK",
+    "person_id": "50000035",
+    "name": "范博梅尔",
+    "nation": "荷兰",
+    "staff": "主教练",
+    "attr": "主教练",
+    "attrDes": "主教练",
+    "qiutanPosition": "主教练",
+    "position": [
+      "主教练"
+    ],
+    "age": 49,
+    "height": 186,
+    "weight": 86,
+    "currentClub": "比利时",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50468953",
+    "name": "拉门斯",
+    "nation": "比利时",
+    "staff": "GK",
+    "attr": "GK",
+    "attrDes": "GK",
+    "qiutanPosition": "门将",
+    "position": [
+      "GK"
+    ],
+    "stats": 84,
+    "ability": 84,
+    "caps": 4,
+    "lineups": 4,
+    "goals": 0,
+    "assists": 0,
     "age": 24,
+    "number": 1,
     "height": 193,
     "weight": 92,
-    "position": "守门员",
-    "nationality": "比利时",
-    "marketValue": "3000",
-    "birthDate": "2002-07-07",
-    "currentClub": "曼彻斯特联",
+    "socialStatus": "3500",
+    "currentClub": "曼联",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50456345",
+    "name": "范德沃特",
+    "nation": "比利时",
+    "staff": "GK",
+    "attr": "GK",
+    "attrDes": "GK",
+    "qiutanPosition": "门将",
+    "position": [
+      "GK"
+    ],
+    "stats": 77,
+    "ability": 77,
+    "caps": 1,
+    "lineups": 1,
+    "goals": 0,
+    "assists": 0,
+    "age": 24,
+    "number": 12,
+    "height": 187,
+    "weight": 79,
+    "socialStatus": "1500",
+    "currentClub": "RB莱比锡",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50265943",
+    "name": "德比塞",
+    "nation": "比利时",
+    "staff": "GK",
+    "attr": "GK",
+    "attrDes": "GK",
+    "qiutanPosition": "门将",
+    "position": [
+      "GK"
+    ],
+    "stats": 73,
+    "ability": 73,
+    "age": 27,
+    "height": 191,
+    "weight": 78,
+    "socialStatus": "500",
+    "currentClub": "阿尔克马尔",
     "recentTransfers": [
       {
-        "season": "2014-2015",
-        "date": "2014-07-01",
-        "from": "登德青年队",
-        "to": "布鲁日青年队",
+        "season": "2026-2027",
+        "date": "2026-07-01",
+        "from": "前进之鹰",
+        "to": "阿尔克马尔",
         "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2017-2018",
-        "date": "2017-07-01",
-        "from": "布鲁日青年队",
-        "to": "布鲁日U17",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2018-2019",
-        "date": "2018-07-01",
-        "from": "布鲁日U17",
-        "to": "布鲁日B队",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2020-2021",
-        "date": "2020-07-01",
-        "from": "布鲁日B队",
-        "to": "布鲁日",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2023-2024",
-        "date": "2023-07-01",
-        "from": "布鲁日",
-        "to": "安特卫普",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2025-2026",
-        "date": "2025-09-01",
-        "from": "安特卫普",
-        "to": "曼彻斯特联",
-        "fee": "2100万欧元",
-        "type": "完全所有"
+        "type": "?"
       }
     ]
   },
   {
-    "number": 0,
-    "name": "库尔图瓦",
-    "positionGroup": "GK",
-    "age": 34,
-    "height": 200,
-    "weight": 96,
-    "position": "守门员",
-    "nationality": "比利时",
-    "marketValue": "1800",
-    "birthDate": "1992-05-11",
-    "currentClub": "皇家马德里",
-    "recentTransfers": [
-      {
-        "season": "2007-2008",
-        "date": "2007-07-01",
-        "from": "亨克U21",
-        "to": "亨克U17",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2008-2009",
-        "date": "2008-07-01",
-        "from": "亨克U17",
-        "to": "亨克U19",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2009-2010",
-        "date": "2009-07-01",
-        "from": "亨克U19",
-        "to": "亨克",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2011-2012",
-        "date": "2011-07-26",
-        "from": "亨克",
-        "to": "切尔西",
-        "fee": "895万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2011-2012",
-        "date": "2011-07-27",
-        "from": "切尔西",
-        "to": "马德里竞技",
-        "fee": "120万欧元",
-        "type": "租借"
-      },
-      {
-        "season": "2013-2014",
-        "date": "2014-06-30",
-        "from": "马德里竞技",
-        "to": "切尔西",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2018-2019",
-        "date": "2018-08-09",
-        "from": "切尔西",
-        "to": "皇家马德里",
-        "fee": "3500万欧元",
-        "type": "完全所有"
-      }
-    ]
-  },
-  {
-    "number": 0,
-    "name": "迈克·彭德斯",
-    "positionGroup": "GK",
+    "person_id": "50802802",
+    "name": "彭德斯",
+    "nation": "比利时",
+    "staff": "GK",
+    "attr": "GK",
+    "attrDes": "GK",
+    "qiutanPosition": "门将",
+    "position": [
+      "GK"
+    ],
+    "stats": 78,
+    "ability": 78,
     "age": 21,
+    "number": 13,
     "height": 200,
     "weight": 95,
-    "position": "守门员",
-    "nationality": "比利时",
-    "marketValue": "1500",
-    "birthDate": "2005-07-31",
-    "currentClub": "斯特拉斯堡",
-    "recentTransfers": [
-      {
-        "season": "2021-2022",
-        "date": "2021-07-01",
-        "from": "亨克U21",
-        "to": "亨克U18",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2022-2023",
-        "date": "2022-07-01",
-        "from": "亨克U18",
-        "to": "亨克B队",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2023-2024",
-        "date": "2023-07-01",
-        "from": "亨克B队",
-        "to": "亨克",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2024-2025",
-        "date": "2024-08-27",
-        "from": "亨克",
-        "to": "切尔西",
-        "fee": "2000万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2024-2025",
-        "date": "2024-08-28",
-        "from": "切尔西",
-        "to": "亨克",
-        "fee": "",
-        "type": "租借"
-      },
-      {
-        "season": "2024-2025",
-        "date": "2025-06-01",
-        "from": "亨克",
-        "to": "切尔西",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2025-2026",
-        "date": "2025-07-28",
-        "from": "切尔西",
-        "to": "斯特拉斯堡",
-        "fee": "",
-        "type": "租借"
-      },
-      {
-        "season": "2025-2026",
-        "date": "2026-06-30",
-        "from": "斯特拉斯堡",
-        "to": "切尔西",
-        "fee": "",
-        "type": "租借结束"
-      }
-    ]
+    "socialStatus": "2500",
+    "currentClub": "切尔西",
+    "recentTransfers": []
   },
   {
-    "number": 2,
-    "name": "泽诺.德巴斯特",
-    "positionGroup": "DF",
-    "age": 23,
-    "height": 191,
-    "weight": 76,
-    "position": "后卫",
-    "nationality": "比利时",
-    "marketValue": "3000",
-    "birthDate": "2003-10-24",
-    "currentClub": "葡萄牙体育",
-    "recentTransfers": [
-      {
-        "season": "2019-2020",
-        "date": "2019-07-01",
-        "from": "安德列治U20",
-        "to": "安德勒赫特U18",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2019-2020",
-        "date": "2020-01-01",
-        "from": "安德勒赫特U18",
-        "to": "安德莱赫特B队",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2021-2022",
-        "date": "2021-07-01",
-        "from": "安德莱赫特B队",
-        "to": "安德莱赫特",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2024-2025",
-        "date": "2024-07-04",
-        "from": "安德莱赫特",
-        "to": "葡萄牙体育",
-        "fee": "1805万欧元",
-        "type": "完全所有"
-      }
-    ]
-  },
-  {
-    "number": 3,
-    "name": "亚瑟.泰特",
-    "positionGroup": "DF",
-    "age": 26,
-    "height": 185,
-    "weight": 78,
-    "position": "后卫",
-    "nationality": "比利时",
-    "marketValue": "2000",
-    "birthDate": "2000-05-25",
-    "currentClub": "法兰克福",
-    "recentTransfers": [
-      {
-        "season": "2011-2012",
-        "date": "2011-07-01",
-        "from": "欧本U21",
-        "to": "亨克U21",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2014-2015",
-        "date": "2014-07-01",
-        "from": "亨克U21",
-        "to": "标准列日U21",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2015-2016",
-        "date": "2015-07-01",
-        "from": "标准列日U21",
-        "to": "苏姆盖特U19",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2017-2018",
-        "date": "2017-07-01",
-        "from": "苏姆盖特U19",
-        "to": "亨克U19",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2018-2019",
-        "date": "2018-07-01",
-        "from": "亨克U19",
-        "to": "亨克B队",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2019-2020",
-        "date": "2019-08-26",
-        "from": "亨克B队",
-        "to": "标准列日B队",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2020-2021",
-        "date": "2020-07-13",
-        "from": "标准列日B队",
-        "to": "奥斯坦德",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2021-2022",
-        "date": "2021-08-26",
-        "from": "奥斯坦德",
-        "to": "博洛尼亚",
-        "fee": "",
-        "type": "租借"
-      },
-      {
-        "season": "2021-2022",
-        "date": "2022-06-30",
-        "from": "博洛尼亚",
-        "to": "奥斯坦德",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2022-2023",
-        "date": "2022-07-01",
-        "from": "奥斯坦德",
-        "to": "博洛尼亚",
-        "fee": "675万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2022-2023",
-        "date": "2022-07-29",
-        "from": "博洛尼亚",
-        "to": "雷恩",
-        "fee": "1900万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2024-2025",
-        "date": "2024-08-18",
-        "from": "雷恩",
-        "to": "法兰克福",
-        "fee": "",
-        "type": "租借"
-      },
-      {
-        "season": "2024-2025",
-        "date": "2025-02-01",
-        "from": "法兰克福",
-        "to": "雷恩",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2024-2025",
-        "date": "2025-02-02",
-        "from": "雷恩",
-        "to": "法兰克福",
-        "fee": "1300万欧元",
-        "type": "完全所有"
-      }
-    ]
-  },
-  {
-    "number": 4,
-    "name": "布兰登·梅赫伦",
-    "positionGroup": "DF",
-    "age": 33,
-    "height": 188,
-    "weight": 80,
-    "position": "后卫",
-    "nationality": "比利时",
-    "marketValue": "350",
-    "birthDate": "1993-01-28",
-    "currentClub": "布鲁日",
-    "recentTransfers": [
-      {
-        "season": "2010-2011",
-        "date": "2010-07-01",
-        "from": "布鲁日青年队",
-        "to": "布鲁日U17",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2011-2012",
-        "date": "2011-07-01",
-        "from": "布鲁日U17",
-        "to": "布鲁日U19",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2013-2014",
-        "date": "2013-07-01",
-        "from": "布鲁日U19",
-        "to": "布鲁日",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2016-2017",
-        "date": "2017-01-05",
-        "from": "布鲁日",
-        "to": "圣图尔登",
-        "fee": "",
-        "type": "租借"
-      },
-      {
-        "season": "2016-2017",
-        "date": "2017-06-30",
-        "from": "圣图尔登",
-        "to": "布鲁日",
-        "fee": "",
-        "type": "租借结束"
-      }
-    ]
-  },
-  {
+    "person_id": "50468963",
+    "name": "德克伊珀",
+    "nation": "比利时",
+    "staff": "DF",
+    "attr": "DF",
+    "attrDes": "DF",
+    "qiutanPosition": "后卫",
+    "position": [
+      "DF"
+    ],
+    "stats": 81,
+    "ability": 81,
+    "caps": 4,
+    "lineups": 3,
+    "goals": 0,
+    "assists": 1,
+    "age": 25,
     "number": 5,
-    "name": "M.德库耶佩",
-    "positionGroup": "DF",
-    "age": 26,
     "height": 182,
     "weight": 72,
-    "position": "后卫",
-    "nationality": "比利时",
-    "marketValue": "2200",
-    "birthDate": "2000-12-22",
+    "socialStatus": "3000",
     "currentClub": "布莱顿",
-    "recentTransfers": [
-      {
-        "season": "2016-2017",
-        "date": "2016-07-01",
-        "from": "布鲁日青年队",
-        "to": "布鲁日U17",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2017-2018",
-        "date": "2017-07-01",
-        "from": "布鲁日U17",
-        "to": "布鲁日U19",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2018-2019",
-        "date": "2018-07-01",
-        "from": "布鲁日U19",
-        "to": "布鲁日B队",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2019-2020",
-        "date": "2020-01-01",
-        "from": "布鲁日B队",
-        "to": "布鲁日",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2021-2022",
-        "date": "2021-08-02",
-        "from": "布鲁日",
-        "to": "韦斯特鲁",
-        "fee": "",
-        "type": "租借"
-      },
-      {
-        "season": "2022-2023",
-        "date": "2023-06-30",
-        "from": "韦斯特鲁",
-        "to": "布鲁日",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2025-2026",
-        "date": "2025-07-05",
-        "from": "布鲁日",
-        "to": "布莱顿",
-        "fee": "2000万欧元",
-        "type": "完全所有"
-      }
-    ]
+    "recentTransfers": []
   },
   {
-    "number": 15,
-    "name": "穆尼耶",
-    "positionGroup": "DF",
-    "age": 35,
-    "height": 191,
-    "weight": 90,
-    "position": "后卫",
-    "nationality": "比利时",
-    "marketValue": "180",
-    "birthDate": "1991-09-12",
-    "currentClub": "里尔",
-    "recentTransfers": [
-      {
-        "season": "2006-2007",
-        "date": "2006-07-01",
-        "from": "标准列日U21",
-        "to": "维尔通U19",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2009-2010",
-        "date": "2009-07-01",
-        "from": "维尔通U19",
-        "to": "维尔通",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2011-2012",
-        "date": "2011-07-01",
-        "from": "维尔通",
-        "to": "布鲁日",
-        "fee": "20万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2016-2017",
-        "date": "2016-07-03",
-        "from": "布鲁日",
-        "to": "巴黎圣日耳曼",
-        "fee": "600万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2020-2021",
-        "date": "2020-07-01",
-        "from": "巴黎圣日耳曼",
-        "to": "多特蒙德",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2023-2024",
-        "date": "2024-02-07",
-        "from": "多特蒙德",
-        "to": "特拉布宗体育",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2024-2025",
-        "date": "2024-07-19",
-        "from": "特拉布宗体育",
-        "to": "里尔",
-        "fee": "",
-        "type": "自由转会"
-      }
-    ]
-  },
-  {
-    "number": 16,
-    "name": "科尼.德温特",
-    "positionGroup": "DF",
-    "age": 24,
-    "height": 191,
-    "weight": 78,
-    "position": "后卫",
-    "nationality": "比利时",
-    "marketValue": "2000",
-    "birthDate": "2002-06-12",
-    "currentClub": "AC米兰",
-    "recentTransfers": [
-      {
-        "season": "2016-2017",
-        "date": "2016-07-01",
-        "from": "利尔斯青年",
-        "to": "威尔郡青年队",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2018-2019",
-        "date": "2018-07-24",
-        "from": "威尔郡青年队",
-        "to": "祖云达斯U17",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2019-2020",
-        "date": "2019-07-01",
-        "from": "祖云达斯U17",
-        "to": "尤文图斯青年队",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2021-2022",
-        "date": "2021-07-01",
-        "from": "尤文图斯青年队",
-        "to": "祖云达斯U23",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2022-2023",
-        "date": "2022-07-09",
-        "from": "祖云达斯U23",
-        "to": "恩波利",
-        "fee": "",
-        "type": "租借"
-      },
-      {
-        "season": "2022-2023",
-        "date": "2023-06-30",
-        "from": "恩波利",
-        "to": "尤文图斯",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2023-2024",
-        "date": "2023-08-11",
-        "from": "尤文图斯",
-        "to": "热那亚",
-        "fee": "",
-        "type": "租借"
-      },
-      {
-        "season": "2023-2024",
-        "date": "2024-06-30",
-        "from": "热那亚",
-        "to": "尤文图斯",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2024-2025",
-        "date": "2024-07-01",
-        "from": "尤文图斯",
-        "to": "热那亚",
-        "fee": "1100万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2025-2026",
-        "date": "2025-08-13",
-        "from": "热那亚",
-        "to": "AC米兰",
-        "fee": "2000万欧元",
-        "type": "完全所有"
-      }
-    ]
-  },
-  {
-    "number": 18,
-    "name": "华金·塞斯",
-    "positionGroup": "DF",
-    "age": 21,
-    "height": 178,
-    "weight": 63,
-    "position": "后卫",
-    "nationality": "比利时",
-    "marketValue": "1500",
-    "birthDate": "2005-03-28",
+    "person_id": "50189251",
+    "name": "布兰登-梅切勒",
+    "nation": "比利时",
+    "staff": "DF",
+    "attr": "DF",
+    "attrDes": "DF",
+    "qiutanPosition": "后卫",
+    "position": [
+      "DF"
+    ],
+    "stats": 79,
+    "ability": 79,
+    "caps": 5,
+    "lineups": 5,
+    "goals": 0,
+    "assists": 0,
+    "age": 33,
+    "number": 4,
+    "height": 190,
+    "weight": 80,
+    "socialStatus": "280",
     "currentClub": "布鲁日",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50561172",
+    "name": "阿蒂尔-蒂特",
+    "nation": "比利时",
+    "staff": "DF",
+    "attr": "DF",
+    "attrDes": "DF",
+    "qiutanPosition": "后卫",
+    "position": [
+      "DF"
+    ],
+    "stats": 79,
+    "ability": 79,
+    "age": 26,
+    "number": 3,
+    "height": 185,
+    "weight": 81,
+    "socialStatus": "1500",
+    "currentClub": "博洛尼亚",
     "recentTransfers": [
       {
-        "season": "2012-2013",
-        "date": "2012-07-01",
-        "from": "KV奥斯坦德青年队",
-        "to": "布鲁日青年队",
+        "season": "2026-2027",
+        "date": "2027-06-30",
+        "from": "博洛尼亚",
+        "to": "法兰克福",
         "fee": "",
-        "type": "自由转会"
+        "type": "租借回归"
       },
       {
-        "season": "2021-2022",
-        "date": "2021-07-01",
-        "from": "布鲁日青年队",
-        "to": "布鲁日U18",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2022-2023",
-        "date": "2022-07-01",
-        "from": "布鲁日U18",
-        "to": "布鲁日B队",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2024-2025",
-        "date": "2024-07-01",
-        "from": "布鲁日B队",
-        "to": "布鲁日",
-        "fee": "",
-        "type": "完全所有"
+        "season": "2026-2027",
+        "date": "2026-08-30",
+        "from": "法兰克福",
+        "to": "博洛尼亚",
+        "fee": "100万欧",
+        "type": "租借"
       }
     ]
   },
   {
-    "number": 20,
-    "name": "内森·恩戈伊",
-    "positionGroup": "DF",
-    "age": 23,
-    "height": 183,
-    "weight": 74,
-    "position": "后卫",
-    "nationality": "比利时",
-    "marketValue": "1000",
-    "birthDate": "2003-06-10",
-    "currentClub": "里尔",
-    "recentTransfers": [
-      {
-        "season": "2019-2020",
-        "date": "2019-07-01",
-        "from": "安德列治U20",
-        "to": "标准列日U18",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2020-2021",
-        "date": "2021-01-01",
-        "from": "标准列日U18",
-        "to": "标准列日B队",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2021-2022",
-        "date": "2021-07-01",
-        "from": "标准列日B队",
-        "to": "标准列日",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2025-2026",
-        "date": "2025-07-24",
-        "from": "标准列日",
-        "to": "里尔",
-        "fee": "300万欧元",
-        "type": "完全所有"
-      }
-    ]
-  },
-  {
+    "person_id": "50190475",
+    "name": "卡斯塔涅",
+    "nation": "比利时",
+    "staff": "DF",
+    "attr": "DF",
+    "attrDes": "DF",
+    "qiutanPosition": "后卫",
+    "position": [
+      "DF"
+    ],
+    "stats": 76,
+    "ability": 76,
+    "caps": 5,
+    "lineups": 5,
+    "goals": 0,
+    "assists": 0,
+    "age": 30,
     "number": 21,
-    "name": "卡斯塔内",
-    "positionGroup": "DF",
-    "age": 31,
     "height": 185,
     "weight": 80,
-    "position": "后卫",
-    "nationality": "比利时",
-    "marketValue": "1000",
-    "birthDate": "1995-12-05",
+    "socialStatus": "800",
     "currentClub": "富勒姆",
-    "recentTransfers": [
-      {
-        "season": "2011-2012",
-        "date": "2011-07-01",
-        "from": "维尔通U17",
-        "to": "亨克U17",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2012-2013",
-        "date": "2012-07-01",
-        "from": "亨克U17",
-        "to": "亨克U19",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2013-2014",
-        "date": "2013-07-01",
-        "from": "亨克U19",
-        "to": "亨克B队",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2014-2015",
-        "date": "2014-07-01",
-        "from": "亨克B队",
-        "to": "亨克",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2017-2018",
-        "date": "2017-07-07",
-        "from": "亨克",
-        "to": "亚特兰大",
-        "fee": "650万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2020-2021",
-        "date": "2020-09-03",
-        "from": "亚特兰大",
-        "to": "莱斯特城",
-        "fee": "2090万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2023-2024",
-        "date": "2023-08-29",
-        "from": "莱斯特城",
-        "to": "富勒姆",
-        "fee": "1300万欧元",
-        "type": "完全所有"
-      }
-    ]
+    "recentTransfers": []
   },
   {
-    "number": 6,
-    "name": "维特塞尔",
-    "positionGroup": "MF",
-    "age": 37,
-    "height": 186,
-    "weight": 81,
-    "position": "中场",
-    "nationality": "比利时",
-    "marketValue": "140",
-    "birthDate": "1989-01-12",
-    "currentClub": "比利时",
-    "recentTransfers": [
-      {
-        "season": "2004-2005",
-        "date": "2004-07-01",
-        "from": "标准列日U21",
-        "to": "苏姆盖特U19",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2005-2006",
-        "date": "2005-07-01",
-        "from": "苏姆盖特U19",
-        "to": "标准列日U19",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2006-2007",
-        "date": "2006-07-01",
-        "from": "标准列日U19",
-        "to": "标准列日",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2011-2012",
-        "date": "2011-07-13",
-        "from": "标准列日",
-        "to": "本菲卡",
-        "fee": "900万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2012-2013",
-        "date": "2012-09-03",
-        "from": "本菲卡",
-        "to": "圣彼得堡泽尼特",
-        "fee": "4000万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2016-2017",
-        "date": "2017-01-03",
-        "from": "圣彼得堡泽尼特",
-        "to": "天津天海",
-        "fee": "2000万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2018-2019",
-        "date": "2018-08-06",
-        "from": "天津天海",
-        "to": "多特蒙德",
-        "fee": "2000万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2022-2023",
-        "date": "2022-07-06",
-        "from": "多特蒙德",
-        "to": "马德里竞技",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2025-2026",
-        "date": "2025-08-12",
-        "from": "马德里竞技",
-        "to": "赫罗纳",
-        "fee": "",
-        "type": "自由转会"
-      }
-    ]
+    "person_id": "50534550",
+    "name": "恩戈伊",
+    "nation": "比利时",
+    "staff": "DF",
+    "attr": "DF",
+    "attrDes": "DF",
+    "qiutanPosition": "后卫",
+    "position": [
+      "DF"
+    ],
+    "stats": 79,
+    "ability": 79,
+    "caps": 5,
+    "lineups": 5,
+    "goals": 0,
+    "assists": 0,
+    "age": 23,
+    "number": 15,
+    "height": 183,
+    "weight": 74,
+    "socialStatus": "2500",
+    "currentClub": "里尔",
+    "recentTransfers": []
   },
   {
-    "number": 7,
+    "person_id": "50803193",
+    "name": "若阿金-塞",
+    "nation": "比利时",
+    "staff": "DF",
+    "attr": "DF",
+    "attrDes": "DF",
+    "qiutanPosition": "后卫",
+    "position": [
+      "DF"
+    ],
+    "stats": 75,
+    "ability": 75,
+    "caps": 2,
+    "lineups": 2,
+    "goals": 0,
+    "assists": 0,
+    "age": 21,
+    "number": 18,
+    "height": 178,
+    "weight": 63,
+    "socialStatus": "2700",
+    "currentClub": "布鲁日",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50805014",
+    "name": "恩登格-孔戈洛",
+    "nation": "比利时",
+    "staff": "DF",
+    "attr": "DF",
+    "attrDes": "DF",
+    "qiutanPosition": "后卫",
+    "position": [
+      "DF"
+    ],
+    "stats": 63,
+    "ability": 63,
+    "age": 20,
+    "number": 16,
+    "height": 184,
+    "weight": 75,
+    "socialStatus": "700",
+    "currentClub": "亨克",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50784754",
+    "name": "萨布",
+    "nation": "比利时",
+    "staff": "DF",
+    "attr": "DF",
+    "attrDes": "DF",
+    "qiutanPosition": "后卫",
+    "position": [
+      "DF"
+    ],
+    "stats": 73,
+    "ability": 73,
+    "age": 21,
+    "number": 2,
+    "height": 172,
+    "weight": 68,
+    "socialStatus": "1300",
+    "currentClub": "布鲁日",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50055255",
     "name": "德布劳内",
-    "positionGroup": "MF",
+    "nation": "比利时",
+    "staff": "MF",
+    "attr": "MF",
+    "attrDes": "MF",
+    "qiutanPosition": "中场",
+    "position": [
+      "MF"
+    ],
+    "stats": 84,
+    "ability": 84,
+    "caps": 4,
+    "lineups": 4,
+    "goals": 3,
+    "assists": 1,
     "age": 35,
+    "number": 7,
     "height": 181,
     "weight": 75,
-    "position": "中场",
-    "nationality": "比利时",
-    "marketValue": "1500",
-    "birthDate": "1991-06-28",
-    "currentClub": "比利时",
-    "recentTransfers": [
-      {
-        "season": "2005-2006",
-        "date": "2005-07-01",
-        "from": "根特后备队",
-        "to": "亨克U21",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2006-2007",
-        "date": "2006-07-01",
-        "from": "亨克U21",
-        "to": "亨克U17",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2007-2008",
-        "date": "2007-07-01",
-        "from": "亨克U17",
-        "to": "亨克U19",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2008-2009",
-        "date": "2008-07-01",
-        "from": "亨克U19",
-        "to": "亨克",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2011-2012",
-        "date": "2012-01-31",
-        "from": "亨克",
-        "to": "切尔西",
-        "fee": "800万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2011-2012",
-        "date": "2012-02-01",
-        "from": "切尔西",
-        "to": "亨克",
-        "fee": "",
-        "type": "租借"
-      },
-      {
-        "season": "2011-2012",
-        "date": "2012-06-30",
-        "from": "亨克",
-        "to": "切尔西",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2012-2013",
-        "date": "2012-08-02",
-        "from": "切尔西",
-        "to": "云达不莱梅",
-        "fee": "45万欧元",
-        "type": "租借"
-      },
-      {
-        "season": "2012-2013",
-        "date": "2013-06-30",
-        "from": "云达不莱梅",
-        "to": "切尔西",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2013-2014",
-        "date": "2014-01-18",
-        "from": "切尔西",
-        "to": "沃尔夫斯堡",
-        "fee": "2200万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2015-2016",
-        "date": "2015-08-30",
-        "from": "沃尔夫斯堡",
-        "to": "曼彻斯特城",
-        "fee": "7600万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2025-2026",
-        "date": "2025-07-01",
-        "from": "曼彻斯特城",
-        "to": "那不勒斯",
-        "fee": "",
-        "type": "自由转会"
-      }
-    ]
+    "socialStatus": "800",
+    "currentClub": "那不勒斯",
+    "recentTransfers": []
   },
   {
-    "number": 8,
-    "name": "蒂莱曼斯",
-    "positionGroup": "MF",
+    "person_id": "50468964",
+    "name": "德凯特拉雷",
+    "nation": "比利时",
+    "staff": "MF",
+    "attr": "MF",
+    "attrDes": "MF",
+    "qiutanPosition": "中场",
+    "position": [
+      "MF"
+    ],
+    "stats": 83,
+    "ability": 83,
+    "caps": 5,
+    "lineups": 4,
+    "goals": 1,
+    "assists": 2,
+    "age": 25,
+    "number": 17,
+    "height": 192,
+    "weight": 74,
+    "socialStatus": "3500",
+    "currentClub": "亚特兰大",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50190378",
+    "name": "蒂勒曼斯",
+    "nation": "比利时",
+    "staff": "MF",
+    "attr": "MF",
+    "attrDes": "MF",
+    "qiutanPosition": "中场",
+    "position": [
+      "MF"
+    ],
+    "stats": 83,
+    "ability": 83,
+    "caps": 4,
+    "lineups": 4,
+    "goals": 0,
+    "assists": 1,
     "age": 29,
-    "height": 177,
+    "number": 8,
+    "height": 176,
     "weight": 72,
-    "position": "中场",
-    "nationality": "比利时",
-    "marketValue": "3500",
-    "birthDate": "1997-05-07",
-    "currentClub": "阿斯顿维拉",
+    "socialStatus": "4000",
+    "currentClub": "曼联",
     "recentTransfers": [
       {
-        "season": "2012-2013",
-        "date": "2012-07-01",
-        "from": "安德列治U20",
-        "to": "安德莱赫特后备队",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2013-2014",
-        "date": "2013-07-01",
-        "from": "安德莱赫特后备队",
-        "to": "安德莱赫特",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2017-2018",
-        "date": "2017-07-01",
-        "from": "安德莱赫特",
-        "to": "摩纳哥",
-        "fee": "2500万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2018-2019",
-        "date": "2019-01-31",
-        "from": "摩纳哥",
-        "to": "莱斯特城",
-        "fee": "",
-        "type": "租借"
-      },
-      {
-        "season": "2018-2019",
-        "date": "2019-06-30",
-        "from": "莱斯特城",
-        "to": "摩纳哥",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2019-2020",
-        "date": "2019-07-08",
-        "from": "摩纳哥",
-        "to": "莱斯特城",
-        "fee": "4500万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2023-2024",
-        "date": "2023-07-01",
-        "from": "莱斯特城",
-        "to": "阿斯顿维拉",
-        "fee": "",
-        "type": "自由转会"
+        "season": "2026-2027",
+        "date": "2026-07-14",
+        "from": "阿斯顿维拉",
+        "to": "曼联",
+        "fee": "4100万欧",
+        "type": "转会"
       }
     ]
   },
   {
-    "number": 24,
-    "name": "阿马杜·奥纳纳",
-    "positionGroup": "MF",
-    "age": 25,
-    "height": 195,
-    "weight": 76,
-    "position": "中场",
-    "nationality": "比利时",
-    "marketValue": "4500",
-    "birthDate": "2001-08-16",
-    "currentClub": "阿斯顿维拉",
-    "recentTransfers": [
-      {
-        "season": "2017-2018",
-        "date": "2017-07-01",
-        "from": "威尔郡青年队",
-        "to": "霍芬海姆U17",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2018-2019",
-        "date": "2018-07-01",
-        "from": "霍芬海姆U17",
-        "to": "霍芬海姆U19",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2020-2021",
-        "date": "2020-07-01",
-        "from": "霍芬海姆U19",
-        "to": "汉堡",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2021-2022",
-        "date": "2021-08-05",
-        "from": "汉堡",
-        "to": "里尔",
-        "fee": "1357万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2022-2023",
-        "date": "2022-08-09",
-        "from": "里尔",
-        "to": "埃弗顿",
-        "fee": "3987万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2024-2025",
-        "date": "2024-07-22",
-        "from": "埃弗顿",
-        "to": "阿斯顿维拉",
-        "fee": "5935万欧元",
-        "type": "完全所有"
-      }
-    ]
-  },
-  {
-    "number": 0,
-    "name": "汉斯.瓦纳肯",
-    "positionGroup": "MF",
+    "person_id": "50086761",
+    "name": "瓦纳肯",
+    "nation": "比利时",
+    "staff": "MF",
+    "attr": "MF",
+    "attrDes": "MF",
+    "qiutanPosition": "中场",
+    "position": [
+      "MF"
+    ],
+    "stats": 81,
+    "ability": 81,
+    "caps": 5,
+    "lineups": 2,
+    "goals": 0,
+    "assists": 0,
     "age": 34,
-    "height": 194,
+    "number": 20,
+    "height": 195,
     "weight": 77,
-    "position": "中场",
-    "nationality": "比利时",
-    "marketValue": "700",
-    "birthDate": "1992-08-24",
+    "socialStatus": "500",
     "currentClub": "布鲁日",
-    "recentTransfers": [
-      {
-        "season": "2006-2007",
-        "date": "2006-07-01",
-        "from": "PSV埃因霍温U15",
-        "to": "洛默尔青年队",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2007-2008",
-        "date": "2007-07-01",
-        "from": "洛默尔青年队",
-        "to": "隆美尔SK U17",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2008-2009",
-        "date": "2008-07-01",
-        "from": "隆美尔SK U17",
-        "to": "隆姆U21",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2010-2011",
-        "date": "2010-07-01",
-        "from": "隆姆U21",
-        "to": "洛默尔",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2013-2014",
-        "date": "2013-07-01",
-        "from": "洛默尔",
-        "to": "洛克伦",
-        "fee": "17.5万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2015-2016",
-        "date": "2015-07-01",
-        "from": "洛克伦",
-        "to": "布鲁日",
-        "fee": "425万欧元",
-        "type": "完全所有"
-      }
-    ]
+    "recentTransfers": []
   },
   {
-    "number": 0,
-    "name": "尼古拉斯·拉斯金",
-    "positionGroup": "MF",
+    "person_id": "50406622",
+    "name": "拉斯金",
+    "nation": "比利时",
+    "staff": "MF",
+    "attr": "MF",
+    "attrDes": "MF",
+    "qiutanPosition": "中场",
+    "position": [
+      "MF"
+    ],
+    "stats": 79,
+    "ability": 79,
+    "caps": 4,
+    "lineups": 3,
+    "goals": 0,
+    "assists": 0,
     "age": 25,
+    "number": 23,
     "height": 178,
     "weight": 74,
-    "position": "中场",
-    "nationality": "比利时",
-    "marketValue": "1200",
-    "birthDate": "2001-02-23",
+    "socialStatus": "1500",
     "currentClub": "格拉斯哥流浪者",
-    "recentTransfers": [
-      {
-        "season": "2015-2016",
-        "date": "2015-07-01",
-        "from": "标准列日U21",
-        "to": "安德列治U20",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2017-2018",
-        "date": "2017-07-01",
-        "from": "安德列治U20",
-        "to": "根特B队",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2018-2019",
-        "date": "2019-01-23",
-        "from": "根特B队",
-        "to": "标准列日B队",
-        "fee": "20万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2019-2020",
-        "date": "2019-07-01",
-        "from": "标准列日B队",
-        "to": "标准列日",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2022-2023",
-        "date": "2023-01-31",
-        "from": "标准列日",
-        "to": "格拉斯哥流浪者",
-        "fee": "150万欧元",
-        "type": "完全所有"
-      }
-    ]
+    "recentTransfers": []
   },
   {
-    "number": 10,
-    "name": "罗梅卢·卢卡库",
-    "positionGroup": "FW",
-    "age": 33,
-    "height": 191,
-    "weight": 94,
-    "position": "前锋",
-    "nationality": "比利时",
-    "marketValue": "1500",
-    "birthDate": "1993-05-13",
-    "currentClub": "比利时",
-    "recentTransfers": [
-      {
-        "season": "2006-2007",
-        "date": "2006-07-01",
-        "from": "利尔斯青年",
-        "to": "安德列治U20",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2008-2009",
-        "date": "2008-07-01",
-        "from": "安德列治U20",
-        "to": "安德莱赫特后备队",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2009-2010",
-        "date": "2009-07-01",
-        "from": "安德莱赫特后备队",
-        "to": "安德莱赫特",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2011-2012",
-        "date": "2011-08-08",
-        "from": "安德莱赫特",
-        "to": "切尔西",
-        "fee": "1500万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2012-2013",
-        "date": "2012-08-10",
-        "from": "切尔西",
-        "to": "西布罗姆维奇",
-        "fee": "",
-        "type": "租借"
-      },
-      {
-        "season": "2012-2013",
-        "date": "2013-05-31",
-        "from": "西布罗姆维奇",
-        "to": "切尔西",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2013-2014",
-        "date": "2013-09-02",
-        "from": "切尔西",
-        "to": "埃弗顿",
-        "fee": "350万欧元",
-        "type": "租借"
-      },
-      {
-        "season": "2013-2014",
-        "date": "2014-05-31",
-        "from": "埃弗顿",
-        "to": "切尔西",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2014-2015",
-        "date": "2014-07-30",
-        "from": "切尔西",
-        "to": "埃弗顿",
-        "fee": "3536万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2017-2018",
-        "date": "2017-07-10",
-        "from": "埃弗顿",
-        "to": "曼彻斯特联",
-        "fee": "8470万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2019-2020",
-        "date": "2019-08-08",
-        "from": "曼彻斯特联",
-        "to": "国际米兰",
-        "fee": "7400万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2021-2022",
-        "date": "2021-08-12",
-        "from": "国际米兰",
-        "to": "切尔西",
-        "fee": "11300万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2022-2023",
-        "date": "2022-07-01",
-        "from": "切尔西",
-        "to": "国际米兰",
-        "fee": "786万欧元",
-        "type": "租借"
-      },
-      {
-        "season": "2022-2023",
-        "date": "2023-06-30",
-        "from": "国际米兰",
-        "to": "切尔西",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2023-2024",
-        "date": "2023-08-30",
-        "from": "切尔西",
-        "to": "罗马",
-        "fee": "580万欧元",
-        "type": "租借"
-      },
-      {
-        "season": "2023-2024",
-        "date": "2024-06-30",
-        "from": "罗马",
-        "to": "切尔西",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2024-2025",
-        "date": "2024-08-29",
-        "from": "切尔西",
-        "to": "那不勒斯",
-        "fee": "3070万欧元",
-        "type": "完全所有"
-      }
-    ]
+    "person_id": "50573697",
+    "name": "拉维亚",
+    "nation": "比利时",
+    "staff": "MF",
+    "attr": "MF",
+    "attrDes": "MF",
+    "qiutanPosition": "中场",
+    "position": [
+      "MF"
+    ],
+    "stats": 78,
+    "ability": 78,
+    "caps": 4,
+    "lineups": 2,
+    "goals": 0,
+    "assists": 1,
+    "age": 22,
+    "height": 181,
+    "weight": 76,
+    "socialStatus": "2500",
+    "currentClub": "切尔西",
+    "recentTransfers": []
   },
   {
-    "number": 11,
-    "name": "多库",
-    "positionGroup": "FW",
-    "age": 24,
-    "height": 173,
-    "weight": 66,
-    "position": "前锋",
-    "nationality": "比利时",
-    "marketValue": "6500",
-    "birthDate": "2002-05-27",
-    "currentClub": "曼彻斯特城",
-    "recentTransfers": [
-      {
-        "season": "2012-2013",
-        "date": "2012-07-01",
-        "from": "比尔肖特青年队",
-        "to": "安德列治U20",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2017-2018",
-        "date": "2017-07-01",
-        "from": "安德列治U20",
-        "to": "安德莱赫特后备队",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2018-2019",
-        "date": "2018-07-01",
-        "from": "安德莱赫特后备队",
-        "to": "安德莱赫特B队",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2019-2020",
-        "date": "2019-07-01",
-        "from": "安德莱赫特B队",
-        "to": "安德莱赫特",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2020-2021",
-        "date": "2020-10-05",
-        "from": "安德莱赫特",
-        "to": "雷恩",
-        "fee": "2600万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2023-2024",
-        "date": "2023-08-24",
-        "from": "雷恩",
-        "to": "曼彻斯特城",
-        "fee": "6000万欧元",
-        "type": "完全所有"
-      }
-    ]
-  },
-  {
-    "number": 14,
-    "name": "卢科巴基奥",
-    "positionGroup": "FW",
-    "age": 29,
-    "height": 187,
-    "weight": 77,
-    "position": "前锋",
-    "nationality": "比利时",
-    "marketValue": "2000",
-    "birthDate": "1997-09-24",
-    "currentClub": "本菲卡",
-    "recentTransfers": [
-      {
-        "season": "2014-2015",
-        "date": "2014-07-01",
-        "from": "安德列治U19",
-        "to": "安德莱赫特B队",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2015-2016",
-        "date": "2015-10-25",
-        "from": "安德莱赫特B队",
-        "to": "安德莱赫特",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2016-2017",
-        "date": "2016-08-31",
-        "from": "安德莱赫特",
-        "to": "图卢兹",
-        "fee": "",
-        "type": "租借"
-      },
-      {
-        "season": "2016-2017",
-        "date": "2017-06-30",
-        "from": "图卢兹",
-        "to": "安德莱赫特",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2017-2018",
-        "date": "2017-07-02",
-        "from": "安德莱赫特",
-        "to": "沙勒罗瓦",
-        "fee": "",
-        "type": "租借"
-      },
-      {
-        "season": "2017-2018",
-        "date": "2018-01-28",
-        "from": "沙勒罗瓦",
-        "to": "安德莱赫特",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2017-2018",
-        "date": "2018-01-29",
-        "from": "安德莱赫特",
-        "to": "沙勒罗瓦",
-        "fee": "260万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2017-2018",
-        "date": "2018-01-30",
-        "from": "沙勒罗瓦",
-        "to": "沃特福德",
-        "fee": "500万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2018-2019",
-        "date": "2018-07-22",
-        "from": "沃特福德",
-        "to": "杜塞尔多夫",
-        "fee": "30万欧元",
-        "type": "租借"
-      },
-      {
-        "season": "2018-2019",
-        "date": "2019-06-30",
-        "from": "杜塞尔多夫",
-        "to": "沃特福德",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2019-2020",
-        "date": "2019-08-01",
-        "from": "沃特福德",
-        "to": "柏林赫塔",
-        "fee": "2000万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2021-2022",
-        "date": "2021-08-30",
-        "from": "柏林赫塔",
-        "to": "沃尔夫斯堡",
-        "fee": "",
-        "type": "租借"
-      },
-      {
-        "season": "2021-2022",
-        "date": "2022-06-30",
-        "from": "沃尔夫斯堡",
-        "to": "柏林赫塔",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2023-2024",
-        "date": "2023-08-24",
-        "from": "柏林赫塔",
-        "to": "塞维利亚",
-        "fee": "1000万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2025-2026",
-        "date": "2025-09-01",
-        "from": "塞维利亚",
-        "to": "本菲卡",
-        "fee": "2000万欧元",
-        "type": "完全所有"
-      }
-    ]
-  },
-  {
-    "number": 22,
-    "name": "萨勒马克斯",
-    "positionGroup": "FW",
-    "age": 27,
-    "height": 180,
-    "weight": 72,
-    "position": "前锋",
-    "nationality": "比利时",
-    "marketValue": "2500",
-    "birthDate": "1999-06-27",
+    "person_id": "50780919",
+    "name": "迭戈-莫雷拉",
+    "nation": "比利时",
+    "staff": "MF",
+    "attr": "MF",
+    "attrDes": "MF",
+    "qiutanPosition": "中场",
+    "position": [
+      "MF"
+    ],
+    "stats": 82,
+    "ability": 82,
+    "caps": 4,
+    "lineups": 4,
+    "goals": 0,
+    "assists": 0,
+    "age": 22,
+    "number": 19,
+    "height": 179,
+    "weight": 73,
+    "socialStatus": "4500",
     "currentClub": "AC米兰",
     "recentTransfers": [
       {
-        "season": "2015-2016",
-        "date": "2015-07-01",
-        "from": "安德列治U20",
-        "to": "安德莱赫特后备队",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2016-2017",
-        "date": "2016-07-01",
-        "from": "安德莱赫特后备队",
-        "to": "安德列治U19",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2017-2018",
-        "date": "2017-07-01",
-        "from": "安德列治U19",
-        "to": "安德莱赫特B队",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2017-2018",
-        "date": "2018-01-01",
-        "from": "安德莱赫特B队",
-        "to": "安德莱赫特",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2019-2020",
-        "date": "2020-01-31",
-        "from": "安德莱赫特",
+        "season": "2026-2027",
+        "date": "2026-08-19",
+        "from": "斯特拉斯堡",
         "to": "AC米兰",
-        "fee": "325万欧元",
-        "type": "租借"
-      },
-      {
-        "season": "2019-2020",
-        "date": "2020-08-31",
-        "from": "AC米兰",
-        "to": "安德莱赫特",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2020-2021",
-        "date": "2020-09-01",
-        "from": "安德莱赫特",
-        "to": "AC米兰",
-        "fee": "765万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2023-2024",
-        "date": "2023-08-30",
-        "from": "AC米兰",
-        "to": "博洛尼亚",
-        "fee": "50万欧元",
-        "type": "租借"
-      },
-      {
-        "season": "2023-2024",
-        "date": "2024-06-30",
-        "from": "博洛尼亚",
-        "to": "AC米兰",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2024-2025",
-        "date": "2024-08-30",
-        "from": "AC米兰",
-        "to": "罗马",
-        "fee": "",
-        "type": "租借"
-      },
-      {
-        "season": "2024-2025",
-        "date": "2025-06-30",
-        "from": "罗马",
-        "to": "AC米兰",
-        "fee": "",
-        "type": "租借结束"
+        "fee": "5000万欧",
+        "type": "转会"
       }
     ]
   },
   {
-    "number": 0,
-    "name": "德凯特拉雷",
-    "positionGroup": "FW",
-    "age": 25,
-    "height": 192,
-    "weight": 79,
-    "position": "前锋",
-    "nationality": "比利时",
-    "marketValue": "3500",
-    "birthDate": "2001-03-10",
-    "currentClub": "亚特兰大",
+    "person_id": "50625979",
+    "name": "曼德拉-凯塔",
+    "nation": "比利时",
+    "staff": "MF",
+    "attr": "MF",
+    "attrDes": "MF",
+    "qiutanPosition": "中场",
+    "position": [
+      "MF"
+    ],
+    "stats": 77,
+    "ability": 77,
+    "caps": 1,
+    "lineups": 0,
+    "goals": 0,
+    "assists": 0,
+    "age": 24,
+    "number": 6,
+    "height": 181,
+    "weight": 78,
+    "socialStatus": "2000",
+    "currentClub": "帕尔马",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50055783",
+    "name": "卢卡库",
+    "nation": "比利时",
+    "staff": "FW",
+    "attr": "FW",
+    "attrDes": "FW",
+    "qiutanPosition": "前锋",
+    "position": [
+      "FW"
+    ],
+    "stats": 83,
+    "ability": 83,
+    "caps": 3,
+    "lineups": 1,
+    "goals": 1,
+    "assists": 0,
+    "age": 33,
+    "height": 191,
+    "weight": 100,
+    "socialStatus": "600",
+    "currentClub": "费内巴切",
     "recentTransfers": [
       {
-        "season": "2017-2018",
-        "date": "2017-07-01",
-        "from": "布鲁日青年队",
-        "to": "布鲁日U17",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2017-2018",
-        "date": "2018-01-01",
-        "from": "布鲁日U17",
-        "to": "布鲁日B队",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2019-2020",
-        "date": "2019-07-01",
-        "from": "布鲁日B队",
-        "to": "布鲁日",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2022-2023",
-        "date": "2022-08-02",
-        "from": "布鲁日",
-        "to": "AC米兰",
-        "fee": "3750万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2023-2024",
-        "date": "2023-08-16",
-        "from": "AC米兰",
-        "to": "亚特兰大",
-        "fee": "300万欧元",
-        "type": "租借"
-      },
-      {
-        "season": "2023-2024",
-        "date": "2024-06-30",
-        "from": "亚特兰大",
-        "to": "AC米兰",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2024-2025",
-        "date": "2024-07-01",
-        "from": "AC米兰",
-        "to": "亚特兰大",
-        "fee": "2370万欧元",
-        "type": "完全所有"
+        "season": "2026-2027",
+        "date": "2026-08-12",
+        "from": "那不勒斯",
+        "to": "费内巴切",
+        "fee": "600万欧",
+        "type": "转会"
       }
     ]
   },
   {
-    "number": 0,
-    "name": "迭戈·摩里拉",
-    "positionGroup": "FW",
-    "age": 22,
-    "height": 179,
-    "weight": 73,
-    "position": "前锋",
-    "nationality": "比利时",
-    "marketValue": "1800",
-    "birthDate": "2004-08-06",
-    "currentClub": "斯特拉斯堡",
-    "recentTransfers": [
-      {
-        "season": "2020-2021",
-        "date": "2020-08-20",
-        "from": "标准列日U21",
-        "to": "本菲卡U19",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2022-2023",
-        "date": "2022-07-01",
-        "from": "本菲卡U19",
-        "to": "本菲卡B队",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2023-2024",
-        "date": "2023-07-01",
-        "from": "本菲卡B队",
-        "to": "切尔西",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2023-2024",
-        "date": "2023-09-01",
-        "from": "切尔西",
-        "to": "里昂",
-        "fee": "280万欧元",
-        "type": "租借"
-      },
-      {
-        "season": "2023-2024",
-        "date": "2024-01-22",
-        "from": "里昂",
-        "to": "切尔西",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2024-2025",
-        "date": "2024-08-16",
-        "from": "切尔西",
-        "to": "斯特拉斯堡",
-        "fee": "850万欧元",
-        "type": "完全所有"
-      }
-    ]
-  },
-  {
-    "number": 0,
-    "name": "马蒂亚斯·帕尔多",
-    "positionGroup": "FW",
-    "age": 21,
-    "height": 188,
+    "person_id": "50207650",
+    "name": "卢克巴吉奥",
+    "nation": "比利时",
+    "staff": "FW",
+    "attr": "FW",
+    "attrDes": "FW",
+    "qiutanPosition": "前锋",
+    "position": [
+      "FW"
+    ],
+    "stats": 82,
+    "ability": 82,
+    "caps": 5,
+    "lineups": 2,
+    "goals": 2,
+    "assists": 1,
+    "age": 29,
+    "number": 14,
+    "height": 187,
     "weight": 77,
-    "position": "前锋",
-    "nationality": "西班牙",
-    "marketValue": "2000",
-    "birthDate": "2005-02-03",
-    "currentClub": "里尔",
-    "recentTransfers": [
-      {
-        "season": "2020-2021",
-        "date": "2020-07-01",
-        "from": "里尔青年队",
-        "to": "根特后备队",
-        "fee": "",
-        "type": "自由转会"
-      },
-      {
-        "season": "2021-2022",
-        "date": "2021-07-01",
-        "from": "根特后备队",
-        "to": "KAA 根特 U18",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2021-2022",
-        "date": "2022-01-01",
-        "from": "KAA 根特 U18",
-        "to": "根特B队",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2023-2024",
-        "date": "2023-07-01",
-        "from": "根特B队",
-        "to": "根特",
-        "fee": "",
-        "type": "完全所有"
-      },
-      {
-        "season": "2024-2025",
-        "date": "2024-08-30",
-        "from": "根特",
-        "to": "里尔",
-        "fee": "1150万欧元",
-        "type": "完全所有"
-      }
-    ]
+    "socialStatus": "1500",
+    "currentClub": "本菲卡",
+    "recentTransfers": []
   },
   {
-    "number": 0,
-    "name": "莱昂德罗·特罗萨德",
-    "positionGroup": "FW",
-    "age": 32,
+    "person_id": "50472243",
+    "name": "多库",
+    "nation": "比利时",
+    "staff": "FW",
+    "attr": "FW",
+    "attrDes": "FW",
+    "qiutanPosition": "前锋",
+    "position": [
+      "FW"
+    ],
+    "stats": 85,
+    "ability": 85,
+    "caps": 1,
+    "lineups": 1,
+    "goals": 0,
+    "assists": 1,
+    "age": 24,
+    "number": 11,
+    "height": 173,
+    "weight": 66,
+    "socialStatus": "7500",
+    "currentClub": "曼城",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50101326",
+    "name": "特罗萨德",
+    "nation": "比利时",
+    "staff": "FW",
+    "attr": "FW",
+    "attrDes": "FW",
+    "qiutanPosition": "前锋",
+    "position": [
+      "FW"
+    ],
+    "stats": 83,
+    "ability": 83,
+    "caps": 3,
+    "lineups": 0,
+    "goals": 0,
+    "assists": 0,
+    "age": 31,
+    "number": 10,
     "height": 172,
     "weight": 67,
-    "position": "前锋",
-    "nationality": "比利时",
-    "marketValue": "2000",
-    "birthDate": "1994-12-04",
-    "currentClub": "阿森纳",
+    "socialStatus": "1800",
+    "currentClub": "贝西克塔斯",
     "recentTransfers": [
       {
-        "season": "2010-2011",
-        "date": "2010-07-01",
-        "from": "波彻特",
-        "to": "亨克U19",
-        "fee": "",
-        "type": "完全所有"
-      },
+        "season": "2026-2027",
+        "date": "2026-07-15",
+        "from": "阿森纳",
+        "to": "贝西克塔斯",
+        "fee": "1800万欧",
+        "type": "转会"
+      }
+    ]
+  },
+  {
+    "person_id": "50807637",
+    "name": "霍茨",
+    "nation": "比利时",
+    "staff": "FW",
+    "attr": "FW",
+    "attrDes": "FW",
+    "qiutanPosition": "前锋",
+    "position": [
+      "FW"
+    ],
+    "stats": 80,
+    "ability": 80,
+    "caps": 5,
+    "lineups": 3,
+    "goals": 1,
+    "assists": 0,
+    "age": 21,
+    "number": 22,
+    "height": 176,
+    "weight": 70,
+    "socialStatus": "4000",
+    "currentClub": "巴黎圣日耳曼",
+    "recentTransfers": [
       {
-        "season": "2012-2013",
-        "date": "2012-07-01",
-        "from": "亨克U19",
-        "to": "亨克",
-        "fee": "",
-        "type": "完全所有"
-      },
+        "season": "2026-2027",
+        "date": "2026-08-15",
+        "from": "阿贾克斯",
+        "to": "巴黎圣日耳曼",
+        "fee": "4500万欧",
+        "type": "转会"
+      }
+    ]
+  },
+  {
+    "person_id": "50259074",
+    "name": "屈佩尔",
+    "nation": "比利时",
+    "staff": "FW",
+    "attr": "FW",
+    "attrDes": "FW",
+    "qiutanPosition": "前锋",
+    "position": [
+      "FW"
+    ],
+    "stats": 77,
+    "ability": 77,
+    "caps": 1,
+    "lineups": 0,
+    "goals": 0,
+    "assists": 0,
+    "age": 29,
+    "number": 9,
+    "height": 185,
+    "weight": 76,
+    "socialStatus": "1000",
+    "currentClub": "蒙特雷",
+    "recentTransfers": [
       {
-        "season": "2012-2013",
-        "date": "2013-01-29",
-        "from": "亨克",
-        "to": "洛默尔",
-        "fee": "",
-        "type": "租借"
-      },
-      {
-        "season": "2012-2013",
-        "date": "2013-06-30",
-        "from": "洛默尔",
-        "to": "亨克",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2013-2014",
-        "date": "2013-07-01",
-        "from": "亨克",
-        "to": "韦斯特鲁",
-        "fee": "",
-        "type": "租借"
-      },
-      {
-        "season": "2013-2014",
-        "date": "2014-06-30",
-        "from": "韦斯特鲁",
-        "to": "亨克",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2014-2015",
-        "date": "2014-07-01",
-        "from": "亨克",
-        "to": "洛默尔",
-        "fee": "",
-        "type": "租借"
-      },
-      {
-        "season": "2014-2015",
-        "date": "2015-06-30",
-        "from": "洛默尔",
-        "to": "亨克",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2015-2016",
-        "date": "2015-07-06",
-        "from": "亨克",
-        "to": "旧海弗莱鲁汶",
-        "fee": "",
-        "type": "租借"
-      },
-      {
-        "season": "2015-2016",
-        "date": "2016-06-30",
-        "from": "旧海弗莱鲁汶",
-        "to": "亨克",
-        "fee": "",
-        "type": "租借结束"
-      },
-      {
-        "season": "2019-2020",
-        "date": "2019-07-01",
-        "from": "亨克",
-        "to": "布莱顿",
-        "fee": "1556万欧元",
-        "type": "完全所有"
-      },
-      {
-        "season": "2022-2023",
-        "date": "2023-01-20",
-        "from": "布莱顿",
-        "to": "阿森纳",
-        "fee": "2400万欧元",
-        "type": "完全所有"
+        "season": "2026-2027",
+        "date": "2026-07-23",
+        "from": "芝加哥火焰",
+        "to": "蒙特雷",
+        "fee": "660万欧",
+        "type": "转会"
       }
     ]
   }
