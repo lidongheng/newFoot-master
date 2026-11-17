@@ -14,10 +14,10 @@
 const squadTarget = {
   leagueSerial: '1366',
   leagueSlug: 'InternationalFriendship',
-  season: '2025',
-  teamSerial: '889',
-  matchTime: '2026-11-14 20:00:00',
-  roundSerial: '5',
+  season: '2026',
+  teamSerial: '776',
+  matchTime: '2026-11-17 21:10:00',
+  roundSerial: '6',
   /**
    * 赛程格式开关：
    *   false（默认）= 联赛格式，读 s 开头文件，R_* 轮次迭代
