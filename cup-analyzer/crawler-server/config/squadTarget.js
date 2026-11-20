@@ -12,12 +12,12 @@
  * - roundSerial：联赛渠道时填当前国内联赛轮次（仅分析该轮之前已完赛场次）；杯赛渠道可不填
  */
 const squadTarget = {
-  leagueSerial: '1366',
-  leagueSlug: 'InternationalFriendship',
-  season: '2026',
-  teamSerial: '776',
-  matchTime: '2026-11-17 21:10:00',
-  roundSerial: '6',
+  leagueSerial: '31',
+  leagueSlug: 'laLiga',
+  season: '2026-2027',
+  teamSerial: '92',
+  matchTime: '2026-11-21 04:00:00',
+  roundSerial: '13',
   /**
    * 赛程格式开关：
    *   false（默认）= 联赛格式，读 s 开头文件，R_* 轮次迭代
@@ -26,7 +26,7 @@ const squadTarget = {
    * 四个俱乐部杯赛（欧冠/欧罗巴/欧会杯/亚冠联2）使用本赛事数据时设 true，
    * 同时须设 matchByName: false；世界杯赛中同样设 true，matchByName 不设即可。
    */
-  isNation: true,
+  isNation: false,
   /**
    * 球员匹配方式（可选，不设则跟随 isNation）：
    *   false = 按球衣号码匹配（俱乐部 / 俱乐部杯赛）
@@ -37,7 +37,7 @@ const squadTarget = {
    *   isNation: true + 俱乐部杯赛 → 必须显式设 matchByName: false
    *   isNation: true + 国家队杯赛 → 不用设（自动 true）
    */
-  matchByName: true,
+  matchByName: false,
   teamChineseName: '亚美尼亚',
   /** 单场分析 / 周期报告等场景可选 */
   matchSerial: '2906967',
