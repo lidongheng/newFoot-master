@@ -36,6 +36,7 @@ npx cross-env CUP_ANALYZER_CUP=ligaMx node processors/teamScheduleProcessor.js
 npx cross-env CUP_ANALYZER_CUP=ligaMx node processors/squadFinalInitializer.js --team <序号>
 # 人工审核 ligaMx/squad-final/{队名}.md
 npx cross-env CUP_ANALYZER_CUP=ligaMx node processors/teamProfileGenerator.js --team <序号>
+npx cross-env CUP_ANALYZER_CUP=ligaMx node processors/lateGoalRanking.js
 ```
 
 **赛中大名单**：`npx cross-env CUP_ANALYZER_CUP=ligaMx node processors/matchSquadGenerator.js --home <序号> --away <序号>`

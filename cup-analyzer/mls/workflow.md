@@ -36,6 +36,7 @@ CUP_ANALYZER_CUP=mls node processors/teamScheduleProcessor.js
 CUP_ANALYZER_CUP=mls node processors/squadFinalInitializer.js --team <序号>
 # 人工审核 mls/squad-final/{队名}.md
 CUP_ANALYZER_CUP=mls node processors/teamProfileGenerator.js --team <序号>
+npx cross-env CUP_ANALYZER_CUP=mls node processors/lateGoalRanking.js
 ```
 
 **伤停/伤疑**：在 `squad-final/{队名}.md` 的 **`## 伤停` / `## 伤疑`** 中维护；`teamProfileGenerator` 会写入画像。**赛中大名单**：`cd cup-analyzer/crawler-server && CUP_ANALYZER_CUP=mls node processors/matchSquadGenerator.js --home <序号> --away <序号>`。

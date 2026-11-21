@@ -12,12 +12,12 @@
  * - roundSerial：联赛渠道时填当前国内联赛轮次（仅分析该轮之前已完赛场次）；杯赛渠道可不填
  */
 const squadTarget = {
-  leagueSerial: '31',
-  leagueSlug: 'laLiga',
+  leagueSerial: '25',
+  leagueSlug: 'jLeague',
   season: '2026-2027',
-  teamSerial: '92',
-  matchTime: '2026-11-21 04:00:00',
-  roundSerial: '13',
+  teamSerial: '1989',
+  matchTime: '2026-11-21 14:00:00',
+  roundSerial: '15',
   /**
    * 赛程格式开关：
    *   false（默认）= 联赛格式，读 s 开头文件，R_* 轮次迭代

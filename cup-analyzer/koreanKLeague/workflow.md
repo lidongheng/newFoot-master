@@ -49,6 +49,7 @@ npx cross-env CUP_ANALYZER_CUP=koreanKLeague node processors/teamScheduleProcess
 npx cross-env CUP_ANALYZER_CUP=koreanKLeague node processors/squadFinalInitializer.js --team <序号>
 # 人工审核 koreanKLeague/squad-final/{队名}.md
 npx cross-env CUP_ANALYZER_CUP=koreanKLeague node processors/teamProfileGenerator.js --team <序号>
+npx cross-env CUP_ANALYZER_CUP=koreanKLeague node processors/lateGoalRanking.js
 ```
 
 `teamProfileGenerator` 会在球队画像的预测首发后生成预测替补：门将 1 人（候选门将按球衣号升序，无号码者排在有号码者后），后卫 3 人、中场 3 人、前锋 2 人。后卫、中场、前锋先选与同组首发标准位置代码相同的球员，再从该组其他候选补足；非门将候选按赛季首发数降序，并列沿用名单顺序，缺少首发数据者排后。只排除 `## 伤停` 球员，`## 伤疑` 球员仍可入选。位置组名额不足时，从其他已识别位置组按赛季首发数补足 9 人；全队可用球员不足 9 人时只输出实际人数，不生成占位球员。缺少阵型或无法选出首发球员时不生成预测替补栏。
