@@ -29,8 +29,8 @@
     ],
     "stats": 75,
     "ability": 75,
-    "caps": 9,
-    "lineups": 9,
+    "caps": 10,
+    "lineups": 10,
     "goals": 0,
     "assists": 1,
     "age": 25,
@@ -87,9 +87,9 @@
     "staff": "GK",
     "attr": "GK",
     "attrDes": "GK",
-    "qiutanPosition": "中后卫",
+    "qiutanPosition": "右后卫",
     "position": [
-      "CB"
+      "RB"
     ],
     "stats": 64,
     "ability": 64,
@@ -114,8 +114,8 @@
     ],
     "stats": 73,
     "ability": 73,
-    "caps": 9,
-    "lineups": 9,
+    "caps": 10,
+    "lineups": 10,
     "goals": 1,
     "assists": 1,
     "age": 28,
@@ -139,8 +139,8 @@
     ],
     "stats": 70,
     "ability": 70,
-    "caps": 4,
-    "lineups": 2,
+    "caps": 5,
+    "lineups": 3,
     "goals": 1,
     "assists": 0,
     "age": 18,
@@ -165,6 +165,40 @@
         "to": "考文垂",
         "fee": "",
         "type": "租借"
+      }
+    ]
+  },
+  {
+    "person_id": "50253915",
+    "name": "平诺克",
+    "nation": "牙买加",
+    "staff": "DF",
+    "attr": "DF",
+    "attrDes": "DF",
+    "qiutanPosition": "中后卫",
+    "position": [
+      "CB"
+    ],
+    "stats": 74,
+    "ability": 74,
+    "caps": 9,
+    "lineups": 8,
+    "goals": 0,
+    "assists": 0,
+    "age": 33,
+    "number": 2,
+    "height": 194,
+    "weight": 85,
+    "socialStatus": "300",
+    "currentClub": "考文垂",
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2026-08-26",
+        "from": "布伦特福德",
+        "to": "考文垂",
+        "fee": "580万欧",
+        "type": "转会"
       }
     ]
   },
@@ -194,40 +228,6 @@
     "recentTransfers": []
   },
   {
-    "person_id": "50253915",
-    "name": "平诺克",
-    "nation": "牙买加",
-    "staff": "DF",
-    "attr": "DF",
-    "attrDes": "DF",
-    "qiutanPosition": "中后卫",
-    "position": [
-      "CB"
-    ],
-    "stats": 74,
-    "ability": 74,
-    "caps": 8,
-    "lineups": 7,
-    "goals": 0,
-    "assists": 0,
-    "age": 33,
-    "number": 2,
-    "height": 194,
-    "weight": 85,
-    "socialStatus": "300",
-    "currentClub": "考文垂",
-    "recentTransfers": [
-      {
-        "season": "2026-2027",
-        "date": "2026-08-26",
-        "from": "布伦特福德",
-        "to": "考文垂",
-        "fee": "580万欧",
-        "type": "转会"
-      }
-    ]
-  },
-  {
     "person_id": "50452229",
     "name": "范埃韦克",
     "nation": "荷兰",
@@ -240,8 +240,8 @@
     ],
     "stats": 76,
     "ability": 76,
-    "caps": 8,
-    "lineups": 8,
+    "caps": 9,
+    "lineups": 9,
     "goals": 0,
     "assists": 0,
     "age": 26,
@@ -385,14 +385,14 @@
     "staff": "MF",
     "attr": "MF",
     "attrDes": "MF",
-    "qiutanPosition": "前腰",
+    "qiutanPosition": "中前卫",
     "position": [
-      "CAM"
+      "CM"
     ],
     "stats": 77,
     "ability": 77,
-    "caps": 9,
-    "lineups": 8,
+    "caps": 10,
+    "lineups": 9,
     "goals": 3,
     "assists": 0,
     "age": 25,
@@ -410,14 +410,14 @@
     "staff": "MF",
     "attr": "MF",
     "attrDes": "MF",
-    "qiutanPosition": "中前卫",
+    "qiutanPosition": "前腰",
     "position": [
-      "CM"
+      "CAM"
     ],
     "stats": 74,
     "ability": 74,
-    "caps": 5,
-    "lineups": 1,
+    "caps": 6,
+    "lineups": 2,
     "goals": 0,
     "assists": 1,
     "age": 27,
@@ -441,8 +441,8 @@
     ],
     "stats": 78,
     "ability": 78,
-    "caps": 9,
-    "lineups": 7,
+    "caps": 10,
+    "lineups": 8,
     "goals": 0,
     "assists": 0,
     "age": 20,
@@ -475,7 +475,7 @@
     ],
     "stats": 76,
     "ability": 76,
-    "caps": 9,
+    "caps": 10,
     "lineups": 8,
     "goals": 0,
     "assists": 0,
@@ -534,7 +534,7 @@
     ],
     "stats": 77,
     "ability": 77,
-    "caps": 5,
+    "caps": 6,
     "lineups": 0,
     "goals": 0,
     "assists": 0,
@@ -562,9 +562,9 @@
     "staff": "MF",
     "attr": "MF",
     "attrDes": "MF",
-    "qiutanPosition": "前腰",
+    "qiutanPosition": "中前卫",
     "position": [
-      "CAM"
+      "CM"
     ],
     "stats": 72,
     "ability": 72,
@@ -589,8 +589,8 @@
     ],
     "stats": 73,
     "ability": 73,
-    "caps": 7,
-    "lineups": 4,
+    "caps": 8,
+    "lineups": 5,
     "goals": 1,
     "assists": 0,
     "age": 29,
@@ -606,6 +606,73 @@
         "from": "诺丁汉森林",
         "to": "考文垂",
         "fee": "1050万欧",
+        "type": "转会"
+      }
+    ]
+  },
+  {
+    "person_id": "50488867",
+    "name": "坂元达裕",
+    "nation": "日本",
+    "staff": "FW",
+    "attr": "FW",
+    "attrDes": "FW",
+    "qiutanPosition": "右边锋",
+    "position": [
+      "RW"
+    ],
+    "stats": 74,
+    "ability": 74,
+    "caps": 6,
+    "lineups": 4,
+    "goals": 1,
+    "assists": 0,
+    "age": 30,
+    "number": 7,
+    "height": 170,
+    "weight": 63,
+    "socialStatus": "450",
+    "currentClub": "考文垂",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50784764",
+    "name": "西迪基-谢里夫",
+    "nation": "法国",
+    "staff": "FW",
+    "attr": "FW",
+    "attrDes": "FW",
+    "qiutanPosition": "中锋",
+    "position": [
+      "ST"
+    ],
+    "stats": 77,
+    "ability": 77,
+    "caps": 6,
+    "lineups": 3,
+    "goals": 1,
+    "assists": 0,
+    "age": 19,
+    "number": 49,
+    "height": 188,
+    "weight": 84,
+    "socialStatus": "2200",
+    "currentClub": "考文垂",
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2026-08-19",
+        "from": "费内巴切",
+        "to": "考文垂",
+        "fee": "2450万欧",
+        "type": "转会"
+      },
+      {
+        "season": "2026-2027",
+        "date": "2026-07-01",
+        "from": "昂热",
+        "to": "费内巴切",
+        "fee": "1710万欧",
         "type": "转会"
       }
     ]
@@ -636,73 +703,6 @@
     "recentTransfers": []
   },
   {
-    "person_id": "50488867",
-    "name": "坂元达裕",
-    "nation": "日本",
-    "staff": "FW",
-    "attr": "FW",
-    "attrDes": "FW",
-    "qiutanPosition": "右边锋",
-    "position": [
-      "RW"
-    ],
-    "stats": 74,
-    "ability": 74,
-    "caps": 5,
-    "lineups": 3,
-    "goals": 1,
-    "assists": 0,
-    "age": 30,
-    "number": 7,
-    "height": 170,
-    "weight": 63,
-    "socialStatus": "450",
-    "currentClub": "考文垂",
-    "recentTransfers": []
-  },
-  {
-    "person_id": "50784764",
-    "name": "西迪基-谢里夫",
-    "nation": "法国",
-    "staff": "FW",
-    "attr": "FW",
-    "attrDes": "FW",
-    "qiutanPosition": "中锋",
-    "position": [
-      "ST"
-    ],
-    "stats": 77,
-    "ability": 77,
-    "caps": 5,
-    "lineups": 3,
-    "goals": 1,
-    "assists": 0,
-    "age": 19,
-    "number": 49,
-    "height": 188,
-    "weight": 84,
-    "socialStatus": "2200",
-    "currentClub": "考文垂",
-    "recentTransfers": [
-      {
-        "season": "2026-2027",
-        "date": "2026-08-19",
-        "from": "费内巴切",
-        "to": "考文垂",
-        "fee": "2450万欧",
-        "type": "转会"
-      },
-      {
-        "season": "2026-2027",
-        "date": "2026-07-01",
-        "from": "昂热",
-        "to": "费内巴切",
-        "fee": "1710万欧",
-        "type": "转会"
-      }
-    ]
-  },
-  {
     "person_id": "50514473",
     "name": "西姆斯",
     "nation": "英格兰",
@@ -728,6 +728,40 @@
     "recentTransfers": []
   },
   {
+    "person_id": "50447844",
+    "name": "格博霍",
+    "nation": "科特迪瓦",
+    "staff": "FW",
+    "attr": "FW",
+    "attrDes": "FW",
+    "qiutanPosition": "前腰",
+    "position": [
+      "CAM"
+    ],
+    "stats": 78,
+    "ability": 78,
+    "caps": 2,
+    "lineups": 2,
+    "goals": 1,
+    "assists": 0,
+    "age": 25,
+    "number": 34,
+    "height": 177,
+    "weight": 67,
+    "socialStatus": "1500",
+    "currentClub": "考文垂",
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2026-09-01",
+        "from": "图卢兹",
+        "to": "考文垂",
+        "fee": "1200万欧",
+        "type": "转会"
+      }
+    ]
+  },
+  {
     "person_id": "50266719",
     "name": "托马斯-阿桑特",
     "nation": "加纳",
@@ -740,7 +774,7 @@
     ],
     "stats": 74,
     "ability": 74,
-    "caps": 9,
+    "caps": 10,
     "lineups": 5,
     "goals": 0,
     "assists": 2,
@@ -765,7 +799,7 @@
     ],
     "stats": 76,
     "ability": 76,
-    "caps": 4,
+    "caps": 5,
     "lineups": 2,
     "goals": 0,
     "assists": 0,
@@ -782,40 +816,6 @@
         "from": "伯恩利",
         "to": "考文垂",
         "fee": "2300万欧",
-        "type": "转会"
-      }
-    ]
-  },
-  {
-    "person_id": "50447844",
-    "name": "格博霍",
-    "nation": "科特迪瓦",
-    "staff": "FW",
-    "attr": "FW",
-    "attrDes": "FW",
-    "qiutanPosition": "左中场",
-    "position": [
-      "LM"
-    ],
-    "stats": 78,
-    "ability": 78,
-    "caps": 1,
-    "lineups": 1,
-    "goals": 0,
-    "assists": 0,
-    "age": 25,
-    "number": 34,
-    "height": 177,
-    "weight": 67,
-    "socialStatus": "1500",
-    "currentClub": "考文垂",
-    "recentTransfers": [
-      {
-        "season": "2026-2027",
-        "date": "2026-09-01",
-        "from": "图卢兹",
-        "to": "考文垂",
-        "fee": "1200万欧",
         "type": "转会"
       }
     ]

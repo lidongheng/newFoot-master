@@ -324,6 +324,7 @@ class ClubAnalyzer {
         const response = await axios({
           method: 'GET',
           url,
+          timeout: 10000, // 单次请求最多等待 10 秒，超时后进入现有重试逻辑。
           responseType: 'arraybuffer',
           headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36',

@@ -73,8 +73,8 @@
     ],
     "stats": 69,
     "ability": 69,
-    "caps": 2,
-    "lineups": 1,
+    "caps": 3,
+    "lineups": 2,
     "goals": 0,
     "assists": 0,
     "age": 40,
@@ -127,8 +127,8 @@
     ],
     "stats": 71,
     "ability": 71,
-    "caps": 13,
-    "lineups": 13,
+    "caps": 14,
+    "lineups": 14,
     "goals": 1,
     "assists": 1,
     "age": 30,
@@ -146,7 +146,7 @@
     "staff": "DF",
     "attr": "DF",
     "attrDes": "DF",
-    "caps": 8,
+    "caps": 9,
     "lineups": 4,
     "goals": 0,
     "assists": 0,
@@ -171,8 +171,8 @@
     ],
     "stats": 65,
     "ability": 65,
-    "caps": 11,
-    "lineups": 9,
+    "caps": 12,
+    "lineups": 10,
     "goals": 0,
     "assists": 2,
     "age": 29,
@@ -196,8 +196,8 @@
     ],
     "stats": 69,
     "ability": 69,
-    "caps": 13,
-    "lineups": 10,
+    "caps": 14,
+    "lineups": 11,
     "goals": 0,
     "assists": 1,
     "age": 29,
@@ -249,8 +249,8 @@
     ],
     "stats": 66,
     "ability": 66,
-    "caps": 8,
-    "lineups": 7,
+    "caps": 9,
+    "lineups": 8,
     "goals": 0,
     "assists": 0,
     "age": 31,
@@ -387,7 +387,16 @@
     "number": 46,
     "height": 177,
     "currentClub": "大阪钢巴",
-    "recentTransfers": []
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2027-01-01",
+        "from": "大阪钢巴U18",
+        "to": "大阪钢巴",
+        "fee": "",
+        "type": ""
+      }
+    ]
   },
   {
     "person_id": "51131848",
@@ -400,7 +409,16 @@
     "number": 45,
     "height": 180,
     "currentClub": "大阪钢巴",
-    "recentTransfers": []
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2027-01-01",
+        "from": "大阪钢巴U18",
+        "to": "大阪钢巴",
+        "fee": "",
+        "type": ""
+      }
+    ]
   },
   {
     "person_id": "50183794",
@@ -436,8 +454,8 @@
     ],
     "stats": 68,
     "ability": 68,
-    "caps": 12,
-    "lineups": 11,
+    "caps": 13,
+    "lineups": 12,
     "goals": 0,
     "assists": 1,
     "age": 28,
@@ -474,14 +492,14 @@
     "staff": "MF",
     "attr": "MF",
     "attrDes": "MF",
-    "qiutanPosition": "前腰",
+    "qiutanPosition": "后腰",
     "position": [
-      "CAM"
+      "CDM"
     ],
     "stats": 65,
     "ability": 65,
-    "caps": 6,
-    "lineups": 5,
+    "caps": 7,
+    "lineups": 6,
     "goals": 0,
     "assists": 0,
     "age": 29,
@@ -499,9 +517,9 @@
     "staff": "MF",
     "attr": "MF",
     "attrDes": "MF",
-    "qiutanPosition": "中前卫",
+    "qiutanPosition": "左中场",
     "position": [
-      "CM"
+      "LM"
     ],
     "stats": 67,
     "ability": 67,
@@ -595,7 +613,16 @@
     "height": 169,
     "weight": 59,
     "currentClub": "大阪钢巴",
-    "recentTransfers": []
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2027-01-01",
+        "from": "大阪钢巴U18",
+        "to": "大阪钢巴",
+        "fee": "",
+        "type": ""
+      }
+    ]
   },
   {
     "person_id": "50061748",
@@ -610,10 +637,10 @@
     ],
     "stats": 67,
     "ability": 67,
-    "caps": 11,
-    "lineups": 8,
-    "goals": 4,
-    "assists": 2,
+    "caps": 12,
+    "lineups": 9,
+    "goals": 5,
+    "assists": 3,
     "age": 34,
     "number": 11,
     "height": 186,
@@ -629,14 +656,14 @@
     "staff": "FW",
     "attr": "FW",
     "attrDes": "FW",
-    "qiutanPosition": "中锋",
+    "qiutanPosition": "影锋",
     "position": [
-      "ST"
+      "CF"
     ],
     "stats": 69,
     "ability": 69,
-    "caps": 9,
-    "lineups": 5,
+    "caps": 10,
+    "lineups": 6,
     "goals": 2,
     "assists": 0,
     "age": 34,
@@ -679,7 +706,7 @@
     ],
     "stats": 68,
     "ability": 68,
-    "caps": 10,
+    "caps": 11,
     "lineups": 7,
     "goals": 2,
     "assists": 0,
@@ -704,7 +731,7 @@
     ],
     "stats": 71,
     "ability": 71,
-    "caps": 9,
+    "caps": 10,
     "lineups": 5,
     "goals": 2,
     "assists": 0,
@@ -717,14 +744,48 @@
     "recentTransfers": []
   },
   {
+    "person_id": "50565504",
+    "name": "埃利-亚当斯",
+    "nation": "澳大利亚",
+    "staff": "FW",
+    "attr": "FW",
+    "attrDes": "FW",
+    "qiutanPosition": "中前卫",
+    "position": [
+      "CM"
+    ],
+    "stats": 70,
+    "ability": 70,
+    "caps": 9,
+    "lineups": 2,
+    "goals": 1,
+    "assists": 0,
+    "age": 24,
+    "number": 20,
+    "height": 183,
+    "weight": 71,
+    "socialStatus": "65",
+    "currentClub": "大阪钢巴",
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2026-07-02",
+        "from": "纽卡斯尔喷气机",
+        "to": "大阪钢巴",
+        "fee": "",
+        "type": "?"
+      }
+    ]
+  },
+  {
     "person_id": "50535200",
     "name": "角昂志郎",
     "nation": "日本",
     "staff": "FW",
     "attr": "FW",
     "attrDes": "FW",
-    "caps": 6,
-    "lineups": 2,
+    "caps": 7,
+    "lineups": 3,
     "goals": 0,
     "assists": 0,
     "age": 24,
@@ -773,40 +834,6 @@
     ]
   },
   {
-    "person_id": "50565504",
-    "name": "埃利-亚当斯",
-    "nation": "澳大利亚",
-    "staff": "FW",
-    "attr": "FW",
-    "attrDes": "FW",
-    "qiutanPosition": "中前卫",
-    "position": [
-      "CM"
-    ],
-    "stats": 70,
-    "ability": 70,
-    "caps": 8,
-    "lineups": 2,
-    "goals": 0,
-    "assists": 0,
-    "age": 24,
-    "number": 20,
-    "height": 183,
-    "weight": 71,
-    "socialStatus": "65",
-    "currentClub": "大阪钢巴",
-    "recentTransfers": [
-      {
-        "season": "2026-2027",
-        "date": "2026-07-02",
-        "from": "纽卡斯尔喷气机",
-        "to": "大阪钢巴",
-        "fee": "",
-        "type": "?"
-      }
-    ]
-  },
-  {
     "person_id": "50551393",
     "name": "植中朝日",
     "nation": "日本",
@@ -832,8 +859,8 @@
     "staff": "FW",
     "attr": "FW",
     "attrDes": "FW",
-    "caps": 10,
-    "lineups": 10,
+    "caps": 11,
+    "lineups": 11,
     "goals": 0,
     "assists": 3,
     "age": 29,
@@ -845,36 +872,19 @@
     "recentTransfers": []
   },
   {
-    "person_id": "51095168",
-    "name": "中积为",
-    "nation": "日本",
-    "staff": "FW",
-    "attr": "FW",
-    "attrDes": "FW",
-    "caps": 2,
-    "lineups": 1,
-    "goals": 0,
-    "assists": 0,
-    "age": 18,
-    "number": 37,
-    "height": 172,
-    "currentClub": "大阪钢巴",
-    "recentTransfers": []
-  },
-  {
     "person_id": "50563434",
     "name": "小柏刚",
     "nation": "日本",
     "staff": "FW",
     "attr": "FW",
     "attrDes": "FW",
-    "qiutanPosition": "影锋",
+    "qiutanPosition": "中锋",
     "position": [
-      "CF"
+      "ST"
     ],
     "stats": 65,
     "ability": 65,
-    "caps": 2,
+    "caps": 3,
     "lineups": 0,
     "goals": 0,
     "assists": 0,
@@ -894,6 +904,23 @@
         "type": "?"
       }
     ]
+  },
+  {
+    "person_id": "51095168",
+    "name": "中积为",
+    "nation": "日本",
+    "staff": "FW",
+    "attr": "FW",
+    "attrDes": "FW",
+    "caps": 2,
+    "lineups": 1,
+    "goals": 0,
+    "assists": 0,
+    "age": 18,
+    "number": 37,
+    "height": 172,
+    "currentClub": "大阪钢巴",
+    "recentTransfers": []
   },
   {
     "person_id": "51100296",

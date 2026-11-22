@@ -1,16 +1,16 @@
 {
   "teamId": 28,
-  "teamChineseName": "富勒姆",
+  "teamChineseName": "亚美尼亚",
   "isNation": false,
   "matchByName": false,
-  "analysisDate": "2026-11-07T14:46:59.165Z",
+  "analysisDate": "2026-11-21T06:27:18.658Z",
   "mostUsedFormation": "4231",
   "recommendedLineup": [
     {
       "name": "霍尔尼切克",
       "number": 21,
-      "caps": 9,
-      "lineups": 9,
+      "caps": 10,
+      "lineups": 10,
       "matches": [
         {
           "id": 3003857,
@@ -137,14 +137,28 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "GK",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "GK": 9
+        "GK": 10
       },
       "goals": 0,
       "assists": 0,
-      "minutesPlayed": 810,
+      "minutesPlayed": 900,
       "substitutedIn": 0,
       "substitutedOut": 0,
       "alternativeNames": [],
@@ -167,7 +181,7 @@
         "GK"
       ],
       "positionsWithCounts": {
-        "GK": 9
+        "GK": 10
       },
       "mainPositionGroup": "GK",
       "recommendedPosition": "GK"
@@ -175,8 +189,8 @@
     {
       "name": "霍尔",
       "number": 3,
-      "caps": 9,
-      "lineups": 9,
+      "caps": 10,
+      "lineups": 10,
       "matches": [
         {
           "id": 3003857,
@@ -303,14 +317,28 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "LB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "LB": 9
+        "LB": 10
       },
       "goals": 1,
       "assists": 1,
-      "minutesPlayed": 790,
+      "minutesPlayed": 880,
       "substitutedIn": 0,
       "substitutedOut": 1,
       "alternativeNames": [],
@@ -324,10 +352,181 @@
         "LB"
       ],
       "positionsWithCounts": {
-        "LB": 9
+        "LB": 10
       },
       "mainPositionGroup": "DF",
       "recommendedPosition": "LB"
+    },
+    {
+      "name": "M·佳夫",
+      "number": 12,
+      "caps": 9,
+      "lineups": 8,
+      "matches": [
+        {
+          "id": 3003857,
+          "round": 1,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": -0.25,
+          "score": "2-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 3003868,
+          "round": 2,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "0-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003877,
+          "round": 3,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 1,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "2-2",
+          "handicapResult": "lose",
+          "totalLine": "3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 3003884,
+          "round": 4,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "4-1",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 3003896,
+          "round": 5,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 1.25,
+          "score": "2-1",
+          "handicapResult": "lose",
+          "totalLine": "3",
+          "totalGoalsResult": "draw"
+        },
+        {
+          "id": 3003902,
+          "round": 6,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": -0.25,
+          "score": "4-1",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 3003916,
+          "round": 7,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "0-1",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003923,
+          "round": 8,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0,
+          "score": "0-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003937,
+          "round": 9,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "0-1",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
+        }
+      ],
+      "positions": {
+        "CB": 8
+      },
+      "goals": 1,
+      "assists": 0,
+      "minutesPlayed": 720,
+      "substitutedIn": 1,
+      "substitutedOut": 1,
+      "alternativeNames": [],
+      "age": 25,
+      "socialStatus": 5000,
+      "nation": "德国",
+      "height": 194,
+      "currentClub": "纽卡斯尔联",
+      "recentTransfers": [],
+      "positionPreferences": [
+        "CB"
+      ],
+      "positionsWithCounts": {
+        "CB": 8
+      },
+      "mainPositionGroup": "DF",
+      "recommendedPosition": "CB"
     },
     {
       "name": "波特曼",
@@ -460,6 +659,20 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
@@ -487,171 +700,14 @@
       "recommendedPosition": "CB"
     },
     {
-      "name": "M·佳夫",
-      "number": 12,
+      "name": "德迪奇",
+      "number": 37,
       "caps": 8,
       "lineups": 7,
       "matches": [
         {
           "id": 3003857,
           "round": 1,
-          "position": "CB",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 0,
-          "handicap": -0.25,
-          "score": "2-2",
-          "handicapResult": "win",
-          "totalLine": "3/3.5",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 3003868,
-          "round": 2,
-          "position": "CB",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0.25,
-          "score": "0-2",
-          "handicapResult": "win",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "under"
-        },
-        {
-          "id": 3003877,
-          "round": 3,
-          "position": "CB",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 1,
-          "assists": 0,
-          "handicap": 0.25,
-          "score": "2-2",
-          "handicapResult": "lose",
-          "totalLine": "3",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 3003884,
-          "round": 4,
-          "position": "CB",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0,
-          "score": "4-1",
-          "handicapResult": "lose",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 3003896,
-          "round": 5,
-          "position": "CB",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 1.25,
-          "score": "2-1",
-          "handicapResult": "lose",
-          "totalLine": "3",
-          "totalGoalsResult": "draw"
-        },
-        {
-          "id": 3003902,
-          "round": 6,
-          "position": "CB",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 0,
-          "handicap": -0.25,
-          "score": "4-1",
-          "handicapResult": "lose",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 3003916,
-          "round": 7,
-          "position": "CB",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0.25,
-          "score": "0-1",
-          "handicapResult": "lose",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "under"
-        },
-        {
-          "id": 3003923,
-          "round": 8,
-          "position": "Substitute",
-          "caps": 1,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0,
-          "score": "0-2",
-          "handicapResult": "win",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "under"
-        },
-        {
-          "id": 3003937,
-          "round": 9,
-          "position": "Substitute",
-          "caps": 0,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0.25,
-          "score": "0-1",
-          "handicapResult": "lose",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "under"
-        }
-      ],
-      "positions": {
-        "CB": 7
-      },
-      "goals": 1,
-      "assists": 0,
-      "minutesPlayed": 650,
-      "substitutedIn": 1,
-      "substitutedOut": 0,
-      "alternativeNames": [],
-      "age": 25,
-      "socialStatus": 5000,
-      "nation": "德国",
-      "height": 194,
-      "currentClub": "纽卡斯尔联",
-      "recentTransfers": [],
-      "positionPreferences": [
-        "CB"
-      ],
-      "positionsWithCounts": {
-        "CB": 7
-      },
-      "mainPositionGroup": "DF",
-      "recommendedPosition": "CB"
-    },
-    {
-      "name": "德迪奇",
-      "number": 37,
-      "caps": 7,
-      "lineups": 6,
-      "matches": [
-        {
-          "id": 3003857,
-          "round": 1,
           "position": "RB",
           "caps": 1,
           "lineups": 1,
@@ -760,14 +816,28 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "RB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "RB": 6
+        "RB": 7
       },
       "goals": 0,
       "assists": 2,
-      "minutesPlayed": 500,
+      "minutesPlayed": 590,
       "substitutedIn": 1,
       "substitutedOut": 3,
       "alternativeNames": [],
@@ -790,7 +860,7 @@
         "RB"
       ],
       "positionsWithCounts": {
-        "RB": 6
+        "RB": 7
       },
       "mainPositionGroup": "DF",
       "recommendedPosition": "RB"
@@ -798,8 +868,8 @@
     {
       "name": "尼科.冈萨雷斯",
       "number": 6,
-      "caps": 7,
-      "lineups": 7,
+      "caps": 8,
+      "lineups": 8,
       "matches": [
         {
           "id": 3003868,
@@ -898,16 +968,30 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "CDM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "CDM": 7
+        "CDM": 8
       },
       "goals": 0,
       "assists": 1,
-      "minutesPlayed": 550,
+      "minutesPlayed": 620,
       "substitutedIn": 0,
-      "substitutedOut": 4,
+      "substitutedOut": 5,
       "alternativeNames": [],
       "age": 24,
       "socialStatus": 5000,
@@ -928,7 +1012,7 @@
         "CDM"
       ],
       "positionsWithCounts": {
-        "CDM": 7
+        "CDM": 8
       },
       "mainPositionGroup": "MF",
       "recommendedPosition": "CDM"
@@ -936,7 +1020,7 @@
     {
       "name": "米利",
       "number": 67,
-      "caps": 7,
+      "caps": 8,
       "lineups": 7,
       "matches": [
         {
@@ -1036,6 +1120,20 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
@@ -1044,8 +1142,8 @@
       },
       "goals": 1,
       "assists": 0,
-      "minutesPlayed": 550,
-      "substitutedIn": 0,
+      "minutesPlayed": 570,
+      "substitutedIn": 1,
       "substitutedOut": 4,
       "alternativeNames": [],
       "age": 20,
@@ -1068,8 +1166,8 @@
     {
       "name": "巴恩斯",
       "number": 11,
-      "caps": 9,
-      "lineups": 9,
+      "caps": 10,
+      "lineups": 10,
       "matches": [
         {
           "id": 3003857,
@@ -1196,14 +1294,28 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "LM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "LM": 9
+        "LM": 10
       },
       "goals": 2,
       "assists": 2,
-      "minutesPlayed": 770,
+      "minutesPlayed": 860,
       "substitutedIn": 0,
       "substitutedOut": 2,
       "alternativeNames": [],
@@ -1217,7 +1329,7 @@
         "LM"
       ],
       "positionsWithCounts": {
-        "LM": 9
+        "LM": 10
       },
       "mainPositionGroup": "MF",
       "recommendedPosition": "LM"
@@ -1225,7 +1337,7 @@
     {
       "name": "威洛克",
       "number": 28,
-      "caps": 9,
+      "caps": 10,
       "lineups": 7,
       "matches": [
         {
@@ -1353,6 +1465,20 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
@@ -1361,8 +1487,8 @@
       },
       "goals": 2,
       "assists": 0,
-      "minutesPlayed": 530,
-      "substitutedIn": 2,
+      "minutesPlayed": 550,
+      "substitutedIn": 3,
       "substitutedOut": 7,
       "alternativeNames": [],
       "age": 27,
@@ -1383,111 +1509,10 @@
       "recommendedPosition": "CAM"
     },
     {
-      "name": "伊兰加",
-      "number": 19,
-      "caps": 5,
-      "lineups": 4,
-      "matches": [
-        {
-          "id": 3003857,
-          "round": 1,
-          "position": "RM",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 1,
-          "assists": 0,
-          "handicap": -0.25,
-          "score": "2-2",
-          "handicapResult": "win",
-          "totalLine": "3/3.5",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 3003868,
-          "round": 2,
-          "position": "RM",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 1,
-          "assists": 0,
-          "handicap": 0.25,
-          "score": "0-2",
-          "handicapResult": "win",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "under"
-        },
-        {
-          "id": 3003877,
-          "round": 3,
-          "position": "RM",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0.25,
-          "score": "2-2",
-          "handicapResult": "lose",
-          "totalLine": "3",
-          "totalGoalsResult": "over"
-        },
-        {
-          "id": 3003923,
-          "round": 8,
-          "position": "Substitute",
-          "caps": 1,
-          "lineups": 0,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0,
-          "score": "0-2",
-          "handicapResult": "win",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "under"
-        },
-        {
-          "id": 3003937,
-          "round": 9,
-          "position": "RM",
-          "caps": 1,
-          "lineups": 1,
-          "goals": 0,
-          "assists": 0,
-          "handicap": 0.25,
-          "score": "0-1",
-          "handicapResult": "lose",
-          "totalLine": "2.5/3",
-          "totalGoalsResult": "under"
-        }
-      ],
-      "positions": {
-        "RM": 4
-      },
-      "goals": 2,
-      "assists": 0,
-      "minutesPlayed": 300,
-      "substitutedIn": 1,
-      "substitutedOut": 4,
-      "alternativeNames": [],
-      "age": 24,
-      "socialStatus": 3500,
-      "nation": "瑞典",
-      "height": 178,
-      "currentClub": "纽卡斯尔联",
-      "recentTransfers": [],
-      "positionPreferences": [
-        "RM"
-      ],
-      "positionsWithCounts": {
-        "RM": 4
-      },
-      "mainPositionGroup": "MF",
-      "recommendedPosition": "RM"
-    },
-    {
       "name": "维萨",
       "number": 9,
-      "caps": 9,
-      "lineups": 7,
+      "caps": 10,
+      "lineups": 8,
       "matches": [
         {
           "id": 3003857,
@@ -1614,17 +1639,31 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "CAM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "CAM": 3,
+        "CAM": 4,
         "ST": 4
       },
       "goals": 1,
       "assists": 1,
-      "minutesPlayed": 610,
+      "minutesPlayed": 680,
       "substitutedIn": 2,
-      "substitutedOut": 3,
+      "substitutedOut": 4,
       "alternativeNames": [],
       "age": 30,
       "socialStatus": 2500,
@@ -1633,12 +1672,127 @@
       "currentClub": "纽卡斯尔联",
       "recentTransfers": [],
       "positionPreferences": [
-        "ST",
-        "CAM"
+        "CAM",
+        "ST"
       ],
       "positionsWithCounts": {
-        "ST": 4,
-        "CAM": 3
+        "CAM": 4,
+        "ST": 4
+      },
+      "mainPositionGroup": "MF",
+      "recommendedPosition": "RM"
+    },
+    {
+      "name": "威廉·奥苏拉",
+      "number": 10,
+      "caps": 6,
+      "lineups": 4,
+      "matches": [
+        {
+          "id": 3003857,
+          "round": 1,
+          "position": "ST",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 1,
+          "handicap": -0.25,
+          "score": "2-2",
+          "handicapResult": "win",
+          "totalLine": "3/3.5",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 3003902,
+          "round": 6,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": -0.25,
+          "score": "4-1",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "over"
+        },
+        {
+          "id": 3003916,
+          "round": 7,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "0-1",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003923,
+          "round": 8,
+          "position": "ST",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 1,
+          "assists": 0,
+          "handicap": 0,
+          "score": "0-2",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003937,
+          "round": 9,
+          "position": "ST",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "0-1",
+          "handicapResult": "lose",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "ST",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
+        }
+      ],
+      "positions": {
+        "ST": 4
+      },
+      "goals": 1,
+      "assists": 1,
+      "minutesPlayed": 340,
+      "substitutedIn": 2,
+      "substitutedOut": 3,
+      "alternativeNames": [],
+      "age": 23,
+      "socialStatus": 3200,
+      "nation": "丹麦",
+      "height": 192,
+      "currentClub": "纽卡斯尔联",
+      "recentTransfers": [],
+      "positionPreferences": [
+        "ST"
+      ],
+      "positionsWithCounts": {
+        "ST": 4
       },
       "mainPositionGroup": "FW",
       "recommendedPosition": "ST"
@@ -1748,6 +1902,20 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {},
@@ -1797,6 +1965,20 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "over"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {},
@@ -1806,7 +1988,7 @@
       "substitutedIn": 2,
       "substitutedOut": 0,
       "alternativeNames": [],
-      "age": 23,
+      "age": 24,
       "socialStatus": 4500,
       "nation": "英格兰",
       "height": 182,
@@ -1816,8 +1998,8 @@
     "3": {
       "name": "霍尔",
       "number": 3,
-      "caps": 9,
-      "lineups": 9,
+      "caps": 10,
+      "lineups": 10,
       "matches": [
         {
           "id": 3003857,
@@ -1944,14 +2126,28 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "LB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "LB": 9
+        "LB": 10
       },
       "goals": 1,
       "assists": 1,
-      "minutesPlayed": 790,
+      "minutesPlayed": 880,
       "substitutedIn": 0,
       "substitutedOut": 1,
       "alternativeNames": [],
@@ -2093,6 +2289,20 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
@@ -2114,7 +2324,7 @@
     "5": {
       "name": "舍尔",
       "number": 5,
-      "caps": 4,
+      "caps": 5,
       "lineups": 2,
       "matches": [
         {
@@ -2242,6 +2452,20 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
@@ -2249,8 +2473,8 @@
       },
       "goals": 0,
       "assists": 0,
-      "minutesPlayed": 220,
-      "substitutedIn": 2,
+      "minutesPlayed": 240,
+      "substitutedIn": 3,
       "substitutedOut": 0,
       "alternativeNames": [],
       "age": 34,
@@ -2263,8 +2487,8 @@
     "6": {
       "name": "尼科.冈萨雷斯",
       "number": 6,
-      "caps": 7,
-      "lineups": 7,
+      "caps": 8,
+      "lineups": 8,
       "matches": [
         {
           "id": 3003868,
@@ -2363,16 +2587,30 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "CDM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "CDM": 7
+        "CDM": 8
       },
       "goals": 0,
       "assists": 1,
-      "minutesPlayed": 550,
+      "minutesPlayed": 620,
       "substitutedIn": 0,
-      "substitutedOut": 4,
+      "substitutedOut": 5,
       "alternativeNames": [],
       "age": 24,
       "socialStatus": 5000,
@@ -2628,8 +2866,8 @@
     "9": {
       "name": "维萨",
       "number": 9,
-      "caps": 9,
-      "lineups": 7,
+      "caps": 10,
+      "lineups": 8,
       "matches": [
         {
           "id": 3003857,
@@ -2756,17 +2994,31 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "CAM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "CAM": 3,
+        "CAM": 4,
         "ST": 4
       },
       "goals": 1,
       "assists": 1,
-      "minutesPlayed": 610,
+      "minutesPlayed": 680,
       "substitutedIn": 2,
-      "substitutedOut": 3,
+      "substitutedOut": 4,
       "alternativeNames": [],
       "age": 30,
       "socialStatus": 2500,
@@ -2778,8 +3030,8 @@
     "10": {
       "name": "威廉·奥苏拉",
       "number": 10,
-      "caps": 5,
-      "lineups": 3,
+      "caps": 6,
+      "lineups": 4,
       "matches": [
         {
           "id": 3003857,
@@ -2850,16 +3102,30 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "ST",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "ST": 3
+        "ST": 4
       },
       "goals": 1,
       "assists": 1,
-      "minutesPlayed": 270,
+      "minutesPlayed": 340,
       "substitutedIn": 2,
-      "substitutedOut": 2,
+      "substitutedOut": 3,
       "alternativeNames": [],
       "age": 23,
       "socialStatus": 3200,
@@ -2871,8 +3137,8 @@
     "11": {
       "name": "巴恩斯",
       "number": 11,
-      "caps": 9,
-      "lineups": 9,
+      "caps": 10,
+      "lineups": 10,
       "matches": [
         {
           "id": 3003857,
@@ -2999,14 +3265,28 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "LM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "LM": 9
+        "LM": 10
       },
       "goals": 2,
       "assists": 2,
-      "minutesPlayed": 770,
+      "minutesPlayed": 860,
       "substitutedIn": 0,
       "substitutedOut": 2,
       "alternativeNames": [],
@@ -3020,8 +3300,8 @@
     "12": {
       "name": "M·佳夫",
       "number": 12,
-      "caps": 8,
-      "lineups": 7,
+      "caps": 9,
+      "lineups": 8,
       "matches": [
         {
           "id": 3003857,
@@ -3148,16 +3428,30 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "CB": 7
+        "CB": 8
       },
       "goals": 1,
       "assists": 0,
-      "minutesPlayed": 650,
+      "minutesPlayed": 720,
       "substitutedIn": 1,
-      "substitutedOut": 0,
+      "substitutedOut": 1,
       "alternativeNames": [],
       "age": 25,
       "socialStatus": 5000,
@@ -3169,8 +3463,8 @@
     "14": {
       "name": "斯图尔",
       "number": 14,
-      "caps": 7,
-      "lineups": 2,
+      "caps": 8,
+      "lineups": 3,
       "matches": [
         {
           "id": 3003857,
@@ -3297,16 +3591,30 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "CDM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "CDM": 2
+        "CDM": 3
       },
       "goals": 0,
       "assists": 0,
-      "minutesPlayed": 240,
+      "minutesPlayed": 310,
       "substitutedIn": 5,
-      "substitutedOut": 2,
+      "substitutedOut": 3,
       "alternativeNames": [],
       "age": 18,
       "socialStatus": 2200,
@@ -3455,6 +3763,20 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "Substitute",
+          "caps": 0,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {},
@@ -3483,7 +3805,7 @@
     "19": {
       "name": "伊兰加",
       "number": 19,
-      "caps": 5,
+      "caps": 6,
       "lineups": 4,
       "matches": [
         {
@@ -3555,6 +3877,20 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
@@ -3562,8 +3898,8 @@
       },
       "goals": 2,
       "assists": 0,
-      "minutesPlayed": 300,
-      "substitutedIn": 1,
+      "minutesPlayed": 320,
+      "substitutedIn": 2,
       "substitutedOut": 4,
       "alternativeNames": [],
       "age": 24,
@@ -3576,7 +3912,7 @@
     "20": {
       "name": "M·费尔南德斯",
       "number": 20,
-      "caps": 5,
+      "caps": 6,
       "lineups": 4,
       "matches": [
         {
@@ -3648,6 +3984,20 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
@@ -3657,8 +4007,8 @@
       },
       "goals": 0,
       "assists": 0,
-      "minutesPlayed": 320,
-      "substitutedIn": 1,
+      "minutesPlayed": 340,
+      "substitutedIn": 2,
       "substitutedOut": 3,
       "alternativeNames": [],
       "age": 21,
@@ -3680,8 +4030,8 @@
     "21": {
       "name": "霍尔尼切克",
       "number": 21,
-      "caps": 9,
-      "lineups": 9,
+      "caps": 10,
+      "lineups": 10,
       "matches": [
         {
           "id": 3003857,
@@ -3808,14 +4158,28 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "GK",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "GK": 9
+        "GK": 10
       },
       "goals": 0,
       "assists": 0,
-      "minutesPlayed": 810,
+      "minutesPlayed": 900,
       "substitutedIn": 0,
       "substitutedOut": 0,
       "alternativeNames": [],
@@ -3838,8 +4202,8 @@
     "23": {
       "name": "墨菲",
       "number": 23,
-      "caps": 8,
-      "lineups": 4,
+      "caps": 9,
+      "lineups": 5,
       "matches": [
         {
           "id": 3003857,
@@ -3966,14 +4330,28 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "RM",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 1,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "RM": 4
+        "RM": 5
       },
-      "goals": 0,
+      "goals": 1,
       "assists": 1,
-      "minutesPlayed": 400,
+      "minutesPlayed": 490,
       "substitutedIn": 4,
       "substitutedOut": 2,
       "alternativeNames": [],
@@ -4045,7 +4423,7 @@
     "28": {
       "name": "威洛克",
       "number": 28,
-      "caps": 9,
+      "caps": 10,
       "lineups": 7,
       "matches": [
         {
@@ -4173,6 +4551,20 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
@@ -4181,8 +4573,8 @@
       },
       "goals": 2,
       "assists": 0,
-      "minutesPlayed": 530,
-      "substitutedIn": 2,
+      "minutesPlayed": 550,
+      "substitutedIn": 3,
       "substitutedOut": 7,
       "alternativeNames": [],
       "age": 27,
@@ -4195,8 +4587,8 @@
     "33": {
       "name": "布恩",
       "number": 33,
-      "caps": 4,
-      "lineups": 2,
+      "caps": 5,
+      "lineups": 3,
       "matches": [
         {
           "id": 3003902,
@@ -4253,14 +4645,28 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "CB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "CB": 2
+        "CB": 3
       },
       "goals": 0,
       "assists": 0,
-      "minutesPlayed": 220,
+      "minutesPlayed": 310,
       "substitutedIn": 2,
       "substitutedOut": 0,
       "alternativeNames": [],
@@ -4274,8 +4680,8 @@
     "37": {
       "name": "德迪奇",
       "number": 37,
-      "caps": 7,
-      "lineups": 6,
+      "caps": 8,
+      "lineups": 7,
       "matches": [
         {
           "id": 3003857,
@@ -4388,14 +4794,28 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "RB",
+          "caps": 1,
+          "lineups": 1,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
-        "RB": 6
+        "RB": 7
       },
       "goals": 0,
       "assists": 2,
-      "minutesPlayed": 500,
+      "minutesPlayed": 590,
       "substitutedIn": 1,
       "substitutedOut": 3,
       "alternativeNames": [],
@@ -4523,7 +4943,7 @@
     "67": {
       "name": "米利",
       "number": 67,
-      "caps": 7,
+      "caps": 8,
       "lineups": 7,
       "matches": [
         {
@@ -4623,6 +5043,20 @@
           "handicapResult": "lose",
           "totalLine": "2.5/3",
           "totalGoalsResult": "under"
+        },
+        {
+          "id": 3003943,
+          "round": 10,
+          "position": "Substitute",
+          "caps": 1,
+          "lineups": 0,
+          "goals": 0,
+          "assists": 0,
+          "handicap": 0.25,
+          "score": "1-1",
+          "handicapResult": "win",
+          "totalLine": "2.5/3",
+          "totalGoalsResult": "under"
         }
       ],
       "positions": {
@@ -4631,8 +5065,8 @@
       },
       "goals": 1,
       "assists": 0,
-      "minutesPlayed": 550,
-      "substitutedIn": 0,
+      "minutesPlayed": 570,
+      "substitutedIn": 1,
       "substitutedOut": 4,
       "alternativeNames": [],
       "age": 20,
@@ -4644,14 +5078,14 @@
     }
   },
   "formationStats": {
-    "4231": 9
+    "4231": 10
   },
   "asianHandicap": {
-    "total": 9,
-    "win": 3,
+    "total": 10,
+    "win": 4,
     "lose": 6,
     "draw": 0,
-    "winRate": "33.33",
+    "winRate": "40.00",
     "matches": [
       {
         "score": "2-2",
@@ -4715,15 +5149,22 @@
         "status": "home",
         "handicapResult": "away_win",
         "teamResult": "lose"
+      },
+      {
+        "score": "1-1",
+        "handicap": 0.25,
+        "status": "guest",
+        "handicapResult": "away_win",
+        "teamResult": "win"
       }
     ]
   },
   "totalGoals": {
-    "total": 9,
+    "total": 10,
     "over": 4,
-    "under": 4,
+    "under": 5,
     "draw": 1,
-    "overRate": "44.44",
+    "overRate": "40.00",
     "matches": [
       {
         "score": "2-2",
@@ -4795,6 +5236,14 @@
         "totalLineValue": 2.75,
         "status": "home",
         "totalGoals": 1,
+        "result": "under"
+      },
+      {
+        "score": "1-1",
+        "totalLine": "2.5/3",
+        "totalLineValue": 2.75,
+        "status": "guest",
+        "totalGoals": 2,
         "result": "under"
       }
     ]

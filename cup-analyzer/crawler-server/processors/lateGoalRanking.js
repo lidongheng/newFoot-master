@@ -17,17 +17,20 @@ function buildRanking({ arrTeam, arrData }) {
   }
 
   const ranking = arrData.map((row, index) => {
-    if (!Array.isArray(row) || row.length < 4 || !teamNames.has(row[0])) {
+    if (!Array.isArray(row) || row.length !== 19 || !teamNames.has(row[0])) {
       throw new Error(`arrData 第 ${index + 1} 行无效或找不到对应球队`);
     }
-    // 文件的末三项依次是 76–80、81–85、86–90 分钟进球数。
-    const goals = row.slice(-3);
-    if (goals.some((value) => !Number.isInteger(value) || value < 0)) {
-      throw new Error(`球队 ${row[0]} 的末三个时段进球数必须为非负整数`);
+    // 球队序号后是 18 个五分钟时段，前 9 项为上半场，后 9 项为下半场。
+    const periods = row.slice(1);
+    if (periods.some((value) => !Number.isInteger(value) || value < 0)) {
+      throw new Error(`球队 ${row[0]} 的各时段进球数必须为非负整数`);
     }
+    const goals = periods.slice(-3);
     return {
       teamSerial: row[0],
       teamName: teamNames.get(row[0]),
+      firstHalf: periods.slice(0, 9).reduce((sum, value) => sum + value, 0),
+      secondHalf: periods.slice(9).reduce((sum, value) => sum + value, 0),
       goals76To80: goals[0],
       goals81To85: goals[1],
       goals86To90: goals[2],
@@ -40,6 +43,8 @@ function buildRanking({ arrTeam, arrData }) {
     '顺序号': index + 1,
     '球队序号': team.teamSerial,
     '球队名': team.teamName,
+    '上半场进球数': team.firstHalf,
+    '下半场进球数': team.secondHalf,
     '76-80分钟': team.goals76To80,
     '81-85分钟': team.goals81To85,
     '86-90分钟': team.goals86To90,

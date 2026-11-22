@@ -27,8 +27,8 @@
     ],
     "stats": 75,
     "ability": 75,
-    "caps": 11,
-    "lineups": 11,
+    "caps": 12,
+    "lineups": 12,
     "goals": 0,
     "assists": 0,
     "age": 25,
@@ -82,8 +82,8 @@
     ],
     "stats": 71,
     "ability": 71,
-    "caps": 7,
-    "lineups": 6,
+    "caps": 8,
+    "lineups": 7,
     "goals": 1,
     "assists": 0,
     "age": 21,
@@ -124,8 +124,8 @@
     ],
     "stats": 72,
     "ability": 72,
-    "caps": 10,
-    "lineups": 9,
+    "caps": 11,
+    "lineups": 10,
     "goals": 0,
     "assists": 1,
     "age": 19,
@@ -174,10 +174,10 @@
     ],
     "stats": 72,
     "ability": 72,
-    "caps": 9,
-    "lineups": 8,
+    "caps": 10,
+    "lineups": 9,
     "goals": 0,
-    "assists": 0,
+    "assists": 1,
     "age": 25,
     "number": 5,
     "height": 185,
@@ -192,6 +192,74 @@
         "to": "桑坦德竞技",
         "fee": "",
         "type": "?"
+      }
+    ]
+  },
+  {
+    "person_id": "50202404",
+    "name": "阿龙-马丁",
+    "nation": "西班牙",
+    "staff": "DF",
+    "attr": "DF",
+    "attrDes": "DF",
+    "qiutanPosition": "左中场",
+    "position": [
+      "LM"
+    ],
+    "stats": 76,
+    "ability": 76,
+    "caps": 7,
+    "lineups": 2,
+    "goals": 0,
+    "assists": 0,
+    "age": 29,
+    "number": 3,
+    "height": 178,
+    "weight": 70,
+    "socialStatus": "500",
+    "currentClub": "桑坦德竞技",
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2026-09-01",
+        "from": "热那亚",
+        "to": "桑坦德竞技",
+        "fee": "",
+        "type": "免签"
+      }
+    ]
+  },
+  {
+    "person_id": "50882785",
+    "name": "佩德罗-费利佩",
+    "nation": "巴西",
+    "staff": "DF",
+    "attr": "DF",
+    "attrDes": "DF",
+    "qiutanPosition": "中后卫",
+    "position": [
+      "CB"
+    ],
+    "stats": 69,
+    "ability": 69,
+    "caps": 6,
+    "lineups": 3,
+    "goals": 0,
+    "assists": 0,
+    "age": 22,
+    "number": 22,
+    "height": 190,
+    "weight": 85,
+    "socialStatus": "150",
+    "currentClub": "桑坦德竞技",
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2026-08-04",
+        "from": "尤文图斯新一代",
+        "to": "桑坦德竞技",
+        "fee": "50万欧",
+        "type": "转会"
       }
     ]
   },
@@ -219,40 +287,6 @@
     "socialStatus": "140",
     "currentClub": "桑坦德竞技",
     "recentTransfers": []
-  },
-  {
-    "person_id": "50202404",
-    "name": "阿龙-马丁",
-    "nation": "西班牙",
-    "staff": "DF",
-    "attr": "DF",
-    "attrDes": "DF",
-    "qiutanPosition": "左中场",
-    "position": [
-      "LM"
-    ],
-    "stats": 76,
-    "ability": 76,
-    "caps": 6,
-    "lineups": 2,
-    "goals": 0,
-    "assists": 0,
-    "age": 29,
-    "number": 3,
-    "height": 178,
-    "weight": 70,
-    "socialStatus": "500",
-    "currentClub": "桑坦德竞技",
-    "recentTransfers": [
-      {
-        "season": "2026-2027",
-        "date": "2026-09-01",
-        "from": "热那亚",
-        "to": "桑坦德竞技",
-        "fee": "",
-        "type": "免签"
-      }
-    ]
   },
   {
     "person_id": "50574047",
@@ -283,41 +317,7 @@
         "date": "2026-07-01",
         "from": "尤文图斯",
         "to": "桑坦德竞技",
-        "fee": "250万欧",
-        "type": "转会"
-      }
-    ]
-  },
-  {
-    "person_id": "50882785",
-    "name": "佩德罗-费利佩",
-    "nation": "巴西",
-    "staff": "DF",
-    "attr": "DF",
-    "attrDes": "DF",
-    "qiutanPosition": "中后卫",
-    "position": [
-      "CB"
-    ],
-    "stats": 69,
-    "ability": 69,
-    "caps": 5,
-    "lineups": 2,
-    "goals": 0,
-    "assists": 0,
-    "age": 22,
-    "number": 22,
-    "height": 190,
-    "weight": 85,
-    "socialStatus": "150",
-    "currentClub": "桑坦德竞技",
-    "recentTransfers": [
-      {
-        "season": "2026-2027",
-        "date": "2026-08-04",
-        "from": "尤文图斯新一代",
-        "to": "桑坦德竞技",
-        "fee": "50万欧",
+        "fee": "220万欧",
         "type": "转会"
       }
     ]
@@ -329,14 +329,14 @@
     "staff": "MF",
     "attr": "MF",
     "attrDes": "MF",
-    "qiutanPosition": "前腰",
+    "qiutanPosition": "左中场",
     "position": [
-      "CAM"
+      "LM"
     ],
     "stats": 80,
     "ability": 80,
-    "caps": 11,
-    "lineups": 10,
+    "caps": 12,
+    "lineups": 11,
     "goals": 1,
     "assists": 1,
     "age": 35,
@@ -369,8 +369,8 @@
     ],
     "stats": 78,
     "ability": 78,
-    "caps": 9,
-    "lineups": 8,
+    "caps": 10,
+    "lineups": 9,
     "goals": 1,
     "assists": 0,
     "age": 27,
@@ -422,14 +422,14 @@
     "staff": "MF",
     "attr": "MF",
     "attrDes": "MF",
-    "qiutanPosition": "后腰",
+    "qiutanPosition": "中前卫",
     "position": [
-      "CDM"
+      "CM"
     ],
     "stats": 73,
     "ability": 73,
-    "caps": 8,
-    "lineups": 7,
+    "caps": 9,
+    "lineups": 8,
     "goals": 0,
     "assists": 0,
     "age": 22,
@@ -470,7 +470,7 @@
     ],
     "stats": 75,
     "ability": 75,
-    "caps": 7,
+    "caps": 8,
     "lineups": 3,
     "goals": 0,
     "assists": 0,
@@ -512,7 +512,7 @@
     ],
     "stats": 68,
     "ability": 68,
-    "caps": 3,
+    "caps": 4,
     "lineups": 1,
     "goals": 0,
     "assists": 0,
@@ -537,9 +537,9 @@
     ],
     "stats": 73,
     "ability": 73,
-    "caps": 11,
-    "lineups": 8,
-    "goals": 8,
+    "caps": 12,
+    "lineups": 9,
+    "goals": 9,
     "assists": 0,
     "age": 21,
     "number": 21,
@@ -601,6 +601,40 @@
     ]
   },
   {
+    "person_id": "50928196",
+    "name": "伊克尔-卢克",
+    "nation": "西班牙",
+    "staff": "FW",
+    "attr": "FW",
+    "attrDes": "FW",
+    "qiutanPosition": "右中场",
+    "position": [
+      "RM"
+    ],
+    "stats": 65,
+    "ability": 65,
+    "caps": 6,
+    "lineups": 3,
+    "goals": 1,
+    "assists": 0,
+    "age": 21,
+    "number": 19,
+    "height": 168,
+    "weight": 60,
+    "socialStatus": "200",
+    "currentClub": "桑坦德竞技",
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2026-08-31",
+        "from": "马德里竞技B队",
+        "to": "桑坦德竞技",
+        "fee": "100万欧",
+        "type": "转会"
+      }
+    ]
+  },
+  {
     "person_id": "50953090",
     "name": "巴勃罗-加西亚",
     "nation": "西班牙",
@@ -613,7 +647,7 @@
     ],
     "stats": 69,
     "ability": 69,
-    "caps": 10,
+    "caps": 11,
     "lineups": 3,
     "goals": 2,
     "assists": 0,
@@ -672,8 +706,8 @@
     ],
     "stats": 80,
     "ability": 80,
-    "caps": 11,
-    "lineups": 10,
+    "caps": 12,
+    "lineups": 11,
     "goals": 0,
     "assists": 3,
     "age": 28,
@@ -683,40 +717,6 @@
     "socialStatus": "700",
     "currentClub": "桑坦德竞技",
     "recentTransfers": []
-  },
-  {
-    "person_id": "50928196",
-    "name": "伊克尔-卢克",
-    "nation": "西班牙",
-    "staff": "FW",
-    "attr": "FW",
-    "attrDes": "FW",
-    "qiutanPosition": "右中场",
-    "position": [
-      "RM"
-    ],
-    "stats": 65,
-    "ability": 65,
-    "caps": 5,
-    "lineups": 2,
-    "goals": 0,
-    "assists": 0,
-    "age": 21,
-    "number": 19,
-    "height": 168,
-    "weight": 60,
-    "socialStatus": "200",
-    "currentClub": "桑坦德竞技",
-    "recentTransfers": [
-      {
-        "season": "2026-2027",
-        "date": "2026-08-31",
-        "from": "马德里竞技B队",
-        "to": "桑坦德竞技",
-        "fee": "100万欧",
-        "type": "转会"
-      }
-    ]
   },
   {
     "person_id": "50450533",
@@ -731,7 +731,7 @@
     ],
     "stats": 71,
     "ability": 71,
-    "caps": 6,
+    "caps": 7,
     "lineups": 0,
     "goals": 0,
     "assists": 0,
