@@ -9,276 +9,84 @@ const commandDelayMs = 500;
 // 按数组顺序逐队更新，未填写的其他属性沿用 squadTarget.js。
 const targets = [
   // {
-  //   leagueSerial: '16',
-  //   leagueSlug: 'eredivisie',
+  //   leagueSerial: '192',
+  //   leagueSlug: 'afcChampionsLeague',
   //   season: '2026-2027',
-  //   teamSerial: '250', // 特温特
-  //   matchTime: '2026-11-22 19:15:00',
-  //   roundSerial: '13',
+  //   teamSerial: '209', // 柏太阳神
+  //   matchTime: '2026-11-24 15:45:00',
+  //   roundSerial: '5',
   // },
   // {
-  //   leagueSerial: '16',
-  //   leagueSlug: 'eredivisie',
+  //   leagueSerial: '192',
+  //   leagueSlug: 'afcChampionsLeague',
   //   season: '2026-2027',
-  //   teamSerial: '225', // 威廉二世
-  //   matchTime: '2026-11-22 19:15:00',
-  //   roundSerial: '13',
+  //   teamSerial: '2915', // 纽卡斯尔喷气机 
+  //   matchTime: '2026-11-24 15:45:00',
+  //   roundSerial: '5',
   // },
   // {
-  //   leagueSerial: '34',
-  //   leagueSlug: 'serieA',
+  //   leagueSerial: '192',
+  //   leagueSlug: 'afcChampionsLeague',
   //   season: '2026-2027',
-  //   teamSerial: '166', // 尤文图斯
-  //   matchTime: '2026-11-22 19:30:00',
-  //   roundSerial: '12',
+  //   teamSerial: '3163', // 京都不死鸟
+  //   matchTime: '2026-11-24 18:00:00',
+  //   roundSerial: '5',
   // },
   // {
-  //   leagueSerial: '34',
-  //   leagueSlug: 'serieA',
+  //   leagueSerial: '192',
+  //   leagueSlug: 'afcChampionsLeague',
   //   season: '2026-2027',
-  //   teamSerial: '557', // 威尼斯
-  //   matchTime: '2026-11-22 19:30:00',
-  //   roundSerial: '12',
+  //   teamSerial: '481', // 浦项制铁 
+  //   matchTime: '2026-11-24 18:00:00',
+  //   roundSerial: '5',
   // },
   // {
-  //   leagueSerial: '37',
-  //   leagueSlug: 'eflChampionship',
+  //   leagueSerial: '192',
+  //   leagueSlug: 'afcChampionsLeague',
   //   season: '2026-2027',
-  //   teamSerial: '46', // 伯恩利
-  //   matchTime: '2026-11-22 20:00:00',
-  //   roundSerial: '16',
+  //   teamSerial: '488', // 大田市民
+  //   matchTime: '2026-11-24 18:00:00',
+  //   roundSerial: '5',
   // },
   // {
-  //   leagueSerial: '37',
-  //   leagueSlug: 'eflChampionship',
+  //   leagueSerial: '192',
+  //   leagueSlug: 'afcChampionsLeague',
   //   season: '2026-2027',
-  //   teamSerial: '21', // 布莱克本
-  //   matchTime: '2026-11-22 20:00:00',
-  //   roundSerial: '16',
+  //   teamSerial: '43', // 北京国安
+  //   matchTime: '2026-11-24 18:00:00',
+  //   roundSerial: '5',
   // },
   // {
-  //   leagueSerial: '31',
-  //   leagueSlug: 'laLiga',
+  //   leagueSerial: '192',
+  //   leagueSlug: 'afcChampionsLeague',
   //   season: '2026-2027',
-  //   teamSerial: '84', // 巴塞罗那
-  //   matchTime: '2026-11-22 21:00:00',
-  //   roundSerial: '13',
+  //   teamSerial: '24468', // 河内公安
+  //   matchTime: '2026-11-24 20:15:00',
+  //   roundSerial: '5',
   // },
   // {
-  //   leagueSerial: '31',
-  //   leagueSlug: 'laLiga',
+  //   leagueSerial: '192',
+  //   leagueSlug: 'afcChampionsLeague',
   //   season: '2026-2027',
-  //   teamSerial: '107', // 比利亚雷亚尔
-  //   matchTime: '2026-11-22 21:00:00',
-  //   roundSerial: '13',
+  //   teamSerial: '203', // 神户胜利船
+  //   matchTime: '2026-11-24 20:15:00',
+  //   roundSerial: '5',
   // },
   // {
-  //   leagueSerial: '16',
-  //   leagueSlug: 'eredivisie',
+  //   leagueSerial: '192',
+  //   leagueSlug: 'afcChampionsLeague',
   //   season: '2026-2027',
-  //   teamSerial: '253', // 阿贾克斯
-  //   matchTime: '2026-11-22 21:30:00',
-  //   roundSerial: '13',
-  // },
-  // {
-  //   leagueSerial: '16',
-  //   leagueSlug: 'eredivisie',
-  //   season: '2026-2027',
-  //   teamSerial: '256', // 海牙
-  //   matchTime: '2026-11-22 21:30:00',
-  //   roundSerial: '13',
-  // },
-  // {
-  //   leagueSerial: '16',
-  //   leagueSlug: 'eredivisie',
-  //   season: '2026-2027',
-  //   teamSerial: '273', // 鹿特丹斯巴达
-  //   matchTime: '2026-11-22 21:30:00',
-  //   roundSerial: '13',
-  // },
-  // {
-  //   leagueSerial: '16',
-  //   leagueSlug: 'eredivisie',
-  //   season: '2026-2027',
-  //   teamSerial: '234', // 阿尔克马尔
-  //   matchTime: '2026-11-22 21:30:00',
-  //   roundSerial: '13',
-  // },
-  // {
-  //   leagueSerial: '34',
-  //   leagueSlug: 'serieA',
-  //   season: '2026-2027',
-  //   teamSerial: '185', // 博洛尼亚
-  //   matchTime: '2026-11-22 22:00:00',
-  //   roundSerial: '12',
-  // },
-  // {
-  //   leagueSerial: '34',
-  //   leagueSlug: 'serieA',
-  //   season: '2026-2027',
-  //   teamSerial: '187', // 乌迪内斯
-  //   matchTime: '2026-11-22 22:00:00',
-  //   roundSerial: '12',
-  // },
-  // {
-  //   leagueSerial: '34',
-  //   leagueSlug: 'serieA',
-  //   season: '2026-2027',
-  //   teamSerial: '2960', // 萨索洛
-  //   matchTime: '2026-11-22 22:00:00',
-  //   roundSerial: '12',
-  // },
-  // {
-  //   leagueSerial: '34',
-  //   leagueSlug: 'serieA',
-  //   season: '2026-2027',
-  //   teamSerial: '552', // 热那亚
-  //   matchTime: '2026-11-22 22:00:00',
-  //   roundSerial: '12',
-  // },
-  // {
-  //   leagueSerial: '11',
-  //   leagueSlug: 'ligue1',
-  //   season: '2026-2027',
-  //   teamSerial: '1796', // 巴黎FC
-  //   matchTime: '2026-11-22 22:00:00',
-  //   roundSerial: '11',
-  // },
-  // {
-  //   leagueSerial: '11',
-  //   leagueSlug: 'ligue1',
-  //   season: '2026-2027',
-  //   teamSerial: '304', // 昂热
-  //   matchTime: '2026-11-22 22:00:00',
-  //   roundSerial: '11',
-  // },
-  // {
-  //   leagueSerial: '8',
-  //   leagueSlug: 'bundesliga',
-  //   season: '2026-2027',
-  //   teamSerial: '1135', // 奥格斯堡
-  //   matchTime: '2026-11-22 22:30:00',
-  //   roundSerial: '10',
-  // },
-  // {
-  //   leagueSerial: '8',
-  //   leagueSlug: 'bundesliga',
-  //   season: '2026-2027',
-  //   teamSerial: '162', // 美因茨
-  //   matchTime: '2026-11-22 22:30:00',
-  //   roundSerial: '10',
-  // },
-  // {
-  //   leagueSerial: '31',
-  //   leagueSlug: 'laLiga',
-  //   season: '2026-2027',
-  //   teamSerial: '104', // 桑坦德竞技
-  //   matchTime: '2026-11-22 23:15:00',
-  //   roundSerial: '13',
-  // },
-  // {
-  //   leagueSerial: '31',
-  //   leagueSlug: 'laLiga',
-  //   season: '2026-2027',
-  //   teamSerial: '106', // 皇家社会
-  //   matchTime: '2026-11-22 23:15:00',
-  //   roundSerial: '13',
-  // },
-  // {
-  //   leagueSerial: '16',
-  //   leagueSlug: 'eredivisie',
-  //   season: '2026-2027',
-  //   teamSerial: '280', // 前进之鹰
-  //   matchTime: '2026-11-22 23:45:00',
-  //   roundSerial: '13',
-  // },
-  // {
-  //   leagueSerial: '16',
-  //   leagueSlug: 'eredivisie',
-  //   season: '2026-2027',
-  //   teamSerial: '274', // 福图纳锡塔德
-  //   matchTime: '2026-11-22 23:45:00',
-  //   roundSerial: '13',
-  // },
-  // {
-  //   leagueSerial: '11',
-  //   leagueSlug: 'ligue1',
-  //   season: '2026-2027',
-  //   teamSerial: '333', // 洛里昂
-  //   matchTime: '2026-11-23 00:15:00',
-  //   roundSerial: '11',
-  // },
-  // {
-  //   leagueSerial: '11',
-  //   leagueSlug: 'ligue1',
-  //   season: '2026-2027',
-  //   teamSerial: '251', // 雷恩
-  //   matchTime: '2026-11-23 00:15:00',
-  //   roundSerial: '11',
-  // },
-  // {
-  //   leagueSerial: '8',
-  //   leagueSlug: 'bundesliga',
-  //   season: '2026-2027',
-  //   teamSerial: '132', // 云达不莱梅
-  //   matchTime: '2026-11-23 00:30:00',
-  //   roundSerial: '10',
-  // },
-  // {
-  //   leagueSerial: '8',
-  //   leagueSlug: 'bundesliga',
-  //   season: '2026-2027',
-  //   teamSerial: '160', // 汉堡
-  //   matchTime: '2026-11-23 00:30:00',
-  //   roundSerial: '10',
+  //   teamSerial: '7642', // 上海海港
+  //   matchTime: '2026-11-24 20:15:00',
+  //   roundSerial: '5',
   // },
   {
-    leagueSerial: '34',
-    leagueSlug: 'serieA',
+    leagueSerial: '192',
+    leagueSlug: 'afcChampionsLeague',
     season: '2026-2027',
-    teamSerial: '150', // AC米兰
-    matchTime: '2026-11-23 01:00:00',
-    roundSerial: '12',
-  },
-  // {
-  //   leagueSerial: '34',
-  //   leagueSlug: 'serieA',
-  //   season: '2026-2027',
-  //   teamSerial: '1359', // 弗洛西诺尼
-  //   matchTime: '2026-11-23 01:00:00',
-  //   roundSerial: '12',
-  // },
-  // {
-  //   leagueSerial: '36',
-  //   leagueSlug: 'epl',
-  //   season: '2026-2027',
-  //   teamSerial: '384', // 赫尔城
-  //   matchTime: '2026-11-22 22:00:00',
-  //   roundSerial: '11',
-  // },
-  // {
-  //   leagueSerial: '36',
-  //   leagueSlug: 'epl',
-  //   season: '2026-2027',
-  //   teamSerial: '60', // 布莱顿
-  //   matchTime: '2026-11-22 22:00:00',
-  //   roundSerial: '11',
-  // },
-  {
-    leagueSerial: '36',
-    leagueSlug: 'epl',
-    season: '2026-2027',
-    teamSerial: '25', // 利物浦
-    matchTime: '2026-11-23 00:30:00',
-    roundSerial: '11',
-  },
-  {
-    leagueSerial: '36',
-    leagueSlug: 'epl',
-    season: '2026-2027',
-    teamSerial: '27', // 曼彻斯特联
-    matchTime: '2026-11-23 00:30:00',
-    roundSerial: '11',
+    teamSerial: '4028', // 武里南联
+    matchTime: '2026-11-24 20:15:00',
+    roundSerial: '5',
   },
 ];
 

@@ -29,11 +29,9 @@ function buildRanking({ arrTeam, arrData }) {
     return {
       teamSerial: row[0],
       teamName: teamNames.get(row[0]),
+      first15Minutes: periods.slice(0, 3).reduce((sum, value) => sum + value, 0),
       firstHalf: periods.slice(0, 9).reduce((sum, value) => sum + value, 0),
       secondHalf: periods.slice(9).reduce((sum, value) => sum + value, 0),
-      goals76To80: goals[0],
-      goals81To85: goals[1],
-      goals86To90: goals[2],
       total: goals[0] + goals[1] + goals[2],
     };
   });
@@ -43,11 +41,9 @@ function buildRanking({ arrTeam, arrData }) {
     '顺序号': index + 1,
     '球队序号': team.teamSerial,
     '球队名': team.teamName,
+    '前15分钟进球数': team.first15Minutes,
     '上半场进球数': team.firstHalf,
     '下半场进球数': team.secondHalf,
-    '76-80分钟': team.goals76To80,
-    '81-85分钟': team.goals81To85,
-    '86-90分钟': team.goals86To90,
     '75分钟后总进球数': team.total,
   }));
 }

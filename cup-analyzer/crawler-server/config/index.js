@@ -100,6 +100,23 @@ const cups = {
       cupScheduleData: path.resolve(__dirname, '../../championsLeague/data/c103.js'),
     },
   },
+  afcChampionsLeague: {
+    fileId: 'c192',
+    type: 'cup',
+    cupSerial: '192',
+    cupName: 'afcChampionsLeague',
+    chineseName: '亚冠精英',
+    crossYear: true,
+    // 球探远程赛季使用完整年份，本地报告目录使用 26-27。
+    season: '2026-2027',
+    paths: {
+      cupAnalyzer: path.resolve(__dirname, '../../afcChampionsLeague'),
+      squadFinal: path.resolve(__dirname, '../../afcChampionsLeague/squad-final'),
+      playerCenter: path.resolve(__dirname, '../output/player_center'),
+      basicData: path.resolve(__dirname, '../../afcChampionsLeague/basicData'),
+      cupScheduleData: path.resolve(__dirname, '../../afcChampionsLeague/data/c192.js'),
+    },
+  },
   afcChampionsLeagueTwo: {
     fileId: 'c350',
     type: 'cup',

@@ -364,6 +364,7 @@ class HistoryMatchGenerator extends TeamProfileGenerator {
   loadAnalyzerReportForCurrentCup(teamId) {
     const leagueStyleCups = new Set([
       'championsLeague',
+      'afcChampionsLeague',
       'afcChampionsLeagueTwo',
       'europaLeague',
       'uefaConferenceLeague',

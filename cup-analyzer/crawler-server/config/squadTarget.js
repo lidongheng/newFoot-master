@@ -12,11 +12,11 @@
  * - roundSerial：联赛渠道时填当前国内联赛轮次（仅分析该轮之前已完赛场次）；杯赛渠道可不填
  */
 const squadTarget = {
-  leagueSerial: '25',
-  leagueSlug: 'jLeague',
+  leagueSerial: '192',
+  leagueSlug: 'afcChampionsLeague',
   season: '2026-2027',
-  teamSerial: '1989',
-  matchTime: '2026-11-21 14:00:00',
+  teamSerial: '1909',
+  matchTime: '2026-11-23 21:45:00',
   roundSerial: '15',
   /**
    * 赛程格式开关：
@@ -26,7 +26,7 @@ const squadTarget = {
    * 四个俱乐部杯赛（欧冠/欧罗巴/欧会杯/亚冠联2）使用本赛事数据时设 true，
    * 同时须设 matchByName: false；世界杯赛中同样设 true，matchByName 不设即可。
    */
-  isNation: false,
+  isNation: true,
   /**
    * 球员匹配方式（可选，不设则跟随 isNation）：
    *   false = 按球衣号码匹配（俱乐部 / 俱乐部杯赛）

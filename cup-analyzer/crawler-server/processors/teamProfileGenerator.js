@@ -11,6 +11,7 @@ function useLeagueStyleAnalysis() {
   return (
     config.type === 'league' ||
     k === 'championsLeague' ||
+    k === 'afcChampionsLeague' ||
     k === 'afcChampionsLeagueTwo' ||
     k === 'europaLeague' ||
     k === 'uefaConferenceLeague'
