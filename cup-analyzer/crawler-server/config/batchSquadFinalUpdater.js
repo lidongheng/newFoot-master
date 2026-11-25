@@ -9,21 +9,37 @@ const commandDelayMs = 500;
 // 按数组顺序逐队更新，未填写的其他属性沿用 squadTarget.js。
 const targets = [
   {
-    leagueSerial: '192',
-    leagueSlug: 'afcChampionsLeague',
+    leagueSerial: '103',
+    leagueSlug: 'championsLeague',
     season: '2026-2027',
-    teamSerial: '190', // 鹿岛鹿角
-    matchTime: '2026-11-25 18:00:00',
+    teamSerial: '271', // 大巴黎
+    matchTime: '2026-11-26 04:00:00',
     roundSerial: '5',
   },
   {
-    leagueSerial: '192',
-    leagueSlug: 'afcChampionsLeague',
+    leagueSerial: '103',
+    leagueSlug: 'championsLeague',
     season: '2026-2027',
-    teamSerial: '484', // 全北现代 
-    matchTime: '2026-11-25 18:00:00',
+    teamSerial: '174', // 罗马
+    matchTime: '2026-11-26 04:00:00',
     roundSerial: '5',
   },
+  {
+    leagueSerial: '103',
+    leagueSlug: 'championsLeague',
+    season: '2026-2027',
+    teamSerial: '466', // 葡萄牙体育
+    matchTime: '2026-11-26 04:00:00',
+    roundSerial: '5',
+  },
+  {
+    leagueSerial: '103',
+    leagueSlug: 'championsLeague',
+    season: '2026-2027',
+    teamSerial: '27', // 曼彻斯特联
+    matchTime: '2026-11-26 04:00:00',
+    roundSerial: '5',
+  }
 ];
 
 /** 运行：在 crawler-server 下执行 node config/batchSquadFinalUpdater.js。 */
