@@ -8,84 +8,20 @@ const commandDelayMs = 500;
 
 // 按数组顺序逐队更新，未填写的其他属性沿用 squadTarget.js。
 const targets = [
-  // {
-  //   leagueSerial: '192',
-  //   leagueSlug: 'afcChampionsLeague',
-  //   season: '2026-2027',
-  //   teamSerial: '209', // 柏太阳神
-  //   matchTime: '2026-11-24 15:45:00',
-  //   roundSerial: '5',
-  // },
-  // {
-  //   leagueSerial: '192',
-  //   leagueSlug: 'afcChampionsLeague',
-  //   season: '2026-2027',
-  //   teamSerial: '2915', // 纽卡斯尔喷气机 
-  //   matchTime: '2026-11-24 15:45:00',
-  //   roundSerial: '5',
-  // },
-  // {
-  //   leagueSerial: '192',
-  //   leagueSlug: 'afcChampionsLeague',
-  //   season: '2026-2027',
-  //   teamSerial: '3163', // 京都不死鸟
-  //   matchTime: '2026-11-24 18:00:00',
-  //   roundSerial: '5',
-  // },
-  // {
-  //   leagueSerial: '192',
-  //   leagueSlug: 'afcChampionsLeague',
-  //   season: '2026-2027',
-  //   teamSerial: '481', // 浦项制铁 
-  //   matchTime: '2026-11-24 18:00:00',
-  //   roundSerial: '5',
-  // },
-  // {
-  //   leagueSerial: '192',
-  //   leagueSlug: 'afcChampionsLeague',
-  //   season: '2026-2027',
-  //   teamSerial: '488', // 大田市民
-  //   matchTime: '2026-11-24 18:00:00',
-  //   roundSerial: '5',
-  // },
-  // {
-  //   leagueSerial: '192',
-  //   leagueSlug: 'afcChampionsLeague',
-  //   season: '2026-2027',
-  //   teamSerial: '43', // 北京国安
-  //   matchTime: '2026-11-24 18:00:00',
-  //   roundSerial: '5',
-  // },
-  // {
-  //   leagueSerial: '192',
-  //   leagueSlug: 'afcChampionsLeague',
-  //   season: '2026-2027',
-  //   teamSerial: '24468', // 河内公安
-  //   matchTime: '2026-11-24 20:15:00',
-  //   roundSerial: '5',
-  // },
-  // {
-  //   leagueSerial: '192',
-  //   leagueSlug: 'afcChampionsLeague',
-  //   season: '2026-2027',
-  //   teamSerial: '203', // 神户胜利船
-  //   matchTime: '2026-11-24 20:15:00',
-  //   roundSerial: '5',
-  // },
-  // {
-  //   leagueSerial: '192',
-  //   leagueSlug: 'afcChampionsLeague',
-  //   season: '2026-2027',
-  //   teamSerial: '7642', // 上海海港
-  //   matchTime: '2026-11-24 20:15:00',
-  //   roundSerial: '5',
-  // },
   {
     leagueSerial: '192',
     leagueSlug: 'afcChampionsLeague',
     season: '2026-2027',
-    teamSerial: '4028', // 武里南联
-    matchTime: '2026-11-24 20:15:00',
+    teamSerial: '190', // 鹿岛鹿角
+    matchTime: '2026-11-25 18:00:00',
+    roundSerial: '5',
+  },
+  {
+    leagueSerial: '192',
+    leagueSlug: 'afcChampionsLeague',
+    season: '2026-2027',
+    teamSerial: '484', // 全北现代 
+    matchTime: '2026-11-25 18:00:00',
     roundSerial: '5',
   },
 ];
