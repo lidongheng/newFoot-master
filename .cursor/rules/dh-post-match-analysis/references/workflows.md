@@ -2,14 +2,14 @@
 
 **SKILL**: dh-post-match-analysis   
 **创建时间**: 2026-02-18  
-**最后更新时间**: 2026-02-18
-**版本**: v1.0
+**最后更新时间**: 2026-11-26
+**版本**: v1.1
 
 ---
 
 # 详细工作流参考
 
-> SKILL.md 的执行层。按需查阅，不必全读。但是workflows.md是需要全读的。
+> SKILL.md 的执行层，按当前任务查阅相关章节。若历史示例与当前 JSON 字段冲突，以实际文件为准；执行规则以 SKILL.md 为准。
 
 ## 工作流程总览
 
@@ -22,6 +22,8 @@
 3. **查阅和分析本赛季联赛、主队在主场或客队在客场打同档次球队或同初赔球队的输赢**
 4. **取近6轮、近12轮主队和客队的联赛比赛结果和积分榜进行分析。涉及到球队换帅等其他因素时，还可以指定任意轮次**
 5. **查阅比赛事件，分析比赛走向和事件发生后推测球队可能的安排**
+
+其中第2至第4步依赖对应联赛和赛季的数据配置。欧冠等跨联赛杯赛不能把单一国内联赛积分榜或球队分档当成双方的共同口径；只有数据源覆盖目标赛季、球队和比赛范围时才分析，其他项明确标注不可用。
 
 ---
 
@@ -39,32 +41,44 @@
 |------|------|------|
 | `leagueSerial` | 联赛序号 | `'36'`（英超） |
 | `leagueSlug` | 联赛英文缩写（目录名） | `'epl'` |
-| `season` | 赛季 | `'25-26'` |
-| `roundSerial` | 轮次 | `'26'` |
-| `matchSerial` | 比赛序号 | `'2789380'` |
+| `season` | 与目标比赛一致的赛季；先读实际配置，不沿用历史示例 | `'26-27'` |
+| `roundSerial` | 目标比赛轮次 | `{轮次}` |
+| `matchSerial` | 目标比赛序号 | `{比赛ID}` |
+
+赛后爬虫赛季值来自 `cup-analyzer/crawler-server/config/index.js`。运行会备份并覆盖赛程前，核对 `config.cups[赛事键].season`、请求目标赛季和本地赛程文件的赛季元数据。杯赛优先检查 `arrCup[7]`。三者不一致时，不要直接运行同步命令；确认正确远端赛季后，可只在单次 Node 进程内覆盖 `config.season`，不要为单场报告改写仓库配置。远端访问失败时使用已核验的本地赛程，并明确标注赛程同步未完成。
 
 ### 需要确认的数据文件
 
 | 数据来源 | 路径 | 内容 |
 |---------|------|------|
-| 赛后技术统计 | `cup-analyzer/{leagueSlug}/basicData/{season}/round-{轮次}/{主队slug}_vs_{客队slug}/techStats.json` | 射门、控球率、传球、xG等 |
+| 赛后技术统计 | `cup-analyzer/{leagueSlug}/basicData/{season-short}/{赛事轮次目录}/{主队slug}_vs_{客队slug}/techStats.json` | 射门、控球率、传球、xG等 |
 | 比赛事件 | 同上目录 `/matchEvents.json` | 进球、红黄牌、换人等事件时间线 |
-| 首发阵容 | 同上目录 `/lineup.json` | 双方阵型、首发11人、替补 |
+| 首发阵容 | 同上目录 `/lineup.json` | 双方阵型、首发、替补 |
 | 球员统计 | 同上目录 `/playerStats.json` | 每位球员的详细技术数据 |
-| 比赛信息 | 同上目录 `/matchInfo.json` | 比赛ID、**postMatchSummary（必须原文写入报告顶部）** |
+| 比赛信息 | 同上目录 `/matchInfo.json` | 比赛ID、**postMatchSummary（非空时原文保留；缺失时说明）** |
 | 进球概率 | 同上目录 `/goalProbability.json` | 各时段进球/失球概率 |
 | 大名单 | `cup-analyzer/{leagueSlug}/news/{season}/round-{轮次}/{对阵双方}/{球队名}大名单.md` | 球员出场、身价、位置等 |
 | 球队分档 | `.cursor/rules/dh-post-match-analysis/references/{leagueSlug}-team-strength.md` | 联赛球队分档与理论盘口 |
 | 球队分档JSON | `backend-server/league-team-strength.json` | 程序可读的分档数据 |
 | 联赛赛程 | `cup-analyzer/{leagueSlug}/data/` 下对应赛程 JS（如英超 `s36.js`，见 crawler-server `config/index.js` 的 `cupScheduleData`） | 全赛季各轮次比赛数据 |
-| **报告输出** | `cup-analyzer/{leagueSlug}/postMatchSummary/{season}/round-{轮次}/{主队slug}_vs_{客队slug}/` | **分析报告保存目录** |
+| **报告输出** | `cup-analyzer/{leagueSlug}/postMatchSummary/{season-short}/round-{轮次}/{主队slug}_vs_{客队slug}/` | **分析报告保存目录** |
 
 如果赛后数据缺失，在 **`cup-analyzer/crawler-server`** 中执行（需先设置 `CUP_ANALYZER_CUP`）：
 ```bash
 cd cup-analyzer/crawler-server
-npx cross-env CUP_ANALYZER_CUP=epl npm run crawl:post-match -- --round {轮次}
+npx cross-env CUP_ANALYZER_CUP={赛事键} npm run crawl:post-match -- --round {轮次或赛事阶段键}
 ```
 （亦可用旧脚本：`cd backend-server` 后 `node crawlerPostMatchData.js --round {轮次}`，输出在 `backend-server/basicData/`。）
+
+### 欧冠联赛阶段：按比赛 ID 爬取单场
+
+欧冠赛程的联赛阶段可能把所有轮次放在 `jh` 的 `G{阶段ID}` 键下，而不是 `R_5`。先从赛程行确定比赛 ID、轮次和赛果。`postMatchDataCrawler --round G{阶段ID}` 会扫描该阶段所有未保存的完赛场次；为了单场任务避免批量爬取，可在 `cup-analyzer/crawler-server` 运行下面的一次性脚本。它只改当前 Node 进程里的赛季值，不改配置文件；赛季值、阶段键、比赛 ID 和轮次都要替换为已核验值：
+
+```bash
+npx cross-env CUP_ANALYZER_CUP=championsLeague node -e "const path=require('path'); const config=require('./config'); config.season='{远端赛季}'; const Crawler=require('./crawlers/postMatchDataCrawler'); const crawler=new Crawler(); const schedule=crawler.parseScheduleForPostMatch(); const {pendingMatches}=crawler.collectPendingMatches(schedule,['G{阶段ID}']); const match=pendingMatches.find(item=>String(item.matchSerial)==='{比赛ID}'); if(!match) throw new Error('目标比赛不在待爬队列，请先核查本地 JSON'); const outputDir=path.join(crawler.baseOutputDir,'round-{轮次}',match.folderName); crawler.crawlSingleMatch(match.matchSerial,outputDir).then(ok=>{if(!ok) process.exitCode=1;});"
+```
+
+若目标比赛已存在 `matchEvents.json`，先读取并核验该目录，不要重复爬取。网络失败且没有本地核心赛后 JSON 时，停止完整复盘报告，向用户说明爬取失败并请其提供本场 JSON 或 HTML；不得以新闻报道、搜索摘要或比分页替代必需的赛后数据文件。
 
 ---
 
@@ -76,7 +90,7 @@ npx cross-env CUP_ANALYZER_CUP=epl npm run crawl:post-match -- --round {轮次}
 对赛后统计数据进行对比，找到赢球球队赢球或输球球队输球或平局的原因
 
 大名单已经由用户保存在`cup-analyzer/${联赛名}/news/${赛季}/${轮次}/${对阵双方}`
-首发及替补阵容、比赛事件、赛后统计数据保存在 `cup-analyzer/${联赛名}/basicData/${赛季}/round-${轮次}/${对阵双方}/`（或杯赛阶段目录，见爬虫输出日志）
+首发及替补阵容、比赛事件、赛后统计数据保存在 `cup-analyzer/${联赛名}/basicData/${赛季短名}/round-${轮次}/${对阵双方}/`（杯赛输出目录按实际赛程阶段确认）
 
 ### 执行步骤
 
@@ -102,7 +116,7 @@ npx cross-env CUP_ANALYZER_CUP=epl npm run crawl:post-match -- --round {轮次}
 关键字段：
 - `homeFormation` / `guestFormation` — 阵型（如 `"4-2-3-1"`）
 - `homeStarting` / `guestStarting` — 首发球员列表
-- `homeSub` / `guestSub` — 替补球员列表
+- `homeSubs` / `guestSubs` — 替补球员列表
 
 将首发阵容按以下格式整理输出（结合大名单中的球员详细信息）：
 
@@ -112,26 +126,22 @@ npx cross-env CUP_ANALYZER_CUP=epl npm run crawl:post-match -- --round {轮次}
 - 位置排列：从右向左（门将/后卫线/中场线/前场线/前锋）
 - 分隔符：用 `/` 分隔不同位置线，用 `,` 分隔同一位置线的球员
 - 替补说明：在括号内标注位置
-- **必须包含四个部分**：预测首发（11人）、替补（9人）、伤停、落选
+- 使用实际首发（正常为11人）及实际替补人数；伤停与未进入名单仅在有来源支持时列出。不得把预测首发写成实际首发。
 
-**完整格式示例 - 曼城 (4-1-4-1)**:
+**格式示例**（用本场实际球员和位置替换占位符）:
 ```
-预测首发：25-多纳鲁马/27-努内斯，3-迪亚斯，24-格瓦迪奥尔，33-尼科奥赖利/14-尼古拉斯.冈萨雷斯/11-多库，20-贝尔纳多·席尔瓦，4-赖因德斯，47-福登/9-哈兰德
+实际首发（{阵型}）：{门将}/{后卫线}/{中场线}/{前锋线}
 
-替补：1-特拉福德(GK)，82-里科·刘易斯(RB)，5-斯通斯(CB)，45-胡桑诺夫(CB)，21-艾特努里(LB)，26-萨维尼奥(LW)，7-马尔穆什(LW)，10-切尔基(CAM)，52-奥斯卡·鲍伯(RW)
+替补：{号码}-{姓名}（{位置}），{号码}-{姓名}（{位置}）
 
-伤停：
-- 16-罗德里·赫尔南德斯（29岁，191cm，西班牙，9000万，6场4首发）- 腿筋伤
-- 8-马特奥·科瓦契奇（31岁，177cm，克罗地亚，2000万，1场0首发）
-- 44-菲利普斯（30岁，179cm，英格兰，1000万）
+伤停：只列有来源支持的缺阵球员和原因；没有可靠记录时标注「未找到可核验信息」
 
-落选：
-- 6-内森·阿克（30岁，180cm，荷兰，2200万，5场1首发）
+未进入比赛名单：仅在完整大名单和本场名单都可核对时列出
 ```
 
 #### 1.3 分析赛后技术统计
 
-从 `techStats.json` 中读取 `fullMatch` 字段，对比双方关键指标。
+从 `techStats.json` 中读取 `fullMatch` 字段，对比双方关键指标。先检查实际键名与 kind（新版可能为 EXPECTED_GOALS、SHOOT_INSIDE 等英文标识）。检查百分比范围、球员射门合计与球队射门、进球与事件是否一致；球员数据出现成功率超过100%或全员射门为0等异常时，保留原始文件，排除受影响字段并说明，不据此评选最佳/最差。
 
 **核心指标分析优先级**：
 
@@ -164,7 +174,7 @@ npx cross-env CUP_ANALYZER_CUP=epl npm run crawl:post-match -- --round {轮次}
 **分析逻辑**：
 - **控球率差距 >15%**：控球方通常掌握比赛节奏，但需结合射门数判断是否有效控球
 - **射门多但射正少**：进攻缺乏精度，远射多或进攻组织差
-- **xG > 实际进球**：运气不佳或临门一脚差；**xG < 实际进球**：效率极高或对手门将发挥差
+- **xG 与实际进球的差异**：描述本场兑现效率；原因需结合机会与射门证据，不能仅凭差值认定运气或门将发挥
 - **得分机会多但错失也多**：把握能力差，临门一脚有问题
 - **救球多**：门将高光表现，可能掩盖了防守端的问题；也可能对手射门多但被门将化解
 - **禁区内射球占比高**：进攻质量好，射门都在禁区内完成
@@ -274,16 +284,11 @@ node crawlerHistoryHandicap.js
 
 ### 数据来源
 
-球队分档定义在两处（内容一致）：
+球队分档定义在两处（内容一致，但文件可能只覆盖特定赛季）：
 - `references/{leagueSlug}-team-strength.md` — 人可读版本，含理论盘口
 - `backend-server/league-team-strength.json` — 程序可读版本，脚本自动加载
 
-示例（英超25-26赛季）：
-- 第一档：阿森纳、曼城、切尔西、利物浦
-- 第二档：热刺、曼联、阿斯顿维拉、纽卡斯尔联
-- 第三档：埃弗顿、布莱顿、水晶宫、伯恩茅斯
-- 第四档：诺丁汉森林、布伦特福德、富勒姆、桑德兰
-- 第五档：西汉姆联、利兹联、伯恩利、狼队
+球队分档是赛季相关数据。只在本地分档文件明确覆盖目标赛季、且球队名单与目标赛事一致时使用；旧赛季名单不可直接沿用。该目录目前只包含部分联赛的分档文件；若目标联赛或赛季没有对应数据，注明该分析项不可用，不要推测球队档次。
 
 ### 筛选逻辑
 
@@ -325,14 +330,14 @@ node crawlerHistoryHandicap.js
 ```bash
 cd backend-server
 
-# 近6轮积分榜（假设当前是第26轮）
-node crawlerCustomRank.js --rounds 21-26
+# 近6轮积分榜（当前比赛轮次为N）
+node crawlerCustomRank.js --rounds {当前轮次减5}-{当前轮次}
 
 # 近12轮积分榜
-node crawlerCustomRank.js --rounds 15-26
+node crawlerCustomRank.js --rounds {当前轮次减11}-{当前轮次}
 
 # 全赛季积分榜（参照）
-node crawlerCustomRank.js --rounds 1-26
+node crawlerCustomRank.js --rounds 1-{当前轮次}
 ```
 
 脚本输出包含：排名、球队、场次、胜平负、进失球、净胜球、积分、主客场战绩。
@@ -344,7 +349,7 @@ node crawlerCustomRank.js --rounds 1-26
 | 指标 | 分析方向 |
 |------|----------|
 | 近6轮积分 vs 近12轮积分 | 近期是否加速/减速 |
-| 近6轮排名 vs 全赛季排名 | 排名上升=状态好，下降=状态差 |
+| 近6轮排名 vs 全赛季排名 | 排名数值下降=状态改善，数值上升=状态变差 |
 | 近6轮主场/客场分拆 | 是否主场龙客场虫，或反之 |
 | 近6轮进球/失球 | 攻击力和防守稳定性的趋势 |
 | 近6轮净胜球 | 正向大=碾压局多，负向大=被动局多 |
@@ -354,19 +359,19 @@ node crawlerCustomRank.js --rounds 1-26
 涉及到球队换帅等其他因素时，可以指定任意轮次范围来单独观察：
 
 ```bash
-# 比如某队第15轮换帅，看换帅后表现
-node crawlerCustomRank.js --rounds 15-26
+# 某队在第M轮换帅，按实际轮次查看换帅后表现
+node crawlerCustomRank.js --rounds {M}-{当前轮次}
 
-# 比如看赛季初磨合期
+# 查看赛季初磨合期
 node crawlerCustomRank.js --rounds 1-6
 ```
 
 #### 4.4 分析输出
 
 结合三个维度（近6轮、近12轮、全赛季）做出判断：
-- **上升期**：近6轮积分排名 > 近12轮 > 全赛季
+- **上升期**：近6轮积分排名 < 近12轮 < 全赛季
 - **平稳期**：三者排名接近
-- **下滑期**：近6轮积分排名 < 近12轮 < 全赛季
+- **下滑期**：近6轮积分排名 > 近12轮 > 全赛季
 - **波动期**：排名忽高忽低，不稳定
 
 ---
@@ -399,7 +404,7 @@ node crawlerCustomRank.js --rounds 1-6
 - `kind` — 主客队（`"HOME"` / `"AWAY"`）
 - `player` — 涉及球员
 - `assist` — 助攻球员（进球事件）
-- `subOn` — 替换上场球员（换人事件）
+- `playerOn` / `playerOff` — 换上/换下球员；以当前 JSON 字段为准
 
 #### 5.2 构建比赛时间线
 
@@ -428,9 +433,9 @@ node crawlerCustomRank.js --rounds 1-6
 
 #### 5.4 换人分析
 
-换人是教练在场上唯一的战术调整手段，需要特别关注：
+换人是可观测的战术调整信号之一，需要结合场上位置变化分析：
 
-- **换人时机**：60分钟前换人通常说明战术不奏效或有伤病
+- **换人时机**：结合比分、赛程负荷、位置与可靠赛后消息判断；提前换人不能直接证明战术失败或伤病
 - **换人类型**：
   - 同位置换人 → 体能管理
   - 增加前锋/攻击型中场 → 追分
@@ -452,14 +457,14 @@ node crawlerCustomRank.js --rounds 1-6
 cup-analyzer/{leagueSlug}/postMatchSummary/{season}/round-{轮次}/{主队slug}_vs_{客队slug}/
 ```
 
-示例：
+路径示例（赛季短名和轮次应按目标比赛替换）：
 ```
-cup-analyzer/epl/postMatchSummary/25-26/round-26/brentford_vs_arsenal/分析报告.md
+cup-analyzer/{leagueSlug}/postMatchSummary/{season-short}/round-{轮次}/{home_slug}_vs_{away_slug}/分析报告.md
 ```
 
 ### 报告结构
 
-⭐⭐⭐ **`postMatchSummary` 必须原封不动放在报告最顶部**：从 `matchInfo.json` 的 `postMatchSummary` 字段读取内容，完整、原文、不修改地写入报告开头，作为「赛后总结」独立章节。此内容不得删改、缩写或重新组织。
+**`postMatchSummary` 非空时原文保留**：作为「赛后总结」独立章节并标明是数据源摘要，不等同于本报告结论。字段为空时说明获取失败；核心统计、事件与阵容完整时继续复盘，不伪造摘要。
 
 ```markdown
 # {赛季}{联赛}第{轮次}轮 {主队} vs {客队} 比赛分析报告
@@ -473,7 +478,7 @@ cup-analyzer/epl/postMatchSummary/25-26/round-26/brentford_vs_arsenal/分析报�
 
 ## 赛后总结
 
-{原封不动复制 matchInfo.json 中的 postMatchSummary 内容}
+{非空时原文引用 postMatchSummary；为空时说明数据源摘要未获取}
 
 ---
 
@@ -526,9 +531,9 @@ cup-analyzer/epl/postMatchSummary/25-26/round-26/brentford_vs_arsenal/分析报�
 
 | 脚本 | 命令 | 用途 |
 |------|------|------|
-| 爬取赛后数据（推荐） | `cd cup-analyzer/crawler-server` 后 `npx cross-env CUP_ANALYZER_CUP=epl npm run crawl:post-match -- --round {N}` | 增量爬取；输出 `cup-analyzer/{联赛}/basicData/...` |
-| 爬取赛后数据（全部轮次） | 同上目录 `npx cross-env CUP_ANALYZER_CUP=epl npm run crawl:post-match` | 增量爬取赛程内所有未保存的已完赛比赛 |
-| 本地解析单场 HTML | `npx cross-env CUP_ANALYZER_CUP=epl node crawlers/postMatchDataCrawler.js --local {file}.html --match {id}` | 从本地 HTML 解析 |
+| 爬取赛后数据（轮次/阶段） | `cd cup-analyzer/crawler-server` 后 `npx cross-env CUP_ANALYZER_CUP={赛事键} npm run crawl:post-match -- --round {轮次或阶段键}` | 增量爬取该键下所有待爬完赛比赛；杯赛阶段可能包含多场 |
+| 爬取赛后数据（全部） | 同上目录 `npx cross-env CUP_ANALYZER_CUP={赛事键} npm run crawl:post-match` | 增量爬取赛程内所有未保存的已完赛比赛；单场复盘不要默认跑全量 |
+| 本地解析单场 HTML | `npx cross-env CUP_ANALYZER_CUP={赛事键} node crawlers/postMatchDataCrawler.js --local {file}.html --match {比赛ID}` | 从本地 HTML 解析 |
 | 爬取赛后数据（旧版） | `cd backend-server` 后 `node crawlerPostMatchData.js --round {N}` | 输出 `backend-server/basicData/`，依赖 `wudaconfig.js` |
 | 历史同赔+同档次分析 | `cd backend-server` 后 `node crawlerHistoryHandicap.js` | 历史同赔走势 + 同档次对阵（含逐场胜负和盘口），需 `league-team-strength.json` |
 | 自定义积分榜 | `node crawlerCustomRank.js --rounds {X}-{Y}` | 输出指定轮次范围的积分榜 |
@@ -557,6 +562,8 @@ cup-analyzer/epl/postMatchSummary/25-26/round-26/brentford_vs_arsenal/分析报�
 | 10 | 初盘全场让球 | number |
 | 11 | 初盘半场让球 | number |
 | 12 | 初盘大小球 | string |
+
+杯赛对阵可能嵌套在淘汰赛对阵或 `G{阶段ID}` 分组中。先递归定位具体比赛行，再按以上索引读取；外层阶段/对阵数组的索引不能当作比赛行字段。欧冠联赛阶段的 `G{阶段ID}` 也不等同于轮次，必须从比赛行日期或轮次信息确认 `round-{N}` 输出路径。
 
 ### techStats.json 完整字段参考
 
@@ -621,8 +628,8 @@ cup-analyzer/epl/postMatchSummary/25-26/round-26/brentford_vs_arsenal/分析报�
 
 | 键名 | kind | 含义 | 备注 |
 |------|------|------|------|
-| `预期进球(xG)` | `52` | 总xG | 23轮起使用此键名 |
-| `预期进球` | `52` | 总xG | 22轮及之前使用此键名 |
+| `预期进球(xG)` | `EXPECTED_GOALS` 或旧版 `52` | 总xG | 按实际键名与 kind 识别，不按固定轮次猜字段 |
+| `预期进球` | 以实际文件为准 | 总xG | 旧数据可能使用此键名 |
 | `运动战预期进球` | `53` | 运动战xG | 拆分xG来源 |
 | `定位球预期进球` | `54` | 定位球xG | 拆分xG来源 |
 | `非点球预期进球` | `55` | 非点球xG (npxG) | 排除点球影响 |

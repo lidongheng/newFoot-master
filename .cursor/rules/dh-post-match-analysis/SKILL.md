@@ -1,247 +1,80 @@
 ---
 name: dh-post-match-analysis
-description: |
-  针对足球比赛赛后的数据分析与提效全能助手。覆盖数据处理、分析洞察、报告撰写、数据可视化的端到端工作流。
-  始终从专家视角出发，帮用户多想一步。遇到不确定的问题主动与用户确认。
-  支持：JSON数据分析、控制台输出纯文本数据分析、Excel数据分析、数据可视化、报告生成、公式生成。
-  足球赛后任务会先同步最新球探赛程 JS（scheduleCrawler，含备份），再爬取球探赛后数据 JSON（postMatchDataCrawler，必做），最后进行分析与报告。
-  当用户提到"分析数据"、"做报告"、"Excel"、"复盘"、“赛后总结”、“赛后分析”、
-  "周报"、"月报"、"数据处理"、"图表"、"可视化"、"汇报"、"表格"、"公式"时使用此技能。
+description: 对足球已完赛比赛进行数据核验、赛后复盘并保存中文 Markdown 报告。适用于用户要求复盘、赛后分析、赛后总结；支持 cup-analyzer 中配置的联赛和杯赛，按目标赛季与比赛 ID 获取本场统计、事件及实际阵容。
 ---
 
-# 数据分析与办公提效助手
+# 足球赛后复盘
 
-> 帮用户多想一步——不只完成任务，更提供专家洞察。
+围绕「比赛如何发展、胜负由什么造成、哪些判断仍缺证据」写报告。先定位本场并核验数据，再分析；默认直接完成已授权的读取、单场抓取和报告保存。
 
-## 指导原则
+## 1. 动态发现赛事与赛季
 
-**设计哲学比设计细节更重要。**
+从仓库根目录开始，读取以下实际文件，不依赖写死的联赛列表或上赛季命令：
 
-我们的AI非常聪明。给它上下文和目标，它会做出好的设计决策。我们提供的是方向感，不是操作手册。
+- `cup-analyzer/crawler-server/config/index.js`：`cups` 中的赛事键、`season`、`fileId`、`type`、`paths.cupScheduleData`。
+- `cup-analyzer/crawler-server/package.json`：现有 npm 命令。
+- `cup-analyzer/{赛事模块}/data/config.json`：懂球帝 ID 与球探 ID、名称映射。
+- 对应赛程 JS：赛事、赛季、更新时间、阶段、比赛行。杯赛赛季通常在 `arrCup[7]`。
 
-- **Context, not control** — 告诉AI「为什么」和「什么感觉」，而非逐行CSS。参考文件是灵感和上下文，不是必须逐字复制的模板。
-- **定义目标，而非过程** — 描述想要的结果，让AI自主选择实现路径。
-- **先理解，后执行** — 拿到任务先问「用户真正需要什么」
-- **专家视角** — 从最合适的角色出发（分析师/设计师/写作专家）
-- **多想一步** — 完成后主动指出用户可能没注意到的问题、趋势或机会
-- **数据诚实** — 绝不编造数据，图表不误导
+区分远端 `fileId` 与本地文件名；例如远端带子联赛后缀，本地可能已规范化。赛季也分远端全写（如 `2026-2027`）与输出目录短名（`26-27`）；单年赛事按实际配置使用 `2026`。
 
-## 输出格式决策
+用户已同步且本地数据覆盖本场时直接使用。确需同步时，先确认请求赛季、配置赛季和本地元数据一致，再运行 scheduleCrawler。配置落后时先核验 URL 规则；单场任务可在单次 Node 进程内设置 `config.season`，不要为生成报告自动改写共享配置。同步失败不得覆盖已核验的本地赛程。
 
-| 用户意图 | 输出格式 | 何时用 |
-|---------|---------|-------|
-| 快速看数字 | **终端+Markdown** | 探索性分析，不需要视觉包装 |
+按双方球探 ID 定位比赛，记录比赛 ID、时间、阶段/轮次、状态、全场及半场比分。名称有别名时使用映射和英文名交叉核对，禁止猜 ID。
 
-**参考文件提供上下文和灵感，不是逐字执行的清单。** 理解风格的精神，用你的判断实现。
+## 2. 获取并核验本场赛后数据
 
-## 核心方法论：多专家深度分析
+优先读取 `cup-analyzer/{模块}/basicData/{season-short}/round-{轮次}/{home_slug}_vs_{away_slug}/` 下已有文件。必须核对内容，文件存在或爬虫退出成功不代表数据完整。检查百分比是否在0–100%、球员合计是否与球队统计相符；异常字段保留原始数据，报告排除使用并说明原因：
 
-**这是本skill最核心的分析工作流。** 面对任何有深度分析价值的数据集，采用「赛程同步（足球）→赛后数据爬取（足球赛后必做）→数据理解→专家选角→并行分析→统一呈现」流程。
+| 文件 | 核验内容 |
+|------|----------|
+| `matchInfo.json` | 比赛 ID、双方、时间、比分与赛程一致；检查 `postMatchSummary` 是否真实非空 |
+| `matchEvents.json` | 进球、罚牌、换人及补时标记；进球事件与比分相符 |
+| `techStats.json` | 全场及半场指标是否可用；缺值不当作零 |
+| `lineup.json` | 实际首发、替补、阵型；不得用预测首发替代 |
+| `playerStats.json` | 有数据才比较评分、射门、关键传球等 |
+| `goalProbability.json` | 可选；核对统计范围，不能当作本场进球时间线 |
 
-### 触发条件
-
-以下任一条件满足时，启用多专家深度分析（而非简单统计摘要）：
-- 数据有多个分析维度（时间序列+足球赛后数据+行为等）
-- 用户明确要求「深度分析」「全面分析」「做报告」
-- 数据量>500行或字段>10个
-- 简单分析无法覆盖数据的全部价值
-
-简单任务（查数、做表、写公式）不需要启用此流程。
-
-### Phase 0: 赛程数据同步（足球赛后 / 需最新对阵与比分时）
-
-在读取本地赛程或做杯赛/联赛赛后总结前，**先拉取最新球探赛程 JS**（会先备份旧文件）。配置与 URL 规则见 [`cup-analyzer/crawler-server/config/index.js`](../../../cup-analyzer/crawler-server/config/index.js)。
-
-**识别赛事 → 环境变量 `CUP_ANALYZER_CUP`：**
-
-| 用户可能提到的赛事 | `CUP_ANALYZER_CUP` | 数据文件（`fileId`） | 跨年 |
-|---------------------|---------------------|----------------------|------|
-| 欧冠 / UCL / Champions League / 欧洲冠军联赛 | `championsLeague` | `c103.js` | 是（`25-26` 等） |
-| 世界杯 / World Cup | `theWorldCup` | `c75.js` | 否 |
-| 英超 / EPL / Premier League | `epl` | `s36.js`（联赛） | 是（`2025-2026`） |
-| 韩K联 / K League 1 | `koreanKLeague` | `s15_313.js`（子联赛 313） | 否 |
-| 澳超 / A-League / 澳大利亚足球超级联赛 | `aLeague` | `s273_462.js`（子联赛 462） | 是（`2025-2026`） |
-| 美职联 / MLS / 美国职业足球大联盟 | `mls` | `s21_165.js`（子联赛 165） | 否（`2026`） |
-| 意甲 / Serie A / 意大利足球甲级联赛 | `serieA` | `s34_2948.js`（子联赛 2948） | 是（`2025-2026`） |
-
-**执行（跨平台，推荐）：**
-
-工作目录：`cup-analyzer/crawler-server`（先 `cd` 到该目录）。
-
-| npm 脚本 | 赛事 |
-|----------|------|
-| `npm run crawl:schedule:ucl` | 欧冠 |
-| `npm run crawl:schedule:epl` | 英超 |
-| `npm run crawl:schedule:kleague` | 韩K联 |
-| `npm run crawl:schedule:aleague` | 澳超 |
-| `npm run crawl:schedule:mls` | 美职联 |
-| `npm run crawl:schedule:seriea` | 意甲 |
-
-或直接使用 `npx cross-env`（与 [crawler-server/README.md](../../../cup-analyzer/crawler-server/README.md) 一致）：
+缺失时在 `cup-analyzer/crawler-server` 使用现有 `postMatchDataCrawler.js`，通过 `CUP_ANALYZER_CUP` 选择赛事。联赛可用：
 
 ```bash
-cd cup-analyzer/crawler-server
-npx cross-env CUP_ANALYZER_CUP=championsLeague node crawlers/scheduleCrawler.js
+npx cross-env CUP_ANALYZER_CUP={赛事键} npm run crawl:post-match -- --round {轮次}
 ```
 
-**Windows 手动设置环境变量**（不推荐，仅当无法使用 npm / cross-env 时）：
+杯赛先读实际 `jh` 键。欧冠联赛阶段可能以 `G{阶段ID}` 存放多轮比赛，不能假定 `--round 5` 有效；单场任务按比赛 ID 筛选后调用 `crawlSingleMatch`，写入已确认的轮次目录。具体命令见 [详细工作流](references/workflows.md) 的「欧冠联赛阶段：按比赛 ID 爬取单场」。不要默认抓整个赛季。
 
-- **PowerShell**：`$env:CUP_ANALYZER_CUP="championsLeague"; node crawlers/scheduleCrawler.js`
-- **CMD**：`set CUP_ANALYZER_CUP=championsLeague && node crawlers/scheduleCrawler.js`
+已有单场 HTML 可用 `--local {路径} --match {比赛ID}` 解析。网络权限问题按运行环境支持的审批机制重试；不得通过关闭 TLS 校验解决证书错误。
 
-**世界杯**无单独 npm 别名时：`npx cross-env CUP_ANALYZER_CUP=theWorldCup node crawlers/scheduleCrawler.js`。
+核心统计、实际阵容和事件尚未取得时，明确缺少哪些文件及抓取错误，停止完整复盘。新闻和搜索摘要用于交叉核对，不能冒充本地比赛统计。仅摘要、球员评分或可选指标缺失时，可以用其余可靠数据完成复盘，报告中注明具体缺口。
 
-**验证**：打开对应 `*.js`，检查 `lastUpdateTime` 是否为近期；同目录应出现 `*.backup_<时间戳>.js`。
+## 3. 分析口径
 
-**失败兜底**：网络失败或命令报错时，向用户说明情况，**使用仓库内已有赛程文件继续分析**，不编造比分。
+按需读取 [详细工作流](references/workflows.md) 的字段、盘口与报告格式。重点覆盖：
 
-非足球、或用户明确只要分析已有 CSV/Excel、不涉及赛程时，**跳过 Phase 0**。
+1. 比分与机会质量：射门、射正、xG、绝佳机会、扑救；统计差异和可能原因分开写。
+2. 进程与转折：按原始事件时间还原比分，保留 `45+N`、`90+N`，区分常规时间、加时与点球大战。
+3. 实际阵容与换人：结合出场、位置及换人时间分析；战术意图需标注推断，不从缺席或换人直接推断伤病。
+4. 赛前形势：有对应来源时才写盘口、同赔、近期状态和同档次战绩。价格注明公司、采集时间和开盘/即时口径；缺少同口径赔率不得计算收益率。
+5. 后续参考：指出值得追踪的表现及单场样本限制，不把一场的高效率直接视作长期能力。
 
-### Phase 0.5: 赛后数据爬取（足球赛后总结 — **必做**）
+欧冠等跨联赛赛事的双方国内排名应分开标明赛事与赛季，不能混成共同积分榜。比赛不足6场/12场时按实际场数描述，禁止补足样本或套用旧赛季数据。比较不同场数的积分时同时列场数或场均积分。
 
-要做**赛后总结 / 深度复盘**，必须先有球探网导出的本场赛后 JSON（技术统计、事件、阵容、`postMatchSummary` 等）。**没有跑过爬虫、本地不存在对应 JSON 时，不得编造数据写报告**；应向用户说明并先执行爬取或请用户补全数据。
+旧分档文件只能用于其标注的赛季。`references/*-team-strength.md` 现存部分内容为25-26历史资料；找不到目标赛季分档时说明该项不可用，不能只修改标题冒充更新。引用 `backend-server/league-team-strength.json` 前也必须核对赛季、球队和版本。
 
-- **脚本**：[`cup-analyzer/crawler-server/crawlers/postMatchDataCrawler.js`](../../../cup-analyzer/crawler-server/crawlers/postMatchDataCrawler.js)（由 `backend-server/crawlerPostMatchData.js` 迁移，逻辑等价）。
-- **工作目录**：`cup-analyzer/crawler-server`（需已 `npm install`）。
-- **切换赛事**：与 Phase 0 相同，设置 `CUP_ANALYZER_CUP`（见上表）。
-- **执行（跨平台）**：
-  ```bash
-  cd cup-analyzer/crawler-server
-  npx cross-env CUP_ANALYZER_CUP=epl npm run crawl:post-match
-  npx cross-env CUP_ANALYZER_CUP=epl npm run crawl:post-match -- --round 26
-  ```
-  从本地已保存的单场 HTML 解析：`npx cross-env CUP_ANALYZER_CUP=epl node crawlers/postMatchDataCrawler.js --local path/to/page.htm --match {比赛序号}`。
-- **输出目录**：`cup-analyzer/{联赛模块名}/basicData/{赛季目录}/round-{轮次}/{主队slug}_vs_{客队slug}/`（赛季目录由配置自动换算，如 `2025-2026` → `25-26`；杯赛可能为 `{阶段ID}/` 而非 `round-*`）。
-- **产出文件**（每场一目录）：`matchInfo.json`（含 **postMatchSummary**）、`matchEvents.json`、`techStats.json`、`lineup.json`、`playerStats.json`、`goalProbability.json`（可有可无）。
+默认由一个分析流程综合多个视角；复杂任务且工具支持时可使用独立子代理交叉分析。无需先写专家角色声明或等待用户确认，不使用未实际采访的机构、记者或专家身份背书。
 
-详细字段与读数步骤见 [`references/workflows.md`](references/workflows.md)。
+## 4. 保存报告
 
-### 四阶段流程（多专家深度分析）
+默认中文 Markdown，保存为：
 
-```
-Phase 0:   赛程数据同步（可选，足球且需最新赛程时）
-Phase 0.5: 赛后数据爬取（足球赛后总结必做，见上）
-Phase 1:   数据理解        → 读取数据，输出概览，理解字段含义和数据特征
-Phase 2:   专家选角        → 基于数据特征，选取3-5个不同领域的最适合专家角色
-Phase 3:   并行深度分析    → 每个专家角色独立执行分析（使用subagent并行）
-Phase 4:   统一综合呈现    → 管理型分析师视角整合所有观点，生成最终报告
-```
+`cup-analyzer/{模块}/postMatchSummary/{season-short}/round-{轮次}/{home_slug}_vs_{away_slug}/分析报告.md`
 
-### Phase 1: 数据理解
+报告依次包含：
 
-读取数据后立即输出：
-1. 数据维度（行×列）、时间跨度、字段清单
-2. 基础统计（均值/中位数/极值/缺失率）
-3. 数据质量问题
-4. **初步洞察**（1-2个立即可见的趋势或异常）
+- 标题、赛季/赛事/轮次、时间与时区、比赛 ID、全场/半场比分。
+- 「赛后总结」：非空 `postMatchSummary` 原文保留，并标明是数据源摘要；缺失则注明，不生成伪原文。
+- 核心结论、关键数据对照、实际阵容、关键事件、换人与战术分析。
+- 有依据的赛前形势与历史表现；不可用项目简要注明原因。
+- 总结、后续关注点、数据来源/抓取时间与缺口。
 
-### Phase 2: 专家选角
-
-根据数据类型和领域，选取**3-5个不同视角的专家角色**。选角原则：
-- **领域匹配** — 每个角色的专业领域必须与数据有直接关联
-- **视角互补** — 角色之间不重叠，覆盖定量/定性/战略/风险/行为等不同维度
-- **真实可信** — 使用真实的知名专家/机构名字（如TA、天空体育、BBC），增加角色代入感
-- **陈述分析方向** — 每个角色用300-500字陈述自己的分析思路和关注点
-
-**将角色陈述写入md文件**供用户确认，而非直接回复。用户可调整角色后再进入Phase 3。
-
-### Phase 3: 并行深度分析（subagent架构）
-
-**每个专家角色使用独立的subagent并行执行**，好处：
-- 上下文隔离：每个专家只关注自己的分析维度，不互相干扰
-- 并行效率：3-5个分析同时进行
-- 质量保障：每个subagent的prompt包含完整的角色定义+数据上下文+分析目标
-
-**subagent调用方式**：使用Task工具，`subagent_type="general-purpose"`，每个subagent的prompt包含：
-```
-1. 角色定义（你是谁、你的分析框架）
-2. 数据文件路径
-3. 具体分析任务清单
-4. 输出格式要求（JSON/Markdown，含关键数字和结论）
-```
-
-所有subagent并行启动（`run_in_background=true`），完成后收集各自的分析结果。
-
-### Phase 4: 统一综合呈现
-
-**关键原则：最终报告不出现任何专家角色名字。**
-
-从一个「管理型高级分析师」的统一视角，将多个专家的分析结论融合呈现：
-- 按主题组织（而非按角色），如「基本面」「风险」「趋势」「行为洞察」
-- 交叉引用不同角色的发现，形成更完整的结论
-- 标题用结论句式（如「赢球原因、输球原因、平局原因、总结原因」）而非描述句式（如「比赛报告分析」）
-- 数据和图表的选取综合所有专家的分析结果，取最有说服力的
-
-最终产出：MARKDOWN文字报告（默认）。
-产出的总结报告要放在`cup-analyzer/${联赛}/postMatchSummary/${赛季}/${轮次}/${对阵双方}.md`里（`${联赛}` 为模块目录名，如 `epl`、`aLeague`、`mls`、`serieA`、`championsLeague` 等）。
-
-### 适配不同规模
-
-| 数据复杂度 | 专家数量 | subagent策略 |
-|-----------|---------|------------|
-| 简单（单表、<10字段） | 不启用多专家 | 直接分析 |
-| 中等（多维度、跨时间） | 3个专家 | 并行subagent |
-| 复杂（多表关联、多领域） | 5个专家 | 并行subagent |
-
-详细执行规范 → `references/workflows.md`「多专家深度分析工作流」
-
-## 分析哲学
-
-- **结论先行** — 先说好还是不好，再说为什么
-- **数据说话** — 每个观点有数据支撑
-- **具体可执行** — 建议能直接执行，不说「需要进一步研究」
-- **不说废话** — 删掉「总而言之」「需要指出的是」
-- 使用「」引号
-  
-
-### 语言规则
-
-**报告内容默认中文**，除非用户明确要求英文。
-
-保留英文的情况（仅限这些）：
-- 缩写和专业术语：VAR等其他足球专业术语
-- 公司/产品名：Meta、Apple、Amazon、Llama、Reels、BBC、TA、Netfix
-- 人名：外国记者等一些足球名宿的名字
-- 通用度极高的英文词：IPO、ATT、AI、CEO、coach、manager
-  
-### 分析输出结构
-
-```
-核心结论（1-3句，管理层看这段就够了）
-→ 数据支撑（具体数字、对比、趋势）
-→ 异常/风险
-→ 可执行建议（3-5条，按优先级）
-→ 下一步（多想一步：还能深挖什么）
-```
-
-### 不确定时必须问
-
-- 数据字段含义不明
-- 分析维度选择
-- 报告受众不明
-- 涉及业务判断
-
-## 工具与脚本
-
-| 脚本 | 用途 |
-|------|------|
-| `/cup-analyzer/crawler-server/crawlers/scheduleCrawler.js` | 同步球探赛程 JS（`CUP_ANALYZER_CUP` 切换赛事；先备份再覆盖） |
-| `/cup-analyzer/crawler-server/crawlers/postMatchDataCrawler.js` | **爬取赛后数据（必做）**；`npm run crawl:post-match`；输出至各模块 `basicData/` |
-| `/backend-server/crawlerPostMatchData.js` | 旧版赛后数据脚本（仍可用，配置 `wudaconfig.js`，输出 `backend-server/basicData/`） |
-| `/backend-server/crawlerHistoryHandicap.js` | 爬取历史同赔脚本 |
-| `/backend-server/crawlerCustomRank.js` | 自定义N轮积分榜 |
-
-依赖缺失时自动安装。
-
-## 参考文件索引
-
-| 需要什么 | 去哪找 |
-|---------|-------|
-| 联赛球队分档 | `references/${联赛名}-team-strength.md` |
-| 联赛球队分档json版 | `/backend-server/league-team-strength.json` |
-
----
-
-> **东恒出品** | AI Native Coder · 独立开发者
-
-  
+报告区分事实、计算和推断，关键数字可追溯到文件字段或外部来源。没有完整名单时不要强行列伤停与落选；替补人数按实际名单。最终回复给出报告链接及重要数据限制。
