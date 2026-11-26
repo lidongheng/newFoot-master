@@ -9,6 +9,7 @@
 const { BetOrder, Match } = require('../models')
 const { fixedDateToUtcRange } = require('../utils/fixedTimezone');
 const quotaService = require('./balanceService')
+const { getCorrectScoreDetails } = require('../utils/correctScore')
 
 class BetService {
   /**
@@ -33,7 +34,7 @@ class BetService {
    */
   calculatePotentialWin(amount, odds, marketType) {
     let profit
-    if (marketType === 'moneyline') {
+    if (marketType === 'moneyline' || marketType === 'correctScore') {
       // 欧赔：赔率含本金，例如赔率3.00，投500，利润=500*(3-1)=1000
       profit = amount * (odds - 1)
     } else {
@@ -57,6 +58,19 @@ class BetService {
    * 获取指定玩法和选项的服务端盘口
    */
   getMarketQuote(match, marketType, selectionKey) {
+    if (marketType === 'correctScore') {
+      return {
+        marketType,
+        marketVersion: match.marketVersion,
+        homeScore: match.homeScore,
+        awayScore: match.awayScore,
+        period: match.period,
+        minute: match.minute,
+        bettingOpen: match.bettingOpen,
+        status: match.status
+      }
+    }
+
     const validSelections = {
       handicap: ['home', 'away'],
       overUnder: ['over', 'under'],
@@ -122,7 +136,8 @@ class BetService {
     const marketNames = {
       handicap: '让球',
       overUnder: '大小',
-      moneyline: '独赢'
+      moneyline: '独赢',
+      correctScore: '比分'
     }
     return `足球 (${modeName}) ${marketNames[marketType]}`
   }
@@ -139,6 +154,7 @@ class BetService {
       selectionKey,
       quotedValue,
       quotedOdds,
+      scoreSelection,
       marketVersion,
       amount
     } = betData
@@ -168,22 +184,26 @@ class BetService {
     }
 
     const currentQuote = this.getMarketQuote(match, marketType, selectionKey)
-    if (
-      marketVersion !== currentQuote.marketVersion ||
-      quotedValue !== currentQuote.value ||
-      quotedOdds !== currentQuote.odds
-    ) {
+    const quoteChanged = marketType === 'correctScore'
+      ? marketVersion !== currentQuote.marketVersion
+      : marketVersion !== currentQuote.marketVersion || quotedValue !== currentQuote.value || quotedOdds !== currentQuote.odds
+    if (quoteChanged) {
       throw this.createBetError('盘口或赔率已变化，请确认最新赔率', 409, {
         reason: 'QUOTE_CHANGED',
         currentQuote
       })
     }
 
+    const scoreDetails = marketType === 'correctScore'
+      ? getCorrectScoreDetails(scoreSelection)
+      : null
+    const orderOdds = marketType === 'correctScore' ? quotedOdds : currentQuote.odds
+
     // 生成订单号
     const orderId = this.generateOrderId()
 
     // 计算预计可赢（利润）
-    const potentialWin = this.calculatePotentialWin(amount, currentQuote.odds, marketType)
+    const potentialWin = this.calculatePotentialWin(amount, orderOdds, marketType)
 
     // 扣除额度
     await quotaService.deductForBet(amount, orderId)
@@ -200,14 +220,15 @@ class BetService {
         awayScore: match.awayScore,
         betMode,
         marketType,
-        selectionKey,
+        selectionKey: marketType === 'correctScore' ? undefined : selectionKey,
+        scoreSelection: scoreDetails ? scoreDetails.scoreSelection : undefined,
         betPeriod: match.period,
         betMinute: match.minute,
         marketVersion: match.marketVersion,
         betType: this.getBetType(betMode, marketType),
-        selection: this.getSelectionName(match, marketType, selectionKey),
-        value: currentQuote.value,
-        odds: currentQuote.odds,
+        selection: scoreDetails ? scoreDetails.selection : this.getSelectionName(match, marketType, selectionKey),
+        value: scoreDetails ? scoreDetails.value : currentQuote.value,
+        odds: orderOdds,
         amount,
         potentialWin,
         status: 'pending'
@@ -275,6 +296,10 @@ class BetService {
     
     if (order.status !== 'pending') {
       throw new Error('订单已结算或已取消')
+    }
+
+    if (order.marketType === 'correctScore' && !['win', 'lose'].includes(result)) {
+      throw new Error('比分投注结算结果只能是赢或输')
     }
     
     // 计算实际赢取金额（仅作为记录，不影响额度）

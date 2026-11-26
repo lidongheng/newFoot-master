@@ -18,12 +18,15 @@ class BetController {
         'matchId',
         'betMode',
         'marketType',
-        'selectionKey',
-        'quotedValue',
         'quotedOdds',
         'marketVersion',
         'amount'
       ]
+      if (betData.marketType === 'correctScore') {
+        requiredFields.push('scoreSelection')
+      } else {
+        requiredFields.push('selectionKey', 'quotedValue')
+      }
       for (const field of requiredFields) {
         if (betData[field] === undefined || betData[field] === null || betData[field] === '') {
           paramError(ctx, `缺少必填参数: ${field}`)
@@ -36,8 +39,9 @@ class BetController {
         return
       }
 
-      if (!Number.isFinite(betData.quotedOdds) || betData.quotedOdds <= 0) {
-        paramError(ctx, '赔率必须为有效正数')
+      const minimumOdds = betData.marketType === 'correctScore' ? 1 : 0
+      if (!Number.isFinite(betData.quotedOdds) || betData.quotedOdds <= minimumOdds) {
+        paramError(ctx, betData.marketType === 'correctScore' ? '比分赔率必须大于1' : '赔率必须为有效正数')
         return
       }
 

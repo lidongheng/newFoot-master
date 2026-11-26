@@ -157,7 +157,7 @@
             <span class="option-tag">让球&大/小 <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M7 10l5 5 5-5z"/></svg></span>
             <span class="option-tag">角球 <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M7 10l5 5 5-5z"/></svg></span>
             <span class="option-tag">罚牌数 <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M7 10l5 5 5-5z"/></svg></span>
-            <span class="option-tag">波胆 <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M7 10l5 5 5-5z"/></svg></span>
+            <button class="option-tag score-bet-option" type="button" @click="openScoreBet(match, 'early')">比分投注</button>
             <span class="option-tag">进球球员 <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M7 10l5 5 5-5z"/></svg></span>
           </div>
         </div>
@@ -169,6 +169,7 @@
     
     <!-- 投注弹窗 -->
     <BetPopup />
+    <ScoreBetting />
   </div>
 </template>
 
@@ -183,11 +184,14 @@ import SportCategoryBar from '@/components/SportCategoryBar.vue'
 import BottomTabBar from '@/components/BottomTabBar.vue'
 import PlayTypeFilter from '@/components/PlayTypeFilter.vue'
 import BetPopup from '@/components/BetPopup.vue'
+import ScoreBetting from '@/components/ScoreBetting.vue';
+import { useScoreBetting } from '@/composables/useScoreBetting';
 
 const router = useRouter()
 const route = useRoute()
 const betStore = useBetStore()
 const userStore = useUserStore()
+const { openScoreBet } = useScoreBetting();
 
 // 联赛ID、名称和国旗
 const leagueId = computed(() => route.query.id || '')
@@ -321,6 +325,14 @@ const selectBet = (match, type, selection) => {
 .league-matches-view {
   min-height: 100vh;
   background-color: var(--bg-gray);
+}
+
+.score-bet-option {
+  padding: 3px 8px;
+  border: 1px solid #c5a35a;
+  border-radius: 12px;
+  color: #8d6d2d;
+  background: #fff;
 }
 
 .fixed-header {

@@ -49,6 +49,7 @@ export function useMobileBetOrder() {
     awayScore: 0,
     betMode: 'early',
     marketType: 'handicap',
+    scoreSelection: { type: 'exact', homeScore: 0, awayScore: 0 },
     selectionKey: 'home',
     betPeriod: '',
     betMinute: 0,
@@ -70,6 +71,7 @@ export function useMobileBetOrder() {
     odds: 0,
     result: null,
     actualWin: null,
+    marketType: '',
   });
   const reSettleForm = reactive({ result: 'win', finalHomeScore: 0, finalAwayScore: 0 });
 
@@ -83,6 +85,33 @@ export function useMobileBetOrder() {
   const selectedIds = computed(() => selectedRows.value.map(item => item._id));
   const selectedPendingIds = computed(() => {
     return selectedRows.value.filter(item => item.status === 'pending').map(item => item._id);
+  });
+  const settleResultOptions = computed(() => {
+    const hasScoreOrder = (currentRow.value?._id && settleForm.ids.includes(currentRow.value._id) && currentRow.value.marketType === 'correctScore') || selectedRows.value.some(row =>
+      settleForm.ids.includes(row._id) && row.status === 'pending' && row.marketType === 'correctScore'
+    );
+    if (hasScoreOrder) {
+      return [{ label: '赢', value: 'win' }, { label: '输', value: 'lose' }];
+    }
+    return [
+      { label: '赢', value: 'win' },
+      { label: '赢半', value: 'half_win' },
+      { label: '走水', value: 'push' },
+      { label: '输半', value: 'half_lose' },
+      { label: '输', value: 'lose' },
+    ];
+  });
+  const reSettleResultOptions = computed(() => {
+    if (reSettleOrder.marketType === 'correctScore') {
+      return [{ label: '赢', value: 'win' }, { label: '输', value: 'lose' }];
+    }
+    return [
+      { label: '赢', value: 'win' },
+      { label: '赢半', value: 'half_win' },
+      { label: '走水', value: 'push' },
+      { label: '输半', value: 'half_lose' },
+      { label: '输', value: 'lose' },
+    ];
   });
   const allSelected = computed(() => {
     return pagedList.list.value.length > 0 && selectedRows.value.length === pagedList.list.value.length;
@@ -134,7 +163,7 @@ export function useMobileBetOrder() {
   function resetForm() {
     Object.assign(formData, {
       matchId: '', league: '', homeTeam: '', awayTeam: '', homeScore: 0, awayScore: 0,
-      betMode: 'early', marketType: 'handicap', selectionKey: 'home', betPeriod: '',
+      betMode: 'early', marketType: 'handicap', scoreSelection: { type: 'exact', homeScore: 0, awayScore: 0 }, selectionKey: 'home', betPeriod: '',
       betMinute: 0, marketVersion: 1, betType: '', selection: '', value: '', odds: 1.90,
       amount: 100, status: 'pending',
     });
@@ -158,6 +187,7 @@ export function useMobileBetOrder() {
       awayScore: row.awayScore || 0,
       betMode: row.betMode,
       marketType: row.marketType,
+      scoreSelection: row.scoreSelection,
       selectionKey: row.selectionKey,
       betPeriod: row.betPeriod,
       betMinute: row.betMinute,
@@ -172,6 +202,20 @@ export function useMobileBetOrder() {
     formVisible.value = true;
   }
 
+  function handleMarketTypeChange(marketType) {
+    if (marketType === 'correctScore' && !formData.scoreSelection) {
+      formData.scoreSelection = { type: 'exact', homeScore: 0, awayScore: 0 };
+    }
+  }
+
+  function handleScoreSelectionTypeChange(type) {
+    if (type === 'exact') {
+      formData.scoreSelection = { type: 'exact', homeScore: 0, awayScore: 0 };
+      return;
+    }
+    formData.scoreSelection = { type: 'other', outcome: 'home' };
+  }
+
   async function submitForm() {
     try {
       await formRef.value.validate();
@@ -180,10 +224,14 @@ export function useMobileBetOrder() {
     }
     submitLoading.value = true;
     try {
+      const orderData = { ...formData };
+      if (orderData.marketType !== 'correctScore') {
+        delete orderData.scoreSelection;
+      }
       if (isEdit.value) {
-        await updateBetOrder(currentEditId.value, formData);
+        await updateBetOrder(currentEditId.value, orderData);
       } else {
-        await createBetOrder(formData);
+        await createBetOrder(orderData);
       }
       showToast(isEdit.value ? '更新成功' : '创建成功');
       formVisible.value = false;
@@ -194,6 +242,7 @@ export function useMobileBetOrder() {
   }
 
   function openSettle(row) {
+    currentRow.value = row;
     settleForm.ids = [row._id];
     settleForm.result = 'win';
     settleForm.finalHomeScore = row.finalHomeScore || 0;
@@ -202,6 +251,7 @@ export function useMobileBetOrder() {
   }
 
   function openBatchSettle() {
+    currentRow.value = null;
     settleForm.ids = selectedPendingIds.value;
     settleForm.result = 'win';
     settleForm.finalHomeScore = 0;
@@ -233,6 +283,7 @@ export function useMobileBetOrder() {
       odds: row.odds,
       result: row.result,
       actualWin: row.actualWin,
+      marketType: row.marketType,
     });
     reSettleForm.result = row.result || 'win';
     reSettleForm.finalHomeScore = row.finalHomeScore || 0;
@@ -354,6 +405,8 @@ export function useMobileBetOrder() {
     formVisible,
     formRef,
     formData,
+    settleResultOptions,
+    reSettleResultOptions,
     isEdit,
     submitLoading,
     settleVisible,
@@ -371,6 +424,8 @@ export function useMobileBetOrder() {
     toggleSelection,
     toggleSelectAll,
     openCreate,
+    handleMarketTypeChange,
+    handleScoreSelectionTypeChange,
     submitForm,
     openBatchSettle,
     submitSettle,

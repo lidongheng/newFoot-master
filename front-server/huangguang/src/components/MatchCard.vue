@@ -4,7 +4,7 @@
     <div class="league-header">
       <span class="league-icon">{{ match.leagueIcon }}</span>
       <span class="league-name">{{ match.league }}</span>
-      <span v-if="!match.bettingOpen" class="closed-tag">封盘</span>
+      <span v-if="betMode === 'live' && !match.bettingOpen" class="closed-tag">封盘</span>
     </div>
     
     <!-- 比赛信息 -->
@@ -54,7 +54,7 @@
         <div class="odds-row">
           <div 
             class="odds-cell"
-            :class="{ selected: selectedOdds === 'handicap-home', disabled: !match.bettingOpen }"
+            :class="{ selected: selectedOdds === 'handicap-home', disabled: betMode === 'live' && !match.bettingOpen }"
             @click="selectOdds('handicap-home', match.odds.handicap.home)"
           >
             <span class="odds-value">{{ match.odds.handicap.home.value }}</span>
@@ -62,7 +62,7 @@
           </div>
           <div 
             class="odds-cell"
-            :class="{ selected: selectedOdds === 'over', disabled: !match.bettingOpen }"
+            :class="{ selected: selectedOdds === 'over', disabled: betMode === 'live' && !match.bettingOpen }"
             @click="selectOdds('over', match.odds.overUnder.over)"
           >
             <span class="odds-value">{{ match.odds.overUnder.over.value }}</span>
@@ -70,7 +70,7 @@
           </div>
           <div 
             class="odds-cell moneyline"
-            :class="{ selected: selectedOdds === 'moneyline-home', disabled: !match.bettingOpen }"
+            :class="{ selected: selectedOdds === 'moneyline-home', disabled: betMode === 'live' && !match.bettingOpen }"
             @click="selectOdds('moneyline-home', match.odds.moneyline.home)"
           >
             <span class="odds-label">{{ match.odds.moneyline.home.label }}</span>
@@ -81,7 +81,7 @@
         <div class="odds-row">
           <div 
             class="odds-cell"
-            :class="{ selected: selectedOdds === 'handicap-away', disabled: !match.bettingOpen }"
+            :class="{ selected: selectedOdds === 'handicap-away', disabled: betMode === 'live' && !match.bettingOpen }"
             @click="selectOdds('handicap-away', match.odds.handicap.away)"
           >
             <span class="odds-value">{{ match.odds.handicap.away.value }}</span>
@@ -89,7 +89,7 @@
           </div>
           <div 
             class="odds-cell"
-            :class="{ selected: selectedOdds === 'under', disabled: !match.bettingOpen }"
+            :class="{ selected: selectedOdds === 'under', disabled: betMode === 'live' && !match.bettingOpen }"
             @click="selectOdds('under', match.odds.overUnder.under)"
           >
             <span class="odds-value">{{ match.odds.overUnder.under.value }}</span>
@@ -97,7 +97,7 @@
           </div>
           <div 
             class="odds-cell moneyline"
-            :class="{ selected: selectedOdds === 'moneyline-away', disabled: !match.bettingOpen }"
+            :class="{ selected: selectedOdds === 'moneyline-away', disabled: betMode === 'live' && !match.bettingOpen }"
             @click="selectOdds('moneyline-away', match.odds.moneyline.away)"
           >
             <span class="odds-label">{{ match.odds.moneyline.away.label }}</span>
@@ -110,7 +110,7 @@
           <div class="odds-cell empty"></div>
           <div 
             class="odds-cell moneyline"
-            :class="{ selected: selectedOdds === 'moneyline-draw', disabled: !match.bettingOpen }"
+            :class="{ selected: selectedOdds === 'moneyline-draw', disabled: betMode === 'live' && !match.bettingOpen }"
             @click="selectOdds('moneyline-draw', match.odds.moneyline.draw)"
           >
             <span class="odds-label">{{ match.odds.moneyline.draw.label }}</span>
@@ -119,6 +119,15 @@
         </div>
       </div>
     </div>
+
+    <button
+      class="score-bet-button"
+      type="button"
+      :disabled="match.status === 'finished' || (betMode === 'live' && !match.bettingOpen)"
+      @click="openScoreBet(match, betMode)"
+    >
+      比分投注
+    </button>
     
     <!-- 更多玩法 -->
     <div class="more-options">
@@ -133,17 +142,23 @@
 import { computed, ref } from 'vue';
 import { useBetStore } from '@/store'
 import { formatFixedHourMinute } from '@/composables/useFixedGmtMinusFourTime';
+import { useScoreBetting } from '@/composables/useScoreBetting';
 
 const props = defineProps({
   match: {
     type: Object,
     required: true
+  },
+  betMode: {
+    type: String,
+    default: 'live'
   }
 })
 
-const betStore = useBetStore()
+const betStore = useBetStore();
+const { openScoreBet } = useScoreBetting();
 const isFavorite = ref(false)
-const selectedOdds = ref('')
+const selectedOdds = ref('');
 const matchTime = computed(() => formatFixedHourMinute(props.match.startTime));
 
 // 格式化赔率，保留两位小数
@@ -159,26 +174,27 @@ const toggleFavorite = () => {
 
 // 选择赔率进行投注
 const selectOdds = (type, oddsData) => {
-  if (!props.match.bettingOpen) return
+  if (props.match.status === 'finished' || (props.betMode === 'live' && !props.match.bettingOpen)) return
 
   selectedOdds.value = type
   
   // 确定选择的球队
   let selection = ''
-  let betType = '足球 (滚球) 让球'
+  const modeName = props.betMode === 'live' ? '滚球' : '早盘';
+  let betType = `足球 (${modeName}) 让球`
   let marketType = ''
   let selectionKey = ''
   
   if (type.includes('handicap')) {
     // 让球: home是主队让球行, away是客队让球行
     selection = type.includes('home') ? props.match.homeTeam : props.match.awayTeam
-    betType = '足球 (滚球) 让球'
+    betType = `足球 (${modeName}) 让球`
     marketType = 'handicap'
     selectionKey = type.includes('home') ? 'home' : 'away'
   } else if (type.includes('over') || type.includes('under')) {
     // 大小球
     selection = type === 'over' ? '大' : '小'
-    betType = '足球 (滚球) 大/小'
+    betType = `足球 (${modeName}) 大/小`
     marketType = 'overUnder'
     selectionKey = type
   } else if (type.includes('moneyline')) {
@@ -193,7 +209,7 @@ const selectOdds = (type, oddsData) => {
       selection = '和'
       selectionKey = 'draw'
     }
-    betType = '足球 (滚球) 独赢'
+    betType = `足球 (${modeName}) 独赢`
     marketType = 'moneyline'
   }
   
@@ -205,7 +221,7 @@ const selectOdds = (type, oddsData) => {
     awayTeam: props.match.awayTeam,
     homeScore: props.match.homeScore,
     awayScore: props.match.awayScore,
-    betMode: 'live',
+    betMode: props.betMode,
     marketType,
     selectionKey,
     marketVersion: props.match.marketVersion,
@@ -224,6 +240,20 @@ const selectOdds = (type, oddsData) => {
 .match-card {
   background-color: var(--bg-white);
   margin-bottom: 8px;
+}
+
+.score-bet-button {
+  margin: 0 12px 12px;
+  padding: 7px 12px;
+  border: 1px solid #c5a35a;
+  border-radius: 4px;
+  color: #8d6d2d;
+  background: #fff;
+}
+
+.score-bet-button:disabled {
+  color: #9ca3af;
+  border-color: #d1d5db;
 }
 
 .league-header {

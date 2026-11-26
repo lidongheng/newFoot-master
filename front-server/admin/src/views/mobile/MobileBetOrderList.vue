@@ -82,15 +82,23 @@
           <section class="form-section">
             <div class="form-section-title">投注信息</div>
             <van-field label="投注阶段"><template #input><van-radio-group v-model="formData.betMode" direction="horizontal"><van-radio name="early">早盘</van-radio><van-radio name="live">滚球</van-radio></van-radio-group></template></van-field>
-            <van-field label="玩法"><template #input><van-radio-group v-model="formData.marketType" direction="horizontal"><van-radio name="handicap">让球</van-radio><van-radio name="overUnder">大小球</van-radio><van-radio name="moneyline">独赢</van-radio></van-radio-group></template></van-field>
-            <van-field label="选项键"><template #input><van-radio-group v-model="formData.selectionKey" direction="horizontal"><van-radio name="home">主队</van-radio><van-radio name="away">客队</van-radio><van-radio name="over">大</van-radio><van-radio name="under">小</van-radio><van-radio name="draw">平局</van-radio></van-radio-group></template></van-field>
+            <van-field label="玩法"><template #input><van-radio-group v-model="formData.marketType" direction="horizontal" @change="handleMarketTypeChange"><van-radio name="handicap">让球</van-radio><van-radio name="overUnder">大小球</van-radio><van-radio name="moneyline">独赢</van-radio><van-radio name="correctScore">比分</van-radio></van-radio-group></template></van-field>
+            <template v-if="formData.marketType === 'correctScore'">
+              <van-field label="选项类型"><template #input><van-radio-group v-model="formData.scoreSelection.type" direction="horizontal" @change="handleScoreSelectionTypeChange"><van-radio name="exact">明确比分</van-radio><van-radio name="other">其他赛果</van-radio></van-radio-group></template></van-field>
+              <template v-if="formData.scoreSelection.type === 'exact'">
+                <van-field label="主队进球"><template #input><van-stepper v-model="formData.scoreSelection.homeScore" min="0" max="5" integer /></template></van-field>
+                <van-field label="客队进球"><template #input><van-stepper v-model="formData.scoreSelection.awayScore" min="0" max="5" integer /></template></van-field>
+              </template>
+              <van-field v-else label="其他赛果"><template #input><van-radio-group v-model="formData.scoreSelection.outcome" direction="horizontal"><van-radio name="home">胜其他</van-radio><van-radio name="draw">平其他</van-radio><van-radio name="away">负其他</van-radio></van-radio-group></template></van-field>
+            </template>
+            <van-field v-else label="选项键"><template #input><van-radio-group v-model="formData.selectionKey" direction="horizontal"><van-radio name="home">主队</van-radio><van-radio name="away">客队</van-radio><van-radio name="over">大</van-radio><van-radio name="under">小</van-radio><van-radio name="draw">平局</van-radio></van-radio-group></template></van-field>
             <van-field label="盘口版本"><template #input><van-stepper v-model="formData.marketVersion" min="1" integer /></template></van-field>
             <van-field v-model="formData.betPeriod" label="投注时段" />
             <van-field label="投注分钟"><template #input><van-stepper v-model="formData.betMinute" min="0" integer /></template></van-field>
-            <van-field v-model="formData.betType" label="投注类型" :rules="[{ required: true, message: '请输入投注类型' }]" />
-            <van-field v-model="formData.selection" label="选择项" :rules="[{ required: true, message: '请输入选择项' }]" />
-            <van-field v-model="formData.value" label="盘口值" />
-            <van-field label="赔率"><template #input><van-stepper v-model="formData.odds" :min="1" :step="0.01" :decimal-length="2" /></template></van-field>
+            <van-field v-if="formData.marketType !== 'correctScore'" v-model="formData.betType" label="投注类型" :rules="[{ required: true, message: '请输入投注类型' }]" />
+            <van-field v-if="formData.marketType !== 'correctScore'" v-model="formData.selection" label="选择项" :rules="[{ required: true, message: '请输入选择项' }]" />
+            <van-field v-if="formData.marketType !== 'correctScore'" v-model="formData.value" label="盘口值" />
+            <van-field label="赔率"><template #input><van-stepper v-model="formData.odds" :min="formData.marketType === 'correctScore' ? 1.01 : 0" :step="0.01" :decimal-length="2" /></template></van-field>
             <van-field label="投注金额"><template #input><van-stepper v-model="formData.amount" min="0" /></template></van-field>
             <van-field label="状态"><template #input><van-radio-group v-model="formData.status" direction="horizontal"><van-radio name="pending">待结算</van-radio><van-radio name="settled">已结算</van-radio><van-radio name="cancelled">已取消</van-radio></van-radio-group></template></van-field>
           </section>
@@ -102,7 +110,7 @@
     <van-popup v-model:show="settleVisible" position="bottom" round class="mobile-sheet">
       <div class="sheet-header"><span>订单结算</span><van-icon name="cross" @click="settleVisible = false" /></div>
       <div class="sheet-body">
-        <van-field label="结算结果"><template #input><van-radio-group v-model="settleForm.result"><van-radio name="win">赢</van-radio><van-radio name="half_win">赢半</van-radio><van-radio name="push">走水</van-radio><van-radio name="half_lose">输半</van-radio><van-radio name="lose">输</van-radio></van-radio-group></template></van-field>
+        <van-field label="结算结果"><template #input><van-radio-group v-model="settleForm.result"><van-radio v-for="option in settleResultOptions" :key="option.value" :name="option.value">{{ option.label }}</van-radio></van-radio-group></template></van-field>
         <van-field label="最终主队比分"><template #input><van-stepper v-model="settleForm.finalHomeScore" min="0" integer /></template></van-field>
         <van-field label="最终客队比分"><template #input><van-stepper v-model="settleForm.finalAwayScore" min="0" integer /></template></van-field>
       </div>
@@ -115,7 +123,7 @@
         <van-notice-bar wrapable :scrollable="false">修改后将重新计算实际赢取和账户余额。</van-notice-bar>
         <van-cell title="订单号" :value="reSettleOrder.orderId" />
         <van-cell title="比赛" :value="`${reSettleOrder.homeTeam} vs ${reSettleOrder.awayTeam}`" />
-        <van-field label="新结算结果"><template #input><van-radio-group v-model="reSettleForm.result"><van-radio name="win">赢</van-radio><van-radio name="half_win">赢半</van-radio><van-radio name="push">走水</van-radio><van-radio name="half_lose">输半</van-radio><van-radio name="lose">输</van-radio></van-radio-group></template></van-field>
+        <van-field label="新结算结果"><template #input><van-radio-group v-model="reSettleForm.result"><van-radio v-for="option in reSettleResultOptions" :key="option.value" :name="option.value">{{ option.label }}</van-radio></van-radio-group></template></van-field>
         <van-field label="最终主队比分"><template #input><van-stepper v-model="reSettleForm.finalHomeScore" min="0" integer /></template></van-field>
         <van-field label="最终客队比分"><template #input><van-stepper v-model="reSettleForm.finalAwayScore" min="0" integer /></template></van-field>
       </div>
@@ -132,9 +140,10 @@ import { useMobileBetOrder } from '@/composables/mobile/useMobileBetOrder';
 const {
   list, loading, refreshing, finished, onLoad, refresh, stats, searchForm, filterVisible,
   manageMode, selectedIds, selectedPendingIds, allSelected, formVisible, formRef, formData,
-  isEdit, submitLoading, settleVisible, settleForm, settleLoading, reSettleVisible,
+  isEdit, submitLoading, settleVisible, settleForm, settleResultOptions, settleLoading, reSettleVisible,
   reSettleOrder, reSettleForm, reSettleLoading, moreVisible, moreActions, applyFilters,
-  resetFilters, toggleManageMode, toggleSelection, toggleSelectAll, openCreate, submitForm,
+  reSettleResultOptions, resetFilters, toggleManageMode, toggleSelection, toggleSelectAll, openCreate,
+  handleMarketTypeChange, handleScoreSelectionTypeChange, submitForm,
   openBatchSettle, submitSettle, submitReSettle, batchRemove, openMore, selectMore,
   formatMoney, formatDate, statusText, statusType, resultText, resultType,
 } = useMobileBetOrder();

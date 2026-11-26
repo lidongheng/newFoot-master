@@ -73,18 +73,25 @@ class BetOrderAdminController {
         'awayTeam',
         'betMode',
         'marketType',
-        'selectionKey',
         'marketVersion',
-        'betType',
-        'selection',
         'odds',
         'amount'
       ]
+      if (data.marketType === 'correctScore') {
+        requiredFields.push('scoreSelection')
+      } else {
+        requiredFields.push('selectionKey', 'betType', 'selection')
+      }
       for (const field of requiredFields) {
         if (data[field] === undefined || data[field] === null || data[field] === '') {
           paramError(ctx, `缺少必填参数: ${field}`)
           return
         }
+      }
+
+      if (data.marketType === 'correctScore' && (!Number.isFinite(data.odds) || data.odds <= 1)) {
+        paramError(ctx, '比分赔率必须大于1')
+        return
       }
       
       const order = await betOrderAdminService.create(data)

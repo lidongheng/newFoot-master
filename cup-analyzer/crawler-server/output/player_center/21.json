@@ -47,8 +47,8 @@
     ],
     "stats": 69,
     "ability": 69,
-    "caps": 3,
-    "lineups": 3,
+    "caps": 4,
+    "lineups": 4,
     "goals": 0,
     "assists": 0,
     "age": 28,
@@ -72,10 +72,10 @@
     ],
     "stats": 70,
     "ability": 70,
-    "caps": 15,
-    "lineups": 15,
+    "caps": 16,
+    "lineups": 16,
     "goals": 1,
-    "assists": 1,
+    "assists": 2,
     "age": 30,
     "number": 15,
     "height": 191,
@@ -97,8 +97,8 @@
     ],
     "stats": 67,
     "ability": 67,
-    "caps": 11,
-    "lineups": 10,
+    "caps": 12,
+    "lineups": 11,
     "goals": 0,
     "assists": 2,
     "age": 27,
@@ -147,8 +147,8 @@
     ],
     "stats": 66,
     "ability": 66,
-    "caps": 10,
-    "lineups": 10,
+    "caps": 11,
+    "lineups": 11,
     "goals": 0,
     "assists": 1,
     "age": 20,
@@ -172,8 +172,8 @@
     ],
     "stats": 70,
     "ability": 70,
-    "caps": 11,
-    "lineups": 7,
+    "caps": 12,
+    "lineups": 8,
     "goals": 0,
     "assists": 0,
     "age": 26,
@@ -191,9 +191,9 @@
     "staff": "DF",
     "attr": "DF",
     "attrDes": "DF",
-    "qiutanPosition": "中后卫",
+    "qiutanPosition": "左后卫",
     "position": [
-      "CB"
+      "LB"
     ],
     "stats": 68,
     "ability": 68,
@@ -222,11 +222,11 @@
     ],
     "stats": 67,
     "ability": 67,
-    "caps": 5,
-    "lineups": 1,
+    "caps": 6,
+    "lineups": 2,
     "goals": 0,
     "assists": 0,
-    "age": 20,
+    "age": 21,
     "number": 27,
     "height": 188,
     "weight": 75,
@@ -240,6 +240,39 @@
         "to": "布莱克本流浪者",
         "fee": "200万欧",
         "type": "转会"
+      }
+    ]
+  },
+  {
+    "person_id": "51073218",
+    "name": "哈维-佩茨",
+    "nation": "英格兰",
+    "staff": "DF",
+    "attr": "DF",
+    "attrDes": "DF",
+    "qiutanPosition": "左后卫",
+    "position": [
+      "LB"
+    ],
+    "stats": 57,
+    "ability": 57,
+    "caps": 1,
+    "lineups": 0,
+    "goals": 0,
+    "assists": 0,
+    "age": 18,
+    "number": 39,
+    "height": 179,
+    "weight": 69,
+    "currentClub": "布莱克本",
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2026-07-01",
+        "from": "布莱克本流浪者U18",
+        "to": "布莱克本流浪者U21",
+        "fee": "",
+        "type": ""
       }
     ]
   },
@@ -286,9 +319,9 @@
     "recentTransfers": []
   },
   {
-    "person_id": "50549214",
-    "name": "森下龙矢",
-    "nation": "日本",
+    "person_id": "50267659",
+    "name": "坎特韦尔",
+    "nation": "英格兰",
     "staff": "MF",
     "attr": "MF",
     "attrDes": "MF",
@@ -296,9 +329,34 @@
     "position": [
       "CM"
     ],
+    "stats": 75,
+    "ability": 75,
+    "caps": 16,
+    "lineups": 16,
+    "goals": 3,
+    "assists": 1,
+    "age": 28,
+    "number": 10,
+    "height": 177,
+    "weight": 66,
+    "socialStatus": "250",
+    "currentClub": "布莱克本",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50549214",
+    "name": "森下龙矢",
+    "nation": "日本",
+    "staff": "MF",
+    "attr": "MF",
+    "attrDes": "MF",
+    "qiutanPosition": "右中场",
+    "position": [
+      "RM"
+    ],
     "stats": 70,
     "ability": 70,
-    "caps": 11,
+    "caps": 12,
     "lineups": 11,
     "goals": 2,
     "assists": 2,
@@ -311,45 +369,20 @@
     "recentTransfers": []
   },
   {
-    "person_id": "50267659",
-    "name": "坎特韦尔",
-    "nation": "英格兰",
-    "staff": "MF",
-    "attr": "MF",
-    "attrDes": "MF",
-    "qiutanPosition": "前腰",
-    "position": [
-      "CAM"
-    ],
-    "stats": 75,
-    "ability": 75,
-    "caps": 15,
-    "lineups": 15,
-    "goals": 2,
-    "assists": 1,
-    "age": 28,
-    "number": 10,
-    "height": 177,
-    "weight": 66,
-    "socialStatus": "250",
-    "currentClub": "布莱克本",
-    "recentTransfers": []
-  },
-  {
     "person_id": "50664101",
     "name": "蒙哥马利",
     "nation": "苏格兰",
     "staff": "MF",
     "attr": "MF",
     "attrDes": "MF",
-    "qiutanPosition": "右后卫",
+    "qiutanPosition": "后腰",
     "position": [
-      "RB"
+      "CDM"
     ],
     "stats": 66,
     "ability": 66,
-    "caps": 14,
-    "lineups": 14,
+    "caps": 15,
+    "lineups": 15,
     "goals": 1,
     "assists": 1,
     "age": 22,
@@ -395,6 +428,40 @@
     ]
   },
   {
+    "person_id": "50790187",
+    "name": "巴拉吉",
+    "nation": "法国",
+    "staff": "MF",
+    "attr": "MF",
+    "attrDes": "MF",
+    "qiutanPosition": "后腰",
+    "position": [
+      "CDM"
+    ],
+    "stats": 71,
+    "ability": 71,
+    "caps": 9,
+    "lineups": 3,
+    "goals": 0,
+    "assists": 0,
+    "age": 26,
+    "number": 24,
+    "height": 182,
+    "weight": 80,
+    "socialStatus": "120",
+    "currentClub": "布莱克本",
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2026-07-01",
+        "from": "伊韦尔东",
+        "to": "布莱克本流浪者",
+        "fee": "110万欧",
+        "type": "转会"
+      }
+    ]
+  },
+  {
     "person_id": "50519324",
     "name": "杰克-加勒特",
     "nation": "英格兰",
@@ -420,40 +487,6 @@
     "recentTransfers": []
   },
   {
-    "person_id": "50790187",
-    "name": "巴拉吉",
-    "nation": "法国",
-    "staff": "MF",
-    "attr": "MF",
-    "attrDes": "MF",
-    "qiutanPosition": "后腰",
-    "position": [
-      "CDM"
-    ],
-    "stats": 71,
-    "ability": 71,
-    "caps": 8,
-    "lineups": 2,
-    "goals": 0,
-    "assists": 0,
-    "age": 26,
-    "number": 24,
-    "height": 182,
-    "weight": 80,
-    "socialStatus": "120",
-    "currentClub": "布莱克本",
-    "recentTransfers": [
-      {
-        "season": "2026-2027",
-        "date": "2026-07-01",
-        "from": "伊韦尔东",
-        "to": "布莱克本流浪者",
-        "fee": "110万欧",
-        "type": "转会"
-      }
-    ]
-  },
-  {
     "person_id": "50075172",
     "name": "福肖",
     "nation": "英格兰",
@@ -477,6 +510,39 @@
     "socialStatus": "15",
     "currentClub": "布莱克本",
     "recentTransfers": []
+  },
+  {
+    "person_id": "50948239",
+    "name": "弗兰克-瓦雷",
+    "nation": "英格兰",
+    "staff": "MF",
+    "attr": "MF",
+    "attrDes": "MF",
+    "qiutanPosition": "中前卫",
+    "position": [
+      "CM"
+    ],
+    "stats": 60,
+    "ability": 60,
+    "caps": 1,
+    "lineups": 0,
+    "goals": 0,
+    "assists": 0,
+    "age": 19,
+    "number": 53,
+    "height": 180,
+    "weight": 70,
+    "currentClub": "布莱克本",
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2026-07-01",
+        "from": "布莱克本流浪者U18",
+        "to": "布莱克本流浪者U21",
+        "fee": "",
+        "type": ""
+      }
+    ]
   },
   {
     "person_id": "50705028",
@@ -516,9 +582,9 @@
     ],
     "stats": 71,
     "ability": 71,
-    "caps": 14,
-    "lineups": 11,
-    "goals": 10,
+    "caps": 15,
+    "lineups": 12,
+    "goals": 11,
     "assists": 1,
     "age": 24,
     "number": 9,
@@ -535,14 +601,14 @@
     "staff": "FW",
     "attr": "FW",
     "attrDes": "FW",
-    "qiutanPosition": "左中场",
+    "qiutanPosition": "右中场",
     "position": [
-      "LM"
+      "RM"
     ],
     "stats": 71,
     "ability": 71,
-    "caps": 15,
-    "lineups": 15,
+    "caps": 16,
+    "lineups": 16,
     "goals": 5,
     "assists": 2,
     "age": 29,
@@ -566,7 +632,7 @@
     ],
     "stats": 67,
     "ability": 67,
-    "caps": 15,
+    "caps": 16,
     "lineups": 5,
     "goals": 0,
     "assists": 2,
@@ -600,7 +666,7 @@
     ],
     "stats": 70,
     "ability": 70,
-    "caps": 5,
+    "caps": 6,
     "lineups": 0,
     "goals": 0,
     "assists": 1,
@@ -625,7 +691,7 @@
     ],
     "stats": 68,
     "ability": 68,
-    "caps": 6,
+    "caps": 7,
     "lineups": 0,
     "goals": 0,
     "assists": 0,
@@ -638,15 +704,40 @@
     "recentTransfers": []
   },
   {
-    "person_id": "50443510",
-    "name": "约根森",
-    "nation": "丹麦",
+    "person_id": "50948240",
+    "name": "哈维-希金斯",
+    "nation": "英格兰",
     "staff": "FW",
     "attr": "FW",
     "attrDes": "FW",
     "qiutanPosition": "中锋",
     "position": [
       "ST"
+    ],
+    "stats": 61,
+    "ability": 61,
+    "caps": 2,
+    "lineups": 0,
+    "goals": 0,
+    "assists": 0,
+    "age": 17,
+    "number": 45,
+    "height": 188,
+    "weight": 80,
+    "socialStatus": "30",
+    "currentClub": "布莱克本",
+    "recentTransfers": []
+  },
+  {
+    "person_id": "50443510",
+    "name": "约根森",
+    "nation": "丹麦",
+    "staff": "FW",
+    "attr": "FW",
+    "attrDes": "FW",
+    "qiutanPosition": "左中场",
+    "position": [
+      "LM"
     ],
     "stats": 69,
     "ability": 69,

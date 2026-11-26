@@ -7,6 +7,7 @@
  */
 const { BetOrder } = require('../../models')
 const quotaService = require('../balanceService')
+const { getCorrectScoreDetails } = require('../../utils/correctScore')
 
 class BetOrderAdminService {
   /**
@@ -114,7 +115,7 @@ class BetOrderAdminService {
    */
   calculatePotentialWin(amount, odds, marketType) {
     let profit
-    if (marketType === 'moneyline') {
+    if (marketType === 'moneyline' || marketType === 'correctScore') {
       profit = amount * (odds - 1)
     } else {
       profit = amount * odds
@@ -137,6 +138,18 @@ class BetOrderAdminService {
       throw new Error('订单号已存在')
     }
     
+    if (data.marketType === 'correctScore') {
+      if (!Number.isFinite(data.odds) || data.odds <= 1) {
+        throw new Error('比分赔率必须大于1')
+      }
+      const scoreDetails = getCorrectScoreDetails(data.scoreSelection)
+      data.scoreSelection = scoreDetails.scoreSelection
+      data.selectionKey = undefined
+      data.selection = scoreDetails.selection
+      data.value = scoreDetails.value
+      data.betType = `足球 (${data.betMode === 'live' ? '滚球' : '早盘'}) 比分`
+    }
+
     // 计算预计可赢（利润）
     if (data.amount && data.odds) {
       data.potentialWin = this.calculatePotentialWin(data.amount, data.odds, data.marketType)
@@ -157,10 +170,32 @@ class BetOrderAdminService {
     // 已结算订单不允许修改关键信息
     if (order.status === 'settled') {
       const protectedFields = ['amount', 'odds', 'potentialWin', 'matchId']
+      if (order.marketType === 'correctScore') {
+        protectedFields.push('marketType', 'scoreSelection', 'selection', 'value', 'betType')
+      }
       for (const field of protectedFields) {
-        if (data[field] !== undefined && data[field] !== order[field]) {
+        const isScoreSelection = field === 'scoreSelection'
+        const changed = isScoreSelection
+          ? JSON.stringify(data[field]) !== JSON.stringify(order[field])
+          : data[field] !== order[field]
+        if (data[field] !== undefined && changed) {
           throw new Error('已结算订单不允许修改投注信息')
         }
+      }
+    }
+
+    if (data.marketType === 'correctScore' || (order.marketType === 'correctScore' && data.marketType === undefined)) {
+      const scoreSelection = data.scoreSelection === undefined ? order.scoreSelection : data.scoreSelection
+      const scoreDetails = getCorrectScoreDetails(scoreSelection)
+      data.scoreSelection = scoreDetails.scoreSelection
+      data.selectionKey = undefined
+      data.selection = scoreDetails.selection
+      data.value = scoreDetails.value
+      data.marketType = 'correctScore'
+      data.betType = `足球 (${(data.betMode || order.betMode) === 'live' ? '滚球' : '早盘'}) 比分`
+      const targetOdds = data.odds === undefined ? order.odds : data.odds
+      if (!Number.isFinite(targetOdds) || targetOdds <= 1) {
+        throw new Error('比分赔率必须大于1')
       }
     }
     
@@ -226,6 +261,9 @@ class BetOrderAdminService {
     })
     
     const results = []
+    if (orders.some(order => order.marketType === 'correctScore') && !['win', 'lose'].includes(result)) {
+      throw new Error('比分投注结算结果只能是赢或输')
+    }
     for (const order of orders) {
       let actualWin = 0
       switch (result) {
@@ -278,6 +316,10 @@ class BetOrderAdminService {
 
     if (order.status !== 'settled') {
       throw new Error('只能对已结算的订单进行重新结算')
+    }
+
+    if (order.marketType === 'correctScore' && !['win', 'lose'].includes(newResult)) {
+      throw new Error('比分投注结算结果只能是赢或输')
     }
 
     const oldResult = order.result

@@ -262,17 +262,18 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="玩法" prop="marketType">
-              <el-select v-model="formData.marketType" style="width: 100%">
+              <el-select v-model="formData.marketType" style="width: 100%" @change="handleMarketTypeChange">
                 <el-option label="让球" value="handicap" />
                 <el-option label="大小球" value="overUnder" />
                 <el-option label="独赢" value="moneyline" />
+                <el-option label="比分" value="correctScore" />
               </el-select>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row :gutter="20">
           <el-col :span="12">
-            <el-form-item label="选项键" prop="selectionKey">
+            <el-form-item v-if="formData.marketType !== 'correctScore'" label="选项键" prop="selectionKey">
               <el-select v-model="formData.selectionKey" style="width: 100%">
                 <el-option label="主队" value="home" />
                 <el-option label="客队" value="away" />
@@ -288,27 +289,58 @@
             </el-form-item>
           </el-col>
         </el-row>
+        <el-row v-if="formData.marketType === 'correctScore'" :gutter="20">
+          <el-col :span="8">
+            <el-form-item label="比分选项">
+              <el-select v-model="formData.scoreSelection.type" style="width: 100%" @change="handleScoreSelectionTypeChange">
+                <el-option label="明确比分" value="exact" />
+                <el-option label="其他赛果" value="other" />
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <template v-if="formData.scoreSelection.type === 'exact'">
+            <el-col :span="8">
+              <el-form-item label="主队进球">
+                <el-input-number v-model="formData.scoreSelection.homeScore" :min="0" :max="5" :step="1" step-strictly style="width: 100%" />
+              </el-form-item>
+            </el-col>
+            <el-col :span="8">
+              <el-form-item label="客队进球">
+                <el-input-number v-model="formData.scoreSelection.awayScore" :min="0" :max="5" :step="1" step-strictly style="width: 100%" />
+              </el-form-item>
+            </el-col>
+          </template>
+          <el-col v-else :span="16">
+            <el-form-item label="其他赛果">
+              <el-select v-model="formData.scoreSelection.outcome" style="width: 100%">
+                <el-option label="胜其他" value="home" />
+                <el-option label="平其他" value="draw" />
+                <el-option label="负其他" value="away" />
+              </el-select>
+            </el-form-item>
+          </el-col>
+        </el-row>
         <el-row :gutter="20">
           <el-col :span="12">
-            <el-form-item label="投注类型" prop="betType">
+            <el-form-item v-if="formData.marketType !== 'correctScore'" label="投注类型" prop="betType">
               <el-input v-model="formData.betType" placeholder="如: 让球" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="选择项" prop="selection">
+            <el-form-item v-if="formData.marketType !== 'correctScore'" label="选择项" prop="selection">
               <el-input v-model="formData.selection" placeholder="如: 阿森纳" />
             </el-form-item>
           </el-col>
         </el-row>
         <el-row :gutter="20">
           <el-col :span="12">
-            <el-form-item label="盘口值">
+            <el-form-item v-if="formData.marketType !== 'correctScore'" label="盘口值">
               <el-input v-model="formData.value" placeholder="如: -0.5" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="赔率" prop="odds">
-              <el-input-number v-model="formData.odds" :precision="2" :step="0.01" :min="1" style="width: 100%" />
+              <el-input-number v-model="formData.odds" :precision="2" :step="0.01" :min="formData.marketType === 'correctScore' ? 1.01 : 0" style="width: 100%" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -340,11 +372,7 @@
       <el-form label-width="100px">
         <el-form-item label="结算结果">
           <el-select v-model="settleForm.result" style="width: 100%">
-            <el-option label="赢 (本金 + 全部盈利)" value="win" />
-            <el-option label="赢半 (本金 + 一半盈利)" value="half_win" />
-            <el-option label="走水 (只返还本金)" value="push" />
-            <el-option label="输半 (返还一半本金)" value="half_lose" />
-            <el-option label="输 (不返还)" value="lose" />
+            <el-option v-for="option in settleResultOptions" :key="option.value" :label="option.label" :value="option.value" />
           </el-select>
         </el-form-item>
         <el-form-item label="最终主队比分">
@@ -385,11 +413,7 @@
       <el-form label-width="100px">
         <el-form-item label="新结算结果">
           <el-select v-model="reSettleForm.result" style="width: 100%">
-            <el-option label="赢 (本金 + 全部盈利)" value="win" />
-            <el-option label="赢半 (本金 + 一半盈利)" value="half_win" />
-            <el-option label="走水 (只返还本金)" value="push" />
-            <el-option label="输半 (返还一半本金)" value="half_lose" />
-            <el-option label="输 (不返还)" value="lose" />
+            <el-option v-for="option in reSettleResultOptions" :key="option.value" :label="option.label" :value="option.value" />
           </el-select>
         </el-form-item>
         <el-form-item label="最终主队比分">
@@ -470,6 +494,22 @@ const selectedIds = computed(() => selectedRows.value.map(item => item._id))
 const selectedPendingIds = computed(() => 
   selectedRows.value.filter(item => item.status === 'pending').map(item => item._id)
 )
+const settleHasScoreOrder = ref(false);
+const settleResultOptions = computed(() => {
+  const hasScoreOrder = settleHasScoreOrder.value || selectedRows.value.some(row =>
+    selectedPendingIds.value.includes(row._id) && row.marketType === 'correctScore'
+  )
+  if (hasScoreOrder) {
+    return [{ label: '赢', value: 'win' }, { label: '输', value: 'lose' }]
+  }
+  return [
+    { label: '赢 (本金 + 全部盈利)', value: 'win' },
+    { label: '赢半 (本金 + 一半盈利)', value: 'half_win' },
+    { label: '走水 (只返还本金)', value: 'push' },
+    { label: '输半 (返还一半本金)', value: 'half_lose' },
+    { label: '输 (不返还)', value: 'lose' }
+  ]
+});
 
 // 对话框
 const dialogVisible = ref(false)
@@ -488,6 +528,7 @@ const formData = reactive({
   awayScore: 0,
   betMode: 'early',
   marketType: 'handicap',
+  scoreSelection: { type: 'exact', homeScore: 0, awayScore: 0 },
   selectionKey: 'home',
   betPeriod: '',
   betMinute: 0,
@@ -536,8 +577,21 @@ const reSettleOrder = reactive({
   amount: 0,
   odds: 0,
   result: null,
-  actualWin: null
+  actualWin: null,
+  marketType: ''
 })
+const reSettleResultOptions = computed(() => {
+  if (reSettleOrder.marketType === 'correctScore') {
+    return [{ label: '赢', value: 'win' }, { label: '输', value: 'lose' }]
+  }
+  return [
+    { label: '赢 (本金 + 全部盈利)', value: 'win' },
+    { label: '赢半 (本金 + 一半盈利)', value: 'half_win' },
+    { label: '走水 (只返还本金)', value: 'push' },
+    { label: '输半 (返还一半本金)', value: 'half_lose' },
+    { label: '输 (不返还)', value: 'lose' }
+  ]
+});
 const reSettleForm = reactive({
   result: 'win',
   finalHomeScore: 0,
@@ -596,6 +650,20 @@ function handleCreate() {
   resetForm()
 }
 
+function handleMarketTypeChange(marketType) {
+  if (marketType === 'correctScore' && !formData.scoreSelection) {
+    formData.scoreSelection = { type: 'exact', homeScore: 0, awayScore: 0 }
+  }
+}
+
+function handleScoreSelectionTypeChange(type) {
+  if (type === 'exact') {
+    formData.scoreSelection = { type: 'exact', homeScore: 0, awayScore: 0 }
+    return
+  }
+  formData.scoreSelection = { type: 'other', outcome: 'home' }
+}
+
 // 编辑
 function handleEdit(row) {
   isEdit.value = true
@@ -611,6 +679,7 @@ function handleEdit(row) {
     awayScore: row.awayScore || 0,
     betMode: row.betMode,
     marketType: row.marketType,
+    scoreSelection: row.scoreSelection,
     selectionKey: row.selectionKey,
     betPeriod: row.betPeriod,
     betMinute: row.betMinute,
@@ -634,6 +703,7 @@ function resetForm() {
   formData.awayScore = 0
   formData.betMode = 'early'
   formData.marketType = 'handicap'
+  formData.scoreSelection = { type: 'exact', homeScore: 0, awayScore: 0 }
   formData.selectionKey = 'home'
   formData.betPeriod = ''
   formData.betMinute = 0
@@ -651,12 +721,16 @@ async function handleSubmit() {
   await formRef.value?.validate()
   
   submitLoading.value = true
+  const orderData = { ...formData }
+  if (orderData.marketType !== 'correctScore') {
+    delete orderData.scoreSelection
+  }
   try {
     if (isEdit.value) {
-      await updateBetOrder(currentEditId.value, formData)
+      await updateBetOrder(currentEditId.value, orderData)
       ElMessage.success('更新成功')
     } else {
-      await createBetOrder(formData)
+      await createBetOrder(orderData)
       ElMessage.success('创建成功')
     }
     dialogVisible.value = false
@@ -687,6 +761,7 @@ async function handleBatchDelete() {
 
 // 单个结算
 function handleSettle(row) {
+  settleHasScoreOrder.value = row.marketType === 'correctScore'
   settleForm.ids = [row._id]
   settleForm.result = 'win'
   settleForm.finalHomeScore = row.finalHomeScore || 0
@@ -696,6 +771,7 @@ function handleSettle(row) {
 
 // 批量结算
 function handleBatchSettle() {
+  settleHasScoreOrder.value = false
   settleForm.ids = selectedPendingIds.value
   settleForm.result = 'win'
   settleForm.finalHomeScore = 0
@@ -722,7 +798,8 @@ function handleReSettle(row) {
     amount: row.amount,
     odds: row.odds,
     result: row.result,
-    actualWin: row.actualWin
+    actualWin: row.actualWin,
+    marketType: row.marketType
   })
   reSettleForm.result = row.result || 'win'
   reSettleForm.finalHomeScore = row.finalHomeScore || 0

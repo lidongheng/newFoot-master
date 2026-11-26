@@ -29,8 +29,8 @@
     ],
     "stats": 78,
     "ability": 78,
-    "caps": 8,
-    "lineups": 8,
+    "caps": 9,
+    "lineups": 9,
     "goals": 0,
     "assists": 0,
     "age": 34,
@@ -94,9 +94,9 @@
     "staff": "DF",
     "attr": "DF",
     "attrDes": "DF",
-    "qiutanPosition": "左后卫",
+    "qiutanPosition": "左中场",
     "position": [
-      "LB"
+      "LM"
     ],
     "stats": 75,
     "ability": 75,
@@ -150,8 +150,8 @@
     ],
     "stats": 76,
     "ability": 76,
-    "caps": 8,
-    "lineups": 7,
+    "caps": 9,
+    "lineups": 8,
     "goals": 0,
     "assists": 0,
     "age": 23,
@@ -237,9 +237,9 @@
     "staff": "DF",
     "attr": "DF",
     "attrDes": "DF",
-    "qiutanPosition": "右后卫",
+    "qiutanPosition": "右中场",
     "position": [
-      "RB"
+      "RM"
     ],
     "stats": 76,
     "ability": 76,
@@ -268,8 +268,8 @@
     ],
     "stats": 76,
     "ability": 76,
-    "caps": 4,
-    "lineups": 2,
+    "caps": 5,
+    "lineups": 3,
     "goals": 0,
     "assists": 0,
     "age": 27,
@@ -293,8 +293,8 @@
     ],
     "stats": 73,
     "ability": 73,
-    "caps": 2,
-    "lineups": 2,
+    "caps": 3,
+    "lineups": 3,
     "goals": 0,
     "assists": 0,
     "age": 30,
@@ -378,8 +378,8 @@
     ],
     "stats": 74,
     "ability": 74,
-    "caps": 9,
-    "lineups": 6,
+    "caps": 10,
+    "lineups": 7,
     "goals": 2,
     "assists": 0,
     "age": 32,
@@ -389,6 +389,48 @@
     "socialStatus": "200",
     "currentClub": "柏林联合",
     "recentTransfers": []
+  },
+  {
+    "person_id": "50270854",
+    "name": "埃贝彻尔",
+    "nation": "瑞士",
+    "staff": "MF",
+    "attr": "MF",
+    "attrDes": "MF",
+    "qiutanPosition": "后腰",
+    "position": [
+      "CDM"
+    ],
+    "stats": 76,
+    "ability": 76,
+    "caps": 10,
+    "lineups": 10,
+    "goals": 1,
+    "assists": 0,
+    "age": 29,
+    "number": 20,
+    "height": 183,
+    "weight": 78,
+    "socialStatus": "400",
+    "currentClub": "柏林联合",
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2026-08-19",
+        "from": "比萨",
+        "to": "柏林联合",
+        "fee": "350万欧",
+        "type": "转会"
+      },
+      {
+        "season": "2026-2027",
+        "date": "2026-07-01",
+        "from": "博洛尼亚",
+        "to": "比萨",
+        "fee": "440万欧",
+        "type": "转会"
+      }
+    ]
   },
   {
     "person_id": "50123497",
@@ -403,8 +445,8 @@
     ],
     "stats": 75,
     "ability": 75,
-    "caps": 9,
-    "lineups": 9,
+    "caps": 10,
+    "lineups": 10,
     "goals": 0,
     "assists": 0,
     "age": 32,
@@ -428,8 +470,8 @@
     ],
     "stats": 75,
     "ability": 75,
-    "caps": 9,
-    "lineups": 7,
+    "caps": 10,
+    "lineups": 8,
     "goals": 0,
     "assists": 0,
     "age": 27,
@@ -439,48 +481,6 @@
     "socialStatus": "450",
     "currentClub": "柏林联合",
     "recentTransfers": []
-  },
-  {
-    "person_id": "50270854",
-    "name": "埃贝彻尔",
-    "nation": "瑞士",
-    "staff": "MF",
-    "attr": "MF",
-    "attrDes": "MF",
-    "qiutanPosition": "后腰",
-    "position": [
-      "CDM"
-    ],
-    "stats": 76,
-    "ability": 76,
-    "caps": 9,
-    "lineups": 9,
-    "goals": 0,
-    "assists": 0,
-    "age": 29,
-    "number": 20,
-    "height": 183,
-    "weight": 78,
-    "socialStatus": "400",
-    "currentClub": "柏林联合",
-    "recentTransfers": [
-      {
-        "season": "2026-2027",
-        "date": "2026-08-19",
-        "from": "比萨",
-        "to": "柏林联合",
-        "fee": "350万欧",
-        "type": "转会"
-      },
-      {
-        "season": "2026-2027",
-        "date": "2026-07-01",
-        "from": "博洛尼亚",
-        "to": "比萨",
-        "fee": "450万欧",
-        "type": "转会"
-      }
-    ]
   },
   {
     "person_id": "50452186",
@@ -495,7 +495,7 @@
     ],
     "stats": 75,
     "ability": 75,
-    "caps": 9,
+    "caps": 10,
     "lineups": 5,
     "goals": 0,
     "assists": 0,
@@ -520,7 +520,7 @@
     ],
     "stats": 77,
     "ability": 77,
-    "caps": 8,
+    "caps": 9,
     "lineups": 3,
     "goals": 0,
     "assists": 0,
@@ -539,14 +539,14 @@
     "staff": "MF",
     "attr": "MF",
     "attrDes": "MF",
-    "qiutanPosition": "中前卫",
+    "qiutanPosition": "中锋",
     "position": [
-      "CM"
+      "ST"
     ],
     "stats": 72,
     "ability": 72,
-    "caps": 4,
-    "lineups": 4,
+    "caps": 5,
+    "lineups": 5,
     "goals": 0,
     "assists": 0,
     "age": 26,
@@ -573,9 +573,9 @@
     "staff": "MF",
     "attr": "MF",
     "attrDes": "MF",
-    "qiutanPosition": "右中场",
+    "qiutanPosition": "左中场",
     "position": [
-      "RM"
+      "LM"
     ],
     "stats": 75,
     "ability": 75,
@@ -598,13 +598,13 @@
     "staff": "FW",
     "attr": "FW",
     "attrDes": "FW",
-    "qiutanPosition": "前腰",
+    "qiutanPosition": "中锋",
     "position": [
-      "CAM"
+      "ST"
     ],
     "stats": 73,
     "ability": 73,
-    "caps": 9,
+    "caps": 10,
     "lineups": 5,
     "goals": 2,
     "assists": 1,
@@ -648,9 +648,9 @@
     "staff": "FW",
     "attr": "FW",
     "attrDes": "FW",
-    "qiutanPosition": "前腰",
+    "qiutanPosition": "中前卫",
     "position": [
-      "CAM"
+      "CM"
     ],
     "stats": 73,
     "ability": 73,
@@ -721,7 +721,7 @@
     ],
     "stats": 63,
     "ability": 63,
-    "caps": 3,
+    "caps": 4,
     "lineups": 0,
     "goals": 0,
     "assists": 0,
@@ -755,8 +755,8 @@
     ],
     "stats": 73,
     "ability": 73,
-    "caps": 4,
-    "lineups": 0,
+    "caps": 5,
+    "lineups": 1,
     "goals": 0,
     "assists": 0,
     "age": 29,
@@ -774,7 +774,7 @@
     "staff": "FW",
     "attr": "FW",
     "attrDes": "FW",
-    "caps": 2,
+    "caps": 3,
     "lineups": 0,
     "goals": 0,
     "assists": 0,
@@ -807,8 +807,8 @@
     ],
     "stats": 75,
     "ability": 75,
-    "caps": 1,
-    "lineups": 0,
+    "caps": 2,
+    "lineups": 1,
     "goals": 0,
     "assists": 0,
     "age": 26,

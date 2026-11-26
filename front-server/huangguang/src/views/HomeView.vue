@@ -22,6 +22,14 @@
     
     <!-- 内容区域 -->
     <div class="content-wrapper">
+      <div v-if="matches.length" class="match-list">
+        <MatchCard
+          v-for="match in matches"
+          :key="match.matchId"
+          :match="match"
+          :bet-mode="match.status === 'live' ? 'live' : 'early'"
+        />
+      </div>
       <!-- 空状态 -->
       <div class="empty-state" v-if="showEmpty">
         <div class="empty-image">
@@ -65,11 +73,12 @@
     
     <!-- 投注弹窗 -->
     <BetPopup />
+    <ScoreBetting />
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router'
 import { useMatchStore, useUserStore } from '@/store'
 import TopNavBar from '@/components/TopNavBar.vue'
@@ -77,11 +86,14 @@ import SportCategoryBar from '@/components/SportCategoryBar.vue'
 import SubFilterTabs from '@/components/SubFilterTabs.vue'
 import BottomTabBar from '@/components/BottomTabBar.vue'
 import BetPopup from '@/components/BetPopup.vue'
+import MatchCard from '@/components/MatchCard.vue';
+import ScoreBetting from '@/components/ScoreBetting.vue';
 import { useFixedGmtMinusFourClock } from '@/composables/useFixedGmtMinusFourTime';
 
 const router = useRouter()
 const matchStore = useMatchStore()
 const userStore = useUserStore()
+const matches = computed(() => matchStore.todayMatches);
 
 // 当前运动类型
 const currentSport = ref('football')
@@ -90,7 +102,7 @@ const currentSport = ref('football')
 const activeFilter = ref('pre')
 
 // 是否显示空状态
-const showEmpty = ref(true)
+const showEmpty = computed(() => matches.value.length === 0);
 
 // 当前时间
 const { currentTime } = useFixedGmtMinusFourClock();
@@ -156,6 +168,10 @@ onMounted(async () => {
   padding-top: 180px;
   padding-bottom: 100px;
   min-height: 100vh;
+}
+
+.match-list {
+  margin-top: 8px;
 }
 
 .empty-state {

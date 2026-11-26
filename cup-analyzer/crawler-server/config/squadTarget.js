@@ -26,7 +26,7 @@ const squadTarget = {
    * 四个俱乐部杯赛（欧冠/欧罗巴/欧会杯/亚冠联2）使用本赛事数据时设 true，
    * 同时须设 matchByName: false；世界杯赛中同样设 true，matchByName 不设即可。
    */
-  isNation: true,
+  isNation: false,
   /**
    * 球员匹配方式（可选，不设则跟随 isNation）：
    *   false = 按球衣号码匹配（俱乐部 / 俱乐部杯赛）

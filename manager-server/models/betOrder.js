@@ -47,18 +47,24 @@ const betOrderSchema = new mongoose.Schema({
     required: true
   },
 
-  // 玩法: handicap/overUnder/moneyline
+  // 玩法: handicap/overUnder/moneyline/correctScore
   marketType: {
     type: String,
-    enum: ['handicap', 'overUnder', 'moneyline'],
+    enum: ['handicap', 'overUnder', 'moneyline', 'correctScore'],
     required: true
+  },
+
+  scoreSelection: {
+    type: mongoose.Schema.Types.Mixed
   },
 
   // 具体投注选项
   selectionKey: {
     type: String,
     enum: ['home', 'away', 'over', 'under', 'draw'],
-    required: true
+    required: function () {
+      return this.marketType !== 'correctScore';
+    }
   },
 
   // 投注时比赛阶段和分钟

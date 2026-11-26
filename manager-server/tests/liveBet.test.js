@@ -8,6 +8,7 @@ const app = require('../app')
 const db = require('../config/db')
 const { Match, BetOrder, Account, QuotaLog } = require('../models')
 const betService = require('../services/betService')
+const { getCorrectScoreDetails } = require('../utils/correctScore')
 
 const liveOdds = {
   handicap: {
@@ -81,7 +82,7 @@ test.before(async () => {
   await Account.create({
     quota: 1000,
     lastResetDate: Account.getCurrentQuotaDate()
-  })
+  });
 
   liveMatch = await Match.create({
     matchId: 'live001',
@@ -101,7 +102,7 @@ test.before(async () => {
     bettingOpen: true,
     marketVersion: 1,
     odds: liveOdds
-  })
+  });
 
   await Match.create({
     matchId: 'early001',
@@ -121,7 +122,7 @@ test.before(async () => {
     bettingOpen: false,
     marketVersion: 1,
     odds: earlyOdds
-  })
+  });
 
   await Match.create({
     matchId: 'finished001',
@@ -164,6 +165,25 @@ test('滚球、早盘、变盘、封盘、并发额度与回滚完整流程', as
     assert.equal(betService.calculatePotentialWin(100, 1.9, 'handicap'), 190)
     assert.equal(betService.calculatePotentialWin(100, 1.9, 'overUnder'), 190)
     assert.equal(betService.calculatePotentialWin(100, 4.05, 'moneyline'), 305)
+    assert.equal(betService.calculatePotentialWin(100, 7.5, 'correctScore'), 650)
+  })
+
+  await t.test('比分选项边界和其他赛果分类正确', () => {
+    const exactScores = [[0, 0], [3, 3], [4, 3], [4, 4], [5, 1], [5, 2], [1, 5], [2, 5]]
+    for (const [homeScore, awayScore] of exactScores) {
+      const details = getCorrectScoreDetails({ type: 'exact', homeScore, awayScore })
+      assert.equal(details.selection, '比分')
+      assert.equal(details.value, `${homeScore}:${awayScore}`)
+    }
+
+    const excludedScores = [[5, 3], [5, 4], [5, 5], [3, 5], [4, 5]]
+    for (const [homeScore, awayScore] of excludedScores) {
+      assert.throws(() => getCorrectScoreDetails({ type: 'exact', homeScore, awayScore }), /其他选项/)
+    }
+
+    assert.equal(getCorrectScoreDetails({ type: 'other', outcome: 'home' }).value, '胜其他')
+    assert.equal(getCorrectScoreDetails({ type: 'other', outcome: 'draw' }).value, '平其他')
+    assert.equal(getCorrectScoreDetails({ type: 'other', outcome: 'away' }).value, '负其他')
   })
 
   await t.test('滚球列表返回进行中的比赛', async () => {
@@ -425,6 +445,61 @@ test('滚球、早盘、变盘、封盘、并发额度与回滚完整流程', as
     const refundLog = await QuotaLog.findOne({ remark: '订单创建失败退还' })
     assert.equal(account.quota, 100)
     assert.equal(refundLog.amount, 10)
+  })
+
+  await t.test('比分投注支持赛前和滚球，并限制赔率、比分及结算结果', async () => {
+    await Account.updateOne({}, { $set: { quota: 100 } })
+    const earlyPayload = {
+      matchId: 'early001',
+      betMode: 'early',
+      marketType: 'correctScore',
+      scoreSelection: { type: 'exact', homeScore: 3, awayScore: 3 },
+      quotedOdds: 7.5,
+      marketVersion: 1,
+      amount: 10
+    }
+    const invalidOdds = await request('/api/v1/bet/place', 'POST', { ...earlyPayload, quotedOdds: 1 })
+    assert.equal(invalidOdds.code, 400)
+    const excludedScore = await request('/api/v1/bet/place', 'POST', {
+      ...earlyPayload,
+      scoreSelection: { type: 'exact', homeScore: 5, awayScore: 3 }
+    })
+    assert.equal(excludedScore.code, 400)
+    const staleVersion = await request('/api/v1/bet/place', 'POST', { ...earlyPayload, marketVersion: 2 })
+    assert.equal(staleVersion.code, 409)
+    assert.equal(staleVersion.data.reason, 'QUOTE_CHANGED')
+
+    const earlyBody = await request('/api/v1/bet/place', 'POST', earlyPayload)
+    assert.equal(earlyBody.code, 200)
+    assert.equal(earlyBody.data.selection, '比分')
+    assert.equal(earlyBody.data.value, '3:3')
+    assert.deepEqual(earlyBody.data.scoreSelection, { type: 'exact', homeScore: 3, awayScore: 3 })
+    assert.equal(earlyBody.data.odds, 7.5)
+    assert.equal(earlyBody.data.potentialWin, 65)
+    assert.equal(earlyBody.data.homeTeam, '早盘主队')
+
+    const liveMatch = await Match.findOne({ matchId: 'live001' })
+    const liveBody = await request('/api/v1/bet/place', 'POST', {
+      matchId: liveMatch.matchId,
+      betMode: 'live',
+      marketType: 'correctScore',
+      scoreSelection: { type: 'other', outcome: 'home' },
+      quotedOdds: 2.25,
+      marketVersion: liveMatch.marketVersion,
+      amount: 10
+    })
+    assert.equal(liveBody.code, 200)
+    assert.equal(liveBody.data.value, '胜其他')
+    assert.equal(liveBody.data.homeScore, liveMatch.homeScore)
+
+    await assert.rejects(betService.settleBet(liveBody.data.orderId, 'push', 6, 2), /只能是赢或输/)
+    const settledBody = await request(`/api/v1/bet/settle/${liveBody.data.orderId}`, 'POST', {
+      result: 'win',
+      finalHomeScore: 6,
+      finalAwayScore: 2
+    })
+    assert.equal(settledBody.code, 200)
+    assert.equal(settledBody.data.actualWin, 22.5)
   })
 
   await t.test('滚球订单继续支持人工结算', async () => {

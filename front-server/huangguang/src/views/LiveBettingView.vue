@@ -43,6 +43,7 @@
     
     <!-- 投注弹窗 -->
     <BetPopup />
+    <ScoreBetting />
   </div>
 </template>
 
@@ -57,6 +58,7 @@ import BottomTabBar from '@/components/BottomTabBar.vue'
 import PlayTypeFilter from '@/components/PlayTypeFilter.vue'
 import MatchCard from '@/components/MatchCard.vue'
 import BetPopup from '@/components/BetPopup.vue'
+import ScoreBetting from '@/components/ScoreBetting.vue';
 
 const router = useRouter()
 const matchStore = useMatchStore()

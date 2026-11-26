@@ -17,6 +17,31 @@
     "recentTransfers": []
   },
   {
+    "person_id": "50703292",
+    "name": "尼乌文赫伊曾",
+    "nation": "澳大利亚",
+    "staff": "GK",
+    "attr": "GK",
+    "attrDes": "GK",
+    "qiutanPosition": "守门员",
+    "position": [
+      "GK"
+    ],
+    "stats": 54,
+    "ability": 54,
+    "caps": 2,
+    "lineups": 2,
+    "goals": 0,
+    "assists": 0,
+    "age": 22,
+    "number": 40,
+    "height": 192,
+    "weight": 78,
+    "socialStatus": "10",
+    "currentClub": "墨尔本城",
+    "recentTransfers": []
+  },
+  {
     "person_id": "50487888",
     "name": "弗里克",
     "nation": "澳大利亚",
@@ -51,31 +76,6 @@
     ]
   },
   {
-    "person_id": "50703292",
-    "name": "尼乌文赫伊曾",
-    "nation": "澳大利亚",
-    "staff": "GK",
-    "attr": "GK",
-    "attrDes": "GK",
-    "qiutanPosition": "守门员",
-    "position": [
-      "GK"
-    ],
-    "stats": 54,
-    "ability": 54,
-    "caps": 1,
-    "lineups": 1,
-    "goals": 0,
-    "assists": 0,
-    "age": 22,
-    "number": 40,
-    "height": 192,
-    "weight": 78,
-    "socialStatus": "10",
-    "currentClub": "墨尔本城",
-    "recentTransfers": []
-  },
-  {
     "person_id": "50126919",
     "name": "卡斯卡特",
     "nation": "哥斯达黎加",
@@ -88,10 +88,10 @@
     ],
     "stats": 67,
     "ability": 67,
-    "caps": 2,
-    "lineups": 1,
+    "caps": 3,
+    "lineups": 2,
     "goals": 0,
-    "assists": 1,
+    "assists": 2,
     "age": 33,
     "number": 18,
     "height": 185,
@@ -116,14 +116,14 @@
     "staff": "DF",
     "attr": "DF",
     "attrDes": "DF",
-    "qiutanPosition": "左后卫",
+    "qiutanPosition": "左中场",
     "position": [
-      "LB"
+      "LM"
     ],
     "stats": 67,
     "ability": 67,
-    "caps": 3,
-    "lineups": 3,
+    "caps": 4,
+    "lineups": 4,
     "goals": 0,
     "assists": 0,
     "age": 35,
@@ -147,8 +147,8 @@
     ],
     "stats": 69,
     "ability": 69,
-    "caps": 3,
-    "lineups": 3,
+    "caps": 4,
+    "lineups": 4,
     "goals": 0,
     "assists": 0,
     "age": 27,
@@ -172,8 +172,8 @@
     ],
     "stats": 62,
     "ability": 62,
-    "caps": 3,
-    "lineups": 3,
+    "caps": 4,
+    "lineups": 4,
     "goals": 0,
     "assists": 0,
     "age": 34,
@@ -197,7 +197,7 @@
     ],
     "stats": 55,
     "ability": 55,
-    "caps": 3,
+    "caps": 4,
     "lineups": 2,
     "goals": 0,
     "assists": 0,
@@ -297,8 +297,8 @@
     ],
     "stats": 69,
     "ability": 69,
-    "caps": 2,
-    "lineups": 0,
+    "caps": 3,
+    "lineups": 1,
     "goals": 1,
     "assists": 2,
     "age": 31,
@@ -331,7 +331,7 @@
     ],
     "stats": 57,
     "ability": 57,
-    "caps": 3,
+    "caps": 4,
     "lineups": 3,
     "goals": 1,
     "assists": 0,
@@ -353,20 +353,62 @@
     ]
   },
   {
+    "person_id": "50238739",
+    "name": "马特乌斯-罗塞托",
+    "nation": "巴西",
+    "staff": "MF",
+    "attr": "MF",
+    "attrDes": "MF",
+    "qiutanPosition": "中前卫",
+    "position": [
+      "CM"
+    ],
+    "stats": 67,
+    "ability": 67,
+    "caps": 1,
+    "lineups": 1,
+    "goals": 1,
+    "assists": 0,
+    "age": 30,
+    "number": 5,
+    "height": 180,
+    "weight": 75,
+    "socialStatus": "100",
+    "currentClub": "墨尔本城",
+    "recentTransfers": [
+      {
+        "season": "2026-2027",
+        "date": "2027-06-30",
+        "from": "墨尔本城",
+        "to": "福塔莱萨",
+        "fee": "",
+        "type": "租借回归"
+      },
+      {
+        "season": "2026-2027",
+        "date": "2026-07-29",
+        "from": "福塔莱萨",
+        "to": "墨尔本城",
+        "fee": "",
+        "type": "租借"
+      }
+    ]
+  },
+  {
     "person_id": "51001311",
     "name": "拉赫马尼",
     "nation": "澳大利亚",
     "staff": "MF",
     "attr": "MF",
     "attrDes": "MF",
-    "qiutanPosition": "右中场",
+    "qiutanPosition": "左中场",
     "position": [
-      "RM"
+      "LM"
     ],
     "stats": 56,
     "ability": 56,
-    "caps": 3,
-    "lineups": 3,
+    "caps": 4,
+    "lineups": 4,
     "goals": 0,
     "assists": 1,
     "age": 19,
@@ -384,7 +426,7 @@
     "staff": "MF",
     "attr": "MF",
     "attrDes": "MF",
-    "caps": 3,
+    "caps": 4,
     "lineups": 3,
     "goals": 0,
     "assists": 0,
@@ -421,40 +463,23 @@
     "recentTransfers": []
   },
   {
-    "person_id": "50238739",
-    "name": "马特乌斯-罗塞托",
-    "nation": "巴西",
+    "person_id": "51185645",
+    "name": "卢卡-德穆特",
+    "nation": "澳大利亚",
     "staff": "MF",
     "attr": "MF",
     "attrDes": "MF",
-    "qiutanPosition": "中前卫",
-    "position": [
-      "CM"
-    ],
-    "stats": 67,
-    "ability": 67,
-    "age": 30,
-    "number": 5,
-    "height": 180,
-    "weight": 75,
-    "socialStatus": "100",
+    "age": 16,
+    "height": 178,
     "currentClub": "墨尔本城",
     "recentTransfers": [
       {
         "season": "2026-2027",
-        "date": "2027-06-30",
-        "from": "墨尔本城",
-        "to": "福塔莱萨",
-        "fee": "",
-        "type": "租借回归"
-      },
-      {
-        "season": "2026-2027",
-        "date": "2026-07-29",
-        "from": "福塔莱萨",
+        "date": "2026-10-01",
+        "from": "墨尔本城U18",
         "to": "墨尔本城",
         "fee": "",
-        "type": "租借"
+        "type": ""
       }
     ]
   },
@@ -480,25 +505,29 @@
     "recentTransfers": []
   },
   {
-    "person_id": "51185645",
-    "name": "卢卡-德穆特",
+    "person_id": "50175124",
+    "name": "纳鲍特",
     "nation": "澳大利亚",
-    "staff": "MF",
-    "attr": "MF",
-    "attrDes": "MF",
-    "age": 16,
+    "staff": "FW",
+    "attr": "FW",
+    "attrDes": "FW",
+    "qiutanPosition": "右边锋",
+    "position": [
+      "RW"
+    ],
+    "stats": 65,
+    "ability": 65,
+    "caps": 4,
+    "lineups": 4,
+    "goals": 2,
+    "assists": 0,
+    "age": 33,
+    "number": 15,
     "height": 178,
+    "weight": 83,
+    "socialStatus": "30",
     "currentClub": "墨尔本城",
-    "recentTransfers": [
-      {
-        "season": "2026-2027",
-        "date": "2026-10-01",
-        "from": "墨尔本城U18",
-        "to": "墨尔本城",
-        "fee": "",
-        "type": ""
-      }
-    ]
+    "recentTransfers": []
   },
   {
     "person_id": "50180510",
@@ -513,8 +542,8 @@
     ],
     "stats": 68,
     "ability": 68,
-    "caps": 3,
-    "lineups": 3,
+    "caps": 4,
+    "lineups": 4,
     "goals": 1,
     "assists": 0,
     "age": 31,
@@ -535,31 +564,6 @@
     ]
   },
   {
-    "person_id": "50175124",
-    "name": "纳鲍特",
-    "nation": "澳大利亚",
-    "staff": "FW",
-    "attr": "FW",
-    "attrDes": "FW",
-    "qiutanPosition": "中锋",
-    "position": [
-      "ST"
-    ],
-    "stats": 65,
-    "ability": 65,
-    "caps": 3,
-    "lineups": 3,
-    "goals": 1,
-    "assists": 0,
-    "age": 33,
-    "number": 15,
-    "height": 178,
-    "weight": 83,
-    "socialStatus": "30",
-    "currentClub": "墨尔本城",
-    "recentTransfers": []
-  },
-  {
     "person_id": "50919712",
     "name": "梅丁-梅梅蒂",
     "nation": "澳大利亚",
@@ -572,8 +576,8 @@
     ],
     "stats": 59,
     "ability": 59,
-    "caps": 3,
-    "lineups": 3,
+    "caps": 4,
+    "lineups": 4,
     "goals": 0,
     "assists": 0,
     "age": 19,
@@ -591,13 +595,13 @@
     "staff": "FW",
     "attr": "FW",
     "attrDes": "FW",
-    "qiutanPosition": "中前卫",
+    "qiutanPosition": "右中场",
     "position": [
-      "CM"
+      "RM"
     ],
     "stats": 70,
     "ability": 70,
-    "caps": 3,
+    "caps": 4,
     "lineups": 0,
     "goals": 0,
     "assists": 0,
@@ -616,13 +620,13 @@
     "staff": "FW",
     "attr": "FW",
     "attrDes": "FW",
-    "qiutanPosition": "右边锋",
+    "qiutanPosition": "中锋",
     "position": [
-      "RW"
+      "ST"
     ],
     "stats": 63,
     "ability": 63,
-    "caps": 2,
+    "caps": 3,
     "lineups": 0,
     "goals": 0,
     "assists": 0,
