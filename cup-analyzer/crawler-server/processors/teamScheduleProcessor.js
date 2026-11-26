@@ -114,7 +114,7 @@ function makeSection(anchorTime, recent, upcoming, teamName) {
     '### 最近 3 场已完赛',
     ...recent.map((fixture) => renderScheduleLine(fixture, anchorTime, teamName, false)),
     '',
-    '### 未来 3 场比赛',
+    '### 未来 30 天内的比赛',
     ...upcoming.map((fixture) => renderScheduleLine(fixture, anchorTime, teamName, true)),
     SECTION_END,
   ].join('\n');
@@ -173,10 +173,10 @@ class TeamScheduleProcessor extends BaseCrawler {
     const anchor = anchors[0];
     const recent = teamMatches.filter((match) => isPlayed(match.raw) && match.startTime !== null && match.startTime < anchorTime)
       .sort((a, b) => b.startTime - a.startTime).slice(0, 3).reverse();
-    const datedUpcoming = teamMatches.filter((match) => isUpcoming(match.raw) && match.startTime !== null && match.startTime > anchorTime)
-      .sort((a, b) => a.startTime - b.startTime).slice(0, 3);
-    const undatedUpcoming = teamMatches.filter((match) => isUpcoming(match.raw) && match.startTime === null);
-    const upcoming = datedUpcoming.concat(undatedUpcoming.slice(0, Math.max(0, 3 - datedUpcoming.length)));
+    // 以配置的比赛时间为基准，取未来 30 天内所有时间已确定的未赛比赛。
+    const upcomingEndTime = anchorTime + 30 * 24 * 60 * 60 * 1000;
+    const upcoming = teamMatches.filter((match) => isUpcoming(match.raw) && match.startTime !== null && match.startTime > anchorTime && match.startTime <= upcomingEndTime)
+      .sort((a, b) => a.startTime - b.startTime);
 
     const base = path.join(config.paths.cupAnalyzer, 'squad', `${mapping.qiutanName}.md`);
     if (!fileExists(base)) throw new Error(`初选名单不存在: ${base}，请先运行 leagueSquadProcessor`);

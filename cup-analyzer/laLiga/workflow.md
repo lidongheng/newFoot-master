@@ -60,6 +60,39 @@ npx cross-env CUP_ANALYZER_CUP=laLiga node processors/overUnderHomeRanking.js --
 npx cross-env CUP_ANALYZER_CUP=laLiga node processors/overUnderAwayRanking.js --round 6
 ```
 
+<!-- 可选命令：统计球员未首发时球队的胜平负场数和输盘率。 -->
+**可选命令：球员未首发统计**（工作目录：`cup-analyzer/crawler-server`）。先生成 `output/player_center/{teamSerial}-new.json`，并在 `config/squadTarget.js` 中设置与该文件一致的 `teamSerial`、`leagueSerial`、`isNation`；统计范围沿用该文件，结果输出到终端。
+
+```bash
+# 可选：统计有首发记录的球员未首发时球队的胜、平、负场数及输盘率。
+npx cross-env CUP_ANALYZER_CUP=laLiga node processors/playerNonStartingStats.js
+```
+
+<!-- 可选命令：统计球队曾落后后追平或逆转抢回的分数排行榜。 -->
+**可选命令：落后抢回分数排行榜**（工作目录：`cup-analyzer/crawler-server`）。在 `config/squadTarget.js` 中设置本赛事的 `leagueSlug`、`leagueSerial`，以及与本地 `basicData` 目录一致的 `season`。读取本赛事 `basicData/{season}/round-*/{对阵}/matchEvents.json` 和 `data/` 赛程，统计曾落后后追平（+1 分）、逆转获胜（+3 分）的排名与明细；仅统计已采集且含终场比分的比赛，结果输出到终端。杯赛按相同积分口径统计，不代表晋级结果。
+
+```bash
+# 可选：统计各队落后后抢回的分数、追平/逆转次数及比赛明细。
+npx cross-env CUP_ANALYZER_CUP=laLiga node processors/comebackPointsRanking.js
+```
+
+<!-- 可选命令：下半场积分、自定义轮次积分、历史同盘口/同档次和单场分析页统计。 -->
+**可选分析命令**（工作目录：`cup-analyzer/crawler-server`）。前三条仅适用于联赛 `R_*` 轮次，在 `config/squadTarget.js` 设置对应的 `leagueSlug`、`leagueSerial`、`season`（与本地赛程一致，可用全写或短名）；杯赛/国家队杯赛不要运行前三条。历史同盘口分析另需 `roundSerial`、`matchSerial`；分档读取 `crawler-server/config/league-team-strength.json`，缺少同赛季分档时只分析同盘口，不套用旧赛季。最后一条只需 `matchSerial`，支持联赛和杯赛。结果均输出到终端。
+
+```bash
+# 可选：下半场积分榜：以全场比分减半场比分，统计下半场胜平负、进失球与积分，并与赛程提供的全场榜比较。
+npx cross-env CUP_ANALYZER_CUP=laLiga node processors/secondHalfStandings.js
+# 可选：自定义轮次积分榜：示例统计第 1–6 轮；可改为 --rounds 6 或省略参数统计全部已有轮次。
+npx cross-env CUP_ANALYZER_CUP=laLiga node processors/customRoundStandings.js --rounds 1-6
+# 可选：历史同盘口及同档次分析：比较目标比赛之前的主队主场、客队客场同初盘让球战绩；同档次仅使用同赛事、同赛季分档。
+npx cross-env CUP_ANALYZER_CUP=laLiga node processors/historicalHandicapAnalysis.js
+# 可选：单场分析页统计：联网读取交锋、主客队近期战绩、未来比赛及页面伤病信息，交锋/近况最多各 10 场。
+npx cross-env CUP_ANALYZER_CUP=laLiga node processors/matchStatisticsProcessor.js
+```
+
+
+
+
 `teamProfileGenerator` 会在球队画像的预测首发后生成预测替补：门将 1 人（候选门将按球衣号升序，无号码者排在有号码者后），后卫 3 人、中场 3 人、前锋 2 人。后卫、中场、前锋先选与同组首发标准位置代码相同的球员，再从该组其他候选补足；非门将候选按赛季首发数降序，并列沿用名单顺序，缺少首发数据者排后。只排除 `## 伤停` 球员，`## 伤疑` 球员仍可入选。位置组名额不足时，从其他已识别位置组按赛季首发数补足 9 人；全队可用球员不足 9 人时只输出实际人数，不生成占位球员。缺少阵型或无法选出首发球员时不生成预测替补栏。
 
 这套选择规则只用于球队画像。下方 `matchSquadGenerator.js` 的单场文案仍按其自身的出场数规则生成 Top 9 替补，两者不要混用。

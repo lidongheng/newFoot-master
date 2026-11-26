@@ -2,8 +2,8 @@
 
 **SKILL**: dh-post-match-analysis   
 **创建时间**: 2026-02-18  
-**最后更新时间**: 2026-11-26
-**版本**: v1.1
+**最后更新时间**: 2026-11-27
+**版本**: v1.2
 
 ---
 
@@ -34,7 +34,8 @@
 
 ### 需要确认的配置
 
-- **赛后数据爬取（cup-analyzer）**：设置环境变量 `CUP_ANALYZER_CUP`，与 [`cup-analyzer/crawler-server/config/index.js`](../../../../cup-analyzer/crawler-server/config/index.js) 中赛事键一致（如 `epl`、`championsLeague`、`aLeague`）。输出目录为 `cup-analyzer/{模块名}/basicData/...`。
+- **俱乐部赛后数据**：从 `teamAgent/*/config.js` 按赛事、赛季和球队球探 ID 定位目录，输出为 `teamAgent/{球队目录}/basicData/{season-short}/{matchId}/`。使用 `teamPostMatchDataProcessor.js --config`，不读取 squadTarget.js，不依赖 `CUP_ANALYZER_CUP`。
+- **国家队赛后数据**：世界杯、欧国联、国际友谊赛沿用赛事级 `basicData/` 和原采集流程，通过 `CUP_ANALYZER_CUP` 选择赛事，不创建 teamAgent。
 - **历史同赔 / 自定义积分榜等（backend-server 脚本）**：仍读取 `backend-server/config/wudaconfig.js`，确认：
 
 | 字段 | 含义 | 示例 |
@@ -45,13 +46,13 @@
 | `roundSerial` | 目标比赛轮次 | `{轮次}` |
 | `matchSerial` | 目标比赛序号 | `{比赛ID}` |
 
-赛后爬虫赛季值来自 `cup-analyzer/crawler-server/config/index.js`。运行会备份并覆盖赛程前，核对 `config.cups[赛事键].season`、请求目标赛季和本地赛程文件的赛季元数据。杯赛优先检查 `arrCup[7]`。三者不一致时，不要直接运行同步命令；确认正确远端赛季后，可只在单次 Node 进程内覆盖 `config.season`，不要为单场报告改写仓库配置。远端访问失败时使用已核验的本地赛程，并明确标注赛程同步未完成。
+俱乐部单队采集的赛季来自球队 config.js，并与本地赛程元数据核验（联赛 `arrLeague[4]`、杯赛 `arrCup[7]`）；完整赛季与目录短名分开处理。国家队原赛事级采集流程使用全局赛事配置。同步赛程前，核对 `config.cups[赛事键].season`、请求目标赛季和本地赛程元数据。三者不一致时，不直接运行同步命令；确认正确远端赛季后，可只在单次 Node 进程内覆盖 `config.season`，不为单场报告改写共享配置。同步失败不得覆盖已核验的本地赛程，并明确标注未完成同步。
 
 ### 需要确认的数据文件
 
 | 数据来源 | 路径 | 内容 |
 |---------|------|------|
-| 赛后技术统计 | `cup-analyzer/{leagueSlug}/basicData/{season-short}/{赛事轮次目录}/{主队slug}_vs_{客队slug}/techStats.json` | 射门、控球率、传球、xG等 |
+| 赛后技术统计 | `cup-analyzer/{leagueSlug}/teamAgent/{球队目录}/basicData/{season-short}/{matchId}/techStats.json` | 俱乐部默认路径；射门、控球率、传球、xG等 |
 | 比赛事件 | 同上目录 `/matchEvents.json` | 进球、红黄牌、换人等事件时间线 |
 | 首发阵容 | 同上目录 `/lineup.json` | 双方阵型、首发、替补 |
 | 球员统计 | 同上目录 `/playerStats.json` | 每位球员的详细技术数据 |
@@ -63,22 +64,43 @@
 | 联赛赛程 | `cup-analyzer/{leagueSlug}/data/` 下对应赛程 JS（如英超 `s36.js`，见 crawler-server `config/index.js` 的 `cupScheduleData`） | 全赛季各轮次比赛数据 |
 | **报告输出** | `cup-analyzer/{leagueSlug}/postMatchSummary/{season-short}/round-{轮次}/{主队slug}_vs_{客队slug}/` | **分析报告保存目录** |
 
-如果赛后数据缺失，在 **`cup-analyzer/crawler-server`** 中执行（需先设置 `CUP_ANALYZER_CUP`）：
-```bash
-cd cup-analyzer/crawler-server
-npx cross-env CUP_ANALYZER_CUP={赛事键} npm run crawl:post-match -- --round {轮次或赛事阶段键}
-```
-（亦可用旧脚本：`cd backend-server` 后 `node crawlerPostMatchData.js --round {轮次}`，输出在 `backend-server/basicData/`。）
+国家队将表中 teamAgent 路径替换为实际赛事级 `basicData/{season-short}/{轮次或阶段}/{对阵}/`；其余分析资料及报告输出目录不变。
 
-### 欧冠联赛阶段：按比赛 ID 爬取单场
+### 俱乐部：teamAgent 读取与自动补采
 
-欧冠赛程的联赛阶段可能把所有轮次放在 `jh` 的 `G{阶段ID}` 键下，而不是 `R_5`。先从赛程行确定比赛 ID、轮次和赛果。`postMatchDataCrawler --round G{阶段ID}` 会扫描该阶段所有未保存的完赛场次；为了单场任务避免批量爬取，可在 `cup-analyzer/crawler-server` 运行下面的一次性脚本。它只改当前 Node 进程里的赛季值，不改配置文件；赛季值、阶段键、比赛 ID 和轮次都要替换为已核验值：
+先从赛程确认赛事、完整赛季、比赛 ID 和双方球队 ID。用户指定研究球队时先检查该队，否则先检查主队，再检查另一方。双方任一目录已有完整本场数据，直接选用这一份；不要求双方各自抓取，不拼接身份或比分冲突的文件。
+
+**动态定位球队配置**：以下命令在 `cup-analyzer/crawler-server` 执行。将参数替换为已核验的赛事键、球队 ID 和完整赛季，不从中文名猜英文文件夹名；需检查另一方时使用其 ID 再执行一次。仅列出路径，不发送采集请求：
 
 ```bash
-npx cross-env CUP_ANALYZER_CUP=championsLeague node -e "const path=require('path'); const config=require('./config'); config.season='{远端赛季}'; const Crawler=require('./crawlers/postMatchDataCrawler'); const crawler=new Crawler(); const schedule=crawler.parseScheduleForPostMatch(); const {pendingMatches}=crawler.collectPendingMatches(schedule,['G{阶段ID}']); const match=pendingMatches.find(item=>String(item.matchSerial)==='{比赛ID}'); if(!match) throw new Error('目标比赛不在待爬队列，请先核查本地 JSON'); const outputDir=path.join(crawler.baseOutputDir,'round-{轮次}',match.folderName); crawler.crawlSingleMatch(match.matchSerial,outputDir).then(ok=>{if(!ok) process.exitCode=1;});"
+node -e "const fs=require('fs'); const path=require('path'); const {cups}=require('./config'); const {loadTeamTarget}=require('./utils/teamAgent'); const [slug,teamId,season]=process.argv.slice(1); const league=cups[slug]; if(!league) throw new Error('赛事未登记'); const root=path.join(league.paths.cupAnalyzer,'teamAgent'); const found=fs.readdirSync(root,{withFileTypes:true}).filter(item=>item.isDirectory()).map(item=>path.join(root,item.name,'config.js')).filter(file=>fs.existsSync(file)).filter(file=>{const value=require(file); return value.leagueSlug===slug && value.leagueSerial===String(league.cupSerial) && value.teamSerial===teamId && value.season===season;}); if(found.length!==1) throw new Error('球队配置缺失、重复或赛季不符，不能猜目录或改写配置'); const loaded=loadTeamTarget(found[0],cups); console.log('config:',found[0]); console.log('basicData:',loaded.outputDir);" "{赛事键}" "{球队ID}" "{完整赛季}"
 ```
 
-若目标比赛已存在 `matchEvents.json`，先读取并核验该目录，不要重复爬取。网络失败且没有本地核心赛后 JSON 时，停止完整复盘报告，向用户说明爬取失败并请其提供本场 JSON 或 HTML；不得以新闻报道、搜索摘要或比分页替代必需的赛后数据文件。
+选择目录后核对本场文件内容。`isCompleteMatch` 仅检查核心三文件的 ID、完赛状态、终场比分和非空全场技术统计；skill 还必须检查 `lineup.json` 的比赛 ID、双方、实际首发/替补及阵型。球员统计、进球概率和赛后总结均为可选，不因其缺失触发重采。
+
+**双方均无可用本场数据时自动补采**：选用上述优先顺序对应的球队，不等用户手动运行：
+
+```bash
+node processors/teamPostMatchDataProcessor.js --config "../{赛事键}/teamAgent/{球队目录}/config.js"
+```
+
+这会增量补齐该队本赛季、本赛事缺少的所有已完赛比赛，完整核心数据会跳过；不额外运行全赛事、整轮或双方重复采集。联赛 `R_*`、杯赛 `G*` 和两回合结构由现有采集器处理，不需要把欧冠联赛阶段键误当成轮次。执行后重新读取本场目录；即使命令因其他场次失败返回非零码，也应以本场重新核验的结果判断能否复盘。
+
+**核心完整但实际阵容缺失或损坏时，本场定向重采一次**：增量命令不检查阵容，可能跳过本场。仅在双方均没有满足复盘要求的数据、且确认阵容是阻塞项后执行以下命令。它核验该队配置、本场参赛关系和完赛状态，写入选定球队的本场目录，禁用实例自动重试，不改共享配置：
+
+```bash
+node -e "const fs=require('fs'); const path=require('path'); const {cups}=require('./config'); const {loadTeamTarget,collectTeamMatches}=require('./utils/teamAgent'); const {isCompleteMatch}=require('./processors/teamPostMatchDataProcessor'); const Crawler=require('./crawlers/postMatchDataCrawler'); const [file,id]=process.argv.slice(1); const loaded=loadTeamTarget(file,cups); const match=collectTeamMatches(loaded.schedule,loaded.league.type,loaded.target.teamSerial).find(row=>String(row[0])===id); if(!match) throw new Error('本场不属于该队本赛季本赛事的已完赛比赛'); const directory=path.join(loaded.outputDir,id); const crawler=new Crawler(); crawler.requestOptions={retry:0}; crawler.crawlSingleMatch(id,directory).then(ok=>{if(!ok || !isCompleteMatch(directory,id)) throw new Error('本场核心数据仍不完整'); const lineup=JSON.parse(fs.readFileSync(path.join(directory,'lineup.json'),'utf8')); if(String(lineup.matchId)!==id || !Array.isArray(lineup.homeStarting) || lineup.homeStarting.length===0 || !Array.isArray(lineup.guestStarting) || lineup.guestStarting.length===0) throw new Error('本场实际阵容仍不可用'); console.log('本场数据已保存，请核验双方、阵型、事件及统计后复盘：'+directory);}).catch(error=>{console.error(error.message); process.exitCode=1;});" "../{赛事键}/teamAgent/{球队目录}/config.js" "{比赛ID}"
+```
+
+定向重采后仍不可用则停止，不循环调用命令。若已有单场 HTML，可复用实例的 `parseAndSave(html, directory, matchId)` 写入上述已核验目录，并做同样的文件核验；不要用默认输出到旧赛事级目录的 `--local` 命令替代。
+
+### 国家队：保留赛事级流程
+
+世界杯、欧国联、国际友谊赛读取原赛事级 `basicData/{season-short}/{轮次或阶段}/{对阵}/`。缺失时先查看现有 `postMatchDataCrawler.js` 和实际 `jh` 阶段键，使用 `CUP_ANALYZER_CUP` 选择国家队赛事；可执行 `npm run crawl:post-match -- --round {实际阶段键}`，或按已核验比赛 ID 调用 `crawlSingleMatch` 写入本场赛事级目录，不默认运行全赛事。已有 HTML 时保留原 `--local {路径} --match {比赛ID}` 解析流程。新建实例设置 `requestOptions = { retry: 0 }`；使用 CLI 时先核验其重试行为，不循环执行失败命令。
+
+### 补采后的处理
+
+核心统计、实际阵容或事件仍未取得时，列明文件缺项和抓取错误，停止完整复盘。网络权限问题按运行环境支持的审批机制处理，不关闭 TLS 校验、不循环重试。赛后总结接口失败或仅缺球员评分等可选信息时，用其余可靠数据复盘并注明缺口。不得用新闻、搜索摘要或比分页冒充必需的本地统计。报告注明实际读取的数据目录及可核验的抓取时间，不把文件修改时间当作上游数据发布时间。
 
 ---
 
@@ -89,8 +111,8 @@ npx cross-env CUP_ANALYZER_CUP=championsLeague node -e "const path=require('path
 根据大名单和首发阵型排出首发阵容，加入到赛后分析报告中
 对赛后统计数据进行对比，找到赢球球队赢球或输球球队输球或平局的原因
 
-大名单已经由用户保存在`cup-analyzer/${联赛名}/news/${赛季}/${轮次}/${对阵双方}`
-首发及替补阵容、比赛事件、赛后统计数据保存在 `cup-analyzer/${联赛名}/basicData/${赛季短名}/round-${轮次}/${对阵双方}/`（杯赛输出目录按实际赛程阶段确认）
+用户提供的大名单可在 `cup-analyzer/{leagueSlug}/news/{season}/round-{轮次}/{对阵双方}/` 查找，是否存在以实际文件为准。
+俱乐部的首发及替补阵容、比赛事件、赛后统计数据读取前置步骤选定的 `cup-analyzer/{leagueSlug}/teamAgent/{球队目录}/basicData/{season-short}/{matchId}/`；国家队使用已确认的赛事级目录。不要假定大名单已存在，缺失时不据此编造伤停、落选或球员赛季数据。
 
 ### 执行步骤
 
@@ -531,15 +553,15 @@ cup-analyzer/{leagueSlug}/postMatchSummary/{season-short}/round-{轮次}/{home_s
 
 | 脚本 | 命令 | 用途 |
 |------|------|------|
-| 爬取赛后数据（轮次/阶段） | `cd cup-analyzer/crawler-server` 后 `npx cross-env CUP_ANALYZER_CUP={赛事键} npm run crawl:post-match -- --round {轮次或阶段键}` | 增量爬取该键下所有待爬完赛比赛；杯赛阶段可能包含多场 |
-| 爬取赛后数据（全部） | 同上目录 `npx cross-env CUP_ANALYZER_CUP={赛事键} npm run crawl:post-match` | 增量爬取赛程内所有未保存的已完赛比赛；单场复盘不要默认跑全量 |
-| 本地解析单场 HTML | `npx cross-env CUP_ANALYZER_CUP={赛事键} node crawlers/postMatchDataCrawler.js --local {file}.html --match {比赛ID}` | 从本地 HTML 解析 |
-| 爬取赛后数据（旧版） | `cd backend-server` 后 `node crawlerPostMatchData.js --round {N}` | 输出 `backend-server/basicData/`，依赖 `wudaconfig.js` |
+| 俱乐部球队增量补采 | `cd cup-analyzer/crawler-server` 后 `node processors/teamPostMatchDataProcessor.js --config "../{赛事键}/teamAgent/{球队目录}/config.js"` | 本场缺失时自动补齐该队本赛季缺少的已完赛数据，已有完整核心数据跳过 |
+| 俱乐部本场阵容补采 | 见「俱乐部：teamAgent 读取与自动补采」的定向命令 | 核心完整但实际阵容不可用时，复用 crawlSingleMatch 只重采本场，禁用自动重试 |
+| 俱乐部本地 HTML 解析 | 实例 `parseAndSave(html, directory, matchId)`，directory 为已确认的球队本场目录 | 解析已有 HTML，随后核验完整性 |
+| 国家队赛事级采集 / 本地解析 | 见「国家队：保留赛事级流程」及现有爬虫 CLI | 仅用于尚无 teamAgent 的国家队赛事 |
 | 历史同赔+同档次分析 | `cd backend-server` 后 `node crawlerHistoryHandicap.js` | 历史同赔走势 + 同档次对阵（含逐场胜负和盘口），需 `league-team-strength.json` |
 | 自定义积分榜 | `node crawlerCustomRank.js --rounds {X}-{Y}` | 输出指定轮次范围的积分榜 |
 | xG排行榜 | `node crawlerXG.js --rounds {X}-{Y}` | 输出指定轮次的xG、进球、差值、控球率排行 |
 
-赛后数据爬虫使用 **`CUP_ANALYZER_CUP`**（见 `cup-analyzer/crawler-server/config/index.js`）。`crawlerHistoryHandicap.js`、`crawlerCustomRank.js`、`crawlerXG.js` 等仍使用 **`backend-server/config/wudaconfig.js`**。
+俱乐部单队采集使用球队 **`config.js`**，不依赖 `CUP_ANALYZER_CUP`；国家队原赛事级流程使用 **`CUP_ANALYZER_CUP`**。`crawlerHistoryHandicap.js`、`crawlerCustomRank.js`、`crawlerXG.js` 等仍使用 **`backend-server/config/wudaconfig.js`**。
 
 ---
 
@@ -563,7 +585,7 @@ cup-analyzer/{leagueSlug}/postMatchSummary/{season-short}/round-{轮次}/{home_s
 | 11 | 初盘半场让球 | number |
 | 12 | 初盘大小球 | string |
 
-杯赛对阵可能嵌套在淘汰赛对阵或 `G{阶段ID}` 分组中。先递归定位具体比赛行，再按以上索引读取；外层阶段/对阵数组的索引不能当作比赛行字段。欧冠联赛阶段的 `G{阶段ID}` 也不等同于轮次，必须从比赛行日期或轮次信息确认 `round-{N}` 输出路径。
+杯赛对阵可能嵌套在淘汰赛对阵或 `G{阶段ID}` 分组中。先递归定位具体比赛行，再按以上索引读取；外层阶段/对阵数组的索引不能当作比赛行字段。欧冠联赛阶段的 `G{阶段ID}` 也不等同于轮次，报告的 `round-{N}` 路径需依据已确认的轮次信息，不能只凭日期推测；俱乐部原始赛后数据始终按 teamAgent 的比赛 ID 目录读取。
 
 ### techStats.json 完整字段参考
 

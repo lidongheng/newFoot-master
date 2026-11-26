@@ -1,11 +1,11 @@
 ---
 name: dh-post-match-analysis
-description: 对足球已完赛比赛进行数据核验、赛后复盘并保存中文 Markdown 报告。适用于用户要求复盘、赛后分析、赛后总结；支持 cup-analyzer 中配置的联赛和杯赛，按目标赛季与比赛 ID 获取本场统计、事件及实际阵容。
+description: 对足球已完赛比赛进行数据核验、赛后复盘并保存中文 Markdown 报告。适用于用户要求复盘、赛后分析、赛后总结；俱乐部赛事优先读取 teamAgent 本场数据，缺失时自动增量采集后复盘，国家队赛事沿用赛事级数据流程。
 ---
 
 # 足球赛后复盘
 
-围绕「比赛如何发展、胜负由什么造成、哪些判断仍缺证据」写报告。先定位本场并核验数据，再分析；默认直接完成已授权的读取、单场抓取和报告保存。
+围绕「比赛如何发展、胜负由什么造成、哪些判断仍缺证据」写报告。先定位本场并核验数据，再分析；默认直接完成读取、必要的自动补采和报告保存，不要求用户先手动抓取。
 
 ## 1. 动态发现赛事与赛季
 
@@ -15,6 +15,7 @@ description: 对足球已完赛比赛进行数据核验、赛后复盘并保存�
 - `cup-analyzer/crawler-server/package.json`：现有 npm 命令。
 - `cup-analyzer/{赛事模块}/data/config.json`：懂球帝 ID 与球探 ID、名称映射。
 - 对应赛程 JS：赛事、赛季、更新时间、阶段、比赛行。杯赛赛季通常在 `arrCup[7]`。
+- 俱乐部赛事的 `teamAgent/*/config.js`：按 `leagueSlug`、`leagueSerial`、`season`、`teamSerial` 定位双方球队目录；球队配置必须与目标赛程一致，不猜英文目录名，不自动改写配置。
 
 区分远端 `fileId` 与本地文件名；例如远端带子联赛后缀，本地可能已规范化。赛季也分远端全写（如 `2026-2027`）与输出目录短名（`26-27`）；单年赛事按实际配置使用 `2026`。
 
@@ -24,26 +25,34 @@ description: 对足球已完赛比赛进行数据核验、赛后复盘并保存�
 
 ## 2. 获取并核验本场赛后数据
 
-优先读取 `cup-analyzer/{模块}/basicData/{season-short}/round-{轮次}/{home_slug}_vs_{away_slug}/` 下已有文件。必须核对内容，文件存在或爬虫退出成功不代表数据完整。检查百分比是否在0–100%、球员合计是否与球队统计相符；异常字段保留原始数据，报告排除使用并说明原因：
+俱乐部赛事优先读取 `cup-analyzer/{模块}/teamAgent/{球队目录}/basicData/{season-short}/{matchId}/`。用户指定研究球队时先检查该队，否则先检查主队，再检查另一方；另一方已有完整本场数据即可直接使用，无须双方分别采集。选定一份身份、比分一致的数据作为分析依据，不拼接相互冲突的文件。球队目录或配置缺失、赛事/赛季不一致时明确指出，不猜 ID，不自动创建球队配置或回退旧赛季。
+
+国家队赛事（世界杯、欧国联、国际友谊赛）尚无 teamAgent，沿用 `cup-analyzer/{模块}/basicData/{season-short}/{赛事轮次或阶段目录}/{home_slug}_vs_{away_slug}/`，不为此创建球队目录。
+
+必须核对内容，文件存在或爬虫退出成功不代表数据完整。检查百分比是否在0–100%、球员合计是否与球队统计相符；异常字段保留原始数据，报告排除使用并说明原因：
 
 | 文件 | 核验内容 |
 |------|----------|
-| `matchInfo.json` | 比赛 ID、双方、时间、比分与赛程一致；检查 `postMatchSummary` 是否真实非空 |
+| `matchInfo.json` | 比赛 ID、双方、完赛状态与赛程一致；时间和比分结合赛程、终场事件核验，不假定本文件含这些字段；检查 `postMatchSummary` 是否真实非空 |
 | `matchEvents.json` | 进球、罚牌、换人及补时标记；进球事件与比分相符 |
 | `techStats.json` | 全场及半场指标是否可用；缺值不当作零 |
 | `lineup.json` | 实际首发、替补、阵型；不得用预测首发替代 |
 | `playerStats.json` | 有数据才比较评分、射门、关键传球等 |
 | `goalProbability.json` | 可选；核对统计范围，不能当作本场进球时间线 |
 
-缺失时在 `cup-analyzer/crawler-server` 使用现有 `postMatchDataCrawler.js`，通过 `CUP_ANALYZER_CUP` 选择赛事。联赛可用：
+双方均无可用本场数据时，选用上述优先顺序对应的球队，在 `cup-analyzer/crawler-server` 自动执行已有单队增量命令，不要求设置 `CUP_ANALYZER_CUP`：
 
 ```bash
-npx cross-env CUP_ANALYZER_CUP={赛事键} npm run crawl:post-match -- --round {轮次}
+node processors/teamPostMatchDataProcessor.js --config "../{赛事键}/teamAgent/{球队目录}/config.js"
 ```
 
-杯赛先读实际 `jh` 键。欧冠联赛阶段可能以 `G{阶段ID}` 存放多轮比赛，不能假定 `--round 5` 有效；单场任务按比赛 ID 筛选后调用 `crawlSingleMatch`，写入已确认的轮次目录。具体命令见 [详细工作流](references/workflows.md) 的「欧冠联赛阶段：按比赛 ID 爬取单场」。不要默认抓整个赛季。
+此命令会跳过已有完整核心数据，并补齐该队本赛季、本赛事所有缺少的已完赛比赛；这是允许的单队增量范围，不运行全赛事或双方重复采集。命令完成后重新读取本场文件核验；其他场次失败不代表本场不可用，应以本场实际数据为准。
 
-已有单场 HTML 可用 `--local {路径} --match {比赛ID}` 解析。网络权限问题按运行环境支持的审批机制重试；不得通过关闭 TLS 校验解决证书错误。
+单队采集器的核心完整性判断不包含 `lineup.json`。若核心已完整但实际阵容缺失或损坏，增量命令可能跳过本场，此时复用 `PostMatchDataCrawler.crawlSingleMatch` 对已确认的本场 teamAgent 目录定向重采一次，设置实例 `requestOptions = { retry: 0 }`。动态定位和定向重采示例见 [详细工作流](references/workflows.md) 的「俱乐部：teamAgent 读取与自动补采」。
+
+国家队仍使用现有赛事级采集流程，先读取实际 `jh` 阶段键，不假定杯赛的 `--round {轮次}` 对应 `R_*`。已有单场 HTML 可以复用现有解析方法写入已确认的数据目录；俱乐部不要使用默认写入旧赛事级目录的 `--local` 命令。
+
+网络权限问题按运行环境支持的审批机制处理；不得通过关闭 TLS 校验解决证书错误，不循环重试。摘要接口失败不阻塞已有可靠统计、事件和阵容的复盘。
 
 核心统计、实际阵容和事件尚未取得时，明确缺少哪些文件及抓取错误，停止完整复盘。新闻和搜索摘要用于交叉核对，不能冒充本地比赛统计。仅摘要、球员评分或可选指标缺失时，可以用其余可靠数据完成复盘，报告中注明具体缺口。
 

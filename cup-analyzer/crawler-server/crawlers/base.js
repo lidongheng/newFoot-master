@@ -9,6 +9,7 @@ class BaseCrawler {
   constructor(name = 'BaseCrawler') {
     this.name = name;
     this.delayMs = config.crawlDelayMs;
+    this.requestOptions = {};
   }
 
   /**
@@ -16,6 +17,7 @@ class BaseCrawler {
    */
   async fetchText(url, headers = {}) {
     const res = await service({
+      ...this.requestOptions,
       method: 'GET',
       url,
       headers: { ...targets.titan007.headers.desktop, ...headers },
@@ -37,6 +39,7 @@ class BaseCrawler {
    */
   async fetchJson(url, headers = {}) {
     const res = await service({
+      ...this.requestOptions,
       method: 'GET',
       url,
       headers: { ...targets.titan007.headers.desktop, ...headers },

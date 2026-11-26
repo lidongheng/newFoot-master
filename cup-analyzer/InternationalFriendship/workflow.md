@@ -59,6 +59,39 @@ npm run crawl:player-list:club -- -w qiutan
 npm run crawl:player-list:club -- -w dqd
 ```
 
+<!-- 可选命令：统计球员未首发时球队的胜平负场数和输盘率。 -->
+**可选命令：球员未首发统计**（工作目录：`cup-analyzer/crawler-server`）。先生成 `output/player_center/{teamSerial}-new.json`，并在 `config/squadTarget.js` 中设置与该文件一致的 `teamSerial`、`leagueSerial`、`isNation`；统计范围沿用该文件，结果输出到终端。
+
+```bash
+# 可选：统计有首发记录的球员未首发时球队的胜、平、负场数及输盘率。
+npx cross-env CUP_ANALYZER_CUP=InternationalFriendship node processors/playerNonStartingStats.js
+```
+
+<!-- 可选命令：统计球队曾落后后追平或逆转抢回的分数排行榜。 -->
+**可选命令：落后抢回分数排行榜**（工作目录：`cup-analyzer/crawler-server`）。在 `config/squadTarget.js` 中设置本赛事的 `leagueSlug`、`leagueSerial`，以及与本地 `basicData` 目录一致的 `season`。读取本赛事 `basicData/{season}/round-*/{对阵}/matchEvents.json` 和 `data/` 赛程，统计曾落后后追平（+1 分）、逆转获胜（+3 分）的排名与明细；仅统计已采集且含终场比分的比赛，结果输出到终端。杯赛按相同积分口径统计，不代表晋级结果。
+
+```bash
+# 可选：统计各队落后后抢回的分数、追平/逆转次数及比赛明细。
+npx cross-env CUP_ANALYZER_CUP=InternationalFriendship node processors/comebackPointsRanking.js
+```
+
+<!-- 可选命令：下半场积分、自定义轮次积分、历史同盘口/同档次和单场分析页统计。 -->
+**可选分析命令**（工作目录：`cup-analyzer/crawler-server`）。前三条仅适用于联赛 `R_*` 轮次，在 `config/squadTarget.js` 设置对应的 `leagueSlug`、`leagueSerial`、`season`（与本地赛程一致，可用全写或短名）；杯赛/国家队杯赛不要运行前三条。历史同盘口分析另需 `roundSerial`、`matchSerial`；分档读取 `crawler-server/config/league-team-strength.json`，缺少同赛季分档时只分析同盘口，不套用旧赛季。最后一条只需 `matchSerial`，支持联赛和杯赛。结果均输出到终端。
+
+```bash
+# 可选：下半场积分榜：以全场比分减半场比分，统计下半场胜平负、进失球与积分，并与赛程提供的全场榜比较。
+npx cross-env CUP_ANALYZER_CUP=InternationalFriendship node processors/secondHalfStandings.js
+# 可选：自定义轮次积分榜：示例统计第 1–6 轮；可改为 --rounds 6 或省略参数统计全部已有轮次。
+npx cross-env CUP_ANALYZER_CUP=InternationalFriendship node processors/customRoundStandings.js --rounds 1-6
+# 可选：历史同盘口及同档次分析：比较目标比赛之前的主队主场、客队客场同初盘让球战绩；同档次仅使用同赛事、同赛季分档。
+npx cross-env CUP_ANALYZER_CUP=InternationalFriendship node processors/historicalHandicapAnalysis.js
+# 可选：单场分析页统计：联网读取交锋、主客队近期战绩、未来比赛及页面伤病信息，交锋/近况最多各 10 场。
+npx cross-env CUP_ANALYZER_CUP=InternationalFriendship node processors/matchStatisticsProcessor.js
+```
+
+
+
+
 也可省略 `-w dqd`，直接运行 `npm run crawl:player-list:club`。球探来源通过球探球员资料补充俱乐部与转会记录；懂球帝来源抓取当前赛季统计、球员资料、能力值和转会记录。两种来源都写入 `output/player_center/{teamSerial}.json`。抓取完成后再运行 `analyze:club-domestic`。
 
 懂球帝国家队名单不读取俱乐部的 `seasons` / `season_list`。国际友谊赛统计从球员的 `international` 分组按 `data/config.json` 的 `dqd.competitionId: '389'` 和 `dqd.seasonId: '26128'` 精确筛选；跨年时需同步核实这两个 ID。国家队赛程不传俱乐部跨年赛季参数，使用接口返回的当前年份赛程。没有本届赛事统计的球员保留名单，统计字段不补零。
