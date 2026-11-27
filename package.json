@@ -22,6 +22,10 @@
     "start:backend": "pnpm --filter backend-server run start",
     "start:crawler": "pnpm --filter cup-analyzer-crawler-server run start",
     "test:manager": "pnpm --filter manager-server run test",
-    "init-db": "pnpm --filter manager-server run init-db"
+    "init-db": "pnpm --filter manager-server run init-db",
+    "assets:sync": "node scripts/syncSharedAssets.js"
+  },
+  "devDependencies": {
+    "echarts": "6.0.0"
   }
 }
