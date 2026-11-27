@@ -1,0 +1,188 @@
+{
+  "matchId": 3013692,
+  "homeName": "阿拉维斯",
+  "awayName": "巴伦西亚",
+  "events": [
+    {
+      "time": "17'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "21'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 232699,
+        "name": "莫雷诺"
+      }
+    },
+    {
+      "time": "21'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 204683,
+        "name": "A.布兰科"
+      }
+    },
+    {
+      "time": "45+2'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 140357,
+        "name": "皮皮鲁"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "52'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 363176,
+        "name": "梅约尔"
+      }
+    },
+    {
+      "time": "61'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 126472,
+        "name": "G·罗德里格斯"
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "67'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "67'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "70'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "78'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 167641,
+        "name": "里奥哈"
+      },
+      "assist": {
+        "id": 232699,
+        "name": "莫雷诺"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "82'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "82'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "82'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "85'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "85'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "85'",
+      "kind": "HOME",
+      "process": "Regular"
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 137,
+    "guestId": 91,
+    "home": 2,
+    "homeHalf": 1,
+    "guest": 5,
+    "guestHalf": 4,
+    "detail": [
+      {
+        "min": "10",
+        "ifHome": true
+      },
+      {
+        "min": "21",
+        "ifHome": false
+      },
+      {
+        "min": "23",
+        "ifHome": false
+      },
+      {
+        "min": "23",
+        "ifHome": false
+      },
+      {
+        "min": "24",
+        "ifHome": false
+      },
+      {
+        "min": "52",
+        "ifHome": false
+      },
+      {
+        "min": "71",
+        "ifHome": true
+      }
+    ]
+  }
+}

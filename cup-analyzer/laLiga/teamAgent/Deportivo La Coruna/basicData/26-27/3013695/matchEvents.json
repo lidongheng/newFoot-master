@@ -1,0 +1,152 @@
+{
+  "matchId": 3013695,
+  "homeName": "拉科鲁尼亚",
+  "awayName": "塞维利亚",
+  "events": [
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "52'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 290620,
+        "name": "塞拉"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "58'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "59'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "redCard",
+      "player": {
+        "id": 128275,
+        "name": "安吉尼奥"
+      }
+    },
+    {
+      "time": "65'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 221894,
+        "name": "K.萨拉斯"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 231776,
+        "name": "阿马图奇"
+      }
+    },
+    {
+      "time": "79'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 152050,
+        "name": "乔恩盖特"
+      }
+    },
+    {
+      "time": "90+4'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 243826,
+        "name": "I·罗梅罗"
+      }
+    },
+    {
+      "time": "90+6'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 200402,
+        "name": "胡安.安东尼奥.桑切斯"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 93,
+    "guestId": 86,
+    "home": 4,
+    "homeHalf": 2,
+    "guest": 4,
+    "guestHalf": 3,
+    "detail": [
+      {
+        "min": "2",
+        "ifHome": false
+      },
+      {
+        "min": "12",
+        "ifHome": true
+      },
+      {
+        "min": "18",
+        "ifHome": true
+      },
+      {
+        "min": "29",
+        "ifHome": false
+      },
+      {
+        "min": "38",
+        "ifHome": false
+      },
+      {
+        "min": "66",
+        "ifHome": true
+      },
+      {
+        "min": "69",
+        "ifHome": false
+      },
+      {
+        "min": "70",
+        "ifHome": true
+      }
+    ]
+  }
+}

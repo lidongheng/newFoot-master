@@ -24,3 +24,31 @@ node processors/teamPostMatchDataProcessor.js --config "../laLiga/teamAgent/Real
 
 4. 检查 `basicData/26-27/{matchId}/` 中的核心文件及命令成功、跳过、失败统计；文件 ID、终场事件与技术统计必须完整，并对照本地赛程检查缺场。
 5. 后续分析：结合比赛表现、盘口、对手、主客场、阵容和赛程，形成带判断时间的潜力观察，再用后续比赛验证。本次未实现趋势判断或预测。
+
+## 可选：联赛积分与赛前对照分析
+
+以下命令均在 `cup-analyzer/crawler-server` 执行，通过 `--config` 直接读取皇家马德里配置，无须修改全局 `squadTarget.js`。
+
+```bash
+# 下半场积分榜：统计西甲全部有效完赛比赛，并与全场积分榜对比。
+node processors/secondHalfStandings.js --config "../laLiga/teamAgent/Real Madrid/config.js"
+
+# 自定义轮次积分榜：示例为第 1–13 轮；可自行调整 --rounds，省略则统计全部已完赛轮次。
+node processors/customRoundStandings.js --config "../laLiga/teamAgent/Real Madrid/config.js" --rounds 1-13
+
+# 历史同盘口／同档次：以皇家马德里 config.js 中的目标轮次、比赛为基准，仅分析开赛前的历史场次。
+# 同档次必须有同赛事、同赛季分档；缺少时明确跳过，不套用旧赛季。
+node processors/historicalHandicapAnalysis.js --config "../laLiga/teamAgent/Real Madrid/config.js"
+```
+
+## 本轮即将开打比赛的单场统计
+
+在皇家马德里 `config.js` 中配置 `roundSerial`、`matchSerial`。当前按本地西甲赛程设置为第 14 轮、比赛 ID `3013779`，北京时间 `2026-11-29 04:00`，皇家马德里 vs 阿拉维斯。每轮赛前先更新赛程并核对这两个字段，不自动沿用上一场 ID。
+
+```bash
+# 原 crawlerStatistics.js 对应入口：交锋、双方近况、未来赛程及页面伤病信息，需要联网。
+# 运行前核验 matchSerial 属于本轮本队且尚未开打。
+node processors/matchStatisticsProcessor.js --config "../laLiga/teamAgent/Real Madrid/config.js"
+```
+
+前三条使用西甲全联赛赛程；单场统计使用配置中本轮本队的比赛，不使用最近一场已完赛的 ID，也不读取旧 backend 配置。

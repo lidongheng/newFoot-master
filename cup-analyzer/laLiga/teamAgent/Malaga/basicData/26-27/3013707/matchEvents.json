@@ -1,0 +1,283 @@
+{
+  "matchId": 3013707,
+  "homeName": "赫塔菲",
+  "awayName": "马拉加",
+  "events": [
+    {
+      "time": "21'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 115227,
+        "name": "J·莫希卡"
+      }
+    },
+    {
+      "time": "39'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 163470,
+        "name": "E.豪雷吉"
+      }
+    },
+    {
+      "time": "45+5'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 192409,
+        "name": "大卫·拉鲁比亚"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 241308,
+        "name": "阿德里安·尼诺"
+      },
+      "playerOff": {
+        "id": 163470,
+        "name": "E.豪雷吉"
+      }
+    },
+    {
+      "time": "54'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 164498,
+        "name": "古德利"
+      }
+    },
+    {
+      "time": "59'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 199616,
+        "name": "塞拉诺"
+      }
+    },
+    {
+      "time": "65'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 157188,
+        "name": "O·曼加拉"
+      },
+      "playerOff": {
+        "id": 129158,
+        "name": "达孔纳姆"
+      }
+    },
+    {
+      "time": "67'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 183305,
+        "name": "巴勃罗·马丁内斯·安德烈斯"
+      },
+      "playerOff": {
+        "id": 229135,
+        "name": "格雷罗"
+      }
+    },
+    {
+      "time": "67'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 287404,
+        "name": "丘皮特"
+      },
+      "playerOff": {
+        "id": 166750,
+        "name": "贝纳维德斯"
+      }
+    },
+    {
+      "time": "68'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 201588,
+        "name": "拉蒙·泰拉斯"
+      }
+    },
+    {
+      "time": "74'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 178749,
+        "name": "恩里克兹"
+      },
+      "playerOff": {
+        "id": 232198,
+        "name": "拉法·罗德里格斯"
+      }
+    },
+    {
+      "time": "85'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 201918,
+        "name": "伊万·阿森"
+      },
+      "assist": {
+        "id": 201004,
+        "name": "马丁·萨特里亚诺"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "89'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 206120,
+        "name": "萨巴·萨佐诺夫"
+      },
+      "playerOff": {
+        "id": 201918,
+        "name": "伊万·阿森"
+      }
+    },
+    {
+      "time": "89'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 190935,
+        "name": "胡安·克鲁兹·迪亚兹·埃斯波西托"
+      },
+      "playerOff": {
+        "id": 157201,
+        "name": "贝罗卡尔"
+      }
+    },
+    {
+      "time": "90+4'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 288637,
+        "name": "达文奇"
+      },
+      "playerOff": {
+        "id": 201004,
+        "name": "马丁·萨特里亚诺"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 98,
+    "guestId": 102,
+    "home": 5,
+    "homeHalf": 2,
+    "guest": 9,
+    "guestHalf": 3,
+    "detail": [
+      {
+        "min": "5",
+        "ifHome": false
+      },
+      {
+        "min": "12",
+        "ifHome": false
+      },
+      {
+        "min": "15",
+        "ifHome": true
+      },
+      {
+        "min": "38",
+        "ifHome": true
+      },
+      {
+        "min": "44",
+        "ifHome": false
+      },
+      {
+        "min": "52",
+        "ifHome": true
+      },
+      {
+        "min": "64",
+        "ifHome": true
+      },
+      {
+        "min": "75",
+        "ifHome": true
+      },
+      {
+        "min": "80",
+        "ifHome": false
+      },
+      {
+        "min": "80",
+        "ifHome": false
+      },
+      {
+        "min": "81",
+        "ifHome": false
+      },
+      {
+        "min": "84",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}

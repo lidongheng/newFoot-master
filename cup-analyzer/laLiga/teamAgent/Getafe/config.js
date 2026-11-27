@@ -6,4 +6,8 @@ module.exports = {
   teamSerial: '98',
   teamChineseName: '赫塔菲',
   teamEnglishName: 'Getafe',
+  // 本地赛程：第 14 轮，2026-12-01 04:00（北京时间），西班牙人 vs 赫塔菲。
+  // 每轮赛前核对并更新，单场分析页使用本轮本队即将开打的比赛 ID。
+  roundSerial: '14',
+  matchSerial: '3013776',
 };

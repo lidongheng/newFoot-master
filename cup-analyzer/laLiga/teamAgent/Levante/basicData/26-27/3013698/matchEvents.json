@@ -1,0 +1,189 @@
+{
+  "matchId": 3013698,
+  "homeName": "莱万特",
+  "awayName": "毕尔巴鄂竞技",
+  "events": [
+    {
+      "time": "20'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 161107,
+        "name": "罗杰布鲁格"
+      },
+      "assist": {
+        "id": 299140,
+        "name": "雷克纳"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "22'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 161107,
+        "name": "罗杰布鲁格"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 2,
+        "away": 0
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 2,
+        "away": 0
+      }
+    },
+    {
+      "time": "61'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "67'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "73'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "redCard",
+      "player": {
+        "id": 109244,
+        "name": "拉波尔特"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 228508,
+        "name": "埃塔·艾永"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 109006,
+        "name": "托利安"
+      }
+    },
+    {
+      "time": "90+6'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 66830,
+        "name": "贝尔奇切"
+      }
+    },
+    {
+      "time": "90+8'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 228508,
+        "name": "埃塔·艾永"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 3,
+        "away": 1
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 3,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 103,
+    "guestId": 92,
+    "home": 3,
+    "homeHalf": 1,
+    "guest": 9,
+    "guestHalf": 6,
+    "detail": [
+      {
+        "min": "7",
+        "ifHome": false
+      },
+      {
+        "min": "10",
+        "ifHome": false
+      },
+      {
+        "min": "27",
+        "ifHome": false
+      },
+      {
+        "min": "40",
+        "ifHome": false
+      },
+      {
+        "min": "42",
+        "ifHome": false
+      },
+      {
+        "min": "45",
+        "ifHome": true
+      },
+      {
+        "min": "45",
+        "ifHome": false
+      },
+      {
+        "min": "55",
+        "ifHome": false
+      },
+      {
+        "min": "69",
+        "ifHome": true
+      },
+      {
+        "min": "71",
+        "ifHome": false
+      },
+      {
+        "min": "76",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}

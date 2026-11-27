@@ -1,0 +1,282 @@
+{
+  "matchId": 3013657,
+  "homeName": "赫塔菲",
+  "awayName": "桑坦德竞技",
+  "events": [
+    {
+      "time": "12'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 286636,
+        "name": "萨利纳斯"
+      }
+    },
+    {
+      "time": "14'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 206120,
+        "name": "萨巴·萨佐诺夫"
+      }
+    },
+    {
+      "time": "16'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 228294,
+        "name": "阿尔瓦罗·曼蒂拉"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 174840,
+        "name": "伊万·马丁"
+      },
+      "playerOff": {
+        "id": 333389,
+        "name": "马丁内斯"
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 259311,
+        "name": "扎比里"
+      },
+      "playerOff": {
+        "id": 136761,
+        "name": "比利亚利布雷"
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 227512,
+        "name": "盖耶"
+      },
+      "playerOff": {
+        "id": 48835,
+        "name": "卡纳莱斯"
+      }
+    },
+    {
+      "time": "66'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 155410,
+        "name": "埃尔南多"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "81'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 124943,
+        "name": "于纳尔"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "85'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 222917,
+        "name": "塞巴斯蒂安.博塞利"
+      },
+      "playerOff": {
+        "id": 231798,
+        "name": "A·加西亚"
+      }
+    },
+    {
+      "time": "88'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 237405,
+        "name": "法昆多·冈萨雷斯"
+      },
+      "playerOff": {
+        "id": 155410,
+        "name": "埃尔南多"
+      }
+    },
+    {
+      "time": "88'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 221883,
+        "name": "胡安·卡洛斯"
+      },
+      "playerOff": {
+        "id": 237196,
+        "name": "古斯塔沃·普埃尔塔"
+      }
+    },
+    {
+      "time": "90'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 131846,
+        "name": "马约拉尔"
+      },
+      "playerOff": {
+        "id": 201004,
+        "name": "马丁·萨特里亚诺"
+      }
+    },
+    {
+      "time": "90+4'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 271846,
+        "name": "阿尔贝托·里斯科"
+      },
+      "playerOff": {
+        "id": 201588,
+        "name": "拉蒙·泰拉斯"
+      }
+    },
+    {
+      "time": "90+4'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 167739,
+        "name": "阿布卡尔"
+      },
+      "playerOff": {
+        "id": 157188,
+        "name": "O·曼加拉"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 98,
+    "guestId": 104,
+    "home": 8,
+    "homeHalf": 5,
+    "guest": 6,
+    "guestHalf": 2,
+    "detail": [
+      {
+        "min": "15",
+        "ifHome": true
+      },
+      {
+        "min": "16",
+        "ifHome": false
+      },
+      {
+        "min": "18",
+        "ifHome": true
+      },
+      {
+        "min": "21",
+        "ifHome": true
+      },
+      {
+        "min": "40",
+        "ifHome": false
+      },
+      {
+        "min": "44",
+        "ifHome": true
+      },
+      {
+        "min": "45",
+        "ifHome": true
+      },
+      {
+        "min": "51",
+        "ifHome": false
+      },
+      {
+        "min": "53",
+        "ifHome": true
+      },
+      {
+        "min": "66",
+        "ifHome": true
+      },
+      {
+        "min": "70",
+        "ifHome": false
+      },
+      {
+        "min": "73",
+        "ifHome": false
+      },
+      {
+        "min": "80",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}
