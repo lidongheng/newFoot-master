@@ -1,0 +1,441 @@
+{
+  "league": "eredivisie",
+  "originalProfiles": 7,
+  "migrated": 0,
+  "generated": 7,
+  "missing": 34,
+  "failed": 0,
+  "directoryRenames": [],
+  "profiles": [
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\ADO_Den_Haag\\海牙.md",
+      "originalHash": "4f29c97607e94a60a3e4a29036f3109339908fc9bb43f4f0beb0fa8a2d3439de",
+      "name": "海牙",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\ADO_Den_Haag\\海牙.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\eredivisie\\海牙.md",
+      "archiveHash": "78b7a7b85257d086d8d72a77558c4e22a856a037138af4c2ccd70fa68925206f",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\ADO_Den_Haag\\ADO_Den_Haag.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\AFC_Ajax\\阿贾克斯.md",
+      "originalHash": "ef40bd4d21f85e8f8f41d2e9badd925f546d59595993b4e555045de9c0d638ba",
+      "name": "阿贾克斯",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\AFC_Ajax\\阿贾克斯.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\eredivisie\\阿贾克斯.md",
+      "archiveHash": "cb8ba7c6f1e222aec05f5405ee7d48c6b4a4c35d31df4ece99f942140d4a6251",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\AFC_Ajax\\AFC_Ajax.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\FC_Twente_Enschede\\特温特.md",
+      "originalHash": "53fb334ccd5a46eac6b9bb81fb461932f9e047b96804e365c8bea8a2ad0e9395",
+      "name": "特温特",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\FC_Twente_Enschede\\特温特.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\eredivisie\\特温特.md",
+      "archiveHash": "a1edd8fa3126bd135f8e94189735ad8f4b737e098ef28a744e3adbe25c604a42",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\FC_Twente_Enschede\\FC_Twente_Enschede.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\Fortuna_Sittard\\福图纳锡塔德.md",
+      "originalHash": "8edf72419609acdc1a598d211f7c53c45e9a1b2e06906763e772ccc73d197f35",
+      "name": "福图纳锡塔德",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\Fortuna_Sittard\\福图纳锡塔德.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\eredivisie\\福图纳锡塔德.md",
+      "archiveHash": "256954b6b58e0749df7b6adaf0946b0f544e48599987c08c37081ff947d8b5b3",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\Fortuna_Sittard\\Fortuna_Sittard.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\Go_Ahead_Eagles\\前进之鹰.md",
+      "originalHash": "b1ced311869b0b28cf6e75c9407aa8b0933853af545b39cb08f5309433e2a6db",
+      "name": "前进之鹰",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\Go_Ahead_Eagles\\前进之鹰.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\eredivisie\\前进之鹰.md",
+      "archiveHash": "3a574c392b699f4feec499d4117915c8b23fc879ba2661b13dec4d09ebe65a5e",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\Go_Ahead_Eagles\\Go_Ahead_Eagles.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\PEC_Zwolle\\兹沃勒.md",
+      "originalHash": "53f1fc7ace31f5b689c41f47071e862cdc1715dbb3aa5773304f13280ab0cd72",
+      "name": "兹沃勒",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\PEC_Zwolle\\兹沃勒.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\eredivisie\\兹沃勒.md",
+      "archiveHash": "7925cd41685870c881498d3e92f6406ccc797c4f42b72f4a32aca4d8360a8aa4",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\PEC_Zwolle\\PEC_Zwolle.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\Willem_II\\威廉二世.md",
+      "originalHash": "fd291fc35519fba8eb828c17dbda210e05c570fe00ec6bbb2964f453926b5920",
+      "name": "威廉二世",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\Willem_II\\威廉二世.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\eredivisie\\威廉二世.md",
+      "archiveHash": "15f69d6f3abd02028c48df5a29be0d9999b8b3a139bdc5cebb839a1538569c95",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\teamProfile\\Willem_II\\Willem_II.json",
+      "status": "generated"
+    }
+  ],
+  "issues": [
+    {
+      "teamId": "253",
+      "team": "阿贾克斯",
+      "player": "穆罕默德-阿卜杜拉",
+      "number": 67,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\阿贾克斯.md"
+    },
+    {
+      "teamId": "253",
+      "team": "阿贾克斯",
+      "player": "穆罕默德-阿卜杜拉",
+      "number": 67,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\阿贾克斯.md"
+    },
+    {
+      "teamId": "250",
+      "team": "特温特",
+      "player": "伊普-梅林克",
+      "number": 39,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\特温特.md"
+    },
+    {
+      "teamId": "250",
+      "team": "特温特",
+      "player": "伊普-梅林克",
+      "number": 39,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\特温特.md"
+    },
+    {
+      "teamId": "250",
+      "team": "特温特",
+      "player": "梅斯巴希",
+      "number": 44,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\特温特.md"
+    },
+    {
+      "teamId": "250",
+      "team": "特温特",
+      "player": "梅斯巴希",
+      "number": 44,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\特温特.md"
+    },
+    {
+      "teamId": "250",
+      "team": "特温特",
+      "player": "梅斯巴希",
+      "number": 44,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\特温特.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\特温特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\250-new.json"
+      ]
+    },
+    {
+      "teamId": "250",
+      "team": "特温特",
+      "player": "梅斯巴希",
+      "number": 44,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\特温特.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\特温特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\250-new.json"
+      ]
+    },
+    {
+      "teamId": "250",
+      "team": "特温特",
+      "player": "梅斯巴希",
+      "number": 44,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\特温特.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\特温特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\250-new.json"
+      ]
+    },
+    {
+      "teamId": "250",
+      "team": "特温特",
+      "player": "梅斯巴希",
+      "number": 44,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\特温特.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\特温特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\250-new.json"
+      ]
+    },
+    {
+      "teamId": "274",
+      "team": "福图纳锡塔德",
+      "player": "加尼-比尤克汉",
+      "number": 39,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\福图纳锡塔德.md"
+    },
+    {
+      "teamId": "274",
+      "team": "福图纳锡塔德",
+      "player": "加尼-比尤克汉",
+      "number": 39,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\福图纳锡塔德.md"
+    },
+    {
+      "teamId": "280",
+      "team": "前进之鹰",
+      "player": "扎特霍夫",
+      "number": 28,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\前进之鹰.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\前进之鹰.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\280-new.json"
+      ]
+    },
+    {
+      "teamId": "280",
+      "team": "前进之鹰",
+      "player": "扎特霍夫",
+      "number": 28,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\前进之鹰.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\前进之鹰.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\280-new.json"
+      ]
+    },
+    {
+      "teamId": "280",
+      "team": "前进之鹰",
+      "player": "扎特霍夫",
+      "number": 28,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\前进之鹰.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\前进之鹰.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\280-new.json"
+      ]
+    },
+    {
+      "teamId": "280",
+      "team": "前进之鹰",
+      "player": "扎特霍夫",
+      "number": 28,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\前进之鹰.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\前进之鹰.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\280-new.json"
+      ]
+    },
+    {
+      "teamId": "280",
+      "team": "前进之鹰",
+      "player": "托马斯-胡勒曼",
+      "number": 30,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\前进之鹰.md"
+    },
+    {
+      "teamId": "280",
+      "team": "前进之鹰",
+      "player": "托马斯-胡勒曼",
+      "number": 30,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\前进之鹰.md"
+    },
+    {
+      "teamId": "280",
+      "team": "前进之鹰",
+      "player": "兰特费尔德",
+      "number": 35,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\前进之鹰.md"
+    },
+    {
+      "teamId": "280",
+      "team": "前进之鹰",
+      "player": "兰特费尔德",
+      "number": 35,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\前进之鹰.md"
+    },
+    {
+      "teamId": "414",
+      "team": "兹沃勒",
+      "player": "达伽马",
+      "number": 26,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\兹沃勒.md"
+    },
+    {
+      "teamId": "414",
+      "team": "兹沃勒",
+      "player": "达伽马",
+      "number": 26,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\兹沃勒.md"
+    },
+    {
+      "teamId": "414",
+      "team": "兹沃勒",
+      "player": "菲利普-克拉采夫",
+      "number": 50,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\兹沃勒.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\兹沃勒.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\414-new.json"
+      ]
+    },
+    {
+      "teamId": "414",
+      "team": "兹沃勒",
+      "player": "菲利普-克拉采夫",
+      "number": 50,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\兹沃勒.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\兹沃勒.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\414-new.json"
+      ]
+    },
+    {
+      "teamId": "414",
+      "team": "兹沃勒",
+      "player": "菲利普-克拉采夫",
+      "number": 50,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\兹沃勒.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\兹沃勒.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\414-new.json"
+      ]
+    },
+    {
+      "teamId": "414",
+      "team": "兹沃勒",
+      "player": "菲利普-克拉采夫",
+      "number": 50,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\兹沃勒.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\兹沃勒.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\414-new.json"
+      ]
+    },
+    {
+      "teamId": "225",
+      "team": "威廉二世",
+      "player": "泰斯-米勒",
+      "number": 20,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\威廉二世.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\威廉二世.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\225-new.json"
+      ]
+    },
+    {
+      "teamId": "225",
+      "team": "威廉二世",
+      "player": "泰斯-米勒",
+      "number": 20,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\威廉二世.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\威廉二世.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\225-new.json"
+      ]
+    },
+    {
+      "teamId": "225",
+      "team": "威廉二世",
+      "player": "泰斯-米勒",
+      "number": 20,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\威廉二世.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\威廉二世.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\225-new.json"
+      ]
+    },
+    {
+      "teamId": "225",
+      "team": "威廉二世",
+      "player": "泰斯-米勒",
+      "number": 20,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\威廉二世.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\威廉二世.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\225-new.json"
+      ]
+    },
+    {
+      "teamId": "225",
+      "team": "威廉二世",
+      "player": "拉赫卡尔",
+      "number": 34,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\威廉二世.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\威廉二世.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\225-new.json"
+      ]
+    },
+    {
+      "teamId": "225",
+      "team": "威廉二世",
+      "player": "拉赫卡尔",
+      "number": 34,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\威廉二世.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\威廉二世.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\225-new.json"
+      ]
+    },
+    {
+      "teamId": "225",
+      "team": "威廉二世",
+      "player": "拉赫卡尔",
+      "number": 34,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\威廉二世.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\威廉二世.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\225-new.json"
+      ]
+    },
+    {
+      "teamId": "225",
+      "team": "威廉二世",
+      "player": "拉赫卡尔",
+      "number": 34,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\威廉二世.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\eredivisie\\squad-final\\威廉二世.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\225-new.json"
+      ]
+    }
+  ],
+  "season": "2026-2027"
+}

@@ -1,0 +1,1132 @@
+{
+  "league": "ChinaSuperLeague",
+  "originalProfiles": 2,
+  "migrated": 0,
+  "generated": 2,
+  "missing": 99,
+  "failed": 0,
+  "directoryRenames": [],
+  "profiles": [
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\teamProfile\\Beijing_Guoan\\北京国安.md",
+      "originalHash": "be2c57e3ece87ef3a3998c7652aad9b3a005ab5200c3061045ee06306a45bec9",
+      "name": "北京国安",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\teamProfile\\Beijing_Guoan\\北京国安.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\ChinaSuperLeague\\北京国安.md",
+      "archiveHash": "dfdaaf1dd8c8c85bd636f85d8c1c02ef611dde20a033ac33159e0f32508d7aec",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\teamProfile\\Beijing_Guoan\\Beijing_Guoan.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\teamProfile\\Shanghai_Port\\上海海港.md",
+      "originalHash": "a31fc9be3137cfe922f2a9b527ca99d4602f042f5f525f827ff057189a8b6fd2",
+      "name": "上海海港",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\teamProfile\\Shanghai_Port\\上海海港.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\ChinaSuperLeague\\上海海港.md",
+      "archiveHash": "29e459c2bd5806549f2d2e03fd80aad8432375a896e699496834749b314612dc",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\teamProfile\\Shanghai_Port\\Shanghai_Port.json",
+      "status": "generated"
+    }
+  ],
+  "issues": [
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "努尔艾力-阿巴斯",
+      "number": 33,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "努尔艾力-阿巴斯",
+      "number": 33,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "努尔艾力-阿巴斯",
+      "number": 33,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "努尔艾力-阿巴斯",
+      "number": 33,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "何宇鹏",
+      "number": 3,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "何宇鹏",
+      "number": 3,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "何宇鹏",
+      "number": 3,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "何宇鹏",
+      "number": 3,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "贾非凡",
+      "number": 36,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "贾非凡",
+      "number": 36,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "贾非凡",
+      "number": 36,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "贾非凡",
+      "number": 36,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "罗子祥(U21)",
+      "number": 55,
+      "field": "marketValue",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md"
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "罗子祥(U21)",
+      "number": 55,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "罗子祥(U21)",
+      "number": 55,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "罗子祥(U21)",
+      "number": 55,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "罗子祥(U21)",
+      "number": 55,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "吴少聪",
+      "number": 2,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "吴少聪",
+      "number": 2,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "吴少聪",
+      "number": 2,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "吴少聪",
+      "number": 2,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "卢彤鋆(U21)",
+      "number": 14,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md"
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "卢彤鋆(U21)",
+      "number": 14,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md"
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "卢彤鋆(U21)",
+      "number": 14,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "卢彤鋆(U21)",
+      "number": 14,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "卢彤鋆(U21)",
+      "number": 14,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "卢彤鋆(U21)",
+      "number": 14,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "程熙(U21)",
+      "number": 41,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md"
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "程熙(U21)",
+      "number": 41,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md"
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "刘俊泽(U21)",
+      "number": 57,
+      "field": "marketValue",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md"
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "刘俊泽(U21)",
+      "number": 57,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "刘俊泽(U21)",
+      "number": 57,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "刘俊泽(U21)",
+      "number": 57,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "刘俊泽(U21)",
+      "number": 57,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "陈康悦(U21)",
+      "number": 59,
+      "field": "marketValue",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md"
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "陈康悦(U21)",
+      "number": 59,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "陈康悦(U21)",
+      "number": 59,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "陈康悦(U21)",
+      "number": 59,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "陈康悦(U21)",
+      "number": 59,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "王思泽(U21)",
+      "number": 32,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md"
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "王思泽(U21)",
+      "number": 32,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md"
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "王思泽(U21)",
+      "number": 32,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "王思泽(U21)",
+      "number": 32,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "王思泽(U21)",
+      "number": 32,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "43",
+      "team": "北京国安",
+      "player": "王思泽(U21)",
+      "number": 32,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\北京国安.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\43-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "鲍世蒙",
+      "number": 31,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "鲍世蒙",
+      "number": 31,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "鲍世蒙",
+      "number": 31,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "鲍世蒙",
+      "number": 31,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "张宇航(U21)",
+      "number": 55,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md"
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "张宇航(U21)",
+      "number": 55,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md"
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "张宇航(U21)",
+      "number": 55,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "张宇航(U21)",
+      "number": 55,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "张宇航(U21)",
+      "number": 55,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "张宇航(U21)",
+      "number": 55,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "王东承(U21)",
+      "number": 54,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md"
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "王东承(U21)",
+      "number": 54,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md"
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "王东承(U21)",
+      "number": 54,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "王东承(U21)",
+      "number": 54,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "王东承(U21)",
+      "number": 54,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "王东承(U21)",
+      "number": 54,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "曹哲哲(U21)",
+      "number": 58,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md"
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "曹哲哲(U21)",
+      "number": 58,
+      "field": "marketValue",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md"
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "曹哲哲(U21)",
+      "number": 58,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md"
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "曹哲哲(U21)",
+      "number": 58,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "曹哲哲(U21)",
+      "number": 58,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "曹哲哲(U21)",
+      "number": 58,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "曹哲哲(U21)",
+      "number": 58,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "李瑞龙(U21)",
+      "number": 24,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md"
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "李瑞龙(U21)",
+      "number": 24,
+      "field": "marketValue",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md"
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "李瑞龙(U21)",
+      "number": 24,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md"
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "李瑞龙(U21)",
+      "number": 24,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "李瑞龙(U21)",
+      "number": 24,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "李瑞龙(U21)",
+      "number": 24,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "李瑞龙(U21)",
+      "number": 24,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "张俊杰(U21)",
+      "number": 37,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md"
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "张俊杰(U21)",
+      "number": 37,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md"
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "张俊杰(U21)",
+      "number": 37,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "张俊杰(U21)",
+      "number": 37,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "张俊杰(U21)",
+      "number": 37,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "张俊杰(U21)",
+      "number": 37,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "崔峻诚(U21)",
+      "number": 46,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md"
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "崔峻诚(U21)",
+      "number": 46,
+      "field": "marketValue",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md"
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "崔峻诚(U21)",
+      "number": 46,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md"
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "崔峻诚(U21)",
+      "number": 46,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "崔峻诚(U21)",
+      "number": 46,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "崔峻诚(U21)",
+      "number": 46,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "崔峻诚(U21)",
+      "number": 46,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "温钧翔(U21)",
+      "number": 35,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md"
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "温钧翔(U21)",
+      "number": 35,
+      "field": "marketValue",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md"
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "温钧翔(U21)",
+      "number": 35,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md"
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "温钧翔(U21)",
+      "number": 35,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "温钧翔(U21)",
+      "number": 35,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "温钧翔(U21)",
+      "number": 35,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "温钧翔(U21)",
+      "number": 35,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "刘若钒",
+      "number": 26,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "刘若钒",
+      "number": 26,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "刘若钒",
+      "number": 26,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    },
+    {
+      "teamId": "7642",
+      "team": "上海海港",
+      "player": "刘若钒",
+      "number": 26,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ChinaSuperLeague\\squad-final\\上海海港.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\7642-new.json"
+      ]
+    }
+  ],
+  "season": "2026"
+}

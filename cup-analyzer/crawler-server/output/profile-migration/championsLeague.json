@@ -1,0 +1,3119 @@
+{
+  "league": "championsLeague",
+  "originalProfiles": 11,
+  "migrated": 0,
+  "generated": 11,
+  "missing": 283,
+  "failed": 0,
+  "directoryRenames": [],
+  "profiles": [
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Arsenal\\阿森纳.md",
+      "originalHash": "ada9874dfb17b90930b01948e4898d2122d957b142f4f790a2cd4120dee1ebed",
+      "name": "阿森纳",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Arsenal\\阿森纳.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\championsLeague\\阿森纳.md",
+      "archiveHash": "124382920f8d7a7b2a26a146dfd9e2f21484ce3c6ebb3870613653f6bfaadc56",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Arsenal\\Arsenal.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\AS_Roma\\罗马.md",
+      "originalHash": "2e2dba49b2be0c0f709a4bfd59d62cd66c8c4d0df4666963e95ee4d5c6dd99e9",
+      "name": "罗马",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\AS_Roma\\罗马.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\championsLeague\\罗马.md",
+      "archiveHash": "df5371912e1924d026890709af2d8bebfe468fa1c3d62f4466d232a2e55700e5",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\AS_Roma\\AS_Roma.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\FC_Shakhtar_Donetsk\\顿涅茨克矿工.md",
+      "originalHash": "3f631f8e7f9f0e9a6de4f2eef3f2f27db6bdda26cc8dca717bb122866376e105",
+      "name": "顿涅茨克矿工",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\FC_Shakhtar_Donetsk\\顿涅茨克矿工.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\championsLeague\\顿涅茨克矿工.md",
+      "archiveHash": "ed4e55bb875c9f9e712647165152bfc9c662b19ceaa4eb7ad947823f11defd37",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\FC_Shakhtar_Donetsk\\FC_Shakhtar_Donetsk.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Fenerbahce\\费内巴切.md",
+      "originalHash": "156df5d3ff0a28d72b2969fac13d61c7cc225f1260ff1509116f38ff9405c561",
+      "name": "费内巴切",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Fenerbahce\\费内巴切.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\championsLeague\\费内巴切.md",
+      "archiveHash": "d653df520fa0dcfa5b6ef6ec0aeba95e62d4e76b2f9c1915e81182c14f94098e",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Fenerbahce\\Fenerbahce.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Galatasaray\\加拉塔萨雷.md",
+      "originalHash": "2b7b206a527f74884c130c74dfcba41d4d5c4a47fb79056b5f7b4729d28eef54",
+      "name": "加拉塔萨雷",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Galatasaray\\加拉塔萨雷.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\championsLeague\\加拉塔萨雷.md",
+      "archiveHash": "f1075ed5bacd35fad4a94c964dae8aa54d0ed1003c4de75d5811654ee3b282ad",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Galatasaray\\Galatasaray.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Manchester_United\\曼彻斯特联.md",
+      "originalHash": "bc3667d3b4d81a55f5b64783fa578c02b86f7be99b161b0fa59f2e0c45fc153c",
+      "name": "曼彻斯特联",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Manchester_United\\曼彻斯特联.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\championsLeague\\曼彻斯特联.md",
+      "archiveHash": "5e62c473522088c693737ec189b810f6fa20ce71c2b025523eb6ec13a978afdb",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Manchester_United\\Manchester_United.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Paris_Saint_Germain_(PSG)\\巴黎圣日耳曼.md",
+      "originalHash": "8600e87879c647aacadb67564d5825dbeb5f1a82c841aea13adc4c85ed6c7d9e",
+      "name": "巴黎圣日耳曼",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Paris_Saint_Germain_(PSG)\\巴黎圣日耳曼.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\championsLeague\\巴黎圣日耳曼.md",
+      "archiveHash": "6a6c35cf3c7646e7342ad95c09cedf3899cac6394993b9d5d3d19fb4b7c0e98d",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Paris_Saint_Germain_(PSG)\\Paris_Saint_Germain_(PSG).json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Sabah_FK_Baku\\萨巴赫.md",
+      "originalHash": "6456304146c3e922b7a4c013b69e282232e4f9c7ef46c23c3cf73fa4b45eb60c",
+      "name": "萨巴赫",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Sabah_FK_Baku\\萨巴赫.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\championsLeague\\萨巴赫.md",
+      "archiveHash": "7b62cbb1cfa5e8d48dfec5795a9906af0035c45aa31bb8f3adc5ebd74e08c34e",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Sabah_FK_Baku\\Sabah_FK_Baku.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Sporting_CP\\葡萄牙体育.md",
+      "originalHash": "11d60eb71ce07ba3fdeac4fb1d4722d4be234786135e4bed20c049397b5ee19a",
+      "name": "葡萄牙体育",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Sporting_CP\\葡萄牙体育.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\championsLeague\\葡萄牙体育.md",
+      "archiveHash": "4b910700b342f0bcbd3bd567c2dffeeb643943f41a4a6399f59cbcfbb32bd359",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Sporting_CP\\Sporting_CP.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\VfB_Stuttgart\\斯图加特.md",
+      "originalHash": "5ec5afd21d789394aec94a44e8d0d8b6c5b3bcfd41d841190f799eaaa38d95da",
+      "name": "斯图加特",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\VfB_Stuttgart\\斯图加特.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\championsLeague\\斯图加特.md",
+      "archiveHash": "b5444802b4b3d0ac3375a0b01b267fe456250945eb0ef390080563fc61ab82da",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\VfB_Stuttgart\\VfB_Stuttgart.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Viking\\维京.md",
+      "originalHash": "b7dd3244fe40aa8c0bafbe0dcde1f9cfc36c3d7dead1ef75a28754c6f27170cb",
+      "name": "维京",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Viking\\维京.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\championsLeague\\维京.md",
+      "archiveHash": "a2d2e188c0b3ef2bf12b8fdb1fd4f0a9e33e99620b10c9e6adff3e9de40b05ef",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\teamProfile\\Viking\\Viking.json",
+      "status": "generated"
+    }
+  ],
+  "issues": [
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "戴维-拉亚",
+      "number": 1,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "凯帕",
+      "number": 13,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "梅利耶",
+      "number": 30,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "卡拉菲奥里",
+      "number": 33,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "加布里埃尔",
+      "number": 6,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "孔萨",
+      "number": 15,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "廷贝尔",
+      "number": 12,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "本-怀特",
+      "number": 4,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "因卡皮耶",
+      "number": 5,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "莫斯克拉",
+      "number": 3,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "萨利巴",
+      "number": 2,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "厄德高",
+      "number": 8,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "埃泽",
+      "number": 10,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "吉马良斯",
+      "number": 39,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "赖斯",
+      "number": 41,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "梅里诺",
+      "number": 23,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "刘易斯-斯凯利",
+      "number": 49,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "苏比门迪",
+      "number": 36,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "哈弗茨",
+      "number": 29,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "马杜埃凯",
+      "number": 20,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "萨卡",
+      "number": 7,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "哲凯赖什",
+      "number": 14,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "道曼",
+      "number": 56,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "道曼",
+      "number": 56,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "道曼",
+      "number": 56,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "19",
+      "team": "阿森纳",
+      "player": "措利斯",
+      "number": 17,
+      "field": "nationality",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\19.json"
+    },
+    {
+      "teamId": "174",
+      "team": "罗马",
+      "player": "德马尔齐",
+      "number": 70,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\罗马.md"
+    },
+    {
+      "teamId": "174",
+      "team": "罗马",
+      "player": "德马尔齐",
+      "number": 70,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\罗马.md"
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "普赞科夫",
+      "number": null,
+      "field": "number",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md"
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "普赞科夫",
+      "number": null,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "普赞科夫",
+      "number": null,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "普赞科夫",
+      "number": null,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "普赞科夫",
+      "number": null,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "阿兰-马图罗",
+      "number": 28,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "阿兰-马图罗",
+      "number": 28,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "阿兰-马图罗",
+      "number": 28,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "阿兰-马图罗",
+      "number": 28,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "马龙",
+      "number": 4,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "马龙",
+      "number": 4,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "马龙",
+      "number": 4,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "马龙",
+      "number": 4,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "科尔尼恩科",
+      "number": null,
+      "field": "number",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md"
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "科尔尼恩科",
+      "number": null,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "科尔尼恩科",
+      "number": null,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "科尔尼恩科",
+      "number": null,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "科尔尼恩科",
+      "number": null,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "门多萨",
+      "number": 77,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md"
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "费斯恩",
+      "number": 23,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md"
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "费斯恩",
+      "number": 23,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md"
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "特瓦尔多夫斯基",
+      "number": 48,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md"
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "特瓦尔多夫斯基",
+      "number": 48,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md"
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "特瓦尔多夫斯基",
+      "number": 48,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "特瓦尔多夫斯基",
+      "number": 48,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "特瓦尔多夫斯基",
+      "number": 48,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "特瓦尔多夫斯基",
+      "number": 48,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "格拉姆",
+      "number": 18,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md"
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "格拉姆",
+      "number": 18,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md"
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "阿扎罗维",
+      "number": 16,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md"
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "阿扎罗维",
+      "number": 16,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md"
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "布鲁尼尼奥",
+      "number": 99,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md"
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "布鲁尼尼奥",
+      "number": 99,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md"
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "普罗斯珀-奥巴",
+      "number": 68,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md"
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "普罗斯珀-奥巴",
+      "number": 68,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md"
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "普罗斯珀-奥巴",
+      "number": 68,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "普罗斯珀-奥巴",
+      "number": 68,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "普罗斯珀-奥巴",
+      "number": 68,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "普罗斯珀-奥巴",
+      "number": 68,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "瑞安-罗伯托",
+      "number": 71,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md"
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "瑞安-罗伯托",
+      "number": 71,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md"
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "瑞安-罗伯托",
+      "number": 71,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "瑞安-罗伯托",
+      "number": 71,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "瑞安-罗伯托",
+      "number": 71,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "瑞安-罗伯托",
+      "number": 71,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "埃吉纳尔多",
+      "number": 7,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "埃吉纳尔多",
+      "number": 7,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "埃吉纳尔多",
+      "number": 7,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "埃吉纳尔多",
+      "number": 7,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "施韦德",
+      "number": null,
+      "field": "number",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md"
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "施韦德",
+      "number": null,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "施韦德",
+      "number": null,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "施韦德",
+      "number": null,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "716",
+      "team": "顿涅茨克矿工",
+      "player": "施韦德",
+      "number": null,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\顿涅茨克矿工.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\716-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "奥斯特沃尔德",
+      "number": 24,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "奥斯特沃尔德",
+      "number": 24,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "奥斯特沃尔德",
+      "number": 24,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "奥斯特沃尔德",
+      "number": 24,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "库泽伊-萨帕兹",
+      "number": 75,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md"
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "库泽伊-萨帕兹",
+      "number": 75,
+      "field": "marketValue",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md"
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "库泽伊-萨帕兹",
+      "number": 75,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md"
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "库泽伊-萨帕兹",
+      "number": 75,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "库泽伊-萨帕兹",
+      "number": 75,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "库泽伊-萨帕兹",
+      "number": 75,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "库泽伊-萨帕兹",
+      "number": 75,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "阿森西奥",
+      "number": 10,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "阿森西奥",
+      "number": 10,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "阿森西奥",
+      "number": 10,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "阿森西奥",
+      "number": 10,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "扬达什",
+      "number": 8,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "扬达什",
+      "number": 8,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "扬达什",
+      "number": 8,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "扬达什",
+      "number": 8,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "埃基吉",
+      "number": 54,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md"
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "埃基吉",
+      "number": 54,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md"
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "埃基吉",
+      "number": 54,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "埃基吉",
+      "number": 54,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "埃基吉",
+      "number": 54,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "埃基吉",
+      "number": 54,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "恰勒-巴尔塔",
+      "number": 99,
+      "field": "height",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md"
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "恰勒-巴尔塔",
+      "number": 99,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md"
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "恰勒-巴尔塔",
+      "number": 99,
+      "field": "marketValue",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md"
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "恰勒-巴尔塔",
+      "number": 99,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md"
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "恰勒-巴尔塔",
+      "number": 99,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "恰勒-巴尔塔",
+      "number": 99,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "恰勒-巴尔塔",
+      "number": 99,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "恰勒-巴尔塔",
+      "number": 99,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "阿马拉-迪乌夫",
+      "number": 30,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "阿马拉-迪乌夫",
+      "number": 30,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "阿马拉-迪乌夫",
+      "number": 30,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "537",
+      "team": "费内巴切",
+      "player": "阿马拉-迪乌夫",
+      "number": 30,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\费内巴切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\537-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "艾汉",
+      "number": 23,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "艾汉",
+      "number": 23,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "艾汉",
+      "number": 23,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "艾汉",
+      "number": 23,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "云亚伊",
+      "number": 91,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "云亚伊",
+      "number": 91,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "云亚伊",
+      "number": 91,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "云亚伊",
+      "number": 91,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "阿尔达-伊尔马兹",
+      "number": 60,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md"
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "阿尔达-伊尔马兹",
+      "number": 60,
+      "field": "marketValue",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md"
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "阿尔达-伊尔马兹",
+      "number": 60,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md"
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "阿尔达-伊尔马兹",
+      "number": 60,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "阿尔达-伊尔马兹",
+      "number": 60,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "阿尔达-伊尔马兹",
+      "number": 60,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "阿尔达-伊尔马兹",
+      "number": 60,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "卡拉塔什",
+      "number": 88,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "卡拉塔什",
+      "number": 88,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "卡拉塔什",
+      "number": 88,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "卡拉塔什",
+      "number": 88,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "艾丁",
+      "number": 5,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "艾丁",
+      "number": 5,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "艾丁",
+      "number": 5,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "艾丁",
+      "number": 5,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "詹-居内尔",
+      "number": 29,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "詹-居内尔",
+      "number": 29,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "詹-居内尔",
+      "number": 29,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "詹-居内尔",
+      "number": 29,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "尤兹杰克",
+      "number": 62,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "尤兹杰克",
+      "number": 62,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "尤兹杰克",
+      "number": 62,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "516",
+      "team": "加拉塔萨雷",
+      "player": "尤兹杰克",
+      "number": 62,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\加拉塔萨雷.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\516-new.json"
+      ]
+    },
+    {
+      "teamId": "27",
+      "team": "曼彻斯特联",
+      "player": "德莫特-米",
+      "number": 45,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\曼彻斯特联.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\曼彻斯特联.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\27-new.json"
+      ]
+    },
+    {
+      "teamId": "27",
+      "team": "曼彻斯特联",
+      "player": "德莫特-米",
+      "number": 45,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\曼彻斯特联.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\曼彻斯特联.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\27-new.json"
+      ]
+    },
+    {
+      "teamId": "27",
+      "team": "曼彻斯特联",
+      "player": "德莫特-米",
+      "number": 45,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\曼彻斯特联.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\曼彻斯特联.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\27-new.json"
+      ]
+    },
+    {
+      "teamId": "27",
+      "team": "曼彻斯特联",
+      "player": "德莫特-米",
+      "number": 45,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\曼彻斯特联.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\曼彻斯特联.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\27-new.json"
+      ]
+    },
+    {
+      "teamId": "27",
+      "team": "曼彻斯特联",
+      "player": "乌加特",
+      "number": 25,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\曼彻斯特联.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\曼彻斯特联.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\27-new.json"
+      ]
+    },
+    {
+      "teamId": "27",
+      "team": "曼彻斯特联",
+      "player": "乌加特",
+      "number": 25,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\曼彻斯特联.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\曼彻斯特联.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\27-new.json"
+      ]
+    },
+    {
+      "teamId": "27",
+      "team": "曼彻斯特联",
+      "player": "乌加特",
+      "number": 25,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\曼彻斯特联.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\曼彻斯特联.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\27-new.json"
+      ]
+    },
+    {
+      "teamId": "27",
+      "team": "曼彻斯特联",
+      "player": "乌加特",
+      "number": 25,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\曼彻斯特联.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\曼彻斯特联.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\27-new.json"
+      ]
+    },
+    {
+      "teamId": "271",
+      "team": "巴黎圣日耳曼",
+      "player": "达维德-博利",
+      "number": 42,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\巴黎圣日耳曼.md"
+    },
+    {
+      "teamId": "271",
+      "team": "巴黎圣日耳曼",
+      "player": "达维德-博利",
+      "number": 42,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\巴黎圣日耳曼.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "波卡季洛夫",
+      "number": 92,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "艾登-麦卡锡",
+      "number": 4,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "索尔韦",
+      "number": 3,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "达什达米罗夫",
+      "number": 5,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "拉赫莫纳利耶夫",
+      "number": 7,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "列平利察",
+      "number": 13,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "帕里斯",
+      "number": 11,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "杜-奎罗斯",
+      "number": 37,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "米尔扎马多夫",
+      "number": 94,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "米尔扎马多夫",
+      "number": 94,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "阿明-拉马扎诺夫",
+      "number": 1,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "阿明-拉马扎诺夫",
+      "number": 1,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "穆塔利莫夫",
+      "number": 17,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "穆塔利莫夫",
+      "number": 17,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "埃里瓦尔多-阿尔梅达",
+      "number": 33,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "埃里瓦尔多-阿尔梅达",
+      "number": 33,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "伊萨耶夫",
+      "number": 10,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "伊萨耶夫",
+      "number": 10,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "哈比布拉耶夫",
+      "number": 6,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "哈比布拉耶夫",
+      "number": 6,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "罗德里戈-费尔南德斯",
+      "number": 88,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "罗德里戈-费尔南德斯",
+      "number": 88,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "鲁斯塔姆利",
+      "number": 16,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "鲁斯塔姆利",
+      "number": 16,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "乌尔德-哈立德",
+      "number": 22,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\35445-new.json"
+      ]
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "乌尔德-哈立德",
+      "number": 22,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\35445-new.json"
+      ]
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "乌尔德-哈立德",
+      "number": 22,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\35445-new.json"
+      ]
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "乌尔德-哈立德",
+      "number": 22,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\35445-new.json"
+      ]
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "姆比纳",
+      "number": 99,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "姆比纳",
+      "number": 99,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "拉沙卜",
+      "number": 23,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "拉沙卜",
+      "number": 23,
+      "field": "marketValue",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "拉沙卜",
+      "number": 23,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "拉沙卜",
+      "number": 23,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\35445-new.json"
+      ]
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "拉沙卜",
+      "number": 23,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\35445-new.json"
+      ]
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "拉沙卜",
+      "number": 23,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\35445-new.json"
+      ]
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "拉沙卜",
+      "number": 23,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\35445-new.json"
+      ]
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "哈亚勒-阿利耶夫",
+      "number": 9,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "哈亚勒-阿利耶夫",
+      "number": 9,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "米克尔斯",
+      "number": 20,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md"
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "卡洛斯-爱德华多",
+      "number": 18,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\35445-new.json"
+      ]
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "卡洛斯-爱德华多",
+      "number": 18,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\35445-new.json"
+      ]
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "卡洛斯-爱德华多",
+      "number": 18,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\35445-new.json"
+      ]
+    },
+    {
+      "teamId": "35445",
+      "team": "萨巴赫",
+      "player": "卡洛斯-爱德华多",
+      "number": 18,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\萨巴赫.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\35445-new.json"
+      ]
+    },
+    {
+      "teamId": "466",
+      "team": "葡萄牙体育",
+      "player": "迭戈-卡拉伊",
+      "number": 41,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\466-new.json"
+      ]
+    },
+    {
+      "teamId": "466",
+      "team": "葡萄牙体育",
+      "player": "迭戈-卡拉伊",
+      "number": 41,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\466-new.json"
+      ]
+    },
+    {
+      "teamId": "466",
+      "team": "葡萄牙体育",
+      "player": "迭戈-卡拉伊",
+      "number": 41,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\466-new.json"
+      ]
+    },
+    {
+      "teamId": "466",
+      "team": "葡萄牙体育",
+      "player": "迭戈-卡拉伊",
+      "number": 41,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\466-new.json"
+      ]
+    },
+    {
+      "teamId": "466",
+      "team": "葡萄牙体育",
+      "player": "努诺-桑托斯",
+      "number": 11,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\466-new.json"
+      ]
+    },
+    {
+      "teamId": "466",
+      "team": "葡萄牙体育",
+      "player": "努诺-桑托斯",
+      "number": 11,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\466-new.json"
+      ]
+    },
+    {
+      "teamId": "466",
+      "team": "葡萄牙体育",
+      "player": "努诺-桑托斯",
+      "number": 11,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\466-new.json"
+      ]
+    },
+    {
+      "teamId": "466",
+      "team": "葡萄牙体育",
+      "player": "努诺-桑托斯",
+      "number": 11,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\466-new.json"
+      ]
+    },
+    {
+      "teamId": "466",
+      "team": "葡萄牙体育",
+      "player": "亚历山德罗普洛斯",
+      "number": 52,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\466-new.json"
+      ]
+    },
+    {
+      "teamId": "466",
+      "team": "葡萄牙体育",
+      "player": "亚历山德罗普洛斯",
+      "number": 52,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\466-new.json"
+      ]
+    },
+    {
+      "teamId": "466",
+      "team": "葡萄牙体育",
+      "player": "亚历山德罗普洛斯",
+      "number": 52,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\466-new.json"
+      ]
+    },
+    {
+      "teamId": "466",
+      "team": "葡萄牙体育",
+      "player": "亚历山德罗普洛斯",
+      "number": 52,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\葡萄牙体育.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\466-new.json"
+      ]
+    },
+    {
+      "teamId": "155",
+      "team": "斯图加特",
+      "player": "德尔利亚查",
+      "number": 46,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\155-new.json"
+      ]
+    },
+    {
+      "teamId": "155",
+      "team": "斯图加特",
+      "player": "德尔利亚查",
+      "number": 46,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\155-new.json"
+      ]
+    },
+    {
+      "teamId": "155",
+      "team": "斯图加特",
+      "player": "德尔利亚查",
+      "number": 46,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\155-new.json"
+      ]
+    },
+    {
+      "teamId": "155",
+      "team": "斯图加特",
+      "player": "德尔利亚查",
+      "number": 46,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\155-new.json"
+      ]
+    },
+    {
+      "teamId": "155",
+      "team": "斯图加特",
+      "player": "扎加杜",
+      "number": 23,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\155-new.json"
+      ]
+    },
+    {
+      "teamId": "155",
+      "team": "斯图加特",
+      "player": "扎加杜",
+      "number": 23,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\155-new.json"
+      ]
+    },
+    {
+      "teamId": "155",
+      "team": "斯图加特",
+      "player": "扎加杜",
+      "number": 23,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\155-new.json"
+      ]
+    },
+    {
+      "teamId": "155",
+      "team": "斯图加特",
+      "player": "扎加杜",
+      "number": 23,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\155-new.json"
+      ]
+    },
+    {
+      "teamId": "155",
+      "team": "斯图加特",
+      "player": "埃尔图鲁尔-伊伊特",
+      "number": 39,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\155-new.json"
+      ]
+    },
+    {
+      "teamId": "155",
+      "team": "斯图加特",
+      "player": "埃尔图鲁尔-伊伊特",
+      "number": 39,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\155-new.json"
+      ]
+    },
+    {
+      "teamId": "155",
+      "team": "斯图加特",
+      "player": "埃尔图鲁尔-伊伊特",
+      "number": 39,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\155-new.json"
+      ]
+    },
+    {
+      "teamId": "155",
+      "team": "斯图加特",
+      "player": "埃尔图鲁尔-伊伊特",
+      "number": 39,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\155-new.json"
+      ]
+    },
+    {
+      "teamId": "155",
+      "team": "斯图加特",
+      "player": "马兰加",
+      "number": 43,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\155-new.json"
+      ]
+    },
+    {
+      "teamId": "155",
+      "team": "斯图加特",
+      "player": "马兰加",
+      "number": 43,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\155-new.json"
+      ]
+    },
+    {
+      "teamId": "155",
+      "team": "斯图加特",
+      "player": "马兰加",
+      "number": 43,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\155-new.json"
+      ]
+    },
+    {
+      "teamId": "155",
+      "team": "斯图加特",
+      "player": "马兰加",
+      "number": 43,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\155-new.json"
+      ]
+    },
+    {
+      "teamId": "155",
+      "team": "斯图加特",
+      "player": "迪尔",
+      "number": 31,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\155-new.json"
+      ]
+    },
+    {
+      "teamId": "155",
+      "team": "斯图加特",
+      "player": "迪尔",
+      "number": 31,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\155-new.json"
+      ]
+    },
+    {
+      "teamId": "155",
+      "team": "斯图加特",
+      "player": "迪尔",
+      "number": 31,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\155-new.json"
+      ]
+    },
+    {
+      "teamId": "155",
+      "team": "斯图加特",
+      "player": "迪尔",
+      "number": 31,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\斯图加特.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\155-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "比约尔霍尔",
+      "number": 18,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "比约尔霍尔",
+      "number": 18,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "比约尔霍尔",
+      "number": 18,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "比约尔霍尔",
+      "number": 18,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "罗塞特",
+      "number": 4,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "罗塞特",
+      "number": 4,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "罗塞特",
+      "number": 4,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "罗塞特",
+      "number": 4,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "贝尔科",
+      "number": 30,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md"
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "贝尔科",
+      "number": 30,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md"
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "埃伦-雅各布森",
+      "number": 12,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md"
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "埃伦-雅各布森",
+      "number": 12,
+      "field": "marketValue",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md"
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "埃伦-雅各布森",
+      "number": 12,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md"
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "埃伦-雅各布森",
+      "number": 12,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "埃伦-雅各布森",
+      "number": 12,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "埃伦-雅各布森",
+      "number": 12,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "埃伦-雅各布森",
+      "number": 12,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "巴特尔森",
+      "number": 21,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md"
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "巴特尔森",
+      "number": 21,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md"
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "巴特尔森",
+      "number": 21,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "巴特尔森",
+      "number": 21,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "巴特尔森",
+      "number": 21,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "巴特尔森",
+      "number": 21,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "埃辛-巴锡",
+      "number": 17,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md"
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "埃辛-巴锡",
+      "number": 17,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md"
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "波斯特马",
+      "number": 11,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md"
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "波斯特马",
+      "number": 11,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md"
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "阿明-乔西奇",
+      "number": 19,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md"
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "阿明-乔西奇",
+      "number": 19,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md"
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "贝里沙",
+      "number": 14,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md"
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "贝里沙",
+      "number": 14,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md"
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "贝里沙",
+      "number": 14,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "贝里沙",
+      "number": 14,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "贝里沙",
+      "number": 14,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "贝里沙",
+      "number": 14,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "凯文-弗林蓬",
+      "number": 42,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md"
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "凯文-弗林蓬",
+      "number": 42,
+      "field": "marketValue",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md"
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "凯文-弗林蓬",
+      "number": 42,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md"
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "凯文-弗林蓬",
+      "number": 42,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "凯文-弗林蓬",
+      "number": 42,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "凯文-弗林蓬",
+      "number": 42,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "凯文-弗林蓬",
+      "number": 42,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "克里斯蒂安森",
+      "number": 20,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md"
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "达戈斯蒂诺",
+      "number": 9,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "达戈斯蒂诺",
+      "number": 9,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "达戈斯蒂诺",
+      "number": 9,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    },
+    {
+      "teamId": "495",
+      "team": "维京",
+      "player": "达戈斯蒂诺",
+      "number": 9,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\championsLeague\\squad-final\\维京.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\495-new.json"
+      ]
+    }
+  ],
+  "season": "2026-2027"
+}

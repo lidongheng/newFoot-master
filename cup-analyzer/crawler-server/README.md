@@ -219,7 +219,7 @@ npm：`npm run process:squad-final:init` / `npm run process:squad-final:init:one
 
 - **输入**：默认优先 `{杯赛}/squad-final/` 下 Markdown；若无或解析为空则回退 `output/player_center/{序号}.json`。`--source raw` 可强制仅用 JSON。
 - **squad-final**：当成功从该文件解析名单时，会在写出画像后**回写**同文件中的「## 统计摘要」（与当前表格一致）。若 `squad-final` 中含已填写的 **`## 伤停` / `## 伤疑`**，画像「二、球队阵容」中会生成 **### 伤停 / ### 伤疑**（联赛带出场统计；世界杯/国家队为俱乐部+位置）。
-- **输出**：`{杯赛}/teamProfile/{队名}.md`
+- **输出**：`{赛事}/teamProfile/{球队英文目录}/{中文队名}.md`、`{球队英文目录}.json` 和 `missingData.json`；英文目录的空白使用下划线，世界杯保留 group-X 层级。
 
 ```bash
 node processors/teamProfileGenerator.js
@@ -313,3 +313,17 @@ npm：`npm run analyze:club-domestic`
 **单场赛前大名单块（可选）**：设置 `CUP_ANALYZER_CUP` 后执行 `npm run generate:match-squad -- --home <序号> --away <序号>`（Windows 可用 `npx cross-env CUP_ANALYZER_CUP=epl npm run generate:match-squad -- --home <序号> --away <序号>`）
 
 各模块步骤与路径见对应目录下 `workflow.md`。
+
+
+### 存量画像与球队目录全量迁移
+
+```bash
+# 在 crawler-server 中执行，不联网
+node processors/migrateTeamProfiles.js
+```
+
+逐赛事清点已有画像，迁移所有联赛存量文件，也兼容俱乐部杯赛和国家队小组目录。teamAgent 的英文目录空白同步改为下划线，保留配置内的原始英文队名。目录重名时报告冲突，不覆盖已有内容。
+
+画像同时导出球员 JSON，保留 squad-final 表格全部原始列（sourceColumns）和统一字段，以及 appearances、starts、goals、assists。旧赛季名单按名单中的赛季标记，不强行写成当前赛季。无法取得资料时保留 MD，JSON 明确记录 missing 状态，不能补成0。
+
+[output/profile-migration/README.md](output/profile-migration/README.md) 汇总逐队处理与缺失情况；原画像完整原文保存在 originals，非标准人工章节保留在新 MD。每队 MD 末尾及 missingData.json 列出具体球员、字段和源文件，补充后重新生成即可消除对应提醒。

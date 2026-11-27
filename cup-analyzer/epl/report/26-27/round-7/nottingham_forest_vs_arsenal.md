@@ -39,7 +39,7 @@
 
 当前 `epl/squad-final/阿森纳.md` 与 `诺丁汉森林.md` 仍标注 **25-26、截至第 36 轮**，不能当作 26-27 当前完整名单。本报告不沿用旧名单；开球前的实际首发按当天阵容页核对。
 
-两队 2026/27 球队画像已按懂球帝当前阵容及英超统计重新生成：[诺丁汉森林画像](../../../teamProfile/诺丁汉森林.md)、[阿森纳画像](../../../teamProfile/阿森纳.md)。本场正式首发仍以比赛日阵容页为准。AS 阵容页列出的阵型为森林 3-4-2-1、阿森纳 4-2-3-1；阿森纳俱乐部的赛前账号帖与该首发名单一致。[AS 比赛阵容页](https://en.as.com/resultados/futbol/inglaterra/2026_2027/directo/regular_a_7_6a38cde9456b644/alineaciones/)；[阿森纳赛前首发帖](https://www.reddit.com/r/Gunners/comments/1x94a2k/our_starting_xi_to_face_nottingham_forest_in_the/)
+两队 2026/27 球队画像已按懂球帝当前阵容及英超统计重新生成：[诺丁汉森林画像](../../../teamProfile/Nottingham_Forest/诺丁汉森林.md)、[阿森纳画像](../../../teamProfile/Arsenal/阿森纳.md)。本场正式首发仍以比赛日阵容页为准。AS 阵容页列出的阵型为森林 3-4-2-1、阿森纳 4-2-3-1；阿森纳俱乐部的赛前账号帖与该首发名单一致。[AS 比赛阵容页](https://en.as.com/resultados/futbol/inglaterra/2026_2027/directo/regular_a_7_6a38cde9456b644/alineaciones/)；[阿森纳赛前首发帖](https://www.reddit.com/r/Gunners/comments/1x94a2k/our_starting_xi_to_face_nottingham_forest_in_the/)
 
 **诺丁汉森林实际首发（3-4-2-1）**
 

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ChinaSuperLeague 2026 · teams · 积分榜</title>
+<link rel="stylesheet" href="../../../../../../shared-assets/element-plus/index.css"><link rel="stylesheet" href="../../../../../../shared-assets/ranking-table/table.css"></head>
+<body><main id="app" class="ranking-page" v-cloak>
+<header class="ranking-header"><h1>{{ title }}</h1><div class="ranking-tools"><el-input v-model="query" placeholder="搜索名称、ID 或表格内容" clearable aria-label="搜索排行榜"></el-input><el-text type="info">共 {{ total }} 条，当前显示 {{ filteredRows.length }} 条</el-text></div></header>
+<el-table class="ranking-table" :data="filteredRows" stripe border height="calc(100vh - 230px)" style="width: 100%" empty-text="暂无数据">
+<el-table-column v-for="column in columns" :key="column" :prop="column" :label="column" min-width="120" sortable show-overflow-tooltip>
+<template #default="scope"><span>{{ formatCell(scope.row[column], column) }}</span></template>
+</el-table-column></el-table><p class="ranking-note">点击表头可排序。缺失值保持缺失，不作为 0；排名采用原统计结果。</p><pre class="ranking-missing" style="white-space:pre-wrap">比分计算榜：胜3分、平1分、负0分；按积分、净胜球、进球排序，不含纪律扣分。
+
+## 待补数据
+
+无待补数据。
+</pre></main>
+<script id="ranking-data" type="application/json">{"title":"ChinaSuperLeague 2026 · teams · 积分榜","rows":[{"名次":1,"球队":"北京国安","赛":30,"胜":15,"平":10,"负":5,"进":58,"失":36,"净":22,"积分":55},{"名次":2,"球队":"山东泰山","赛":30,"胜":16,"平":5,"负":9,"进":60,"失":49,"净":11,"积分":53},{"名次":3,"球队":"成都蓉城","赛":30,"胜":15,"平":7,"负":8,"进":53,"失":38,"净":15,"积分":52},{"名次":4,"球队":"大连英博","赛":30,"胜":16,"平":4,"负":10,"进":49,"失":44,"净":5,"积分":52},{"名次":5,"球队":"上海海港","赛":30,"胜":14,"平":8,"负":8,"进":56,"失":37,"净":19,"积分":50},{"名次":6,"球队":"上海申花","赛":30,"胜":15,"平":5,"负":10,"进":67,"失":50,"净":17,"积分":50},{"名次":7,"球队":"云南玉昆","赛":30,"胜":12,"平":7,"负":11,"进":59,"失":61,"净":-2,"积分":43},{"名次":8,"球队":"浙江俱乐部绿城","赛":30,"胜":12,"平":6,"负":12,"进":55,"失":54,"净":1,"积分":42},{"名次":9,"球队":"天津津门虎","赛":30,"胜":11,"平":8,"负":11,"进":40,"失":38,"净":2,"积分":41},{"名次":10,"球队":"青岛西海岸","赛":30,"胜":8,"平":15,"负":7,"进":32,"失":42,"净":-10,"积分":39},{"名次":11,"球队":"重庆铜梁龙","赛":30,"胜":8,"平":12,"负":10,"进":31,"失":35,"净":-4,"积分":36},{"名次":12,"球队":"河南队","赛":30,"胜":8,"平":10,"负":12,"进":38,"失":46,"净":-8,"积分":34},{"名次":13,"球队":"深圳新鹏城","赛":30,"胜":9,"平":6,"负":15,"进":41,"失":53,"净":-12,"积分":33},{"名次":14,"球队":"辽宁铁人","赛":30,"胜":8,"平":5,"负":17,"进":42,"失":58,"净":-16,"积分":29},{"名次":15,"球队":"武汉三镇","赛":30,"胜":5,"平":12,"负":13,"进":45,"失":57,"净":-12,"积分":27},{"名次":16,"球队":"青岛海牛","赛":30,"胜":6,"平":4,"负":20,"进":36,"失":64,"净":-28,"积分":22}],"columns":["名次","球队","赛","胜","平","负","进","失","净","积分"]}</script>
+<script src="../../../../../../shared-assets/vue/vue.global.prod.js"></script><script src="../../../../../../shared-assets/element-plus/index.full.min.js"></script><script src="../../../../../../shared-assets/element-plus/zh-cn.min.js"></script>
+<script src="../../../../../../shared-assets/ranking-table/useRankingTable.js"></script><script src="../../../../../../shared-assets/ranking-table/main.js"></script></body></html>

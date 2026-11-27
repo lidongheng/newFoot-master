@@ -1,0 +1,178 @@
+# 麦克阿瑟FC（FC Macarthur）球队画像
+
+> 自动生成 | 基于squad-final 确认名单分析
+> **主教练**：奥格内诺夫斯基
+
+## 一、球队定位
+
+- **冠军赔率**: 未知
+- **赔率定位**: 中游
+- **身价定位**: 保级/陪跑
+- **综合目标**: 中游
+
+## 二、球队阵容
+
+### 阵型：4-2-3-1
+
+门将(GK)：1-亚历克斯-罗宾逊(4场4首发，GK，55，澳大利亚，21岁，30万)
+右后卫(RB、RWB)：25-塔尔博特(4场4首发，RB，63，澳大利亚，25岁)、32-威尔-麦凯(RB，53，澳大利亚，20岁，25万)
+中后卫(CB、LCB、RCB)：3-奈良竜树(4场4首发，CB，67，日本，33岁，35万)、5-阿斯普罗波塔米蒂斯(3场3首发1球，CB，62，澳大利亚，30岁，15万)、31-克里斯洛维奇(CB，56，澳大利亚，20岁)
+左后卫(LB、LWB)：21-内森-波尔(4场4首发，LB，66，澳大利亚，23岁，45万)
+后腰(CDM、RDM、LDM)：22-利亚姆-罗斯(4场4首发，CDM，61，澳大利亚，29岁，40万)、18-迪伦-罗斯(3场2首发，CDM，澳大利亚，20岁，7万)、17-兰达佐(2场2首发，CDM，55，澳大利亚，20岁，27万)、23-格罗佐斯(CDM，67，澳大利亚，26岁，45万)
+前腰(CAM、CM)：24-博斯尼亚克(4场3首发，CAM，57，澳大利亚，20岁，35万)、9-本-吉布森(4场1首发，CAM，60，澳大利亚，23岁，30万)
+右边锋(RM、RW)：8-卢克-维克里(4场3首发，RM，55，印度尼西亚，21岁，40万)、10-瑞安-弗雷泽(4场1球2助，RM，70，苏格兰，32岁，150万)
+左边锋(LM、LW)：7-帕因(4场4首发，LM，66，澳大利亚，33岁，35万)、99-穆萨-杜尔(4场1首发1球1助，LM，61，澳大利亚，21岁，20万)、11-贝尔纳多-奥利韦拉(2场1首发，LM，62，澳大利亚，22岁，35万)、19-哈里-波利蒂迪斯(LM，59，澳大利亚，24岁，40万)、29-黑尔韦(2场，LM，53，澳大利亚，20岁，15万)
+中锋(ST、CF)：16-斯塔马泰洛普洛斯(4场4首发1球，ST，70，澳大利亚，27岁，55万)、27-雷克(1场，ST，61，澳大利亚，23岁，10万)
+其他：30-‌约书亚-拉基斯‌(黎巴嫩，20岁)、13-詹姆斯-希尔顿(澳大利亚，24岁，10万)、33-哈里-门厄姆(澳大利亚，21岁)、14-普拉特齐纳(澳大利亚，18岁)、6-凯-肯尼迪(1场，苏格兰，24岁，15万)、20-恩里克-奥利韦拉(澳大利亚，17岁，15万)
+
+### 预测首发(4-2-3-1)：
+1-亚历克斯-罗宾逊(4场4首发，GK，55，21岁，30万)/21-内森-波尔(4场4首发，LB，66，23岁，45万)，3-奈良竜树(4场4首发，CB，67，33岁，35万)，5-阿斯普罗波塔米蒂斯(3场3首发1球，CB，62，30岁，15万)，25-塔尔博特(4场4首发，RB，63，25岁)/22-利亚姆-罗斯(4场4首发，CDM，61，29岁，40万)，17-兰达佐(2场2首发，CDM，55，20岁，27万)/7-帕因(4场4首发，LM，66，33岁，35万)，24-博斯尼亚克(4场3首发，CAM，57，20岁，35万)，8-卢克-维克里(4场3首发，RM，55，21岁，40万)/16-斯塔马泰洛普洛斯(4场4首发1球，ST，70，27岁，55万)
+
+### 预测替补（9人）：
+后卫：31-克里斯洛维奇(CB，56，澳大利亚，20岁)、32-威尔-麦凯(RB，53，澳大利亚，20岁，25万)
+中场：18-迪伦-罗斯(3场2首发，CDM，澳大利亚，20岁，7万)、99-穆萨-杜尔(4场1首发1球1助，LM，61，澳大利亚，21岁，20万)、9-本-吉布森(4场1首发，CAM，60，澳大利亚，23岁，30万)、11-贝尔纳多-奥利韦拉(2场1首发，LM，62，澳大利亚，22岁，35万)、30-‌约书亚-拉基斯‌(黎巴嫩，20岁)、10-瑞安-弗雷泽(4场1球2助，RM，70，苏格兰，32岁，150万)
+前锋：27-雷克(1场，ST，61，澳大利亚，23岁，10万)
+
+<!-- TEAM_SCHEDULE_START -->
+## 近期与未来赛程
+
+### 最近 3 场已完赛
+10月31日 16:40 澳超 第3轮 麦克阿瑟FCvs西悉尼流浪者 648小时前
+11月8日 12:00 澳超 第4轮 麦克阿瑟FCvs布里斯班狮吼 461小时前
+11月22日 10:00 澳超 第5轮 惠灵顿凤凰vs麦克阿瑟FC 127小时前
+
+### 未来 3 场比赛
+12月11日 16:40 澳超 第8轮 阿德莱德联vs麦克阿瑟FC 336小时
+12月21日 16:00 澳超 第9轮 麦克阿瑟FCvs中央海岸水手 575小时
+12月28日 16:00 澳超 第10轮 悉尼vs麦克阿瑟FC 743小时
+<!-- TEAM_SCHEDULE_END -->
+
+## 三、年龄结构
+
+- **平均年龄**: 23.5岁
+- **年龄范围**: 17 - 33岁
+- **年轻球员(≤23岁)**: 17人
+- **当打之年(24-29岁)**: 7人
+- **老将(≥30岁)**: 4人
+- **⚠️ 年轻球员多，大赛经验可能不足**
+
+## 四、身高分析
+
+- **平均身高**: 179.6cm
+- **身高范围**: 163 - 195cm
+- **高点(≥185cm)**: 8人
+- **矮个(< 175cm)**: 6人
+- **定位球空中优势明显**
+
+## 五、身价分析
+
+- **总身价**: 774万
+- **平均身价**: 34万
+- **最高身价**: 150万
+
+**身价TOP 5**:
+
+| 排名 | 球衣号 | 球员 | 位置 | 身价(万) |
+|------|--------|------|------|----------|
+| 1 | 10 | 瑞安-弗雷泽 | RM | 150 |
+| 2 | 16 | 斯塔马泰洛普洛斯 | ST | 55 |
+| 3 | 21 | 内森-波尔 | LB | 45 |
+| 4 | 23 | 格罗佐斯 | CDM | 45 |
+| 5 | 22 | 利亚姆-罗斯 | CDM | 40 |
+
+**进球TOP 5**:
+
+| 排名 | 球衣号 | 球员 | 位置 | 进球 |
+|------|--------|------|------|------|
+| 1 | 10 | 瑞安-弗雷泽 | RM | 1 |
+| 2 | 99 | 穆萨-杜尔 | LM | 1 |
+| 3 | 5 | 阿斯普罗波塔米蒂斯 | CB | 1 |
+| 4 | 16 | 斯塔马泰洛普洛斯 | ST | 1 |
+| 5 | 11 | 贝尔纳多-奥利韦拉 | LM | 0 |
+
+**助攻TOP 5**:
+
+| 排名 | 球衣号 | 球员 | 位置 | 助攻 |
+|------|--------|------|------|------|
+| 1 | 10 | 瑞安-弗雷泽 | RM | 2 |
+| 2 | 99 | 穆萨-杜尔 | LM | 1 |
+| 3 | 5 | 阿斯普罗波塔米蒂斯 | CB | 0 |
+| 4 | 16 | 斯塔马泰洛普洛斯 | ST | 0 |
+| 5 | 11 | 贝尔纳多-奥利韦拉 | LM | 0 |
+
+## 六、位置深度
+
+- **门将**: 1人
+- **后卫**: 6人
+- **中场**: 19人
+- **前锋**: 2人
+
+**⚠️ 警告**:
+- 门将深度不足
+- 前锋深度偏薄
+
+## 七、打法推断
+
+- 年轻有冲劲，体能充沛，但经验不足
+- 中场配置厚实，可能偏重控球体系
+
+## 八、AI分析备注
+
+> 以上为基于大名单数据的自动分析，实际打法需结合：
+> 1. 主教练战术偏好
+> 2. 转会窗引援效果
+> 3. 多线作战（欧冠/欧联 + 联赛 + 国内杯赛）能力
+> 4. 联赛赛程与战意（争冠/保级/欧战资格）
+
+## 迁移前画像
+
+[完整原文与人工内容归档](../../../crawler-server/output/profile-migration/originals/aLeague/麦克阿瑟FC.md)
+
+## 待补数据
+
+请补充以下源数据后重新生成：
+
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"威尔-麦凯","number":32,"field":"appearances","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","reason":"无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"威尔-麦凯","number":32,"field":"starts","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"威尔-麦凯","number":32,"field":"goals","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"威尔-麦凯","number":32,"field":"assists","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"迪伦-罗斯","number":18,"field":"ability","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md"}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"‌约书亚-拉基斯‌","number":30,"field":"position","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md"}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"‌约书亚-拉基斯‌","number":30,"field":"ability","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md"}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"詹姆斯-希尔顿","number":13,"field":"position","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md"}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"詹姆斯-希尔顿","number":13,"field":"ability","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md"}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"詹姆斯-希尔顿","number":13,"field":"appearances","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","reason":"无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"詹姆斯-希尔顿","number":13,"field":"starts","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"詹姆斯-希尔顿","number":13,"field":"goals","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"詹姆斯-希尔顿","number":13,"field":"assists","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"哈里-波利蒂迪斯","number":19,"field":"appearances","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","reason":"无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"哈里-波利蒂迪斯","number":19,"field":"starts","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"哈里-波利蒂迪斯","number":19,"field":"goals","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"哈里-波利蒂迪斯","number":19,"field":"assists","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"哈里-门厄姆","number":33,"field":"position","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md"}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"哈里-门厄姆","number":33,"field":"marketValue","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md"}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"哈里-门厄姆","number":33,"field":"ability","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md"}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"哈里-门厄姆","number":33,"field":"appearances","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","reason":"无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"哈里-门厄姆","number":33,"field":"starts","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"哈里-门厄姆","number":33,"field":"goals","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"哈里-门厄姆","number":33,"field":"assists","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"格罗佐斯","number":23,"field":"appearances","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","reason":"无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"格罗佐斯","number":23,"field":"starts","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"格罗佐斯","number":23,"field":"goals","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"格罗佐斯","number":23,"field":"assists","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"普拉特齐纳","number":14,"field":"height","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md"}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"普拉特齐纳","number":14,"field":"position","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md"}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"普拉特齐纳","number":14,"field":"marketValue","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md"}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"普拉特齐纳","number":14,"field":"ability","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md"}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"普拉特齐纳","number":14,"field":"appearances","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","reason":"无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"普拉特齐纳","number":14,"field":"starts","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"普拉特齐纳","number":14,"field":"goals","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"普拉特齐纳","number":14,"field":"assists","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"凯-肯尼迪","number":6,"field":"position","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md"}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"凯-肯尼迪","number":6,"field":"ability","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md"}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"恩里克-奥利韦拉","number":20,"field":"position","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md"}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"恩里克-奥利韦拉","number":20,"field":"ability","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md"}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"恩里克-奥利韦拉","number":20,"field":"appearances","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","reason":"无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"恩里克-奥利韦拉","number":20,"field":"starts","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"恩里克-奥利韦拉","number":20,"field":"goals","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}
+- {"teamId":"51511","team":"麦克阿瑟FC","player":"恩里克-奥利韦拉","number":20,"field":"assists","file":"C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","files":["C:\\www\\newFoot-master\\cup-analyzer\\aLeague\\squad-final\\麦克阿瑟FC.md","C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\51511-new.json"]}

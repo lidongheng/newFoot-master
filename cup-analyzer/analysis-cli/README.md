@@ -59,7 +59,7 @@ laLiga/leagueRanking/26-27/
 
 每个指标目录严格只有三个同名文件：
 
-- MD：只有该指标的排行榜表格，不混入其他指标或逐场明细。
+- MD：该指标的排行榜表格；表格后列出相关待补数据，不混入其他指标。
 - JSON：MD 表格对应的对象数组，字段名就是表头，行顺序、排名、数值与 MD 一致，无其他元信息。null 表示缺失，MD 对应显示「缺失」，不会补成 0。
 - HTML：使用本地 Vue、Element Plus 的表格，支持搜索、表头排序、斑马纹和固定表头。数据与 MD/JSON 一致，暂无图表。
 
@@ -84,3 +84,21 @@ ECharts 及相关许可证统一位于 workspace 根目录 shared-assets/echarts
 表格使用 shared-assets/vue、shared-assets/element-plus 及 shared-assets/ranking-table。第三方资源由 node scripts/syncTableAssets.js 从官方 npm 包下载指定文件，固定版本并校验完整性，不执行 npm/pnpm install。HTML 仅通过本地相对路径加载，不依赖 CDN、后台服务或在线 JSON 请求；离线分享时需保留 workspace 相对目录结构并携带 shared-assets。
 
 人工修正见 [repairs/README.md](repairs/README.md)。只按用户资料制作补丁，preview 显示差异，apply 才会修改双方原文件并备份。分析命令不会自动修正数据。
+
+
+## 新增球队指标与全量生成
+
+```bash
+# 按各联赛本地赛程的实际赛季，生成下面七项指标
+node bin/buildAll.js
+
+# 单联赛同样支持 catalog、默认 build 和 --metrics
+node bin/cli.js build --league laLiga --season 2026-2027 --metrics standings,homeStandings,awayStandings,averageAge,averageHeight,totalMarketValue,averagePossession
+```
+
+- `standings`、`homeStandings`、`awayStandings`：直接读取已完赛比分，胜3分、平1分、负0分；依次按积分、净胜球、进球降序，再按球队ID稳定排序，不含纪律扣分。表头为名次、球队、赛、胜、平、负、进、失、净、积分。
+- `averagePossession`：读取 techStats.json 的 fullMatch/CONTROL_PERCENT，取本队主客数值，总和除以有效场次。缺失、无效或副本冲突不补0，列出有效及缺失场次；独立于其他比赛文件完整性。
+- `averageAge`、`averageHeight`、`totalMarketValue`：读取同赛季 teamProfile/{英文目录}/{英文目录}.json。筛选出场>0，按出场、首发降序及球衣号升序取最多25人，共用同一批样本。缺出场统计不能推定为0。
+- 年龄、身高分别按有效人数平均，身价累加已知值（万），部分资料缺失标记不完整，数值缺失排在榜尾。按未舍入值排名，展示两位小数。阵容指标为赛季快照，不随轮次、日期或近N场重算历史阵容。
+- teams/README.md 自动维护指标链接和最终待补清单，teams/missingData.json 提供结构化问题。各指标 MD/HTML 表格后也列出相关问题、球员或比赛与源文件路径。JSON 仍为表格行数组。
+- 全量执行结果及不能生成的联赛见 [output/README.md](output/README.md)。补齐源名单或统计后先重新生成画像，再运行榜单命令。

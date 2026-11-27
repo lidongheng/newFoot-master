@@ -1,0 +1,579 @@
+{
+  "league": "laLiga",
+  "originalProfiles": 10,
+  "migrated": 0,
+  "generated": 10,
+  "missing": 39,
+  "failed": 0,
+  "directoryRenames": [],
+  "profiles": [
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Athletic_Bilbao\\毕尔巴鄂竞技.md",
+      "originalHash": "b0530769347ecdeb5296b6145490bdc95ee8ccaf4503f0f3beec8658fec66851",
+      "name": "毕尔巴鄂竞技",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Athletic_Bilbao\\毕尔巴鄂竞技.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\laLiga\\毕尔巴鄂竞技.md",
+      "archiveHash": "2f4485e35aec61fd42327094697903fe487ce10e04bf67b0bd0dfa4a247008a8",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Athletic_Bilbao\\Athletic_Bilbao.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Barcelona\\巴塞罗那.md",
+      "originalHash": "1f2d724cc49399f033e3b897d24b06c00a7cababb5bdb592075f36f30aa33049",
+      "name": "巴塞罗那",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Barcelona\\巴塞罗那.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\laLiga\\巴塞罗那.md",
+      "archiveHash": "72b1ec87f052ac806330d909c3ddd68683e378b5ab4e68b24db84d4e404caa0d",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Barcelona\\Barcelona.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Deportivo_La_Coruna\\拉科鲁尼亚.md",
+      "originalHash": "6f713c8543cc4e226d2244e3af6def490f67b67e7f31f17c3e14fdf875c655e7",
+      "name": "拉科鲁尼亚",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Deportivo_La_Coruna\\拉科鲁尼亚.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\laLiga\\拉科鲁尼亚.md",
+      "archiveHash": "0007f19c0401fc254556c2cb45f8d52a630dc03bb86289e0ed1e76b7f8137cc0",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Deportivo_La_Coruna\\Deportivo_La_Coruna.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Elche\\埃尔切.md",
+      "originalHash": "4720d542a4b322625ce3f060ee338f776eb76a9564af13154e8d4792e3f47e2e",
+      "name": "埃尔切",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Elche\\埃尔切.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\laLiga\\埃尔切.md",
+      "archiveHash": "072d54c8ed26516a9d191d07bf0eab73829f4f0f28a0a42cb55ff1620953ae72",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Elche\\Elche.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Malaga\\马拉加.md",
+      "originalHash": "80c1affb598eebc45f76fc313e99e44d79638355b85db8587a1e0c58e6093bf3",
+      "name": "马拉加",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Malaga\\马拉加.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\laLiga\\马拉加.md",
+      "archiveHash": "1617488d6b3d22ec3104c2e7b6cbd4a246b7ce828986c4389496f7b76c2b5c59",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Malaga\\Malaga.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Racing_Santander\\桑坦德竞技.md",
+      "originalHash": "606db90924ea4c15766d389e84a994a4a29daa7ae0383fcc98489e42a14835ac",
+      "name": "桑坦德竞技",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Racing_Santander\\桑坦德竞技.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\laLiga\\桑坦德竞技.md",
+      "archiveHash": "93fc187c3ca2e149532f53eb4fb33ca3925d8b649ffa344447853b964fd05e53",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Racing_Santander\\Racing_Santander.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\RCD_Espanyol\\西班牙人.md",
+      "originalHash": "73a762e25be532dab45cd2bf0ddfd7be1c11f1c37493b1022908a5c960e48aa0",
+      "name": "西班牙人",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\RCD_Espanyol\\西班牙人.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\laLiga\\西班牙人.md",
+      "archiveHash": "74bed598d75b58a58871685bf037b234f717790ad819d94a4cd3a7830c426406",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\RCD_Espanyol\\RCD_Espanyol.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Real_Betis\\皇家贝蒂斯.md",
+      "originalHash": "35e4e7853fd03c88005af547ea15f86c3683af11c096b1419053809d18fcf7e9",
+      "name": "皇家贝蒂斯",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Real_Betis\\皇家贝蒂斯.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\laLiga\\皇家贝蒂斯.md",
+      "archiveHash": "575f55c0ab88b2c49d727e7a3838418253d0481c17a53823a03e1f3f4374e1bc",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Real_Betis\\Real_Betis.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Real_Sociedad\\皇家社会.md",
+      "originalHash": "8b326878f0fe2ab9caf481e650ba48bcd677dca2a2b5d11edd990224c19ba729",
+      "name": "皇家社会",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Real_Sociedad\\皇家社会.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\laLiga\\皇家社会.md",
+      "archiveHash": "cbfffc9292e9d4c9b16c6aa084e77e06b862f40f367cfee3953f2cfcc44910ce",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Real_Sociedad\\Real_Sociedad.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Villarreal\\比利亚雷亚尔.md",
+      "originalHash": "1a098db06e8828180a229ac9aed34db13cf79f92b3b034fa2a0b3b59e74db4c3",
+      "name": "比利亚雷亚尔",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Villarreal\\比利亚雷亚尔.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\laLiga\\比利亚雷亚尔.md",
+      "archiveHash": "dec3880fd58659c439371486788091ed39b71f000419e4cf1458c124acc8739a",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\teamProfile\\Villarreal\\Villarreal.json",
+      "status": "generated"
+    }
+  ],
+  "issues": [
+    {
+      "teamId": "92",
+      "team": "毕尔巴鄂竞技",
+      "player": "埃吉鲁斯",
+      "number": null,
+      "field": "number",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\毕尔巴鄂竞技.md"
+    },
+    {
+      "teamId": "92",
+      "team": "毕尔巴鄂竞技",
+      "player": "埃吉鲁斯",
+      "number": null,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\毕尔巴鄂竞技.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\毕尔巴鄂竞技.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\92-new.json"
+      ]
+    },
+    {
+      "teamId": "92",
+      "team": "毕尔巴鄂竞技",
+      "player": "埃吉鲁斯",
+      "number": null,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\毕尔巴鄂竞技.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\毕尔巴鄂竞技.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\92-new.json"
+      ]
+    },
+    {
+      "teamId": "92",
+      "team": "毕尔巴鄂竞技",
+      "player": "埃吉鲁斯",
+      "number": null,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\毕尔巴鄂竞技.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\毕尔巴鄂竞技.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\92-new.json"
+      ]
+    },
+    {
+      "teamId": "92",
+      "team": "毕尔巴鄂竞技",
+      "player": "埃吉鲁斯",
+      "number": null,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\毕尔巴鄂竞技.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\毕尔巴鄂竞技.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\92-new.json"
+      ]
+    },
+    {
+      "teamId": "84",
+      "team": "巴塞罗那",
+      "player": "比西武",
+      "number": 27,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\巴塞罗那.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\巴塞罗那.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\84-new.json"
+      ]
+    },
+    {
+      "teamId": "84",
+      "team": "巴塞罗那",
+      "player": "比西武",
+      "number": 27,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\巴塞罗那.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\巴塞罗那.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\84-new.json"
+      ]
+    },
+    {
+      "teamId": "84",
+      "team": "巴塞罗那",
+      "player": "比西武",
+      "number": 27,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\巴塞罗那.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\巴塞罗那.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\84-new.json"
+      ]
+    },
+    {
+      "teamId": "84",
+      "team": "巴塞罗那",
+      "player": "比西武",
+      "number": 27,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\巴塞罗那.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\巴塞罗那.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\84-new.json"
+      ]
+    },
+    {
+      "teamId": "84",
+      "team": "巴塞罗那",
+      "player": "巴尔德吉",
+      "number": 19,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\巴塞罗那.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\巴塞罗那.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\84-new.json"
+      ]
+    },
+    {
+      "teamId": "84",
+      "team": "巴塞罗那",
+      "player": "巴尔德吉",
+      "number": 19,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\巴塞罗那.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\巴塞罗那.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\84-new.json"
+      ]
+    },
+    {
+      "teamId": "84",
+      "team": "巴塞罗那",
+      "player": "巴尔德吉",
+      "number": 19,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\巴塞罗那.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\巴塞罗那.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\84-new.json"
+      ]
+    },
+    {
+      "teamId": "84",
+      "team": "巴塞罗那",
+      "player": "巴尔德吉",
+      "number": 19,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\巴塞罗那.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\巴塞罗那.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\84-new.json"
+      ]
+    },
+    {
+      "teamId": "126",
+      "team": "埃尔切",
+      "player": "亚戈-圣地亚哥",
+      "number": 7,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\埃尔切.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\埃尔切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\126-new.json"
+      ]
+    },
+    {
+      "teamId": "126",
+      "team": "埃尔切",
+      "player": "亚戈-圣地亚哥",
+      "number": 7,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\埃尔切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\埃尔切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\126-new.json"
+      ]
+    },
+    {
+      "teamId": "126",
+      "team": "埃尔切",
+      "player": "亚戈-圣地亚哥",
+      "number": 7,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\埃尔切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\埃尔切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\126-new.json"
+      ]
+    },
+    {
+      "teamId": "126",
+      "team": "埃尔切",
+      "player": "亚戈-圣地亚哥",
+      "number": 7,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\埃尔切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\埃尔切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\126-new.json"
+      ]
+    },
+    {
+      "teamId": "126",
+      "team": "埃尔切",
+      "player": "博阿亚尔",
+      "number": 32,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\埃尔切.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\埃尔切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\126-new.json"
+      ]
+    },
+    {
+      "teamId": "126",
+      "team": "埃尔切",
+      "player": "博阿亚尔",
+      "number": 32,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\埃尔切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\埃尔切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\126-new.json"
+      ]
+    },
+    {
+      "teamId": "126",
+      "team": "埃尔切",
+      "player": "博阿亚尔",
+      "number": 32,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\埃尔切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\埃尔切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\126-new.json"
+      ]
+    },
+    {
+      "teamId": "126",
+      "team": "埃尔切",
+      "player": "博阿亚尔",
+      "number": 32,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\埃尔切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\埃尔切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\126-new.json"
+      ]
+    },
+    {
+      "teamId": "102",
+      "team": "马拉加",
+      "player": "阿龙-奥乔亚",
+      "number": 35,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\马拉加.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\马拉加.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\102-new.json"
+      ]
+    },
+    {
+      "teamId": "102",
+      "team": "马拉加",
+      "player": "阿龙-奥乔亚",
+      "number": 35,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\马拉加.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\马拉加.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\102-new.json"
+      ]
+    },
+    {
+      "teamId": "102",
+      "team": "马拉加",
+      "player": "阿龙-奥乔亚",
+      "number": 35,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\马拉加.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\马拉加.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\102-new.json"
+      ]
+    },
+    {
+      "teamId": "102",
+      "team": "马拉加",
+      "player": "阿龙-奥乔亚",
+      "number": 35,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\马拉加.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\马拉加.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\102-new.json"
+      ]
+    },
+    {
+      "teamId": "104",
+      "team": "桑坦德竞技",
+      "player": "阿龙-马丁",
+      "number": 3,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\桑坦德竞技.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\桑坦德竞技.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\104-new.json"
+      ]
+    },
+    {
+      "teamId": "104",
+      "team": "桑坦德竞技",
+      "player": "阿龙-马丁",
+      "number": 3,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\桑坦德竞技.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\桑坦德竞技.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\104-new.json"
+      ]
+    },
+    {
+      "teamId": "104",
+      "team": "桑坦德竞技",
+      "player": "阿龙-马丁",
+      "number": 3,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\桑坦德竞技.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\桑坦德竞技.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\104-new.json"
+      ]
+    },
+    {
+      "teamId": "104",
+      "team": "桑坦德竞技",
+      "player": "阿龙-马丁",
+      "number": 3,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\桑坦德竞技.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\桑坦德竞技.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\104-new.json"
+      ]
+    },
+    {
+      "teamId": "100",
+      "team": "西班牙人",
+      "player": "基克-加西亚",
+      "number": 19,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\西班牙人.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\西班牙人.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\100-new.json"
+      ]
+    },
+    {
+      "teamId": "100",
+      "team": "西班牙人",
+      "player": "基克-加西亚",
+      "number": 19,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\西班牙人.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\西班牙人.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\100-new.json"
+      ]
+    },
+    {
+      "teamId": "100",
+      "team": "西班牙人",
+      "player": "基克-加西亚",
+      "number": 19,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\西班牙人.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\西班牙人.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\100-new.json"
+      ]
+    },
+    {
+      "teamId": "100",
+      "team": "西班牙人",
+      "player": "基克-加西亚",
+      "number": 19,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\西班牙人.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\西班牙人.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\100-new.json"
+      ]
+    },
+    {
+      "teamId": "106",
+      "team": "皇家社会",
+      "player": "奥德里奥索拉",
+      "number": 20,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\皇家社会.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\皇家社会.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\106-new.json"
+      ]
+    },
+    {
+      "teamId": "106",
+      "team": "皇家社会",
+      "player": "奥德里奥索拉",
+      "number": 20,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\皇家社会.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\皇家社会.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\106-new.json"
+      ]
+    },
+    {
+      "teamId": "106",
+      "team": "皇家社会",
+      "player": "奥德里奥索拉",
+      "number": 20,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\皇家社会.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\皇家社会.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\106-new.json"
+      ]
+    },
+    {
+      "teamId": "106",
+      "team": "皇家社会",
+      "player": "奥德里奥索拉",
+      "number": 20,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\皇家社会.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\皇家社会.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\106-new.json"
+      ]
+    },
+    {
+      "teamId": "107",
+      "team": "比利亚雷亚尔",
+      "player": "尼扎尔-杰米利",
+      "number": 27,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\比利亚雷亚尔.md"
+    },
+    {
+      "teamId": "107",
+      "team": "比利亚雷亚尔",
+      "player": "尼扎尔-杰米利",
+      "number": 27,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\laLiga\\squad-final\\比利亚雷亚尔.md"
+    }
+  ],
+  "season": "2026-2027"
+}

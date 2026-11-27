@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>allsvenskan 2026 · teams · 客场积分榜</title>
+<link rel="stylesheet" href="../../../../../../shared-assets/element-plus/index.css"><link rel="stylesheet" href="../../../../../../shared-assets/ranking-table/table.css"></head>
+<body><main id="app" class="ranking-page" v-cloak>
+<header class="ranking-header"><h1>{{ title }}</h1><div class="ranking-tools"><el-input v-model="query" placeholder="搜索名称、ID 或表格内容" clearable aria-label="搜索排行榜"></el-input><el-text type="info">共 {{ total }} 条，当前显示 {{ filteredRows.length }} 条</el-text></div></header>
+<el-table class="ranking-table" :data="filteredRows" stripe border height="calc(100vh - 230px)" style="width: 100%" empty-text="暂无数据">
+<el-table-column v-for="column in columns" :key="column" :prop="column" :label="column" min-width="120" sortable show-overflow-tooltip>
+<template #default="scope"><span>{{ formatCell(scope.row[column], column) }}</span></template>
+</el-table-column></el-table><p class="ranking-note">点击表头可排序。缺失值保持缺失，不作为 0；排名采用原统计结果。</p><pre class="ranking-missing" style="white-space:pre-wrap">比分计算榜：胜3分、平1分、负0分；按积分、净胜球、进球排序，不含纪律扣分。
+
+## 待补数据
+
+无待补数据。
+</pre></main>
+<script id="ranking-data" type="application/json">{"title":"allsvenskan 2026 · teams · 客场积分榜","rows":[{"名次":1,"球队":"天狼星","赛":13,"胜":10,"平":1,"负":2,"进":28,"失":15,"净":13,"积分":31},{"名次":2,"球队":"尤尔加登","赛":13,"胜":9,"平":2,"负":2,"进":21,"失":8,"净":13,"积分":29},{"名次":3,"球队":"哈马比","赛":14,"胜":7,"平":3,"负":4,"进":20,"失":15,"净":5,"积分":24},{"名次":4,"球队":"马尔默","赛":13,"胜":7,"平":3,"负":3,"进":16,"失":13,"净":3,"积分":24},{"名次":5,"球队":"赫根","赛":13,"胜":6,"平":5,"负":2,"进":22,"失":12,"净":10,"积分":23},{"名次":6,"球队":"索尔纳","赛":14,"胜":6,"平":5,"负":3,"进":22,"失":18,"净":4,"积分":23},{"名次":7,"球队":"瓦斯特拉斯","赛":13,"胜":7,"平":1,"负":5,"进":20,"失":23,"净":-3,"积分":22},{"名次":8,"球队":"埃尔夫斯堡","赛":14,"胜":4,"平":6,"负":4,"进":19,"失":21,"净":-2,"积分":18},{"名次":9,"球队":"布洛马波卡纳","赛":14,"胜":5,"平":3,"负":6,"进":24,"失":29,"净":-5,"积分":18},{"名次":10,"球队":"哥德堡","赛":14,"胜":4,"平":4,"负":6,"进":19,"失":32,"净":-13,"积分":16},{"名次":11,"球队":"米亚尔比","赛":13,"胜":3,"平":6,"负":4,"进":18,"失":22,"净":-4,"积分":15},{"名次":12,"球队":"哥德堡盖斯","赛":13,"胜":4,"平":2,"负":7,"进":15,"失":20,"净":-5,"积分":14},{"名次":13,"球队":"代格福什","赛":14,"胜":2,"平":3,"负":9,"进":10,"失":26,"净":-16,"积分":9},{"名次":14,"球队":"奥尔格里特","赛":14,"胜":2,"平":1,"负":11,"进":11,"失":36,"净":-25,"积分":7},{"名次":15,"球队":"卡尔马","赛":14,"胜":1,"平":3,"负":10,"进":9,"失":21,"净":-12,"积分":6},{"名次":16,"球队":"哈尔姆斯塔德","赛":14,"胜":1,"平":3,"负":10,"进":9,"失":29,"净":-20,"积分":6}],"columns":["名次","球队","赛","胜","平","负","进","失","净","积分"]}</script>
+<script src="../../../../../../shared-assets/vue/vue.global.prod.js"></script><script src="../../../../../../shared-assets/element-plus/index.full.min.js"></script><script src="../../../../../../shared-assets/element-plus/zh-cn.min.js"></script>
+<script src="../../../../../../shared-assets/ranking-table/useRankingTable.js"></script><script src="../../../../../../shared-assets/ranking-table/main.js"></script></body></html>

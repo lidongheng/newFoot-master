@@ -1,4 +1,6 @@
 const path = require('path');
+const fs = require('fs');
+const profileDataUtil = require('../utils/teamProfileData');
 const BaseCrawler = require('../crawlers/base');
 const config = require('../config');
 const { readJSON, readFile, saveMarkdown, fileExists } = require('../utils/fileWriter');
@@ -317,11 +319,12 @@ class TeamProfileGenerator extends BaseCrawler {
    */
   getTeamProfilePath(teamInfo, scheduleData) {
     const profileRoot = path.join(config.paths.cupAnalyzer, 'teamProfile');
+    const directory = profileDataUtil.teamDirectory(config.paths.cupAnalyzer, teamInfo);
     if (isWorldCupNationalContext()) {
       const letter = this.findGroupLetterForTeam(teamInfo.id, scheduleData);
-      if (letter) return path.join(profileRoot, `group-${letter}`, `${teamInfo.chineseName}.md`);
+      if (letter) return path.join(profileRoot, `group-${letter}`, directory, `${teamInfo.chineseName}.md`);
     }
-    return path.join(profileRoot, `${teamInfo.chineseName}.md`);
+    return path.join(profileRoot, directory, `${teamInfo.chineseName}.md`);
   }
 
   /**
@@ -719,6 +722,7 @@ class TeamProfileGenerator extends BaseCrawler {
         nationality: parts[nationalityIndex] || '-',
         marketValue: parts[7] || '-',
         ability: abilityIndex === null ? '-' : parts[abilityIndex] || '-',
+        transferSummary: tableColumnMap && tableColumnMap['转会记录'] != null ? parts[tableColumnMap['转会记录']] : null,
         positionGroup: currentGroup,
       };
       // 国家队名单按表头读取分析器统计，避免新增列影响俱乐部、号码和位置字段。
@@ -1736,22 +1740,50 @@ class TeamProfileGenerator extends BaseCrawler {
    * 获取单个球队画像
    */
   async getProfile(teamName) {
-    if (isWorldCupNationalContext()) {
-      const scheduleData = this.parseScheduleData();
-      if (scheduleData) {
-        const teamMap = this.buildTeamMap(scheduleData.arrTeam);
-        const team = Object.values(teamMap).find((t) => t.chineseName === teamName);
-        if (team) {
-          const groupedPath = this.getTeamProfilePath(team, scheduleData);
-          if (fileExists(groupedPath)) return readFile(groupedPath);
-        }
+    const root = path.join(config.paths.cupAnalyzer, 'teamProfile');
+    const matches = [];
+    function visit(directory) {
+      if (!fs.existsSync(directory)) return;
+      for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+        const file = path.join(directory, entry.name);
+        if (entry.isDirectory()) visit(file);
+        else if (entry.name === `${teamName}.md`) matches.push(file);
       }
     }
-    const profilePath = path.join(config.paths.cupAnalyzer, 'teamProfile', `${teamName}.md`);
-    if (fileExists(profilePath)) {
-      return readFile(profilePath);
-    }
+    visit(root);
+    if (matches.length > 1) throw new Error(`球队画像不唯一：${teamName}`);
+    if (matches.length === 1) return readFile(matches[0]);
     return null;
+  }
+
+  /** MD 与 JSON 使用相同的名单和统计；缺失项单独列出供人工补充。 */
+  writeProfile(team, scheduleData, players, meta, md) {
+    const mdPath = this.getTeamProfilePath(team, scheduleData);
+    if (fileExists(mdPath)) {
+      const sections = readFile(mdPath).split(/(?=^##\s)/m).filter((section) => /^##\s/.test(section));
+      for (const section of sections) {
+        const title = section.split('\n')[0].trim();
+        if (/^##\s+[一二三四五六七八九十]+、/.test(title) || title === '## 待补数据') continue;
+        if (!md.includes(title)) md += '\n\n' + section.trimEnd();
+      }
+    }
+    const profilePlayers = this.overlayAnalyzerStatsOnSquadPlayers(players, meta.analyzerReport && meta.analyzerReport.players);
+    const season = profileDataUtil.profileSeason(meta.finalPath, config.paths.cupScheduleData);
+    const rawPath = path.join(config.paths.playerCenter, `${team.id}.json`);
+    const exported = profileDataUtil.profileData(team, season, profilePlayers, meta.dataSource, meta.finalPath, rawPath);
+    const statsPath = path.join(config.paths.playerCenter, `${team.id}-new.json`);
+    exported.data.sourceFiles = { squad: meta.finalPath, rawPlayers: rawPath, seasonStats: statsPath };
+    for (const issue of exported.issues) {
+      if (['appearances', 'starts', 'goals', 'assists'].includes(issue.field)) issue.files = [issue.file, statsPath];
+    }
+    const directory = path.dirname(mdPath);
+    const jsonPath = path.join(directory, `${path.basename(directory)}.json`);
+    saveMarkdown(mdPath, `${md.replace(/\n## 待补数据[\s\S]*$/, '').trimEnd()}\n\n${profileDataUtil.missingMarkdown(exported.issues)}`);
+    fs.writeFileSync(jsonPath, JSON.stringify(exported.data, null, 2) + '\n', 'utf8');
+    fs.writeFileSync(path.join(directory, 'missingData.json'), JSON.stringify(exported.issues, null, 2) + '\n', 'utf8');
+    if (exported.issues.length) this.log(`待补数据 ${exported.issues.length} 项：${path.join(directory, 'missingData.json')}；补齐后重新运行画像命令。`);
+    else this.log('无待补数据。');
+    return { mdPath, jsonPath, missingData: exported.issues };
   }
 
   /**
@@ -1768,13 +1800,14 @@ class TeamProfileGenerator extends BaseCrawler {
 
     const teamMap = this.buildTeamMap(scheduleData.arrTeam);
     const realTeams = Object.values(teamMap).filter((t) => t.id < 36185);
-    const results = { success: [], noData: [], failed: [] };
+    const results = { success: [], noData: [], failed: [], missingData: [] };
 
     for (const team of realTeams) {
       const { players, dataSource, finalPath, coach, formation, injured, doubtful, manualSections } =
         this.resolvePlayers(team, scheduleData, source);
       if (!players || players.length === 0) {
         results.noData.push(team.chineseName);
+        results.missingData.push({ teamId: String(team.id), team: team.chineseName, file: path.join(config.paths.squadFinal, `${team.chineseName}.md`), reason: '缺少可用名单，请补充后重新生成' });
         continue;
       }
 
@@ -1791,7 +1824,8 @@ class TeamProfileGenerator extends BaseCrawler {
           showPlayerDetails: options.showPlayerDetails,
         });
         const mdPath = this.getTeamProfilePath(team, scheduleData);
-        saveMarkdown(mdPath, md);
+        const output = this.writeProfile(team, scheduleData, players, { dataSource, finalPath, analyzerReport }, md);
+        results.missingData.push(...output.missingData);
         this.syncSquadFinalStatsAfterProfile(finalPath, players, dataSource);
         results.success.push(team.chineseName);
       } catch (err) {
@@ -1801,6 +1835,11 @@ class TeamProfileGenerator extends BaseCrawler {
     }
 
     this.log(`\n画像生成完成: 成功${results.success.length} 无数据${results.noData.length} 失败${results.failed.length}`);
+    const missingFile = path.join(config.paths.cupAnalyzer, 'teamProfile', 'missingData.json');
+    fs.mkdirSync(path.dirname(missingFile), { recursive: true });
+    fs.writeFileSync(missingFile, JSON.stringify(results.missingData, null, 2) + '\n', 'utf8');
+    if (results.missingData.length || results.noData.length) this.log(`请补充 ${results.missingData.length} 项数据，含 ${results.noData.length} 队名单；详情见 ${missingFile}。`);
+    else this.log('无待补数据。');
     return results;
   }
 
@@ -1857,10 +1896,12 @@ class TeamProfileGenerator extends BaseCrawler {
           showPlayerDetails: options.showPlayerDetails,
       });
       const mdPath = this.getTeamProfilePath(team, scheduleData);
-      saveMarkdown(mdPath, md);
+      const { jsonPath, missingData } = this.writeProfile(team, scheduleData, players, { dataSource, finalPath, analyzerReport }, md);
       this.syncSquadFinalStatsAfterProfile(finalPath, players, dataSource);
       this.log(`单队画像完成: ${team.chineseName} → ${mdPath}（来源: ${dataSource}）`);
-      return { team, mdPath, dataSource };
+      if (missingData.length) this.log(`请补充 ${missingData.length} 项数据：${path.join(path.dirname(mdPath), 'missingData.json')}，然后重新生成。`);
+      else this.log('无待补数据。');
+      return { team, mdPath, jsonPath, dataSource };
     } catch (err) {
       this.error(`画像生成失败: ${err.message}`);
       return null;

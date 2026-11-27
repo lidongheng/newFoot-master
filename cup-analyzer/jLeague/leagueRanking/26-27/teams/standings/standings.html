@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>jLeague 2026-2027 · teams · 积分榜</title>
+<link rel="stylesheet" href="../../../../../../shared-assets/element-plus/index.css"><link rel="stylesheet" href="../../../../../../shared-assets/ranking-table/table.css"></head>
+<body><main id="app" class="ranking-page" v-cloak>
+<header class="ranking-header"><h1>{{ title }}</h1><div class="ranking-tools"><el-input v-model="query" placeholder="搜索名称、ID 或表格内容" clearable aria-label="搜索排行榜"></el-input><el-text type="info">共 {{ total }} 条，当前显示 {{ filteredRows.length }} 条</el-text></div></header>
+<el-table class="ranking-table" :data="filteredRows" stripe border height="calc(100vh - 230px)" style="width: 100%" empty-text="暂无数据">
+<el-table-column v-for="column in columns" :key="column" :prop="column" :label="column" min-width="120" sortable show-overflow-tooltip>
+<template #default="scope"><span>{{ formatCell(scope.row[column], column) }}</span></template>
+</el-table-column></el-table><p class="ranking-note">点击表头可排序。缺失值保持缺失，不作为 0；排名采用原统计结果。</p><pre class="ranking-missing" style="white-space:pre-wrap">比分计算榜：胜3分、平1分、负0分；按积分、净胜球、进球排序，不含纪律扣分。
+
+## 待补数据
+
+无待补数据。
+</pre></main>
+<script id="ranking-data" type="application/json">{"title":"jLeague 2026-2027 · teams · 积分榜","rows":[{"名次":1,"球队":"FC东京","赛":16,"胜":11,"平":4,"负":1,"进":38,"失":10,"净":28,"积分":37},{"名次":2,"球队":"广岛三箭","赛":16,"胜":9,"平":5,"负":2,"进":36,"失":14,"净":22,"积分":32},{"名次":3,"球队":"柏太阳神","赛":15,"胜":10,"平":1,"负":4,"进":31,"失":21,"净":10,"积分":31},{"名次":4,"球队":"町田泽维亚","赛":15,"胜":8,"平":6,"负":1,"进":30,"失":10,"净":20,"积分":30},{"名次":5,"球队":"川崎前锋","赛":16,"胜":8,"平":4,"负":4,"进":31,"失":25,"净":6,"积分":28},{"名次":6,"球队":"神户胜利船","赛":15,"胜":8,"平":3,"负":4,"进":24,"失":16,"净":8,"积分":27},{"名次":7,"球队":"横滨水手","赛":16,"胜":6,"平":8,"负":2,"进":25,"失":18,"净":7,"积分":26},{"名次":8,"球队":"鹿岛鹿角","赛":15,"胜":7,"平":3,"负":5,"进":30,"失":25,"净":5,"积分":24},{"名次":9,"球队":"冈山绿雉","赛":16,"胜":7,"平":2,"负":7,"进":19,"失":22,"净":-3,"积分":23},{"名次":10,"球队":"浦和红钻","赛":16,"胜":7,"平":2,"负":7,"进":26,"失":33,"净":-7,"积分":23},{"名次":11,"球队":"京都不死鸟","赛":15,"胜":5,"平":4,"负":6,"进":21,"失":24,"净":-3,"积分":19},{"名次":12,"球队":"名古屋鲸八","赛":16,"胜":5,"平":3,"负":8,"进":17,"失":24,"净":-7,"积分":18},{"名次":13,"球队":"大阪樱花","赛":16,"胜":4,"平":6,"负":6,"进":18,"失":30,"净":-12,"积分":18},{"名次":14,"球队":"千叶市原","赛":16,"胜":4,"平":4,"负":8,"进":18,"失":26,"净":-8,"积分":16},{"名次":15,"球队":"东京绿茵","赛":16,"胜":3,"平":6,"负":7,"进":12,"失":23,"净":-11,"积分":15},{"名次":16,"球队":"水户蜀葵","赛":16,"胜":4,"平":3,"负":9,"进":15,"失":27,"净":-12,"积分":15},{"名次":17,"球队":"清水鼓动","赛":16,"胜":4,"平":3,"负":9,"进":11,"失":26,"净":-15,"积分":15},{"名次":18,"球队":"长崎成功丸","赛":16,"胜":3,"平":5,"负":8,"进":18,"失":24,"净":-6,"积分":14},{"名次":19,"球队":"大阪钢巴","赛":15,"胜":2,"平":6,"负":7,"进":16,"失":25,"净":-9,"积分":12},{"名次":20,"球队":"福冈黄蜂","赛":16,"胜":2,"平":2,"负":12,"进":15,"失":28,"净":-13,"积分":8}],"columns":["名次","球队","赛","胜","平","负","进","失","净","积分"]}</script>
+<script src="../../../../../../shared-assets/vue/vue.global.prod.js"></script><script src="../../../../../../shared-assets/element-plus/index.full.min.js"></script><script src="../../../../../../shared-assets/element-plus/zh-cn.min.js"></script>
+<script src="../../../../../../shared-assets/ranking-table/useRankingTable.js"></script><script src="../../../../../../shared-assets/ranking-table/main.js"></script></body></html>

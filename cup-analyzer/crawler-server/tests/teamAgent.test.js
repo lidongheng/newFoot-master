@@ -66,7 +66,7 @@ test('初始化复用 Barcelona、保留原 workflow，重跑不覆盖文件或�
 test('已有配置与赛程冲突时报告且不覆盖', (t) => {
   const f = fixture(t);
   initializeLeague(f.slug, f.league);
-  const file = path.join(f.league.paths.cupAnalyzer, 'teamAgent', 'FC Barcelona', 'config.js');
+  const file = path.join(f.league.paths.cupAnalyzer, 'teamAgent', 'FC_Barcelona', 'config.js');
   const old = fs.readFileSync(file, 'utf8').replace('2026-2027', '2025-2026');
   fs.writeFileSync(file, old);
   delete require.cache[require.resolve(file)];
@@ -139,7 +139,7 @@ test('单队完整性判断排除错 ID、缺文件、缺终场、空统计和�
 test('完整数据跳过、不完整数据重采、请求串行间隔、失败继续且返回非零码', async (t) => {
   const f = fixture(t);
   initializeLeague(f.slug, f.league);
-  const file = path.join(f.league.paths.cupAnalyzer, 'teamAgent', 'FC Barcelona', 'config.js');
+  const file = path.join(f.league.paths.cupAnalyzer, 'teamAgent', 'FC_Barcelona', 'config.js');
   const loaded = loadTeamTarget(file, f.leagues);
   loaded.schedule.rounds.R_1 = [1, 2, 3, 4].map((id) => [id, 31, -1, '', 84, 82, '2-1']);
   writeMatch(path.join(loaded.outputDir, '1'), 1);

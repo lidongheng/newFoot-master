@@ -36,7 +36,7 @@ ${status}
 
 - 球队名单、比赛 ID、主客队和赛季取自本赛事本地赛程：\`data/${path.basename(league.paths.cupScheduleData)}\`，不回退读取其他赛季。
 - 赛后数据源为球探移动端 \`https://m.titan007.com/Analy/ShiJian/{matchId}.htm\`，复用已迁移的 PostMatchDataCrawler。
-- 球队目录使用赛程英文名，Windows 禁止字符替换为下划线并去除末尾空格和句点；同名附加球队 ID。已有 Barcelona 对应球探 ID 84，保留原目录名。
+- 球队目录使用赛程英文名，Windows 禁止字符和空白替换为下划线，并去除末尾空格和句点；同名附加球队 ID。已有 Barcelona 对应球探 ID 84，保留原目录名。
 - 每队 \`config.js\` 为 CommonJS：\`leagueSlug\` 为本赛事目录名（${slug}）；\`leagueSerial\` 为球探赛事序号（${league.cupSerial}）；\`season\` 为赛程完整赛季；\`teamSerial\` 为球队 ID；\`teamChineseName\`、\`teamEnglishName\` 为赛程中英文名。序号使用字符串。
 - 每个球队只收集本目录对应赛事的已完赛比赛，包含杯赛资格赛；不混入该队其他联赛或杯赛。
 - 数据目录为 \`{球队}/basicData/{短赛季}/{matchId}/\`；如 2026-2027 对应 26-27，单年 2026 保持不变。

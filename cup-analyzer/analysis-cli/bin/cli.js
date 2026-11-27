@@ -33,7 +33,7 @@ function main(args) {
   const report = buildReport(context, dataset, normalized, options);
   const { writeReport } = require('../src/renderers');
   const directory = writeReport(context, report);
-  return { directory, scope: options.scope, availableMatches: report.metadata.availableMatches, expectedMatches: report.metadata.expectedMatches, teamRecords: report.metadata.teamRecords, playerRecords: report.metadata.playerRecords, issues: report.metadata.issueCount };
+  return { directory, scope: options.scope, availableMatches: report.metadata.availableMatches, expectedMatches: report.metadata.expectedMatches, teamRecords: report.metadata.teamRecords, playerRecords: report.metadata.playerRecords, issues: report.metadata.issueCount, missingDataCount: report.missingData.length, reminder: report.missingData.length ? '请补充 teams/missingData.json 中的数据后重新生成' : '无待补数据' };
 }
 
 if (require.main === module) {

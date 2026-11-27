@@ -59,7 +59,7 @@
 
 伤停调整：30-本坦库尔（热刺官网确认本场停赛）；17-萨维奥（热刺官网确认肌肉伤缺数周）。扣除后仅余 9 人，不补位、不重排。
 
-来源：`teamProfile/托特纳姆热刺.md`（数据源：自动生成 | 基于squad-final 确认名单分析；画像未注明统计截至轮次）
+来源：`teamProfile/Tottenham_Hotspur/托特纳姆热刺.md`（数据源：自动生成 | 基于squad-final 确认名单分析；画像未注明统计截至轮次）
 
 ### 6、客队预测首发
 
@@ -69,7 +69,7 @@
 
 伤停调整：24-阿门达（热刺官网本场信息列为考文垂伤缺）。扣除后仅余 10 人，不补位、不重排。
 
-来源：`teamProfile/考文垂.md`（数据源：自动生成 | 基于squad-final 确认名单分析；画像未注明统计截至轮次）
+来源：`teamProfile/Coventry_City/考文垂.md`（数据源：自动生成 | 基于squad-final 确认名单分析；画像未注明统计截至轮次）
 
 ### 7、预测总结
 
@@ -326,7 +326,7 @@ Fair 推导链：项目英超档次文件只有 25/26 分档，不能套用到�
 | 75 分钟后进球 | cup-analyzer/epl/data/td36.js | 文件更新时间 2026-10-18 22:59（UTC+8） | 文件内容 | 当前文件是 HTML，目标字段不可读 |
 | 赔率背景 | cup-analyzer/epl/data/冠军赔率.md、cup-analyzer/epl/data/降级赔率.md | 26/27；采集至 2026-10-16 与 2026-10-18 | 冠军、降级赔率 | 已读取；不是实时盘口 |
 | 球队与外部赛程映射 | cup-analyzer/epl/data/config.json | 当前本地配置 | Tottenham=33、Coventry=57 及 qiutanSerial | 已核验；对应 schedule JSON 缺失 |
-| 双方大名单与画像预测行 | cup-analyzer/epl/squad-final/托特纳姆热刺.md、cup-analyzer/epl/squad-final/考文垂.md、cup-analyzer/epl/teamProfile/托特纳姆热刺.md、cup-analyzer/epl/teamProfile/考文垂.md | 两份 squad-final 标注 2026-2027、第 7 轮并标记待审核；画像头部标注“自动生成 | 基于squad-final 确认名单分析”，未注明赛季和统计截至轮次 | 名单、画像阵型及预测首发 | 球队及 squad-final 赛季/轮次与本场对应；画像统计轮次未注明；热刺按本场确认伤停扣除 2 人，考文垂按热刺官网本场信息扣除阿门达 1 人 |
+| 双方大名单与画像预测行 | cup-analyzer/epl/squad-final/托特纳姆热刺.md、cup-analyzer/epl/squad-final/考文垂.md、cup-analyzer/epl/teamProfile/Tottenham_Hotspur/托特纳姆热刺.md、cup-analyzer/epl/teamProfile/Coventry_City/考文垂.md | 两份 squad-final 标注 2026-2027、第 7 轮并标记待审核；画像头部标注“自动生成 | 基于squad-final 确认名单分析”，未注明赛季和统计截至轮次 | 名单、画像阵型及预测首发 | 球队及 squad-final 赛季/轮次与本场对应；画像统计轮次未注明；热刺按本场确认伤停扣除 2 人，考文垂按热刺官网本场信息扣除阿门达 1 人 |
 | 最新 dh-epl-analysis 规则 | .cursor/rules/dh-epl-analysis/SKILL.md | 截点读取的仓库版本 | 画像预测行扣除规则、Fair/Δ、下注分类和输出要求 | 已按当前版本执行 |
 | Fair 档次规则 | .cursor/rules/dh-match-predict-analysis/references/epl-team-strength.md | 规则仅列 25/26 档次 | Fair 所需强度档次 | 已读取；本季缺少对应档次 |
 | 本场官方新闻 | https://www.tottenhamhotspur.com/news/1178784/spurs-vs-coventry-every-word-of-roberto-de-zerbis-pre-match-press-conference | 2026-10-18 | 热刺伤停、停赛、主帅表态 | 官方；时分及发布时区未公开 |
@@ -348,15 +348,15 @@ Fair 推导链：项目英超档次文件只有 25/26 分档，不能套用到�
 
 | 缺项 | 路径/字段 | 对分析的影响 | 当前处理 |
 |---|---|---|---|
-| 两队画像未注明统计截至轮次 | cup-analyzer/epl/teamProfile/托特纳姆热刺.md；cup-analyzer/epl/teamProfile/考文垂.md | 无法判断画像球员统计具体截至哪一轮 | 按画像原行预测并扣除有本场确认的热刺缺阵；不自行推定统计截止轮次或用脚本重算 |
-| 热刺画像预测首发剩余人数 | cup-analyzer/epl/teamProfile/托特纳姆热刺.md；热刺官网本场伤停消息及停赛公告 | 扣除 30-本坦库尔与 17-萨维奥后仅 9/11 人 | 标记预测不完整、缺项 2 席，不补人、不重排 |
+| 两队画像未注明统计截至轮次 | cup-analyzer/epl/teamProfile/Tottenham_Hotspur/托特纳姆热刺.md；cup-analyzer/epl/teamProfile/Coventry_City/考文垂.md | 无法判断画像球员统计具体截至哪一轮 | 按画像原行预测并扣除有本场确认的热刺缺阵；不自行推定统计截止轮次或用脚本重算 |
+| 热刺画像预测首发剩余人数 | cup-analyzer/epl/teamProfile/Tottenham_Hotspur/托特纳姆热刺.md；热刺官网本场伤停消息及停赛公告 | 扣除 30-本坦库尔与 17-萨维奥后仅 9/11 人 | 标记预测不完整、缺项 2 席，不补人、不重排 |
 | squad-final 名单审核 | cup-analyzer/epl/squad-final/托特纳姆热刺.md；cup-analyzer/epl/squad-final/考文垂.md | 两份文件头均提示“待审核” | 保留该审核状态；画像预测行按技能要求作为底稿，伤停另按本场消息核验 |
 | 全赛事球队赛程 JSON | cup-analyzer/crawler-server/output/33-schedule.json、57-schedule.json | 无法按本地规则复核两队未来 14 天所有比赛及完整间隔 | 使用官方公开的一线队赛程补充；明确来源不同 |
 | 球探页未来赛程口径 | 球探分析页 `futureMatches`；返回年份代码 27，与官方公布的 2026 年赛程不符 | 可能导致休息间隔和赛程判断错一年 | 不采用球探页未来赛程；以英超官方赛程为准 |
 | 75 分钟后进球数据 | cup-analyzer/epl/data/td36.js | 无法报告两队 75 分钟后总进球、排名和分段 | 文件内容为 HTML，不用其他赛季或平均值补齐 |
 | 本赛季实力档次 | .cursor/rules/dh-match-predict-analysis/references/epl-team-strength.md | 无法按项目方法推导本场 Fair | 标记 Fair、Δ 缺失，不自行设档 |
 | 初盘与正式临场报价历史 | s36.js 盘口字段、赔率页面历史接口 | 无法确认开盘价、变盘过程和最终临场价 | 报告各自实际可见快照，不合并、不分类 |
-| 考文垂画像预测首发剩余人数 | cup-analyzer/epl/teamProfile/考文垂.md；热刺官网本场伤停信息 | 扣除 24-阿门达后仅 10/11 人 | 标记预测不完整、缺项 1 席，不补人、不重排 |
+| 考文垂画像预测首发剩余人数 | cup-analyzer/epl/teamProfile/Coventry_City/考文垂.md；热刺官网本场伤停信息 | 扣除 24-阿门达后仅 10/11 人 | 标记预测不完整、缺项 1 席，不补人、不重排 |
 | 本场官方首发 | 开球前实际阵容名单 | 截至 2026-10-19 22:58（UTC+8）未公布，距开球约 4 小时；预测无法替代实际首发 | 保留实际首发表头，不填球员 |
 | 本场新闻素材目录 | cup-analyzer/epl/news/26-27/round-7/tottenham_vs_coventry/ | 没有本地归档的赛前新闻和名单 | 使用外部可核验链接并区分官方与媒体 |
 | 亚盘周期盈亏 HTML | cup-analyzer/crawler-server/config/squadTarget.js | 配置当前指向曼彻斯特城、round 8、matchSerial 2906967，与本场 3003918/round 7/热刺不匹配 | 未运行、未改配置；按技能要求跳过 |

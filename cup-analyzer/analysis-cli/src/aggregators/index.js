@@ -1,3 +1,4 @@
+const { SPECIAL, buildTeamIndicators } = require('./teamIndicators');
 const { metricsFor } = require('../metrics');
 
 function selectMatches(context, options) {
@@ -81,7 +82,10 @@ function buildReport(context, dataset, normalized, options) {
     inputs: dataset.inputs.filter((input) => ids.has(input.matchId)),
   };
   const sampleCounts = new Map([...selected].map(([id, set]) => [id, set.size]));
-  const teams = aggregate('teams', teamMatches, metricsFor('teams', options.metrics), context.teams.filter((team) => selected.has(team.id)), sampleCounts);
+  const teams = aggregate('teams', teamMatches, metricsFor('teams', options.metrics).filter((metric) => !SPECIAL.includes(metric.id)), context.teams.filter((team) => selected.has(team.id)), sampleCounts);
+  const indicators = buildTeamIndicators(context, selected, dataset, options);
+  Object.assign(teams.rankings, indicators.rankings);
+  teams.metrics.push(...Object.values(indicators.rankings).map((ranking) => ranking.metric));
   const players = aggregate('players', playerMatches, metricsFor('players', options.metrics), [], sampleCounts);
   for (const group of [teams, players]) group.metadata = metadata;
   const unavailable = [];
@@ -92,7 +96,7 @@ function buildReport(context, dataset, normalized, options) {
       }
     }
   }
-  return { metadata, teams, players, matches, teamMatches, playerMatches, quality, unavailable };
+  return { metadata, teams, players, matches, teamMatches, playerMatches, quality, unavailable, missingData: indicators.missing };
 }
 
 module.exports = { selectMatches, aggregate, buildReport };

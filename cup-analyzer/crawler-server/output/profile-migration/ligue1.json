@@ -1,0 +1,762 @@
+{
+  "league": "ligue1",
+  "originalProfiles": 8,
+  "migrated": 0,
+  "generated": 8,
+  "missing": 58,
+  "failed": 0,
+  "directoryRenames": [],
+  "profiles": [
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Angers\\昂热.md",
+      "originalHash": "dadf13ba6a895d3c8c9cdd7a43761906a745ac9eb30c7d291a5af6806ef61127",
+      "name": "昂热",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Angers\\昂热.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\ligue1\\昂热.md",
+      "archiveHash": "5927f9036cc6f8dba735023dd2c8e4bc25dd4d7124c1a0786f0b0ef3554d39ce",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Angers\\Angers.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Le_Mans\\勒芒.md",
+      "originalHash": "220ee25f8bacf9b8caf7c471f8880355689a82b1a2cec0d664094d3e4408d283",
+      "name": "勒芒",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Le_Mans\\勒芒.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\ligue1\\勒芒.md",
+      "archiveHash": "4c30b58f85c610cbaf7b5e658e12f21d0defb31f6e4f80cd55daedbb29cb5a19",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Le_Mans\\Le_Mans.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Marseille\\马赛.md",
+      "originalHash": "ac701addf0747277a7adc86943f8627894fb576bb977457433613d93eab20f09",
+      "name": "马赛",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Marseille\\马赛.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\ligue1\\马赛.md",
+      "archiveHash": "2f61c2f3dcdad7a338b460f697fd4f47bd7b36bd1f249d52239392dcf51e278c",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Marseille\\Marseille.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Paris_FC\\巴黎FC.md",
+      "originalHash": "e6770848de633bea0e3d447238351a5782e99ebb0e2d92a995eed3763f48351d",
+      "name": "巴黎FC",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Paris_FC\\巴黎FC.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\ligue1\\巴黎FC.md",
+      "archiveHash": "077276c8fb208dcf66d08714c7f203c43428703f53bbb1fb6a4dbabf7a8067b8",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Paris_FC\\Paris_FC.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Paris_Saint_Germain_(PSG)\\巴黎圣日耳曼.md",
+      "originalHash": "4ff97d4fcaa7451096d8e9d2042fdd4588a9110dbae4deea9160e5a55dcd167b",
+      "name": "巴黎圣日耳曼",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Paris_Saint_Germain_(PSG)\\巴黎圣日耳曼.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\ligue1\\巴黎圣日耳曼.md",
+      "archiveHash": "399cdf42ba76da39ddc2188c0aa34a82c958bf8906fa6f86d094ded28f69a251",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Paris_Saint_Germain_(PSG)\\Paris_Saint_Germain_(PSG).json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Rennes\\雷恩.md",
+      "originalHash": "d7e684db388e65fca03f5235a6be6f538f60d09962c56c8cf71b1a596112c29f",
+      "name": "雷恩",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Rennes\\雷恩.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\ligue1\\雷恩.md",
+      "archiveHash": "3c897f945433e7fc1dda132e04ecf6ab2d5cdcf8e98987e5cb5fae305c5bf132",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Rennes\\Rennes.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Strasbourg\\斯特拉斯堡.md",
+      "originalHash": "5bfade544fac9f69ce408c28dd52b32b48bad062c64726d43c2338d199e69500",
+      "name": "斯特拉斯堡",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Strasbourg\\斯特拉斯堡.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\ligue1\\斯特拉斯堡.md",
+      "archiveHash": "34f00d9f03508c79fd3493b8b7b74b26860d46d77768848b890ddc9f512fda35",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Strasbourg\\Strasbourg.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Toulouse\\图卢兹.md",
+      "originalHash": "16751bdf1be81ea2b80ffb18a5e8dc9dcdc4b382a6060f9551f768899431725d",
+      "name": "图卢兹",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Toulouse\\图卢兹.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\ligue1\\图卢兹.md",
+      "archiveHash": "642693baa0aa8d97ab098deea0a777d8073e21baf79d23a5cc6d01526db5a4c4",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\teamProfile\\Toulouse\\Toulouse.json",
+      "status": "generated"
+    }
+  ],
+  "issues": [
+    {
+      "teamId": "304",
+      "team": "昂热",
+      "player": "热尔尼贡",
+      "number": 34,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\昂热.md"
+    },
+    {
+      "teamId": "304",
+      "team": "昂热",
+      "player": "哈鲁纳-吉比林",
+      "number": 31,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\昂热.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\昂热.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\304-new.json"
+      ]
+    },
+    {
+      "teamId": "304",
+      "team": "昂热",
+      "player": "哈鲁纳-吉比林",
+      "number": 31,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\昂热.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\昂热.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\304-new.json"
+      ]
+    },
+    {
+      "teamId": "304",
+      "team": "昂热",
+      "player": "哈鲁纳-吉比林",
+      "number": 31,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\昂热.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\昂热.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\304-new.json"
+      ]
+    },
+    {
+      "teamId": "304",
+      "team": "昂热",
+      "player": "哈鲁纳-吉比林",
+      "number": 31,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\昂热.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\昂热.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\304-new.json"
+      ]
+    },
+    {
+      "teamId": "328",
+      "team": "勒芒",
+      "player": "若昂-阿尔梅达",
+      "number": 12,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\328-new.json"
+      ]
+    },
+    {
+      "teamId": "328",
+      "team": "勒芒",
+      "player": "若昂-阿尔梅达",
+      "number": 12,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\328-new.json"
+      ]
+    },
+    {
+      "teamId": "328",
+      "team": "勒芒",
+      "player": "若昂-阿尔梅达",
+      "number": 12,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\328-new.json"
+      ]
+    },
+    {
+      "teamId": "328",
+      "team": "勒芒",
+      "player": "若昂-阿尔梅达",
+      "number": 12,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\328-new.json"
+      ]
+    },
+    {
+      "teamId": "328",
+      "team": "勒芒",
+      "player": "夸希",
+      "number": 6,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\328-new.json"
+      ]
+    },
+    {
+      "teamId": "328",
+      "team": "勒芒",
+      "player": "夸希",
+      "number": 6,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\328-new.json"
+      ]
+    },
+    {
+      "teamId": "328",
+      "team": "勒芒",
+      "player": "夸希",
+      "number": 6,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\328-new.json"
+      ]
+    },
+    {
+      "teamId": "328",
+      "team": "勒芒",
+      "player": "夸希",
+      "number": 6,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\328-new.json"
+      ]
+    },
+    {
+      "teamId": "328",
+      "team": "勒芒",
+      "player": "罗西尼奥尔",
+      "number": 27,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\328-new.json"
+      ]
+    },
+    {
+      "teamId": "328",
+      "team": "勒芒",
+      "player": "罗西尼奥尔",
+      "number": 27,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\328-new.json"
+      ]
+    },
+    {
+      "teamId": "328",
+      "team": "勒芒",
+      "player": "罗西尼奥尔",
+      "number": 27,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\328-new.json"
+      ]
+    },
+    {
+      "teamId": "328",
+      "team": "勒芒",
+      "player": "罗西尼奥尔",
+      "number": 27,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\328-new.json"
+      ]
+    },
+    {
+      "teamId": "328",
+      "team": "勒芒",
+      "player": "恩佐-瓦格纳",
+      "number": 99,
+      "field": "marketValue",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md"
+    },
+    {
+      "teamId": "328",
+      "team": "勒芒",
+      "player": "恩佐-瓦格纳",
+      "number": 99,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\328-new.json"
+      ]
+    },
+    {
+      "teamId": "328",
+      "team": "勒芒",
+      "player": "恩佐-瓦格纳",
+      "number": 99,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\328-new.json"
+      ]
+    },
+    {
+      "teamId": "328",
+      "team": "勒芒",
+      "player": "恩佐-瓦格纳",
+      "number": 99,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\328-new.json"
+      ]
+    },
+    {
+      "teamId": "328",
+      "team": "勒芒",
+      "player": "恩佐-瓦格纳",
+      "number": 99,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\勒芒.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\328-new.json"
+      ]
+    },
+    {
+      "teamId": "211",
+      "team": "马赛",
+      "player": "范内克",
+      "number": 40,
+      "field": "marketValue",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\马赛.md"
+    },
+    {
+      "teamId": "211",
+      "team": "马赛",
+      "player": "范内克",
+      "number": 40,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\马赛.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\马赛.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\211-new.json"
+      ]
+    },
+    {
+      "teamId": "211",
+      "team": "马赛",
+      "player": "范内克",
+      "number": 40,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\马赛.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\马赛.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\211-new.json"
+      ]
+    },
+    {
+      "teamId": "211",
+      "team": "马赛",
+      "player": "范内克",
+      "number": 40,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\马赛.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\马赛.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\211-new.json"
+      ]
+    },
+    {
+      "teamId": "211",
+      "team": "马赛",
+      "player": "范内克",
+      "number": 40,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\马赛.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\马赛.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\211-new.json"
+      ]
+    },
+    {
+      "teamId": "1796",
+      "team": "巴黎FC",
+      "player": "桑吉",
+      "number": 19,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\巴黎FC.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\巴黎FC.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\1796-new.json"
+      ]
+    },
+    {
+      "teamId": "1796",
+      "team": "巴黎FC",
+      "player": "桑吉",
+      "number": 19,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\巴黎FC.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\巴黎FC.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\1796-new.json"
+      ]
+    },
+    {
+      "teamId": "1796",
+      "team": "巴黎FC",
+      "player": "桑吉",
+      "number": 19,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\巴黎FC.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\巴黎FC.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\1796-new.json"
+      ]
+    },
+    {
+      "teamId": "1796",
+      "team": "巴黎FC",
+      "player": "桑吉",
+      "number": 19,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\巴黎FC.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\巴黎FC.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\1796-new.json"
+      ]
+    },
+    {
+      "teamId": "1796",
+      "team": "巴黎FC",
+      "player": "马克西姆-洛佩斯",
+      "number": 21,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\巴黎FC.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\巴黎FC.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\1796-new.json"
+      ]
+    },
+    {
+      "teamId": "1796",
+      "team": "巴黎FC",
+      "player": "马克西姆-洛佩斯",
+      "number": 21,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\巴黎FC.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\巴黎FC.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\1796-new.json"
+      ]
+    },
+    {
+      "teamId": "1796",
+      "team": "巴黎FC",
+      "player": "马克西姆-洛佩斯",
+      "number": 21,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\巴黎FC.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\巴黎FC.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\1796-new.json"
+      ]
+    },
+    {
+      "teamId": "1796",
+      "team": "巴黎FC",
+      "player": "马克西姆-洛佩斯",
+      "number": 21,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\巴黎FC.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\巴黎FC.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\1796-new.json"
+      ]
+    },
+    {
+      "teamId": "271",
+      "team": "巴黎圣日耳曼",
+      "player": "达维德-博利",
+      "number": 42,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\巴黎圣日耳曼.md"
+    },
+    {
+      "teamId": "271",
+      "team": "巴黎圣日耳曼",
+      "player": "达维德-博利",
+      "number": 42,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\巴黎圣日耳曼.md"
+    },
+    {
+      "teamId": "251",
+      "team": "雷恩",
+      "player": "贝拉祖格",
+      "number": 60,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\雷恩.md"
+    },
+    {
+      "teamId": "251",
+      "team": "雷恩",
+      "player": "贝拉祖格",
+      "number": 60,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\雷恩.md"
+    },
+    {
+      "teamId": "251",
+      "team": "雷恩",
+      "player": "西舒巴",
+      "number": null,
+      "field": "number",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\雷恩.md"
+    },
+    {
+      "teamId": "251",
+      "team": "雷恩",
+      "player": "西舒巴",
+      "number": null,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\雷恩.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\雷恩.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\251-new.json"
+      ]
+    },
+    {
+      "teamId": "251",
+      "team": "雷恩",
+      "player": "西舒巴",
+      "number": null,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\雷恩.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\雷恩.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\251-new.json"
+      ]
+    },
+    {
+      "teamId": "251",
+      "team": "雷恩",
+      "player": "西舒巴",
+      "number": null,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\雷恩.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\雷恩.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\251-new.json"
+      ]
+    },
+    {
+      "teamId": "251",
+      "team": "雷恩",
+      "player": "西舒巴",
+      "number": null,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\雷恩.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\雷恩.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\251-new.json"
+      ]
+    },
+    {
+      "teamId": "260",
+      "team": "斯特拉斯堡",
+      "player": "奥耶德莱",
+      "number": 8,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\260-new.json"
+      ]
+    },
+    {
+      "teamId": "260",
+      "team": "斯特拉斯堡",
+      "player": "奥耶德莱",
+      "number": 8,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\260-new.json"
+      ]
+    },
+    {
+      "teamId": "260",
+      "team": "斯特拉斯堡",
+      "player": "奥耶德莱",
+      "number": 8,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\260-new.json"
+      ]
+    },
+    {
+      "teamId": "260",
+      "team": "斯特拉斯堡",
+      "player": "奥耶德莱",
+      "number": 8,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\260-new.json"
+      ]
+    },
+    {
+      "teamId": "260",
+      "team": "斯特拉斯堡",
+      "player": "迪耶姆",
+      "number": 34,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\260-new.json"
+      ]
+    },
+    {
+      "teamId": "260",
+      "team": "斯特拉斯堡",
+      "player": "迪耶姆",
+      "number": 34,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\260-new.json"
+      ]
+    },
+    {
+      "teamId": "260",
+      "team": "斯特拉斯堡",
+      "player": "迪耶姆",
+      "number": 34,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\260-new.json"
+      ]
+    },
+    {
+      "teamId": "260",
+      "team": "斯特拉斯堡",
+      "player": "迪耶姆",
+      "number": 34,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\260-new.json"
+      ]
+    },
+    {
+      "teamId": "260",
+      "team": "斯特拉斯堡",
+      "player": "帕尼切利",
+      "number": 9,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\260-new.json"
+      ]
+    },
+    {
+      "teamId": "260",
+      "team": "斯特拉斯堡",
+      "player": "帕尼切利",
+      "number": 9,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\260-new.json"
+      ]
+    },
+    {
+      "teamId": "260",
+      "team": "斯特拉斯堡",
+      "player": "帕尼切利",
+      "number": 9,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\260-new.json"
+      ]
+    },
+    {
+      "teamId": "260",
+      "team": "斯特拉斯堡",
+      "player": "帕尼切利",
+      "number": 9,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\斯特拉斯堡.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\260-new.json"
+      ]
+    },
+    {
+      "teamId": "216",
+      "team": "图卢兹",
+      "player": "阿毛什",
+      "number": 49,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\图卢兹.md"
+    },
+    {
+      "teamId": "216",
+      "team": "图卢兹",
+      "player": "阿毛什",
+      "number": 49,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\ligue1\\squad-final\\图卢兹.md"
+    }
+  ],
+  "season": "2026-2027"
+}

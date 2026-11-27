@@ -8,5 +8,10 @@ function useRankingTable(data) {
       return row[column] !== null && String(row[column]).toLowerCase().includes(value);
     }));
   });
-  return { title: data.title, columns: data.columns, query, filteredRows, total: data.rows.length };
+  function formatCell(value, column) {
+    if (value === null) return '缺失';
+    if (['平均年龄（岁）', '平均身高（cm）', '总身价（万）', '平均控球率'].includes(column) && typeof value === 'number') return value.toFixed(2);
+    return value;
+  }
+  return { title: data.title, columns: data.columns, query, filteredRows, total: data.rows.length, formatCell };
 }

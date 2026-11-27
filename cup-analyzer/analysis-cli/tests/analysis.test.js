@@ -208,15 +208,16 @@ test('赛季目录只有 teams 和 players，单项目录严格只有同名 MD/H
   const report = buildReport(f.context, data, normalized, { ...f.options, metrics: ['shots', 'shotsOnTarget', 'xg'] });
   const directory = writeReport(f.context, report);
   assert.deepEqual(fs.readdirSync(directory).sort(), ['players', 'teams']);
-  assert.deepEqual(fs.readdirSync(path.join(directory, 'teams')).sort(), ['shots', 'shotsOnTarget', 'xG']);
+  assert.deepEqual(fs.readdirSync(path.join(directory, 'teams')).sort(), ['README.md', 'missingData.json', 'shots', 'shotsOnTarget', 'xG']);
   assert(!fs.existsSync(path.join(directory, 'players', 'xG')));
   for (const entity of ['teams', 'players']) {
     for (const name of fs.readdirSync(path.join(directory, entity))) {
       const metricDir = path.join(directory, entity, name);
+      if (!fs.statSync(metricDir).isDirectory()) continue;
       assert.deepEqual(fs.readdirSync(metricDir).sort(), [`${name}.html`, `${name}.json`, `${name}.md`]);
       const json = JSON.parse(fs.readFileSync(path.join(metricDir, `${name}.json`), 'utf8'));
       assert(Array.isArray(json));
-      assert.equal(fs.readFileSync(path.join(metricDir, `${name}.md`), 'utf8'), markdown(json, Object.keys(json[0])));
+      assert.equal(fs.readFileSync(path.join(metricDir, `${name}.md`), 'utf8'), markdown(json, Object.keys(json[0])) + '\n');
     }
   }
 });
@@ -342,4 +343,116 @@ test('其他已登记联赛也能预览阵容修正，仍按各自赛程和球�
   assert.equal(plan.context.league, 'epl');
   assert.equal(plan.targets.length, 2);
   assert(!fs.existsSync(f.history));
+});
+
+
+test('积分榜独立于技术文件，主客拆分、并列规则和范围有效', (t) => {
+  const f = fixture(t);
+  fs.unlinkSync(f.fileFor(0, 11, 'techStats.json'));
+  fs.unlinkSync(f.fileFor(1, 11, 'techStats.json'));
+  const data = readMatches(f.context, f.history);
+  const report = buildReport(f.context, data, normalize(f.context, data), f.options);
+  const first = report.teams.rankings.standings.items[0];
+  assert.equal(first.id, '1');
+  assert.equal(first.points, 6);
+  assert.equal(first.played, 2);
+  assert.equal(first.goalsFor, 4);
+  assert.equal(first.goalDifference, 2);
+  assert.equal(report.teams.rankings.homeStandings.items.find((item) => item.id === '1').points, 3);
+  assert.equal(report.teams.rankings.awayStandings.items.find((item) => item.id === '1').points, 3);
+  const rows = tableRows('teams', report.teams.rankings.standings);
+  assert.deepEqual(Object.keys(rows[0]), ['名次', '球队', '赛', '胜', '平', '负', '进', '失', '净', '积分']);
+  const limited = buildReport(f.context, data, normalize(f.context, data), { ...f.options, last: 1 });
+  assert.equal(limited.teams.rankings.standings.items[0].played, 1);
+  f.context.matches.set('14', { id: '14', homeId: '2', awayId: '1', score: '3-3', status: -1, timestamp: 9999999999999, time: '2026-09-22 01:00', round: 4 });
+  const draw = buildReport(f.context, data, normalize(f.context, data), f.options);
+  assert.equal(draw.teams.rankings.standings.items[0].draws, 1);
+  assert.equal(draw.teams.rankings.standings.items[0].points, 7);
+});
+
+test('平均控球率按有效场次，不把缺失和副本冲突当0，补齐后提醒消失', (t) => {
+  const f = fixture(t);
+  for (const team of [0, 1]) {
+    for (const id of [11, 12]) {
+      const file = f.fileFor(team, id, 'techStats.json');
+      const tech = JSON.parse(fs.readFileSync(file, 'utf8'));
+      if (id === 11) tech.fullMatch['控球率'] = { kind: 'CONTROL_PERCENT', home: 60, away: 40 };
+      fs.writeFileSync(file, JSON.stringify(tech));
+    }
+  }
+  const build = () => {
+    const data = readMatches(f.context, f.history);
+    return buildReport(f.context, data, normalize(f.context, data), { ...f.options, metrics: ['averagePossession'] });
+  };
+  let report = build();
+  let item = report.teams.rankings.averagePossession.items.find((row) => row.id === '1');
+  assert.equal(item.value, 60);
+  assert.equal(item.validSamples, 1);
+  assert.equal(item.missingSamples, 1);
+  for (const team of [0, 1]) {
+    const file = f.fileFor(team, 12, 'techStats.json');
+    const tech = JSON.parse(fs.readFileSync(file, 'utf8'));
+    tech.fullMatch['控球率'] = { kind: 'CONTROL_PERCENT', home: 0, away: 100 };
+    fs.writeFileSync(file, JSON.stringify(tech));
+  }
+  report = build();
+  item = report.teams.rankings.averagePossession.items.find((row) => row.id === '1');
+  assert.equal(item.value, 80);
+  assert.equal(report.missingData.length, 0);
+  const file = f.fileFor(1, 12, 'techStats.json');
+  const tech = JSON.parse(fs.readFileSync(file, 'utf8'));
+  tech.fullMatch['控球率'].away = 99;
+  fs.writeFileSync(file, JSON.stringify(tech));
+  assert.equal(build().teams.rankings.averagePossession.items.find((row) => row.id === '1').missingSamples, 1);
+});
+
+test('画像指标共用出场最多25人、排除0出场、保留资料缺失和赛季冲突', (t) => {
+  const f = fixture(t);
+  const directory = path.join(f.directory, 'teamProfile', 'Alpha');
+  fs.mkdirSync(directory, { recursive: true });
+  const players = Array.from({ length: 27 }, (_, index) => ({ name: '球员' + index, number: index + 1, appearances: index, starts: index, age: 20 + index, height: 180, marketValue: 100 }));
+  players[26].age = null;
+  players[26].marketValue = null;
+  players.push({ name: '未知出场', number: 99, age: 18, height: 180, marketValue: 100 });
+  fs.writeFileSync(path.join(directory, 'Alpha.json'), JSON.stringify({ teamId: '1', season: '2026-2027', players }));
+  const data = readMatches(f.context, f.history);
+  const report = buildReport(f.context, data, normalize(f.context, data), { ...f.options, metrics: ['averageAge', 'averageHeight', 'totalMarketValue'] });
+  const age = report.teams.rankings.averageAge.items.find((row) => row.id === '1');
+  assert.equal(age.selectedPlayers, 25);
+  assert.equal(age.validPlayers, 24);
+  assert.equal(age.value, 33.5);
+  assert.equal(age.incomplete, true);
+  assert.equal(report.teams.rankings.totalMarketValue.items.find((row) => row.id === '1').value, 2400);
+  assert(report.missingData.some((row) => row.field === 'appearances' && row.player === '未知出场'));
+  assert(report.missingData.some((row) => row.teamId === '2' && row.file.endsWith('Beta.json')));
+  const output = writeReport(f.context, report);
+  assert(fs.readFileSync(path.join(output, 'teams', 'README.md'), 'utf8').includes('待补数据'));
+  assert(fs.readFileSync(path.join(output, 'teams', 'averageAge', 'averageAge.html'), 'utf8').includes('未知出场'));
+  const partial = buildReport(f.context, data, normalize(f.context, data), { ...f.options, metrics: ['shots'] });
+  writeReport(f.context, partial);
+  assert(JSON.parse(fs.readFileSync(path.join(output, 'teams', 'missingData.json'), 'utf8')).some((item) => item.metric === 'averageAge'));
+  fs.writeFileSync(path.join(directory, 'Alpha.json'), JSON.stringify({ teamId: '1', season: '2025-2026', players }));
+  const invalid = buildReport(f.context, data, normalize(f.context, data), { ...f.options, metrics: ['averageAge'] });
+  assert.equal(invalid.teams.rankings.averageAge.items.find((row) => row.id === '1').value, undefined);
+});
+
+
+test('积分并列依次比较净胜球、进球；无效比分标记且末尾提醒', (t) => {
+  const f = fixture(t);
+  const { buildTeamIndicators } = require('../src/aggregators/teamIndicators');
+  const context = { ...f.context, teams: [...f.context.teams, { id: '3', name: '丙', englishName: 'Gamma' }, { id: '4', name: '丁', englishName: 'Delta' }] };
+  const matches = [
+    { id: 'a', homeId: '1', awayId: '4', score: '2-0', time: '2026-09-01' },
+    { id: 'b', homeId: '2', awayId: '4', score: '3-1', time: '2026-09-01' },
+    { id: 'c', homeId: '3', awayId: '4', score: '4-1', time: '2026-09-01' },
+  ];
+  context.matches = new Map(matches.map((match) => [match.id, match]));
+  const selected = new Map(context.teams.map((team) => [team.id, new Set(matches.filter((match) => match.homeId === team.id || match.awayId === team.id).map((match) => match.id))]));
+  const options = { metrics: ['standings'] };
+  const result = buildTeamIndicators(context, selected, {}, options);
+  assert.deepEqual(result.rankings.standings.items.map((item) => item.id), ['3', '2', '1', '4']);
+  context.matches.get('c').score = '无效';
+  const invalid = buildTeamIndicators(context, selected, {}, options);
+  assert(invalid.missing.some((item) => item.field === 'score'));
+  assert(invalid.rankings.standings.items.find((item) => item.id === '3').incomplete);
 });

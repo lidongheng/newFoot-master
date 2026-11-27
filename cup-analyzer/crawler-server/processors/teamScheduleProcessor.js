@@ -201,7 +201,12 @@ class TeamScheduleProcessor extends BaseCrawler {
       this.updateScheduleSection(finalCandidates[0], section);
       this.log(`已同步赛程区块至最终名单: ${finalCandidates[0]}`);
     }
-    const profilePath = path.join(config.paths.cupAnalyzer, 'teamProfile', finalName);
+    const TeamProfileGenerator = require('./teamProfileGenerator');
+    const profiles = new TeamProfileGenerator();
+    const schedule = profiles.parseScheduleData();
+    const team = profiles.buildTeamMap(schedule.arrTeam)[squadTarget.teamSerial];
+    if (!team) throw new Error(`赛程缺少球队 ${squadTarget.teamSerial}`);
+    const profilePath = profiles.getTeamProfilePath(team, schedule);
     if (fileExists(profilePath)) {
       this.updateScheduleSection(profilePath, section);
       this.log(`已同步赛程区块至球队画像: ${profilePath}`);

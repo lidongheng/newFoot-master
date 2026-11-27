@@ -1,0 +1,1540 @@
+{
+  "league": "serieA",
+  "originalProfiles": 16,
+  "migrated": 0,
+  "generated": 16,
+  "missing": 124,
+  "failed": 0,
+  "directoryRenames": [],
+  "profiles": [
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\AC_Milan\\AC米兰.md",
+      "originalHash": "03c32a1ec57874075b9d8d0efc898d851810d148fb99668758c9cad14113cb0c",
+      "name": "AC米兰",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\AC_Milan\\AC米兰.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\serieA\\AC米兰.md",
+      "archiveHash": "e0381626566223064ff835d77726f9005953a1010a655b9fa49c0da14c6e0625",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\AC_Milan\\AC_Milan.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\AS_Roma\\罗马.md",
+      "originalHash": "f11fed77c38963cd1f349f862f67ebfa4c419a29082b61f74f890897f3399d1d",
+      "name": "罗马",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\AS_Roma\\罗马.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\serieA\\罗马.md",
+      "archiveHash": "c252f4fe65a83495907e5dd96ef4c4efb63c28b72d08b2f92bcc61e42e6876c7",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\AS_Roma\\AS_Roma.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Atalanta\\亚特兰大.md",
+      "originalHash": "669b3ddebc8e118a7d4091bd6504869d583a0a7db60ed40bdd2fbca4e09c077f",
+      "name": "亚特兰大",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Atalanta\\亚特兰大.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\serieA\\亚特兰大.md",
+      "archiveHash": "755d75ca57a6d29d222aec6478aa82a967df1c480d4b6637291b6b3e8160295c",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Atalanta\\Atalanta.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Bologna\\博洛尼亚.md",
+      "originalHash": "09561b82c992462675b3aee4211666b0a9b70eeb4e86354060d4b14dcd447ca0",
+      "name": "博洛尼亚",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Bologna\\博洛尼亚.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\serieA\\博洛尼亚.md",
+      "archiveHash": "5d3c681255e65d0e59ddf81b23cca592e0eb1ba57089d25383a681a7458975d9",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Bologna\\Bologna.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Cagliari\\卡利亚里.md",
+      "originalHash": "de3a7f0deb8782549008953c6c0f5362e0d704a58475afd92532cc361b65a9fb",
+      "name": "卡利亚里",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Cagliari\\卡利亚里.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\serieA\\卡利亚里.md",
+      "archiveHash": "1125c43f8b09cbfb6aa03e4da403e0a56ff797f865037c1bfef74c57cc106f47",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Cagliari\\Cagliari.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Como\\科莫.md",
+      "originalHash": "2d68970b7a6ecb44500705427a7b88f1f21bc8dad4cab51105db3f2b002c5c24",
+      "name": "科莫",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Como\\科莫.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\serieA\\科莫.md",
+      "archiveHash": "aa7e69c5232f43cac706ab8cc6657cab8f8ad3fde5e3a280ffb5d1a07e4e30e4",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Como\\Como.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Frosinone\\弗洛西诺尼.md",
+      "originalHash": "e3542eb672c5bc97cee6e74f895c61dad9f760ec45e0981403bac847a3a0fa51",
+      "name": "弗洛西诺尼",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Frosinone\\弗洛西诺尼.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\serieA\\弗洛西诺尼.md",
+      "archiveHash": "4047e3f4bb5382dd62895f5a8fbc7993b769e772df541c86b0838423698971fb",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Frosinone\\Frosinone.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Genoa\\热那亚.md",
+      "originalHash": "7cacdd72cc5bbd7e6dc3761f07733a0ed395e68b2f15c942d36a002fc81fea0e",
+      "name": "热那亚",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Genoa\\热那亚.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\serieA\\热那亚.md",
+      "archiveHash": "62f47d9703e43c09c7b01ac22bd6d30f03e1b5ba21a2b0f0432295fb16281af0",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Genoa\\Genoa.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Lazio\\拉齐奥.md",
+      "originalHash": "f337ca4fbc68bd16fa462b66fc4d3c830dc107bf495403b562033987e3f42f19",
+      "name": "拉齐奥",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Lazio\\拉齐奥.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\serieA\\拉齐奥.md",
+      "archiveHash": "423308c40af312e01f2f21a8fbc41762cfb60b2df0fc0a32ed32bf3c97d65ed5",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Lazio\\Lazio.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Lecce\\莱切.md",
+      "originalHash": "b345b58e03254962c4e2063054385743fc82e931dc7dce6b86916031cf2d791e",
+      "name": "莱切",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Lecce\\莱切.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\serieA\\莱切.md",
+      "archiveHash": "77fc978c9d612059de09ba12b8dc65453e371ed2bf0931c846346d8fa2b71bd0",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Lecce\\Lecce.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Monza\\蒙扎.md",
+      "originalHash": "abd9c9629fd02dad6c83e812b8e492dc0cfd3d18081d17bdfc51477a9ff8bd3e",
+      "name": "蒙扎",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Monza\\蒙扎.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\serieA\\蒙扎.md",
+      "archiveHash": "60bc4b5a440390d1cad95c24edaf5b3fdfdfc0d926a81c88bf55960d5f071a66",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Monza\\Monza.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Napoli\\那不勒斯.md",
+      "originalHash": "bab19fe1ad28c8825ec7590bd7649ddfd43ea8fa604a7ad57c643f49c932c372",
+      "name": "那不勒斯",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Napoli\\那不勒斯.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\serieA\\那不勒斯.md",
+      "archiveHash": "0f076a3ca4cc24dd722ab5d2a360efa4a71c987efbac7e68efe3af966ee26a70",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Napoli\\Napoli.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Parma\\帕尔马.md",
+      "originalHash": "7a884c2a3ba09814f6ea4939100e66b43fde8112acc22949bdfb993f41d716ac",
+      "name": "帕尔马",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Parma\\帕尔马.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\serieA\\帕尔马.md",
+      "archiveHash": "fb66829f743c24c5bc00e2a07d67d870771c36df423b717a51b62f1367ca1955",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Parma\\Parma.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Sassuolo\\萨索洛.md",
+      "originalHash": "554278370ba242961754f1774197be37be8c3806a23737700a18494ddb3f7845",
+      "name": "萨索洛",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Sassuolo\\萨索洛.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\serieA\\萨索洛.md",
+      "archiveHash": "2dcf41c7de22dede9a130da123217dd299457cef92f55d3dabc49f6bb0d4e578",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Sassuolo\\Sassuolo.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Torino\\都灵.md",
+      "originalHash": "82538853d6eecbbbc90c59434d9de85e43b780a9ddfd423f53d8523c8d279be0",
+      "name": "都灵",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Torino\\都灵.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\serieA\\都灵.md",
+      "archiveHash": "022054983bb3067fd5b670a971a8d3cf2a5e220e4bbcd765f6ab68b5c1f389aa",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Torino\\Torino.json",
+      "status": "generated"
+    },
+    {
+      "original": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Udinese\\乌迪内斯.md",
+      "originalHash": "d4a1f6638086ea712c21b4db22b333f010cd8b8be4eb67a7cbefde8decd079f5",
+      "name": "乌迪内斯",
+      "destination": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Udinese\\乌迪内斯.md",
+      "archive": "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\profile-migration\\originals\\serieA\\乌迪内斯.md",
+      "archiveHash": "41f709cae4a8465cb641c7390ad77197fb72a787379313ad27b739d408ce23c8",
+      "json": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\teamProfile\\Udinese\\Udinese.json",
+      "status": "generated"
+    }
+  ],
+  "issues": [
+    {
+      "teamId": "150",
+      "team": "AC米兰",
+      "player": "邦多",
+      "number": null,
+      "field": "number",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\AC米兰.md"
+    },
+    {
+      "teamId": "150",
+      "team": "AC米兰",
+      "player": "邦多",
+      "number": null,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\AC米兰.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\AC米兰.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\150-new.json"
+      ]
+    },
+    {
+      "teamId": "150",
+      "team": "AC米兰",
+      "player": "邦多",
+      "number": null,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\AC米兰.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\AC米兰.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\150-new.json"
+      ]
+    },
+    {
+      "teamId": "150",
+      "team": "AC米兰",
+      "player": "邦多",
+      "number": null,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\AC米兰.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\AC米兰.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\150-new.json"
+      ]
+    },
+    {
+      "teamId": "150",
+      "team": "AC米兰",
+      "player": "邦多",
+      "number": null,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\AC米兰.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\AC米兰.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\150-new.json"
+      ]
+    },
+    {
+      "teamId": "174",
+      "team": "罗马",
+      "player": "德马尔齐",
+      "number": 70,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\罗马.md"
+    },
+    {
+      "teamId": "174",
+      "team": "罗马",
+      "player": "德马尔齐",
+      "number": 70,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\罗马.md"
+    },
+    {
+      "teamId": "154",
+      "team": "亚特兰大",
+      "player": "希恩",
+      "number": 4,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\亚特兰大.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\亚特兰大.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\154-new.json"
+      ]
+    },
+    {
+      "teamId": "154",
+      "team": "亚特兰大",
+      "player": "希恩",
+      "number": 4,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\亚特兰大.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\亚特兰大.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\154-new.json"
+      ]
+    },
+    {
+      "teamId": "154",
+      "team": "亚特兰大",
+      "player": "希恩",
+      "number": 4,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\亚特兰大.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\亚特兰大.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\154-new.json"
+      ]
+    },
+    {
+      "teamId": "154",
+      "team": "亚特兰大",
+      "player": "希恩",
+      "number": 4,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\亚特兰大.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\亚特兰大.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\154-new.json"
+      ]
+    },
+    {
+      "teamId": "154",
+      "team": "亚特兰大",
+      "player": "托马斯-庞贝",
+      "number": 22,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\亚特兰大.md"
+    },
+    {
+      "teamId": "154",
+      "team": "亚特兰大",
+      "player": "托马斯-庞贝",
+      "number": 22,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\亚特兰大.md"
+    },
+    {
+      "teamId": "154",
+      "team": "亚特兰大",
+      "player": "苏莱曼纳",
+      "number": 7,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\亚特兰大.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\亚特兰大.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\154-new.json"
+      ]
+    },
+    {
+      "teamId": "154",
+      "team": "亚特兰大",
+      "player": "苏莱曼纳",
+      "number": 7,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\亚特兰大.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\亚特兰大.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\154-new.json"
+      ]
+    },
+    {
+      "teamId": "154",
+      "team": "亚特兰大",
+      "player": "苏莱曼纳",
+      "number": 7,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\亚特兰大.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\亚特兰大.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\154-new.json"
+      ]
+    },
+    {
+      "teamId": "154",
+      "team": "亚特兰大",
+      "player": "苏莱曼纳",
+      "number": 7,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\亚特兰大.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\亚特兰大.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\154-new.json"
+      ]
+    },
+    {
+      "teamId": "183",
+      "team": "卡利亚里",
+      "player": "里亚德-伊德里西",
+      "number": 3,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\卡利亚里.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\卡利亚里.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\183-new.json"
+      ]
+    },
+    {
+      "teamId": "183",
+      "team": "卡利亚里",
+      "player": "里亚德-伊德里西",
+      "number": 3,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\卡利亚里.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\卡利亚里.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\183-new.json"
+      ]
+    },
+    {
+      "teamId": "183",
+      "team": "卡利亚里",
+      "player": "里亚德-伊德里西",
+      "number": 3,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\卡利亚里.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\卡利亚里.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\183-new.json"
+      ]
+    },
+    {
+      "teamId": "183",
+      "team": "卡利亚里",
+      "player": "里亚德-伊德里西",
+      "number": 3,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\卡利亚里.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\卡利亚里.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\183-new.json"
+      ]
+    },
+    {
+      "teamId": "183",
+      "team": "卡利亚里",
+      "player": "格兰杜",
+      "number": 36,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\卡利亚里.md"
+    },
+    {
+      "teamId": "183",
+      "team": "卡利亚里",
+      "player": "格兰杜",
+      "number": 36,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\卡利亚里.md"
+    },
+    {
+      "teamId": "183",
+      "team": "卡利亚里",
+      "player": "德米-阿卡拉基里",
+      "number": 30,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\卡利亚里.md"
+    },
+    {
+      "teamId": "183",
+      "team": "卡利亚里",
+      "player": "德米-阿卡拉基里",
+      "number": 30,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\卡利亚里.md"
+    },
+    {
+      "teamId": "183",
+      "team": "卡利亚里",
+      "player": "苏列夫",
+      "number": 32,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\卡利亚里.md"
+    },
+    {
+      "teamId": "183",
+      "team": "卡利亚里",
+      "player": "苏列夫",
+      "number": 32,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\卡利亚里.md"
+    },
+    {
+      "teamId": "1359",
+      "team": "弗洛西诺尼",
+      "player": "格利",
+      "number": 96,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\弗洛西诺尼.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\弗洛西诺尼.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\1359-new.json"
+      ]
+    },
+    {
+      "teamId": "1359",
+      "team": "弗洛西诺尼",
+      "player": "格利",
+      "number": 96,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\弗洛西诺尼.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\弗洛西诺尼.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\1359-new.json"
+      ]
+    },
+    {
+      "teamId": "1359",
+      "team": "弗洛西诺尼",
+      "player": "格利",
+      "number": 96,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\弗洛西诺尼.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\弗洛西诺尼.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\1359-new.json"
+      ]
+    },
+    {
+      "teamId": "1359",
+      "team": "弗洛西诺尼",
+      "player": "格利",
+      "number": 96,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\弗洛西诺尼.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\弗洛西诺尼.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\1359-new.json"
+      ]
+    },
+    {
+      "teamId": "1359",
+      "team": "弗洛西诺尼",
+      "player": "邦雅曼-科内",
+      "number": 4,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\弗洛西诺尼.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\弗洛西诺尼.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\1359-new.json"
+      ]
+    },
+    {
+      "teamId": "1359",
+      "team": "弗洛西诺尼",
+      "player": "邦雅曼-科内",
+      "number": 4,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\弗洛西诺尼.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\弗洛西诺尼.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\1359-new.json"
+      ]
+    },
+    {
+      "teamId": "1359",
+      "team": "弗洛西诺尼",
+      "player": "邦雅曼-科内",
+      "number": 4,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\弗洛西诺尼.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\弗洛西诺尼.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\1359-new.json"
+      ]
+    },
+    {
+      "teamId": "1359",
+      "team": "弗洛西诺尼",
+      "player": "邦雅曼-科内",
+      "number": 4,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\弗洛西诺尼.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\弗洛西诺尼.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\1359-new.json"
+      ]
+    },
+    {
+      "teamId": "552",
+      "team": "热那亚",
+      "player": "米赫尔松斯",
+      "number": 93,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md"
+    },
+    {
+      "teamId": "552",
+      "team": "热那亚",
+      "player": "米赫尔松斯",
+      "number": 93,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md"
+    },
+    {
+      "teamId": "552",
+      "team": "热那亚",
+      "player": "米赫尔松斯",
+      "number": 93,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\552-new.json"
+      ]
+    },
+    {
+      "teamId": "552",
+      "team": "热那亚",
+      "player": "米赫尔松斯",
+      "number": 93,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\552-new.json"
+      ]
+    },
+    {
+      "teamId": "552",
+      "team": "热那亚",
+      "player": "米赫尔松斯",
+      "number": 93,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\552-new.json"
+      ]
+    },
+    {
+      "teamId": "552",
+      "team": "热那亚",
+      "player": "米赫尔松斯",
+      "number": 93,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\552-new.json"
+      ]
+    },
+    {
+      "teamId": "552",
+      "team": "热那亚",
+      "player": "马塞洛-瓦兹",
+      "number": 85,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md"
+    },
+    {
+      "teamId": "552",
+      "team": "热那亚",
+      "player": "马塞洛-瓦兹",
+      "number": 85,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md"
+    },
+    {
+      "teamId": "552",
+      "team": "热那亚",
+      "player": "卢卡斯-克利希斯",
+      "number": 14,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md"
+    },
+    {
+      "teamId": "552",
+      "team": "热那亚",
+      "player": "卢卡斯-克利希斯",
+      "number": 14,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md"
+    },
+    {
+      "teamId": "552",
+      "team": "热那亚",
+      "player": "马梅迪-杜库雷",
+      "number": 74,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md"
+    },
+    {
+      "teamId": "552",
+      "team": "热那亚",
+      "player": "马梅迪-杜库雷",
+      "number": 74,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md"
+    },
+    {
+      "teamId": "552",
+      "team": "热那亚",
+      "player": "罗比尼奥-儒尼奥尔",
+      "number": 21,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md"
+    },
+    {
+      "teamId": "552",
+      "team": "热那亚",
+      "player": "罗比尼奥-儒尼奥尔",
+      "number": 21,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md"
+    },
+    {
+      "teamId": "552",
+      "team": "热那亚",
+      "player": "努雷迪尼",
+      "number": 19,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\552-new.json"
+      ]
+    },
+    {
+      "teamId": "552",
+      "team": "热那亚",
+      "player": "努雷迪尼",
+      "number": 19,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\552-new.json"
+      ]
+    },
+    {
+      "teamId": "552",
+      "team": "热那亚",
+      "player": "努雷迪尼",
+      "number": 19,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\552-new.json"
+      ]
+    },
+    {
+      "teamId": "552",
+      "team": "热那亚",
+      "player": "努雷迪尼",
+      "number": 19,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\热那亚.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\552-new.json"
+      ]
+    },
+    {
+      "teamId": "182",
+      "team": "拉齐奥",
+      "player": "富拉内托",
+      "number": 55,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\182-new.json"
+      ]
+    },
+    {
+      "teamId": "182",
+      "team": "拉齐奥",
+      "player": "富拉内托",
+      "number": 55,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\182-new.json"
+      ]
+    },
+    {
+      "teamId": "182",
+      "team": "拉齐奥",
+      "player": "富拉内托",
+      "number": 55,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\182-new.json"
+      ]
+    },
+    {
+      "teamId": "182",
+      "team": "拉齐奥",
+      "player": "富拉内托",
+      "number": 55,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\182-new.json"
+      ]
+    },
+    {
+      "teamId": "182",
+      "team": "拉齐奥",
+      "player": "法里斯",
+      "number": null,
+      "field": "number",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md"
+    },
+    {
+      "teamId": "182",
+      "team": "拉齐奥",
+      "player": "法里斯",
+      "number": null,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\182-new.json"
+      ]
+    },
+    {
+      "teamId": "182",
+      "team": "拉齐奥",
+      "player": "法里斯",
+      "number": null,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\182-new.json"
+      ]
+    },
+    {
+      "teamId": "182",
+      "team": "拉齐奥",
+      "player": "法里斯",
+      "number": null,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\182-new.json"
+      ]
+    },
+    {
+      "teamId": "182",
+      "team": "拉齐奥",
+      "player": "法里斯",
+      "number": null,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\182-new.json"
+      ]
+    },
+    {
+      "teamId": "182",
+      "team": "拉齐奥",
+      "player": "布鲁诺-加拉西",
+      "number": 8,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\182-new.json"
+      ]
+    },
+    {
+      "teamId": "182",
+      "team": "拉齐奥",
+      "player": "布鲁诺-加拉西",
+      "number": 8,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\182-new.json"
+      ]
+    },
+    {
+      "teamId": "182",
+      "team": "拉齐奥",
+      "player": "布鲁诺-加拉西",
+      "number": 8,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\182-new.json"
+      ]
+    },
+    {
+      "teamId": "182",
+      "team": "拉齐奥",
+      "player": "布鲁诺-加拉西",
+      "number": 8,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\拉齐奥.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\182-new.json"
+      ]
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "塞巴斯蒂安-埃斯波西托",
+      "number": null,
+      "field": "number",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md"
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "塞巴斯蒂安-埃斯波西托",
+      "number": null,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\158-new.json"
+      ]
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "塞巴斯蒂安-埃斯波西托",
+      "number": null,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\158-new.json"
+      ]
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "塞巴斯蒂安-埃斯波西托",
+      "number": null,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\158-new.json"
+      ]
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "塞巴斯蒂安-埃斯波西托",
+      "number": null,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\158-new.json"
+      ]
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "弗农-阿多",
+      "number": null,
+      "field": "number",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md"
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "弗农-阿多",
+      "number": null,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md"
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "弗农-阿多",
+      "number": null,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md"
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "弗农-阿多",
+      "number": null,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\158-new.json"
+      ]
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "弗农-阿多",
+      "number": null,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\158-new.json"
+      ]
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "弗农-阿多",
+      "number": null,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\158-new.json"
+      ]
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "弗农-阿多",
+      "number": null,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\158-new.json"
+      ]
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "马龙-乌巴尼",
+      "number": 36,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md"
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "马龙-乌巴尼",
+      "number": 36,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md"
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "马龙-乌巴尼",
+      "number": 36,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\158-new.json"
+      ]
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "马龙-乌巴尼",
+      "number": 36,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\158-new.json"
+      ]
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "马龙-乌巴尼",
+      "number": 36,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\158-new.json"
+      ]
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "马龙-乌巴尼",
+      "number": 36,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\158-new.json"
+      ]
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "尼科-科瓦奇",
+      "number": 80,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md"
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "尼科-科瓦奇",
+      "number": 80,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md"
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "尼科-科瓦奇",
+      "number": 80,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\158-new.json"
+      ]
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "尼科-科瓦奇",
+      "number": 80,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\158-new.json"
+      ]
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "尼科-科瓦奇",
+      "number": 80,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\158-new.json"
+      ]
+    },
+    {
+      "teamId": "158",
+      "team": "莱切",
+      "player": "尼科-科瓦奇",
+      "number": 80,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\莱切.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\158-new.json"
+      ]
+    },
+    {
+      "teamId": "2667",
+      "team": "蒙扎",
+      "player": "凯文-马丁斯",
+      "number": 70,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\蒙扎.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\蒙扎.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\2667-new.json"
+      ]
+    },
+    {
+      "teamId": "2667",
+      "team": "蒙扎",
+      "player": "凯文-马丁斯",
+      "number": 70,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\蒙扎.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\蒙扎.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\2667-new.json"
+      ]
+    },
+    {
+      "teamId": "2667",
+      "team": "蒙扎",
+      "player": "凯文-马丁斯",
+      "number": 70,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\蒙扎.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\蒙扎.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\2667-new.json"
+      ]
+    },
+    {
+      "teamId": "2667",
+      "team": "蒙扎",
+      "player": "凯文-马丁斯",
+      "number": 70,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\蒙扎.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\蒙扎.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\2667-new.json"
+      ]
+    },
+    {
+      "teamId": "2667",
+      "team": "蒙扎",
+      "player": "凯塔-巴尔德",
+      "number": 17,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\蒙扎.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\蒙扎.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\2667-new.json"
+      ]
+    },
+    {
+      "teamId": "2667",
+      "team": "蒙扎",
+      "player": "凯塔-巴尔德",
+      "number": 17,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\蒙扎.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\蒙扎.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\2667-new.json"
+      ]
+    },
+    {
+      "teamId": "2667",
+      "team": "蒙扎",
+      "player": "凯塔-巴尔德",
+      "number": 17,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\蒙扎.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\蒙扎.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\2667-new.json"
+      ]
+    },
+    {
+      "teamId": "2667",
+      "team": "蒙扎",
+      "player": "凯塔-巴尔德",
+      "number": 17,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\蒙扎.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\蒙扎.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\2667-new.json"
+      ]
+    },
+    {
+      "teamId": "1419",
+      "team": "那不勒斯",
+      "player": "布翁焦尔诺",
+      "number": 4,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\那不勒斯.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\那不勒斯.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\1419-new.json"
+      ]
+    },
+    {
+      "teamId": "1419",
+      "team": "那不勒斯",
+      "player": "布翁焦尔诺",
+      "number": 4,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\那不勒斯.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\那不勒斯.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\1419-new.json"
+      ]
+    },
+    {
+      "teamId": "1419",
+      "team": "那不勒斯",
+      "player": "布翁焦尔诺",
+      "number": 4,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\那不勒斯.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\那不勒斯.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\1419-new.json"
+      ]
+    },
+    {
+      "teamId": "1419",
+      "team": "那不勒斯",
+      "player": "布翁焦尔诺",
+      "number": 4,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\那不勒斯.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\那不勒斯.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\1419-new.json"
+      ]
+    },
+    {
+      "teamId": "1419",
+      "team": "那不勒斯",
+      "player": "克劳迪奥-普利耶塞",
+      "number": 12,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\那不勒斯.md"
+    },
+    {
+      "teamId": "1419",
+      "team": "那不勒斯",
+      "player": "克劳迪奥-普利耶塞",
+      "number": 12,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\那不勒斯.md"
+    },
+    {
+      "teamId": "189",
+      "team": "帕尔马",
+      "player": "托马斯-德马尔蒂斯",
+      "number": 25,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\帕尔马.md"
+    },
+    {
+      "teamId": "189",
+      "team": "帕尔马",
+      "player": "托马斯-德马尔蒂斯",
+      "number": 25,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\帕尔马.md"
+    },
+    {
+      "teamId": "2960",
+      "team": "萨索洛",
+      "player": "帕斯",
+      "number": 27,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\2960-new.json"
+      ]
+    },
+    {
+      "teamId": "2960",
+      "team": "萨索洛",
+      "player": "帕斯",
+      "number": 27,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\2960-new.json"
+      ]
+    },
+    {
+      "teamId": "2960",
+      "team": "萨索洛",
+      "player": "帕斯",
+      "number": 27,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\2960-new.json"
+      ]
+    },
+    {
+      "teamId": "2960",
+      "team": "萨索洛",
+      "player": "帕斯",
+      "number": 27,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\2960-new.json"
+      ]
+    },
+    {
+      "teamId": "2960",
+      "team": "萨索洛",
+      "player": "博洛卡",
+      "number": 11,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\2960-new.json"
+      ]
+    },
+    {
+      "teamId": "2960",
+      "team": "萨索洛",
+      "player": "博洛卡",
+      "number": 11,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\2960-new.json"
+      ]
+    },
+    {
+      "teamId": "2960",
+      "team": "萨索洛",
+      "player": "博洛卡",
+      "number": 11,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\2960-new.json"
+      ]
+    },
+    {
+      "teamId": "2960",
+      "team": "萨索洛",
+      "player": "博洛卡",
+      "number": 11,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\2960-new.json"
+      ]
+    },
+    {
+      "teamId": "2960",
+      "team": "萨索洛",
+      "player": "伊斯梅尔-科内",
+      "number": 90,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\2960-new.json"
+      ]
+    },
+    {
+      "teamId": "2960",
+      "team": "萨索洛",
+      "player": "伊斯梅尔-科内",
+      "number": 90,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\2960-new.json"
+      ]
+    },
+    {
+      "teamId": "2960",
+      "team": "萨索洛",
+      "player": "伊斯梅尔-科内",
+      "number": 90,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\2960-new.json"
+      ]
+    },
+    {
+      "teamId": "2960",
+      "team": "萨索洛",
+      "player": "伊斯梅尔-科内",
+      "number": 90,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\萨索洛.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\2960-new.json"
+      ]
+    },
+    {
+      "teamId": "558",
+      "team": "都灵",
+      "player": "伊斯雷尔",
+      "number": 81,
+      "field": "appearances",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\都灵.md",
+      "reason": "无法判断是否纳入最多25人的统计样本；请核对名单及赛季分析器统计。",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\都灵.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\558-new.json"
+      ]
+    },
+    {
+      "teamId": "558",
+      "team": "都灵",
+      "player": "伊斯雷尔",
+      "number": 81,
+      "field": "starts",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\都灵.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\都灵.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\558-new.json"
+      ]
+    },
+    {
+      "teamId": "558",
+      "team": "都灵",
+      "player": "伊斯雷尔",
+      "number": 81,
+      "field": "goals",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\都灵.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\都灵.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\558-new.json"
+      ]
+    },
+    {
+      "teamId": "558",
+      "team": "都灵",
+      "player": "伊斯雷尔",
+      "number": 81,
+      "field": "assists",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\都灵.md",
+      "files": [
+        "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\都灵.md",
+        "C:\\www\\newFoot-master\\cup-analyzer\\crawler-server\\output\\player_center\\558-new.json"
+      ]
+    },
+    {
+      "teamId": "558",
+      "team": "都灵",
+      "player": "安德烈亚-卢翁戈",
+      "number": 79,
+      "field": "position",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\都灵.md"
+    },
+    {
+      "teamId": "558",
+      "team": "都灵",
+      "player": "安德烈亚-卢翁戈",
+      "number": 79,
+      "field": "ability",
+      "file": "C:\\www\\newFoot-master\\cup-analyzer\\serieA\\squad-final\\都灵.md"
+    }
+  ],
+  "season": "2026-2027"
+}

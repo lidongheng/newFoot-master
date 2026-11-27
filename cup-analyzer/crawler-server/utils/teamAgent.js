@@ -57,7 +57,7 @@ function readSchedule(league) {
 }
 
 function safeTeamDirectory(name) {
-  const result = name.replace(/[<>:"/\\|?*\x00-\x1f]/g, '_').replace(/[ .]+$/, '');
+  const result = name.replace(/[<>:"/\\|?*\x00-\x1f]/g, '_').replace(/[ .]+$/, '').replace(/\s+/g, '_');
   if (!result || /^(con|prn|aux|nul|com[1-9]|lpt[1-9])(\.|$)/i.test(result)) {
     throw new Error(`球队英文名无法作为 Windows 目录：${name}`);
   }

@@ -1,4 +1,4 @@
-// 白名单只包含可累加的计数；百分比、评分和无法解释的字段不参与汇总。
+// 累计、平均值、积分榜和阵容指标各自采用明确的聚合方式。
 const teamDefinitions = [
   ['shots', '射门', 'SHOOT'], ['shotsOnTarget', '射正', 'TARGET'], ['xg', '预期进球 xG', 'EXPECTED_GOALS'],
   ['yellowCards', '黄牌', 'YELLOW'], ['redCards', '红牌', 'RED'], ['clearances', '解围', 'CLEARANCES'],
@@ -35,7 +35,17 @@ const eventDefinitions = [
   ['errorsLeadingToGoal', '失误致失球', 'ErrorLeadToGoal'], ['goalLineClearances', '门线解围', 'ClearanceOffLine'],
 ];
 
+const indicatorDefinitions = [
+  ['standings', '积分榜', 'schedule', '积分', 'score'],
+  ['homeStandings', '主场积分榜', 'schedule', '积分', 'score'],
+  ['awayStandings', '客场积分榜', 'schedule', '积分', 'score'],
+  ['averageAge', '平均年龄', 'teamProfile', '岁', 'players.age'],
+  ['averageHeight', '平均身高', 'teamProfile', 'cm', 'players.height'],
+  ['totalMarketValue', '总身价', 'teamProfile', '万', 'players.marketValue'],
+  ['averagePossession', '平均控球率', 'techStats', '%', 'CONTROL_PERCENT'],
+];
 const catalog = [
+  ...indicatorDefinitions.map(([id, label, source, unit, field]) => ({ id, label, entity: 'teams', source, unit, field, additive: false })),
   ...teamDefinitions.map(([id, label, field]) => ({ id, label, entity: 'teams', source: 'techStats', field, unit: '次', additive: true })),
   ...playerDefinitions.map(([id, label, field]) => ({ id, label, entity: 'players', source: 'stats', field, unit: '次', additive: true })),
   ...eventDefinitions.map(([id, label, field]) => ({ id, label, entity: 'players', source: 'events', field, unit: '次', additive: true })),
