@@ -1,7 +1,33 @@
 const DATA_START = '<!-- TEAM_SCHEDULE_DATA';
 const DATA_END = '-->';
 
-function futureScheduleData(teamId, sourceTeamId, anchorTime, upcoming, formatTime) {
+function futureScheduleData(teamId, sourceTeamId, anchorTime, upcoming, formatTime, recent, current) {
+  // 历史、本场和未来比赛共用字段结构，画像导出时保留真实比赛身份与时间。
+  const serialize = (fixture) => {
+    const raw = fixture.raw;
+    let venue = 'away';
+    let opponentId = raw.team_A_id;
+    if (fixture.teamSide === 'A') {
+      venue = 'home';
+      opponentId = raw.team_B_id;
+    }
+    return {
+      matchId: fixture.matchId,
+      competitionId: raw.competition_id,
+      competitionName: fixture.competitionName,
+      gameweek: fixture.gameweek,
+      matchTitle: fixture.matchTitle,
+      homeTeamId: raw.team_A_id,
+      homeTeamName: raw.team_A_name,
+      awayTeamId: raw.team_B_id,
+      awayTeamName: raw.team_B_name,
+      opponentId,
+      opponentName: fixture.opponentName,
+      venue,
+      startTime: formatTime(fixture.startPlay),
+      status: fixture.status,
+    };
+  };
   return {
     teamId: String(teamId),
     source: 'dongqiudi',
@@ -9,31 +35,9 @@ function futureScheduleData(teamId, sourceTeamId, anchorTime, upcoming, formatTi
     anchorTime,
     timezone: 'Asia/Shanghai',
     windowDays: 30,
-    matches: upcoming.map((fixture) => {
-      const raw = fixture.raw;
-      let venue = 'away';
-      let opponentId = raw.team_A_id;
-      if (fixture.teamSide === 'A') {
-        venue = 'home';
-        opponentId = raw.team_B_id;
-      }
-      return {
-        matchId: fixture.matchId,
-        competitionId: raw.competition_id,
-        competitionName: fixture.competitionName,
-        gameweek: fixture.gameweek,
-        matchTitle: fixture.matchTitle,
-        homeTeamId: raw.team_A_id,
-        homeTeamName: raw.team_A_name,
-        awayTeamId: raw.team_B_id,
-        awayTeamName: raw.team_B_name,
-        opponentId,
-        opponentName: fixture.opponentName,
-        venue,
-        startTime: formatTime(fixture.startPlay),
-        status: fixture.status,
-      };
-    }),
+    recentMatches: recent.map(serialize),
+    currentMatch: serialize(current),
+    matches: upcoming.map(serialize),
   };
 }
 

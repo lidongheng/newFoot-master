@@ -29,7 +29,7 @@ function fixture(t, slug = 'fixture') {
 function writeMatch(directory, id) {
   fs.mkdirSync(directory, { recursive: true });
   const data = {
-    'matchInfo.json': { matchId: id, stateCode: -1 },
+    'matchInfo.json': { matchId: id, stateCode: -1, postMatchSummary: '已保存的总结' },
     'matchEvents.json': { matchId: id, events: [{ process: 'FullTime', score: { home: 2, away: 1 } }] },
     'techStats.json': { matchId: id, fullMatch: { 射门: { home: 2, away: 1 } } },
   };
@@ -170,6 +170,69 @@ test('完整数据跳过、不完整数据重采、请求串行间隔、失败�
   } finally {
     delete config.cups.fixture;
     PostMatchDataCrawler.prototype.crawlSingleMatch = previous;
+  }
+});
+
+test('核心数据完整但总结为空时仅补总结，失败保留原文件且继续，已有总结跳过', async (t) => {
+  const f = fixture(t);
+  initializeLeague(f.slug, f.league);
+  const loaded = loadTeamTarget(path.join(f.league.paths.cupAnalyzer, 'teamAgent', 'FC_Barcelona', 'config.js'), f.leagues);
+  loaded.schedule.rounds.R_1 = [1, 2, 3, 4].map((id) => [id, 31, -1, '', 84, 82, '2-1']);
+  const originals = new Map();
+  for (const id of ['1', '2', '3', '4']) {
+    const directory = path.join(loaded.outputDir, id);
+    writeMatch(directory, id);
+    if (id !== '2') {
+      const file = path.join(directory, 'matchInfo.json');
+      const info = JSON.parse(fs.readFileSync(file, 'utf8'));
+      info.postMatchSummary = '';
+      fs.writeFileSync(file, JSON.stringify(info));
+    }
+    for (const name of ['matchInfo.json', 'matchEvents.json', 'techStats.json']) {
+      const file = path.join(directory, name);
+      originals.set(file, fs.readFileSync(file));
+    }
+  }
+  const requested = [];
+  const delays = [];
+  const result = await collectTarget(loaded, {
+    crawlSingleMatch: async () => { throw new Error('不应重抓核心数据'); },
+    fetchPostMatchSummary: async (id) => {
+      requested.push(id);
+      if (id === '3') return '';
+      return `比赛${id}总结`;
+    },
+  }, async (ms) => delays.push(ms), () => {});
+  assert.deepEqual(result, { success: ['1', '4'], skipped: ['2'], failed: ['3'] });
+  assert.deepEqual(requested, ['1', '3', '4']);
+  assert.deepEqual(delays, [config.crawlDelayMs, config.crawlDelayMs]);
+  for (const [file, content] of originals) {
+    if (['1', '4'].includes(path.basename(path.dirname(file))) && path.basename(file) === 'matchInfo.json') {
+      assert.equal(JSON.parse(fs.readFileSync(file, 'utf8')).postMatchSummary, `比赛${path.basename(path.dirname(file))}总结`);
+    } else assert.deepEqual(fs.readFileSync(file), content);
+  }
+});
+
+test('总结接口覆盖桌面Host并解析真实返回结构中的多段正文', async () => {
+  const { service } = require('../utils/http');
+  const originalAdapter = service.defaults.adapter;
+  const requests = [];
+  service.defaults.adapter = async (request) => {
+    requests.push(request);
+    return { status: 200, statusText: 'OK', headers: {}, config: request,
+      data: { kind: 1, content: '<p>主队总结。</p>\n<p>客队总结。</p>', aiCss: '/css/AiAnalysis.css' } };
+  };
+  try {
+    const crawler = new PostMatchDataCrawler();
+    crawler.requestOptions = { retry: 0 };
+    assert.equal(await crawler.fetchPostMatchSummary('3000549'), '主队总结。\n\n客队总结。');
+    assert.equal(requests.length, 1);
+    assert.equal(requests[0].headers.Host, 'm.titan007.com');
+    assert.equal(new URL(requests[0].url).hostname, requests[0].headers.Host);
+    assert.equal(requests[0].headers.Referer, 'https://m.titan007.com/Analy/ShiJian/3000549.htm');
+    assert.equal(requests[0].retry, 0);
+  } finally {
+    service.defaults.adapter = originalAdapter;
   }
 });
 

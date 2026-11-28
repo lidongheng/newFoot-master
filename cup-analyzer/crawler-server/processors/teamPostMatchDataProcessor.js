@@ -40,7 +40,11 @@ async function collectTarget(loaded, crawler, wait, log) {
   for (const match of matches) {
     const id = String(match[0]);
     const directory = path.join(outputDir, id);
-    if (isCompleteMatch(directory, id)) {
+    const complete = isCompleteMatch(directory, id);
+    const infoFile = path.join(directory, 'matchInfo.json');
+    let info;
+    if (complete) info = JSON.parse(fs.readFileSync(infoFile, 'utf8'));
+    if (complete && typeof info.postMatchSummary === 'string' && info.postMatchSummary.trim()) {
       result.skipped.push(id);
       continue;
     }
@@ -50,6 +54,15 @@ async function collectTarget(loaded, crawler, wait, log) {
     }
     requested = true;
     try {
+      if (complete) {
+        // 核心数据已完整时只补总结，避免重抓、覆盖技术统计和阵容等文件。
+        const summary = await crawler.fetchPostMatchSummary(id);
+        if (!summary.trim()) throw new Error('赛后总结未获取到内容，保留原文件。');
+        info.postMatchSummary = summary;
+        fs.writeFileSync(infoFile, JSON.stringify(info, null, 2) + '\n', 'utf8');
+        result.success.push(id);
+        continue;
+      }
       const ok = await crawler.crawlSingleMatch(id, directory);
       if (!ok || !isCompleteMatch(directory, id)) {
         throw new Error('核心文件缺失、比赛 ID 不一致、技术统计为空或缺少终场比分。');

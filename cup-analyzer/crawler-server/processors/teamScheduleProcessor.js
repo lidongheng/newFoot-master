@@ -182,7 +182,7 @@ class TeamScheduleProcessor extends BaseCrawler {
 
     const base = path.join(config.paths.cupAnalyzer, 'squad', `${mapping.qiutanName}.md`);
     if (!fileExists(base)) throw new Error(`初选名单不存在: ${base}，请先运行 leagueSquadProcessor`);
-    const futureSchedule = futureScheduleData(squadTarget.teamSerial, dqdTeamId, squadTarget.matchTime, upcoming, fmtTime);
+    const futureSchedule = futureScheduleData(squadTarget.teamSerial, dqdTeamId, squadTarget.matchTime, upcoming, fmtTime, recent, anchor);
     const section = makeSection(anchor.startTime, recent, upcoming, mapping.qiutanName, futureSchedule);
     this.updateScheduleSection(base, section);
     this.log(`已写入赛程区块: ${base}`);

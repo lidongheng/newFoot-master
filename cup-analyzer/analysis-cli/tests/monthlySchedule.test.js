@@ -12,12 +12,15 @@ const hour = 3600000;
 
 function profile(offsets, matchTime = '2026-11-29 23:15:00') {
   const start = parseBeijingTime(matchTime);
-  return { teamId: '84', season: '2026-2027', futureSchedule: {
+  const data = { teamId: '84', season: '2026-2027', futureSchedule: {
     teamId: '84', source: 'dongqiudi', sourceTeamId: '500', timezone: 'Asia/Shanghai', windowDays: 30, anchorTime: matchTime,
-    matches: offsets.map((offset, index) => ({ matchId: String(index + 1), competitionId: '7', competitionName: '西甲', gameweek: '23', matchTitle: '西甲 第23轮',
+    matches: [...offsets, 0].map((offset, index) => ({ matchId: String(index + 1), competitionId: '7', competitionName: '西甲', gameweek: '23', matchTitle: '西甲 第23轮',
       homeTeamId: '500', homeTeamName: '巴塞罗那', awayTeamId: '600', awayTeamName: '马德里竞技', opponentId: '600', opponentName: '马德里竞技', venue: 'home',
       startTime: new Date(start + offset * hour + 8 * hour).toISOString().slice(0, 19).replace('T', ' '), status: 'fixture' })),
   } };
+  data.futureSchedule.currentMatch = { ...data.futureSchedule.matches.pop(), matchId: 'current' };
+  data.futureSchedule.recentMatches = [];
+  return data;
 }
 
 test('危险、警告、良好及一周一赛按实际小时边界分类', () => {
@@ -25,6 +28,23 @@ test('危险、警告、良好及一周一赛按实际小时边界分类', () =>
     assert.equal(classifyInterval(hours), level);
   }
   for (const hours of [0, -1, NaN, Infinity]) assert.throws(() => classifyInterval(hours));
+});
+
+test('最近3场、本场及未来赛程按时间排列，本场显示距上一场间隔并参与密集赛程检查', () => {
+  const input = profile([72]);
+  const schedule = input.futureSchedule;
+  schedule.recentMatches = [-48, -240, -120].map((offset, index) => ({ ...schedule.currentMatch,
+    matchId: 'played-' + index, status: 'Played', gameweek: String(20 - index), matchTitle: `西甲 第${20 - index}轮`,
+    startTime: new Date(parseBeijingTime(schedule.anchorTime) + offset * hour + 8 * hour).toISOString().slice(0, 19).replace('T', ' ') }));
+  const result = buildRows(input, '84', '2026-2027');
+  assert.deepEqual(result.rows.map((row) => row['类型']), ['已完赛', '已完赛', '已完赛', '本场', '未来']);
+  assert.deepEqual(result.rows.map((row) => row['间隔']), ['', '120小时', '72小时', '48小时', '72小时']);
+  assert.equal(result.currentInterval, '48小时');
+  assert.equal(result.rows[3]['等级'], '危险');
+  assert.match(result.rows[3]['备注'], /本场距上一场：48小时。6天3场/);
+  assert.match(result.rows[4]['备注'], /^6天3场/);
+  schedule.currentMatch.startTime = '2026-11-30 23:15:00';
+  assert.throws(() => buildRows(input, '84', '2026-2027'), /本场开球时间/);
 });
 
 test('以画像matchTime为基准，跨赛事按时间排序；首场及后续间隔独立计算', () => {
@@ -40,23 +60,40 @@ test('以画像matchTime为基准，跨赛事按时间排序；首场及后续�
   input.futureSchedule.matches.reverse();
   const before = JSON.stringify(input);
   const result = buildRows(input, '84', '2026-2027');
-  assert.deepEqual(result.rows[0], { '日期时间': '12月3日 04:30', '赛事': '西甲', '轮次或阶段': '第23轮', '对阵': '巴塞罗那vs马德里竞技', '间隔': '77.25小时', '等级': '警告', '备注': '' });
-  assert.equal(result.rows[1]['间隔'], '71.5小时');
-  assert.match(result.rows[1]['备注'], /^7天3场/);
-  assert.equal(result.rows[2]['赛事'], '欧冠');
-  assert.equal(result.rows[2]['轮次或阶段'], '联赛阶段');
-  assert.equal(result.rows[2]['对阵'], '曼城vs巴塞罗那');
-  assert.match(result.rows[2]['备注'], /^6天3场/);
+  const future = result.rows.filter((row) => row['类型'] === '未来');
+  assert.deepEqual(future[0], { '类型': '未来', '日期时间': '12月3日 04:30', '赛事': '西甲', '轮次或阶段': '第23轮', '对阵': '巴塞罗那vs马德里竞技', '间隔': '77.25小时', '等级': '警告', '备注': '' });
+  assert.equal(future[1]['间隔'], '71.5小时');
+  assert.match(future[1]['备注'], /^7天3场/);
+  assert.equal(future[2]['赛事'], '欧冠');
+  assert.equal(future[2]['轮次或阶段'], '联赛阶段');
+  assert.equal(future[2]['对阵'], '曼城vs巴塞罗那');
+  assert.match(future[2]['备注'], /^6天3场/);
   assert.equal(JSON.stringify(input), before);
+});
+
+test('遍历全部比赛，轮次乱序及窗口外记录不截断补赛和提前赛，兼容来源状态大小写', () => {
+  const input = profile([721, 144, -24, 72, 720, 216]);
+  const rounds = ['30', '12', '16', '20', '19', '18'];
+  for (const [index, match] of input.futureSchedule.matches.entries()) {
+    match.gameweek = rounds[index];
+    match.matchTitle = `西甲 第${rounds[index]}轮`;
+    match.status = 'Fixture';
+  }
+  input.futureSchedule.matches[5].status = 'Uncertain';
+  const rows = buildRows(input, '84', '2026-2027').rows.filter((row) => row['类型'] === '未来');
+  assert.deepEqual(rows.map((row) => row['轮次或阶段']), ['第20轮', '第12轮', '第18轮', '第19轮']);
+  assert.deepEqual(rows.map((row) => row['间隔']), ['72小时', '72小时', '72小时', '504小时']);
+  input.futureSchedule.matches[3].status = 'Played';
+  assert.throws(() => buildRows(input, '84', '2026-2027'), /不是未赛状态/);
 });
 
 test('密集赛程采用144及168小时边界，包含基准比赛并保留重叠窗口', () => {
   for (const [offsets, expected] of [[[72, 144], '6天3场'], [[72, 144.01], '7天3场'], [[84, 168], '7天3场'], [[84, 168.01], '']]) {
-    const row = buildRows(profile(offsets), '84', '2026-2027').rows[1];
+    const row = buildRows(profile(offsets), '84', '2026-2027').rows[2];
     assert.equal(row['备注'].startsWith(expected), true);
     if (!expected) assert.equal(row['备注'], '');
   }
-  const rows = buildRows(profile([72, 144, 216]), '84', '2026-2027').rows;
+  const rows = buildRows(profile([72, 144, 216]), '84', '2026-2027').rows.slice(1);
   assert.equal(rows[0]['备注'], '');
   assert.match(rows[1]['备注'], /^6天3场/);
   assert.match(rows[2]['备注'], /^6天3场/);
@@ -66,11 +103,12 @@ test('固定30天窗口不含基准时刻，包含截止时刻；跨年、空赛
   const input = profile([-1, 0, 24, 720, 721], '2026-12-15 04:00:00');
   input.futureSchedule.matches.push({ ...input.futureSchedule.matches[2] });
   const result = buildRows(input, '84', '2026-2027');
-  assert.equal(result.rows.length, 2);
-  assert.equal(result.rows[0]['日期时间'], '12月16日 04:00');
-  assert.equal(result.rows[1]['日期时间'], '1月14日 04:00');
+  const future = result.rows.filter((row) => row['类型'] === '未来');
+  assert.equal(future.length, 2);
+  assert.equal(future[0]['日期时间'], '12月16日 04:00');
+  assert.equal(future[1]['日期时间'], '1月14日 04:00');
   assert.equal(result.endTime, '2027-01-14 04:00:00');
-  assert.deepEqual(buildRows(profile([]), '84', '2026-2027').rows, []);
+  assert.deepEqual(buildRows(profile([]), '84', '2026-2027').rows.map((row) => row['类型']), ['本场']);
   input.futureSchedule.matches.at(-1).competitionName = '另一赛事';
   assert.throws(() => buildRows(input, '84', '2026-2027'), /冲突/);
 });
@@ -80,7 +118,7 @@ test('缺失结构化赛程、错误身份或赛季、非法时间不使用兜�
   assert.throws(() => buildRows(profile([]), '85', '2026-2027'), /球队ID或赛季/);
   assert.throws(() => buildRows(profile([]), '84', '2025-2026'), /球队ID或赛季/);
   for (const time of ['2026-02-30 04:00:00', '2026-11-29 25:00:00', '', null]) assert.throws(() => parseBeijingTime(time));
-  for (const field of ['anchorTime', 'sourceTeamId', 'matches']) {
+  for (const field of ['anchorTime', 'sourceTeamId', 'matches', 'recentMatches', 'currentMatch']) {
     const input = profile([24]);
     delete input.futureSchedule[field];
     assert.throws(() => buildRows(input, '84', '2026-2027'));

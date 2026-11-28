@@ -108,7 +108,13 @@ test('未来赛程随初选、最终名单、画像MD透传，并写入画像JSO
   const team = { id: 84, chineseName: '测试队', englishName: 'Test' };
   const raw = { competition_id: '1', team_A_id: '101', team_A_name: '测试队', team_B_id: '102', team_B_name: '对手' };
   const upcoming = [{ raw, matchId: '1001', competitionName: '测试联赛', gameweek: '15', matchTitle: '测试联赛 第15轮', opponentName: '对手', teamSide: 'A', startPlay: '2026-12-01 12:00:00', status: 'fixture' }];
-  const data = futureScheduleData('84', '101', '2026-11-28 20:00:00', upcoming, () => '2026-12-01 20:00:00');
+  const data = futureScheduleData('84', '101', '2026-11-28 20:00:00', upcoming, (value) => value.replace('12:00:00', '20:00:00'),
+    [{ ...upcoming[0], matchId: '900', startPlay: '2026-11-25 12:00:00', status: 'Played' }],
+    { ...upcoming[0], matchId: '1000', startPlay: '2026-11-28 12:00:00' });
+  assert.equal(data.recentMatches[0].startTime, '2026-11-25 20:00:00');
+  assert.equal(data.recentMatches[0].status, 'Played');
+  assert.equal(data.currentMatch.startTime, data.anchorTime);
+  assert.equal(data.currentMatch.matchId, '1000');
   assert.equal(data.matches[0].venue, 'home');
   assert.equal(data.matches[0].opponentId, '102');
   assert.equal(data.matches[0].startTime, '2026-12-01 20:00:00');

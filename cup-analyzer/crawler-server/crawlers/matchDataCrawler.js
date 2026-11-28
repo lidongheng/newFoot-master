@@ -127,7 +127,8 @@ class MatchDataCrawler extends BaseCrawler {
     try {
       const url = targets.titan007.postMatchSummaryApi(matchSerial);
       const res = await this.fetchJson(url, {
-        Referer: `https://m.titan007.com/Analy/ShiJian/${matchSerial}.htm`,
+        // fetchJson 默认带桌面站 Host，移动端接口必须覆盖，否则 TLS 握手失败。
+        ...targets.titan007.headers.mobile(matchSerial),
         'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15',
       });
       if (res && res.content) {

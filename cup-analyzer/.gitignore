@@ -1,0 +1,11 @@
+# League ranking snapshots are generated locally.
+/*/leagueRanking/
+
+# Post-match summaries are generated locally.
+/*/postMatchSummary/
+
+# Ignore generated Markdown and HTML inside team-specific folders only.
+/*/teamAgent/*/*.md
+/*/teamAgent/*/*.html
+/*/teamAgent/*/**/*.md
+/*/teamAgent/*/**/*.html

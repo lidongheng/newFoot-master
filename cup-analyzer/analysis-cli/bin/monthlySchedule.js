@@ -8,7 +8,7 @@ const { loadContext } = require('../src/sources');
 const { parseReportOptions, writeStory } = require('../src/reportInputs');
 
 const title = '球队未来一个月赛程';
-const columns = ['日期时间', '赛事', '轮次或阶段', '对阵', '间隔', '等级', '备注'];
+const columns = ['类型', '日期时间', '赛事', '轮次或阶段', '对阵', '间隔', '等级', '备注'];
 const hour = 60 * 60 * 1000;
 
 function parseBeijingTime(value) {
@@ -50,8 +50,16 @@ function buildRows(profile, teamId, season) {
   const matchTime = schedule.anchorTime;
   const start = parseBeijingTime(matchTime);
   const end = start + 30 * 24 * hour;
+  if (!Array.isArray(schedule.recentMatches) || schedule.recentMatches.length > 3 || !schedule.currentMatch) {
+    throw new Error('画像赛程缺少最近3场或本场结构化数据，请重新生成球队赛程及画像。');
+  }
   const unique = new Map();
-  for (const match of schedule.matches) {
+  const records = [
+    ...schedule.recentMatches.map((match) => ({ match, phase: '已完赛' })),
+    { match: schedule.currentMatch, phase: '本场' },
+    ...schedule.matches.map((match) => ({ match, phase: '未来' })),
+  ];
+  for (const { match, phase } of records) {
     if (!match || typeof match !== 'object' || Array.isArray(match)) throw new Error('未来赛程包含无效比赛对象。');
     for (const field of ['matchId', 'competitionName', 'homeTeamId', 'homeTeamName', 'awayTeamId', 'awayTeamName', 'status', 'venue']) {
       if (typeof match[field] !== 'string' || !match[field].trim()) throw new Error(`未来赛程比赛字段${field}缺失或无效。`);
@@ -62,21 +70,37 @@ function buildRows(profile, teamId, season) {
     const home = match.homeTeamId === schedule.sourceTeamId;
     const away = match.awayTeamId === schedule.sourceTeamId;
     if (home === away || (home && match.venue !== 'home') || (away && match.venue !== 'away')) throw new Error(`比赛${match.matchId}的目标球队或主客身份无效。`);
-    if (unique.has(match.matchId) && !isDeepStrictEqual(unique.get(match.matchId), match)) throw new Error(`比赛${match.matchId}重复且数据冲突。`);
-    unique.set(match.matchId, match);
+    const record = { ...match, phase };
+    if (unique.has(match.matchId) && !isDeepStrictEqual(unique.get(match.matchId), record)) throw new Error(`比赛${match.matchId}重复且数据冲突。`);
+    unique.set(match.matchId, record);
   }
   const matches = [];
+  // 遍历全部比赛后按开球时间筛选；补赛和提前赛不能按轮次或输入顺序截断。
   for (const match of unique.values()) {
-    if (!['fixture', 'uncertain'].includes(match.status)) throw new Error(`比赛${match.matchId}不是未赛状态，需更新画像赛程。`);
     const timestamp = parseBeijingTime(match.startTime);
-    if (timestamp > start && timestamp <= end) matches.push({ ...match, timestamp, round: roundLabel(match) });
+    if (match.phase === '已完赛') {
+      if (match.status.toLowerCase() !== 'played' || timestamp >= start) throw new Error(`比赛${match.matchId}不是本场之前的已完赛比赛。`);
+    } else if (match.phase === '本场') {
+      if (timestamp !== start) throw new Error('本场开球时间与matchTime不一致。');
+    } else {
+      if (!['fixture', 'uncertain'].includes(match.status.toLowerCase())) throw new Error(`比赛${match.matchId}不是未赛状态，需更新画像赛程。`);
+      if (timestamp <= start || timestamp > end) continue;
+    }
+    matches.push({ ...match, timestamp, round: roundLabel(match) });
   }
   matches.sort((a, b) => a.timestamp - b.timestamp || a.matchId.localeCompare(b.matchId, 'en', { numeric: true }));
   const rows = [];
-  const times = [start];
+  const times = [];
+  let currentInterval = '无上一场已完赛数据，无法计算';
   for (const match of matches) {
-    const hours = (match.timestamp - times[times.length - 1]) / hour;
-    const level = classifyInterval(hours);
+    let interval = '';
+    let level = '';
+    if (times.length) {
+      const hours = (match.timestamp - times[times.length - 1]) / hour;
+      level = classifyInterval(hours);
+      interval = `${Number(hours.toFixed(2))}小时`;
+    }
+    if (match.phase === '本场' && times.length) currentInterval = interval;
     times.push(match.timestamp);
     let note = '';
     // 连续三场滑动检查，基准比赛也计入；同一窗口只标更紧密的一档。
@@ -88,10 +112,11 @@ function buildRows(profile, teamId, season) {
       else if (span <= 168) congestion = '7天3场';
       if (congestion) note = `${congestion}（${formatTime(first)}至${formatTime(match.timestamp)}）`;
     }
-    rows.push({ '日期时间': formatTime(match.timestamp), '赛事': match.competitionName, '轮次或阶段': match.round,
-      '对阵': `${match.homeTeamName}vs${match.awayTeamName}`, '间隔': `${Number(hours.toFixed(2))}小时`, '等级': level, '备注': note });
+    if (match.phase === '本场') note = `本场距上一场：${currentInterval}。${note}`;
+    rows.push({ '类型': match.phase, '日期时间': formatTime(match.timestamp), '赛事': match.competitionName, '轮次或阶段': match.round,
+      '对阵': `${match.homeTeamName}vs${match.awayTeamName}`, '间隔': interval, '等级': level, '备注': note });
   }
-  return { rows, matchTime, endTime: new Date(end + 8 * hour).toISOString().slice(0, 19).replace('T', ' ') };
+  return { rows, matchTime, currentInterval, endTime: new Date(end + 8 * hour).toISOString().slice(0, 19).replace('T', ' ') };
 }
 
 function generateReports(context) {
@@ -106,9 +131,8 @@ function generateReports(context) {
       const profile = JSON.parse(fs.readFileSync(file, 'utf8'));
       const report = buildRows(profile, team.id, context.season);
       const source = path.relative(destination, file).split(path.sep).join('/');
-      const description = `${team.name} · ${context.league} · ${context.season}；来源：${source}。基准比赛时间（matchTime）：${report.matchTime}；截止时间：${report.endTime}，均为北京时间。仅展示基准时间之后、含截止时刻的全部赛事，共${report.rows.length}场。`;
-      let note = '首场与matchTime比较，后续与上一场开球时间比较。危险：≤66小时；警告：>66且≤92小时；良好：>92且≤120小时；一周一赛：>120小时。按实际间隔判级，小时数最多显示两位小数。连续三场首尾≤144小时标6天3场，>144且≤168小时标7天3场；基准比赛参与检查，备注写在第三场，重叠窗口分别保留。';
-      if (!report.rows.length) note += '画像保存的30天窗口内无比赛。';
+      const description = `${team.name} · ${context.league} · ${context.season}；来源：${source}。基准比赛时间（matchTime）：${report.matchTime}；截止时间：${report.endTime}，均为北京时间。本场距上一场：${report.currentInterval}。展示最近3场已完赛、本场及之后30天内（含截止时刻）的全部赛事，共${report.rows.length}场。`;
+      const note = '按开球时间排序，间隔为距上一场开球的小时数；最早一场无上一场记录，间隔和等级留空。危险：≤66小时；警告：>66且≤92小时；良好：>92且≤120小时；一周一赛：>120小时。小时数最多显示两位小数。连续三场首尾≤144小时标6天3场，>144且≤168小时标7天3场，备注写在第三场，重叠窗口分别保留。';
       const output = writeStory({ destination, description }, title, report.rows, columns, [], note);
       results.push({ teamId: team.id, team: team.name, status: 'generated', matches: report.rows.length, matchTime: report.matchTime, source: file, files: output.files });
     } catch (error) {
