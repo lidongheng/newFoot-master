@@ -16,6 +16,38 @@ cd cup-analyzer/analysis-cli
 
 如果终端当前就在本文件所在的 `teamAgent` 目录，则执行 `cd ../../analysis-cli`。**下面所有分析命令都在 analysis-cli 目录执行**，不在 crawler-server 或球队目录执行。
 
+### 初始化 basicData
+
+先逐队执行以下命令准备 basicData。采集命令在 `cup-analyzer/crawler-server` 目录执行；如果当前位于上面的 `analysis-cli` 目录，先执行 `cd ../crawler-server`。
+
+```bash
+cd ../crawler-server
+
+node processors/teamPostMatchDataProcessor.js --config "../epl/teamAgent/AFC_Bournemouth/config.js"
+node processors/teamPostMatchDataProcessor.js --config "../epl/teamAgent/Arsenal/config.js"
+node processors/teamPostMatchDataProcessor.js --config "../epl/teamAgent/Aston_Villa/config.js"
+node processors/teamPostMatchDataProcessor.js --config "../epl/teamAgent/Brentford/config.js"
+node processors/teamPostMatchDataProcessor.js --config "../epl/teamAgent/Brighton_Hove_Albion/config.js"
+node processors/teamPostMatchDataProcessor.js --config "../epl/teamAgent/Chelsea/config.js"
+node processors/teamPostMatchDataProcessor.js --config "../epl/teamAgent/Coventry_City/config.js"
+node processors/teamPostMatchDataProcessor.js --config "../epl/teamAgent/Crystal_Palace/config.js"
+node processors/teamPostMatchDataProcessor.js --config "../epl/teamAgent/Everton/config.js"
+node processors/teamPostMatchDataProcessor.js --config "../epl/teamAgent/Fulham/config.js"
+node processors/teamPostMatchDataProcessor.js --config "../epl/teamAgent/Hull_City/config.js"
+node processors/teamPostMatchDataProcessor.js --config "../epl/teamAgent/Ipswich_Town/config.js"
+node processors/teamPostMatchDataProcessor.js --config "../epl/teamAgent/Leeds_United/config.js"
+node processors/teamPostMatchDataProcessor.js --config "../epl/teamAgent/Liverpool/config.js"
+node processors/teamPostMatchDataProcessor.js --config "../epl/teamAgent/Manchester_City/config.js"
+node processors/teamPostMatchDataProcessor.js --config "../epl/teamAgent/Manchester_United/config.js"
+node processors/teamPostMatchDataProcessor.js --config "../epl/teamAgent/Newcastle_United/config.js"
+node processors/teamPostMatchDataProcessor.js --config "../epl/teamAgent/Nottingham_Forest/config.js"
+node processors/teamPostMatchDataProcessor.js --config "../epl/teamAgent/Sunderland_A.F.C/config.js"
+node processors/teamPostMatchDataProcessor.js --config "../epl/teamAgent/Tottenham_Hotspur/config.js"
+
+# 采集完成后返回分析 CLI，再执行下方分析命令
+cd ../analysis-cli
+```
+
 <!-- 熟悉联赛 -->
 
 ### 第一步：生成“xG告诉我们的故事”
