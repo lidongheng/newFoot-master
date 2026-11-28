@@ -9,7 +9,7 @@ const { normalize } = require('../src/normalizers');
 const { selectMatches, aggregate, buildReport } = require('../src/aggregators');
 const { metricsFor } = require('../src/metrics');
 const { writeReport } = require('../src/renderers');
-const { columns, metricIds, selectKeyPlayers, readStartingXI, buildComparison } = require('../src/keyPlayerStarts');
+const { columns, metricIds, selectKeyPlayers, readStartingXI, buildComparison, collectJerseyNumbers } = require('../src/keyPlayerStarts');
 
 function main(args) {
   const { options, scopeLabel } = parseReportOptions(args);
@@ -18,6 +18,7 @@ function main(args) {
     if (!context.directories.has(team.id)) throw new Error(`${team.name} 缺少有效球队配置目录。`);
   }
   const dataset = readMatches(context, path.resolve(__dirname, '../repairs/history'));
+  const jerseyNumbers = collectJerseyNumbers(dataset.matches, context.teams.map((team) => team.id));
   const normalized = normalize(context, dataset);
   // 本步同时使用球员榜和逐场数据，每次沿用现有 build 流程生成同范围榜单。
   const report = buildReport(context, dataset, normalized, { ...options, metrics: metricIds });
@@ -38,7 +39,10 @@ function main(args) {
   const plans = [];
   for (const team of context.teams) {
     const result = leaders.get(team.id);
-    const players = [...result.players.values()];
+    const players = [...result.players.values()].map((player) => ({
+      ...player,
+      jerseyNumber: jerseyNumbers.get(team.id).get(player.id) ?? '-',
+    }));
     const issues = [];
     // 范围内没有比赛与数据缺失不同，不把未参赛球队记成指标缺口。
     if (selected.get(team.id).size > 0) issues.push(...result.issues);
@@ -51,7 +55,7 @@ function main(args) {
     const rows = buildComparison(team.id, players, games);
     let scope = scopeLabel;
     if (options.scope === 'all-matches') scope = '统计范围：本赛季本地赛程全部已完赛比赛';
-    const description = `${team.name} · ${context.league} · ${context.season}；${scope}。关键球员取同范围 players 榜 ${metricIds.join('、')} 的本队最高值，跨队球员按本队期间拆分；并列全取，同一球员合并指标。进球沿用 Goal＋Penalty、不含乌龙的榜单口径；headersWon 为争顶成功次数。球队比分取赛程，首发取比赛 lineup.json 的11人名单；不首发包含替补及未出场。共${games.length}场，首发可判定${games.filter((game) => !game.issue).length}场，未知${games.filter((game) => game.issue).length}场。`;
+    const description = `${team.name} · ${context.league} · ${context.season}；${scope}。关键球员取同范围 players 榜 ${metricIds.join('、')} 的本队最高值，跨队球员按本队期间拆分；并列全取，同一球员合并指标。进球沿用 Goal＋Penalty、不含乌龙的榜单口径；headersWon 为争顶成功次数。球队比分取赛程，首发取比赛 lineup.json 的11人名单；不首发包含替补及未出场。球衣号按球员ID取逐场统计或首发、替补名单中的号码，缺失或冲突显示“-”。共${games.length}场，首发可判定${games.filter((game) => !game.issue).length}场，未知${games.filter((game) => game.issue).length}场。`;
     let note = '胜3分、平1分、负0分；场次为0表示该组没有可统计比赛。两组样本量可能不同，表格只描述比赛结果，不推断因果。';
     if (!games.length) note += '统计范围内无已完赛比赛，未选取关键球员。';
     if (issues.length) note += '数据缺口：' + issues.join('；') + '。';

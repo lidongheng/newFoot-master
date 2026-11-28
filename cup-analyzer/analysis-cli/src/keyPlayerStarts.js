@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { metricsFor } = require('./metrics');
 
-const columns = ['球员', '球员ID', '关键指标', '首发情况', '场次', '胜', '平', '负', '进', '失', '净', '积分'];
+const columns = ['球衣号', '球员', '球员ID', '关键指标', '首发情况', '场次', '胜', '平', '负', '进', '失', '净', '积分'];
 const metricIds = ['goals', 'assists', 'tackles', 'clearances', 'successfulPasses', 'headersWon', 'interceptions', 'shotsBlocked'];
 
 function selectKeyPlayers(inputs, teamIds, splitRankings) {
@@ -85,7 +85,7 @@ function buildComparison(teamId, players, games) {
   const rows = [];
   for (const player of players) {
     const groups = ['首发', '不首发'].map((status) => ({
-      '球员': player.name, '球员ID': player.id, '关键指标': player.metrics.join('；'), '首发情况': status,
+      '球衣号': player.jerseyNumber ?? '-', '球员': player.name, '球员ID': player.id, '关键指标': player.metrics.join('；'), '首发情况': status,
       '场次': 0, '胜': 0, '平': 0, '负': 0, '进': 0, '失': 0, '净': 0, '积分': 0,
     }));
     for (const game of games) {
@@ -112,4 +112,50 @@ function buildComparison(teamId, players, games) {
   return rows;
 }
 
-module.exports = { columns, metricIds, selectKeyPlayers, readStartingXI, buildComparison };
+// 按球员ID合并逐场统计和名单号码；缺失或赛季内号码冲突时不猜测。
+function collectJerseyNumbers(matches, teamIds) {
+  const numbersByTeam = new Map(teamIds.map((id) => [String(id), new Map()]));
+  const add = (teamId, playerId, rawNumber) => {
+    const players = numbersByTeam.get(String(teamId));
+    if (!players || playerId === undefined || playerId === null) return;
+    const id = String(playerId);
+    const number = String(rawNumber ?? '').trim();
+    if (!/^[1-9]\d*$/.test(id) || !/^\d+$/.test(number)) return;
+    if (!players.has(id)) players.set(id, new Set());
+    players.get(id).add(number);
+  };
+  for (const match of matches) {
+    const stats = match.files['playerStats.json'];
+    if (stats) {
+      for (const side of ['home', 'away']) {
+        const team = stats[side];
+        if (!team || !Array.isArray(team.players)) continue;
+        for (const player of team.players) add(team.teamId, player.playerId, player.playerNum);
+      }
+    }
+    const lineup = match.files['lineup.json'];
+    if (!lineup) continue;
+    const lineups = [
+      [match.homeId, lineup.homeStarting],
+      [match.homeId, lineup.homeSubs],
+      [match.awayId, lineup.guestStarting],
+      [match.awayId, lineup.guestSubs],
+    ];
+    for (const [teamId, players] of lineups) {
+      if (!Array.isArray(players)) continue;
+      for (const player of players) add(teamId, player.id, player.number);
+    }
+  }
+  const result = new Map();
+  for (const [teamId, players] of numbersByTeam) {
+    const jerseyNumbers = new Map();
+    for (const [playerId, numbers] of players) {
+      if (numbers.size === 1) jerseyNumbers.set(playerId, numbers.values().next().value);
+      else jerseyNumbers.set(playerId, '-');
+    }
+    result.set(teamId, jerseyNumbers);
+  }
+  return result;
+}
+
+module.exports = { columns, metricIds, selectKeyPlayers, readStartingXI, buildComparison, collectJerseyNumbers };
