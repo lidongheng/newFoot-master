@@ -52,11 +52,30 @@ node processors/teamPostMatchDataProcessor.js --config '../koreanKLeague/teamAge
 cd ../analysis-cli
 ```
 
+## 二、查看指标及生成榜单
+
+完成 basicData 采集并返回 `analysis-cli` 后，先执行下方不带 `--metrics` 或范围参数的全联赛 build，准备完整榜单 JSON，再进入第三节熟悉联赛。首次生成时不要只执行部分指标命令，以免后续报告缺少输入文件。
+
+```bash
+# 查看球队、球员支持的指标 ID、中文名和数据来源
+node bin/cli.js catalog --league koreanKLeague --season 2026
+
+# 处理本地该赛季全部已完赛数据，生成所有支持的单项榜
+node bin/cli.js build --league koreanKLeague --season 2026
+
+# 可选：只生成射门、射正、球队 xG，以及实际进球减 xG 榜
+node bin/cli.js build --league koreanKLeague --season 2026 --metrics shots,shotsOnTarget,xg,goalsMinusXg
+```
+
+## 三、熟悉联赛
+
 <!-- 熟悉联赛 -->
+
+先确认第二节全联赛 build 已成功生成所需榜单；有数据缺口时按输出提示核验。下列报告命令均在 `analysis-cli` 目录执行。
 
 ### 第一步：生成“xG告诉我们的故事”
 
-不传范围时，先确认 `koreanKLeague/leagueRanking/2026/teams` 下已有 `standings`、`averageXg`、`averageShots`、`goalsMinusXg` 各自目录中的同名 JSON；尚未生成时，先执行下方第二节的全联赛 build 命令。传入轮次或日期范围时，命令会先调用现有 build 更新所需榜单 JSON，再读取 JSON 生成报告。
+不传范围时，先确认 `koreanKLeague/leagueRanking/2026/teams` 下已有 `standings`、`averageXg`、`averageShots`、`goalsMinusXg` 各自目录中的同名 JSON；尚未生成时，先执行上方第二节的全联赛 build 命令。传入轮次或日期范围时，命令会先调用现有 build 更新所需榜单 JSON，再读取 JSON 生成报告。
 
 在 `analysis-cli` 目录执行：
 
@@ -201,20 +220,7 @@ node bin/keyPlayerStarts.js --league koreanKLeague --season 2026 --from 2026-09-
 
 传入范围会覆盖所需指标的现有榜单 MD、HTML、JSON，报告正文标明本次范围。第一步、第二步不传范围时仅读取当前 JSON，不自动恢复全赛季；第三步每次刷新其所需指标榜单，不传范围即使用本赛季全部已完赛比赛，保证关键球员选择与首发对比范围一致。三个步骤均覆盖各自同名报告，不另建范围目录，不改原始 basicData。原有 `bin/cli.js build` 仍使用 `--rounds` 参数。
 
-## 二、查看指标及生成榜单
-
-```bash
-# 查看球队、球员支持的指标 ID、中文名和数据来源
-node bin/cli.js catalog --league koreanKLeague --season 2026
-
-# 处理本地该赛季全部已完赛数据，生成所有支持的单项榜
-node bin/cli.js build --league koreanKLeague --season 2026
-
-# 可选：只生成射门、射正、球队 xG，以及实际进球减 xG 榜
-node bin/cli.js build --league koreanKLeague --season 2026 --metrics shots,shotsOnTarget,xg,goalsMinusXg
-```
-
-## 三、指定统计范围
+## 四、指定统计范围
 
 以下是互相独立的示例，选择所需的一条运行，参数由你自行调整。
 
@@ -233,7 +239,7 @@ node bin/cli.js build --league koreanKLeague --season 2026 --from 2026-09-01 --t
 
 球员使用其球队选中的比赛范围，不另外取“球员最近 N 次出场”；未采集或没有提供的数据不能按 0 处理。
 
-## 四、只分析一支球队
+## 五、只分析一支球队
 
 以下以本地赛程的 **蔚山HD（球探 ID 480）** 为例，可替换 --team 后的 ID：
 
@@ -245,7 +251,7 @@ node bin/cli.js build --league koreanKLeague --season 2026 --team 480 --last 6 -
 
 **输出覆盖规则：所有范围都写入同一套指标路径。** 单队命令也会覆盖所选指标的全联赛结果，不另建单队或范围目录。要恢复全联赛榜，重新运行第二节的全联赛 build 命令。只指定部分 --metrics 时，仅更新这些指标，其他指标保持原样。
 
-## 五、在哪里查看结果
+## 六、在哪里查看结果
 
 ```text
 koreanKLeague/leagueRanking/2026/
@@ -269,7 +275,7 @@ koreanKLeague/leagueRanking/2026/
 
 控制台输出已取得/预期比赛数量、球队/球员记录数和质量提示数量；存在缺场、冲突时先核验，不因程序成功退出就认定赛季完整。当前 README 指标目录索引以已存在文件为准，build 不自动创建目录索引 README。
 
-## 六、本地 HTML 的共享静态资源
+## 七、本地 HTML 的共享静态资源
 
 HTML 可直接用浏览器打开，Vue、Element Plus、中文语言包及表格脚本都从 workspace 根目录 shared-assets 相对引用，不使用 CDN，不需要启动服务。
 
@@ -281,7 +287,7 @@ node scripts/syncTableAssets.js
 
 该命令下载官方固定版本浏览器文件，不安装 npm 依赖。离线分享时保留 workspace 相对目录结构，并同时携带 shared-assets。
 
-## 七、按用户资料修正阵容后重新分析
+## 八、按用户资料修正阵容后重新分析
 
 缺少或错误的阵型、首发、替补由你提供资料，再整理成补丁；不要编造球员 ID 或名单。以下是命令格式，补丁文件必须先存在，不要把示例路径直接当作已准备好的补丁。
 
