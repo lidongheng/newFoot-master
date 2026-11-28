@@ -171,7 +171,7 @@ test('参数：三个范围互斥、日期真实有效、不隐含近6场、拒�
   assert.equal(parseOptions(['--league', 'epl', '--season', '2026-2027']).league, 'epl');
   assert.equal(parseOptions(['--league', 'koreanKLeague', '--season', '2026']).league, 'koreanKLeague');
   assert.throws(() => parseOptions(['--league', 'unknown', '--season', '2026']), /已登记/);
-  assert.throws(() => parseOptions(['--league', 'championsLeague', '--season', '2026-2027']), /杯赛/);
+  assert.equal(parseOptions(['--league', 'championsLeague', '--season', '2026-2027']).league, 'championsLeague');
 });
 
 test('双方副本只归并一次，球队球员不重复累计，原始文件哈希不变', (t) => {

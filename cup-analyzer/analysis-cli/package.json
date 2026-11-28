@@ -5,6 +5,6 @@
   "description": "本地足球数据加工、球队球员榜与人工修正 CLI",
   "type": "commonjs",
   "bin": { "football-analysis": "bin/cli.js" },
-  "scripts": { "test": "node --test tests/comebackPoints.test.js tests/analysis.test.js tests/xgStory.test.js tests/teamStrength.test.js tests/keyPlayerStarts.test.js tests/scheduleDifficulty.test.js tests/sameOpeningHandicap.test.js tests/monthlySchedule.test.js", "analyze": "node bin/cli.js" },
+  "scripts": { "test": "node --test tests/comebackPoints.test.js tests/analysis.test.js tests/cupAnalysis.test.js tests/xgStory.test.js tests/teamStrength.test.js tests/keyPlayerStarts.test.js tests/scheduleDifficulty.test.js tests/sameOpeningHandicap.test.js tests/monthlySchedule.test.js", "analyze": "node bin/cli.js" },
   "engines": { "node": ">=20.19.0" }
 }

@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
+const { mainStageSchedule } = require('./cupStages');
 
 const NATIONAL_COMPETITIONS = new Set(['theWorldCup', 'europeanNationalLeague', 'InternationalFriendship']);
 
@@ -53,7 +54,9 @@ function readSchedule(league) {
     }
     ids.add(team[0]);
   }
-  return { season, arrTeam: context.arrTeam, rounds: context.jh };
+  const schedule = { season, arrTeam: context.arrTeam, rounds: context.jh, stageKinds: context.arrCupKind };
+  if (league.type === 'cup' && league.mainStageOnly) return mainStageSchedule(schedule);
+  return schedule;
 }
 
 function safeTeamDirectory(name) {

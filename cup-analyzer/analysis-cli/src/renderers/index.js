@@ -144,6 +144,10 @@ function writeReport(context, report) {
         note += markdown(ranking.details, ['球队', '比赛ID', '轮次', '日期', '主队', '客队', '终场比分', '结果', '追回分数']) + '\n';
       }
       if (STANDINGS.includes(ranking.metric.id)) note = '比分计算榜：胜3分、平1分、负0分；按积分、净胜球、进球排序，不含纪律扣分。\n\n';
+      if (STANDINGS.includes(ranking.metric.id) && context.type === 'cup') {
+        note += '杯赛仅统计联赛/分组阶段起的所选比赛；不代表官方小组排名、两回合总比分或晋级顺序。不同组及不同场数不直接代表实力。\n\n';
+        renderOptions = { description: note };
+      }
       if (ranking.metric.id === 'firstHalfStandings') note += '按赛程半场比分单独计算上半场胜平负、进失球和积分；缺失或无效半场比分不补零。\n\n';
       if (ranking.metric.id === 'secondHalfStandings') note += '按赛程全场比分减半场比分，单独计算下半场胜平负、进失球和积分；缺失或无效半场比分不补零。\n\n';
       if (ranking.missing) note += missingMarkdown(ranking.missing);

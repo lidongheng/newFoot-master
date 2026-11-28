@@ -87,11 +87,12 @@ const cups = {
   championsLeague: {
     fileId: 'c103',
     type: 'cup',
+    mainStageOnly: true,
     cupSerial: '103',
     cupName: 'championsLeague',
     chineseName: '欧冠',
     crossYear: true,
-    season: '25-26',
+    season: '2026-2027',
     paths: {
       cupAnalyzer: path.resolve(__dirname, '../../championsLeague'),
       squadFinal: path.resolve(__dirname, '../../championsLeague/squad-final'),
@@ -103,6 +104,7 @@ const cups = {
   afcChampionsLeague: {
     fileId: 'c192',
     type: 'cup',
+    mainStageOnly: true,
     cupSerial: '192',
     cupName: 'afcChampionsLeague',
     chineseName: '亚冠精英',
@@ -120,15 +122,16 @@ const cups = {
   afcChampionsLeagueTwo: {
     fileId: 'c350',
     type: 'cup',
+    mainStageOnly: true,
     cupSerial: '350',
     cupName: 'afcChampionsLeagueTwo',
     chineseName: '亚冠联2',
     crossYear: true,
     /**
      * 球探 URL 赛季段（matchResult / letGoal / bigSmall 同目录）。
-     * 亚冠联2 线上仅为 2025-2026，不能用 25-26；本地报告/目录仍用 25-26。
+     * 已核验2026-2027远程完整年份路径；本地报告目录使用26-27。
      */
-    season: '2025-2026',
+    season: '2026-2027',
     paths: {
       cupAnalyzer: path.resolve(__dirname, '../../afcChampionsLeagueTwo'),
       squadFinal: path.resolve(__dirname, '../../afcChampionsLeagueTwo/squad-final'),
@@ -140,11 +143,12 @@ const cups = {
   europaLeague: {
     fileId: 'c113',
     type: 'cup',
+    mainStageOnly: true,
     cupSerial: '113',
     cupName: 'europaLeague',
     chineseName: '欧罗巴',
     crossYear: true,
-    season: '25-26',
+    season: '2026-2027',
     paths: {
       cupAnalyzer: path.resolve(__dirname, '../../europaLeague'),
       squadFinal: path.resolve(__dirname, '../../europaLeague/squad-final'),
@@ -156,11 +160,12 @@ const cups = {
   uefaConferenceLeague: {
     fileId: 'c2187',
     type: 'cup',
+    mainStageOnly: true,
     cupSerial: '2187',
     cupName: 'uefaConferenceLeague',
     chineseName: '欧会杯',
     crossYear: true,
-    season: '25-26',
+    season: '2026-2027',
     paths: {
       cupAnalyzer: path.resolve(__dirname, '../../uefaConferenceLeague'),
       squadFinal: path.resolve(__dirname, '../../uefaConferenceLeague/squad-final'),

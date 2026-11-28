@@ -38,7 +38,7 @@ ${status}
 - 赛后数据源为球探移动端 \`https://m.titan007.com/Analy/ShiJian/{matchId}.htm\`，复用已迁移的 PostMatchDataCrawler。
 - 球队目录使用赛程英文名，Windows 禁止字符和空白替换为下划线，并去除末尾空格和句点；同名附加球队 ID。已有 Barcelona 对应球探 ID 84，保留原目录名。
 - 每队 \`config.js\` 为 CommonJS：\`leagueSlug\` 为本赛事目录名（${slug}）；\`leagueSerial\` 为球探赛事序号（${league.cupSerial}）；\`season\` 为赛程完整赛季；\`teamSerial\` 为球队 ID；\`teamChineseName\`、\`teamEnglishName\` 为赛程中英文名。序号使用字符串。
-- 每个球队只收集本目录对应赛事的已完赛比赛，包含杯赛资格赛；不混入该队其他联赛或杯赛。
+- 每个球队只收集本目录对应赛事的已完赛比赛；启用mainStageOnly的杯赛从联赛/分组阶段起统计，不包含资格赛及资格赛附加赛。不混入该队其他联赛或杯赛。
 - 数据目录为 \`{球队}/basicData/{短赛季}/{matchId}/\`；如 2026-2027 对应 26-27，单年 2026 保持不变。
 - 核心文件为 \`matchInfo.json\`、\`matchEvents.json\`、\`techStats.json\`；上游提供时另保存 \`lineup.json\`、\`playerStats.json\`、\`goalProbability.json\`。
 - 核心文件 ID 必须一致、基础状态为完赛、事件包含终场比分、全场技术统计非空，才视为已完成；不完整的数据再次采集。单场失败后继续，最终统计成功、跳过、失败，有失败返回非零退出码。
@@ -92,6 +92,20 @@ node processors/teamPostMatchDataProcessor.js --config "${relativeConfig}"
 
 4. 检查 \`basicData/${seasonFolder(target.season)}/{matchId}/\` 中的核心文件及命令成功、跳过、失败统计；文件 ID、终场事件与技术统计必须完整，并对照本地赛程检查缺场。
 5. 后续分析：结合比赛表现、盘口、对手、主客场、阵容和赛程，形成带判断时间的潜力观察，再用后续比赛验证。本次未实现趋势判断或预测。
+
+## basicData分析与赛后复盘
+
+启用mainStageOnly的杯赛仅采集联赛/分组阶段及之后的正赛，排除资格赛及其附加赛。完整步骤见[赛事teamAgent工作流](../workflow.md)。
+
+采集后切换到 \`cup-analyzer/analysis-cli\`，先执行全赛事build：
+
+\`\`\`bash
+node bin/cli.js build --league ${target.leagueSlug} --season ${target.season}
+\`\`\`
+
+然后生成xgStory、teamStrength、keyPlayerStarts等报告。需要本队比较时可在build中加入 \`--team ${target.teamSerial}\`；单队build同样覆盖指标目录，恢复全赛事报告时重新运行全赛事build。
+
+本场复盘资料命令为 \`node bin/matchReview.js --league ${target.leagueSlug} --season ${target.season} --match {已完赛比赛ID}\`，缺少核心文件或实际首发时先补齐；不要使用预测阵容替代实际阵容。
 `;
 }
 
@@ -109,7 +123,9 @@ function initializeLeague(slug, league) {
     createMissing(path.join(root, 'README.md'), readme(slug, league, `阻塞：${error.message}\n\n尚未生成球队配置，需先准备有效赛程，再重新初始化。`));
     return { teams: 0, blocked: error.message, conflicts: [] };
   }
-  createMissing(path.join(root, 'README.md'), readme(slug, league, `本地赛程赛季：${schedule.season}；名单包含 ${schedule.arrTeam.length} 支球队（含杯赛资格赛球队）。这是本地数据快照，不表示已联网核实当前赛季。`));
+  let phase = '本地赛程球队';
+  if (league.mainStageOnly) phase = '联赛/分组阶段起的正赛球队，不含资格赛球队';
+  createMissing(path.join(root, 'README.md'), readme(slug, league, `本地赛程赛季：${schedule.season}；名单包含 ${schedule.arrTeam.length} 支${phase}。这是本地数据快照，不表示已联网核实当前赛季。`));
   const aliases = new Map();
   const conflicts = [];
   for (const entry of fs.readdirSync(root, { withFileTypes: true })) {
@@ -209,10 +225,14 @@ function initializeAll(leagues, log) {
 
 if (require.main === module) {
   try {
-    if (process.argv.length !== 3 || process.argv[2] !== '--all') {
-      throw new Error('用法：node processors/teamAgentInitializer.js --all');
+    const args = process.argv.slice(2);
+    let leagues = config.cups;
+    if (args.length === 2 && args[0] === '--league' && config.cups[args[1]] && isClubCompetition(args[1])) {
+      leagues = { [args[1]]: config.cups[args[1]] };
+    } else if (args.length !== 1 || args[0] !== '--all') {
+      throw new Error('用法：node processors/teamAgentInitializer.js --all | --league {赛事键}');
     }
-    const result = initializeAll(config.cups, console.log);
+    const result = initializeAll(leagues, console.log);
     process.exitCode = result.conflicts.length > 0 ? 1 : 0;
   } catch (error) {
     console.error(error.message);

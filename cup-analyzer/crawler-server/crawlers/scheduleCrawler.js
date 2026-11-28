@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const iconv = require('iconv-lite');
+const vm = require('vm');
 const BaseCrawler = require('./base');
 const targets = require('../config/targets');
 const config = require('../config');
@@ -94,6 +95,8 @@ class ScheduleCrawler extends BaseCrawler {
         // jsData 文件按脚本资源请求，并优先使用 HTTPS。
         const response = await fetchZqBuffer(step.url, { headers, responseType: 'arraybuffer' });
         const text = iconv.decode(response.data, 'utf-8');
+        // 请求成功也可能返回HTML错误页；身份校验通过前不覆盖已有有效赛程。
+        if (step.label === '赛程') validateSchedule(text, config);
         this.writeJsWithBackup(step.outputPath, text);
         this.log(`${step.label}已更新: ${step.outputPath}`);
         // 赛程文件同步到 match_center（与 clubMatchAnalyzer 兜底路径一致；l/bs/td 不同步）
@@ -173,3 +176,16 @@ if (require.main === module) {
 }
 
 module.exports = ScheduleCrawler;
+
+function validateSchedule(text, target) {
+  if (/^\s*</.test(text)) throw new Error('赛程响应是HTML，保留原文件。');
+  const data = { jh: {} };
+  vm.runInNewContext(text, data, { timeout: 5000 });
+  let metadata = data.arrLeague;
+  let seasonIndex = 4;
+  if (target.type === 'cup') { metadata = data.arrCup; seasonIndex = 7; }
+  if (!metadata || String(metadata[0]) !== String(target.cupSerial) || metadata[seasonIndex] !== target.season || !Array.isArray(data.arrTeam) || !data.arrTeam.length) throw new Error('赛程赛事、赛季或球队元数据不符，保留原文件。');
+  return data;
+}
+
+module.exports.validateSchedule = validateSchedule;

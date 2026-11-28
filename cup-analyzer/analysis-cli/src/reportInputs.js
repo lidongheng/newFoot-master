@@ -22,7 +22,7 @@ function indexTeams(rows, source) {
 function parseReportOptions(args) {
   const { values } = parseArgs({ args, strict: true, allowPositionals: false, options: {
     league: { type: 'string' }, season: { type: 'string' }, round: { type: 'string' },
-    from: { type: 'string' }, to: { type: 'string' },
+    from: { type: 'string' }, to: { type: 'string' }, stage: { type: 'string' },
   } });
   // 对外使用 --round，内部沿用现有 build 的 --rounds 和范围校验。
   const buildArgs = [];
@@ -33,6 +33,7 @@ function parseReportOptions(args) {
   }
   const options = parseOptions(buildArgs);
   let scopeLabel = '统计范围及有效场次以源榜单为准';
+  if (values.stage !== undefined) scopeLabel = `统计范围：杯赛阶段 ${values.stage}`;
   if (values.round !== undefined) scopeLabel = `统计范围：第 ${values.round} 轮`;
   if (values.from !== undefined) scopeLabel = `统计范围：北京时间 ${values.from} 至 ${values.to}（含起止日）`;
   return { options, buildArgs, scopeLabel };
@@ -52,7 +53,8 @@ function loadReportInputs(args, ids) {
   for (const id of ids) {
     inputs[id] = JSON.parse(fs.readFileSync(path.join(source, id, id + '.json'), 'utf8'));
   }
-  const description = `${league.chineseName}（${options.league}） · ${options.season}；数据来源：leagueRanking/${season}/teams 下的 ${ids.join('、')} JSON。指标直接引用源值；${scopeLabel}。`;
+  let description = `${league.chineseName}（${options.league}） · ${options.season}；数据来源：leagueRanking/${season}/teams 下的 ${ids.join('、')} JSON。指标直接引用源值；${scopeLabel}。`;
+  if (league.type === 'cup') description += '杯赛积分为所选比赛按胜3平1负0计算的比较榜，不是官方分组积分榜或晋级榜，不合并两回合总比分。';
   return { inputs, description, destination: path.join(league.paths.cupAnalyzer, 'teamAgent') };
 }
 

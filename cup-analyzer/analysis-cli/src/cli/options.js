@@ -1,6 +1,7 @@
 const { parseArgs } = require('node:util');
 const { catalog } = require('../metrics');
 const { cups } = require('../../../crawler-server/config');
+const { isClubCompetition } = require('../../../crawler-server/utils/teamAgent');
 
 function validDate(value) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
@@ -11,15 +12,18 @@ function validDate(value) {
 function parseOptions(args) {
   const { values } = parseArgs({ args, strict: true, allowPositionals: false, options: {
     league: { type: 'string' }, season: { type: 'string' }, team: { type: 'string' }, rounds: { type: 'string' },
-    from: { type: 'string' }, to: { type: 'string' }, last: { type: 'string' }, metrics: { type: 'string' },
+    from: { type: 'string' }, to: { type: 'string' }, last: { type: 'string' }, metrics: { type: 'string' }, stage: { type: 'string' },
   } });
   if (!values.league || !values.season) throw new Error('--league、--season 必填。');
-  if (!cups[values.league] || cups[values.league].type !== 'league') throw new Error('--league 必须是已登记的联赛键；不接受未知赛事或杯赛。');
+  if (!cups[values.league] || !isClubCompetition(values.league)) throw new Error('--league 必须是已登记的俱乐部联赛或杯赛键。');
+  if (values.stage !== undefined && (cups[values.league].type !== 'cup' || !/^G\d+[A-Z]*$/.test(values.stage))) throw new Error('--stage 必须是杯赛实际G阶段键。');
+  if (cups[values.league].type === 'cup' && values.rounds !== undefined) throw new Error('杯赛不使用--rounds，请用--stage指定阶段。');
   if (!/^\d{4}(?:-\d{4})?$/.test(values.season)) throw new Error('--season 使用完整赛季，如 2026-2027。');
   if (values.team !== undefined && !/^[1-9]\d*$/.test(values.team)) throw new Error('--team 必须为球探球队 ID。');
   const count = Number(values.rounds !== undefined) + Number(values.last !== undefined) + Number(values.from !== undefined || values.to !== undefined);
   if (count > 1) throw new Error('轮次、日期和近 N 场范围互斥。');
   const result = { ...values, scope: 'all-matches' };
+  if (values.stage !== undefined) result.scope = `stage-${values.stage}`;
   if (values.rounds !== undefined) {
     if (!/^[1-9]\d*(?:-[1-9]\d*)?$/.test(values.rounds)) throw new Error('--rounds 格式：1-13 或 13。');
     const numbers = values.rounds.split('-').map(Number);

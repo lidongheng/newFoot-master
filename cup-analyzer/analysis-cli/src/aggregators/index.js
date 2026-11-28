@@ -7,6 +7,7 @@ function selectMatches(context, options) {
   for (const team of context.teams) {
     if (options.team && options.team !== team.id) continue;
     let matches = [...context.matches.values()].filter((match) => match.status === -1 && (match.homeId === team.id || match.awayId === team.id));
+    if (options.stage) matches = matches.filter((match) => match.stage === options.stage);
     if (options.roundRange) matches = matches.filter((match) => match.round >= options.roundRange.start && match.round <= options.roundRange.end);
     if (options.from) matches = matches.filter((match) => match.time.slice(0, 10) >= options.from && match.time.slice(0, 10) <= options.to);
     matches.sort((a, b) => b.timestamp - a.timestamp || a.id.localeCompare(b.id));

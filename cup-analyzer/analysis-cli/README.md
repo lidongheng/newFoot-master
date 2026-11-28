@@ -167,3 +167,24 @@ node bin/cli.js build --league laLiga --season 2026-2027 --metrics firstHalfStan
 两项仅供 teams 使用，各自按胜 3、平 1、负 0 计算积分，沿用现有积分榜表头及排序：有效完整球队优先，再按积分、净胜球、进球降序，球队 ID 稳定排序。只读取已完赛赛程，不依赖比赛技术统计、事件或阵容文件；支持轮次、日期、近 N 场及单队筛选。不计纪律扣分。
 
 半场比分缺失、格式无效或任何一方半场进球大于全场进球时，该场不进入半场榜；比分缺失不补零，待补项写入指标 MD 及 teams/README.md，无有效场次的球队积分保持缺失、不排名。输出 `teams/firstHalfStandings/` 与 `teams/secondHalfStandings/`，每项包含同名 MD、HTML、JSON；默认 build 与全联赛生成命令已包含这两项。
+
+## 俱乐部杯赛：正赛basicData、teamAgent与复盘
+
+支持欧协联、欧联、欧冠、亚冠精英和亚冠二级；mainStageOnly从联赛/分组阶段起统计，排除资格赛及资格赛附加赛。阶段来自arrCupKind与G数组，S积分榜不计为比赛；两回合递归展开，按比赛ID去重。国家队保留原赛事级流程。
+
+```bash
+node bin/cli.js build --league uefaConferenceLeague --season 2026-2027
+node bin/cli.js build --league uefaConferenceLeague --season 2026-2027 --stage G29095A
+node bin/xgStory.js --league uefaConferenceLeague --season 2026-2027
+node bin/teamStrength.js --league uefaConferenceLeague --season 2026-2027
+node bin/keyPlayerStarts.js --league uefaConferenceLeague --season 2026-2027
+node bin/sameOpeningHandicap.js --league uefaConferenceLeague --season 2026-2027
+# match换成本赛季正赛已完赛的真实比赛ID
+node bin/matchReview.js --league uefaConferenceLeague --season 2026-2027 --match {比赛ID}
+```
+
+杯赛不使用--round/--rounds；以--stage指定真实阶段，也可选择日期或近N场。build与报告覆盖相同路径，按阶段生成后恢复完整报告需重新build。比分计算榜不是官方小组排名、两回合总比分或晋级榜。
+
+先在crawler-server执行teamAgentInitializer.js --league初始化。已有旧赛事级basicData时可使用teamAgentDataImporter.js --league离线导入，只读源文件、不覆盖目标比赛；采集使用teamPostMatchDataProcessor.js --config。各杯赛teamAgent/workflow.md提供全部逐队命令。
+
+matchReview输出postMatchSummary/{短赛季}/{阶段键}/{比赛ID}/复盘资料.md，包含实际11人首发、阵型、替补、技术统计、事件时间线和来源。缺少核心文件或实际阵容时在覆盖前报错；完整战术复盘按dh-post-match-analysis技能完成，不能自动编造伤停与因果。

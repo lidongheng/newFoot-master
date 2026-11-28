@@ -4,6 +4,9 @@ const vm = require('vm');
 const crypto = require('crypto');
 const { isDeepStrictEqual } = require('node:util');
 const { cups } = require('../../../crawler-server/config');
+const { isClubCompetition } = require('../../../crawler-server/utils/teamAgent');
+const { scheduleRows } = require('../scheduleRows');
+const { mainStageSchedule } = require('../../../crawler-server/utils/cupStages');
 
 const FILES = ['matchInfo.json', 'matchEvents.json', 'techStats.json', 'lineup.json', 'playerStats.json', 'goalProbability.json'];
 const CORE = ['matchInfo.json', 'matchEvents.json', 'techStats.json'];
@@ -24,23 +27,33 @@ function timeValue(value) {
 
 function loadContext(options, registry = cups) {
   const league = registry[options.league];
-  if (!league || league.type !== 'league') throw new Error('赛事不是已登记的联赛。');
+  if (!league || !['league', 'cup'].includes(league.type) || !isClubCompetition(options.league)) throw new Error('赛事不是已登记的俱乐部联赛或杯赛。');
   const scheduleFile = league.paths.cupScheduleData;
   const source = fs.readFileSync(scheduleFile, 'utf8');
+  if (/^\s*</.test(source)) throw new Error(`赛程文件实际为HTML：${scheduleFile}`);
   const data = { jh: {} };
   vm.runInNewContext(source, data, { filename: scheduleFile, timeout: 5000 });
-  if (!data.arrLeague || String(data.arrLeague[0]) !== String(league.cupSerial) || data.arrLeague[4] !== options.season) throw new Error('请求赛事或赛季与本地赛程不一致。');
+  if (league.type === 'cup' && league.mainStageOnly) {
+    const main = mainStageSchedule({ arrTeam: data.arrTeam, rounds: data.jh, stageKinds: data.arrCupKind });
+    data.arrTeam = main.arrTeam;
+    data.jh = main.rounds;
+  }
+  let metadata = data.arrLeague;
+  let seasonIndex = 4;
+  if (league.type === 'cup') { metadata = data.arrCup; seasonIndex = 7; }
+  if (!metadata || String(metadata[0]) !== String(league.cupSerial) || metadata[seasonIndex] !== options.season) throw new Error('请求赛事或赛季与本地赛程不一致。');
+  if (league.type === 'cup' && options.roundRange) throw new Error('杯赛请使用--stage指定实际G阶段键，不使用联赛轮次。');
+  if (league.type === 'league' && options.stage) throw new Error('联赛请使用轮次参数，不接受杯赛--stage。');
+  if (options.stage && !Object.hasOwn(data.jh, options.stage)) throw new Error(`赛程不存在杯赛阶段：${options.stage}`);
   if (!Array.isArray(data.arrTeam)) throw new Error('赛程缺少 arrTeam。');
   const teams = data.arrTeam.map((row) => ({ id: String(row[0]), name: row[1], englishName: row[3], aliases: [] }));
   if (options.team && !teams.some((team) => team.id === options.team)) throw new Error('指定球队不在该赛季赛程中。');
   const matches = new Map();
-  for (const [key, rows] of Object.entries(data.jh)) {
-    if (!/^R_\d+$/.test(key)) continue;
-    for (const row of rows) {
-      const match = { id: String(row[0]), round: Number(key.slice(2)), status: row[2], time: row[3], timestamp: timeValue(row[3]), homeId: String(row[4]), awayId: String(row[5]), score: row[6], halfScore: row[7] };
-      if (matches.has(match.id) && JSON.stringify(matches.get(match.id)) !== JSON.stringify(match)) throw new Error(`赛程比赛 ${match.id} 重复且冲突。`);
-      matches.set(match.id, match);
-    }
+  for (const { row, stage } of scheduleRows(data, league.type).values()) {
+    const match = { id: String(row[0]), status: row[2], time: row[3], timestamp: timeValue(row[3]), homeId: String(row[4]), awayId: String(row[5]), score: row[6], halfScore: row[7] };
+    if (league.type === 'league') match.round = Number(stage.slice(2));
+    else { match.stage = stage; match.round = stage; }
+    matches.set(match.id, match);
   }
   const root = path.join(league.paths.cupAnalyzer, 'teamAgent');
   const directories = new Map();
@@ -61,7 +74,7 @@ function loadContext(options, registry = cups) {
     if (directories.has(team.id)) throw new Error(`球队配置重复：${team.id}`);
     directories.set(team.id, path.dirname(file));
   }
-  return { league: options.league, season: options.season, shortSeason: shortSeason(options.season), directory: league.paths.cupAnalyzer, teams, matches, directories, scheduleFile, scheduleHash: hash(source) };
+  return { league: options.league, type: league.type, season: options.season, shortSeason: shortSeason(options.season), directory: league.paths.cupAnalyzer, teams, matches, directories, scheduleFile, scheduleHash: hash(source) };
 }
 
 function repairRecords(historyRoot) {
