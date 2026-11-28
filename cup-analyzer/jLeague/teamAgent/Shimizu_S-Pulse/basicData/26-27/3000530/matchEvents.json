@@ -1,0 +1,287 @@
+{
+  "matchId": 3000530,
+  "homeName": "清水鼓动",
+  "awayName": "东京绿茵",
+  "events": [
+    {
+      "time": "18'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 191449,
+        "name": "佐古真礼"
+      },
+      "playerOff": {
+        "id": 163230,
+        "name": "曹侑珉"
+      }
+    },
+    {
+      "time": "21'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 206152,
+        "name": "林尚辉"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 307189,
+        "name": "岛本悠大"
+      },
+      "playerOff": {
+        "id": 142046,
+        "name": "平户太贵"
+      }
+    },
+    {
+      "time": "59'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 279086,
+        "name": "熊取谷一星"
+      },
+      "playerOff": {
+        "id": 162554,
+        "name": "藤本宽也"
+      }
+    },
+    {
+      "time": "59'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 164420,
+        "name": "柴戸海"
+      },
+      "playerOff": {
+        "id": 172474,
+        "name": "森田晃树"
+      }
+    },
+    {
+      "time": "65'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 99136,
+        "name": "高桥祐治"
+      }
+    },
+    {
+      "time": "67'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 184760,
+        "name": "松桥优安"
+      },
+      "playerOff": {
+        "id": 184768,
+        "name": "染野唯月"
+      }
+    },
+    {
+      "time": "69'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 160478,
+        "name": "杰梅恩·良"
+      },
+      "playerOff": {
+        "id": 184120,
+        "name": "藤井智也"
+      }
+    },
+    {
+      "time": "69'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 184327,
+        "name": "松崎 快"
+      },
+      "playerOff": {
+        "id": 141333,
+        "name": "井上健太"
+      }
+    },
+    {
+      "time": "72'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 279086,
+        "name": "熊取谷一星"
+      },
+      "assist": {
+        "id": 260843,
+        "name": "新井 悠太"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "78'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 155539,
+        "name": "尹斗宰"
+      },
+      "playerOff": {
+        "id": 120624,
+        "name": "小泉庆"
+      }
+    },
+    {
+      "time": "86'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 229106,
+        "name": "寺沼星文"
+      },
+      "playerOff": {
+        "id": 142062,
+        "name": "一美和成"
+      }
+    },
+    {
+      "time": "89'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 144269,
+        "name": "卡皮萨巴"
+      },
+      "playerOff": {
+        "id": 216872,
+        "name": "朴升旭"
+      }
+    },
+    {
+      "time": "90+1'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 229106,
+        "name": "寺沼星文"
+      }
+    },
+    {
+      "time": "90+2'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 144269,
+        "name": "卡皮萨巴"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 204,
+    "guestId": 200,
+    "home": 10,
+    "homeHalf": 3,
+    "guest": 3,
+    "guestHalf": 3,
+    "detail": [
+      {
+        "min": "6",
+        "ifHome": false
+      },
+      {
+        "min": "10",
+        "ifHome": false
+      },
+      {
+        "min": "21",
+        "ifHome": false
+      },
+      {
+        "min": "23",
+        "ifHome": true
+      },
+      {
+        "min": "24",
+        "ifHome": true
+      },
+      {
+        "min": "38",
+        "ifHome": true
+      },
+      {
+        "min": "50",
+        "ifHome": true
+      },
+      {
+        "min": "53",
+        "ifHome": true
+      },
+      {
+        "min": "75",
+        "ifHome": true
+      },
+      {
+        "min": "78",
+        "ifHome": true
+      },
+      {
+        "min": "89",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "matchId": 3000441,
+  "homeName": "横滨水手",
+  "awayName": "京都不死鸟",
+  "events": [
+    {
+      "time": "9'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 200810,
+        "name": "J·奎诺内斯"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "55'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 173266,
+        "name": "铃木冬一"
+      },
+      "playerOff": {
+        "id": 379282,
+        "name": "真三井寺"
+      }
+    },
+    {
+      "time": "62'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 155994,
+        "name": "松田天马"
+      },
+      "playerOff": {
+        "id": 262954,
+        "name": "马塞约"
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 234184,
+        "name": "中野瑠马"
+      },
+      "assist": {
+        "id": 173194,
+        "name": "R.帕帕吉奥"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 223024,
+        "name": "佐藤 響"
+      }
+    },
+    {
+      "time": "73'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "75'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 102098,
+        "name": "克劳克斯"
+      },
+      "playerOff": {
+        "id": 200843,
+        "name": "角田 涼太朗"
+      }
+    },
+    {
+      "time": "75'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 223435,
+        "name": "山根 陆"
+      },
+      "playerOff": {
+        "id": 151956,
+        "name": "知念庆"
+      }
+    },
+    {
+      "time": "83'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 279089,
+        "name": "K.幸成"
+      }
+    },
+    {
+      "time": "84'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 223131,
+        "name": "加藤莲"
+      },
+      "playerOff": {
+        "id": 232647,
+        "name": "石田佑介"
+      }
+    },
+    {
+      "time": "84'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 77113,
+        "name": "长泽骏"
+      },
+      "playerOff": {
+        "id": 234184,
+        "name": "中野瑠马"
+      }
+    },
+    {
+      "time": "90+6'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 175704,
+        "name": "本田 風智"
+      },
+      "playerOff": {
+        "id": 173194,
+        "name": "R.帕帕吉奥"
+      }
+    },
+    {
+      "time": "90+6'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 307184,
+        "name": "永田幸大"
+      },
+      "playerOff": {
+        "id": 223024,
+        "name": "佐藤 響"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 196,
+    "guestId": 3163,
+    "home": 3,
+    "homeHalf": 0,
+    "guest": 4,
+    "guestHalf": 3,
+    "detail": [
+      {
+        "min": "26",
+        "ifHome": false
+      },
+      {
+        "min": "28",
+        "ifHome": false
+      },
+      {
+        "min": "45",
+        "ifHome": false
+      },
+      {
+        "min": "56",
+        "ifHome": true
+      },
+      {
+        "min": "56",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,240 @@
+{
+  "matchId": 3000510,
+  "homeName": "浦和红钻",
+  "awayName": "长崎成功丸",
+  "events": [
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 308855,
+        "name": "笹修大"
+      },
+      "playerOff": {
+        "id": 352951,
+        "name": "植木疾风"
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 232600,
+        "name": "小森飞绚"
+      },
+      "playerOff": {
+        "id": 119605,
+        "name": "阿道"
+      }
+    },
+    {
+      "time": "68'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 223363,
+        "name": "保田坚心"
+      },
+      "playerOff": {
+        "id": 308871,
+        "name": "松本天梦"
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 132262,
+        "name": "萨维奥"
+      },
+      "assist": {
+        "id": 120459,
+        "name": "古斯塔夫森"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "80'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 129872,
+        "name": "增山朝阳"
+      },
+      "playerOff": {
+        "id": 162900,
+        "name": "米田隼也"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 141323,
+        "name": "中村庆太"
+      },
+      "playerOff": {
+        "id": 179673,
+        "name": "罗萨"
+      }
+    },
+    {
+      "time": "81'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 352950,
+        "name": "莲治"
+      },
+      "playerOff": {
+        "id": 174717,
+        "name": "金子拓郎"
+      }
+    },
+    {
+      "time": "86'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 180738,
+        "name": "迪奥克利亚诺"
+      },
+      "playerOff": {
+        "id": 76057,
+        "name": "山口萤"
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 226081,
+        "name": "南野 遥海"
+      },
+      "playerOff": {
+        "id": 132262,
+        "name": "萨维奥"
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 142058,
+        "name": "长沼洋一"
+      },
+      "playerOff": {
+        "id": 120459,
+        "name": "古斯塔夫森"
+      }
+    },
+    {
+      "time": "90+1'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 144604,
+        "name": "热苏斯"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 188,
+    "guestId": 10031,
+    "home": 7,
+    "homeHalf": 4,
+    "guest": 4,
+    "guestHalf": 1,
+    "detail": [
+      {
+        "min": "12",
+        "ifHome": true
+      },
+      {
+        "min": "12",
+        "ifHome": true
+      },
+      {
+        "min": "34",
+        "ifHome": true
+      },
+      {
+        "min": "40",
+        "ifHome": true
+      },
+      {
+        "min": "44",
+        "ifHome": false
+      },
+      {
+        "min": "47",
+        "ifHome": true
+      },
+      {
+        "min": "61",
+        "ifHome": false
+      },
+      {
+        "min": "62",
+        "ifHome": true
+      },
+      {
+        "min": "65",
+        "ifHome": false
+      },
+      {
+        "min": "66",
+        "ifHome": false
+      },
+      {
+        "min": "88",
+        "ifHome": true
+      }
+    ]
+  }
+}

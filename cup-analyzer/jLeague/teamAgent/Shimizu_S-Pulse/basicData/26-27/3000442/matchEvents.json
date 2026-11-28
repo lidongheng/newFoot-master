@@ -1,0 +1,204 @@
+{
+  "matchId": 3000442,
+  "homeName": "清水鼓动",
+  "awayName": "FC东京",
+  "events": [
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 184120,
+        "name": "藤井智也"
+      },
+      "playerOff": {
+        "id": 383872,
+        "name": "辻裕人"
+      }
+    },
+    {
+      "time": "50'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 236182,
+        "name": "安斋飒马"
+      },
+      "assist": {
+        "id": 228597,
+        "name": "长仓幹树"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "53'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 119514,
+        "name": "木下康介"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 163132,
+        "name": "吴世勋"
+      },
+      "playerOff": {
+        "id": 160478,
+        "name": "杰梅恩·良"
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "AWAY",
+      "process": "Regular"
+    },
+    {
+      "time": "77'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 231457,
+        "name": "俵积田晃太"
+      },
+      "playerOff": {
+        "id": 153564,
+        "name": "本间至恩"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 226863,
+        "name": "佐藤恵允"
+      },
+      "playerOff": {
+        "id": 203926,
+        "name": "马塞洛·瑞安"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 110596,
+        "name": "小塚和季"
+      },
+      "playerOff": {
+        "id": 119514,
+        "name": "木下康介"
+      }
+    },
+    {
+      "time": "86'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 97293,
+        "name": "桥本拳人"
+      },
+      "playerOff": {
+        "id": 151175,
+        "name": "高宇洋"
+      }
+    },
+    {
+      "time": "89'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 221552,
+        "name": "千叶宽汰"
+      },
+      "playerOff": {
+        "id": 307189,
+        "name": "岛本悠大"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 204,
+    "guestId": 201,
+    "home": 4,
+    "homeHalf": 3,
+    "guest": 3,
+    "guestHalf": 0,
+    "detail": [
+      {
+        "min": "6",
+        "ifHome": true
+      },
+      {
+        "min": "35",
+        "ifHome": true
+      },
+      {
+        "min": "38",
+        "ifHome": true
+      },
+      {
+        "min": "68",
+        "ifHome": false
+      },
+      {
+        "min": "80",
+        "ifHome": false
+      },
+      {
+        "min": "84",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}

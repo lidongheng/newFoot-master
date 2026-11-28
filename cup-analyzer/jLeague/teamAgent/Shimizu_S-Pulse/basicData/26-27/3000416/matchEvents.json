@@ -1,0 +1,291 @@
+{
+  "matchId": 3000416,
+  "homeName": "大阪樱花",
+  "awayName": "清水鼓动",
+  "events": [
+    {
+      "time": "45+2'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 163132,
+        "name": "吴世勋"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 206139,
+        "name": "小见洋太"
+      },
+      "playerOff": {
+        "id": 49457,
+        "name": "香川真司"
+      }
+    },
+    {
+      "time": "48'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 184631,
+        "name": "樱川所罗门"
+      }
+    },
+    {
+      "time": "51'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 119611,
+        "name": "町中槙之辅"
+      }
+    },
+    {
+      "time": "57'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 120624,
+        "name": "小泉庆"
+      },
+      "playerOff": {
+        "id": 307189,
+        "name": "岛本悠大"
+      }
+    },
+    {
+      "time": "58'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 209537,
+        "name": "蒂亚戈·安德拉德"
+      },
+      "playerOff": {
+        "id": 284075,
+        "name": "横山 梦树"
+      }
+    },
+    {
+      "time": "62'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 209537,
+        "name": "蒂亚戈·安德拉德"
+      },
+      "assist": {
+        "id": 103070,
+        "name": "欧文"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 185097,
+        "name": "布鲁内蒂"
+      }
+    },
+    {
+      "time": "66'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 214696,
+        "name": "伊布拉姆·法冈德斯"
+      },
+      "playerOff": {
+        "id": 187802,
+        "name": "弓场将辉"
+      }
+    },
+    {
+      "time": "66'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 119514,
+        "name": "木下康介"
+      },
+      "playerOff": {
+        "id": 163132,
+        "name": "吴世勋"
+      }
+    },
+    {
+      "time": "66'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 144269,
+        "name": "卡皮萨巴"
+      },
+      "playerOff": {
+        "id": 184120,
+        "name": "藤井智也"
+      }
+    },
+    {
+      "time": "76'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 200709,
+        "name": "莲川壮大"
+      },
+      "playerOff": {
+        "id": 216872,
+        "name": "朴升旭"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 139603,
+        "name": "费尔南德斯"
+      },
+      "playerOff": {
+        "id": 184631,
+        "name": "樱川所罗门"
+      }
+    },
+    {
+      "time": "90'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 77095,
+        "name": "登里享平"
+      },
+      "playerOff": {
+        "id": 185592,
+        "name": "大田步梦"
+      }
+    },
+    {
+      "time": "90'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 142678,
+        "name": "萨巴"
+      },
+      "playerOff": {
+        "id": 206139,
+        "name": "小见洋太"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 193,
+    "guestId": 204,
+    "home": 7,
+    "homeHalf": 4,
+    "guest": 6,
+    "guestHalf": 1,
+    "detail": [
+      {
+        "min": "9",
+        "ifHome": true
+      },
+      {
+        "min": "16",
+        "ifHome": false
+      },
+      {
+        "min": "21",
+        "ifHome": true
+      },
+      {
+        "min": "30",
+        "ifHome": true
+      },
+      {
+        "min": "44",
+        "ifHome": true
+      },
+      {
+        "min": "50",
+        "ifHome": true
+      },
+      {
+        "min": "57",
+        "ifHome": false
+      },
+      {
+        "min": "68",
+        "ifHome": true
+      },
+      {
+        "min": "68",
+        "ifHome": true
+      },
+      {
+        "min": "70",
+        "ifHome": false
+      },
+      {
+        "min": "71",
+        "ifHome": false
+      },
+      {
+        "min": "86",
+        "ifHome": false
+      },
+      {
+        "min": "86",
+        "ifHome": false
+      },
+      {
+        "min": "89",
+        "ifHome": false
+      }
+    ]
+  }
+}

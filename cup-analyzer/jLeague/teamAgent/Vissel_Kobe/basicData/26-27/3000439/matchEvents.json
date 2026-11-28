@@ -1,0 +1,275 @@
+{
+  "matchId": 3000439,
+  "homeName": "东京绿茵",
+  "awayName": "神户胜利船",
+  "events": [
+    {
+      "time": "16'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 151442,
+        "name": "高桥一晟"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "18'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 232672,
+        "name": "井上龙太"
+      }
+    },
+    {
+      "time": "36'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 162885,
+        "name": "福田涌矢"
+      }
+    },
+    {
+      "time": "39'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 162844,
+        "name": "乡家友太"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 191449,
+        "name": "佐古真礼"
+      },
+      "playerOff": {
+        "id": 206152,
+        "name": "林尚辉"
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 225446,
+        "name": "日高光挥"
+      },
+      "playerOff": {
+        "id": 162844,
+        "name": "乡家友太"
+      }
+    },
+    {
+      "time": "51'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 151396,
+        "name": "永户胜也"
+      },
+      "assist": {
+        "id": 0,
+        "name": ""
+      },
+      "score": {
+        "home": 0,
+        "away": 2
+      }
+    },
+    {
+      "time": "59'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 63981,
+        "name": "大迫勇也"
+      },
+      "playerOff": {
+        "id": 151200,
+        "name": "小松莲"
+      }
+    },
+    {
+      "time": "59'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 142181,
+        "name": "斋藤功佑"
+      },
+      "playerOff": {
+        "id": 184760,
+        "name": "松桥优安"
+      }
+    },
+    {
+      "time": "59'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 260843,
+        "name": "新井 悠太"
+      },
+      "playerOff": {
+        "id": 342298,
+        "name": "内田洋介"
+      }
+    },
+    {
+      "time": "76'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 260839,
+        "name": "食野 壮磨"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 260392,
+        "name": "神田奏真"
+      },
+      "playerOff": {
+        "id": 161362,
+        "name": "平川怜"
+      }
+    },
+    {
+      "time": "77'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 206026,
+        "name": "锹先祐弥"
+      },
+      "playerOff": {
+        "id": 184791,
+        "name": "饭野七圣"
+      }
+    },
+    {
+      "time": "84'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 334878,
+        "name": "平尾勇人"
+      },
+      "playerOff": {
+        "id": 226179,
+        "name": "溝口 修平"
+      }
+    },
+    {
+      "time": "89'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 264080,
+        "name": "川端兵卫"
+      },
+      "playerOff": {
+        "id": 151442,
+        "name": "高桥一晟"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 2
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 200,
+    "guestId": 203,
+    "home": 3,
+    "homeHalf": 2,
+    "guest": 6,
+    "guestHalf": 3,
+    "detail": [
+      {
+        "min": "6",
+        "ifHome": true
+      },
+      {
+        "min": "15",
+        "ifHome": false
+      },
+      {
+        "min": "28",
+        "ifHome": false
+      },
+      {
+        "min": "30",
+        "ifHome": true
+      },
+      {
+        "min": "34",
+        "ifHome": false
+      },
+      {
+        "min": "51",
+        "ifHome": false
+      },
+      {
+        "min": "61",
+        "ifHome": true
+      },
+      {
+        "min": "75",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}

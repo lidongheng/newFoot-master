@@ -1,0 +1,241 @@
+{
+  "matchId": 3000465,
+  "homeName": "大阪钢巴",
+  "awayName": "神户胜利船",
+  "events": [
+    {
+      "time": "40'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 176620,
+        "name": "安部柊斗"
+      }
+    },
+    {
+      "time": "45+3'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 127231,
+        "name": "中谷进之介"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 380371,
+        "name": "岩本 悠庵"
+      },
+      "playerOff": {
+        "id": 63848,
+        "name": "酒井高德"
+      }
+    },
+    {
+      "time": "46'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 119738,
+        "name": "埃里克"
+      },
+      "playerOff": {
+        "id": 162844,
+        "name": "乡家友太"
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 132992,
+        "name": "胡梅特"
+      },
+      "playerOff": {
+        "id": 223122,
+        "name": "土信田悠生"
+      }
+    },
+    {
+      "time": "70'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 184333,
+        "name": "山下谅也"
+      }
+    },
+    {
+      "time": "73'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 199708,
+        "name": "J·帕特里克"
+      },
+      "playerOff": {
+        "id": 151396,
+        "name": "永户胜也"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 288481,
+        "name": "角昂志郎"
+      },
+      "playerOff": {
+        "id": 151176,
+        "name": "食野亮太郎"
+      }
+    },
+    {
+      "time": "80'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 198863,
+        "name": "中野 伸哉"
+      },
+      "playerOff": {
+        "id": 184314,
+        "name": "藤原 奏哉"
+      }
+    },
+    {
+      "time": "87'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 64123,
+        "name": "宇佐美贵史"
+      },
+      "playerOff": {
+        "id": 184333,
+        "name": "山下谅也"
+      }
+    },
+    {
+      "time": "90'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 119738,
+        "name": "埃里克"
+      },
+      "assist": {
+        "id": 199708,
+        "name": "J·帕特里克"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "90+3'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 151200,
+        "name": "小松莲"
+      },
+      "playerOff": {
+        "id": 63981,
+        "name": "大迫勇也"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 207,
+    "guestId": 203,
+    "home": 4,
+    "homeHalf": 0,
+    "guest": 7,
+    "guestHalf": 2,
+    "detail": [
+      {
+        "min": "9",
+        "ifHome": false
+      },
+      {
+        "min": "10",
+        "ifHome": false
+      },
+      {
+        "min": "52",
+        "ifHome": false
+      },
+      {
+        "min": "62",
+        "ifHome": false
+      },
+      {
+        "min": "66",
+        "ifHome": true
+      },
+      {
+        "min": "68",
+        "ifHome": true
+      },
+      {
+        "min": "76",
+        "ifHome": false
+      },
+      {
+        "min": "79",
+        "ifHome": true
+      },
+      {
+        "min": "83",
+        "ifHome": true
+      },
+      {
+        "min": "85",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      }
+    ]
+  }
+}

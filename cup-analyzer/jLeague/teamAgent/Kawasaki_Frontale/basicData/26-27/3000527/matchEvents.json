@@ -1,0 +1,251 @@
+{
+  "matchId": 3000527,
+  "homeName": "柏太阳神",
+  "awayName": "川崎前锋",
+  "events": [
+    {
+      "time": "40'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 260394,
+        "name": "山内 日向汰"
+      },
+      "assist": {
+        "id": 151446,
+        "name": "杉冈大晖"
+      },
+      "score": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "time": "44'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 279493,
+        "name": "罗马诺"
+      },
+      "assist": {
+        "id": 218727,
+        "name": "山原怜音"
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "time": "50'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 198786,
+        "name": "橘田健人"
+      }
+    },
+    {
+      "time": "52'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 260394,
+        "name": "山内 日向汰"
+      },
+      "assist": {
+        "id": 162528,
+        "name": "户屿祥郎"
+      },
+      "score": {
+        "home": 2,
+        "away": 1
+      }
+    },
+    {
+      "time": "61'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 189911,
+        "name": "河原创"
+      },
+      "playerOff": {
+        "id": 198786,
+        "name": "橘田健人"
+      }
+    },
+    {
+      "time": "61'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 56927,
+        "name": "山本悠树"
+      },
+      "playerOff": {
+        "id": 231483,
+        "name": "大关友翔"
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 174716,
+        "name": "细谷真大"
+      },
+      "playerOff": {
+        "id": 142047,
+        "name": "垣田裕晖"
+      }
+    },
+    {
+      "time": "63'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 99133,
+        "name": "原川力"
+      },
+      "playerOff": {
+        "id": 162528,
+        "name": "户屿祥郎"
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 352952,
+        "name": "山市 秀翔"
+      },
+      "playerOff": {
+        "id": 338454,
+        "name": "持山匡佑"
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 223128,
+        "name": "三浦飒太"
+      },
+      "playerOff": {
+        "id": 218727,
+        "name": "山原怜音"
+      }
+    },
+    {
+      "time": "72'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 141327,
+        "name": "濑川祐辅"
+      },
+      "playerOff": {
+        "id": 260394,
+        "name": "山内 日向汰"
+      }
+    },
+    {
+      "time": "72'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 232625,
+        "name": "久保藤次郎"
+      },
+      "playerOff": {
+        "id": 141710,
+        "name": "远藤溪太"
+      }
+    },
+    {
+      "time": "81'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 77085,
+        "name": "小林悠"
+      },
+      "playerOff": {
+        "id": 162858,
+        "name": "胁坂泰斗"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 209,
+    "guestId": 1989,
+    "home": 4,
+    "homeHalf": 2,
+    "guest": 2,
+    "guestHalf": 1,
+    "detail": [
+      {
+        "min": "25",
+        "ifHome": true
+      },
+      {
+        "min": "36",
+        "ifHome": true
+      },
+      {
+        "min": "44",
+        "ifHome": false
+      },
+      {
+        "min": "60",
+        "ifHome": true
+      },
+      {
+        "min": "79",
+        "ifHome": false
+      },
+      {
+        "min": "85",
+        "ifHome": true
+      }
+    ]
+  }
+}

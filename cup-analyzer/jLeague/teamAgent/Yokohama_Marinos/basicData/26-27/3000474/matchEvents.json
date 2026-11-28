@@ -1,0 +1,254 @@
+{
+  "matchId": 3000474,
+  "homeName": "大阪樱花",
+  "awayName": "横滨水手",
+  "events": [
+    {
+      "time": "10'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 171655,
+        "name": "赫尔南德斯"
+      }
+    },
+    {
+      "time": "26'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 185592,
+        "name": "大田步梦"
+      }
+    },
+    {
+      "time": "32'",
+      "kind": "HOME",
+      "process": "Regular"
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "50'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 103070,
+        "name": "欧文"
+      }
+    },
+    {
+      "time": "53'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 308889,
+        "name": "高桥"
+      },
+      "playerOff": {
+        "id": 171655,
+        "name": "赫尔南德斯"
+      }
+    },
+    {
+      "time": "62'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 206139,
+        "name": "小见洋太"
+      },
+      "playerOff": {
+        "id": 139603,
+        "name": "费尔南德斯"
+      }
+    },
+    {
+      "time": "66'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 231535,
+        "name": "木村卓斗"
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 221458,
+        "name": "冈泽康生"
+      },
+      "playerOff": {
+        "id": 284075,
+        "name": "横山 梦树"
+      }
+    },
+    {
+      "time": "72'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 49457,
+        "name": "香川真司"
+      },
+      "playerOff": {
+        "id": 142678,
+        "name": "萨巴"
+      }
+    },
+    {
+      "time": "75'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 157742,
+        "name": "远野大弥"
+      },
+      "playerOff": {
+        "id": 123432,
+        "name": "天野纯"
+      }
+    },
+    {
+      "time": "75'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 102098,
+        "name": "克劳克斯"
+      },
+      "playerOff": {
+        "id": 79501,
+        "name": "宫市亮"
+      }
+    },
+    {
+      "time": "82'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 223493,
+        "name": "二田理央"
+      },
+      "playerOff": {
+        "id": 232636,
+        "name": "谷村海那"
+      }
+    },
+    {
+      "time": "82'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 232598,
+        "name": "奥奈乌情滋"
+      },
+      "playerOff": {
+        "id": 214307,
+        "name": "近藤友喜"
+      }
+    },
+    {
+      "time": "89'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 151956,
+        "name": "知念庆"
+      },
+      "playerOff": {
+        "id": 228547,
+        "name": "松村晃助"
+      }
+    },
+    {
+      "time": "90+2'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 49457,
+        "name": "香川真司"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 193,
+    "guestId": 196,
+    "home": 5,
+    "homeHalf": 2,
+    "guest": 4,
+    "guestHalf": 1,
+    "detail": [
+      {
+        "min": "38",
+        "ifHome": false
+      },
+      {
+        "min": "42",
+        "ifHome": true
+      },
+      {
+        "min": "42",
+        "ifHome": true
+      },
+      {
+        "min": "55",
+        "ifHome": false
+      },
+      {
+        "min": "60",
+        "ifHome": false
+      },
+      {
+        "min": "71",
+        "ifHome": true
+      },
+      {
+        "min": "87",
+        "ifHome": true
+      },
+      {
+        "min": "90",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      }
+    ]
+  }
+}
