@@ -176,7 +176,7 @@ async function migrateLeague(slug) {
       md += `\n\n## 迁移前画像\n\n[完整原文与人工内容归档](${link})\n`;
       const output = generator.writeProfile(team, data, resolved.players, meta, md);
       entry.json = output.jsonPath;
-      const missing = JSON.parse(fs.readFileSync(path.join(path.dirname(entry.destination), 'missingData.json'), 'utf8'));
+      const missing = output.missingData;
       result.missing += missing.length;
       result.issues.push(...missing);
       entry.status = 'generated';
@@ -187,10 +187,9 @@ async function migrateLeague(slug) {
       const issues = [{ team: team.chineseName, teamId: String(team.id), profile: entry.destination, file: path.join(league.paths.squadFinal, `${team.chineseName}.md`), reason: error.message }];
       result.issues.push(...issues);
       fs.writeFileSync(entry.destination, content.replace(/\n## 待补数据[\s\S]*$/, '') + '\n\n' + missingMarkdown(issues), 'utf8');
-      fs.writeFileSync(path.join(path.dirname(entry.destination), 'missingData.json'), JSON.stringify(issues, null, 2) + '\n', 'utf8');
       const directory = path.dirname(entry.destination);
       const jsonPath = path.join(directory, `${path.basename(directory)}.json`);
-      fs.writeFileSync(jsonPath, JSON.stringify({ teamId: String(team.id), chineseName: team.chineseName, englishName: team.englishName, season: null, dataSource: 'missing', players: [], missingData: issues }, null, 2) + '\n', 'utf8');
+      fs.writeFileSync(jsonPath, JSON.stringify({ teamId: String(team.id), chineseName: team.chineseName, englishName: team.englishName, season: null, dataSource: 'missing', players: [] }, null, 2) + '\n', 'utf8');
       entry.json = jsonPath;
     }
   }
@@ -202,7 +201,7 @@ async function migrateLeague(slug) {
     const relative = path.relative(root, entry.destination).split(path.sep).join('/');
     for (const prefix of ['', './']) index = index.split(`](${prefix}${entry.name}.md)`).join(`](${relative})`);
   }
-  index += '\n\n<!-- generated-profile-index -->\n## 画像与待补数据\n\n每队一个英文目录（空白使用下划线），包含中文画像 MD、同名英文 JSON 和 missingData.json。\n\n';
+  index += '\n\n<!-- generated-profile-index -->\n## 画像与待补数据\n\n每队一个英文目录（空白使用下划线），包含中文画像 MD 和同名英文 JSON，待补数据仅列在 MD 末尾。\n\n';
   for (const entry of result.profiles) {
     const file = entry.destination || entry.original;
     const relative = path.relative(root, file).split(path.sep).join('/');
@@ -214,8 +213,15 @@ async function migrateLeague(slug) {
   updateProfileReferences(league, result.profiles);
   if (schedule) result.season = schedule.season;
   fs.mkdirSync(reportRoot, { recursive: true });
-  fs.writeFileSync(path.join(reportRoot, `${slug}.json`), JSON.stringify(result, null, 2) + '\n', 'utf8');
+  fs.writeFileSync(path.join(reportRoot, `${slug}.md`), `# ${slug}画像处理结果\n\n` + missingMarkdown(result.issues), 'utf8');
+  fs.writeFileSync(path.join(reportRoot, `${slug}.json`), JSON.stringify(summaryData(result), null, 2) + '\n', 'utf8');
   return result;
+}
+
+function summaryData(result) {
+  const { issues, reason, ...summary } = result;
+  summary.profiles = (result.profiles || []).map(({ reason, ...profile }) => profile);
+  return summary;
 }
 
 function migrateAll() {
@@ -227,15 +233,15 @@ function migrateAll() {
     if (child.status !== 0) results.push({ league: slug, failed: 1, reason: child.stderr || child.error?.message });
     else results.push(JSON.parse(fs.readFileSync(path.join(reportRoot, `${slug}.json`), 'utf8')));
   }
-  fs.writeFileSync(path.join(reportRoot, 'summary.json'), JSON.stringify(results, null, 2) + '\n', 'utf8');
+  fs.writeFileSync(path.join(reportRoot, 'summary.json'), JSON.stringify(results.map(summaryData), null, 2) + '\n', 'utf8');
   const lines = ['# 全量球队画像迁移与待补数据', '', '| 赛事 | 原有画像 | 迁移 | MD/JSON成功 | 缺失字段 | 失败 |', '|---|---|---|---|---|---|'];
   for (const result of results) {
     const inLayout = (result.profiles || []).filter((profile) => profile.destination && fs.existsSync(profile.destination)).length;
     result.inNewLayout = inLayout;
-    lines.push(`| [${result.league}](${result.league}.json) | ${result.originalProfiles ?? '缺失'} | ${inLayout} | ${result.generated ?? '缺失'} | ${result.missing ?? '缺失'} | ${result.failed} |`);
+    lines.push(`| [${result.league}](${result.league}.md) | ${result.originalProfiles ?? '缺失'} | ${inLayout} | ${result.generated ?? '缺失'} | ${result.missing ?? '缺失'} | ${result.failed} |`);
   }
-  fs.writeFileSync(path.join(reportRoot, 'summary.json'), JSON.stringify(results, null, 2) + '\n', 'utf8');
-  lines.push('', '请按各赛事 JSON 的 issues 补充源名单、赛季统计或赛程，之后重新生成画像和榜单。原文保存在 originals 中。', '', '重新生成：`node processors/migrateTeamProfiles.js`（在 crawler-server 目录执行）。', '');
+  fs.writeFileSync(path.join(reportRoot, 'summary.json'), JSON.stringify(results.map(summaryData), null, 2) + '\n', 'utf8');
+  lines.push('', '请按各赛事 MD 末尾的待补数据补充源名单、赛季统计或赛程，之后重新生成画像和榜单。原文保存在 originals 中。', '', '重新生成：`node processors/migrateTeamProfiles.js`（在 crawler-server 目录执行）。', '');
   fs.writeFileSync(path.join(reportRoot, 'README.md'), lines.join('\n'), 'utf8');
   console.table(results.map(({ league, originalProfiles, migrated, generated, missing, failed }) => ({ league, originalProfiles, migrated, generated, missing, failed })));
   console.log(`请补充以上数据后重新生成：${path.join(reportRoot, 'README.md')}`);

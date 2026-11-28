@@ -1,0 +1,243 @@
+{
+  "matchId": 3018872,
+  "homeName": "埃尔沃斯贝格",
+  "awayName": "弗赖堡",
+  "events": [
+    {
+      "time": "33'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 162718,
+        "name": "J.尼可拉斯"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "HalfTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 239009,
+        "name": "诺埃尔·富特库"
+      },
+      "playerOff": {
+        "id": 251430,
+        "name": "奥涅卡"
+      }
+    },
+    {
+      "time": "64'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 247665,
+        "name": "L·西尔奇"
+      },
+      "playerOff": {
+        "id": 118925,
+        "name": "J.吉亚梅拉赫"
+      }
+    },
+    {
+      "time": "68'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "goal",
+      "player": {
+        "id": 202743,
+        "name": "马塔诺维奇"
+      },
+      "assist": {
+        "id": 162718,
+        "name": "J.尼可拉斯"
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "time": "70'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 202743,
+        "name": "马塔诺维奇"
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 185617,
+        "name": "铃木唯人"
+      },
+      "playerOff": {
+        "id": 115695,
+        "name": "霍勒"
+      }
+    },
+    {
+      "time": "71'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 242909,
+        "name": "C·伊里埃"
+      },
+      "playerOff": {
+        "id": 162718,
+        "name": "J.尼可拉斯"
+      }
+    },
+    {
+      "time": "74'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 200622,
+        "name": "汤姆·齐默希德"
+      },
+      "playerOff": {
+        "id": 244346,
+        "name": "C.坎贝尔"
+      }
+    },
+    {
+      "time": "74'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 240472,
+        "name": "M.克拉滕马赫"
+      },
+      "playerOff": {
+        "id": 268949,
+        "name": "恩图苏"
+      }
+    },
+    {
+      "time": "78'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "yellowCard",
+      "player": {
+        "id": 138714,
+        "name": "林哈特"
+      }
+    },
+    {
+      "time": "81'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 102452,
+        "name": "格里福"
+      },
+      "playerOff": {
+        "id": 228425,
+        "name": "德里·舍汉特"
+      }
+    },
+    {
+      "time": "81'",
+      "kind": "AWAY",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 231572,
+        "name": "后藤启介"
+      },
+      "playerOff": {
+        "id": 202743,
+        "name": "马塔诺维奇"
+      }
+    },
+    {
+      "time": "89'",
+      "kind": "HOME",
+      "process": "Regular",
+      "type": "substitution",
+      "playerOn": {
+        "id": 297630,
+        "name": "亚当"
+      },
+      "playerOff": {
+        "id": 180188,
+        "name": "马克西米利安·罗尔"
+      }
+    },
+    {
+      "time": "",
+      "kind": "OTHER",
+      "process": "FullTime",
+      "type": "matchProcess",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
+    }
+  ],
+  "cornerEvents": {
+    "homeId": 1076,
+    "guestId": 172,
+    "home": 5,
+    "homeHalf": 4,
+    "guest": 3,
+    "guestHalf": 3,
+    "detail": [
+      {
+        "min": "3",
+        "ifHome": false
+      },
+      {
+        "min": "9",
+        "ifHome": false
+      },
+      {
+        "min": "18",
+        "ifHome": true
+      },
+      {
+        "min": "23",
+        "ifHome": true
+      },
+      {
+        "min": "24",
+        "ifHome": true
+      },
+      {
+        "min": "34",
+        "ifHome": true
+      },
+      {
+        "min": "45",
+        "ifHome": false
+      },
+      {
+        "min": "90",
+        "ifHome": true
+      }
+    ]
+  }
+}

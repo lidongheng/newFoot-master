@@ -1,0 +1,978 @@
+{
+  "matchId": 3018831,
+  "homeName": "勒沃库森",
+  "awayName": "弗赖堡",
+  "fullMatch": {
+    "角球": {
+      "home": 4,
+      "homeText": "4",
+      "away": 3,
+      "awayText": "3",
+      "kind": "CORNER"
+    },
+    "半场角球": {
+      "home": 2,
+      "homeText": "2",
+      "away": 1,
+      "awayText": "1",
+      "kind": "HALF_CORNER"
+    },
+    "黄牌": {
+      "home": 0,
+      "homeText": "0",
+      "away": 1,
+      "awayText": "1",
+      "kind": "YELLOW"
+    },
+    "射门": {
+      "home": 12,
+      "homeText": "12",
+      "away": 11,
+      "awayText": "11",
+      "kind": "SHOOT"
+    },
+    "射正": {
+      "home": 5,
+      "homeText": "5",
+      "away": 2,
+      "awayText": "2",
+      "kind": "TARGET"
+    },
+    "进攻": {
+      "home": 91,
+      "homeText": "91",
+      "away": 106,
+      "awayText": "106",
+      "kind": "ATTACK"
+    },
+    "危险进攻": {
+      "home": 42,
+      "homeText": "42",
+      "away": 47,
+      "awayText": "47",
+      "kind": "DANGEROUS_ATTACK"
+    },
+    "射门不中": {
+      "home": 4,
+      "homeText": "4",
+      "away": 8,
+      "awayText": "8",
+      "kind": "OFFTARGET"
+    },
+    "射门被挡": {
+      "home": 3,
+      "homeText": "3",
+      "away": 1,
+      "awayText": "1",
+      "kind": "BLOCKED"
+    },
+    "任意球": {
+      "home": 5,
+      "homeText": "5",
+      "away": 12,
+      "awayText": "12",
+      "kind": "FREEKICT"
+    },
+    "犯规": {
+      "home": 12,
+      "homeText": "12",
+      "away": 5,
+      "awayText": "5",
+      "kind": "FOULS"
+    },
+    "越位": {
+      "home": 1,
+      "homeText": "1",
+      "away": 0,
+      "awayText": "0",
+      "kind": "OFFSIDE"
+    },
+    "头球": {
+      "home": 17,
+      "homeText": "17",
+      "away": 27,
+      "awayText": "27",
+      "kind": "HEADER"
+    },
+    "头球成功": {
+      "home": 7,
+      "homeText": "7",
+      "away": 15,
+      "awayText": "15",
+      "kind": "HEADER_SUCEESS"
+    },
+    "救球": {
+      "home": 1,
+      "homeText": "1",
+      "away": 3,
+      "awayText": "3",
+      "kind": "SAVE"
+    },
+    "控球率": {
+      "home": 49,
+      "homeText": "49%",
+      "away": 51,
+      "awayText": "51%",
+      "kind": "CONTROL_PERCENT"
+    },
+    "半场控球率": {
+      "home": 47,
+      "homeText": "47%",
+      "away": 53,
+      "awayText": "53%",
+      "kind": "HALF_CONTROL_PERCENT"
+    },
+    "传球": {
+      "home": 488,
+      "homeText": "488",
+      "away": 508,
+      "awayText": "508",
+      "kind": "PASSBALL"
+    },
+    "传球成功率": {
+      "home": 85,
+      "homeText": "85%",
+      "away": 85,
+      "awayText": "85%",
+      "kind": "PASSBALL_SUCCESS_PERCENT"
+    },
+    "铲球": {
+      "home": 7,
+      "homeText": "7",
+      "away": 10,
+      "awayText": "10",
+      "kind": "TACKLE"
+    },
+    "换人": {
+      "home": 3,
+      "homeText": "3",
+      "away": 5,
+      "awayText": "5",
+      "kind": "SUBST"
+    },
+    "过人": {
+      "home": 5,
+      "homeText": "5",
+      "away": 6,
+      "awayText": "6",
+      "kind": "DRIBBLES"
+    },
+    "界外球": {
+      "home": 16,
+      "homeText": "16",
+      "away": 17,
+      "awayText": "17",
+      "kind": "THROWINS"
+    },
+    "成功抢断": {
+      "home": 7,
+      "homeText": "7",
+      "away": 11,
+      "awayText": "11",
+      "kind": "STEAL_SUCCESS"
+    },
+    "阻截": {
+      "home": 4,
+      "homeText": "4",
+      "away": 12,
+      "awayText": "12",
+      "kind": "HOLDUP"
+    },
+    "成功传中": {
+      "home": 0,
+      "homeText": "0",
+      "away": 7,
+      "awayText": "7",
+      "kind": "SUCCESS_CROSS"
+    },
+    "助攻": {
+      "home": 2,
+      "homeText": "2",
+      "away": 1,
+      "awayText": "1",
+      "kind": "ASSISTS"
+    },
+    "长传": {
+      "home": 31,
+      "homeText": "31",
+      "away": 16,
+      "awayText": "16",
+      "kind": "LONG_PASS"
+    },
+    "先开球": {
+      "home": 1,
+      "homeText": "*",
+      "away": 0,
+      "awayText": "",
+      "kind": "KICK_OFF_FIRST"
+    },
+    "第一张黄牌": {
+      "home": 0,
+      "homeText": "",
+      "away": 1,
+      "awayText": "*",
+      "kind": "FIRST_YELLOW"
+    },
+    "最后一张黄牌": {
+      "home": 0,
+      "homeText": "",
+      "away": 1,
+      "awayText": "*",
+      "kind": "LAST_YELLOW"
+    },
+    "第一个换人": {
+      "home": 1,
+      "homeText": "*",
+      "away": 0,
+      "awayText": "",
+      "kind": "FIRST_SUBST"
+    },
+    "最后一个换人": {
+      "home": 0,
+      "homeText": "",
+      "away": 1,
+      "awayText": "*",
+      "kind": "LAST_SUBST"
+    },
+    "禁区内射球": {
+      "home": 7,
+      "homeText": "7",
+      "away": 8,
+      "awayText": "8",
+      "kind": "SHOOT_INSIDE"
+    },
+    "禁区外射球": {
+      "home": 5,
+      "homeText": "5",
+      "away": 3,
+      "awayText": "3",
+      "kind": "SHOOT_OUTSIDE"
+    },
+    "预期进球(xG)": {
+      "home": 1.63,
+      "homeText": "1.63",
+      "away": 1.06,
+      "awayText": "1.06",
+      "kind": "EXPECTED_GOALS"
+    },
+    "运动战预期进球": {
+      "home": 1.52,
+      "homeText": "1.52",
+      "away": 0.75,
+      "awayText": "0.75",
+      "kind": "XGOPEN_PlAY"
+    },
+    "定位球预期进球": {
+      "home": 0.1,
+      "homeText": "0.1",
+      "away": 0.31,
+      "awayText": "0.31",
+      "kind": "XGSET_PlAY"
+    },
+    "非点球预期进球": {
+      "home": 1.63,
+      "homeText": "1.63",
+      "away": 1.06,
+      "awayText": "1.06",
+      "kind": "XGNON_PENAlTY"
+    },
+    "射正预期进球": {
+      "home": 1.66,
+      "homeText": "1.66",
+      "away": 0.71,
+      "awayText": "0.71",
+      "kind": "XGOT"
+    },
+    "得分机会": {
+      "home": 3,
+      "homeText": "3",
+      "away": 2,
+      "awayText": "2",
+      "kind": "BIG_CHANCES"
+    },
+    "错失得分机会": {
+      "home": 1,
+      "homeText": "1",
+      "away": 1,
+      "awayText": "1",
+      "kind": "BIG_CHANCES_MISSED"
+    },
+    "对方禁区触球": {
+      "home": 16,
+      "homeText": "16",
+      "away": 20,
+      "awayText": "20",
+      "kind": "TIOBX"
+    },
+    "解围": {
+      "home": 26,
+      "homeText": "26",
+      "away": 26,
+      "awayText": "26",
+      "kind": "CLEARANCES"
+    },
+    "地面对抗成功": {
+      "home": 28,
+      "homeText": "28",
+      "away": 31,
+      "awayText": "31",
+      "kind": "GROUNDDUELSWON"
+    },
+    "横传": {
+      "home": 18,
+      "homeText": "18",
+      "away": 22,
+      "awayText": "22",
+      "kind": "ACCURATECROSSES"
+    },
+    "争顶成功": {
+      "home": 7,
+      "homeText": "7",
+      "away": 15,
+      "awayText": "15",
+      "kind": "AERIALDUELS_WON"
+    },
+    "1对1成功": {
+      "home": 35,
+      "homeText": "35",
+      "away": 46,
+      "awayText": "46",
+      "kind": "DUELS_WON"
+    }
+  },
+  "firstHalf": {
+    "角球": {
+      "home": 2,
+      "homeText": "2",
+      "away": 1,
+      "awayText": "1",
+      "kind": "CORNER"
+    },
+    "黄牌": {
+      "home": 0,
+      "homeText": "0",
+      "away": 1,
+      "awayText": "1",
+      "kind": "YELLOW"
+    },
+    "射门": {
+      "home": 3,
+      "homeText": "3",
+      "away": 3,
+      "awayText": "3",
+      "kind": "SHOOT"
+    },
+    "射正": {
+      "home": 1,
+      "homeText": "1",
+      "away": 1,
+      "awayText": "1",
+      "kind": "TARGET"
+    },
+    "进攻": {
+      "home": 34,
+      "homeText": "34",
+      "away": 53,
+      "awayText": "53",
+      "kind": "ATTACK"
+    },
+    "危险进攻": {
+      "home": 17,
+      "homeText": "17",
+      "away": 24,
+      "awayText": "24",
+      "kind": "DANGEROUS_ATTACK"
+    },
+    "射门不中": {
+      "home": 1,
+      "homeText": "1",
+      "away": 2,
+      "awayText": "2",
+      "kind": "OFFTARGET"
+    },
+    "射门被挡": {
+      "home": 1,
+      "homeText": "1",
+      "away": 0,
+      "awayText": "0",
+      "kind": "BLOCKED"
+    },
+    "任意球": {
+      "home": 4,
+      "homeText": "4",
+      "away": 8,
+      "awayText": "8",
+      "kind": "FREEKICT"
+    },
+    "犯规": {
+      "home": 8,
+      "homeText": "8",
+      "away": 4,
+      "awayText": "4",
+      "kind": "FOULS"
+    },
+    "越位": {
+      "home": 1,
+      "homeText": "1",
+      "away": 0,
+      "awayText": "0",
+      "kind": "OFFSIDE"
+    },
+    "控球率": {
+      "home": 47,
+      "homeText": "47%",
+      "away": 53,
+      "awayText": "53%",
+      "kind": "CONTROL_PERCENT"
+    },
+    "传球": {
+      "home": 232,
+      "homeText": "232",
+      "away": 265,
+      "awayText": "265",
+      "kind": "PASSBALL"
+    },
+    "传球成功率": {
+      "home": 84,
+      "homeText": "84%",
+      "away": 85,
+      "awayText": "85%",
+      "kind": "PASSBALL_SUCCESS_PERCENT"
+    },
+    "铲球": {
+      "home": 3,
+      "homeText": "3",
+      "away": 7,
+      "awayText": "7",
+      "kind": "TACKLE"
+    },
+    "过人": {
+      "home": 3,
+      "homeText": "3",
+      "away": 4,
+      "awayText": "4",
+      "kind": "DRIBBLES"
+    },
+    "界外球": {
+      "home": 10,
+      "homeText": "10",
+      "away": 6,
+      "awayText": "6",
+      "kind": "THROWINS"
+    },
+    "阻截": {
+      "home": 3,
+      "homeText": "3",
+      "away": 4,
+      "awayText": "4",
+      "kind": "HOLDUP"
+    },
+    "成功传中": {
+      "home": 0,
+      "homeText": "0",
+      "away": 3,
+      "awayText": "3",
+      "kind": "SUCCESS_CROSS"
+    },
+    "长传": {
+      "home": 13,
+      "homeText": "13",
+      "away": 11,
+      "awayText": "11",
+      "kind": "LONG_PASS"
+    },
+    "禁区内射球": {
+      "home": 2,
+      "homeText": "2",
+      "away": 3,
+      "awayText": "3",
+      "kind": "SHOOT_INSIDE"
+    },
+    "禁区外射球": {
+      "home": 1,
+      "homeText": "1",
+      "away": 0,
+      "awayText": "0",
+      "kind": "SHOOT_OUTSIDE"
+    },
+    "预期进球(xG)": {
+      "home": 0.3,
+      "homeText": "0.3",
+      "away": 0.38,
+      "awayText": "0.38",
+      "kind": "EXPECTED_GOALS"
+    },
+    "运动战预期进球": {
+      "home": 0.2,
+      "homeText": "0.2",
+      "away": 0.35,
+      "awayText": "0.35",
+      "kind": "XGOPEN_PlAY"
+    },
+    "定位球预期进球": {
+      "home": 0.1,
+      "homeText": "0.1",
+      "away": 0.04,
+      "awayText": "0.04",
+      "kind": "XGSET_PlAY"
+    },
+    "非点球预期进球": {
+      "home": 0.3,
+      "homeText": "0.3",
+      "away": 0.38,
+      "awayText": "0.38",
+      "kind": "XGNON_PENAlTY"
+    },
+    "射正预期进球": {
+      "home": 0.25,
+      "homeText": "0.25",
+      "away": 0.62,
+      "awayText": "0.62",
+      "kind": "XGOT"
+    },
+    "得分机会": {
+      "home": 1,
+      "homeText": "1",
+      "away": 1,
+      "awayText": "1",
+      "kind": "BIG_CHANCES"
+    },
+    "对方禁区触球": {
+      "home": 6,
+      "homeText": "6",
+      "away": 8,
+      "awayText": "8",
+      "kind": "TIOBX"
+    },
+    "解围": {
+      "home": 10,
+      "homeText": "10",
+      "away": 11,
+      "awayText": "11",
+      "kind": "CLEARANCES"
+    },
+    "地面对抗成功": {
+      "home": 14,
+      "homeText": "14",
+      "away": 19,
+      "awayText": "19",
+      "kind": "GROUNDDUELSWON"
+    },
+    "横传": {
+      "home": 10,
+      "homeText": "10",
+      "away": 10,
+      "awayText": "10",
+      "kind": "ACCURATECROSSES"
+    },
+    "争顶成功": {
+      "home": 4,
+      "homeText": "4",
+      "away": 9,
+      "awayText": "9",
+      "kind": "AERIALDUELS_WON"
+    },
+    "1对1成功": {
+      "home": 18,
+      "homeText": "18",
+      "away": 28,
+      "awayText": "28",
+      "kind": "DUELS_WON"
+    }
+  },
+  "secondHalf": {
+    "角球": {
+      "home": 2,
+      "homeText": "2",
+      "away": 2,
+      "awayText": "2",
+      "kind": "CORNER"
+    },
+    "射门": {
+      "home": 9,
+      "homeText": "9",
+      "away": 8,
+      "awayText": "8",
+      "kind": "SHOOT"
+    },
+    "射正": {
+      "home": 4,
+      "homeText": "4",
+      "away": 1,
+      "awayText": "1",
+      "kind": "TARGET"
+    },
+    "进攻": {
+      "home": 57,
+      "homeText": "57",
+      "away": 53,
+      "awayText": "53",
+      "kind": "ATTACK"
+    },
+    "危险进攻": {
+      "home": 25,
+      "homeText": "25",
+      "away": 23,
+      "awayText": "23",
+      "kind": "DANGEROUS_ATTACK"
+    },
+    "射门不中": {
+      "home": 3,
+      "homeText": "3",
+      "away": 6,
+      "awayText": "6",
+      "kind": "OFFTARGET"
+    },
+    "射门被挡": {
+      "home": 2,
+      "homeText": "2",
+      "away": 1,
+      "awayText": "1",
+      "kind": "BLOCKED"
+    },
+    "任意球": {
+      "home": 1,
+      "homeText": "1",
+      "away": 4,
+      "awayText": "4",
+      "kind": "FREEKICT"
+    },
+    "犯规": {
+      "home": 4,
+      "homeText": "4",
+      "away": 1,
+      "awayText": "1",
+      "kind": "FOULS"
+    },
+    "救球": {
+      "home": 1,
+      "homeText": "1",
+      "away": 3,
+      "awayText": "3",
+      "kind": "SAVE"
+    },
+    "控球率": {
+      "home": 51,
+      "homeText": "51%",
+      "away": 49,
+      "awayText": "49%",
+      "kind": "CONTROL_PERCENT"
+    },
+    "传球": {
+      "home": 256,
+      "homeText": "256",
+      "away": 243,
+      "awayText": "243",
+      "kind": "PASSBALL"
+    },
+    "传球成功率": {
+      "home": 87,
+      "homeText": "87%",
+      "away": 85,
+      "awayText": "85%",
+      "kind": "PASSBALL_SUCCESS_PERCENT"
+    },
+    "铲球": {
+      "home": 4,
+      "homeText": "4",
+      "away": 3,
+      "awayText": "3",
+      "kind": "TACKLE"
+    },
+    "过人": {
+      "home": 2,
+      "homeText": "2",
+      "away": 2,
+      "awayText": "2",
+      "kind": "DRIBBLES"
+    },
+    "界外球": {
+      "home": 6,
+      "homeText": "6",
+      "away": 11,
+      "awayText": "11",
+      "kind": "THROWINS"
+    },
+    "阻截": {
+      "home": 0,
+      "homeText": "0",
+      "away": 8,
+      "awayText": "8",
+      "kind": "HOLDUP"
+    },
+    "成功传中": {
+      "home": 0,
+      "homeText": "0",
+      "away": 4,
+      "awayText": "4",
+      "kind": "SUCCESS_CROSS"
+    },
+    "长传": {
+      "home": 18,
+      "homeText": "18",
+      "away": 5,
+      "awayText": "5",
+      "kind": "LONG_PASS"
+    },
+    "禁区内射球": {
+      "home": 5,
+      "homeText": "5",
+      "away": 5,
+      "awayText": "5",
+      "kind": "SHOOT_INSIDE"
+    },
+    "禁区外射球": {
+      "home": 4,
+      "homeText": "4",
+      "away": 3,
+      "awayText": "3",
+      "kind": "SHOOT_OUTSIDE"
+    },
+    "预期进球(xG)": {
+      "home": 1.33,
+      "homeText": "1.33",
+      "away": 0.68,
+      "awayText": "0.68",
+      "kind": "EXPECTED_GOALS"
+    },
+    "运动战预期进球": {
+      "home": 1.33,
+      "homeText": "1.33",
+      "away": 0.4,
+      "awayText": "0.4",
+      "kind": "XGOPEN_PlAY"
+    },
+    "定位球预期进球": {
+      "home": 0,
+      "homeText": "0",
+      "away": 0.28,
+      "awayText": "0.28",
+      "kind": "XGSET_PlAY"
+    },
+    "非点球预期进球": {
+      "home": 1.33,
+      "homeText": "1.33",
+      "away": 0.68,
+      "awayText": "0.68",
+      "kind": "XGNON_PENAlTY"
+    },
+    "射正预期进球": {
+      "home": 1.42,
+      "homeText": "1.42",
+      "away": 0.08,
+      "awayText": "0.08",
+      "kind": "XGOT"
+    },
+    "得分机会": {
+      "home": 2,
+      "homeText": "2",
+      "away": 1,
+      "awayText": "1",
+      "kind": "BIG_CHANCES"
+    },
+    "错失得分机会": {
+      "home": 1,
+      "homeText": "1",
+      "away": 1,
+      "awayText": "1",
+      "kind": "BIG_CHANCES_MISSED"
+    },
+    "对方禁区触球": {
+      "home": 10,
+      "homeText": "10",
+      "away": 12,
+      "awayText": "12",
+      "kind": "TIOBX"
+    },
+    "解围": {
+      "home": 16,
+      "homeText": "16",
+      "away": 15,
+      "awayText": "15",
+      "kind": "CLEARANCES"
+    },
+    "地面对抗成功": {
+      "home": 14,
+      "homeText": "14",
+      "away": 12,
+      "awayText": "12",
+      "kind": "GROUNDDUELSWON"
+    },
+    "横传": {
+      "home": 8,
+      "homeText": "8",
+      "away": 12,
+      "awayText": "12",
+      "kind": "ACCURATECROSSES"
+    },
+    "争顶成功": {
+      "home": 3,
+      "homeText": "3",
+      "away": 6,
+      "awayText": "6",
+      "kind": "AERIALDUELS_WON"
+    },
+    "1对1成功": {
+      "home": 17,
+      "homeText": "17",
+      "away": 18,
+      "awayText": "18",
+      "kind": "DUELS_WON"
+    }
+  },
+  "recentAvg": {
+    "last10": {
+      "进球": {
+        "home": 2.7,
+        "homeText": "2.7",
+        "away": 3.3,
+        "awayText": "3.3",
+        "kind": "GOAL"
+      },
+      "失球": {
+        "home": 1.1,
+        "homeText": "1.1",
+        "away": 1.1,
+        "awayText": "1.1",
+        "kind": "LOSS"
+      },
+      "被射门": {
+        "home": 10.1,
+        "homeText": "10.1",
+        "away": 7.2,
+        "awayText": "7.2",
+        "kind": "BE_SHOOT"
+      },
+      "角球": {
+        "home": 6,
+        "homeText": "6.0",
+        "away": 6.3,
+        "awayText": "6.3",
+        "kind": "CORNER"
+      },
+      "黄牌": {
+        "home": 1.4,
+        "homeText": "1.4",
+        "away": 1.4,
+        "awayText": "1.4",
+        "kind": "YELLOW"
+      },
+      "犯规": {
+        "home": 13.7,
+        "homeText": "13.7",
+        "away": 10.7,
+        "awayText": "10.7",
+        "kind": "FOULS"
+      },
+      "控球率": {
+        "home": 59.3,
+        "homeText": "59.3%",
+        "away": 56.6,
+        "awayText": "56.6%",
+        "kind": "CONTROL_PERCENT"
+      }
+    },
+    "last5": {
+      "进球": {
+        "home": 2.8,
+        "homeText": "2.8",
+        "away": 3.2,
+        "awayText": "3.2",
+        "kind": "GOAL"
+      },
+      "失球": {
+        "home": 1,
+        "homeText": "1.0",
+        "away": 1.4,
+        "awayText": "1.4",
+        "kind": "LOSS"
+      },
+      "被射门": {
+        "home": 11.6,
+        "homeText": "11.6",
+        "away": 7.8,
+        "awayText": "7.8",
+        "kind": "BE_SHOOT"
+      },
+      "角球": {
+        "home": 7.4,
+        "homeText": "7.4",
+        "away": 5.8,
+        "awayText": "5.8",
+        "kind": "CORNER"
+      },
+      "黄牌": {
+        "home": 1.5,
+        "homeText": "1.5",
+        "away": 1.8,
+        "awayText": "1.8",
+        "kind": "YELLOW"
+      },
+      "犯规": {
+        "home": 13.6,
+        "homeText": "13.6",
+        "away": 12,
+        "awayText": "12.0",
+        "kind": "FOULS"
+      },
+      "控球率": {
+        "home": 56.8,
+        "homeText": "56.8%",
+        "away": 57.5,
+        "awayText": "57.5%",
+        "kind": "CONTROL_PERCENT"
+      }
+    },
+    "last3": {
+      "进球": {
+        "home": 3.3,
+        "homeText": "3.3",
+        "away": 3,
+        "awayText": "3.0",
+        "kind": "GOAL"
+      },
+      "失球": {
+        "home": 1,
+        "homeText": "1.0",
+        "away": 1.7,
+        "awayText": "1.7",
+        "kind": "LOSS"
+      },
+      "被射门": {
+        "home": 15,
+        "homeText": "15.0",
+        "away": 8,
+        "awayText": "8.0",
+        "kind": "BE_SHOOT"
+      },
+      "角球": {
+        "home": 5.7,
+        "homeText": "5.7",
+        "away": 6,
+        "awayText": "6.0",
+        "kind": "CORNER"
+      },
+      "黄牌": {
+        "home": 1.7,
+        "homeText": "1.7",
+        "away": 2,
+        "awayText": "2.0",
+        "kind": "YELLOW"
+      },
+      "犯规": {
+        "home": 13.3,
+        "homeText": "13.3",
+        "away": 15,
+        "awayText": "15.0",
+        "kind": "FOULS"
+      },
+      "控球率": {
+        "home": 55,
+        "homeText": "55.0%",
+        "away": 55.5,
+        "awayText": "55.5%",
+        "kind": "CONTROL_PERCENT"
+      }
+    }
+  }
+}

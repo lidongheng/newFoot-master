@@ -5,7 +5,7 @@ const { cups } = require('../../crawler-server/config');
 const { scheduleSeason } = require('../../crawler-server/utils/teamProfileData');
 const { main } = require('./cli');
 
-const metrics = 'standings,homeStandings,awayStandings,averageAge,averageHeight,totalMarketValue,averagePossession';
+const metrics = 'standings,firstHalfStandings,secondHalfStandings,homeStandings,awayStandings,averageAge,averageHeight,totalMarketValue,averagePossession,averageXg,averageShots,shotsAgainst,averageShotsAgainst,zeroShotsOnTarget,comebackPoints,pointsDropped,shotConversionRate,shotOnTargetConversionRate';
 
 function buildAll() {
   const results = [];
@@ -21,7 +21,7 @@ function buildAll() {
   }
   const root = path.join(__dirname, '../output');
   fs.mkdirSync(root, { recursive: true });
-  fs.writeFileSync(path.join(root, 'build-summary.json'), JSON.stringify(results, null, 2) + '\n', 'utf8');
+  fs.writeFileSync(path.join(root, 'build-summary.json'), JSON.stringify(results.map(({ reason, reminder, ...result }) => result), null, 2) + '\n', 'utf8');
   const lines = ['# 全联赛新增指标与待补数据', '', '| 联赛 | 赛季 | 状态 | 待补项 | 清单或原因 |', '|---|---|---|---|---|'];
   for (const result of results) {
     let detail = result.reason;

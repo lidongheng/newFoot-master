@@ -10,7 +10,7 @@
 | jLeague | 2026-2027 | generated | 677 | [球队榜与待补清单](../../jLeague/leagueRanking/26-27/teams/README.md) |
 | bundesliga | 2026-2027 | generated | 306 | [球队榜与待补清单](../../bundesliga/leagueRanking/26-27/teams/README.md) |
 | ligue1 | 2026-2027 | generated | 264 | [球队榜与待补清单](../../ligue1/leagueRanking/26-27/teams/README.md) |
-| laLiga | 2026-2027 | generated | 57 | [球队榜与待补清单](../../laLiga/leagueRanking/26-27/teams/README.md) |
+| laLiga | 2026-2027 | generated | 54 | [球队榜与待补清单](../../laLiga/leagueRanking/26-27/teams/README.md) |
 | koreanKLeague | 2026 | generated | 515 | [球队榜与待补清单](../../koreanKLeague/leagueRanking/2026/teams/README.md) |
 | ChinaSuperLeague | 2026 | generated | 576 | [球队榜与待补清单](../../ChinaSuperLeague/leagueRanking/2026/teams/README.md) |
 | aLeague | 2026-2027 | generated | 311 | [球队榜与待补清单](../../aLeague/leagueRanking/26-27/teams/README.md) |

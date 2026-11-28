@@ -9,7 +9,7 @@
 <!-- generated-profile-index -->
 ## 画像与待补数据
 
-每队一个英文目录（空白使用下划线），包含中文画像 MD、同名英文 JSON 和 missingData.json。
+每队一个英文目录（空白使用下划线），包含中文画像 MD、同名英文 JSON ，待补数据仅列在 MD 末尾。
 
 - [阿森纳](Arsenal/阿森纳.md)：已生成 MD/JSON
 - [罗马](AS_Roma/罗马.md)：已生成 MD/JSON

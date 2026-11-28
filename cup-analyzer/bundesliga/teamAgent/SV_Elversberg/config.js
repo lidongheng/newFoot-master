@@ -6,4 +6,6 @@ module.exports = {
   teamSerial: '1076',
   teamChineseName: '埃尔沃斯贝格',
   teamEnglishName: 'SV Elversberg',
+  // 来源站曾使用的其他译名；分析时与 teamChineseName 同等有效。
+  teamAliases: ['埃弗斯堡'],
 };

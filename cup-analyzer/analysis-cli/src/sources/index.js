@@ -8,6 +8,8 @@ const { cups } = require('../../../crawler-server/config');
 const FILES = ['matchInfo.json', 'matchEvents.json', 'techStats.json', 'lineup.json', 'playerStats.json', 'goalProbability.json'];
 const CORE = ['matchInfo.json', 'matchEvents.json', 'techStats.json'];
 const hash = (content) => crypto.createHash('sha256').update(content).digest('hex');
+// 来源站可能有多个中文译名，config.js 的 teamAliases 与赛程标准名同等有效。
+const nameMatches = (value, team) => value === undefined || value === team.name || (Array.isArray(team.aliases) && team.aliases.includes(value));
 const shortSeason = (season) => {
   if (!season.includes('-')) return season;
   return season.split('-').map((year) => year.slice(-2)).join('-');
@@ -29,7 +31,7 @@ function loadContext(options, registry = cups) {
   vm.runInNewContext(source, data, { filename: scheduleFile, timeout: 5000 });
   if (!data.arrLeague || String(data.arrLeague[0]) !== String(league.cupSerial) || data.arrLeague[4] !== options.season) throw new Error('请求赛事或赛季与本地赛程不一致。');
   if (!Array.isArray(data.arrTeam)) throw new Error('赛程缺少 arrTeam。');
-  const teams = data.arrTeam.map((row) => ({ id: String(row[0]), name: row[1], englishName: row[3] }));
+  const teams = data.arrTeam.map((row) => ({ id: String(row[0]), name: row[1], englishName: row[3], aliases: [] }));
   if (options.team && !teams.some((team) => team.id === options.team)) throw new Error('指定球队不在该赛季赛程中。');
   const matches = new Map();
   for (const [key, rows] of Object.entries(data.jh)) {
@@ -49,6 +51,13 @@ function loadContext(options, registry = cups) {
     const target = require(file);
     const team = teams.find((item) => item.id === target.teamSerial);
     if (!team || target.leagueSlug !== options.league || String(target.leagueSerial) !== String(league.cupSerial) || target.season !== options.season || target.teamChineseName !== team.name || target.teamEnglishName !== team.englishName) throw new Error(`球队配置与目标赛程不一致：${file}`);
+    // 别名只用于数据文件里的来源站译名；赛程标准名仍以 teamChineseName 为准。
+    if (Array.isArray(target.teamAliases)) {
+      for (const alias of target.teamAliases) {
+        if (typeof alias !== 'string' || !alias.trim() || alias.trim() === team.name) continue;
+        if (!team.aliases.includes(alias.trim())) team.aliases.push(alias.trim());
+      }
+    }
     if (directories.has(team.id)) throw new Error(`球队配置重复：${team.id}`);
     directories.set(team.id, path.dirname(file));
   }
@@ -103,7 +112,7 @@ function readMatches(context, historyRoot) {
           }
           const home = context.teams.find((team) => team.id === match.homeId);
           const away = context.teams.find((team) => team.id === match.awayId);
-          if (!home || !away || (value.homeName !== undefined && value.homeName !== home.name) || (value.awayName !== undefined && value.awayName !== away.name)) {
+          if (!home || !away || !nameMatches(value.homeName, home) || !nameMatches(value.awayName, away)) {
             quality.push({ code: 'identityConflict', matchId: match.id, file, note: '文件主客队与本地赛程不符，需核验名称或身份。' });
             conflict = true;
             continue;

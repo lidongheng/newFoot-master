@@ -27,13 +27,13 @@ function main(args) {
   if (!['catalog', 'build'].includes(command)) throw new Error('命令：catalog | build | repair preview | repair apply；详见 README.md。');
   const options = parseOptions(rest);
   const context = loadContext(options);
-  if (command === 'catalog') return { schemaVersion: 1, league: options.league, season: options.season, metrics: catalog, excluded: ['评分', '成功率', '效率/每90分钟', '个人xG推算', '盘口/潜力评分'] };
+  if (command === 'catalog') return { schemaVersion: 1, league: options.league, season: options.season, metrics: catalog, excluded: ['评分', '其他成功率/效率及每90分钟指标', '个人xG推算', '盘口/潜力评分'] };
   const dataset = readMatches(context, historyRoot);
   const normalized = normalize(context, dataset);
   const report = buildReport(context, dataset, normalized, options);
   const { writeReport } = require('../src/renderers');
   const directory = writeReport(context, report);
-  return { directory, scope: options.scope, availableMatches: report.metadata.availableMatches, expectedMatches: report.metadata.expectedMatches, teamRecords: report.metadata.teamRecords, playerRecords: report.metadata.playerRecords, issues: report.metadata.issueCount, missingDataCount: report.missingData.length, reminder: report.missingData.length ? '请补充 teams/missingData.json 中的数据后重新生成' : '无待补数据' };
+  return { directory, scope: options.scope, availableMatches: report.metadata.availableMatches, expectedMatches: report.metadata.expectedMatches, teamRecords: report.metadata.teamRecords, playerRecords: report.metadata.playerRecords, issues: report.metadata.issueCount, missingDataCount: report.missingData.length, reminder: report.missingData.length ? '请补充 teams/README.md 末尾列出的数据后重新生成' : '无待补数据' };
 }
 
 if (require.main === module) {

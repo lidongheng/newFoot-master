@@ -37,7 +37,10 @@ function normalize(context, dataset) {
           if (metric.source !== 'techStats') continue;
           const candidates = Object.values(section).filter((value) => value.kind === metric.field);
           if (candidates.length !== 1) continue;
-          const raw = candidates[0][side];
+          let valueSide = side;
+          // 被射门读取同一比赛的对方数值，单队筛选也不依赖对手是否参与排名。
+          if (metric.side === 'opponent') valueSide = side === 'home' ? 'away' : 'home';
+          const raw = candidates[0][valueSide];
           const value = numberValue(raw);
           if (value !== undefined) periods[period][metric.id] = value;
           else issue('invalidMetric', match.id, { teamId, metric: metric.id, period, raw });

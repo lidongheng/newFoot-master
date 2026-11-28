@@ -6,6 +6,7 @@ const squadTarget = require('../config/squadTarget');
 const { refreshTeamSchedule } = require('../crawlers/playerListCrawler');
 const { readJSON, readFile, saveMarkdown, fileExists } = require('../utils/fileWriter');
 const { isDeepStrictEqual } = require('util');
+const { futureScheduleData, scheduleDataComment } = require('../utils/teamScheduleData');
 
 const SECTION_START = '<!-- TEAM_SCHEDULE_START -->';
 const SECTION_END = '<!-- TEAM_SCHEDULE_END -->';
@@ -106,7 +107,7 @@ function renderScheduleLine(fixture, anchorTime, teamName, isUpcomingMatch) {
   return markdownCell(`${dateTime} ${competitionRound} ${matchup} ${hours}`);
 }
 
-function makeSection(anchorTime, recent, upcoming, teamName) {
+function makeSection(anchorTime, recent, upcoming, teamName, futureSchedule) {
   return [
     SECTION_START,
     '## 近期与未来赛程',
@@ -116,6 +117,7 @@ function makeSection(anchorTime, recent, upcoming, teamName) {
     '',
     '### 未来 30 天内的比赛',
     ...upcoming.map((fixture) => renderScheduleLine(fixture, anchorTime, teamName, true)),
+    scheduleDataComment(futureSchedule),
     SECTION_END,
   ].join('\n');
 }
@@ -180,7 +182,8 @@ class TeamScheduleProcessor extends BaseCrawler {
 
     const base = path.join(config.paths.cupAnalyzer, 'squad', `${mapping.qiutanName}.md`);
     if (!fileExists(base)) throw new Error(`初选名单不存在: ${base}，请先运行 leagueSquadProcessor`);
-    const section = makeSection(anchor.startTime, recent, upcoming, mapping.qiutanName);
+    const futureSchedule = futureScheduleData(squadTarget.teamSerial, dqdTeamId, squadTarget.matchTime, upcoming, fmtTime);
+    const section = makeSection(anchor.startTime, recent, upcoming, mapping.qiutanName, futureSchedule);
     this.updateScheduleSection(base, section);
     this.log(`已写入赛程区块: ${base}`);
 
@@ -210,6 +213,14 @@ class TeamScheduleProcessor extends BaseCrawler {
     if (fileExists(profilePath)) {
       this.updateScheduleSection(profilePath, section);
       this.log(`已同步赛程区块至球队画像: ${profilePath}`);
+    }
+    const profileJsonPath = path.join(path.dirname(profilePath), `${path.basename(path.dirname(profilePath))}.json`);
+    if (fileExists(profileJsonPath)) {
+      const profile = readJSON(profileJsonPath);
+      if (profile.teamId !== String(squadTarget.teamSerial)) throw new Error(`球队画像JSON的球队ID不符: ${profileJsonPath}`);
+      profile.futureSchedule = futureSchedule;
+      fs.writeFileSync(profileJsonPath, JSON.stringify(profile, null, 2) + '\n', 'utf8');
+      this.log(`已同步未来赛程至球队画像JSON: ${profileJsonPath}`);
     }
   }
 }

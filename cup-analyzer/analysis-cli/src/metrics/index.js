@@ -36,7 +36,10 @@ const eventDefinitions = [
 ];
 
 const indicatorDefinitions = [
+  ['comebackPoints', '落后追回分数', 'matchEvents', '分', 'events/goal/score'],
   ['standings', '积分榜', 'schedule', '积分', 'score'],
+  ['firstHalfStandings', '上半场积分榜', 'schedule', '积分', 'halfScore'],
+  ['secondHalfStandings', '下半场积分榜', 'schedule', '积分', 'score - halfScore'],
   ['homeStandings', '主场积分榜', 'schedule', '积分', 'score'],
   ['awayStandings', '客场积分榜', 'schedule', '积分', 'score'],
   ['averageAge', '平均年龄', 'teamProfile', '岁', 'players.age'],
@@ -45,6 +48,7 @@ const indicatorDefinitions = [
   ['averagePossession', '平均控球率', 'techStats', '%', 'CONTROL_PERCENT'],
 ];
 const catalog = [
+  { id: 'pointsDropped', label: '领先丢掉分数', entity: 'teams', source: 'matchEvents', field: 'events/goal/score', unit: '分', additive: false, order: 'asc' },
   ...indicatorDefinitions.map(([id, label, source, unit, field]) => ({ id, label, entity: 'teams', source, unit, field, additive: false })),
   ...teamDefinitions.map(([id, label, field]) => ({ id, label, entity: 'teams', source: 'techStats', field, unit: '次', additive: true })),
   ...playerDefinitions.map(([id, label, field]) => ({ id, label, entity: 'players', source: 'stats', field, unit: '次', additive: true })),
@@ -53,6 +57,13 @@ const catalog = [
   { id: 'goals', label: '进球', entity: 'teams', source: 'schedule', field: 'score', unit: '球', additive: true },
   { id: 'goalsAgainst', label: '失球', entity: 'teams', source: 'schedule', field: 'score', unit: '球', additive: true },
   { id: 'goalsMinusXg', label: '实际进球 − xG', entity: 'teams', source: 'derived', field: 'goals - xg', unit: '球', additive: true },
+  { id: 'averageXg', label: '场均 xG', entity: 'teams', source: 'derived', field: 'xg', unit: '预期进球/场', additive: false, aggregation: 'average' },
+  { id: 'zeroShotsOnTarget', label: '0射正', entity: 'teams', source: 'derived', field: 'shotsOnTarget', unit: '场', additive: false, aggregation: 'zeroCount', order: 'asc' },
+  { id: 'averageShots', label: '场均射门', entity: 'teams', source: 'derived', field: 'shots', unit: '次/场', additive: false, aggregation: 'average' },
+  { id: 'shotConversionRate', label: '射门转化率', entity: 'teams', source: 'derived', field: 'shots', unit: '%', additive: false, aggregation: 'conversionRate' },
+  { id: 'shotOnTargetConversionRate', label: '射正转化率', entity: 'teams', source: 'derived', field: 'shotsOnTarget', unit: '%', additive: false, aggregation: 'conversionRate' },
+  { id: 'shotsAgainst', label: '被对手射门', entity: 'teams', source: 'techStats', field: 'SHOOT', side: 'opponent', unit: '次', additive: true, order: 'asc' },
+  { id: 'averageShotsAgainst', label: '场均被对手射门', entity: 'teams', source: 'derived', field: 'shotsAgainst', unit: '次/场', additive: false, aggregation: 'average', order: 'asc' },
 ];
 for (const metric of catalog) {
   if (/xg/i.test(metric.id) && metric.source === 'techStats') metric.unit = '预期进球';

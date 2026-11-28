@@ -70,6 +70,12 @@ function missingMarkdown(issues) {
   return lines.concat('').join('\n');
 }
 
+function readMissingMarkdown(content) {
+  const section = content.split(/^## 待补数据\s*$/m)[1];
+  if (section === undefined) return [];
+  return section.split(/\r?\n/).filter((line) => line.startsWith('- {')).map((line) => JSON.parse(line.slice(2)));
+}
+
 function profileData(team, season, players, source, finalPath, rawPath) {
   let columns = [];
   if (finalPath && fs.existsSync(finalPath)) columns = tableColumns(fs.readFileSync(finalPath, 'utf8'));
@@ -99,4 +105,4 @@ function profileData(team, season, players, source, finalPath, rawPath) {
   return { data: { teamId: String(team.id), chineseName: team.chineseName, englishName: team.englishName, season, dataSource: source, marketValueUnit: '万', players: exported }, issues };
 }
 
-module.exports = { teamDirectory, scheduleSeason, profileSeason, numeric, tableColumns, missingMarkdown, profileData };
+module.exports = { teamDirectory, scheduleSeason, profileSeason, numeric, tableColumns, missingMarkdown, readMissingMarkdown, profileData };

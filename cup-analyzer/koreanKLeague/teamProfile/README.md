@@ -5,7 +5,7 @@
 <!-- generated-profile-index -->
 ## 画像与待补数据
 
-每队一个英文目录（空白使用下划线），包含中文画像 MD、同名英文 JSON 和 missingData.json。
+每队一个英文目录（空白使用下划线），包含中文画像 MD、同名英文 JSON ，待补数据仅列在 MD 末尾。
 
 - [富川FC](Bucheon_FC_1995/富川FC.md)：已生成 MD/JSON
 - [大田市民](Daejeon_Citizen/大田市民.md)：已生成 MD/JSON

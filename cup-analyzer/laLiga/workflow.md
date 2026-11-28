@@ -17,6 +17,12 @@
 
 与世界杯不同：联赛用 **`playerListCrawler` + `clubMatchAnalyzer` + `leagueSquadProcessor`** 生成 `squad/{队名}.md`；后半段与世界杯一致：**`squadFinalInitializer`** → 人工审核 **`squad-final/`**（在 **`## 伤停` / `## 伤疑`** 中填写当前伤停、伤疑名单，每行 `球衣号-姓名`）→ **`teamProfileGenerator`** → **`teamProfile/{队名}.md`**（画像会带上伤停/伤疑小节；单队操作，逐队改 `squadTarget.js`）。
 
+未来赛程的传递链路：`teamScheduleProcessor` 刷新懂球帝球队赛程，将展示文字与结构化 JSON 一起写入 `squad/{队名}.md` 的 `TEAM_SCHEDULE_START/END` 区块；`squadFinalInitializer` 原样带入最终名单；画像生成时导出至 `teamProfile/{英文球队目录}/{英文球队目录}.json` 的 `futureSchedule`。区块内 `TEAM_SCHEDULE_DATA` 注释保存分析所需原值，人工审核时保留此注释完整。刷新赛程时，已有画像 JSON 也同步更新该字段。
+
+`futureSchedule` 包含球探球队ID、懂球帝球队ID、北京时间基准 `anchorTime`、时区 `Asia/Shanghai`、窗口天数 `windowDays: 30` 和 `matches`。比赛列出懂球帝比赛ID、赛事、轮次、主客队及ID、对手及ID、主客场、北京时间开赛时间和状态。范围仍是以 `squadTarget.matchTime` 为基准、严格晚于该时刻且不超过未来30天的 `fixture/uncertain` 比赛，包含球队的其他赛事，不采用“赛程难度排行榜”的未来N场联赛规则。
+
+旧版名单只有赛程展示文字，不能反推出完整ID和年份；请重新执行 `teamScheduleProcessor.js` 获取结构化数据，再按下方原流程审核、生成画像。缺失结构化数据时会在画像待补数据中提示，不生成假的空赛程；真实已查询但没有符合范围比赛时，`matches` 才为空数组。运行前仍须把 `squadTarget` 的联赛、球队和基准比赛时间设为当前目标，`CUP_ANALYZER_CUP` 不会替你修改它。
+
 当前争冠、欧战资格和保级集团中需要重点跟踪的球队，可优先用本流水线更新 `teamProfile/`；自动化画像落地后，仍建议在对应 `teamProfile/{队名}.md` 中补充**转会窗**、**欧战与国王杯等多线赛程**、**轮换负荷**、**伤病与状态**等与赛前分析相关的段落（与模块内原有画像结构一致）。
 
 **前置**：在 `cup-analyzer/crawler-server` 中编辑 `config/squadTarget.js`（`teamSerial`、`leagueSerial='31'`、`leagueSlug='laLiga'`、`roundSerial`、`teamChineseName`、`matchLeagueName='西甲'`）；赛程见 `laLiga/data/s31.js`。以下 processors 需 `CUP_ANALYZER_CUP=laLiga`（推荐上文 `npx cross-env`）。

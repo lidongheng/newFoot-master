@@ -219,7 +219,7 @@ npm：`npm run process:squad-final:init` / `npm run process:squad-final:init:one
 
 - **输入**：默认优先 `{杯赛}/squad-final/` 下 Markdown；若无或解析为空则回退 `output/player_center/{序号}.json`。`--source raw` 可强制仅用 JSON。
 - **squad-final**：当成功从该文件解析名单时，会在写出画像后**回写**同文件中的「## 统计摘要」（与当前表格一致）。若 `squad-final` 中含已填写的 **`## 伤停` / `## 伤疑`**，画像「二、球队阵容」中会生成 **### 伤停 / ### 伤疑**（联赛带出场统计；世界杯/国家队为俱乐部+位置）。
-- **输出**：`{赛事}/teamProfile/{球队英文目录}/{中文队名}.md`、`{球队英文目录}.json` 和 `missingData.json`；英文目录的空白使用下划线，世界杯保留 group-X 层级。
+- **输出**：`{赛事}/teamProfile/{球队英文目录}/{中文队名}.md`、`{球队英文目录}.json`，待补数据仅列在 MD 末尾；英文目录的空白使用下划线，世界杯保留 group-X 层级。
 
 ```bash
 node processors/teamProfileGenerator.js
@@ -326,4 +326,4 @@ node processors/migrateTeamProfiles.js
 
 画像同时导出球员 JSON，保留 squad-final 表格全部原始列（sourceColumns）和统一字段，以及 appearances、starts、goals、assists。旧赛季名单按名单中的赛季标记，不强行写成当前赛季。无法取得资料时保留 MD，JSON 明确记录 missing 状态，不能补成0。
 
-[output/profile-migration/README.md](output/profile-migration/README.md) 汇总逐队处理与缺失情况；原画像完整原文保存在 originals，非标准人工章节保留在新 MD。每队 MD 末尾及 missingData.json 列出具体球员、字段和源文件，补充后重新生成即可消除对应提醒。
+[output/profile-migration/README.md](output/profile-migration/README.md) 汇总逐队处理与缺失情况；原画像完整原文保存在 originals，非标准人工章节保留在新 MD。每队 MD 末尾列出具体球员、字段和源文件，不生成 missingData.json，也不向 JSON 写入待补提醒，补充后重新生成即可消除对应提醒。

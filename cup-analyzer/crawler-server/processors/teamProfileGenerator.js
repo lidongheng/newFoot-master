@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const profileDataUtil = require('../utils/teamProfileData');
+const { readFutureSchedule } = require('../utils/teamScheduleData');
 const BaseCrawler = require('../crawlers/base');
 const config = require('../config');
 const { readJSON, readFile, saveMarkdown, fileExists } = require('../utils/fileWriter');
@@ -1771,6 +1772,12 @@ class TeamProfileGenerator extends BaseCrawler {
     const season = profileDataUtil.profileSeason(meta.finalPath, config.paths.cupScheduleData);
     const rawPath = path.join(config.paths.playerCenter, `${team.id}.json`);
     const exported = profileDataUtil.profileData(team, season, profilePlayers, meta.dataSource, meta.finalPath, rawPath);
+    const futureSchedule = readFutureSchedule(md, team.id);
+    if (futureSchedule !== undefined) exported.data.futureSchedule = futureSchedule;
+    else if (md.includes('<!-- TEAM_SCHEDULE_START -->')) {
+      // 旧版区块只有展示文字，不伪造空赛程；提示刷新后再生成画像。
+      exported.issues.push({ teamId: String(team.id), team: team.chineseName, field: 'futureSchedule', file: meta.finalPath, reason: '赛程区块缺少结构化数据，请先运行 teamScheduleProcessor.js，再重新生成画像' });
+    }
     const statsPath = path.join(config.paths.playerCenter, `${team.id}-new.json`);
     exported.data.sourceFiles = { squad: meta.finalPath, rawPlayers: rawPath, seasonStats: statsPath };
     for (const issue of exported.issues) {
@@ -1780,8 +1787,7 @@ class TeamProfileGenerator extends BaseCrawler {
     const jsonPath = path.join(directory, `${path.basename(directory)}.json`);
     saveMarkdown(mdPath, `${md.replace(/\n## 待补数据[\s\S]*$/, '').trimEnd()}\n\n${profileDataUtil.missingMarkdown(exported.issues)}`);
     fs.writeFileSync(jsonPath, JSON.stringify(exported.data, null, 2) + '\n', 'utf8');
-    fs.writeFileSync(path.join(directory, 'missingData.json'), JSON.stringify(exported.issues, null, 2) + '\n', 'utf8');
-    if (exported.issues.length) this.log(`待补数据 ${exported.issues.length} 项：${path.join(directory, 'missingData.json')}；补齐后重新运行画像命令。`);
+    if (exported.issues.length) this.log(`待补数据 ${exported.issues.length} 项：见 ${mdPath} 末尾；补齐后重新运行画像命令。`);
     else this.log('无待补数据。');
     return { mdPath, jsonPath, missingData: exported.issues };
   }
@@ -1835,9 +1841,10 @@ class TeamProfileGenerator extends BaseCrawler {
     }
 
     this.log(`\n画像生成完成: 成功${results.success.length} 无数据${results.noData.length} 失败${results.failed.length}`);
-    const missingFile = path.join(config.paths.cupAnalyzer, 'teamProfile', 'missingData.json');
-    fs.mkdirSync(path.dirname(missingFile), { recursive: true });
-    fs.writeFileSync(missingFile, JSON.stringify(results.missingData, null, 2) + '\n', 'utf8');
+    const missingFile = path.join(config.paths.cupAnalyzer, 'teamProfile', 'README.md');
+    let index = '';
+    if (fileExists(missingFile)) index = readFile(missingFile).replace(/\n## 待补数据[\s\S]*$/, '');
+    saveMarkdown(missingFile, `${index.trimEnd()}\n\n${profileDataUtil.missingMarkdown(results.missingData)}`);
     if (results.missingData.length || results.noData.length) this.log(`请补充 ${results.missingData.length} 项数据，含 ${results.noData.length} 队名单；详情见 ${missingFile}。`);
     else this.log('无待补数据。');
     return results;
@@ -1899,7 +1906,7 @@ class TeamProfileGenerator extends BaseCrawler {
       const { jsonPath, missingData } = this.writeProfile(team, scheduleData, players, { dataSource, finalPath, analyzerReport }, md);
       this.syncSquadFinalStatsAfterProfile(finalPath, players, dataSource);
       this.log(`单队画像完成: ${team.chineseName} → ${mdPath}（来源: ${dataSource}）`);
-      if (missingData.length) this.log(`请补充 ${missingData.length} 项数据：${path.join(path.dirname(mdPath), 'missingData.json')}，然后重新生成。`);
+      if (missingData.length) this.log(`请补充 ${missingData.length} 项数据：见 ${mdPath} 末尾，然后重新生成。`);
       else this.log('无待补数据。');
       return { team, mdPath, jsonPath, dataSource };
     } catch (err) {

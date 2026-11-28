@@ -3,15 +3,20 @@ const path = require('path');
 const { metricsFor } = require('../metrics');
 const { teamDirectory, numeric } = require('../../../crawler-server/utils/teamProfileData');
 
-const STANDINGS = ['standings', 'homeStandings', 'awayStandings'];
-const PROFILES = ['averageAge', 'averageHeight', 'totalMarketValue'];
-const SPECIAL = [...STANDINGS, ...PROFILES, 'averagePossession'];
+const { buildComebackPoints } = require('./comebackPoints');
 
-function rank(items) {
+const STANDINGS = ['standings', 'homeStandings', 'awayStandings', 'firstHalfStandings', 'secondHalfStandings'];
+const PROFILES = ['averageAge', 'averageHeight', 'totalMarketValue'];
+const SPECIAL = [...STANDINGS, ...PROFILES, 'averagePossession', 'comebackPoints', 'pointsDropped'];
+
+function rank(items, order) {
   items.sort((a, b) => {
     if (a.value === undefined && b.value !== undefined) return 1;
     if (b.value === undefined && a.value !== undefined) return -1;
-    if (a.value !== undefined && b.value !== undefined && a.value !== b.value) return b.value - a.value;
+    if (a.value !== undefined && b.value !== undefined && a.value !== b.value) {
+      if (order === 'asc') return a.value - b.value;
+      return b.value - a.value;
+    }
     return a.id.localeCompare(b.id, 'en', { numeric: true });
   });
   let previous;
@@ -30,6 +35,11 @@ function buildTeamIndicators(context, selected, dataset, options) {
   const missing = [];
   const definitions = metricsFor('teams', options.metrics).filter((metric) => SPECIAL.includes(metric.id));
   for (const metric of definitions) rankings[metric.id] = { metric, items: [], missing: [] };
+  for (const id of ['comebackPoints', 'pointsDropped']) {
+    if (!rankings[id]) continue;
+    rankings[id] = buildComebackPoints(context, selected, rankings[id].metric);
+    missing.push(...rankings[id].missing);
+  }
   function issue(metric, team, extra) {
     const item = { metric, teamId: team.id, team: team.name, ...extra };
     missing.push(item);
@@ -39,6 +49,7 @@ function buildTeamIndicators(context, selected, dataset, options) {
     const games = [...selected.get(team.id)].map((id) => context.matches.get(id));
     for (const id of STANDINGS.filter((key) => rankings[key])) {
       const item = { id: team.id, name: team.name, played: 0, wins: 0, draws: 0, losses: 0, goalsFor: 0, goalsAgainst: 0, goalDifference: 0, points: 0 };
+      const halfStanding = id === 'firstHalfStandings' || id === 'secondHalfStandings';
       let invalid = false;
       for (const match of games) {
         const home = match.homeId === team.id;
@@ -49,7 +60,19 @@ function buildTeamIndicators(context, selected, dataset, options) {
           invalid = true;
           continue;
         }
-        const score = match.score.split('-').map(Number);
+        let score = match.score.split('-').map(Number);
+        if (halfStanding) {
+          let half;
+          if (typeof match.halfScore === 'string' && /^\d+-\d+$/.test(match.halfScore)) half = match.halfScore.split('-').map(Number);
+          if (!half || ![...score, ...half].every(Number.isSafeInteger) || half.some((value, index) => value > score[index])) {
+            issue(id, team, { matchId: match.id, date: match.time, field: 'halfScore、score', file: context.scheduleFile, reason: '半场比分缺失、无效或大于全场比分，未纳入半场积分榜' });
+            invalid = true;
+            continue;
+          }
+          // 下半场单独计分，必须先减去上半场进球，不能直接使用终场胜平负。
+          if (id === 'secondHalfStandings') score = score.map((value, index) => value - half[index]);
+          else score = half;
+        }
         let own = score[1];
         let opponent = score[0];
         if (home) [own, opponent] = score;
@@ -62,6 +85,9 @@ function buildTeamIndicators(context, selected, dataset, options) {
       }
       item.goalDifference = item.goalsFor - item.goalsAgainst;
       item.incomplete = invalid;
+      if (halfStanding && !item.played) {
+        for (const field of ['wins', 'draws', 'losses', 'goalsFor', 'goalsAgainst', 'goalDifference', 'points']) item[field] = null;
+      }
       rankings[id].items.push(item);
     }
     if (rankings.averagePossession) {
@@ -156,9 +182,15 @@ function buildTeamIndicators(context, selected, dataset, options) {
   }
   for (const [id, ranking] of Object.entries(rankings)) {
     if (STANDINGS.includes(id)) {
-      ranking.items.sort((a, b) => Number(a.incomplete) - Number(b.incomplete) || b.points - a.points || b.goalDifference - a.goalDifference || b.goalsFor - a.goalsFor || a.id.localeCompare(b.id, 'en', { numeric: true }));
-      ranking.items.forEach((item, index) => { item.rank = index + 1; });
-    } else rank(ranking.items);
+      ranking.items.sort((a, b) => {
+        if (a.points === null && b.points !== null) return 1;
+        if (b.points === null && a.points !== null) return -1;
+        return Number(a.incomplete) - Number(b.incomplete) || b.points - a.points || b.goalDifference - a.goalDifference || b.goalsFor - a.goalsFor || a.id.localeCompare(b.id, 'en', { numeric: true });
+      });
+      ranking.items.forEach((item, index) => {
+        if (item.points !== null) item.rank = index + 1;
+      });
+    } else rank(ranking.items, ranking.metric.order);
   }
   return { rankings, missing };
 }

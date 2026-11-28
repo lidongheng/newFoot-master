@@ -16,6 +16,63 @@ cd cup-analyzer/analysis-cli
 
 如果终端当前就在本文件所在的 `teamAgent` 目录，则执行 `cd ../../analysis-cli`。**下面所有 node bin/cli.js 命令都在 analysis-cli 目录执行**，不在 crawler-server 或球队目录执行。
 
+### 第五步：生成“本赛季同档次对手较量”
+
+在 `analysis-cli` 目录执行：
+
+```bash
+node bin/sameOpeningHandicap.js --league serieA --season 2026-2027
+# 可选：仅统计指定轮次，或改用 --from / --to 指定北京时间日期范围
+node bin/sameOpeningHandicap.js --league serieA --season 2026-2027 --round 1-6
+```
+
+只分析全场亚盘。读取本联赛配置指向的 `data/s*.js`，使用 `jh["R_N"]` 比赛数组下标 10 的全场初赔及下标 6 的全场比分，仅统计状态下标 2 严格等于 -1 的已完赛比赛，不依赖 basicData 或榜单 JSON。
+
+每队按“相同主客＋相同初赔”分组；同档次在此指同初赔，不另套球队实力分档。初赔保留源文件的主队让球视角，同时展示本队让球：正数让球、负数受让、0 平手。主场与客场分开统计，不合并让球与受让。列出场次、赢盘、赢半、走盘、输半、输盘、赢盘率（含赢半）、净赢盘及逐场对手、时间、轮次、比分、结算和比赛 ID。四分之一盘口拆为两个相邻半球盘结算；赢盘率＝（赢盘＋赢半）÷有效场次，净赢盘＝赢盘＋赢半×0.5－输半×0.5－输盘，不代表实际投注盈利。
+
+初赔或全场比分缺失、无效时明确列出数据缺口，不填兜底值，也不纳入有效场次；真实 0 初赔照常统计，没有样本的组合不生成行。相同比赛 ID 只计一次，重复数据冲突时报错。
+
+各球队目录分别生成并覆盖以下两个文件，不改原始数据；不传范围即使用本赛季本地全部已完赛比赛：
+
+```text
+serieA/teamAgent/{球队目录}/本赛季同档次对手较量.md
+serieA/teamAgent/{球队目录}/本赛季同档次对手较量.html
+```
+
+全部已登记联赛按各自本地赛程赛季生成：`node bin/buildAllSameOpeningHandicap.js`。单联赛失败后继续处理其他联赛，结果及原因写入 `analysis-cli/output/same-opening-handicap-summary.json`。
+
+### 第六步：生成“球队未来一个月赛程”
+
+在 `analysis-cli` 目录执行：
+
+```bash
+node bin/monthlySchedule.js --league serieA --season 2026-2027
+# 按各联赛本地赛程赛季批量处理
+node bin/buildAllMonthlySchedule.js
+```
+
+直接读取各球队 `teamProfile/{球队目录}/{球队目录}.json` 的 `futureSchedule`，以生成画像时的 `matchTime` 为开始时间（JSON内部保存为 `futureSchedule.anchorTime`），不使用当前时间或当前全局配置替代。展示其后30天内、包含截止时刻的所有赛事，按北京时间开球时间升序，包含联赛、欧战及杯赛。
+
+每场一行，依次为日期时间、赛事、轮次或阶段、主队vs客队、间隔、等级、备注。例如：`12月3日 04:30 西甲 第23轮 巴塞罗那vs马德里竞技 77小时 警告`。首场与 `matchTime` 计算间隔，后续与上一场开球时间计算间隔；不是与上场终场时间比较。
+
+| 等级 | 实际开球间隔 |
+| --- | --- |
+| 危险 | ≤66小时 |
+| 警告 | >66且≤92小时 |
+| 良好 | >92且≤120小时 |
+| 一周一赛 | >120小时 |
+
+间隔最多显示两位小数，判级使用实际值。以连续三场滑动检查密集赛程，基准比赛也参与首个窗口：首尾≤144小时标“6天3场”，>144且≤168小时标“7天3场”；同一窗口只标更紧密的一档，在第三场备注中列出日期范围，重叠窗口分别保留。
+
+输出并覆盖各球队目录的两个文件：
+
+```text
+serieA/teamAgent/{球队目录}/球队未来一个月赛程.md
+serieA/teamAgent/{球队目录}/球队未来一个月赛程.html
+```
+
+不接受轮次或日期筛选，不修改画像及原始赛程，不联网补采。缺少画像JSON、futureSchedule、基准时间或关键比赛字段时记录原因并跳过该队，继续其他球队，失败球队的旧报告不覆盖。有效的空比赛数组会明确说明窗口内无比赛，不能把缺失数据当作空赛程。批量结果及逐队缺项写入 `analysis-cli/output/monthly-schedule-summary.json`，有失败时返回非零退出码。
+
 ## 二、查看指标及生成榜单
 
 ```bash
@@ -114,3 +171,15 @@ node bin/cli.js build --league serieA --season 2026-2027 --rounds 1-13
 补丁的 league、season、matchId 必须对应本联赛、本赛季的已完赛比赛。preview 不写文件，只有 apply 修改原始阵容；当前只支持 lineup.json 的阵型、首发和替补字段。
 
 详细格式与旧值冲突、部分补充、备份恢复规则见 [人工修正说明](../../analysis-cli/repairs/README.md)。更多参数与统计口径见 [analysis-cli 使用说明](../../analysis-cli/README.md)。
+
+## 球队射门转化率与射正转化率
+
+在 `analysis-cli` 目录执行：
+
+```bash
+node bin/cli.js build --league serieA --season 2026-2027 --metrics shotConversionRate,shotOnTargetConversionRate
+```
+
+`shotConversionRate`＝同一批有效比赛总进球÷总射门×100%；`shotOnTargetConversionRate`＝同一批有效比赛总进球÷总射正×100%。仅teams支持，进球取已校验全场比分（含对方乌龙送分），分母分别取全场SHOOT/TARGET，不平均逐场比率。按未舍入转化率降序，同值并列、显示两位小数，同时列出同样本进球及分母。零分母或无有效样本时保持缺失、不排名、不补0；缺失数据另列有效/缺失场次及待补清单。
+
+支持原有 `--rounds`、`--last`、`--from/--to` 和 `--team` 参数。默认build包含两项；上述命令只重建这两项的MD、HTML、JSON和球队目录索引。输出路径：`leagueRanking/{短赛季}/teams/shotConversionRate/`、`teams/shotOnTargetConversionRate/`。
