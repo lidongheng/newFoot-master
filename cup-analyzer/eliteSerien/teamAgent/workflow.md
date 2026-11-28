@@ -16,6 +16,10 @@ cd cup-analyzer/analysis-cli
 
 如果终端当前就在本文件所在的 `teamAgent` 目录，则执行 `cd ../../analysis-cli`。**下面所有分析命令都在 analysis-cli 目录执行**，不在 crawler-server 或球队目录执行。
 
+### 初始化 basicData
+
+当前缺少本地赛程和球队 config.js，尚无可列出的逐队采集命令。先按[本联赛工作流](../workflow.md)准备赛程并初始化球队目录，再根据实际球队目录添加 basicData 采集命令。
+
 <!-- 熟悉联赛 -->
 
 ### 第一步：生成“xG告诉我们的故事”

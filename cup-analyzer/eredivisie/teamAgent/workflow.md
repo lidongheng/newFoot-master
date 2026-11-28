@@ -16,6 +16,54 @@ cd cup-analyzer/analysis-cli
 
 如果终端当前就在本文件所在的 `teamAgent` 目录，则执行 `cd ../../analysis-cli`。**下面所有分析命令都在 analysis-cli 目录执行**，不在 crawler-server 或球队目录执行。
 
+### 初始化 basicData
+
+先逐队执行以下命令准备 basicData。采集命令在 `cup-analyzer/crawler-server` 目录执行；如果当前位于上面的 `analysis-cli` 目录，先执行 `cd ../crawler-server`。
+
+```bash
+cd ../crawler-server
+
+# 海牙
+node processors/teamPostMatchDataProcessor.js --config '../eredivisie/teamAgent/ADO_Den_Haag/config.js'
+# 阿贾克斯
+node processors/teamPostMatchDataProcessor.js --config '../eredivisie/teamAgent/AFC_Ajax/config.js'
+# 阿尔克马尔
+node processors/teamPostMatchDataProcessor.js --config '../eredivisie/teamAgent/AZ_Alkmaar/config.js'
+# SBV精英
+node processors/teamPostMatchDataProcessor.js --config '../eredivisie/teamAgent/Excelsior_SBV/config.js'
+# 特温特
+node processors/teamPostMatchDataProcessor.js --config '../eredivisie/teamAgent/FC_Twente_Enschede/config.js'
+# 乌德勒支
+node processors/teamPostMatchDataProcessor.js --config '../eredivisie/teamAgent/FC_Utrecht/config.js'
+# 费耶诺德
+node processors/teamPostMatchDataProcessor.js --config '../eredivisie/teamAgent/Feyenoord/config.js'
+# 福图纳锡塔德
+node processors/teamPostMatchDataProcessor.js --config '../eredivisie/teamAgent/Fortuna_Sittard/config.js'
+# 前进之鹰
+node processors/teamPostMatchDataProcessor.js --config '../eredivisie/teamAgent/Go_Ahead_Eagles/config.js'
+# 格罗宁根
+node processors/teamPostMatchDataProcessor.js --config '../eredivisie/teamAgent/Groningen/config.js'
+# 奈梅亨
+node processors/teamPostMatchDataProcessor.js --config '../eredivisie/teamAgent/NEC_Nijmegen/config.js'
+# 兹沃勒
+node processors/teamPostMatchDataProcessor.js --config '../eredivisie/teamAgent/PEC_Zwolle/config.js'
+# 埃因霍温
+node processors/teamPostMatchDataProcessor.js --config '../eredivisie/teamAgent/PSV_Eindhoven/config.js'
+# 坎布尔
+node processors/teamPostMatchDataProcessor.js --config '../eredivisie/teamAgent/SC_Cambuur/config.js'
+# 海伦芬
+node processors/teamPostMatchDataProcessor.js --config '../eredivisie/teamAgent/SC_Heerenveen/config.js'
+# 特尔斯达
+node processors/teamPostMatchDataProcessor.js --config '../eredivisie/teamAgent/SC_Telstar/config.js'
+# 鹿特丹斯巴达
+node processors/teamPostMatchDataProcessor.js --config '../eredivisie/teamAgent/Sparta_Rotterdam/config.js'
+# 威廉二世
+node processors/teamPostMatchDataProcessor.js --config '../eredivisie/teamAgent/Willem_II/config.js'
+
+# 采集完成后返回分析 CLI，再执行下方分析命令
+cd ../analysis-cli
+```
+
 <!-- 熟悉联赛 -->
 
 ### 第一步：生成“xG告诉我们的故事”

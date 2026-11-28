@@ -16,6 +16,54 @@ cd cup-analyzer/analysis-cli
 
 如果终端当前就在本文件所在的 `teamAgent` 目录，则执行 `cd ../../analysis-cli`。**下面所有分析命令都在 analysis-cli 目录执行**，不在 crawler-server 或球队目录执行。
 
+### 初始化 basicData
+
+先逐队执行以下命令准备 basicData。采集命令在 `cup-analyzer/crawler-server` 目录执行；如果当前位于上面的 `analysis-cli` 目录，先执行 `cd ../crawler-server`。
+
+```bash
+cd ../crawler-server
+
+# 奥格斯堡
+node processors/teamPostMatchDataProcessor.js --config '../bundesliga/teamAgent/Augsburg/config.js'
+# 拜仁慕尼黑
+node processors/teamPostMatchDataProcessor.js --config '../bundesliga/teamAgent/Bayern_Munchen/config.js'
+# 勒沃库森
+node processors/teamPostMatchDataProcessor.js --config '../bundesliga/teamAgent/Bayer_Leverkusen/config.js'
+# 多特蒙德
+node processors/teamPostMatchDataProcessor.js --config '../bundesliga/teamAgent/Borussia_Dortmund/config.js'
+# 门兴格拉德巴赫
+node processors/teamPostMatchDataProcessor.js --config '../bundesliga/teamAgent/Borussia_Monchengladbach/config.js'
+# 法兰克福
+node processors/teamPostMatchDataProcessor.js --config '../bundesliga/teamAgent/Eintracht_Frankfurt/config.js'
+# 科隆
+node processors/teamPostMatchDataProcessor.js --config '../bundesliga/teamAgent/FC_Koln/config.js'
+# 美因茨
+node processors/teamPostMatchDataProcessor.js --config '../bundesliga/teamAgent/FSV_Mainz_05/config.js'
+# 汉堡
+node processors/teamPostMatchDataProcessor.js --config '../bundesliga/teamAgent/Hamburger_SV/config.js'
+# RB莱比锡
+node processors/teamPostMatchDataProcessor.js --config '../bundesliga/teamAgent/RB_Leipzig/config.js'
+# 沙尔克04
+node processors/teamPostMatchDataProcessor.js --config '../bundesliga/teamAgent/Schalke_04/config.js'
+# 弗赖堡
+node processors/teamPostMatchDataProcessor.js --config '../bundesliga/teamAgent/SC_Freiburg/config.js'
+# 帕德博恩
+node processors/teamPostMatchDataProcessor.js --config '../bundesliga/teamAgent/SC_Paderborn_07/config.js'
+# 埃尔沃斯贝格
+node processors/teamPostMatchDataProcessor.js --config '../bundesliga/teamAgent/SV_Elversberg/config.js'
+# 霍芬海姆
+node processors/teamPostMatchDataProcessor.js --config '../bundesliga/teamAgent/TSG_Hoffenheim/config.js'
+# 柏林联合
+node processors/teamPostMatchDataProcessor.js --config '../bundesliga/teamAgent/Union_Berlin/config.js'
+# 斯图加特
+node processors/teamPostMatchDataProcessor.js --config '../bundesliga/teamAgent/VfB_Stuttgart/config.js'
+# 云达不莱梅
+node processors/teamPostMatchDataProcessor.js --config '../bundesliga/teamAgent/Werder_Bremen/config.js'
+
+# 采集完成后返回分析 CLI，再执行下方分析命令
+cd ../analysis-cli
+```
+
 <!-- 熟悉联赛 -->
 
 ### 第一步：生成“xG告诉我们的故事”

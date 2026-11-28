@@ -16,6 +16,42 @@ cd cup-analyzer/analysis-cli
 
 如果终端当前就在本文件所在的 `teamAgent` 目录，则执行 `cd ../../analysis-cli`。**下面所有分析命令都在 analysis-cli 目录执行**，不在 crawler-server 或球队目录执行。
 
+### 初始化 basicData
+
+先逐队执行以下命令准备 basicData。采集命令在 `cup-analyzer/crawler-server` 目录执行；如果当前位于上面的 `analysis-cli` 目录，先执行 `cd ../crawler-server`。
+
+```bash
+cd ../crawler-server
+
+# 阿德莱德联
+node processors/teamPostMatchDataProcessor.js --config '../aLeague/teamAgent/Adelaide_United/config.js'
+# 奥克兰FC
+node processors/teamPostMatchDataProcessor.js --config '../aLeague/teamAgent/Auckland_FC/config.js'
+# 布里斯班狮吼
+node processors/teamPostMatchDataProcessor.js --config '../aLeague/teamAgent/Brisbane_Roar/config.js'
+# 中央海岸水手
+node processors/teamPostMatchDataProcessor.js --config '../aLeague/teamAgent/Central_Coast_Mariners/config.js'
+# 麦克阿瑟FC
+node processors/teamPostMatchDataProcessor.js --config '../aLeague/teamAgent/FC_Macarthur/config.js'
+# 墨尔本城
+node processors/teamPostMatchDataProcessor.js --config '../aLeague/teamAgent/Melbourne_City/config.js'
+# 墨尔本胜利
+node processors/teamPostMatchDataProcessor.js --config '../aLeague/teamAgent/Melbourne_Victory/config.js'
+# 纽卡斯尔喷气机
+node processors/teamPostMatchDataProcessor.js --config '../aLeague/teamAgent/Newcastle_Jets/config.js'
+# 珀斯光荣
+node processors/teamPostMatchDataProcessor.js --config '../aLeague/teamAgent/Perth_Glory/config.js'
+# 悉尼FC
+node processors/teamPostMatchDataProcessor.js --config '../aLeague/teamAgent/Sydney_FC/config.js'
+# 惠灵顿凤凰
+node processors/teamPostMatchDataProcessor.js --config '../aLeague/teamAgent/Wellington_Phoenix/config.js'
+# 西悉尼流浪者
+node processors/teamPostMatchDataProcessor.js --config '../aLeague/teamAgent/Western_Sydney/config.js'
+
+# 采集完成后返回分析 CLI，再执行下方分析命令
+cd ../analysis-cli
+```
+
 <!-- 熟悉联赛 -->
 
 ### 第一步：生成“xG告诉我们的故事”

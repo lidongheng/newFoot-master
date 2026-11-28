@@ -16,6 +16,50 @@ cd cup-analyzer/analysis-cli
 
 如果终端当前就在本文件所在的 `teamAgent` 目录，则执行 `cd ../../analysis-cli`。**下面所有分析命令都在 analysis-cli 目录执行**，不在 crawler-server 或球队目录执行。
 
+### 初始化 basicData
+
+先逐队执行以下命令准备 basicData。采集命令在 `cup-analyzer/crawler-server` 目录执行；如果当前位于上面的 `analysis-cli` 目录，先执行 `cd ../crawler-server`。
+
+```bash
+cd ../crawler-server
+
+# 北京国安
+node processors/teamPostMatchDataProcessor.js --config '../ChinaSuperLeague/teamAgent/Beijing_Guoan/config.js'
+# 成都蓉城
+node processors/teamPostMatchDataProcessor.js --config '../ChinaSuperLeague/teamAgent/Chengdu_Rongcheng_FC/config.js'
+# 重庆铜梁龙
+node processors/teamPostMatchDataProcessor.js --config '../ChinaSuperLeague/teamAgent/Chongqing_Tonglianglong/config.js'
+# 大连英博
+node processors/teamPostMatchDataProcessor.js --config '../ChinaSuperLeague/teamAgent/Dalian_Zhixing/config.js'
+# 河南队
+node processors/teamPostMatchDataProcessor.js --config '../ChinaSuperLeague/teamAgent/Henan_Football_Club/config.js'
+# 辽宁铁人
+node processors/teamPostMatchDataProcessor.js --config '../ChinaSuperLeague/teamAgent/Liaoning_Tieren/config.js'
+# 青岛海牛
+node processors/teamPostMatchDataProcessor.js --config '../ChinaSuperLeague/teamAgent/Qingdao_Manatee/config.js'
+# 青岛西海岸
+node processors/teamPostMatchDataProcessor.js --config '../ChinaSuperLeague/teamAgent/Qingdao_West_Coast/config.js'
+# 山东泰山
+node processors/teamPostMatchDataProcessor.js --config '../ChinaSuperLeague/teamAgent/Shandong_Taishan/config.js'
+# 上海海港
+node processors/teamPostMatchDataProcessor.js --config '../ChinaSuperLeague/teamAgent/Shanghai_Port/config.js'
+# 上海申花
+node processors/teamPostMatchDataProcessor.js --config '../ChinaSuperLeague/teamAgent/Shanghai_Shenhua/config.js'
+# 深圳新鹏城
+node processors/teamPostMatchDataProcessor.js --config '../ChinaSuperLeague/teamAgent/Shenzhen_Xinpengcheng/config.js'
+# 天津津门虎
+node processors/teamPostMatchDataProcessor.js --config '../ChinaSuperLeague/teamAgent/Tianjin_Tigers/config.js'
+# 武汉三镇
+node processors/teamPostMatchDataProcessor.js --config '../ChinaSuperLeague/teamAgent/Wuhan_Three_Towns/config.js'
+# 云南玉昆
+node processors/teamPostMatchDataProcessor.js --config '../ChinaSuperLeague/teamAgent/Yunnan_Yukun/config.js'
+# 浙江俱乐部绿城
+node processors/teamPostMatchDataProcessor.js --config '../ChinaSuperLeague/teamAgent/Zhejiang_Professional_FC/config.js'
+
+# 采集完成后返回分析 CLI，再执行下方分析命令
+cd ../analysis-cli
+```
+
 <!-- 熟悉联赛 -->
 
 ### 第一步：生成“xG告诉我们的故事”

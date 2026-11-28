@@ -16,6 +16,50 @@ cd cup-analyzer/analysis-cli
 
 如果终端当前就在本文件所在的 `teamAgent` 目录，则执行 `cd ../../analysis-cli`。**下面所有分析命令都在 analysis-cli 目录执行**，不在 crawler-server 或球队目录执行。
 
+### 初始化 basicData
+
+先逐队执行以下命令准备 basicData。采集命令在 `cup-analyzer/crawler-server` 目录执行；如果当前位于上面的 `analysis-cli` 目录，先执行 `cd ../crawler-server`。
+
+```bash
+cd ../crawler-server
+
+# 索尔纳
+node processors/teamPostMatchDataProcessor.js --config '../allsvenskan/teamAgent/AIK_Solna/config.js'
+# 布洛马波卡纳
+node processors/teamPostMatchDataProcessor.js --config '../allsvenskan/teamAgent/Brommapojkarna/config.js'
+# 代格福什
+node processors/teamPostMatchDataProcessor.js --config '../allsvenskan/teamAgent/Degerfors_IF/config.js'
+# 尤尔加登
+node processors/teamPostMatchDataProcessor.js --config '../allsvenskan/teamAgent/Djurgardens/config.js'
+# 埃尔夫斯堡
+node processors/teamPostMatchDataProcessor.js --config '../allsvenskan/teamAgent/Elfsborg/config.js'
+# 哥德堡盖斯
+node processors/teamPostMatchDataProcessor.js --config '../allsvenskan/teamAgent/GAIS/config.js'
+# 赫根
+node processors/teamPostMatchDataProcessor.js --config '../allsvenskan/teamAgent/Hacken/config.js'
+# 哈尔姆斯塔德
+node processors/teamPostMatchDataProcessor.js --config '../allsvenskan/teamAgent/Halmstads/config.js'
+# 哈马比
+node processors/teamPostMatchDataProcessor.js --config '../allsvenskan/teamAgent/Hammarby/config.js'
+# 哥德堡
+node processors/teamPostMatchDataProcessor.js --config '../allsvenskan/teamAgent/IFK_Goteborg/config.js'
+# 天狼星
+node processors/teamPostMatchDataProcessor.js --config '../allsvenskan/teamAgent/IK_Sirius_FK/config.js'
+# 卡尔马
+node processors/teamPostMatchDataProcessor.js --config '../allsvenskan/teamAgent/Kalmar/config.js'
+# 马尔默
+node processors/teamPostMatchDataProcessor.js --config '../allsvenskan/teamAgent/Malmo_FF/config.js'
+# 米亚尔比
+node processors/teamPostMatchDataProcessor.js --config '../allsvenskan/teamAgent/Mjallby_AIF/config.js'
+# 奥尔格里特
+node processors/teamPostMatchDataProcessor.js --config '../allsvenskan/teamAgent/Orgryte/config.js'
+# 瓦斯特拉斯
+node processors/teamPostMatchDataProcessor.js --config '../allsvenskan/teamAgent/Vasteras_SK_FK/config.js'
+
+# 采集完成后返回分析 CLI，再执行下方分析命令
+cd ../analysis-cli
+```
+
 <!-- 熟悉联赛 -->
 
 ### 第一步：生成“xG告诉我们的故事”

@@ -16,6 +16,58 @@ cd cup-analyzer/analysis-cli
 
 如果终端当前就在本文件所在的 `teamAgent` 目录，则执行 `cd ../../analysis-cli`。**下面所有分析命令都在 analysis-cli 目录执行**，不在 crawler-server 或球队目录执行。
 
+### 初始化 basicData
+
+先逐队执行以下命令准备 basicData。采集命令在 `cup-analyzer/crawler-server` 目录执行；如果当前位于上面的 `analysis-cli` 目录，先执行 `cd ../crawler-server`。
+
+```bash
+cd ../crawler-server
+
+# 福冈黄蜂
+node processors/teamPostMatchDataProcessor.js --config '../jLeague/teamAgent/Avispa_Fukuoka/config.js'
+# 大阪樱花
+node processors/teamPostMatchDataProcessor.js --config '../jLeague/teamAgent/Cerezo_Osaka/config.js'
+# 冈山绿雉
+node processors/teamPostMatchDataProcessor.js --config '../jLeague/teamAgent/Fagiano_Okayama/config.js'
+# FC东京
+node processors/teamPostMatchDataProcessor.js --config '../jLeague/teamAgent/FC_Tokyo/config.js'
+# 大阪钢巴
+node processors/teamPostMatchDataProcessor.js --config '../jLeague/teamAgent/Gamba_Osaka/config.js'
+# 广岛三箭
+node processors/teamPostMatchDataProcessor.js --config '../jLeague/teamAgent/Hiroshima_Sanfrecce/config.js'
+# 千叶市原
+node processors/teamPostMatchDataProcessor.js --config '../jLeague/teamAgent/JEF_United_Ichihara_Chiba/config.js'
+# 鹿岛鹿角
+node processors/teamPostMatchDataProcessor.js --config '../jLeague/teamAgent/Kashima_Antlers/config.js'
+# 柏太阳神
+node processors/teamPostMatchDataProcessor.js --config '../jLeague/teamAgent/Kashiwa_Reysol/config.js'
+# 川崎前锋
+node processors/teamPostMatchDataProcessor.js --config '../jLeague/teamAgent/Kawasaki_Frontale/config.js'
+# 京都不死鸟
+node processors/teamPostMatchDataProcessor.js --config '../jLeague/teamAgent/Kyoto_Sanga/config.js'
+# 町田泽维亚
+node processors/teamPostMatchDataProcessor.js --config '../jLeague/teamAgent/Machida_Zelvia/config.js'
+# 水户蜀葵
+node processors/teamPostMatchDataProcessor.js --config '../jLeague/teamAgent/Mito_Hollyhock/config.js'
+# 名古屋鲸八
+node processors/teamPostMatchDataProcessor.js --config '../jLeague/teamAgent/Nagoya_Grampus/config.js'
+# 清水鼓动
+node processors/teamPostMatchDataProcessor.js --config '../jLeague/teamAgent/Shimizu_S-Pulse/config.js'
+# 东京绿茵
+node processors/teamPostMatchDataProcessor.js --config '../jLeague/teamAgent/Tokyo_Verdy/config.js'
+# 浦和红钻
+node processors/teamPostMatchDataProcessor.js --config '../jLeague/teamAgent/Urawa_Red_Diamonds/config.js'
+# 长崎成功丸
+node processors/teamPostMatchDataProcessor.js --config '../jLeague/teamAgent/V-Varen_Nagasaki/config.js'
+# 神户胜利船
+node processors/teamPostMatchDataProcessor.js --config '../jLeague/teamAgent/Vissel_Kobe/config.js'
+# 横滨水手
+node processors/teamPostMatchDataProcessor.js --config '../jLeague/teamAgent/Yokohama_Marinos/config.js'
+
+# 采集完成后返回分析 CLI，再执行下方分析命令
+cd ../analysis-cli
+```
+
 <!-- 熟悉联赛 -->
 
 ### 第一步：生成“xG告诉我们的故事”

@@ -16,6 +16,78 @@ cd cup-analyzer/analysis-cli
 
 如果终端当前就在本文件所在的 `teamAgent` 目录，则执行 `cd ../../analysis-cli`。**下面所有分析命令都在 analysis-cli 目录执行**，不在 crawler-server 或球队目录执行。
 
+### 初始化 basicData
+
+先逐队执行以下命令准备 basicData。采集命令在 `cup-analyzer/crawler-server` 目录执行；如果当前位于上面的 `analysis-cli` 目录，先执行 `cd ../crawler-server`。
+
+```bash
+cd ../crawler-server
+
+# 亚特兰大联
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/Atlanta_United/config.js'
+# 奥斯汀FC
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/Austin_FC/config.js'
+# CF蒙特利尔
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/CF_Montreal/config.js'
+# 夏洛特FC
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/Charlotte_FC/config.js'
+# 芝加哥火焰
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/Chicago_Fire/config.js'
+# 科罗拉多急流
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/Colorado_Rapids/config.js'
+# 哥伦布机员
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/Columbus_Crew/config.js'
+# 华盛顿联
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/DC_United/config.js'
+# 辛辛那提
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/FC_Cincinnati/config.js'
+# 达拉斯FC
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/FC_Dallas/config.js'
+# 休斯敦迪纳摩
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/Houston_Dynamo/config.js'
+# 迈阿密国际
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/Inter_Miami_CF/config.js'
+# 洛杉矶FC
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/Los_Angeles_FC/config.js'
+# 洛杉矶银河
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/Los_Angeles_Galaxy/config.js'
+# 明尼苏达联
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/Minnesota_United_FC/config.js'
+# 纳什威尔SC
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/Nashville_SC/config.js'
+# 新英格兰革命
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/New_England_Revolution/config.js'
+# 纽约城
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/New_York_City_FC/config.js'
+# 纽约红牛
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/New_York_Red_Bulls/config.js'
+# 奥兰多城
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/Orlando_City/config.js'
+# 费城联合
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/Philadelphia_Union/config.js'
+# 波特兰伐木者
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/Portland_Timbers/config.js'
+# 皇家盐湖城
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/Real_Salt_Lake/config.js'
+# 圣地亚哥
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/San_Diego_FC/config.js'
+# 圣何塞地震
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/San_Jose_Earthquakes/config.js'
+# 西雅图海湾人
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/Seattle_Sounders/config.js'
+# 堪萨斯城竞技
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/Sporting_Kansas_City/config.js'
+# 圣路易斯城
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/St._Louis_City/config.js'
+# 多伦多FC
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/Toronto_FC/config.js'
+# 温哥华白浪
+node processors/teamPostMatchDataProcessor.js --config '../mls/teamAgent/Vancouver_Whitecaps/config.js'
+
+# 采集完成后返回分析 CLI，再执行下方分析命令
+cd ../analysis-cli
+```
+
 <!-- 熟悉联赛 -->
 
 ### 第一步：生成“xG告诉我们的故事”

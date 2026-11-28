@@ -16,6 +16,66 @@ cd cup-analyzer/analysis-cli
 
 如果终端当前就在本文件所在的 `teamAgent` 目录，则执行 `cd ../../analysis-cli`。**下面所有分析命令都在 analysis-cli 目录执行**，不在 crawler-server 或球队目录执行。
 
+### 初始化 basicData
+
+先逐队执行以下命令准备 basicData。采集命令在 `cup-analyzer/crawler-server` 目录执行；如果当前位于上面的 `analysis-cli` 目录，先执行 `cd ../crawler-server`。
+
+```bash
+cd ../crawler-server
+
+# 伯明翰
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Birmingham_City/config.js'
+# 布莱克本
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Blackburn_Rovers/config.js'
+# 博尔顿
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Bolton_Wanderers/config.js'
+# 布里斯托城
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Bristol_City/config.js'
+# 伯恩利
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Burnley/config.js'
+# 卡迪夫城
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Cardiff_City/config.js'
+# 查尔顿
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Charlton_Athletic/config.js'
+# 德比郡
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Derby_County/config.js'
+# 林肯城
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Lincoln_City/config.js'
+# 米德尔斯堡
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Middlesbrough/config.js'
+# 米尔沃尔
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Millwall/config.js'
+# 诺维奇
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Norwich_City/config.js'
+# 朴茨茅斯
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Portsmouth/config.js'
+# 普雷斯顿
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Preston_North_End/config.js'
+# 女王公园巡游者
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Queens_Park_Rangers_(QPR)/config.js'
+# 谢菲尔德联队
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Sheffield_United/config.js'
+# 南安普敦
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Southampton/config.js'
+# 斯托克城
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Stoke_City/config.js'
+# 斯旺西
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Swansea_City/config.js'
+# 沃特福德
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Watford/config.js'
+# 西布罗姆维奇
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/West_Bromwich(WBA)/config.js'
+# 西汉姆联
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/West_Ham_United/config.js'
+# 狼队
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Wolves/config.js'
+# 雷克瑟姆
+node processors/teamPostMatchDataProcessor.js --config '../eflChampionship/teamAgent/Wrexham/config.js'
+
+# 采集完成后返回分析 CLI，再执行下方分析命令
+cd ../analysis-cli
+```
+
 <!-- 熟悉联赛 -->
 
 ### 第一步：生成“xG告诉我们的故事”

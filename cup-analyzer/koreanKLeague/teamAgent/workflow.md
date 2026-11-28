@@ -16,6 +16,42 @@ cd cup-analyzer/analysis-cli
 
 如果终端当前就在本文件所在的 `teamAgent` 目录，则执行 `cd ../../analysis-cli`。**下面所有分析命令都在 analysis-cli 目录执行**，不在 crawler-server 或球队目录执行。
 
+### 初始化 basicData
+
+先逐队执行以下命令准备 basicData。采集命令在 `cup-analyzer/crawler-server` 目录执行；如果当前位于上面的 `analysis-cli` 目录，先执行 `cd ../crawler-server`。
+
+```bash
+cd ../crawler-server
+
+# 富川FC
+node processors/teamPostMatchDataProcessor.js --config '../koreanKLeague/teamAgent/Bucheon_FC_1995/config.js'
+# 大田市民
+node processors/teamPostMatchDataProcessor.js --config '../koreanKLeague/teamAgent/Daejeon_Citizen/config.js'
+# FC安养
+node processors/teamPostMatchDataProcessor.js --config '../koreanKLeague/teamAgent/FC_Anyang/config.js'
+# FC首尔
+node processors/teamPostMatchDataProcessor.js --config '../koreanKLeague/teamAgent/FC_Seoul/config.js'
+# 江原FC
+node processors/teamPostMatchDataProcessor.js --config '../koreanKLeague/teamAgent/Gangwon_FC/config.js'
+# 金泉尚武
+node processors/teamPostMatchDataProcessor.js --config '../koreanKLeague/teamAgent/Gimcheon_Sangmu_FC/config.js'
+# 光州FC
+node processors/teamPostMatchDataProcessor.js --config '../koreanKLeague/teamAgent/Gwangju_Football_Club/config.js'
+# 仁川联
+node processors/teamPostMatchDataProcessor.js --config '../koreanKLeague/teamAgent/Incheon_United/config.js'
+# 济州SK
+node processors/teamPostMatchDataProcessor.js --config '../koreanKLeague/teamAgent/Jeju_SK_FC/config.js'
+# 全北现代
+node processors/teamPostMatchDataProcessor.js --config '../koreanKLeague/teamAgent/Jeonbuk_Hyundai_Motors/config.js'
+# 浦项制铁
+node processors/teamPostMatchDataProcessor.js --config '../koreanKLeague/teamAgent/Pohang_Steelers/config.js'
+# 蔚山HD
+node processors/teamPostMatchDataProcessor.js --config '../koreanKLeague/teamAgent/Ulsan_HD_FC/config.js'
+
+# 采集完成后返回分析 CLI，再执行下方分析命令
+cd ../analysis-cli
+```
+
 <!-- 熟悉联赛 -->
 
 ### 第一步：生成“xG告诉我们的故事”

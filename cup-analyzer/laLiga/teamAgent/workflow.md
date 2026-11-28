@@ -16,6 +16,58 @@ cd cup-analyzer/analysis-cli
 
 如果终端当前就在本文件所在的 `teamAgent` 目录，则执行 `cd ../../analysis-cli`。**下面所有分析命令都在 analysis-cli 目录执行**，不在 crawler-server 或球队目录执行。
 
+### 初始化 basicData
+
+先逐队执行以下命令准备 basicData。采集命令在 `cup-analyzer/crawler-server` 目录执行；如果当前位于上面的 `analysis-cli` 目录，先执行 `cd ../crawler-server`。
+
+```bash
+cd ../crawler-server
+
+# 阿拉维斯
+node processors/teamPostMatchDataProcessor.js --config '../laLiga/teamAgent/Alaves/config.js'
+# 毕尔巴鄂竞技
+node processors/teamPostMatchDataProcessor.js --config '../laLiga/teamAgent/Athletic_Bilbao/config.js'
+# 马德里竞技
+node processors/teamPostMatchDataProcessor.js --config '../laLiga/teamAgent/Atletico_Madrid/config.js'
+# 巴塞罗那
+node processors/teamPostMatchDataProcessor.js --config '../laLiga/teamAgent/Barcelona/config.js'
+# 塞尔塔
+node processors/teamPostMatchDataProcessor.js --config '../laLiga/teamAgent/Celta_Vigo/config.js'
+# 拉科鲁尼亚
+node processors/teamPostMatchDataProcessor.js --config '../laLiga/teamAgent/Deportivo_La_Coruna/config.js'
+# 埃尔切
+node processors/teamPostMatchDataProcessor.js --config '../laLiga/teamAgent/Elche/config.js'
+# 赫塔菲
+node processors/teamPostMatchDataProcessor.js --config '../laLiga/teamAgent/Getafe/config.js'
+# 莱万特
+node processors/teamPostMatchDataProcessor.js --config '../laLiga/teamAgent/Levante/config.js'
+# 马拉加
+node processors/teamPostMatchDataProcessor.js --config '../laLiga/teamAgent/Malaga/config.js'
+# 奥萨苏纳
+node processors/teamPostMatchDataProcessor.js --config '../laLiga/teamAgent/Osasuna/config.js'
+# 桑坦德竞技
+node processors/teamPostMatchDataProcessor.js --config '../laLiga/teamAgent/Racing_Santander/config.js'
+# 巴列卡诺
+node processors/teamPostMatchDataProcessor.js --config '../laLiga/teamAgent/Rayo_Vallecano/config.js'
+# 西班牙人
+node processors/teamPostMatchDataProcessor.js --config '../laLiga/teamAgent/RCD_Espanyol/config.js'
+# 皇家贝蒂斯
+node processors/teamPostMatchDataProcessor.js --config '../laLiga/teamAgent/Real_Betis/config.js'
+# 皇家马德里
+node processors/teamPostMatchDataProcessor.js --config '../laLiga/teamAgent/Real_Madrid/config.js'
+# 皇家社会
+node processors/teamPostMatchDataProcessor.js --config '../laLiga/teamAgent/Real_Sociedad/config.js'
+# 塞维利亚
+node processors/teamPostMatchDataProcessor.js --config '../laLiga/teamAgent/Sevilla/config.js'
+# 巴伦西亚
+node processors/teamPostMatchDataProcessor.js --config '../laLiga/teamAgent/Valencia/config.js'
+# 比利亚雷亚尔
+node processors/teamPostMatchDataProcessor.js --config '../laLiga/teamAgent/Villarreal/config.js'
+
+# 采集完成后返回分析 CLI，再执行下方分析命令
+cd ../analysis-cli
+```
+
 <!-- 熟悉联赛 -->
 
 ### 第一步：生成“xG告诉我们的故事”

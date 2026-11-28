@@ -16,6 +16,54 @@ cd cup-analyzer/analysis-cli
 
 如果终端当前就在本文件所在的 `teamAgent` 目录，则执行 `cd ../../analysis-cli`。**下面所有分析命令都在 analysis-cli 目录执行**，不在 crawler-server 或球队目录执行。
 
+### 初始化 basicData
+
+先逐队执行以下命令准备 basicData。采集命令在 `cup-analyzer/crawler-server` 目录执行；如果当前位于上面的 `analysis-cli` 目录，先执行 `cd ../crawler-server`。
+
+```bash
+cd ../crawler-server
+
+# 欧塞尔
+node processors/teamPostMatchDataProcessor.js --config '../ligue1/teamAgent/AJ_Auxerre/config.js'
+# 昂热
+node processors/teamPostMatchDataProcessor.js --config '../ligue1/teamAgent/Angers/config.js'
+# 朗斯
+node processors/teamPostMatchDataProcessor.js --config '../ligue1/teamAgent/Lens/config.js'
+# 勒阿弗尔
+node processors/teamPostMatchDataProcessor.js --config '../ligue1/teamAgent/Le_Havre/config.js'
+# 勒芒
+node processors/teamPostMatchDataProcessor.js --config '../ligue1/teamAgent/Le_Mans/config.js'
+# 里尔
+node processors/teamPostMatchDataProcessor.js --config '../ligue1/teamAgent/Lille/config.js'
+# 洛里昂
+node processors/teamPostMatchDataProcessor.js --config '../ligue1/teamAgent/Lorient/config.js'
+# 里昂
+node processors/teamPostMatchDataProcessor.js --config '../ligue1/teamAgent/Lyon/config.js'
+# 马赛
+node processors/teamPostMatchDataProcessor.js --config '../ligue1/teamAgent/Marseille/config.js'
+# 摩纳哥
+node processors/teamPostMatchDataProcessor.js --config '../ligue1/teamAgent/Monaco/config.js'
+# 尼斯
+node processors/teamPostMatchDataProcessor.js --config '../ligue1/teamAgent/Nice/config.js'
+# 巴黎FC
+node processors/teamPostMatchDataProcessor.js --config '../ligue1/teamAgent/Paris_FC/config.js'
+# 巴黎圣日耳曼
+node processors/teamPostMatchDataProcessor.js --config '../ligue1/teamAgent/Paris_Saint_Germain_(PSG)/config.js'
+# 雷恩
+node processors/teamPostMatchDataProcessor.js --config '../ligue1/teamAgent/Rennes/config.js'
+# 布雷斯特
+node processors/teamPostMatchDataProcessor.js --config '../ligue1/teamAgent/Stade_Brestois/config.js'
+# 斯特拉斯堡
+node processors/teamPostMatchDataProcessor.js --config '../ligue1/teamAgent/Strasbourg/config.js'
+# 图卢兹
+node processors/teamPostMatchDataProcessor.js --config '../ligue1/teamAgent/Toulouse/config.js'
+# 特鲁瓦
+node processors/teamPostMatchDataProcessor.js --config '../ligue1/teamAgent/Troyes/config.js'
+
+# 采集完成后返回分析 CLI，再执行下方分析命令
+cd ../analysis-cli
+```
+
 <!-- 熟悉联赛 -->
 
 ### 第一步：生成“xG告诉我们的故事”

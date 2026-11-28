@@ -16,6 +16,58 @@ cd cup-analyzer/analysis-cli
 
 如果终端当前就在本文件所在的 `teamAgent` 目录，则执行 `cd ../../analysis-cli`。**下面所有分析命令都在 analysis-cli 目录执行**，不在 crawler-server 或球队目录执行。
 
+### 初始化 basicData
+
+先逐队执行以下命令准备 basicData。采集命令在 `cup-analyzer/crawler-server` 目录执行；如果当前位于上面的 `analysis-cli` 目录，先执行 `cd ../crawler-server`。
+
+```bash
+cd ../crawler-server
+
+# AC米兰
+node processors/teamPostMatchDataProcessor.js --config '../serieA/teamAgent/AC_Milan/config.js'
+# 罗马
+node processors/teamPostMatchDataProcessor.js --config '../serieA/teamAgent/AS_Roma/config.js'
+# 亚特兰大
+node processors/teamPostMatchDataProcessor.js --config '../serieA/teamAgent/Atalanta/config.js'
+# 博洛尼亚
+node processors/teamPostMatchDataProcessor.js --config '../serieA/teamAgent/Bologna/config.js'
+# 卡利亚里
+node processors/teamPostMatchDataProcessor.js --config '../serieA/teamAgent/Cagliari/config.js'
+# 科莫
+node processors/teamPostMatchDataProcessor.js --config '../serieA/teamAgent/Como/config.js'
+# 佛罗伦萨
+node processors/teamPostMatchDataProcessor.js --config '../serieA/teamAgent/Fiorentina/config.js'
+# 弗洛西诺尼
+node processors/teamPostMatchDataProcessor.js --config '../serieA/teamAgent/Frosinone/config.js'
+# 热那亚
+node processors/teamPostMatchDataProcessor.js --config '../serieA/teamAgent/Genoa/config.js'
+# 国际米兰
+node processors/teamPostMatchDataProcessor.js --config '../serieA/teamAgent/Inter_Milan/config.js'
+# 尤文图斯
+node processors/teamPostMatchDataProcessor.js --config '../serieA/teamAgent/Juventus/config.js'
+# 拉齐奥
+node processors/teamPostMatchDataProcessor.js --config '../serieA/teamAgent/Lazio/config.js'
+# 莱切
+node processors/teamPostMatchDataProcessor.js --config '../serieA/teamAgent/Lecce/config.js'
+# 蒙扎
+node processors/teamPostMatchDataProcessor.js --config '../serieA/teamAgent/Monza/config.js'
+# 那不勒斯
+node processors/teamPostMatchDataProcessor.js --config '../serieA/teamAgent/Napoli/config.js'
+# 帕尔马
+node processors/teamPostMatchDataProcessor.js --config '../serieA/teamAgent/Parma/config.js'
+# 萨索洛
+node processors/teamPostMatchDataProcessor.js --config '../serieA/teamAgent/Sassuolo/config.js'
+# 都灵
+node processors/teamPostMatchDataProcessor.js --config '../serieA/teamAgent/Torino/config.js'
+# 乌迪内斯
+node processors/teamPostMatchDataProcessor.js --config '../serieA/teamAgent/Udinese/config.js'
+# 威尼斯
+node processors/teamPostMatchDataProcessor.js --config '../serieA/teamAgent/Venezia/config.js'
+
+# 采集完成后返回分析 CLI，再执行下方分析命令
+cd ../analysis-cli
+```
+
 <!-- 熟悉联赛 -->
 
 ### 第一步：生成“xG告诉我们的故事”
