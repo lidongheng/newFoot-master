@@ -14,7 +14,79 @@
 cd cup-analyzer/analysis-cli
 ```
 
-如果终端当前就在本文件所在的 `teamAgent` 目录，则执行 `cd ../../analysis-cli`。**下面所有 node bin/cli.js 命令都在 analysis-cli 目录执行**，不在 crawler-server 或球队目录执行。
+如果终端当前就在本文件所在的 `teamAgent` 目录，则执行 `cd ../../analysis-cli`。**下面所有分析命令都在 analysis-cli 目录执行**，不在 crawler-server 或球队目录执行。
+
+<!-- 熟悉联赛 -->
+
+### 第一步：生成“xG告诉我们的故事”
+
+不传范围时，先确认 `eredivisie/leagueRanking/26-27/teams` 下已有 `standings`、`averageXg`、`averageShots`、`goalsMinusXg` 各自目录中的同名 JSON；尚未生成时，先执行下方第二节的全联赛 build 命令。传入轮次或日期范围时，命令会先调用现有 build 更新所需榜单 JSON，再读取 JSON 生成报告。
+
+在 `analysis-cli` 目录执行：
+
+```bash
+node bin/xgStory.js --league eredivisie --season 2026-2027
+```
+
+直接引用上述 JSON，以总积分榜名次排序，生成八列：名次、球队、场均xG排名、场均射门排名、实际进球-xG排名、场均xG、场均射门、实际进球-xG。三个指标排名直接引用各自 JSON 的“排名”字段，不重新计算排名或指标，统计范围及有效场次沿用源榜单；源值为 null 显示“缺失”，不补零。文件、必要字段缺失或球队无法完整关联时，在写入前报错。
+
+结果与本 workflow 同级，重复执行覆盖这两个文件：
+
+- [xG告诉我们的故事.md](xG告诉我们的故事.md)
+- [xG告诉我们的故事.html](xG告诉我们的故事.html)：可直接打开、搜索和排序，初始顺序为总积分榜顺序。
+
+### 第二步：生成“球队战力”
+
+```bash
+node bin/teamStrength.js --league eredivisie --season 2026-2027
+```
+
+读取 `standings/standings.json`、`homeStandings/homeStandings.json`，按总积分榜名次排列，在一张表中列出：球队、积分排名、胜场排名、主场胜场排名、积分、胜场、主场胜场。积分排名直接沿用总积分榜；胜场数据直接引用各自 JSON 的“胜”字段，按数量降序生成胜场排名，同值并列（如 1、1、3），不把主场积分名次当作主场胜场排名。不传范围时须先准备这两项 JSON；传入范围时自动调用现有 build 更新这两项 JSON。
+
+结果同样与本 workflow 同级：
+
+- [球队战力.md](球队战力.md)
+- [球队战力.html](球队战力.html)
+
+### 第三步：生成“关键球员不首发时球队的表现”
+
+```bash
+node bin/keyPlayerStarts.js --league eredivisie --season 2026-2027
+```
+
+每次先复用现有 build 流程更新同范围的 `players` 榜 JSON，再选出各队进球（`goals`，Goal＋Penalty、不含乌龙）、助攻（`assists`）、抢断（`tackles`）、解围（`clearances`）、传球成功次数（`successfulPasses`）、争顶成功次数（`headersWon`）、拦截（`interceptions`）、封堵（`shotsBlocked`）最高的球员。并列球员全取，同一球员合并关键指标；跨队球员使用现有聚合器按本队期间拆分，不能把跨队合计值作为本队数据。现有争顶榜统计成功次数，不是全部争顶尝试次数。
+
+球队比分读取本地赛程；首发状态按球员ID核对该队 `lineup.json` 的完整11人首发名单，双方比赛副本只计一场。每名关键球员分“首发”“不首发”两行，依次列出球衣号、球员、球员ID、关键指标、首发情况、场次、胜、平、负、进、失、净、积分。球衣号按球队及球员ID读取本赛季逐场统计、首发及替补名单中的号码，缺失或号码冲突时显示 `-`。不首发包含替补及未出场；首发名单缺失、不完整或副本冲突的比赛不归入任何一组，在报告中列明缺口。场次为0表示该组无可统计比赛，缺失的球员指标不补零。
+
+文件写入各自球队目录，重复运行覆盖同名文件：
+
+```text
+eredivisie/teamAgent/{球队目录}/关键球员不首发时球队的表现.md
+eredivisie/teamAgent/{球队目录}/关键球员不首发时球队的表现.html
+```
+
+例如威廉二世：[MD](Willem_II/关键球员不首发时球队的表现.md)、[HTML](Willem_II/关键球员不首发时球队的表现.html)。HTML沿用本地共享资源，可直接打开、搜索和排序。
+
+### 第四步：生成“赛程难度排行榜”
+
+```bash
+# 默认未来最近5场
+node bin/scheduleDifficulty.js --league eredivisie --season 2026-2027
+
+# 自定义未来场数，例如最近8场
+node bin/scheduleDifficulty.js --league eredivisie --season 2026-2027 --next 8
+```
+
+读取本联赛配置指向的 `data/s16.js`（其他联赛使用各自配置的 s 开头赛程文件），仅取内数组下标2严格等于0、且开赛时间晚于运行时刻的比赛，按北京时间开赛时间升序选择各队未来最近N场。这里按实际比赛数取样，不按轮次编号取样，`--next` 默认5，必须为正整数。
+
+对手排名直接读取 `leagueRanking/26-27/teams/standings/standings.json`，运行前应确保它是全赛季总积分榜，若此前按范围生成过积分榜，先运行第二节全联赛 build 恢复。本命令不重算或覆盖积分榜，不修改原始赛程。
+
+难度值＝未来所选对手总积分榜名次之和÷实际比赛数。值越低越凶险，排行榜越靠前；同值并列（如1、1、3）。不足N场时按实际场数计算，零场时难度及排名显示“缺失”、置于末尾，不补零。表格列出排名、球队、比赛数、对手平均排名及按时间排列的未来对手、对手名次、开赛时间与主客场；平均排名显示两位小数，排序使用未舍入值。
+
+与本 workflow 同级生成并覆盖：
+
+- [赛程难度排行榜.md](赛程难度排行榜.md)
+- [赛程难度排行榜.html](赛程难度排行榜.html)
 
 ### 第五步：生成“本赛季同档次对手较量”
 
@@ -53,7 +125,7 @@ node bin/buildAllMonthlySchedule.js
 
 直接读取各球队 `teamProfile/{球队目录}/{球队目录}.json` 的 `futureSchedule`，以生成画像时的 `matchTime` 为开始时间（JSON内部保存为 `futureSchedule.anchorTime`），不使用当前时间或当前全局配置替代。展示其后30天内、包含截止时刻的所有赛事，按北京时间开球时间升序，包含联赛、欧战及杯赛。
 
-每场一行，依次为日期时间、赛事、轮次或阶段、主队vs客队、间隔、等级、备注。例如：`12月3日 04:30 西甲 第23轮 巴塞罗那vs马德里竞技 77小时 警告`。首场与 `matchTime` 计算间隔，后续与上一场开球时间计算间隔；不是与上场终场时间比较。
+每场一行，依次为日期时间、赛事、轮次或阶段、主队vs客队、间隔、等级、备注。例如：`12月3日 04:30 荷甲 第23轮 威廉二世vs阿尔克马尔 77小时 警告`。首场与 `matchTime` 计算间隔，后续与上一场开球时间计算间隔；不是与上场终场时间比较。
 
 | 等级 | 实际开球间隔 |
 | --- | --- |
@@ -72,6 +144,26 @@ eredivisie/teamAgent/{球队目录}/球队未来一个月赛程.html
 ```
 
 不接受轮次或日期筛选，不修改画像及原始赛程，不联网补采。缺少画像JSON、futureSchedule、基准时间或关键比赛字段时记录原因并跳过该队，继续其他球队，失败球队的旧报告不覆盖。有效的空比赛数组会明确说明窗口内无比赛，不能把缺失数据当作空赛程。批量结果及逐队缺项写入 `analysis-cli/output/monthly-schedule-summary.json`，有失败时返回非零退出码。
+
+### 第一步至第三步的公共参数
+
+三条命令均支持 `--league`、`--season`、`--round`、`--from`、`--to`。联赛和完整赛季必填；`--round 1-13` 表示第 1–13 轮，`--round 13` 仅表示第 13 轮，不表示最近 13 场。`--from/--to` 须同时提供，按北京时间日期筛选且包含起止日；轮次与日期范围互斥。
+
+以下命令互相独立，选择所需范围执行；三个步骤需比较相同范围时，请传入相同参数：
+
+```bash
+# 第 1–13 轮；只看第 13 轮时改为 --round 13
+node bin/xgStory.js --league eredivisie --season 2026-2027 --round 1-13
+node bin/teamStrength.js --league eredivisie --season 2026-2027 --round 1-13
+node bin/keyPlayerStarts.js --league eredivisie --season 2026-2027 --round 1-13
+
+# 北京时间日期区间，包含首尾两天
+node bin/xgStory.js --league eredivisie --season 2026-2027 --from 2026-09-01 --to 2026-11-27
+node bin/teamStrength.js --league eredivisie --season 2026-2027 --from 2026-09-01 --to 2026-11-27
+node bin/keyPlayerStarts.js --league eredivisie --season 2026-2027 --from 2026-09-01 --to 2026-11-27
+```
+
+传入范围会覆盖所需指标的现有榜单 MD、HTML、JSON，报告正文标明本次范围。第一步、第二步不传范围时仅读取当前 JSON，不自动恢复全赛季；第三步每次刷新其所需指标榜单，不传范围即使用本赛季全部已完赛比赛，保证关键球员选择与首发对比范围一致。三个步骤均覆盖各自同名报告，不另建范围目录，不改原始 basicData。原有 `bin/cli.js build` 仍使用 `--rounds` 参数。
 
 ## 二、查看指标及生成榜单
 
